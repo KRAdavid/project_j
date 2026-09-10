@@ -61,6 +61,7 @@ try {
     if (orderId) await client.query('DELETE FROM reservations WHERE order_id = $1::uuid', [orderId]);
     if (orderId) await client.query('DELETE FROM trade_events WHERE order_id = $1::uuid', [orderId]);
     if (orderId) await client.query('DELETE FROM purchase_orders WHERE order_id = $1::uuid', [orderId]);
+    await client.query('DELETE FROM evidences WHERE lot_id = $1', [lotId]);
     await client.query('DELETE FROM lots WHERE lot_id = $1', [lotId]);
     await client.query('DELETE FROM specifications WHERE spec_id = $1', [specId]);
     await client.query('DELETE FROM materials WHERE material_id = $1', [materialId]);
@@ -75,3 +76,4 @@ try {
     await store.close();
   }
 }
+

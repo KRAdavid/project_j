@@ -587,7 +587,7 @@ export class PostgresDomainAdapter {
         }
       }
       const order = await client.query(
-        'INSERT INTO purchase_orders(buyer_organization_id, spec_id, spec_attributes, product_type, state, bid_price, currency, price_unit, quantity_unit, requested_quantity, delivery_deadline, partial_fill_allowed, idempotency_key, expires_at) VALUES ($1::uuid, $2, $3::jsonb, \'PHYSICAL_MATERIAL\', \'SUBMITTED\', $4, $5, $6, $7, $8, $9::date, $10, $11, $12, $13::timestamptz) RETURNING *',
+        'INSERT INTO purchase_orders(buyer_organization_id, spec_id, spec_attributes, product_type, state, bid_price, currency, price_unit, quantity_unit, requested_quantity, delivery_deadline, partial_fill_allowed, idempotency_key, expires_at) VALUES ($1::uuid, $2, $3::jsonb, \'PHYSICAL_MATERIAL\', \'SUBMITTED\', $4, $5, $6, $7, $8, $9::date, $10, $11, $12::timestamptz) RETURNING *',
         [buyerOrganizationId, specId, JSON.stringify(specification.attributes), bidPrice, tradeTerms.currency, tradeTerms.priceUnit, tradeTerms.quantityUnit, requestedQuantity, deliveryDeadline, input.partialFillAllowed !== false, idempotencyKey, input.expiresAt || null],
       );
       const row = order.rows[0];
@@ -1054,3 +1054,4 @@ export class PostgresDomainAdapter {
 }
 
 export { mapEvidence, mapLot, mapOrder, mapTrade };
+
