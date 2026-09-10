@@ -86,6 +86,8 @@ try {
   assert.equal(afterFulfillment.recentTrades[0].price, 21800);
   assert.equal(afterFulfillment.recentTrades[0].quantity, 200);
   assert.equal(afterFulfillment.recentTrades[0].disclosureStatus, 'COMPLETED_PHYSICAL_TRADE');
+  assert.equal(afterFulfillment.asks.length, 1, '부분 체결 후 잔여 재고는 계속 매물로 노출되어야 합니다.');
+  assert.equal(afterFulfillment.asks[0].availableQty, 1000, '검수 완료된 주문 수량만 차감되고 잔여 재고는 보존되어야 합니다.');
 
   const priceIndexResponse = await request('/api/price-index?specId=GABA-SPEC-001', { headers: { 'x-demo-role': 'BUYER' } });
   assert.equal(priceIndexResponse.status, 200);
@@ -101,3 +103,4 @@ try {
   child.kill();
   await rm(opsRoot, { recursive: true, force: true });
 }
+
