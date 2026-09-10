@@ -26,6 +26,13 @@ const compactText = (value, limit = 180) => {
   const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
   return normalized.length > limit ? `${normalized.slice(0, limit)}…` : normalized;
 };
+const safeTriggerContext = (value) => {
+  const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
+  if (/(assertionerror|triggeruncaughtexception|node:internal|uncaughtexception)/i.test(normalized)) {
+    return '자동 검증 오류 증거가 기록되어 재검증과 H-01 검토가 필요합니다.';
+  }
+  return compactText(normalized || '자동 운영 신호가 기록되었습니다.');
+};
 
 async function apiRequest(path, options = {}) {
   const response = await fetch(path, { headers: { 'Content-Type': 'application/json' }, ...options });
@@ -562,7 +569,7 @@ async function hydrateOpsSummary() {
     $('#ops-trigger-list').innerHTML = triggerTasks.length ? triggerTasks.slice(-5).reverse().map((task) => {
       const activeSignal = task.lastRecheckResult !== 'NOT_DETECTED';
       const recheck = activeSignal ? '<small>현재 신호 감지 · 자동 실행 보류</small>' : '<small>최근 재검증에서 재현되지 않음 · H-01 종결 필요</small>';
-      const triggerContext = compactText(task.whyNow || '자동 운영 신호가 기록되었습니다.');
+      const triggerContext = safeTriggerContext(compactText(task.whyNow || '자동 운영 신호가 기록되었습니다.'));
       const triggerBadge = activeSignal ? '현재 감지' : '재검증 종료 대기';
       return `<div class="ops-trigger-row"><div><strong>${escapeHtml(task.triggerKey || 'AUTO_TRIGGER')}</strong><span>${escapeHtml(task.objective || '')}</span><small>${escapeHtml(triggerContext)}</small>${recheck}</div><div><small>담당 ${escapeHtml(task.ownerAi || '미지정')} · 검토 ${escapeHtml((task.reviewers || []).join(', '))}</small></div><span class="trigger-badge">${triggerBadge}</span></div>`;
     }).join('') : '<div class="ops-empty">자동 생성된 운영 업무가 없습니다.</div>';
@@ -1114,3 +1121,4 @@ connectLedgerStream();
 window.setInterval(pushRealtimeTick, 3000);
 const initialRole = new URLSearchParams(window.location.search).get('role');
 setRole(['split', 'buyer', 'seller', 'operator'].includes(initialRole) ? initialRole : 'split');
+
