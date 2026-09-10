@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "SHADOW-PILOT-EXECUTION-BASELINE-0.1",
+  "pilotId": "GABA-CLOSED-SHADOW-001",
+  "generatedAt": "2026-09-10T20:55:39.656965+09:00",
+  "mode": "CLOSED_SIMULATION",
+  "decision": "PASS_REVIEW_REQUIRED",
+  "humanPrincipal": "H-01",
+  "requiredApproval": "H-01_APPROVAL_BEFORE_PARTICIPANT_ACCESS",
+  "realTransactionsEnabled": false,
+  "realMoneyEnabled": false,
+  "externalNotificationsEnabled": false,
+  "participantAccessEnabled": false,
+  "preflight": {
+    "passed": true,
+    "closedSimulationMode": true,
+    "realSideEffectsDisabled": true,
+    "humanGateConfigured": true,
+    "participantsComplete": true,
+    "scenarioMatrixComplete": true,
+    "stopRulesPresent": true,
+    "evidenceContractComplete": true
+  },
+  "scenarioSummary": {
+    "total": 7,
+    "passed": 7,
+    "invalidLotTradeCount": 0,
+    "scenarios": [
+      { "id": "SP-01", "expected": "TRADE_CONFIRMED", "passed": true },
+      { "id": "SP-02", "expected": "BLOCKED_BEFORE_TRADE", "passed": true },
+      { "id": "SP-03", "expected": "BLOCKED_BEFORE_TRADE", "passed": true },
+      { "id": "SP-04", "expected": "PARTIAL_FILL_TRACEABLE", "passed": true },
+      { "id": "SP-05", "expected": "DISPUTED_AFTER_DELIVERY", "passed": true },
+      { "id": "SP-06", "expected": "DISPUTED_AFTER_DELIVERY", "passed": true },
+      { "id": "SP-07", "expected": "SETTLEMENT_HOLD", "passed": true }
+    ]
+  },
+  "guardrail": "시뮬레이션 통과는 상용 승인이나 실제 참가자 접근을 의미하지 않는다. H-01 승인 전 거래·계약·결제·외부 알림·공개 운영을 실행하지 않는다."
+}
+
