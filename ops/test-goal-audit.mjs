@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildGoalAudit } from './goal-audit.mjs';
+import { buildGoalAudit, selectShadowPilotEvidence } from './goal-audit.mjs';
 
 const base = {
   cycle: { cycleId: 'C-001', decision: 'HUMAN_REVIEW_REQUIRED' },
@@ -53,6 +53,28 @@ const reviewedShadowPilot = buildGoalAudit({
   shadowPilot,
 });
 assert.equal(reviewedShadowPilot.checks.find((item) => item.id === 'SHADOW_PILOT_EXECUTION').status, 'VERIFIED');
+
+const latestShadowPilot = buildGoalAudit({
+  ...base,
+  readiness: { missing: ['R-01'] },
+  github: { status: 'TARGET_MATCH', targetRepository: 'KRAdavid/project_j', baseBranch: 'main' },
+  githubPublication: { status: 'BLOCKED', blockers: [] },
+  shadowPilot: {
+    schema_version: 'SHADOW-PILOT-RUN-0.2',
+    decision: 'PASS_REVIEW_REQUIRED',
+    scenario_count: 7,
+    passed_scenario_count: 7,
+    real_transactions_enabled: false,
+    real_money_enabled: false,
+    participant_access_enabled: false,
+    preflight: { passed: true },
+    results: Array.from({ length: 7 }, () => ({ passed: true, scenario_invalid_lot_trade_count: 0 })),
+  },
+});
+assert.equal(latestShadowPilot.checks.find((item) => item.id === 'SHADOW_PILOT_EXECUTION').status, 'VERIFIED');
+const latestEvidence = { decision: 'PASS_REVIEW_REQUIRED', preflight: { passed: false } };
+assert.equal(selectShadowPilotEvidence({ latest: latestEvidence, baseline: shadowPilot }), latestEvidence);
+assert.equal(selectShadowPilotEvidence({ latest: null, baseline: shadowPilot }), shadowPilot);
 
 const published = buildGoalAudit({
   ...base,
