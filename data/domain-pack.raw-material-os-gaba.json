@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "DOMAIN-PACK-0.1",
+  "packId": "RAW_MATERIAL_OS_GABA_BETA",
+  "version": "0.1.0",
+  "label": "GABA 실물 원료 거래 베타",
+  "domain": "B2B_PHYSICAL_RAW_MATERIAL_TRADE",
+  "supportedGoalArchetypes": [
+    "VALIDATION",
+    "MARKET_ENTRY",
+    "TRANSACTION_EXECUTION",
+    "OPERATIONS"
+  ],
+  "requiredCapabilities": [
+    "MATERIAL_MASTER_READ",
+    "SPEC_COMPILATION",
+    "EVIDENCE_VERIFICATION",
+    "LOT_INVENTORY_CHECK",
+    "PHYSICAL_TRADE_SIMULATION",
+    "OUTCOME_OBSERVATION"
+  ],
+  "firstValidActions": [
+    {
+      "actionId": "RM-GABA-A1",
+      "objective": "사용자 입력에서 GABA 표준 원료 후보와 필수 스펙 질문을 확인한다.",
+      "risk": "LOW",
+      "mode": "READ_ONLY"
+    },
+    {
+      "actionId": "RM-GABA-A2",
+      "objective": "확정된 Spec ID에 대해 검증 증빙과 가용 로트의 존재를 조회한다.",
+      "risk": "MEDIUM",
+      "mode": "READ_ONLY"
+    }
+  ],
+  "definitionOfDoneTemplates": [
+    {
+      "predicateId": "SPEC_CONFIRMED",
+      "predicate": "구매자가 Material Master 기준 거래 스펙을 확정했다.",
+      "evidenceType": "SPEC_SNAPSHOT",
+      "evaluator": "AI-04 스펙컴파일러",
+      "threshold": 1
+    },
+    {
+      "predicateId": "SUPPLY_VERIFIED",
+      "predicate": "공급자·로트·필수 증빙·가용재고가 거래 전에 검증되었다.",
+      "evidenceType": "EVIDENCE_LOT_INVENTORY_GATE",
+      "evaluator": "AI-09 콘트라",
+      "threshold": 1
+    },
+    {
+      "predicateId": "PHYSICAL_TRADE_COMPLETED",
+      "predicate": "납품과 검수가 완료된 실물 거래가 원장에 기록되었다.",
+      "evidenceType": "DELIVERY_INSPECTION_RECEIPT",
+      "evaluator": "H-01",
+      "threshold": 1
+    }
+  ],
+  "guardrails": {
+    "capitalMarketProduct": false,
+    "realMoneyExecution": false,
+    "aiMayApprove": false,
+    "fakeListingFailClosed": true,
+    "preTradeEvidenceRequired": true
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "raw-material-os-beta",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start:beta": "node beta-app/server.mjs",
+    "test:autopilot": "node ops/run-autopilot.mjs",
+    "db:migrate": "node ops/migrate-postgres.mjs",
+    "ops:preflight": "node ops/staging-preflight.mjs",
+    "github:preflight": "node ops/github-target-preflight.mjs",
+    "github:publication-preflight": "node ops/github-publication-preflight.mjs",
+    "github:staging-review": "node ops/github-staging-review.mjs",
+    "deployment:test": "node ops/test-deployment-contract.mjs",
+    "goal:test": "node ops/test-goal-contract.mjs && node ops/test-goal-compiler.mjs && node ops/test-outcome-ledger.mjs",
+    "ops:cycle": "node ops/run-ops-cycle.mjs",
+    "ops:goal-audit": "node ops/goal-audit.mjs",
+    "ops:daemon": "node ops/ops-daemon.mjs",
+    "ops:supervise": "node ops/company-supervisor.mjs",
+    "ops:start": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/start-company-supervised.ps1",
+    "ops:start:basic": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/start-company-mode.ps1",
+    "ops:start:supervised": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/start-company-supervised.ps1",
+    "ops:register": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/register-company-mode-task.ps1",
+    "ops:stop": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/stop-company-mode.ps1",
+    "ops:validate": "node ops/validate-team-roster.mjs && node ops/validate-task-ownership.mjs && node ops/validate-patent-traceability.mjs && node ops/validate-patent-prior-art.mjs && node ops/validate-authorization-policy.mjs && node ops/validate-monitoring-config.mjs && node ops/validate-release-readiness.mjs && node ops/validate-contracts.mjs && node ops/test-deployment-contract.mjs && node ops/test-goal-contract.mjs && node ops/test-goal-compiler.mjs && node ops/test-outcome-ledger.mjs && node beta-app/test-market-board.mjs && node beta-app/test-market-board-api.mjs && node beta-app/test-market-board-lifecycle.mjs && node ops/test-task-queue-compaction.mjs && node ops/test-daemon-liveness.mjs && node ops/test-ops-daemon.mjs && node ops/test-github-target-config.mjs && node ops/test-github-publication-preflight.mjs && node ops/test-goal-audit.mjs && node ops/test-daemon-timeout.mjs && node ops/test-cutover-input-manifest.mjs && node ops/test-incident-rehearsal.mjs && node ops/test-notification-outbox.mjs && node ops/test-server-launcher.mjs && node ops/test-company-mode-launcher.mjs && node ops/test-company-mode-stop.mjs && node ops/test-postgres-concurrency-contract.mjs && node beta-app/test-postgres-order-idempotency.mjs && node beta-app/test-postgres-accept-idempotency.mjs && node beta-app/test-postgres-command-idempotency.mjs && node beta-app/test-authorization.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "planVersion": "SHADOW-PILOT-0.1",
+  "pilotId": "GABA-CLOSED-SHADOW-001",
+  "mode": "CLOSED_SIMULATION",
+  "realTransactionsEnabled": false,
+  "realMoneyEnabled": false,
+  "externalNotificationsEnabled": false,
+  "humanPrincipal": "H-01",
+  "requiredApproval": "H-01_APPROVAL_BEFORE_PARTICIPANT_ACCESS",
+  "participants": [
+    { "participantId": "BUYER-SIM-01", "role": "BUYER", "organization": "익명 구매기업 A" },
+    { "participantId": "SUPPLIER-SIM-01", "role": "SUPPLIER", "organization": "익명 공급기업 A" },
+    { "participantId": "OBSERVER-SIM-01", "role": "OBSERVER", "organization": "운영 검증팀" }
+  ],
+  "scenarios": [
+    { "id": "SP-01", "name": "정상 스펙 확정·체결", "simulatorScenario": "normal", "expected": "TRADE_CONFIRMED" },
+    { "id": "SP-02", "name": "만료 증빙 매물 차단", "simulatorScenario": "document_expiry", "expected": "BLOCKED_BEFORE_TRADE" },
+    { "id": "SP-03", "name": "재고 불일치 매물 차단", "simulatorScenario": "inventory_mismatch", "expected": "BLOCKED_BEFORE_TRADE" },
+    { "id": "SP-04", "name": "부분수락과 잔여수량 표시", "simulatorScenario": "normal", "expected": "PARTIAL_FILL_TRACEABLE" },
+    { "id": "SP-05", "name": "납품 후 품질 불일치 분쟁", "simulatorScenario": "quality_mismatch", "expected": "DISPUTED_AFTER_DELIVERY" },
+    { "id": "SP-06", "name": "납기 지연 보류", "simulatorScenario": "delivery_delay", "expected": "DISPUTED_AFTER_DELIVERY" },
+    { "id": "SP-07", "name": "정산 대사 오류 지급 보류", "simulatorScenario": "settlement_error", "expected": "SETTLEMENT_HOLD" }
+  ],
+  "stopRules": [
+    "검증 전 매물이 구매자 화면에 노출되면 즉시 중단",
+    "동일 로트 중복예약 또는 재고 음수가 발생하면 즉시 중단",
+    "스펙 미확정 원료가 자동 체결되면 즉시 중단",
+    "실제 참가자·외부 수신자에게 승인 없는 메시지가 발송되면 즉시 중단",
+    "AI가 승인 없이 거래·계약·지급을 실행하면 즉시 중단"
+  ],
+  "successCriteria": {
+    "targets": {
+      "invalid_lot_pretrade_block_rate": 1.0,
+      "scenario_invalid_lot_trade_count": 0,
+      "duplicate_trade_count": 0,
+      "negative_inventory_count": 0,
+      "post_delivery_quality_dispute_traceability": 1.0,
+      "human_gate_bypass_count": 0
+    },
+    "measurementRule": "targets는 사전 성공 기준이며, 실제 결과는 별도 run report에 기록한다."
+  },
+  "evidenceToCapture": [
+    "simulation_run_id",
+    "participant_role",
+    "spec_id",
+    "lot_id",
+    "order_id",
+    "trade_id",
+    "pretrade_checks",
+    "state_transition_log",
+    "blocked_events",
+    "scenario_block_reason",
+    "invalid_lot_trade_count",
+    "screenshot_or_session_reference",
+    "human_decision_id"
+  ]
+}

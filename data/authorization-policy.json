@@ -1,0 +1,17 @@
+{
+  "policyVersion": "AUTH-0.1",
+  "scope": "PHYSICAL_MATERIAL_ONLY",
+  "organizationBoundary": "사용자는 자신이 속한 조직의 주문·문서·정산 자료만 조회한다.",
+  "roles": {
+    "OWNER": ["manage_members", "approve_supplier", "approve_spec", "approve_trade", "approve_contract", "approve_payment", "decide_operational_approval", "acknowledge_operational_alert", "view_release_readiness"],
+    "ADMIN": ["manage_members", "manage_inventory", "manage_documents"],
+    "BUYER": ["create_order", "view_matched_offer", "accept_counter_offer", "view_own_trade"],
+    "SUPPLIER": ["request_supplier_verification", "create_lot", "upload_evidence", "accept_order", "counter_order", "reject_order", "mark_delivery", "view_own_trade"],
+    "OPERATOR": ["verify_document", "quarantine_lot", "pause_offer", "expire_order", "inspect_trade", "view_operational_audit", "acknowledge_operational_alert", "view_release_readiness"],
+    "AUDITOR": ["view_readonly_audit", "view_release_readiness"],
+    "AI": ["prepare_analysis", "run_tests", "prepare_review_packet", "send_alert"]
+  },
+  "humanApprovalRequired": ["approve_supplier", "approve_spec", "approve_trade", "approve_contract", "approve_payment", "decide_operational_approval", "refund", "close_dispute", "release_quarantine"],
+  "aiDeniedActions": ["approve_trade", "approve_contract", "approve_payment", "decide_operational_approval", "acknowledge_operational_alert", "refund", "close_dispute", "release_quarantine"],
+  "auditRequiredActions": ["request_supplier_verification", "upload_evidence", "verify_document", "quarantine_lot", "pause_offer", "create_order", "accept_order", "counter_order", "reject_order", "mark_delivery", "inspect_trade", "approve_trade", "decide_operational_approval", "acknowledge_operational_alert"]
+}

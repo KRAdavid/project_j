@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "EVIDENCE-POLICY-0.1",
+  "status": "SIMULATION_ONLY",
+  "requiredTypes": ["COA", "SDS", "TDS", "LOT_TRACE", "INVENTORY_PROOF"],
+  "preTradeRequired": true,
+  "hashAlgorithm": "SHA-256",
+  "rules": [
+    "모든 필수 증빙은 같은 Lot ID에 연결되어야 한다.",
+    "증빙은 VALID 상태이고 체결 시점에 만료되지 않아야 한다.",
+    "동일 증빙 유형의 현재 버전은 하나만 유효해야 한다.",
+    "증빙 변경·만료·불일치 시 매물 노출과 체결을 중단한다.",
+    "납품 후 품질검사는 거래 전 증빙 검증과 별도 상태로 기록한다."
+  ]
+}

@@ -1,0 +1,38 @@
+name: Raw Material OS Public Beta Container
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the simulation-only image to GHCR
+        required: true
+        type: choice
+        default: "false"
+        options: ["false", "true"]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Log in to GHCR
+        if: github.ref_type == 'tag' || inputs.publish == 'true'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build simulation-only image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          push: ${{ github.ref_type == 'tag' || inputs.publish == 'true' }}
+          tags: ghcr.io/${{ github.repository_owner }}/raw-material-os:beta-${{ github.sha }}

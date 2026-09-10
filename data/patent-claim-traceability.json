@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "PATENT-TRACE-0.1",
+  "legalStatus": "INVENTION_DISCLOSURE_ONLY",
+  "patentabilityGuarantee": false,
+  "candidateTitle": "증빙 생명주기와 표준 스펙을 이용한 실물 원료 거래 체결 시스템 및 방법",
+  "elements": [
+    {
+      "id": "E1",
+      "title": "Material Master 기반 사용자 확정 스펙",
+      "technicalMechanism": "동의어를 Material ID로 정규화하고 필수 질문의 사용자 답변만 거래용 Spec으로 봉인",
+      "implementation": ["data/material-master.json", "beta-app/material-master.mjs", "beta-app/spec-compiler.mjs", "beta-app/app.js"],
+      "tests": ["beta-app/test-material-master.mjs", "beta-app/test-spec-compiler.mjs"],
+      "humanGate": "원료·스펙 기준 승인"
+    },
+    {
+      "id": "E2",
+      "title": "Lot 결속형 5종 증빙 생명주기",
+      "technicalMechanism": "COA·SDS·TDS·로트추적·재고증빙의 상태·해시·유효기간을 같은 Lot의 거래가능성에 결속",
+      "implementation": ["data/evidence-policy.json", "beta-app/evidence-registry.mjs", "beta-app/evidence-verifier.mjs", "beta-app/inventory-ledger.mjs"],
+      "tests": ["beta-app/test-evidence-registry.mjs", "beta-app/test-evidence-verifier.mjs", "beta-app/test-lot-onboarding.mjs"],
+      "humanGate": "고위험 증빙·품질 최종 검토"
+    },
+    {
+      "id": "E3",
+      "title": "거래 전 노출 게이트",
+      "technicalMechanism": "스펙·증빙·추적성·가용재고 조건을 모두 통과한 공급 Lot만 Offer로 투영",
+      "implementation": ["beta-app/server.mjs", "beta-app/authorization.mjs", "data/authorization-policy.json"],
+      "tests": ["beta-app/test-supplier-verification-gate.mjs", "beta-app/test-api-authorization.mjs"],
+      "humanGate": "공개 범위 승인"
+    },
+    {
+      "id": "E4",
+      "title": "수락 순간 재검증과 멱등 원자 예약",
+      "technicalMechanism": "주문 멱등 키와 공급자 수락 시 상태 재조회, 예약 식별자·트랜잭션·로트별 advisory lock을 결합해 재시도 중복·초과 체결을 차단",
+      "implementation": ["beta-app/postgres-domain-adapter.mjs", "data/postgres-schema.sql", "beta-app/inventory-ledger.mjs"],
+      "tests": ["beta-app/test-postgres-order-idempotency.mjs", "beta-app/test-postgres-accept-idempotency.mjs", "beta-app/test-postgres-command-idempotency.mjs", "beta-app/test-postgres-concurrent-reservation.mjs", "beta-app/test-postgres-domain-adapter-accept.mjs", "beta-app/test-inventory-ledger.mjs"],
+      "humanGate": "실 PostgreSQL 동시성 증거 승인"
+    },
+    {
+      "id": "E5",
+      "title": "불변 체결 스냅샷과 무결성 지문",
+      "technicalMechanism": "Spec·Lot·Evidence·가격·수량·납기·검증 결과를 체결 시 봉인하고 SHA-256으로 이후 변조를 재검증",
+      "implementation": ["beta-app/trade-engine.mjs", "beta-app/snapshot-integrity.mjs", "beta-app/postgres-domain-adapter.mjs"],
+      "tests": ["beta-app/test-snapshot-integrity.mjs", "beta-app/test-postgres-domain-adapter-spec-lock.mjs", "beta-app/test-trade-lifecycle.mjs"],
+      "humanGate": "원장·감사 보존정책 승인"
+    },
+    {
+      "id": "E6",
+      "title": "납품 후 불일치 격리",
+      "technicalMechanism": "거래 전 검증과 납품 후 검수 상태를 분리하고 불일치 시 Trade를 DISPUTED, Lot을 QUARANTINED로 전환",
+      "implementation": ["beta-app/trade-engine.mjs", "beta-app/postgres-domain-adapter.mjs", "beta-app/domain-reconciliation.mjs"],
+      "tests": ["beta-app/test-trade-lifecycle.mjs", "beta-app/test-postgres-domain-adapter-atomic-inspect.mjs", "beta-app/test-domain-reconciliation.mjs"],
+      "humanGate": "분쟁 종결·보상 결정"
+    },
+    {
+      "id": "E7",
+      "title": "완료 거래 기반 가격·추세 공개 통제",
+      "technicalMechanism": "완료·유효증빙 거래만 표본으로 사용하고 표본·공급자 다양성·인간 공개승인 미달 시 값과 추세를 공개하지 않음",
+      "implementation": ["beta-app/price-index.mjs", "beta-app/price-feed.mjs", "data/price-source-contract.json"],
+      "tests": ["beta-app/test-price-index.mjs", "beta-app/test-price-feed.mjs"],
+      "humanGate": "가격원천·공개 승인"
+    }
+  ],
+  "externalReviewRequired": ["official prior-art search", "claim drafting by patent attorney", "jurisdiction-specific legal review"],
+  "prohibitedExternalClaims": ["세계 최초", "특허 등록 보장", "법률 의견", "가격 보장"]
+}

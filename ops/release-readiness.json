@@ -1,0 +1,18 @@
+{
+  "checklistVersion": "RELEASE-0.1",
+  "service": "raw-material-os",
+  "target": "CLOSED_SHADOW_PILOT",
+  "decision": "NO_GO_UNTIL_ALL_REQUIRED_CHECKS_PASS",
+  "checks": [
+    { "id": "R-01", "name": "durable_persistence", "required": true, "current": false, "evidence": "data/persistence-config.json" },
+    { "id": "R-02", "name": "organization_auth_and_rbac", "required": true, "current": false, "evidence": "data/authorization-policy.json" },
+    { "id": "R-03", "name": "pretrade_evidence_verification", "required": true, "current": true, "evidence": "beta-app/test-evidence-registry.mjs" },
+    { "id": "R-04", "name": "price_source_approval", "required": true, "current": false, "evidence": "data/price-source-contract.json" },
+    { "id": "R-05", "name": "monitoring_and_alerting", "required": true, "current": false, "evidence": "pending" },
+    { "id": "R-06", "name": "backup_restore_drill", "required": true, "current": false, "evidence": "pending" },
+    { "id": "R-07", "name": "shadow_pilot_human_approval", "required": true, "current": false, "evidence": "ops/shadow-pilot-plan.json" },
+    { "id": "R-08", "name": "all_quality_gates_green", "required": true, "current": true, "evidence": ".github/workflows/quality-gates.yml" }
+  ],
+  "stopRule": "필수 체크가 하나라도 false이면 참가자 접근·실거래·결제·공개 배포를 허용하지 않는다.",
+  "humanApprover": "H-01"
+}

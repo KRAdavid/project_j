@@ -1,0 +1,93 @@
+{
+  "contractVersion": "PG-DOMAIN-ADAPTER-0.1",
+  "scope": "PHYSICAL_MATERIAL_ONLY",
+  "status": "DESIGN_ONLY",
+  "purpose": "Snapshot bridge가 아닌 정규 PostgreSQL 도메인 원장으로 주문·예약·체결·증빙·가격 관측치를 원자적으로 기록한다.",
+  "requiredTables": [
+    "organizations",
+    "supplier_verification_requests",
+    "organization_members",
+    "materials",
+    "specifications",
+    "lots",
+    "evidences",
+    "offers",
+    "purchase_orders",
+    "reservations",
+    "trades",
+    "trade_inspections",
+    "trade_events",
+    "price_observations",
+    "operational_approvals",
+    "approval_events"
+  ],
+  "requiredAtomicOperations": [
+    {
+      "operation": "request_supplier_verification",
+      "writes": ["supplier_verification_requests", "trade_events"],
+      "invariants": ["supplier_membership", "evidence_reference_present", "human_review_required", "idempotent_open_request"]
+    },
+    {
+      "operation": "submit_order",
+      "writes": ["purchase_orders", "trade_events"],
+      "invariants": ["specification_approved", "physical_material_only", "buyer_membership", "idempotency_key_unique"]
+    },
+    {
+      "operation": "reserve_inventory",
+      "writes": ["lots", "reservations", "trade_events"],
+      "invariants": ["row_lock", "available_quantity_nonnegative", "idempotency_key_unique"]
+    },
+    {
+      "operation": "confirm_trade",
+      "writes": ["trades", "purchase_orders", "trade_events"],
+      "invariants": ["pretrade_evidence_valid", "lot_snapshot_sealed", "organization_membership"]
+    },
+    {
+      "operation": "record_completed_trade_price",
+      "writes": ["price_observations", "trade_events"],
+      "invariants": ["delivery_and_inspection_complete", "source_provenance", "deduplicated_identity"]
+    },
+    {
+      "operation": "inspect_and_record_completed_price",
+      "writes": ["trades", "reservations", "lots", "trade_inspections", "price_observations", "trade_events"],
+      "invariants": ["inspection_and_price_atomic", "delivery_and_inspection_complete", "source_provenance", "deduplicated_identity"]
+    },
+    {
+      "operation": "register_lot_draft",
+      "writes": ["lots", "evidences", "trade_events"],
+      "invariants": ["supplier_membership", "evidence_pending", "offer_not_visible"]
+    },
+    {
+      "operation": "review_evidence_and_publish_offer",
+      "writes": ["evidences", "lots", "offers", "trade_events"],
+      "invariants": ["operator_review", "all_required_evidence_valid", "offer_visible_only_after_gate"]
+    },
+    {
+      "operation": "counter_order",
+      "writes": ["purchase_orders", "trade_events"],
+      "invariants": ["supplier_membership", "spec_match", "lot_eligible"]
+    },
+    {
+      "operation": "reject_or_expire_order",
+      "writes": ["purchase_orders", "trade_events"],
+      "invariants": ["valid_state_transition", "audit_event"]
+    }
+  ],
+  "requiredEvidence": [
+    "integration_test_with_postgresql",
+    "order_idempotency_test",
+    "concurrent_reservation_test",
+    "rollback_test",
+    "backup_restore_with_domain_rows",
+    "reconciliation_snapshot_vs_domain_tables"
+  ],
+  "currentImplementation": {
+    "snapshotBridge": true,
+    "normalizedDomainWrites": false,
+    "normalizedDomainApiWiring": "COMPLETE_DOMAIN_COMMAND_PATHS_AND_RECONCILIATION",
+    "normalizedDomainApiRemaining": ["reconciliation_environment_evidence"],
+    "productionReady": false,
+    "goRequiresHumanApproval": true
+  },
+  "goRule": "normalizedDomainWrites와 모든 requiredEvidence가 검증되고 H-01이 승인하기 전에는 상용 거래를 허용하지 않는다."
+}

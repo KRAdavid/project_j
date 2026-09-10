@@ -1,0 +1,35 @@
+name: public-beta-quality
+
+on:
+  push:
+    branches: [main, "codex/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core-simulation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node beta-app/test-material-master.mjs
+      - run: node beta-app/test-spec-compiler.mjs
+      - run: node beta-app/test-market-board-lifecycle.mjs
+      - run: node beta-app/test-trade-lifecycle.mjs
+      - run: node beta-app/test-sse-integration.mjs
+      - run: node beta-app/test-server-persistence.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s simulator -p "test_*.py"

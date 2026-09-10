@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "PRICE-POLICY-0.1",
+  "policyId": "GABA-SPEC-001-30D",
+  "status": "SIMULATION_ONLY",
+  "lookbackDays": 30,
+  "minCompletedTrades": 3,
+  "minDistinctSuppliers": 2,
+  "canonicalCurrency": "KRW",
+  "canonicalPriceUnit": "KRW_PER_KG",
+  "canonicalQuantityUnit": "KG",
+  "requiredTradeStatus": "FULFILLED",
+  "requiredEvidenceStatus": "VALID",
+  "requiredFields": ["tradeId", "specId", "supplierId", "price", "quantity", "quantityUnit", "priceUnit", "currency", "fulfilledAt", "evidenceStatus"],
+  "disclosureRule": "표본 또는 공급자 다양성 기준 미달 시 가격값을 산출하지 않는다."
+}
