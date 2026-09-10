@@ -45,6 +45,7 @@ try {
   assert.ok(summary.supervisorStatus, '운영 감독자 상태가 운영 요약에 없습니다.');
   assert.ok(['RUNNING', 'DEGRADED', 'HALTED_REQUIRES_H01', 'NOT_REPORTED'].includes(summary.supervisorStatus.status));
   const remediationStatus = summary.taskAuditRemediation.status;
+  assert.ok(Array.isArray(summary.approvalDecisionGuide), '운영자 승인 결정 가이드가 요약에 없습니다.');
   assert.ok(['NO_ACTION', 'WAITING_FOR_H01_APPROVAL', 'READY_FOR_H01_APPROVAL', 'APPLIED', 'MANUAL_REVIEW_REQUIRED', 'NOT_REPORTED'].includes(remediationStatus));
   if (remediationStatus === 'NOT_REPORTED') {
     assert.equal(summary.taskAuditRemediation.planId, null);
