@@ -85,6 +85,9 @@ const runNodeTest = (name, script) => {
     timedOut = result.error?.code === 'ETIMEDOUT';
     output = `${result.stdout || ''}${result.stderr || ''}${timedOut ? `\nTIMEOUT after ${testTimeoutMs}ms` : ''}`.trim();
   }
+  if (result.status !== 0 || timedOut) {
+    console.error(JSON.stringify({ component: 'autopilot', test: name, command: `node ${script}`, status: result.status, timedOut, output }));
+  }
   return {
     name,
     passed: result.status === 0 && !timedOut,
@@ -381,6 +384,18 @@ const markdown = [
 await writeFile(reportJsonPath, `${JSON.stringify(run, null, 2)}\n`, 'utf8');
 await writeFile(reportMarkdownPath, `${markdown}\n`, 'utf8');
 await appendAutopilotRun(historyPath, run);
+if (run.decision === 'BLOCKED') {
+  console.error(JSON.stringify({
+    component: 'autopilot',
+    decision: run.decision,
+    selectedTaskId: selectedTask?.id || null,
+    failedEvidence: evidence.filter((item) => !item.passed).map((item) => ({
+      name: item.name,
+      command: item.command,
+      output: item.output,
+    })),
+  }));
+}
 console.log(JSON.stringify({ runId: run.runId, decision: run.decision, taskId: selectedTask?.id || null }));
 
 if (run.decision === 'BLOCKED') process.exitCode = 1;

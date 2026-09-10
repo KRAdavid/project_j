@@ -27,6 +27,7 @@ const opsRoot = resolve(process.env.OPS_ROOT || resolve(root, '..', 'ops'));
 const approvalLogPath = resolve(opsRoot, 'approval-decisions.jsonl');
 const notificationOutboxPath = resolve(opsRoot, 'notification-outbox.jsonl');
 const port = Number(process.env.PORT || 4173);
+const host = process.env.HOST || '127.0.0.1';
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8' };
 const environment = process.env.APP_ENV || 'simulation';
 if (environment === 'production') {
@@ -636,4 +637,5 @@ const shutdown = async () => {
 process.once('SIGTERM', () => { shutdown().finally(() => process.exit(0)); });
 process.once('SIGINT', () => { shutdown().finally(() => process.exit(0)); });
 
-httpServer.listen(port, '127.0.0.1', () => console.log(`Beta server listening on http://127.0.0.1:${port}/`));
+httpServer.listen(port, host, () => console.log(`Beta server listening on http://${host}:${port}/`));
+

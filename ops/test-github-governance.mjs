@@ -5,8 +5,12 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const packageJson = await readFile(resolve(root, 'package.json'), 'utf8');
 const read = (path) => readFile(resolve(root, path), 'utf8');
+const readOptional = async (path) => {
+  try { return await read(path); } catch (error) { if (error.code === 'ENOENT') return ''; throw error; }
+};
 const workflow = await read('.github/workflows/quality-gates.yml');
-const cutoverWorkflow = await read('.github/workflows/production-cutover-gate.yml');
+const cutoverWorkflow = await readOptional('.github/workflows/production-cutover-gate.yml');
+const publicScope = await read('PUBLIC_RELEASE_SCOPE.md');
 const incident = await read('.github/ISSUE_TEMPLATE/critical-incident.yml');
 const patent = await read('.github/ISSUE_TEMPLATE/bm-patent-proposal.yml');
 const pullRequest = await read('.github/PULL_REQUEST_TEMPLATE.md');
@@ -27,16 +31,16 @@ const assertions = [
   ['workflow validates company supervisor recovery', workflow.includes('node ops/test-company-supervisor.mjs') && workflow.includes('node ops/test-company-supervisor-integration.mjs')],
   ['workflow validates automatic company mode registration contract', workflow.includes('node ops/test-company-mode-task.mjs')],
   ['workflow verifies daemon timeout recovery and complete local contracts', workflow.includes('node ops/test-daemon-timeout.mjs') && workflow.includes('node ops/validate-contracts.mjs')],
-  ['workflow validates daemon liveness and queue compaction', workflow.includes('node ops/test-daemon-liveness.mjs') && workflow.includes('node ops/test-task-queue-compaction.mjs') && cutoverWorkflow.includes('node ops/test-daemon-liveness.mjs')],
-  ['workflow uses the pinned pnpm lockfile', packageJson.includes('"packageManager": "pnpm@11.19.0"') && workflow.includes('pnpm/action-setup@v4') && workflow.includes('pnpm install --frozen-lockfile') && cutoverWorkflow.includes('pnpm/action-setup@v4') && cutoverWorkflow.includes('pnpm install --frozen-lockfile')],
-  ['workflow installs pnpm before enabling setup-node cache', workflow.indexOf('pnpm/action-setup@v4') >= 0 && workflow.indexOf('pnpm/action-setup@v4') < workflow.indexOf('actions/setup-node@v4') && cutoverWorkflow.indexOf('pnpm/action-setup@v4') >= 0 && cutoverWorkflow.indexOf('pnpm/action-setup@v4') < cutoverWorkflow.indexOf('actions/setup-node@v4')],
+  ['workflow validates daemon liveness and queue compaction', workflow.includes('node ops/test-daemon-liveness.mjs') && workflow.includes('node ops/test-task-queue-compaction.mjs') && (!cutoverWorkflow || cutoverWorkflow.includes('node ops/test-daemon-liveness.mjs'))],
+  ['workflow uses the pinned pnpm lockfile', packageJson.includes('"packageManager": "pnpm@11.19.0"') && workflow.includes('pnpm/action-setup@v4') && workflow.includes('pnpm install --frozen-lockfile') && (!cutoverWorkflow || (cutoverWorkflow.includes('pnpm/action-setup@v4') && cutoverWorkflow.includes('pnpm install --frozen-lockfile')))],
+  ['workflow installs pnpm before enabling setup-node cache', workflow.indexOf('pnpm/action-setup@v4') >= 0 && workflow.indexOf('pnpm/action-setup@v4') < workflow.indexOf('actions/setup-node@v4') && (!cutoverWorkflow || (cutoverWorkflow.indexOf('pnpm/action-setup@v4') >= 0 && cutoverWorkflow.indexOf('pnpm/action-setup@v4') < cutoverWorkflow.indexOf('actions/setup-node@v4')))],
   ['workflow validates patent prior art and incident ledger', workflow.includes('node ops/test-patent-prior-art.mjs') && workflow.includes('node ops/test-incident-ledger.mjs')],
   ['workflow keeps operational evidence out of public artifacts', !workflow.includes('actions/upload-artifact') && !workflow.includes('ops/latest-executive-review.json') && !workflow.includes('ops/approval-inbox.json')],
-  ['production cutover is manual and environment protected', cutoverWorkflow.includes('workflow_dispatch:') && cutoverWorkflow.includes('name: production')],
-  ['production cutover reuses the complete contract suite', cutoverWorkflow.includes('node ops/validate-contracts.mjs')],
-  ['production cutover runs migration and backup evidence', cutoverWorkflow.includes('node ops/migrate-postgres.mjs') && cutoverWorkflow.includes('node ops/postgres-backup-restore-drill.mjs')],
-  ['production cutover has no automatic deployment step', cutoverWorkflow.includes('no automatic deployment') && !cutoverWorkflow.includes('cloudflare deploy')],
-  ['production cutover requires supervisor evidence', cutoverWorkflow.includes('SUPERVISOR_CONNECTED:') && cutoverWorkflow.includes('SUPERVISOR_HEARTBEAT_VERIFIED:')],
+  ['public release either carries or excludes the production cutover gate explicitly', cutoverWorkflow ? cutoverWorkflow.includes('workflow_dispatch:') && cutoverWorkflow.includes('name: production') : /simulation-only/i.test(publicScope) && /private operational evidence/i.test(publicScope)],
+  ['production cutover reuses the complete contract suite when the private gate is present', !cutoverWorkflow || cutoverWorkflow.includes('node ops/validate-contracts.mjs')],
+  ['production cutover runs migration and backup evidence when the private gate is present', !cutoverWorkflow || (cutoverWorkflow.includes('node ops/migrate-postgres.mjs') && cutoverWorkflow.includes('node ops/postgres-backup-restore-drill.mjs'))],
+  ['production cutover has no automatic deployment step when the private gate is present', !cutoverWorkflow || (cutoverWorkflow.includes('no automatic deployment') && !cutoverWorkflow.includes('cloudflare deploy'))],
+  ['production cutover requires supervisor evidence when the private gate is present', !cutoverWorkflow || (cutoverWorkflow.includes('SUPERVISOR_CONNECTED:') && cutoverWorkflow.includes('SUPERVISOR_HEARTBEAT_VERIFIED:'))],
   ['critical incident form captures cycle and containment', incident.includes('id: cycle-id') && incident.includes('id: containment')],
   ['patent proposal form captures mechanism and prior-art distinction', patent.includes('id: mechanism') && patent.includes('id: distinction')],
   ['pull requests require evidence and safety checks', pullRequest.includes('## 검증 증거') && pullRequest.includes('H-01 승인 없이')],

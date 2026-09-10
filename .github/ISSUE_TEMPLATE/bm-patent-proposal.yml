@@ -1,0 +1,52 @@
+name: BM patent proposal
+description: 원료 거래 운영 구조의 차별화 후보를 선행기술 검토용으로 제안합니다.
+title: "[BM] "
+labels:
+  - bm-patent
+body:
+  - type: markdown
+    attributes:
+      value: |
+        이 양식은 특허 가능성을 보장하지 않습니다. 구현 가능한 차별화 요소를 기록하고 변리사 선행기술 조사를 위한 입력으로 사용합니다.
+  - type: input
+    id: proposal-name
+    attributes:
+      label: 제안 이름
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 해결하는 B2B 원료 거래 문제
+      description: 구매자 초보성, 허위 매물, 스펙 불일치, 재고 충돌, 납품 분쟁 중 어떤 문제인지 설명합니다.
+    validations:
+      required: true
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: 구체적 실행 메커니즘
+      description: 입력·상태·검증·차단·체결·사후 처리를 순서대로 적습니다. 단순 AI 추천 문구는 제외합니다.
+    validations:
+      required: true
+  - type: textarea
+    id: distinction
+    attributes:
+      label: 선행기술 대비 차이 가설
+      description: 비교할 공개문헌 링크와 차별화되는 결합 상태 제어를 적습니다.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 구현 증거
+      description: 관련 파일, 테스트, 시뮬레이션 또는 브라우저 흐름을 적습니다.
+    validations:
+      required: true
+  - type: checkboxes
+    id: legal
+    attributes:
+      label: 검토 경계
+      options:
+        - label: 특허성·신규성·진보성 판단은 변리사 검토가 필요함을 확인했습니다.
+          required: true
+
