@@ -17,7 +17,7 @@ const blocked = buildGoalAudit({
   githubPublication: { status: 'BLOCKED', blockers: ['LOCAL_BRANCH_DIFFERS_FROM_TARGET_BASE'] },
 });
 assert.equal(blocked.decision, 'NO_GO');
-assert.equal(blocked.summary.total, 14);
+assert.equal(blocked.summary.total, 15);
 assert.ok(blocked.summary.blocked >= 3);
 assert.equal(blocked.runtime.realTradingEnabled, false);
 assert.ok(blocked.checks.some((item) => item.id === 'BM_PATENT_PREPARATION' && item.status === 'PREPARED'));
@@ -31,6 +31,28 @@ const review = buildGoalAudit({
 assert.equal(review.decision, 'REVIEW_REQUIRED');
 assert.equal(review.summary.blocked, 0);
 assert.equal(review.summary.verified, 13);
+
+const shadowPilot = {
+  decision: 'PASS_REVIEW_REQUIRED',
+  scenario_count: 7,
+  passed_scenario_count: 7,
+  real_transactions_enabled: false,
+  real_money_enabled: false,
+  participant_access_enabled: false,
+  preflight: { passed: true },
+  scenarioSummary: {
+    invalidLotTradeCount: 0,
+    scenarios: Array.from({ length: 7 }, () => ({ passed: true })),
+  },
+};
+const reviewedShadowPilot = buildGoalAudit({
+  ...base,
+  readiness: { missing: ['R-01'] },
+  github: { status: 'TARGET_MATCH', targetRepository: 'KRAdavid/project_j', baseBranch: 'main' },
+  githubPublication: { status: 'BLOCKED', blockers: [] },
+  shadowPilot,
+});
+assert.equal(reviewedShadowPilot.checks.find((item) => item.id === 'SHADOW_PILOT_EXECUTION').status, 'VERIFIED');
 
 const published = buildGoalAudit({
   ...base,
