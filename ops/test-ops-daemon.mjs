@@ -18,6 +18,8 @@ const assertions = [
   ['daemon terminates child process trees and resolves timeout on Windows', source.includes("taskkill.exe") && source.includes("terminateChildTree(activeChild, { force: true })") && source.includes("signal: 'SIGKILL'")],
   ['daemon publishes liveness status', source.includes('OPS_DAEMON_STATUS_PATH') && source.includes("status: 'CYCLE_RUNNING'") && source.includes('writeStatus')],
   ['daemon records the last cycle decision separately from process failure', source.includes('OPS_DAEMON_CYCLE_EVIDENCE_PATH') && source.includes('lastCycleDecision') && source.includes('readCycleOutcome')],
+  ['daemon schedules the next safe cycle after review is required', source.includes("status: stopping ? 'STOPPING' : 'WAITING'") && source.includes('timer = setTimeout(loop, intervalMs)')],
+  ['daemon does not convert a review-required cycle into an automatic shutdown', source.includes('finish({ ...result, ...outcome, timedOut })') && source.includes("if (runOnce || stopping || (maxCycles > 0 && cycleCount >= maxCycles))")],
   ['cycle overlap is a safe skip', cycleSource.includes("SKIPPED_ALREADY_RUNNING") && cycleSource.includes("process.exit(0)")],
   ['manual autopilot overlap is a safe skip', autopilotSource.includes("SKIPPED_ALREADY_RUNNING") && autopilotSource.includes("process.exit(0)")],
   ['operations cycle is exposed as a direct npm command', packageJson.scripts['ops:cycle'] === 'node ops/run-ops-cycle.mjs'],
