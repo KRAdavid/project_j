@@ -117,7 +117,13 @@ function applyBackendSnapshot(snapshot) {
   state.backendLot = lot || null;
   state.backendLots = Array.isArray(snapshot?.lots) ? snapshot.lots : [];
   if (!order) {
+    state.submitted = false;
+    state.accepted = false;
+    state.orderId = null;
+    state.tradeId = null;
+    state.lifecycleStatus = null;
     renderSellerIncomingOrder(null);
+    syncLifecycleUI();
     updateTradeGate();
     return;
   }
