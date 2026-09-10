@@ -35,7 +35,8 @@ services:
     command: >-
       "until mc alias set local http://object-storage:9000 ${OBJECT_STORAGE_ACCESS_KEY:?OBJECT_STORAGE_ACCESS_KEY is required} ${OBJECT_STORAGE_SECRET_KEY:?OBJECT_STORAGE_SECRET_KEY is required};
       do sleep 2; done;
-      until mc mb --ignore-existing local/${OBJECT_STORAGE_BUCKET:-raw-material-evidence}; do sleep 2; done"
+      until mc mb --ignore-existing local/${OBJECT_STORAGE_BUCKET:-raw-material-evidence}; do sleep 2; done;
+      exit 0"
 
   schema-migrate:
     build:
