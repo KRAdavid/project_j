@@ -85,6 +85,9 @@ const runNodeTest = (name, script) => {
     timedOut = result.error?.code === 'ETIMEDOUT';
     output = `${result.stdout || ''}${result.stderr || ''}${timedOut ? `\nTIMEOUT after ${testTimeoutMs}ms` : ''}`.trim();
   }
+  if (result.status !== 0 || timedOut) {
+    console.error(JSON.stringify({ component: 'autopilot', test: name, command: `node ${script}`, status: result.status, timedOut, output }));
+  }
   return {
     name,
     passed: result.status === 0 && !timedOut,
