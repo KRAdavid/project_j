@@ -1,35 +1,324 @@
-name: public-beta-quality
+name: Raw Material OS Quality Gates
 
 on:
   push:
-    branches: [main, "codex/**"]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '17 0 * * *'
+
+concurrency:
+  group: raw-material-os-quality-gates
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
-  core-simulation:
+  quality-gates:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: raw_material_os
+          POSTGRES_PASSWORD: raw_material_os
+          POSTGRES_DB: raw_material_os
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U raw_material_os -d raw_material_os"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/raw_material_os
+      DATABASE_ADMIN_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/postgres
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
         with:
           version: 11.19.0
-      - uses: actions/setup-node@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: node beta-app/test-material-master.mjs
-      - run: node beta-app/test-spec-compiler.mjs
-      - run: node beta-app/test-market-board-lifecycle.mjs
-      - run: node beta-app/test-trade-lifecycle.mjs
-      - run: node beta-app/test-sse-integration.mjs
-      - run: node beta-app/test-server-persistence.mjs
-      - uses: actions/setup-python@v5
+
+      - name: Install runtime dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Validate staging container build
+        run: |
+          docker compose -f compose.staging.yml config
+          docker build --file Dockerfile.staging --tag raw-material-os-staging:ci .
+
+      - name: Run staging container smoke test
+        run: |
+          docker compose -f compose.staging.yml up -d
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:4173/api/health > /dev/null; then
+              break
+            fi
+            if [ "$attempt" -eq 60 ]; then
+              docker compose -f compose.staging.yml ps
+              docker compose -f compose.staging.yml logs --no-color app schema-migrate object-storage-init
+              exit 1
+            fi
+            sleep 2
+          done
+          curl --fail --silent http://127.0.0.1:4173/api/health
+
+      - name: Tear down staging container smoke test
+        if: always()
+        run: docker compose -f compose.staging.yml down -v --remove-orphans
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-      - run: python -m unittest discover -s simulator -p "test_*.py"
+          python-version: '3.12'
+
+      - name: Validate operating queue
+        run: python -m json.tool ops/task-queue.json > /dev/null
+
+      - name: Validate public source bundle
+        run: node ops/validate-public-source-bundle.mjs
+
+      - name: Validate AI TF roster
+        run: node ops/validate-team-roster.mjs
+
+      - name: Validate task ownership and human gates
+        run: |
+          node ops/validate-task-ownership.mjs
+          node ops/test-task-ownership.mjs
+
+      - name: Validate AI work packet contract
+        run: node ops/test-work-packet.mjs
+
+      - name: Validate BM patent implementation traceability
+        run: |
+          node ops/validate-patent-traceability.mjs
+          node ops/test-patent-disclosure-packet.mjs
+          node ops/validate-patent-prior-art.mjs
+          node ops/test-patent-prior-art.mjs
+
+      - name: Validate release readiness diagnostics
+        run: node beta-app/test-readiness-diagnostics.mjs
+
+      - name: Validate universal goal execution core
+        run: |
+          node ops/test-goal-contract.mjs
+          node ops/test-goal-compiler.mjs
+          node ops/test-outcome-ledger.mjs
+
+      - name: Validate Material Master contract
+        run: node ops/validate-material-master-contract.mjs
+
+      - name: Validate persistence schema
+        run: node ops/validate-persistence-schema.mjs
+
+      - name: Validate persistence cutover guard
+        run: node ops/validate-persistence-config.mjs
+
+      - name: Validate price source contract
+        run: node ops/validate-price-source-contract.mjs
+
+      - name: Validate authorization policy
+        run: node ops/validate-authorization-policy.mjs
+
+      - name: Validate release readiness guard
+        run: node ops/validate-release-readiness.mjs
+
+      - name: Validate PostgreSQL cutover plan
+        run: node ops/validate-postgres-cutover-plan.mjs
+
+      - name: Validate PostgreSQL migration contract
+        run: node ops/validate-postgres-migration.mjs
+
+      - name: Validate PostgreSQL domain adapter contract
+        run: node ops/validate-postgres-domain-adapter-contract.mjs
+
+      - name: Validate production domain path
+        run: node ops/validate-production-domain-path.mjs
+
+      - name: Validate frontend UI contract
+        run: node ops/validate-ui-contract.mjs
+
+      - name: Migrate PostgreSQL schema
+        run: node ops/migrate-postgres.mjs
+
+      - name: Run PostgreSQL backup and restore drill
+        env:
+          DATABASE_ADMIN_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/postgres
+        run: node ops/postgres-backup-restore-drill.mjs
+
+      - name: Validate monitoring configuration
+        run: |
+          node ops/validate-monitoring-config.mjs
+          node ops/test-incident-ledger.mjs
+
+      - name: Generate AI TF review packet
+        run: node ops/run-autopilot.mjs --claim
+
+      - name: Check JavaScript modules
+        working-directory: beta-app
+        run: |
+          node --check app.js
+          node --check server.mjs
+          node --check evidence-verifier.mjs
+          node --check event-broker.mjs
+          node --check evidence-registry.mjs
+          node --check inventory-ledger.mjs
+          node --check material-master.mjs
+          node --check price-index.mjs
+          node --check price-feed.mjs
+          node --check evidence-verifier.mjs
+          node --check persistence-mode.mjs
+          node --check persistence-store.mjs
+          node --check postgres-domain-adapter.mjs
+          node --check domain-reconciliation.mjs
+          node --check authorization.mjs
+          node --check trade-engine.mjs
+
+      - name: Run transaction integrity tests
+        working-directory: beta-app
+        run: |
+          node test-inventory-ledger.mjs
+          node test-material-master.mjs
+          node test-spec-compiler.mjs
+          node test-price-index.mjs
+          node test-price-feed.mjs
+          node ../ops/validate-price-source-contract.mjs
+          node test-evidence-verifier.mjs
+          node test-event-broker.mjs
+          node test-evidence-registry.mjs
+          node test-document-storage.mjs
+          node test-readiness.mjs
+          node test-authorization.mjs
+          node --experimental-sqlite test-persistence-store.mjs
+          node --experimental-sqlite test-server-persistence.mjs
+          node test-production-fail-closed.mjs
+          node test-postgres-integration.mjs
+          node test-postgres-domain-adapter.mjs
+          node test-postgres-domain-adapter-accept.mjs
+          node test-postgres-domain-adapter-spec-lock.mjs
+          node test-postgres-approval-adapter.mjs
+          node test-supplier-verification-gate.mjs
+          node test-supplier-eligibility.mjs
+          node test-postgres-domain-adapter-lot.mjs
+          node test-postgres-domain-adapter-evidence.mjs
+          node test-postgres-domain-adapter-atomic-inspect.mjs
+          node test-postgres-domain-adapter-lot-review-gate.mjs
+          node test-domain-reconciliation.mjs
+          node test-postgres-concurrent-reservation.mjs
+          node test-api-authorization.mjs
+          node test-snapshot-projection.mjs
+          node test-lot-onboarding.mjs
+          node ../ops/test-shadow-pilot-plan.mjs
+          node test-trade-engine.mjs
+          node test-snapshot-integrity.mjs
+          node test-trade-lifecycle.mjs
+
+      - name: Run SSE integration test
+        working-directory: beta-app
+        run: |
+          node test-sse-integration.mjs
+          node test-sse-heartbeat.mjs
+
+      - name: Run monitoring test
+        run: node ops/test-monitoring.mjs
+
+      - name: Run scenario simulator tests
+        run: python -m unittest discover -s simulator -p 'test_*.py'
+
+      - name: Run closed Shadow Pilot execution
+        run: node ops/test-shadow-pilot-integration.mjs
+
+      - name: Validate autopilot ledger
+        run: node ops/test-autopilot-ledger.mjs
+
+      - name: Validate automatic trigger engine
+        run: node ops/test-trigger-engine.mjs
+
+      - name: Validate automatic task audit and human-gated remediation
+        run: |
+          node ops/test-task-audit-integrity.mjs
+          node ops/test-task-audit-remediation.mjs
+
+      - name: Validate automatic operations lock
+        run: node ops/test-operation-lock.mjs
+
+      - name: Validate operations daemon contract
+        run: |
+          node ops/test-ops-daemon.mjs
+          node ops/test-daemon-timeout.mjs
+
+      - name: Validate company supervisor recovery
+        run: |
+          node ops/test-company-supervisor.mjs
+          node ops/test-company-supervisor-integration.mjs
+          node ops/test-company-mode-task.mjs
+
+      - name: Run complete local contract suite
+        run: node ops/validate-contracts.mjs
+
+      - name: Validate operations daemon liveness and queue compaction
+        run: |
+          node ops/test-daemon-liveness.mjs
+          node ops/test-task-queue-compaction.mjs
+
+      - name: Validate GitHub governance contract
+        run: node ops/test-github-governance.mjs
+
+      - name: Validate GitHub target and origin boundary
+        run: node ops/github-target-preflight.mjs --strict
+        env:
+          GITHUB_BASE_BRANCH: ${{ github.event.repository.default_branch }}
+
+      - name: Validate staging contract
+        run: node ops/test-staging-contract.mjs
+
+      - name: Validate staging runtime preflight contract
+        run: node ops/test-staging-preflight.mjs
+
+      - name: Validate automatic task claim boundary
+        run: node ops/test-autopilot-claim.mjs
+
+      - name: Validate human approval store
+        run: node ops/test-approval-store.mjs
+
+      - name: Validate approval inbox synchronization
+        run: node ops/test-approval-sync.mjs
+
+      - name: Validate operations notification outbox
+        run: node ops/test-notification-outbox.mjs
+
+      - name: Validate company mode start and stop contracts
+        run: |
+          node ops/test-company-mode-launcher.mjs
+          node ops/test-company-mode-stop.mjs
+
+      - name: Validate PostgreSQL recovery drill contract
+        run: node ops/validate-postgres-backup-restore-drill.mjs
+
+      - name: Start simulation server for operations cycle
+        run: |
+          node beta-app/server.mjs > "$RUNNER_TEMP/raw-material-os-server.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/raw-material-os-server.pid"
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/api/health > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "simulation server did not become healthy"
+          cat "$RUNNER_TEMP/raw-material-os-server.log"
+          exit 1
+
+      - name: Run full automatic operations cycle
+        run: node ops/run-ops-cycle.mjs
+
