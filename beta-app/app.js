@@ -514,6 +514,19 @@ async function hydrateOpsSummary() {
     const readinessMissing = readiness.missing || [];
     $('#ops-readiness-status').textContent = readiness.decision || '확인 불가';
     $('#ops-readiness-missing').textContent = readinessMissing.length ? `미충족 ${readinessMissing.length}개 · ${readinessMissing.join('/')}` : '필수조건 충족';
+    const readinessChecks = readiness.checks || [];
+    const readinessDiagnostics = readiness.diagnostics || [];
+    const readinessDetailList = $('#ops-readiness-detail-list');
+    if (readinessDetailList) {
+      $('#ops-readiness-detail-state').textContent = readinessMissing.length ? `${readinessMissing.length}개 보류` : '전환 가능';
+      $('#ops-readiness-detail-state').classList.toggle('success', readinessMissing.length === 0);
+      readinessDetailList.innerHTML = readinessMissing.length ? readinessMissing.map((gateId) => {
+        const check = readinessChecks.find((item) => item.id === gateId) || {};
+        const diagnostic = readinessDiagnostics.find((item) => item.id === gateId) || {};
+        const missing = Array.isArray(diagnostic.missing) && diagnostic.missing.length ? diagnostic.missing.join(' · ') : '세부 결손 항목 확인 필요';
+        return `<div class="ops-readiness-row"><div class="readiness-gate-id">${escapeHtml(gateId)}</div><div><strong>${escapeHtml(check.name || '필수 전환 게이트')}</strong><small>${escapeHtml(check.evidence || '증거 위치 확인 필요')}</small></div><div><b>확인 필요</b><small>${escapeHtml(missing)}</small></div></div>`;
+      }).join('') : '<div class="ops-empty">모든 필수 전환 조건이 충족되었습니다.</div>';
+    }
     $('#ops-approval-count').textContent = summary.approvalInbox?.status === 'PENDING' ? `${summary.approvalInbox.pending}건` : summary.approvalInbox?.status === 'CLEAR' ? '0건' : '확인 필요';
     $('#ops-critical-count').textContent = `${summary.queue?.criticalOpen || 0}건`;
     const taskSla = summary.taskSla || {};

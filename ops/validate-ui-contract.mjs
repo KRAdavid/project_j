@@ -25,12 +25,14 @@ assert.match(html, /id=["']ops-supervisor-status["']/i, '운영자 운영 감독
 assert.match(html, /id=["']ops-task-audit-status["']/i, '운영자 업무 감사 상태가 필요합니다.');
 assert.match(html, /id=["']ops-notification-count["']/i, '운영자 알림 대기 상태가 필요합니다.');
 assert.match(html, /id=["']ops-notification-list["']/i, '운영자 운영 알림 대기함이 필요합니다.');
+assert.match(html, /id=["']ops-readiness-detail-list["']/i, '운영자 상용 전환 보류 사유 상세가 필요합니다.');
 assert.match(html, /id=["']ops-task-sla-status["']/i, '운영자 업무 SLA 상태가 필요합니다.');
 assert.match(html, /id=["']search-suggestion-list["']/i, 'Material Master 다중 후보 선택 UI가 필요합니다.');
 assert.match(app, /supplierVerification/, '운영자 화면은 공급자 검증 흐름을 표시해야 합니다.');
 assert.match(app, /summary\.teamRoster/, '운영자 화면은 기계 판독 가능한 참여 팀 명부를 표시해야 합니다.');
 assert.match(app, /summary\.taskOwnership/, '운영자 화면은 업무 담당·검토자 연결 상태를 표시해야 합니다.');
 assert.match(app, /readiness\.missing/, '운영자 화면은 상용 전환 보류 게이트를 표시해야 합니다.');
+assert.match(app, /readiness\.diagnostics/, '운영자 화면은 상용 전환 보류 게이트의 결손 항목을 표시해야 합니다.');
 assert.match(app, /latest\.workPacketId/, '운영자 화면은 자동 작업 패킷 상태를 표시해야 합니다.');
 assert.match(app, /latest\.patentPacketId/, '운영자 화면은 BM특허 설명 패킷 상태를 표시해야 합니다.');
 assert.match(app, /summary\.daemonStatus/, '운영자 화면은 자동운영 데몬 상태를 표시해야 합니다.');
