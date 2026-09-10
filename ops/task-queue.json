@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "TASK-QUEUE-0.1",
+  "generatedAt": "PUBLIC_BETA_SEED",
+  "tasks": [
+    {
+      "id": "PUBLIC-BETA-001",
+      "objective": "GABA Material Master와 검증된 로트 기반 구매자·공급자 시뮬레이션을 검증한다.",
+      "ownerAi": "AI-10 아틀라스",
+      "reviewers": [
+        "AI-11 실드"
+      ],
+      "risk": "high",
+      "humanGate": "approval",
+      "status": "queued",
+      "evidence": [
+        "beta-app/test-market-board-lifecycle.mjs"
+      ]
+    },
+    {
+      "id": "PUBLIC-BETA-002",
+      "objective": "거래 전 증빙·재고·체결 스냅샷 불변성을 검증한다.",
+      "ownerAi": "AI-07 큐비",
+      "reviewers": [
+        "AI-12 리콘"
+      ],
+      "risk": "high",
+      "humanGate": "approval",
+      "status": "queued",
+      "evidence": [
+        "beta-app/test-trade-lifecycle.mjs"
+      ]
+    }
+  ]
+}

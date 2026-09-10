@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "TEAM-ROSTER-0.1",
+  "humanApprovalPrincipal": "H-01",
+  "members": [
+    { "id": "H-01", "kind": "HUMAN", "name": "사업총괄", "role": "사업 목표·최종 승인·거래중지", "autonomy": "FINAL_DECISION" },
+    { "id": "AI-01", "kind": "AI", "name": "세온", "role": "PMO·업무 오케스트레이션", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-02", "kind": "AI", "name": "오퍼라", "role": "B2B 주문·체결 운영", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-03", "kind": "AI", "name": "프리즘", "role": "구매자·공급자 UX", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-04", "kind": "AI", "name": "원료나", "role": "Material Master·스펙 표준", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-05", "kind": "AI", "name": "트렌디", "role": "가격·수급 지표", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-06", "kind": "AI", "name": "매칭", "role": "수요·공급 매칭", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-07", "kind": "AI", "name": "큐비", "role": "COA·품질·증빙 검증", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-08", "kind": "AI", "name": "로지", "role": "로트·재고·예약 원장", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-09", "kind": "AI", "name": "콘트라", "role": "계약·리스크·BM 특허 후보", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-10", "kind": "AI", "name": "아틀라스", "role": "아키텍처·코드·데이터", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-11", "kind": "AI", "name": "실드", "role": "보안·권한·감사·출시통제", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-12", "kind": "AI", "name": "리콘", "role": "독립 검토·복구·관측성", "autonomy": "ANALYZE_PREPARE" },
+    { "id": "AI-13", "kind": "AI", "name": "케어", "role": "고객지원·분쟁 증거관리", "autonomy": "ANALYZE_PREPARE" }
+  ],
+  "prohibitedAiDecisions": [
+    "TRADE_FINALIZATION",
+    "CONTRACT_FINALIZATION",
+    "PAYMENT_RELEASE",
+    "REFUND",
+    "DISPUTE_CLOSURE",
+    "PRODUCTION_CUTOVER"
+  ]
+}

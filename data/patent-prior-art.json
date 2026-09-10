@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "PATENT-PRIOR-ART-0.1",
+  "researchDate": "2026-09-10",
+  "sourcePolicy": "공개 특허 문헌 조회 페이지의 초록·청구항 1차 대조만 기록하며, 법적 상태·등록성·침해·법률의견은 판단하지 않는다. 정부 특허청 원문·패밀리·법적 상태는 변리사가 재확인한다.",
+  "documents": [
+    {
+      "id": "PA-001",
+      "publicationNumber": "CN117436995B",
+      "title": "Digital supply chain purchasing transaction platform and method",
+      "url": "https://patents.google.com/patent/CN117436995B/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["producer-supplier-buyer modules", "purchase demand", "quality inspection", "supplier quotation", "price-quantity-specification matching"],
+      "overlapAxes": ["multi-party procurement", "quotation and matching", "quality evaluation"],
+      "differentiationQuestions": ["pre-trade evidence bundle gate", "same-lot evidence expiry state", "accept-time revalidation", "idempotent atomic lot reservation", "immutable trade snapshot", "post-delivery quarantine separation"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-002",
+      "publicationNumber": "CN115936878A",
+      "title": "A system and method for online purchase and transaction of steel scrap",
+      "url": "https://patents.google.com/patent/CN115936878A/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["buyer procurement request", "supplier finds request", "supplier quotation", "quantity quotation"],
+      "overlapAxes": ["buyer-request-to-supplier-quotation flow", "physical goods marketplace"],
+      "differentiationQuestions": ["Material Master Spec ID sealing", "evidence-lifecycle-driven offer visibility", "transaction-time revalidation and lot lock", "separate delivery dispute state"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-003",
+      "publicationNumber": "US20120209890A1",
+      "title": "Inter-enterprise ingredient specification compliance",
+      "url": "https://patents.google.com/patent/US20120209890A1/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["normalized ingredient data", "supplier and receiver entities", "ingredient attributes", "specification compliance", "certificate of analysis", "supplier risk or favorability profile"],
+      "overlapAxes": ["ingredient specification normalization", "COA and shipment attributes", "cross-enterprise supplier assessment"],
+      "differentiationQuestions": ["buyer question-driven immutable Material Master Spec", "five-document pre-trade evidence gate", "same-lot expiry and inventory availability state", "accept-time atomic reservation", "immutable trade snapshot", "post-delivery quarantine separation"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-004",
+      "publicationNumber": "CN118569220A",
+      "title": "A method and system for automatically generating procurement technical specifications",
+      "url": "https://patents.google.com/patent/CN118569220A/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["procurement technical specification", "pretrained language model", "document error correction", "sensitive word recognition", "manual audit"],
+      "overlapAxes": ["AI-assisted procurement specification generation", "human review of generated specification"],
+      "differentiationQuestions": ["Material Master identity and allowed field set", "user answer sealing into transaction Spec ID", "Lot evidence and inventory eligibility calculation", "transaction-time revalidation and atomic reservation", "immutable physical-trade snapshot"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-005",
+      "publicationNumber": "US12282892B2",
+      "title": "Data-driven requirements analysis and matching",
+      "url": "https://patents.google.com/patent/US12282892B2/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["data-driven requirements analysis", "vendor capability matching", "logic module", "ranked match data", "procurement display"],
+      "overlapAxes": ["requirements-to-supplier matching", "data transformation and ranked procurement results"],
+      "differentiationQuestions": ["evidence lifecycle as a hard offer visibility gate", "verified physical Lot identity", "idempotent atomic inventory reservation", "trade-time immutable evidence snapshot", "delivery dispute and quarantine state separation"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-006",
+      "publicationNumber": "US20070214065A1",
+      "title": "Inventory transaction common object",
+      "url": "https://patents.google.com/patent/US20070214065A1/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["inventory transaction data model", "purchase order line item", "source and destination inventory locations", "front-office and back-office synchronization"],
+      "overlapAxes": ["inventory transaction normalization", "purchase order and inventory synchronization"],
+      "differentiationQuestions": ["evidence-qualified Lot rather than generic inventory object", "per-Lot proof expiry and public offer state", "accept-time revalidation", "idempotent reservation key and transaction lock", "immutable trade snapshot and post-delivery quarantine"],
+      "legalReviewRequired": true
+    }
+  ],
+  "candidateDocuments": [
+    {
+      "id": "PA-C-001",
+      "publicationNumber": "JP2024504046A",
+      "title": "Systems and methods for tracing and quality assurance of raw materials",
+      "url": "https://patents.google.com/patent/JP2024504046A/en",
+      "verificationStatus": "PENDING_OFFICIAL_CLAIM_REVIEW",
+      "sourceCheckDate": "2026-09-10",
+      "sourceCheckStatus": "ABSTRACT_AND_DESCRIPTION_REVIEWED_CLAIMS_PENDING",
+      "sourceCheckNote": "공개 페이지에서 원료·배치·COA·추적·품질보증·운송문서 및 디지털 증명서 결속 내용을 확인했으며, 청구항 전체와 패밀리·법적 상태는 변리사 재검토 대상으로 남긴다.",
+      "overlapAxes": ["raw material lot and COA traceability", "quality assurance"],
+      "differentiationQuestions": ["pre-trade five-document gate", "atomic Lot reservation", "immutable trade snapshot", "post-delivery quarantine"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-C-002",
+      "publicationNumber": "WO2001046883A2",
+      "title": "Method and system for specifying materials",
+      "url": "https://patents.google.com/patent/WO2001046883A2/en",
+      "verificationStatus": "PENDING_OFFICIAL_CLAIM_REVIEW",
+      "sourceCheckDate": "2026-09-10",
+      "sourceCheckStatus": "ABSTRACT_AND_CLAIMS_PREVIEWED_FULL_CLAIMS_PENDING",
+      "sourceCheckNote": "공개 페이지의 초록과 대표 청구항 미리보기에서 구매자·공급자 재료 fingerprint 정의·비교·승인/거절 및 주문 추적을 확인했으며, 전체 청구항과 패밀리·법적 상태는 변리사 재검토 대상으로 남긴다.",
+      "overlapAxes": ["material specification", "material identity or fingerprint comparison"],
+      "differentiationQuestions": ["buyer dialogue to approved Spec ID", "evidence-lifecycle offer visibility", "transaction-time reservation and snapshot"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-C-003",
+      "publicationNumber": "CN114463019B",
+      "title": "Product tracing method and system based on blockchain",
+      "url": "https://patents.google.com/patent/CN114463019B/en",
+      "verificationStatus": "PENDING_OFFICIAL_CLAIM_REVIEW",
+      "sourceCheckDate": "2026-09-10",
+      "sourceCheckStatus": "ABSTRACT_AND_DESCRIPTION_REVIEWED_CLAIMS_PENDING",
+      "sourceCheckNote": "공개 페이지에서 배치 원료의 품질검사 데이터·인증서·위조방지 코드·추적정보를 블록체인에 결속하는 내용을 확인했으며, 청구항 전체와 패밀리·법적 상태는 변리사 재검토 대상으로 남긴다.",
+      "overlapAxes": ["batch traceability", "quality inspection and certificate linkage", "tamper evidence"],
+      "differentiationQuestions": ["relational evidence state machine", "pre-trade exposure gate", "idempotent atomic reservation", "separate delivery dispute state"],
+      "legalReviewRequired": true
+    }
+  ],
+  "requiredNextReview": [
+    "각 문헌의 독립·종속 청구항 전체와 패밀리·법적 상태를 변리사가 재검토",
+    "국내·미국·PCT에서 lot·COA·inventory·reservation 조합 추가 검색",
+    "공개 베타 전 출원·영업비밀 보존 범위 확정"
+  ]
+}

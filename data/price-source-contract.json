@@ -1,0 +1,37 @@
+{
+  "contractVersion": "PRICE-SOURCE-0.1",
+  "status": "SIMULATION_ONLY",
+  "allowedSources": [
+    {
+      "sourceType": "COMPLETED_PHYSICAL_TRADE",
+      "requiredFields": ["tradeId", "specId", "supplierId", "price", "quantity", "quantityUnit", "priceUnit", "currency", "fulfilledAt", "evidenceStatus"],
+      "eligibleForPublishedIndex": true,
+      "refreshCadence": "eventual"
+    },
+    {
+      "sourceType": "SUPPLIER_QUOTE",
+      "requiredFields": ["quoteId", "specId", "supplierId", "price", "quantity", "quantityUnit", "priceUnit", "currency", "validUntil", "evidenceStatus"],
+      "eligibleForPublishedIndex": false,
+      "refreshCadence": "daily"
+    },
+    {
+      "sourceType": "PUBLIC_REFERENCE",
+      "requiredFields": ["sourceId", "publishedAt", "unit", "value", "licenseRef"],
+      "eligibleForPublishedIndex": false,
+      "refreshCadence": "daily"
+    }
+  ],
+  "qualityChecks": [
+    "거래 스펙과 가격 단위가 일치해야 한다.",
+    "완료 거래는 납품·검수 상태와 유효 증빙을 가져야 한다.",
+    "중복 거래 식별자는 한 번만 반영한다.",
+    "극단값은 삭제하지 말고 검토 대기 표본으로 분리한다.",
+    "표본·공급자 다양성 기준 미달 시 가격값과 추세를 공개하지 않는다."
+  ],
+  "publication": {
+    "rawSupplierIdentityPublic": false,
+    "sourceDisclosureRequired": true,
+    "humanApprovalRequired": true,
+    "modelPredictionLabel": "참고용 추세이며 보장값이 아님"
+  }
+}

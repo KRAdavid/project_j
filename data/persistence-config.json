@@ -1,0 +1,17 @@
+{
+  "configVersion": "PERSISTENCE-0.1",
+  "currentMode": "SIMULATION_MEMORY",
+  "productionMode": "POSTGRESQL",
+  "productionRequired": [
+    "DATABASE_URL secret",
+    "data/postgres-schema.sql applied",
+    "database backup and restore drill",
+    "transaction isolation verification",
+    "append-only audit access policy",
+    "normalized domain state reconciliation evidence",
+    "Object Storage document adapter",
+    "durable evidence registry",
+    "signed production authentication provider"
+  ],
+  "failClosedRule": "상용 모드 필수조건이 하나라도 없으면 거래 API를 공개하지 않는다."
+}

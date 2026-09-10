@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "MMS-CONTRACT-0.1",
+  "entity": "MaterialMaster",
+  "scope": "PHYSICAL_MATERIAL_ONLY",
+  "requiredRecordFields": [
+    "materialId",
+    "canonicalName",
+    "aliases",
+    "materialClass",
+    "identifiers",
+    "specStatus",
+    "simulationSpec",
+    "requiredSpecFields",
+    "specQuestionFlow",
+    "requiredEvidence",
+    "tradeProfile",
+    "regulatoryProfile",
+    "storageProfile",
+    "riskProfile",
+    "provenance"
+  ],
+  "materialClasses": ["RAW_MATERIAL", "ACTIVE_INGREDIENT", "EXCIPIENT", "FOOD_INGREDIENT", "FEED_INGREDIENT", "PACKAGING"],
+  "identifierContract": {
+    "required": ["catalogIdentity", "externalIdentifiers", "status"],
+    "externalIdentifierShape": ["system", "value", "status"]
+  },
+  "specificationContract": {
+    "required": ["specId", "purity", "form", "origin", "pack", "intendedUse", "deliveryCondition"],
+    "fieldValueMustBeQuestionBacked": true,
+    "noAiGuessing": true,
+    "versioned": true
+  },
+  "questionContract": {
+    "required": ["field", "label", "required", "options"],
+    "requiredMustBeExplicit": true,
+    "optionsMustBeNonEmpty": true
+  },
+  "evidenceTypes": ["COA", "SDS", "TDS", "LOT_TRACE", "INVENTORY_PROOF", "SUPPLIER_VERIFICATION"],
+  "tradeContract": {
+    "physicalMaterialOnly": true,
+    "required": ["baseUnit", "priceUnit", "orderQuantityUnit", "currency"],
+    "forbiddenProductTypes": ["SECURITY", "DERIVATIVE", "MARGIN", "FINANCIAL_SETTLEMENT"]
+  },
+  "riskContract": {
+    "requiredPreTradeGates": ["SPEC_CONFIRMED", "EVIDENCE_VALID", "INVENTORY_VERIFIED", "SUPPLIER_VERIFIED"],
+    "unknownStatePolicy": "FAIL_CLOSED"
+  },
+  "provenanceContract": {
+    "required": ["sourceStatus", "sourceDocuments", "humanApprover", "approvedAt"],
+    "humanApprovalRequiredForCatalogPublication": true
+  }
+}
