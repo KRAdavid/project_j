@@ -1,1 +1,176 @@
-Y29uc3QgY2xvbmUgPSAodmFsdWUpID0+IEpTT04ucGFyc2UoSlNPTi5zdHJpbmdpZnkodmFsdWUpKTsKY29uc3QgQ0FOT05JQ0FMX1RSQURFX1RFUk1TID0gT2JqZWN0LmZyZWV6ZSh7IGN1cnJlbmN5OiAnS1JXJywgcHJpY2VVbml0OiAnS1JXX1BFUl9LRycsIHF1YW50aXR5VW5pdDogJ0tHJyB9KTsKCmV4cG9ydCBjb25zdCBJTlZFTlRPUllfU1RBVEVTID0gT2JqZWN0LmZyZWV6ZSh7CiAgRFJBRlQ6ICdEUkFGVCcsCiAgUEVORElOR19WRVJJRklDQVRJT046ICdQRU5ESU5HX1ZFUklGSUNBVElPTicsCiAgVkVSSUZJRURfRUxJR0lCTEU6ICdWRVJJRklFRF9FTElHSUJMRScsCiAgUkVTRVJWRUQ6ICdSRVNFUlZFRCcsCiAgREVMSVZFUkVEOiAnREVMSVZFUkVEJywKICBJTlNQRUNURUQ6ICdJTlNQRUNURUQnLAogIERJU1BVVEVEOiAnRElTUFVURUQnLAogIFFVQVJBTlRJTkVEOiAnUVVBUkFOVElORUQnLAogIEVYUElSRUQ6ICdFWFBJUkVEJywKfSk7CgpleHBvcnQgY2xhc3MgSW52ZW50b3J5UnVsZUVycm9yIGV4dGVuZHMgRXJyb3IgewogIGNvbnN0cnVjdG9yKG1lc3NhZ2UsIGNvZGUgPSAnSU5WRU5UT1JZX1JVTEVfRkFJTEVEJykgewogICAgc3VwZXIobWVzc2FnZSk7CiAgICB0aGlzLmNvZGUgPSBjb2RlOwogIH0KfQoKY29uc3QgaXNFdmlkZW5jZVZhbGlkID0gKGxvdCwgbm93KSA9PiB7CiAgY29uc3QgcmVxdWlyZWQgPSBbJ2NvYScsICdzZHMnLCAndGRzJywgJ2xvdFRyYWNlJywgJ2ludmVudG9yeVByb29mJ107CiAgY29uc3QgZXZpZGVuY2VSZWFkeSA9IHJlcXVpcmVkLmV2ZXJ5KChrZXkpID0+IGxvdC5ldmlkZW5jZT8uW2tleV0gPT09ICdWQUxJRCcpOwogIGNvbnN0IGV4cGlyZXNBdCA9IGxvdC5ldmlkZW5jZT8uZXhwaXJlc0F0ID8gbmV3IERhdGUobG90LmV2aWRlbmNlLmV4cGlyZXNBdCkgOiBudWxsOwogIHJldHVybiBsb3Quc3RhdHVzID09PSBJTlZFTlRPUllfU1RBVEVTLlZFUklGSUVEX0VMSUdJQkxFCiAgICAmJiBldmlkZW5jZVJlYWR5CiAgICAmJiBleHBpcmVzQXQgaW5zdGFuY2VvZiBEYXRlCiAgICAmJiAhTnVtYmVyLmlzTmFOKGV4cGlyZXNBdC52YWx1ZU9mKCkpCiAgICAmJiBleHBpcmVzQXQgPj0gbm93Owp9OwoKY29uc3QgcmVzZXJ2YXRpb25GaW5nZXJwcmludCA9IChsb3RJZCwgcXVhbnRpdHksIG9yZGVyID0ge30pID0+IEpTT04uc3RyaW5naWZ5KHsKICBsb3RJZDogU3RyaW5nKGxvdElkIHx8ICcnKSwKICBxdWFudGl0eTogTnVtYmVyKHF1YW50aXR5KSwKICBzcGVjSWQ6IFN0cmluZyhvcmRlci5zcGVjSWQgfHwgJycpLAogIGRlbGl2ZXJ5RGF5czogTnVtYmVyKG9yZGVyLmRlbGl2ZXJ5RGF5cyksCn0pOwoKZXhwb3J0IGNsYXNzIEV2aWRlbmNlTG9ja2VkSW52ZW50b3J5IHsKICBjb25zdHJ1Y3Rvcih7IG5vdyA9ICgpID0+IG5ldyBEYXRlKCkgfSA9IHt9KSB7CiAgICB0aGlzLm5vdyA9IG5vdzsKICAgIHRoaXMubG90cyA9IG5ldyBNYXAoKTsKICAgIHRoaXMucmVzZXJ2YXRpb25zID0gbmV3IE1hcCgpOwogICAgdGhpcy5pbnNwZWN0aW9ucyA9IG5ldyBNYXAoKTsKICB9CgogIHJlZ2lzdGVyTG90KGlucHV0ID0ge30pIHsKICAgIGNvbnN0IGxvdCA9IHsKICAgICAgbG90SWQ6IFN0cmluZyhpbnB1dC5sb3RJZCB8fCAnJyksCiAgICAgIHN1cHBsaWVyOiBTdHJpbmcoaW5wdXQuc3VwcGxpZXIgfHwgJycpLAogICAgICBzdXBwbGllcklkOiBTdHJpbmcoaW5wdXQuc3VwcGxpZXJJZCB8fCAnJyksCiAgICAgIHN1cHBsaWVyT3JnYW5pemF0aW9uSWQ6IFN0cmluZyhpbnB1dC5zdXBwbGllck9yZ2FuaXphdGlvbklkIHx8ICcnKSwKICAgICAgc3BlY0lkOiBTdHJpbmcoaW5wdXQuc3BlY0lkIHx8ICcnKSwKICAgICAgYXNrUHJpY2U6IE51bWJlcihpbnB1dC5hc2tQcmljZSksCiAgICAgIGN1cnJlbmN5OiBTdHJpbmcoaW5wdXQuY3VycmVuY3kgfHwgQ0FOT05JQ0FMX1RSQURFX1RFUk1TLmN1cnJlbmN5KSwKICAgICAgcHJpY2VVbml0OiBTdHJpbmcoaW5wdXQucHJpY2VVbml0IHx8IENBTk9OSUNBTF9UUkFERV9URVJNUy5wcmljZVVuaXQpLAogICAgICBxdWFudGl0eVVuaXQ6IFN0cmluZyhpbnB1dC5xdWFudGl0eVVuaXQgfHwgQ0FOT05JQ0FMX1RSQURFX1RFUk1TLnF1YW50aXR5VW5pdCksCiAgICAgIGF2YWlsYWJsZVF0eTogTnVtYmVyKGlucHV0LmF2YWlsYWJsZVF0eSksCiAgICAgIHJlc2VydmVkUXR5OiBOdW1iZXIoaW5wdXQucmVzZXJ2ZWRRdHkgfHwgMCksCiAgICAgIHN0YXR1czogaW5wdXQuc3RhdHVzIHx8IElOVkVOVE9SWV9TVEFURVMuUEVORElOR19WRVJJRklDQVRJT04sCiAgICAgIGV2aWRlbmNlOiBjbG9uZShpbnB1dC5ldmlkZW5jZSB8fCB7fSksCiAgICAgIGRlbGl2ZXJ5RGF5czogTnVtYmVyKGlucHV0LmRlbGl2ZXJ5RGF5cyksCiAgICB9OwogICAgaWYgKCFsb3QubG90SWQpIHRocm93IG5ldyBJbnZlbnRvcnlSdWxlRXJyb3IoJ+uhnO2KuCBJROqwgCDtlYTsmpTtlanri4jri6QuJywgJ0xPVF9JRF9SRVFVSVJFRCcpOwogICAgaWYgKHRoaXMubG90cy5oYXMobG90LmxvdElkKSkgdGhyb3cgbmV3IEludmVudG9yeVJ1bGVFcnJvcign7J2066+4IOuTseuhneuQnCDroZztirjsnoXri4jri6QuJywgJ0xPVF9BTFJFQURZX0VYSVNUUycpOwogICAgaWYgKCFOdW1iZXIuaXNGaW5pdGUobG90LmFza1ByaWNlKSB8fCBsb3QuYXNrUHJpY2UgPD0gMCB8fCAhTnVtYmVyLmlzRmluaXRlKGxvdC5hdmFpbGFibGVRdHkpIHx8IGxvdC5hdmFpbGFibGVRdHkgPCAwIHx8ICFOdW1iZXIuaXNGaW5pdGUobG90LnJlc2VydmVkUXR5KSB8fCBsb3QucmVzZXJ2ZWRRdHkgPCAwIHx8ICFOdW1iZXIuaXNGaW5pdGUobG90LmRlbGl2ZXJ5RGF5cykgfHwgbG90LmRlbGl2ZXJ5RGF5cyA8IDApIHsKICAgICAgdGhyb3cgbmV3IEludmVudG9yeVJ1bGVFcnJvcign66Gc7Yq4IOqwgOqyqSDrmJDripQg7IiY65+J7J20IOyYrOuwlOultOyngCDslYrsirXri4jri6QuJywgJ0lOVkFMSURfTE9UJyk7CiAgICB9CiAgICB0aGlzLmxvdHMuc2V0KGxvdC5sb3RJZCwgbG90KTsKICAgIHJldHVybiBjbG9uZShsb3QpOwogIH0KCiAgdmVyaWZ5TG90KGxvdCwgb3JkZXIgPSB7fSkgewogICAgY29uc3QgY2hlY2tzID0gewogICAgICBzcGVjTWF0Y2g6IGxvdC5zcGVjSWQgPT09IG9yZGVyLnNwZWNJZCwKICAgICAgZXZpZGVuY2VWYWxpZDogaXNFdmlkZW5jZVZhbGlkKGxvdCwgdGhpcy5ub3coKSksCiAgICAgIGxvdFRyYWNlYWJsZTogQm9vbGVhbihsb3QubG90SWQpLAogICAgICBpbnZlbnRvcnlBdmFpbGFibGU6IGxvdC5hdmFpbGFibGVRdHkgPj0gb3JkZXIucXVhbnRpdHksCiAgICAgIGRlbGl2ZXJ5RmVhc2libGU6IGxvdC5kZWxpdmVyeURheXMgPD0gb3JkZXIuZGVsaXZlcnlEYXlzLAogICAgICB0ZXJtc01hdGNoOiBsb3QuY3VycmVuY3kgPT09IFN0cmluZyhvcmRlci5jdXJyZW5jeSB8fCBDQU5PTklDQUxfVFJBREVfVEVSTVMuY3VycmVuY3kpCiAgICAgICAgJiYgbG90LnByaWNlVW5pdCA9PT0gU3RyaW5nKG9yZGVyLnByaWNlVW5pdCB8fCBDQU5PTklDQUxfVFJBREVfVEVSTVMucHJpY2VVbml0KQogICAgICAgICYmIGxvdC5xdWFudGl0eVVuaXQgPT09IFN0cmluZyhvcmRlci5xdWFudGl0eVVuaXQgfHwgQ0FOT05JQ0FMX1RSQURFX1RFUk1TLnF1YW50aXR5VW5pdCksCiAgICB9OwogICAgcmV0dXJuIGNoZWNrczsKICB9CgogIGZpbmRFbGlnaWJsZSh7IHNwZWNJZCwgcHJpY2UsIHF1YW50aXR5LCBkZWxpdmVyeURheXMgfSkgewogICAgcmV0dXJuIFsuLi50aGlzLmxvdHMudmFsdWVzKCldCiAgICAgIC5maWx0ZXIoKGxvdCkgPT4gewogICAgICAgIGNvbnN0IGNoZWNrcyA9IHRoaXMudmVyaWZ5TG90KGxvdCwgeyBzcGVjSWQsIHF1YW50aXR5LCBkZWxpdmVyeURheXMgfSk7CiAgICAgICAgcmV0dXJuIGxvdC5hc2tQcmljZSA8PSBwcmljZSAmJiBPYmplY3QudmFsdWVzKGNoZWNrcykuZXZlcnkoQm9vbGVhbik7CiAgICAgIH0pCiAgICAgIC5zb3J0KChhLCBiKSA9PiBhLmFza1ByaWNlIC0gYi5hc2tQcmljZSlbMF0gfHwgbnVsbDsKICB9CgogIHJlc2VydmUobG90SWQsIHF1YW50aXR5LCByZXNlcnZhdGlvbklkLCBvcmRlciA9IHt9KSB7CiAgICBjb25zdCBrZXkgPSBTdHJpbmcocmVzZXJ2YXRpb25JZCB8fCAnJyk7CiAgICBpZiAoIWtleSkgdGhyb3cgbmV3IEludmVudG9yeVJ1bGVFcnJvcign7JiI7JW9IElE6rCAIO2VhOyalO2VqeuLiOuLpC4nLCAnUkVTRVJWQVRJT05fSURfUkVRVUlSRUQnKTsKICAgIGNvbnN0IG5vcm1hbGl6ZWRRdWFudGl0eSA9IE51bWJlcihxdWFudGl0eSk7CiAgICBpZiAoIU51bWJlci5pc0Zpbml0ZShub3JtYWxpemVkUXVhbnRpdHkpIHx8IG5vcm1hbGl6ZWRRdWFudGl0eSA8PSAwKSB7CiAgICAgIHRocm93IG5ldyBJbnZlbnRvcnlSdWxlRXJyb3IoJ+yYiOyVvSDsiJjrn4nsnYAgMOuztOuLpCDtgbAg7Jyg7ZWc7ZWcIOqwkuydtOyWtOyVvCDtlanri4jri6QuJywgJ0lOVkFMSURfUkVTRVJWQVRJT05fUVVBTlRJVFknKTsKICAgIH0KICAgIGNvbnN0IGZpbmdlcnByaW50ID0gcmVzZXJ2YXRpb25GaW5nZXJwcmludChsb3RJZCwgbm9ybWFsaXplZFF1YW50aXR5LCBvcmRlcik7CiAgICBpZiAodGhpcy5yZXNlcnZhdGlvbnMuaGFzKGtleSkpIHsKICAgICAgY29uc3QgZXhpc3RpbmdSZXNlcnZhdGlvbiA9IHRoaXMucmVzZXJ2YXRpb25zLmdldChrZXkpOwogICAgICBpZiAoZXhpc3RpbmdSZXNlcnZhdGlvbi5yZXF1ZXN0RmluZ2VycHJpbnQgJiYgZXhpc3RpbmdSZXNlcnZhdGlvbi5yZXF1ZXN0RmluZ2VycHJpbnQgIT09IGZpbmdlcnByaW50KSB7CiAgICAgICAgdGhyb3cgbmV3IEludmVudG9yeVJ1bGVFcnJvcign7JiI7JW9IElE6rCAIOuLpOuluCDroZztirjCt+yImOuficK37Iqk7Y6ZIOyalOyyreyXkCDsnqzsgqzsmqnrkJjsl4jsirXri4jri6QuJywgJ1JFU0VSVkFUSU9OX0lEX1JFVVNFX01JU01BVENIJyk7CiAgICAgIH0KICAgICAgaWYgKCFleGlzdGluZ1Jlc2VydmF0aW9uLnJlcXVlc3RGaW5nZXJwcmludCAmJiAoZXhpc3RpbmdSZXNlcnZhdGlvbi5sb3RJZCAhPT0gU3RyaW5nKGxvdElkKSB8fCBOdW1iZXIoZXhpc3RpbmdSZXNlcnZhdGlvbi5xdWFudGl0eSkgIT09IE51bWJlcihxdWFudGl0eSkpKSB7CiAgICAgICAgdGhyb3cgbmV3IEludmVudG9yeVJ1bGVFcnJvcign7JiI7JW9IElE6rCAIOuLpOuluCDroZztirjCt+yImOufiSDsmpTssq3sl5Ag7J6s7IKs7Jqp65CY7JeI7Iq164uI64ukLicsICdSRVNFUlZBVElPTl9JRF9SRVVTRV9NSVNNQVRDSCcpOwogICAgICB9CiAgICAgIHJldHVybiBjbG9uZSh7IHJlc2VydmF0aW9uOiBleGlzdGluZ1Jlc2VydmF0aW9uLCBsb3Q6IHRoaXMubG90cy5nZXQoZXhpc3RpbmdSZXNlcnZhdGlvbi5sb3RJZCkgfSk7CiAgICB9CiAgICBjb25zdCBsb3QgPSB0aGlzLmxvdHMuZ2V0KFN0cmluZyhsb3RJZCkpOwogICAgaWYgKCFsb3QpIHRocm93IG5ldyBJbnZlbnRvcnlSdWxlRXJyb3IoJ+qzteq4iSDroZztirjrpbwg7LC+7J2EIOyImCDsl4bsirXri4jri6QuJywgJ0xPVF9OT1RfRk9VTkQnKTsKICAgIGNvbnN0IGNoZWNrcyA9IHRoaXMudmVyaWZ5TG90KGxvdCwgeyAuLi5vcmRlciwgcXVhbnRpdHk6IG5vcm1hbGl6ZWRRdWFudGl0eSB9KTsKICAgIGNvbnN0IGZhaWxlZCA9IE9iamVjdC5lbnRyaWVzKGNoZWNrcykuZmluZCgoWywgcGFzc2VkXSkgPT4gIXBhc3NlZCk7CiAgICBpZiAoZmFpbGVkKSB0aHJvdyBuZXcgSW52ZW50b3J5UnVsZUVycm9yKGDqsbDrnpgg7KCEIOqygOymnSDsi6TtjKg6ICR7ZmFpbGVkWzBdfWAsIFN0cmluZyhmYWlsZWRbMF0pLnRvVXBwZXJDYXNlKCkpOwogICAgbG90LmF2YWlsYWJsZVF0eSAtPSBub3JtYWxpemVkUXVhbnRpdHk7CiAgICBsb3QucmVzZXJ2ZWRRdHkgKz0gbm9ybWFsaXplZFF1YW50aXR5OwogICAgbG90LnN0YXR1cyA9IGxvdC5hdmFpbGFibGVRdHkgPT09IDAgPyBJTlZFTlRPUllfU1RBVEVTLlJFU0VSVkVEIDogSU5WRU5UT1JZX1NUQVRFUy5WRVJJRklFRF9FTElHSUJMRTsKICAgIGNvbnN0IHJlc2VydmF0aW9uID0gewogICAgICByZXNlcnZhdGlvbklkOiBrZXksCiAgICAgIGxvdElkOiBsb3QubG90SWQsCiAgICAgIHF1YW50aXR5OiBub3JtYWxpemVkUXVhbnRpdHksCiAgICAgIHN0YXR1czogJ1JFU0VSVkVEJywKICAgICAgY2hlY2tzLAogICAgICByZXF1ZXN0RmluZ2VycHJpbnQ6IGZpbmdlcnByaW50LAogICAgICByZXNlcnZlZEF0OiB0aGlzLm5vdygpLnRvSVNPU3RyaW5nKCksCiAgICB9OwogICAgdGhpcy5yZXNlcnZhdGlvbnMuc2V0KGtleSwgcmVzZXJ2YXRpb24pOwogICAgcmV0dXJuIGNsb25lKHsgcmVzZXJ2YXRpb24sIGxvdCB9KTsKICB9CgogIG1hcmtEZWxpdmVyZWQocmVzZXJ2YXRpb25JZCkgewogICAgY29uc3QgcmVzZXJ2YXRpb24gPSB0aGlzLnJlc2VydmF0aW9ucy5nZXQoU3RyaW5nKHJlc2VydmF0aW9uSWQpKTsKICAgIGlmICghcmVzZXJ2YXRpb24pIHRocm93IG5ldyBJbnZlbnRvcnlSdWxlRXJyb3IoJ+yYiOyVveydhCDssL7snYQg7IiYIOyXhuyKteuLiOuLpC4nLCAnUkVTRVJWQVRJT05fTk9UX0ZPVU5EJyk7CiAgICBpZiAocmVzZXJ2YXRpb24uc3RhdHVzICE9PSAnUkVTRVJWRUQnKSB0aHJvdyBuZXcgSW52ZW50b3J5UnVsZUVycm9yKCfrgqntkogg7LKY66as7ZWgIOyImCDsl4bripQg7JiI7JW97J6F64uI64ukLicsICdJTlZBTElEX0RFTElWRVJZX1NUQVRFJyk7CiAgICByZXNlcnZhdGlvbi5zdGF0dXMgPSAnREVMSVZFUkVEJzsKICAgIGNvbnN0IGxvdCA9IHRoaXMubG90cy5nZXQocmVzZXJ2YXRpb24ubG90SWQpOwogICAgaWYgKGxvdCkgbG90LnN0YXR1cyA9IElOVkVOVE9SWV9TVEFURVMuREVMSVZFUkVEOwogICAgcmV0dXJuIGNsb25lKHsgcmVzZXJ2YXRpb24sIGxvdCB9KTsKICB9CgogIGluc3BlY3QocmVzZXJ2YXRpb25JZCwgeyBzcGVjTWF0Y2ggPSB0cnVlLCBxdWFsaXR5UGFzcyA9IHRydWUsIG5vdGUgPSAnJyB9ID0ge30pIHsKICAgIGNvbnN0IHJlc2VydmF0aW9uID0gdGhpcy5yZXNlcnZhdGlvbnMuZ2V0KFN0cmluZyhyZXNlcnZhdGlvbklkKSk7CiAgICBpZiAoIXJlc2VydmF0aW9uKSB0aHJvdyBuZXcgSW52ZW50b3J5UnVsZUVycm9yKCfsmIjslb3snYQg7LC+7J2EIOyImCDsl4bsirXri4jri6QuJywgJ1JFU0VSVkFUSU9OX05PVF9GT1VORCcpOwogICAgaWYgKCFbJ1JFU0VSVkVEJywgJ0RFTElWRVJFRCddLmluY2x1ZGVzKHJlc2VydmF0aW9uLnN0YXR1cykpIHsKICAgICAgdGhyb3cgbmV3IEludmVudG9yeVJ1bGVFcnJvcign6rKA7IiY7ZWgIOyImCDsl4bripQg7JiI7JW9IOyDge2DnOyeheuLiOuLpC4nLCAnSU5WQUxJRF9JTlNQRUNUSU9OX1NUQVRFJyk7CiAgICB9CiAgICBjb25zdCBwYXNzZWQgPSBCb29sZWFuKHNwZWNNYXRjaCAmJiBxdWFsaXR5UGFzcyk7CiAgICByZXNlcnZhdGlvbi5zdGF0dXMgPSBwYXNzZWQgPyAnSU5TUEVDVEVEJyA6ICdESVNQVVRFRCc7CiAgICBjb25zdCBpbnNwZWN0aW9uID0gewogICAgICByZXNlcnZhdGlvbklkOiByZXNlcnZhdGlvbi5yZXNlcnZhdGlvbklkLAogICAgICBzcGVjTWF0Y2g6IEJvb2xlYW4oc3BlY01hdGNoKSwKICAgICAgcXVhbGl0eVBhc3M6IEJvb2xlYW4ocXVhbGl0eVBhc3MpLAogICAgICBzdGF0dXM6IHJlc2VydmF0aW9uLnN0YXR1cywKICAgICAgbm90ZTogU3RyaW5nKG5vdGUpLAogICAgICBpbnNwZWN0ZWRBdDogdGhpcy5ub3coKS50b0lTT1N0cmluZygpLAogICAgfTsKICAgIHRoaXMuaW5zcGVjdGlvbnMuc2V0KHJlc2VydmF0aW9uLnJlc2VydmF0aW9uSWQsIGluc3BlY3Rpb24pOwogICAgY29uc3QgbG90ID0gdGhpcy5sb3RzLmdldChyZXNlcnZhdGlvbi5sb3RJZCk7CiAgICBpZiAobG90KSBsb3Quc3RhdHVzID0gcGFzc2VkID8gSU5WRU5UT1JZX1NUQVRFUy5JTlNQRUNURUQgOiBJTlZFTlRPUllfU1RBVEVTLlFVQVJBTlRJTkVEOwogICAgcmV0dXJuIGNsb25lKHsgcmVzZXJ2YXRpb24sIGluc3BlY3Rpb24sIGxvdCB9KTsKICB9CgogIHNuYXBzaG90KCkgewogICAgcmV0dXJuIHsKICAgICAgbG90czogWy4uLnRoaXMubG90cy52YWx1ZXMoKV0ubWFwKGNsb25lKSwKICAgICAgcmVzZXJ2YXRpb25zOiBbLi4udGhpcy5yZXNlcnZhdGlvbnMudmFsdWVzKCldLm1hcChjbG9uZSksCiAgICAgIGluc3BlY3Rpb25zOiBbLi4udGhpcy5pbnNwZWN0aW9ucy52YWx1ZXMoKV0ubWFwKGNsb25lKSwKICAgIH07CiAgfQp9Cg==
+const clone = (value) => JSON.parse(JSON.stringify(value));
+const CANONICAL_TRADE_TERMS = Object.freeze({ currency: 'KRW', priceUnit: 'KRW_PER_KG', quantityUnit: 'KG' });
+
+export const INVENTORY_STATES = Object.freeze({
+  DRAFT: 'DRAFT',
+  PENDING_VERIFICATION: 'PENDING_VERIFICATION',
+  VERIFIED_ELIGIBLE: 'VERIFIED_ELIGIBLE',
+  RESERVED: 'RESERVED',
+  DELIVERED: 'DELIVERED',
+  INSPECTED: 'INSPECTED',
+  DISPUTED: 'DISPUTED',
+  QUARANTINED: 'QUARANTINED',
+  EXPIRED: 'EXPIRED',
+});
+
+export class InventoryRuleError extends Error {
+  constructor(message, code = 'INVENTORY_RULE_FAILED') {
+    super(message);
+    this.code = code;
+  }
+}
+
+const isEvidenceValid = (lot, now) => {
+  const required = ['coa', 'sds', 'tds', 'lotTrace', 'inventoryProof'];
+  const evidenceReady = required.every((key) => lot.evidence?.[key] === 'VALID');
+  const expiresAt = lot.evidence?.expiresAt ? new Date(lot.evidence.expiresAt) : null;
+  return lot.status === INVENTORY_STATES.VERIFIED_ELIGIBLE
+    && evidenceReady
+    && expiresAt instanceof Date
+    && !Number.isNaN(expiresAt.valueOf())
+    && expiresAt >= now;
+};
+
+const reservationFingerprint = (lotId, quantity, order = {}) => JSON.stringify({
+  lotId: String(lotId || ''),
+  quantity: Number(quantity),
+  specId: String(order.specId || ''),
+  deliveryDays: Number(order.deliveryDays),
+});
+
+export class EvidenceLockedInventory {
+  constructor({ now = () => new Date() } = {}) {
+    this.now = now;
+    this.lots = new Map();
+    this.reservations = new Map();
+    this.inspections = new Map();
+  }
+
+  registerLot(input = {}) {
+    const lot = {
+      lotId: String(input.lotId || ''),
+      supplier: String(input.supplier || ''),
+      supplierId: String(input.supplierId || ''),
+      supplierOrganizationId: String(input.supplierOrganizationId || ''),
+      specId: String(input.specId || ''),
+      askPrice: Number(input.askPrice),
+      currency: String(input.currency || CANONICAL_TRADE_TERMS.currency),
+      priceUnit: String(input.priceUnit || CANONICAL_TRADE_TERMS.priceUnit),
+      quantityUnit: String(input.quantityUnit || CANONICAL_TRADE_TERMS.quantityUnit),
+      availableQty: Number(input.availableQty),
+      reservedQty: Number(input.reservedQty || 0),
+      status: input.status || INVENTORY_STATES.PENDING_VERIFICATION,
+      evidence: clone(input.evidence || {}),
+      deliveryDays: Number(input.deliveryDays),
+    };
+    if (!lot.lotId) throw new InventoryRuleError('로트 ID가 필요합니다.', 'LOT_ID_REQUIRED');
+    if (this.lots.has(lot.lotId)) throw new InventoryRuleError('이미 등록된 로트입니다.', 'LOT_ALREADY_EXISTS');
+    if (!Number.isFinite(lot.askPrice) || lot.askPrice <= 0 || !Number.isFinite(lot.availableQty) || lot.availableQty < 0 || !Number.isFinite(lot.reservedQty) || lot.reservedQty < 0 || !Number.isFinite(lot.deliveryDays) || lot.deliveryDays < 0) {
+      throw new InventoryRuleError('로트 가격 또는 수량이 올바르지 않습니다.', 'INVALID_LOT');
+    }
+    this.lots.set(lot.lotId, lot);
+    return clone(lot);
+  }
+
+  verifyLot(lot, order = {}) {
+    const checks = {
+      specMatch: lot.specId === order.specId,
+      evidenceValid: isEvidenceValid(lot, this.now()),
+      lotTraceable: Boolean(lot.lotId),
+      inventoryAvailable: lot.availableQty >= order.quantity,
+      deliveryFeasible: lot.deliveryDays <= order.deliveryDays,
+      termsMatch: lot.currency === String(order.currency || CANONICAL_TRADE_TERMS.currency)
+        && lot.priceUnit === String(order.priceUnit || CANONICAL_TRADE_TERMS.priceUnit)
+        && lot.quantityUnit === String(order.quantityUnit || CANONICAL_TRADE_TERMS.quantityUnit),
+    };
+    return checks;
+  }
+
+  findEligible({ specId, price, quantity, deliveryDays }) {
+    return [...this.lots.values()]
+      .filter((lot) => {
+        const checks = this.verifyLot(lot, { specId, quantity, deliveryDays });
+        return lot.askPrice <= price && Object.values(checks).every(Boolean);
+      })
+      .sort((a, b) => a.askPrice - b.askPrice)[0] || null;
+  }
+
+  reserve(lotId, quantity, reservationId, order = {}) {
+    const key = String(reservationId || '');
+    if (!key) throw new InventoryRuleError('예약 ID가 필요합니다.', 'RESERVATION_ID_REQUIRED');
+    const normalizedQuantity = Number(quantity);
+    if (!Number.isFinite(normalizedQuantity) || normalizedQuantity <= 0) {
+      throw new InventoryRuleError('예약 수량은 0보다 큰 유한한 값이어야 합니다.', 'INVALID_RESERVATION_QUANTITY');
+    }
+    const fingerprint = reservationFingerprint(lotId, normalizedQuantity, order);
+    if (this.reservations.has(key)) {
+      const existingReservation = this.reservations.get(key);
+      if (existingReservation.requestFingerprint && existingReservation.requestFingerprint !== fingerprint) {
+        throw new InventoryRuleError('예약 ID가 다른 로트·수량·스펙 요청에 재사용되었습니다.', 'RESERVATION_ID_REUSE_MISMATCH');
+      }
+      if (!existingReservation.requestFingerprint && (existingReservation.lotId !== String(lotId) || Number(existingReservation.quantity) !== Number(quantity))) {
+        throw new InventoryRuleError('예약 ID가 다른 로트·수량 요청에 재사용되었습니다.', 'RESERVATION_ID_REUSE_MISMATCH');
+      }
+      return clone({ reservation: existingReservation, lot: this.lots.get(existingReservation.lotId) });
+    }
+    const lot = this.lots.get(String(lotId));
+    if (!lot) throw new InventoryRuleError('공급 로트를 찾을 수 없습니다.', 'LOT_NOT_FOUND');
+    const checks = this.verifyLot(lot, { ...order, quantity: normalizedQuantity });
+    const failed = Object.entries(checks).find(([, passed]) => !passed);
+    if (failed) throw new InventoryRuleError(`거래 전 검증 실패: ${failed[0]}`, String(failed[0]).toUpperCase());
+    lot.availableQty -= normalizedQuantity;
+    lot.reservedQty += normalizedQuantity;
+    lot.status = lot.availableQty === 0 ? INVENTORY_STATES.RESERVED : INVENTORY_STATES.VERIFIED_ELIGIBLE;
+    const reservation = {
+      reservationId: key,
+      lotId: lot.lotId,
+      quantity: normalizedQuantity,
+      status: 'RESERVED',
+      checks,
+      requestFingerprint: fingerprint,
+      reservedAt: this.now().toISOString(),
+    };
+    this.reservations.set(key, reservation);
+    return clone({ reservation, lot });
+  }
+
+  markDelivered(reservationId) {
+    const reservation = this.reservations.get(String(reservationId));
+    if (!reservation) throw new InventoryRuleError('예약을 찾을 수 없습니다.', 'RESERVATION_NOT_FOUND');
+    if (reservation.status !== 'RESERVED') throw new InventoryRuleError('납품 처리할 수 없는 예약입니다.', 'INVALID_DELIVERY_STATE');
+    reservation.status = 'DELIVERED';
+    const lot = this.lots.get(reservation.lotId);
+    if (lot) lot.status = INVENTORY_STATES.DELIVERED;
+    return clone({ reservation, lot });
+  }
+
+  inspect(reservationId, { specMatch = true, qualityPass = true, note = '' } = {}) {
+    const reservation = this.reservations.get(String(reservationId));
+    if (!reservation) throw new InventoryRuleError('예약을 찾을 수 없습니다.', 'RESERVATION_NOT_FOUND');
+    if (!['RESERVED', 'DELIVERED'].includes(reservation.status)) {
+      throw new InventoryRuleError('검수할 수 없는 예약 상태입니다.', 'INVALID_INSPECTION_STATE');
+    }
+    const passed = Boolean(specMatch && qualityPass);
+    reservation.status = passed ? 'INSPECTED' : 'DISPUTED';
+    const inspection = {
+      reservationId: reservation.reservationId,
+      specMatch: Boolean(specMatch),
+      qualityPass: Boolean(qualityPass),
+      status: reservation.status,
+      note: String(note),
+      inspectedAt: this.now().toISOString(),
+    };
+    this.inspections.set(reservation.reservationId, inspection);
+    const lot = this.lots.get(reservation.lotId);
+    if (lot) lot.status = passed ? INVENTORY_STATES.INSPECTED : INVENTORY_STATES.QUARANTINED;
+    return clone({ reservation, inspection, lot });
+  }
+
+  snapshot() {
+    return {
+      lots: [...this.lots.values()].map(clone),
+      reservations: [...this.reservations.values()].map(clone),
+      inspections: [...this.inspections.values()].map(clone),
+    };
+  }
+}

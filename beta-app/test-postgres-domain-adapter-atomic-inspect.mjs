@@ -1,1 +1,33 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIgfSBmcm9tICcuL3Bvc3RncmVzLWRvbWFpbi1hZGFwdGVyLm1qcyc7Cgpjb25zdCBjYWxscyA9IFtdOwpjb25zdCBpZHMgPSB7CiAgb3JnOiAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDExJywKICB1c2VyOiAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDEyJywKICB0cmFkZTogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAxMycsCiAgb3JkZXI6ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMTQnLAogIHJlc2VydmF0aW9uOiAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDE1JywKfTsKY29uc3QgY2xpZW50ID0gewogIGFzeW5jIHF1ZXJ5KHNxbCwgcGFyYW1zID0gW10pIHsKICAgIGNhbGxzLnB1c2goeyBzcWwsIHBhcmFtcyB9KTsKICAgIGlmIChbJ0JFR0lOJywgJ0NPTU1JVCcsICdST0xMQkFDSyddLmluY2x1ZGVzKHNxbCkpIHJldHVybiB7IHJvd3M6IFtdIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIG9yZ2FuaXphdGlvbl9tZW1iZXJzJykpIHJldHVybiB7IHJvd3M6IFt7IG9rOiAxIH1dIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIHRyYWRlcyB0IEpPSU4nKSkgcmV0dXJuIHsgcm93czogW3sgdHJhZGVfaWQ6IGlkcy50cmFkZSwgb3JkZXJfaWQ6IGlkcy5vcmRlciwgbG90X2lkOiAnTE9ULUFUT01JQycsIHN0YXRlOiAnREVMSVZFUkVEJywgcHJpY2U6ICcyMTgwMCcsIHF1YW50aXR5OiAnMTAwJywgc3VwcGxpZXJfb3JnYW5pemF0aW9uX2lkOiBpZHMub3JnLCBzcGVjX2lkOiAnR0FCQS1TUEVDLTAwMScsIHJlc2VydmF0aW9uX2lkOiBpZHMucmVzZXJ2YXRpb24sIHJlc2VydmF0aW9uX3N0YXRlOiAnQUNUSVZFJyB9XSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnVVBEQVRFIHRyYWRlcyBTRVQgc3RhdGUnKSkgcmV0dXJuIHsgcm93czogW3sgdHJhZGVfaWQ6IGlkcy50cmFkZSwgc3RhdGU6ICdDT01QTEVURUQnLCBjb21wbGV0ZWRfYXQ6ICcyMDI2LTA5LTA4JyB9XSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnSU5TRVJUIElOVE8gdHJhZGVfaW5zcGVjdGlvbnMnKSkgcmV0dXJuIHsgcm93czogW3sgdHJhZGVfaWQ6IGlkcy50cmFkZSwgcmVzZXJ2YXRpb25faWQ6IGlkcy5yZXNlcnZhdGlvbiwgc3RhdGU6ICdDT01QTEVURUQnLCBzcGVjX21hdGNoOiB0cnVlLCBxdWFsaXR5X3Bhc3M6IHRydWUgfV0gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ0lOU0VSVCBJTlRPIHByaWNlX29ic2VydmF0aW9ucycpKSB0aHJvdyBuZXcgRXJyb3IoJ3NpbXVsYXRlZCBwcmljZSBvYnNlcnZhdGlvbiBmYWlsdXJlJyk7CiAgICByZXR1cm4geyByb3dzOiBbXSB9OwogIH0sCiAgcmVsZWFzZSgpIHt9LAp9Owpjb25zdCBhZGFwdGVyID0gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiBjbGllbnQ7IH0gfSk7CmF3YWl0IGFzc2VydC5yZWplY3RzKAogICgpID0+IGFkYXB0ZXIuaW5zcGVjdFRyYWRlQW5kUmVjb3JkUHJpY2UoeyB0cmFkZUlkOiBpZHMudHJhZGUsIG9wZXJhdG9yT3JnYW5pemF0aW9uSWQ6IGlkcy5vcmcsIG9wZXJhdG9yVXNlcklkOiBpZHMudXNlciwgc3BlY01hdGNoOiB0cnVlLCBxdWFsaXR5UGFzczogdHJ1ZSwgYWN0b3JLaW5kOiAnSFVNQU4nLCBhY3RvclJlZjogaWRzLnVzZXIsIGNvcnJlbGF0aW9uSWQ6ICdBVE9NSUMtSU5TUEVDVC0wMDEnIH0pLAogIC9zaW11bGF0ZWQgcHJpY2Ugb2JzZXJ2YXRpb24gZmFpbHVyZS8sCik7CmFzc2VydC5lcXVhbChjYWxscy5zb21lKCh7IHNxbCB9KSA9PiBzcWwgPT09ICdDT01NSVQnKSwgZmFsc2UpOwphc3NlcnQuZXF1YWwoY2FsbHMuc29tZSgoeyBzcWwgfSkgPT4gc3FsID09PSAnUk9MTEJBQ0snKSwgdHJ1ZSk7CmFzc2VydC5vayhjYWxscy5maW5kSW5kZXgoKHsgc3FsIH0pID0+IHNxbC5pbmNsdWRlcygnSU5TRVJUIElOVE8gdHJhZGVfaW5zcGVjdGlvbnMnKSkgPCBjYWxscy5maW5kSW5kZXgoKHsgc3FsIH0pID0+IHNxbC5pbmNsdWRlcygnSU5TRVJUIElOVE8gcHJpY2Vfb2JzZXJ2YXRpb25zJykpKTsKY29uc29sZS5sb2coJ3Bvc3RncmVzIGF0b21pYyBpbnNwZWN0aW9uLXByaWNlIHRlc3RzOiBQQVNTJyk7Cg==
+import assert from 'node:assert/strict';
+import { PostgresDomainAdapter } from './postgres-domain-adapter.mjs';
+
+const calls = [];
+const ids = {
+  org: '00000000-0000-0000-0000-000000000011',
+  user: '00000000-0000-0000-0000-000000000012',
+  trade: '00000000-0000-0000-0000-000000000013',
+  order: '00000000-0000-0000-0000-000000000014',
+  reservation: '00000000-0000-0000-0000-000000000015',
+};
+const client = {
+  async query(sql, params = []) {
+    calls.push({ sql, params });
+    if (['BEGIN', 'COMMIT', 'ROLLBACK'].includes(sql)) return { rows: [] };
+    if (sql.includes('FROM organization_members')) return { rows: [{ ok: 1 }] };
+    if (sql.includes('FROM trades t JOIN')) return { rows: [{ trade_id: ids.trade, order_id: ids.order, lot_id: 'LOT-ATOMIC', state: 'DELIVERED', price: '21800', quantity: '100', supplier_organization_id: ids.org, spec_id: 'GABA-SPEC-001', reservation_id: ids.reservation, reservation_state: 'ACTIVE' }] };
+    if (sql.includes('UPDATE trades SET state')) return { rows: [{ trade_id: ids.trade, state: 'COMPLETED', completed_at: '2026-09-08' }] };
+    if (sql.includes('INSERT INTO trade_inspections')) return { rows: [{ trade_id: ids.trade, reservation_id: ids.reservation, state: 'COMPLETED', spec_match: true, quality_pass: true }] };
+    if (sql.includes('INSERT INTO price_observations')) throw new Error('simulated price observation failure');
+    return { rows: [] };
+  },
+  release() {},
+};
+const adapter = new PostgresDomainAdapter({ async connect() { return client; } });
+await assert.rejects(
+  () => adapter.inspectTradeAndRecordPrice({ tradeId: ids.trade, operatorOrganizationId: ids.org, operatorUserId: ids.user, specMatch: true, qualityPass: true, actorKind: 'HUMAN', actorRef: ids.user, correlationId: 'ATOMIC-INSPECT-001' }),
+  /simulated price observation failure/,
+);
+assert.equal(calls.some(({ sql }) => sql === 'COMMIT'), false);
+assert.equal(calls.some(({ sql }) => sql === 'ROLLBACK'), true);
+assert.ok(calls.findIndex(({ sql }) => sql.includes('INSERT INTO trade_inspections')) < calls.findIndex(({ sql }) => sql.includes('INSERT INTO price_observations')));
+console.log('postgres atomic inspection-price tests: PASS');

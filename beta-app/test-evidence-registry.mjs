@@ -1,1 +1,37 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBFdmlkZW5jZVJlZ2lzdHJ5LCBFdmlkZW5jZVJlZ2lzdHJ5RXJyb3IgfSBmcm9tICcuL2V2aWRlbmNlLXJlZ2lzdHJ5Lm1qcyc7Cgpjb25zdCBub3cgPSBuZXcgRGF0ZSgnMjAyNi0wOS0wOFQwMDowMDowMC4wMDBaJyk7CmNvbnN0IHJlZ2lzdHJ5ID0gbmV3IEV2aWRlbmNlUmVnaXN0cnkoeyBub3c6ICgpID0+IG5ldyBEYXRlKG5vdykgfSk7CmNvbnN0IHR5cGVzID0gWydDT0EnLCAnU0RTJywgJ1REUycsICdMT1RfVFJBQ0UnLCAnSU5WRU5UT1JZX1BST09GJ107CmNvbnN0IHN1Ym1pdHRlZCA9IHR5cGVzLm1hcCgoZXZpZGVuY2VUeXBlKSA9PiByZWdpc3RyeS5zdWJtaXQoewogIGxvdElkOiAnTE9ULTAwMScsIGV2aWRlbmNlVHlwZSwgZG9jdW1lbnRWZXJzaW9uOiAndjEnLCBzdWJtaXR0ZWRCeTogJ1NVUFBMSUVSLTAwMScsIGNvbnRlbnQ6IGBMT1QtMDAxLSR7ZXZpZGVuY2VUeXBlfWAsCiAgZXhwaXJlc0F0OiAnMjAyNy0wNy0zMScsCn0pKTsKYXNzZXJ0LmVxdWFsKHN1Ym1pdHRlZFswXS5zdGF0ZSwgJ1BFTkRJTkcnKTsKYXNzZXJ0LmVxdWFsKHJlZ2lzdHJ5LmVsaWdpYmlsaXR5KCdMT1QtMDAxJykucHJlVHJhZGVFbGlnaWJsZSwgZmFsc2UpOwoKYXNzZXJ0LnRocm93cygoKSA9PiByZWdpc3RyeS5yZXZpZXcoc3VibWl0dGVkWzBdLmV2aWRlbmNlSWQsIHsgZGVjaXNpb246ICdWQUxJRCcsIHJldmlld2VyUm9sZTogJ0FJJywgcmV2aWV3ZXJJZDogJ0FJLTA3JyB9KSwgKGVycm9yKSA9PiB7CiAgYXNzZXJ0Lm9rKGVycm9yIGluc3RhbmNlb2YgRXZpZGVuY2VSZWdpc3RyeUVycm9yKTsKICBhc3NlcnQuZXF1YWwoZXJyb3IuY29kZSwgJ0hVTUFOX1JFVklFV19SRVFVSVJFRCcpOwogIHJldHVybiB0cnVlOwp9KTsKCmZvciAoY29uc3QgcmVjb3JkIG9mIHN1Ym1pdHRlZCkgcmVnaXN0cnkucmV2aWV3KHJlY29yZC5ldmlkZW5jZUlkLCB7IGRlY2lzaW9uOiAnVkFMSUQnLCByZXZpZXdlclJvbGU6ICdPUEVSQVRPUicsIHJldmlld2VySWQ6ICdPUC0wMDEnIH0pOwpjb25zdCBlbGlnaWJsZSA9IHJlZ2lzdHJ5LmVsaWdpYmlsaXR5KCdMT1QtMDAxJyk7CmFzc2VydC5lcXVhbChlbGlnaWJsZS5zdGF0dXMsICdWQUxJRCcpOwphc3NlcnQuZXF1YWwoZWxpZ2libGUucHJlVHJhZGVFbGlnaWJsZSwgdHJ1ZSk7CmFzc2VydC5lcXVhbChlbGlnaWJsZS5jaGVja3MuZmlsdGVyKChjaGVjaykgPT4gY2hlY2sudmFsaWQgJiYgY2hlY2suZXZpZGVuY2VUeXBlICE9PSAnRFVQTElDQVRFX1RZUEUnKS5sZW5ndGgsIDUpOwphc3NlcnQuZXF1YWwoZWxpZ2libGUuY2hlY2tzLmZpbmQoKGNoZWNrKSA9PiBjaGVjay5ldmlkZW5jZVR5cGUgPT09ICdEVVBMSUNBVEVfVFlQRScpLnZhbGlkLCB0cnVlKTsKCmFzc2VydC50aHJvd3MoKCkgPT4gcmVnaXN0cnkuc3VibWl0KHsgbG90SWQ6ICdMT1QtMDAxJywgZXZpZGVuY2VUeXBlOiAnQ09BJywgZG9jdW1lbnRWZXJzaW9uOiAndjEnLCBzdWJtaXR0ZWRCeTogJ1NVUFBMSUVSLTAwMScsIGNvbnRlbnQ6ICdkdXBsaWNhdGUnIH0pLCAoZXJyb3IpID0+IHsKICBhc3NlcnQub2soZXJyb3IgaW5zdGFuY2VvZiBFdmlkZW5jZVJlZ2lzdHJ5RXJyb3IpOwogIGFzc2VydC5lcXVhbChlcnJvci5jb2RlLCAnRVZJREVOQ0VfQUxSRUFEWV9TVUJNSVRURUQnKTsKICByZXR1cm4gdHJ1ZTsKfSk7Cgpjb25zdCByZWplY3RlZCA9IHJlZ2lzdHJ5LnN1Ym1pdCh7IGxvdElkOiAnTE9ULTAwMicsIGV2aWRlbmNlVHlwZTogJ0NPQScsIGRvY3VtZW50VmVyc2lvbjogJ3YxJywgc3VibWl0dGVkQnk6ICdTVVBQTElFUi0wMDEnLCBjb250ZW50OiAnYmFkJywgZXhwaXJlc0F0OiAnMjAyNy0wNy0zMScgfSk7CnJlZ2lzdHJ5LnJldmlldyhyZWplY3RlZC5ldmlkZW5jZUlkLCB7IGRlY2lzaW9uOiAnUkVKRUNURUQnLCByZXZpZXdlclJvbGU6ICdPV05FUicsIHJldmlld2VySWQ6ICdILTAxJyB9KTsKYXNzZXJ0LmVxdWFsKHJlZ2lzdHJ5LmVsaWdpYmlsaXR5KCdMT1QtMDAyJykuc3RhdHVzLCAnQkxPQ0tFRCcpOwoKY29uc29sZS5sb2coJ2V2aWRlbmNlLXJlZ2lzdHJ5IHRlc3RzOiBQQVNTJyk7Cg==
+import assert from 'node:assert/strict';
+import { EvidenceRegistry, EvidenceRegistryError } from './evidence-registry.mjs';
+
+const now = new Date('2026-09-08T00:00:00.000Z');
+const registry = new EvidenceRegistry({ now: () => new Date(now) });
+const types = ['COA', 'SDS', 'TDS', 'LOT_TRACE', 'INVENTORY_PROOF'];
+const submitted = types.map((evidenceType) => registry.submit({
+  lotId: 'LOT-001', evidenceType, documentVersion: 'v1', submittedBy: 'SUPPLIER-001', content: `LOT-001-${evidenceType}`,
+  expiresAt: '2027-07-31',
+}));
+assert.equal(submitted[0].state, 'PENDING');
+assert.equal(registry.eligibility('LOT-001').preTradeEligible, false);
+
+assert.throws(() => registry.review(submitted[0].evidenceId, { decision: 'VALID', reviewerRole: 'AI', reviewerId: 'AI-07' }), (error) => {
+  assert.ok(error instanceof EvidenceRegistryError);
+  assert.equal(error.code, 'HUMAN_REVIEW_REQUIRED');
+  return true;
+});
+
+for (const record of submitted) registry.review(record.evidenceId, { decision: 'VALID', reviewerRole: 'OPERATOR', reviewerId: 'OP-001' });
+const eligible = registry.eligibility('LOT-001');
+assert.equal(eligible.status, 'VALID');
+assert.equal(eligible.preTradeEligible, true);
+assert.equal(eligible.checks.filter((check) => check.valid && check.evidenceType !== 'DUPLICATE_TYPE').length, 5);
+assert.equal(eligible.checks.find((check) => check.evidenceType === 'DUPLICATE_TYPE').valid, true);
+
+assert.throws(() => registry.submit({ lotId: 'LOT-001', evidenceType: 'COA', documentVersion: 'v1', submittedBy: 'SUPPLIER-001', content: 'duplicate' }), (error) => {
+  assert.ok(error instanceof EvidenceRegistryError);
+  assert.equal(error.code, 'EVIDENCE_ALREADY_SUBMITTED');
+  return true;
+});
+
+const rejected = registry.submit({ lotId: 'LOT-002', evidenceType: 'COA', documentVersion: 'v1', submittedBy: 'SUPPLIER-001', content: 'bad', expiresAt: '2027-07-31' });
+registry.review(rejected.evidenceId, { decision: 'REJECTED', reviewerRole: 'OWNER', reviewerId: 'H-01' });
+assert.equal(registry.eligibility('LOT-002').status, 'BLOCKED');
+
+console.log('evidence-registry tests: PASS');

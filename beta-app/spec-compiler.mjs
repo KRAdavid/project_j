@@ -1,1 +1,55 @@
-aW1wb3J0IHsgcmVzb2x2ZU1hdGVyaWFsIH0gZnJvbSAnLi9tYXRlcmlhbC1tYXN0ZXIubWpzJzsKCmNvbnN0IGNsb25lID0gKHZhbHVlKSA9PiBKU09OLnBhcnNlKEpTT04uc3RyaW5naWZ5KHZhbHVlKSk7CgpleHBvcnQgY2xhc3MgU3BlY0NvbXBpbGVyRXJyb3IgZXh0ZW5kcyBFcnJvciB7CiAgY29uc3RydWN0b3IobWVzc2FnZSwgY29kZSA9ICdTUEVDX0NPTVBJTEVSX0ZBSUxFRCcpIHsKICAgIHN1cGVyKG1lc3NhZ2UpOwogICAgdGhpcy5jb2RlID0gY29kZTsKICB9Cn0KCmNvbnN0IHJlcXVpcmVkUXVlc3Rpb25zID0gKHJlY29yZCkgPT4gKHJlY29yZD8uc3BlY1F1ZXN0aW9uRmxvdyB8fCBbXSkuZmlsdGVyKChxdWVzdGlvbikgPT4gcXVlc3Rpb24ucmVxdWlyZWQgIT09IGZhbHNlKTsKCmNvbnN0IG5vcm1hbGl6ZUFuc3dlcnMgPSAocmVjb3JkLCBhbnN3ZXJzID0ge30pID0+IHsKICBpZiAoIWFuc3dlcnMgfHwgdHlwZW9mIGFuc3dlcnMgIT09ICdvYmplY3QnIHx8IEFycmF5LmlzQXJyYXkoYW5zd2VycykpIHRocm93IG5ldyBTcGVjQ29tcGlsZXJFcnJvcign7Iqk7Y6ZIOuLteuzgCDtmJXsi53snbQg7Jis67CU66W07KeAIOyViuyKteuLiOuLpC4nLCAnU1BFQ19BTlNXRVJTX0lOVkFMSUQnKTsKICBjb25zdCBxdWVzdGlvbnMgPSByZXF1aXJlZFF1ZXN0aW9ucyhyZWNvcmQpOwogIGNvbnN0IGFsbG93ZWRGaWVsZHMgPSBuZXcgU2V0KHF1ZXN0aW9ucy5tYXAoKHF1ZXN0aW9uKSA9PiBxdWVzdGlvbi5maWVsZCkpOwogIGNvbnN0IHVua25vd25GaWVsZCA9IE9iamVjdC5rZXlzKGFuc3dlcnMpLmZpbmQoKGZpZWxkKSA9PiAhYWxsb3dlZEZpZWxkcy5oYXMoZmllbGQpKTsKICBpZiAodW5rbm93bkZpZWxkKSB0aHJvdyBuZXcgU3BlY0NvbXBpbGVyRXJyb3IoYOuTseuhneuQmOyngCDslYrsnYAg7Iqk7Y6ZIO2VreuqqeyeheuLiOuLpDogJHt1bmtub3duRmllbGR9YCwgJ1NQRUNfRklFTERfVU5LTk9XTicpOwogIGNvbnN0IG5vcm1hbGl6ZWQgPSB7fTsKICBmb3IgKGNvbnN0IHF1ZXN0aW9uIG9mIHF1ZXN0aW9ucykgewogICAgaWYgKGFuc3dlcnNbcXVlc3Rpb24uZmllbGRdID09PSB1bmRlZmluZWQgfHwgYW5zd2Vyc1txdWVzdGlvbi5maWVsZF0gPT09IG51bGwgfHwgU3RyaW5nKGFuc3dlcnNbcXVlc3Rpb24uZmllbGRdKS50cmltKCkgPT09ICcnKSBjb250aW51ZTsKICAgIGNvbnN0IHZhbHVlID0gU3RyaW5nKGFuc3dlcnNbcXVlc3Rpb24uZmllbGRdKS50cmltKCk7CiAgICBpZiAoIXF1ZXN0aW9uLm9wdGlvbnMuaW5jbHVkZXModmFsdWUpKSB0aHJvdyBuZXcgU3BlY0NvbXBpbGVyRXJyb3IoYCR7cXVlc3Rpb24ubGFiZWx9IOyEoO2DneqwkuydtCDtl4jsmqkg66qp66Gd7JeQIOyXhuyKteuLiOuLpC5gLCAnU1BFQ19PUFRJT05fSU5WQUxJRCcpOwogICAgbm9ybWFsaXplZFtxdWVzdGlvbi5maWVsZF0gPSB2YWx1ZTsKICB9CiAgcmV0dXJuIG5vcm1hbGl6ZWQ7Cn07CgpleHBvcnQgY29uc3QgY29tcGlsZVNwZWNEcmFmdCA9ICh7IHF1ZXJ5LCBhbnN3ZXJzID0ge30gfSA9IHt9KSA9PiB7CiAgY29uc3QgbWF0ZXJpYWwgPSByZXNvbHZlTWF0ZXJpYWwocXVlcnkpOwogIGlmICghbWF0ZXJpYWwpIHJldHVybiB7IHN0YXR1czogJ01BVEVSSUFMX05PVF9GT1VORCcsIHF1ZXJ5OiBTdHJpbmcocXVlcnkgfHwgJycpLCBtYXRjaDogbnVsbCwgYW5zd2Vyczoge30sIG1pc3NpbmdGaWVsZHM6IFtdLCBuZXh0UXVlc3Rpb246IG51bGwsIHNwZWNJZDogbnVsbCB9OwogIGNvbnN0IHF1ZXN0aW9ucyA9IHJlcXVpcmVkUXVlc3Rpb25zKG1hdGVyaWFsKTsKICBjb25zdCBub3JtYWxpemVkQW5zd2VycyA9IG5vcm1hbGl6ZUFuc3dlcnMobWF0ZXJpYWwsIGFuc3dlcnMpOwogIGNvbnN0IG1pc3NpbmdGaWVsZHMgPSBxdWVzdGlvbnMuZmlsdGVyKChxdWVzdGlvbikgPT4gbm9ybWFsaXplZEFuc3dlcnNbcXVlc3Rpb24uZmllbGRdID09PSB1bmRlZmluZWQpLm1hcCgocXVlc3Rpb24pID0+IHF1ZXN0aW9uLmZpZWxkKTsKICBjb25zdCBuZXh0UXVlc3Rpb24gPSBxdWVzdGlvbnMuZmluZCgocXVlc3Rpb24pID0+IG1pc3NpbmdGaWVsZHMuaW5jbHVkZXMocXVlc3Rpb24uZmllbGQpKTsKICBjb25zdCBjb21wbGV0ZSA9IG1pc3NpbmdGaWVsZHMubGVuZ3RoID09PSAwOwogIGNvbnN0IGNhbm9uaWNhbCA9IE9iamVjdC5mcm9tRW50cmllcyhxdWVzdGlvbnMubWFwKChxdWVzdGlvbikgPT4gW3F1ZXN0aW9uLmZpZWxkLCBtYXRlcmlhbC5zaW11bGF0aW9uU3BlYz8uW3F1ZXN0aW9uLmZpZWxkXV0pKTsKICBjb25zdCBtYXRjaGVzQXBwcm92ZWRTcGVjID0gY29tcGxldGUgJiYgcXVlc3Rpb25zLmV2ZXJ5KChxdWVzdGlvbikgPT4gbm9ybWFsaXplZEFuc3dlcnNbcXVlc3Rpb24uZmllbGRdID09PSBjYW5vbmljYWxbcXVlc3Rpb24uZmllbGRdKTsKICByZXR1cm4gewogICAgc3RhdHVzOiAhY29tcGxldGUgPyAnTkVFRFNfSU5QVVQnIDogbWF0Y2hlc0FwcHJvdmVkU3BlYyA/ICdSRUFEWV9GT1JfTUFUQ0hJTkcnIDogJ05PX1ZFUklGSUVEX1NQRUNfRk9SX1NQRUMnLAogICAgcXVlcnk6IFN0cmluZyhxdWVyeSB8fCAnJyksCiAgICBtYXRjaDogeyBtYXRlcmlhbElkOiBtYXRlcmlhbC5tYXRlcmlhbElkLCBjYW5vbmljYWxOYW1lOiBtYXRlcmlhbC5jYW5vbmljYWxOYW1lLCBtYXRjaGVkQWxpYXM6IG1hdGVyaWFsLm1hdGNoZWRBbGlhcyB9LAogICAgYW5zd2VyczogY2xvbmUobm9ybWFsaXplZEFuc3dlcnMpLAogICAgbWlzc2luZ0ZpZWxkcywKICAgIG5leHRRdWVzdGlvbjogbmV4dFF1ZXN0aW9uID8geyBmaWVsZDogbmV4dFF1ZXN0aW9uLmZpZWxkLCBsYWJlbDogbmV4dFF1ZXN0aW9uLmxhYmVsLCBvcHRpb25zOiBjbG9uZShuZXh0UXVlc3Rpb24ub3B0aW9ucyksIHBvc2l0aW9uOiBxdWVzdGlvbnMuZmluZEluZGV4KChxdWVzdGlvbikgPT4gcXVlc3Rpb24uZmllbGQgPT09IG5leHRRdWVzdGlvbi5maWVsZCkgKyAxLCB0b3RhbDogcXVlc3Rpb25zLmxlbmd0aCB9IDogbnVsbCwKICAgIHNwZWNJZDogbWF0Y2hlc0FwcHJvdmVkU3BlYyA/IG1hdGVyaWFsLnNpbXVsYXRpb25TcGVjLnNwZWNJZCA6IG51bGwsCiAgICBjb25maXJtYXRpb246IHsgdXNlckFuc3dlcmVkRmllbGRzOiBPYmplY3Qua2V5cyhub3JtYWxpemVkQW5zd2VycyksIGFpR3Vlc3NlZEZpZWxkczogW10sIGNhbm9uaWNhbFNwZWNDb21wYXJpc29uOiBjb21wbGV0ZSA/IChtYXRjaGVzQXBwcm92ZWRTcGVjID8gJ01BVENIJyA6ICdNSVNNQVRDSCcpIDogJ0lOQ09NUExFVEUnIH0sCiAgfTsKfTsKCmV4cG9ydCBjb25zdCBhbnN3ZXJTcGVjRHJhZnQgPSAoeyBxdWVyeSwgZHJhZnQsIGZpZWxkLCB2YWx1ZSB9ID0ge30pID0+IHsKICBjb25zdCBwcmlvckFuc3dlcnMgPSBkcmFmdD8uYW5zd2VycyAmJiB0eXBlb2YgZHJhZnQuYW5zd2VycyA9PT0gJ29iamVjdCcgPyBkcmFmdC5hbnN3ZXJzIDoge307CiAgcmV0dXJuIGNvbXBpbGVTcGVjRHJhZnQoeyBxdWVyeTogcXVlcnkgfHwgZHJhZnQ/LnF1ZXJ5LCBhbnN3ZXJzOiB7IC4uLnByaW9yQW5zd2VycywgW2ZpZWxkXTogdmFsdWUgfSB9KTsKfTsK
+import { resolveMaterial } from './material-master.mjs';
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+
+export class SpecCompilerError extends Error {
+  constructor(message, code = 'SPEC_COMPILER_FAILED') {
+    super(message);
+    this.code = code;
+  }
+}
+
+const requiredQuestions = (record) => (record?.specQuestionFlow || []).filter((question) => question.required !== false);
+
+const normalizeAnswers = (record, answers = {}) => {
+  if (!answers || typeof answers !== 'object' || Array.isArray(answers)) throw new SpecCompilerError('스펙 답변 형식이 올바르지 않습니다.', 'SPEC_ANSWERS_INVALID');
+  const questions = requiredQuestions(record);
+  const allowedFields = new Set(questions.map((question) => question.field));
+  const unknownField = Object.keys(answers).find((field) => !allowedFields.has(field));
+  if (unknownField) throw new SpecCompilerError(`등록되지 않은 스펙 항목입니다: ${unknownField}`, 'SPEC_FIELD_UNKNOWN');
+  const normalized = {};
+  for (const question of questions) {
+    if (answers[question.field] === undefined || answers[question.field] === null || String(answers[question.field]).trim() === '') continue;
+    const value = String(answers[question.field]).trim();
+    if (!question.options.includes(value)) throw new SpecCompilerError(`${question.label} 선택값이 허용 목록에 없습니다.`, 'SPEC_OPTION_INVALID');
+    normalized[question.field] = value;
+  }
+  return normalized;
+};
+
+export const compileSpecDraft = ({ query, answers = {} } = {}) => {
+  const material = resolveMaterial(query);
+  if (!material) return { status: 'MATERIAL_NOT_FOUND', query: String(query || ''), match: null, answers: {}, missingFields: [], nextQuestion: null, specId: null };
+  const questions = requiredQuestions(material);
+  const normalizedAnswers = normalizeAnswers(material, answers);
+  const missingFields = questions.filter((question) => normalizedAnswers[question.field] === undefined).map((question) => question.field);
+  const nextQuestion = questions.find((question) => missingFields.includes(question.field));
+  const complete = missingFields.length === 0;
+  const canonical = Object.fromEntries(questions.map((question) => [question.field, material.simulationSpec?.[question.field]]));
+  const matchesApprovedSpec = complete && questions.every((question) => normalizedAnswers[question.field] === canonical[question.field]);
+  return {
+    status: !complete ? 'NEEDS_INPUT' : matchesApprovedSpec ? 'READY_FOR_MATCHING' : 'NO_VERIFIED_SPEC_FOR_SPEC',
+    query: String(query || ''),
+    match: { materialId: material.materialId, canonicalName: material.canonicalName, matchedAlias: material.matchedAlias },
+    answers: clone(normalizedAnswers),
+    missingFields,
+    nextQuestion: nextQuestion ? { field: nextQuestion.field, label: nextQuestion.label, options: clone(nextQuestion.options), position: questions.findIndex((question) => question.field === nextQuestion.field) + 1, total: questions.length } : null,
+    specId: matchesApprovedSpec ? material.simulationSpec.specId : null,
+    confirmation: { userAnsweredFields: Object.keys(normalizedAnswers), aiGuessedFields: [], canonicalSpecComparison: complete ? (matchesApprovedSpec ? 'MATCH' : 'MISMATCH') : 'INCOMPLETE' },
+  };
+};
+
+export const answerSpecDraft = ({ query, draft, field, value } = {}) => {
+  const priorAnswers = draft?.answers && typeof draft.answers === 'object' ? draft.answers : {};
+  return compileSpecDraft({ query: query || draft?.query, answers: { ...priorAnswers, [field]: value } });
+};

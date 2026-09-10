@@ -1,1 +1,36 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIsIFBvc3RncmVzRG9tYWluQWRhcHRlckVycm9yIH0gZnJvbSAnLi9wb3N0Z3Jlcy1kb21haW4tYWRhcHRlci5tanMnOwoKY29uc3QgaWRzID0gewogIG9yZzogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAyMScsCiAgYnV5ZXI6ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMjInLAogIHN1cHBsaWVyOiAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDIzJywKICBvcmRlcjogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAyNCcsCn07CmNvbnN0IHN1Ym1pdHRlZEF0dHJpYnV0ZXMgPSB7IHB1cml0eTogJzk5JScgfTsKY29uc3QgY2hhbmdlZEF0dHJpYnV0ZXMgPSB7IHB1cml0eTogJzk4JScgfTsKbGV0IG1hdGVyaWFsTWFzdGVyQ2hhbmdlZCA9IGZhbHNlOwpjb25zdCBjbGllbnQgPSB7CiAgYXN5bmMgcXVlcnkoc3FsKSB7CiAgICBpZiAoWydCRUdJTicsICdDT01NSVQnLCAnUk9MTEJBQ0snXS5pbmNsdWRlcyhzcWwpKSByZXR1cm4geyByb3dzOiBbXSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSBvcmdhbml6YXRpb25zIFdIRVJFIG9yZ2FuaXphdGlvbl9pZCcpKSByZXR1cm4geyByb3dzOiBbeyBvcmdhbml6YXRpb25faWQ6IGlkcy5vcmcsIHZlcmlmaWVkX2F0OiAnMjAyNi0wMS0wMScsIHZlcmlmaWNhdGlvbl9ldmlkZW5jZTogeyBzb3VyY2U6ICd0ZXN0JyB9IH1dIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIG9yZ2FuaXphdGlvbl9tZW1iZXJzJykpIHJldHVybiB7IHJvd3M6IFt7IG9rOiAxIH1dIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIHNwZWNpZmljYXRpb25zIFdIRVJFJykpIHJldHVybiB7IHJvd3M6IFt7IHNwZWNfaWQ6ICdHQUJBLVNQRUMtTE9DSycsIGF0dHJpYnV0ZXM6IG1hdGVyaWFsTWFzdGVyQ2hhbmdlZCA/IGNoYW5nZWRBdHRyaWJ1dGVzIDogc3VibWl0dGVkQXR0cmlidXRlcyB9XSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnSU5TRVJUIElOVE8gcHVyY2hhc2Vfb3JkZXJzJykpIHJldHVybiB7IHJvd3M6IFt7IG9yZGVyX2lkOiBpZHMub3JkZXIsIGJ1eWVyX29yZ2FuaXphdGlvbl9pZDogaWRzLm9yZywgc3BlY19pZDogJ0dBQkEtU1BFQy1MT0NLJywgc3BlY19hdHRyaWJ1dGVzOiBzdWJtaXR0ZWRBdHRyaWJ1dGVzLCBzdGF0ZTogJ1NVQk1JVFRFRCcgfV0gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ0ZST00gcHVyY2hhc2Vfb3JkZXJzIFdIRVJFJykpIHJldHVybiB7IHJvd3M6IFt7IG9yZGVyX2lkOiBpZHMub3JkZXIsIGJ1eWVyX29yZ2FuaXphdGlvbl9pZDogaWRzLm9yZywgc3BlY19pZDogJ0dBQkEtU1BFQy1MT0NLJywgc3BlY19hdHRyaWJ1dGVzOiBzdWJtaXR0ZWRBdHRyaWJ1dGVzLCBzdGF0ZTogJ1NVQk1JVFRFRCcsIGJpZF9wcmljZTogJzIxODAwJywgcmVxdWVzdGVkX3F1YW50aXR5OiAnMTAnLCBkZWxpdmVyeV9kZWFkbGluZTogJzIwMjYtMTAtMDEnIH1dIH07CiAgICByZXR1cm4geyByb3dzOiBbXSB9OwogIH0sCiAgcmVsZWFzZSgpIHt9LAp9Owpjb25zdCBhZGFwdGVyID0gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiBjbGllbnQ7IH0gfSk7Cgpjb25zdCBzdWJtaXR0ZWQgPSBhd2FpdCBhZGFwdGVyLnN1Ym1pdE9yZGVyKHsgYnV5ZXJPcmdhbml6YXRpb25JZDogaWRzLm9yZywgdXNlcklkOiBpZHMuYnV5ZXIsIHNwZWNJZDogJ0dBQkEtU1BFQy1MT0NLJywgc3BlY0F0dHJpYnV0ZXM6IHN1Ym1pdHRlZEF0dHJpYnV0ZXMsIGJpZFByaWNlOiAyMTgwMCwgcmVxdWVzdGVkUXVhbnRpdHk6IDEwLCBkZWxpdmVyeURlYWRsaW5lOiAnMjAyNi0xMC0wMScsIGFjdG9yS2luZDogJ0hVTUFOJywgYWN0b3JSZWY6IGlkcy5idXllciwgY29ycmVsYXRpb25JZDogJ0NPUlItU1BFQy1MT0NLLVNVQk1JVCcgfSk7CmFzc2VydC5lcXVhbChzdWJtaXR0ZWQub3JkZXIub3JkZXJfaWQsIGlkcy5vcmRlcik7CgptYXRlcmlhbE1hc3RlckNoYW5nZWQgPSB0cnVlOwphd2FpdCBhc3NlcnQucmVqZWN0cygKICAoKSA9PiBhZGFwdGVyLmFjY2VwdE9yZGVyKHsgb3JkZXJJZDogaWRzLm9yZGVyLCBsb3RJZDogJ0xPVC1MT0NLJywgc3VwcGxpZXJPcmdhbml6YXRpb25JZDogaWRzLm9yZywgc3VwcGxpZXJVc2VySWQ6IGlkcy5zdXBwbGllciwgYWNjZXB0ZWRRdWFudGl0eTogMTAsIGFjdG9yS2luZDogJ0hVTUFOJywgYWN0b3JSZWY6IGlkcy5zdXBwbGllciwgY29ycmVsYXRpb25JZDogJ0NPUlItU1BFQy1MT0NLLUFDQ0VQVCcgfSksCiAgKGVycm9yKSA9PiBlcnJvciBpbnN0YW5jZW9mIFBvc3RncmVzRG9tYWluQWRhcHRlckVycm9yICYmIGVycm9yLmNvZGUgPT09ICdTUEVDX0FUVFJJQlVURVNfTUlTTUFUQ0gnLAopOwoKY29uc29sZS5sb2coJ3Bvc3RncmVzIGRvbWFpbiBhZGFwdGVyIHNwZWMtbG9jayB0ZXN0czogUEFTUycpOwo=
+import assert from 'node:assert/strict';
+import { PostgresDomainAdapter, PostgresDomainAdapterError } from './postgres-domain-adapter.mjs';
+
+const ids = {
+  org: '00000000-0000-0000-0000-000000000021',
+  buyer: '00000000-0000-0000-0000-000000000022',
+  supplier: '00000000-0000-0000-0000-000000000023',
+  order: '00000000-0000-0000-0000-000000000024',
+};
+const submittedAttributes = { purity: '99%' };
+const changedAttributes = { purity: '98%' };
+let materialMasterChanged = false;
+const client = {
+  async query(sql) {
+    if (['BEGIN', 'COMMIT', 'ROLLBACK'].includes(sql)) return { rows: [] };
+    if (sql.includes('FROM organizations WHERE organization_id')) return { rows: [{ organization_id: ids.org, verified_at: '2026-01-01', verification_evidence: { source: 'test' } }] };
+    if (sql.includes('FROM organization_members')) return { rows: [{ ok: 1 }] };
+    if (sql.includes('FROM specifications WHERE')) return { rows: [{ spec_id: 'GABA-SPEC-LOCK', attributes: materialMasterChanged ? changedAttributes : submittedAttributes }] };
+    if (sql.includes('INSERT INTO purchase_orders')) return { rows: [{ order_id: ids.order, buyer_organization_id: ids.org, spec_id: 'GABA-SPEC-LOCK', spec_attributes: submittedAttributes, state: 'SUBMITTED' }] };
+    if (sql.includes('FROM purchase_orders WHERE')) return { rows: [{ order_id: ids.order, buyer_organization_id: ids.org, spec_id: 'GABA-SPEC-LOCK', spec_attributes: submittedAttributes, state: 'SUBMITTED', bid_price: '21800', requested_quantity: '10', delivery_deadline: '2026-10-01' }] };
+    return { rows: [] };
+  },
+  release() {},
+};
+const adapter = new PostgresDomainAdapter({ async connect() { return client; } });
+
+const submitted = await adapter.submitOrder({ buyerOrganizationId: ids.org, userId: ids.buyer, specId: 'GABA-SPEC-LOCK', specAttributes: submittedAttributes, bidPrice: 21800, requestedQuantity: 10, deliveryDeadline: '2026-10-01', actorKind: 'HUMAN', actorRef: ids.buyer, correlationId: 'CORR-SPEC-LOCK-SUBMIT' });
+assert.equal(submitted.order.order_id, ids.order);
+
+materialMasterChanged = true;
+await assert.rejects(
+  () => adapter.acceptOrder({ orderId: ids.order, lotId: 'LOT-LOCK', supplierOrganizationId: ids.org, supplierUserId: ids.supplier, acceptedQuantity: 10, actorKind: 'HUMAN', actorRef: ids.supplier, correlationId: 'CORR-SPEC-LOCK-ACCEPT' }),
+  (error) => error instanceof PostgresDomainAdapterError && error.code === 'SPEC_ATTRIBUTES_MISMATCH',
+);
+
+console.log('postgres domain adapter spec-lock tests: PASS');

@@ -1,1 +1,125 @@
-ewogICJzY2hlbWFWZXJzaW9uIjogIlBBVEVOVC1QUklPUi1BUlQtMC4xIiwKICAicmVzZWFyY2hEYXRlIjogIjIwMjYtMDktMTAiLAogICJzb3VyY2VQb2xpY3kiOiAi6rO16rCcIO2Kue2XiCDrrLjtl4wg7KGw7ZqMIO2OmOydtOyngOydmCDstIjroZ3Ct+yyreq1rO2VrSAx7LCoIOuMgOyhsOunjCDquLDroZ3tlZjrqbAsIOuyleyggSDsg4Htg5zCt+uTseuhneyEscK37Lmo7ZW0wrfrspXrpaDsnZjqsqzsnYAg7YyQ64uo7ZWY7KeAIOyViuuKlOuLpC4g7KCV67aAIO2Kue2XiOyyrSDsm5DrrLjCt+2MqOuwgOumrMK367KV7KCBIOyDge2DnOuKlCDrs4DrpqzsgqzqsIAg7J6s7ZmV7J247ZWc64ukLiIsCiAgImRvY3VtZW50cyI6IFsKICAgIHsKICAgICAgImlkIjogIlBBLTAwMSIsCiAgICAgICJwdWJsaWNhdGlvbk51bWJlciI6ICJDTjExNzQzNjk5NUIiLAogICAgICAidGl0bGUiOiAiRGlnaXRhbCBzdXBwbHkgY2hhaW4gcHVyY2hhc2luZyB0cmFuc2FjdGlvbiBwbGF0Zm9ybSBhbmQgbWV0aG9kIiwKICAgICAgInVybCI6ICJodHRwczovL3BhdGVudHMuZ29vZ2xlLmNvbS9wYXRlbnQvQ04xMTc0MzY5OTVCL2VuIiwKICAgICAgInNvdXJjZUF1dGhvcml0eSI6ICJHb29nbGUgUGF0ZW50cyBwdWJsaWNhdGlvbiBwYWdlIiwKICAgICAgInZlcmlmaWNhdGlvblN0YXR1cyI6ICJBQlNUUkFDVF9BTkRfQ0xBSU1TX1JFVklFV0VEIiwKICAgICAgImRpc2Nsb3NlZFRoZW1lcyI6IFsicHJvZHVjZXItc3VwcGxpZXItYnV5ZXIgbW9kdWxlcyIsICJwdXJjaGFzZSBkZW1hbmQiLCAicXVhbGl0eSBpbnNwZWN0aW9uIiwgInN1cHBsaWVyIHF1b3RhdGlvbiIsICJwcmljZS1xdWFudGl0eS1zcGVjaWZpY2F0aW9uIG1hdGNoaW5nIl0sCiAgICAgICJvdmVybGFwQXhlcyI6IFsibXVsdGktcGFydHkgcHJvY3VyZW1lbnQiLCAicXVvdGF0aW9uIGFuZCBtYXRjaGluZyIsICJxdWFsaXR5IGV2YWx1YXRpb24iXSwKICAgICAgImRpZmZlcmVudGlhdGlvblF1ZXN0aW9ucyI6IFsicHJlLXRyYWRlIGV2aWRlbmNlIGJ1bmRsZSBnYXRlIiwgInNhbWUtbG90IGV2aWRlbmNlIGV4cGlyeSBzdGF0ZSIsICJhY2NlcHQtdGltZSByZXZhbGlkYXRpb24iLCAiaWRlbXBvdGVudCBhdG9taWMgbG90IHJlc2VydmF0aW9uIiwgImltbXV0YWJsZSB0cmFkZSBzbmFwc2hvdCIsICJwb3N0LWRlbGl2ZXJ5IHF1YXJhbnRpbmUgc2VwYXJhdGlvbiJdLAogICAgICAibGVnYWxSZXZpZXdSZXF1aXJlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJQQS0wMDIiLAogICAgICAicHVibGljYXRpb25OdW1iZXIiOiAiQ04xMTU5MzY4NzhBIiwKICAgICAgInRpdGxlIjogIkEgc3lzdGVtIGFuZCBtZXRob2QgZm9yIG9ubGluZSBwdXJjaGFzZSBhbmQgdHJhbnNhY3Rpb24gb2Ygc3RlZWwgc2NyYXAiLAogICAgICAidXJsIjogImh0dHBzOi8vcGF0ZW50cy5nb29nbGUuY29tL3BhdGVudC9DTjExNTkzNjg3OEEvZW4iLAogICAgICAic291cmNlQXV0aG9yaXR5IjogIkdvb2dsZSBQYXRlbnRzIHB1YmxpY2F0aW9uIHBhZ2UiLAogICAgICAidmVyaWZpY2F0aW9uU3RhdHVzIjogIkFCU1RSQUNUX0FORF9DTEFJTVNfUkVWSUVXRUQiLAogICAgICAiZGlzY2xvc2VkVGhlbWVzIjogWyJidXllciBwcm9jdXJlbWVudCByZXF1ZXN0IiwgInN1cHBsaWVyIGZpbmRzIHJlcXVlc3QiLCAic3VwcGxpZXIgcXVvdGF0aW9uIiwgInF1YW50aXR5IHF1b3RhdGlvbiJdLAogICAgICAib3ZlcmxhcEF4ZXMiOiBbImJ1eWVyLXJlcXVlc3QtdG8tc3VwcGxpZXItcXVvdGF0aW9uIGZsb3ciLCAicGh5c2ljYWwgZ29vZHMgbWFya2V0cGxhY2UiXSwKICAgICAgImRpZmZlcmVudGlhdGlvblF1ZXN0aW9ucyI6IFsiTWF0ZXJpYWwgTWFzdGVyIFNwZWMgSUQgc2VhbGluZyIsICJldmlkZW5jZS1saWZlY3ljbGUtZHJpdmVuIG9mZmVyIHZpc2liaWxpdHkiLCAidHJhbnNhY3Rpb24tdGltZSByZXZhbGlkYXRpb24gYW5kIGxvdCBsb2NrIiwgInNlcGFyYXRlIGRlbGl2ZXJ5IGRpc3B1dGUgc3RhdGUiXSwKICAgICAgImxlZ2FsUmV2aWV3UmVxdWlyZWQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAiUEEtMDAzIiwKICAgICAgInB1YmxpY2F0aW9uTnVtYmVyIjogIlVTMjAxMjAyMDk4OTBBMSIsCiAgICAgICJ0aXRsZSI6ICJJbnRlci1lbnRlcnByaXNlIGluZ3JlZGllbnQgc3BlY2lmaWNhdGlvbiBjb21wbGlhbmNlIiwKICAgICAgInVybCI6ICJodHRwczovL3BhdGVudHMuZ29vZ2xlLmNvbS9wYXRlbnQvVVMyMDEyMDIwOTg5MEExL2VuIiwKICAgICAgInNvdXJjZUF1dGhvcml0eSI6ICJHb29nbGUgUGF0ZW50cyBwdWJsaWNhdGlvbiBwYWdlIiwKICAgICAgInZlcmlmaWNhdGlvblN0YXR1cyI6ICJBQlNUUkFDVF9BTkRfQ0xBSU1TX1JFVklFV0VEIiwKICAgICAgImRpc2Nsb3NlZFRoZW1lcyI6IFsibm9ybWFsaXplZCBpbmdyZWRpZW50IGRhdGEiLCAic3VwcGxpZXIgYW5kIHJlY2VpdmVyIGVudGl0aWVzIiwgImluZ3JlZGllbnQgYXR0cmlidXRlcyIsICJzcGVjaWZpY2F0aW9uIGNvbXBsaWFuY2UiLCAiY2VydGlmaWNhdGUgb2YgYW5hbHlzaXMiLCAic3VwcGxpZXIgcmlzayBvciBmYXZvcmFiaWxpdHkgcHJvZmlsZSJdLAogICAgICAib3ZlcmxhcEF4ZXMiOiBbImluZ3JlZGllbnQgc3BlY2lmaWNhdGlvbiBub3JtYWxpemF0aW9uIiwgIkNPQSBhbmQgc2hpcG1lbnQgYXR0cmlidXRlcyIsICJjcm9zcy1lbnRlcnByaXNlIHN1cHBsaWVyIGFzc2Vzc21lbnQiXSwKICAgICAgImRpZmZlcmVudGlhdGlvblF1ZXN0aW9ucyI6IFsiYnV5ZXIgcXVlc3Rpb24tZHJpdmVuIGltbXV0YWJsZSBNYXRlcmlhbCBNYXN0ZXIgU3BlYyIsICJmaXZlLWRvY3VtZW50IHByZS10cmFkZSBldmlkZW5jZSBnYXRlIiwgInNhbWUtbG90IGV4cGlyeSBhbmQgaW52ZW50b3J5IGF2YWlsYWJpbGl0eSBzdGF0ZSIsICJhY2NlcHQtdGltZSBhdG9taWMgcmVzZXJ2YXRpb24iLCAiaW1tdXRhYmxlIHRyYWRlIHNuYXBzaG90IiwgInBvc3QtZGVsaXZlcnkgcXVhcmFudGluZSBzZXBhcmF0aW9uIl0sCiAgICAgICJsZWdhbFJldmlld1JlcXVpcmVkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogIlBBLTAwNCIsCiAgICAgICJwdWJsaWNhdGlvbk51bWJlciI6ICJDTjExODU2OTIyMEEiLAogICAgICAidGl0bGUiOiAiQSBtZXRob2QgYW5kIHN5c3RlbSBmb3IgYXV0b21hdGljYWxseSBnZW5lcmF0aW5nIHByb2N1cmVtZW50IHRlY2huaWNhbCBzcGVjaWZpY2F0aW9ucyIsCiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9wYXRlbnRzLmdvb2dsZS5jb20vcGF0ZW50L0NOMTE4NTY5MjIwQS9lbiIsCiAgICAgICJzb3VyY2VBdXRob3JpdHkiOiAiR29vZ2xlIFBhdGVudHMgcHVibGljYXRpb24gcGFnZSIsCiAgICAgICJ2ZXJpZmljYXRpb25TdGF0dXMiOiAiQUJTVFJBQ1RfQU5EX0NMQUlNU19SRVZJRVdFRCIsCiAgICAgICJkaXNjbG9zZWRUaGVtZXMiOiBbInByb2N1cmVtZW50IHRlY2huaWNhbCBzcGVjaWZpY2F0aW9uIiwgInByZXRyYWluZWQgbGFuZ3VhZ2UgbW9kZWwiLCAiZG9jdW1lbnQgZXJyb3IgY29ycmVjdGlvbiIsICJzZW5zaXRpdmUgd29yZCByZWNvZ25pdGlvbiIsICJtYW51YWwgYXVkaXQiXSwKICAgICAgIm92ZXJsYXBBeGVzIjogWyJBSS1hc3Npc3RlZCBwcm9jdXJlbWVudCBzcGVjaWZpY2F0aW9uIGdlbmVyYXRpb24iLCAiaHVtYW4gcmV2aWV3IG9mIGdlbmVyYXRlZCBzcGVjaWZpY2F0aW9uIl0sCiAgICAgICJkaWZmZXJlbnRpYXRpb25RdWVzdGlvbnMiOiBbIk1hdGVyaWFsIE1hc3RlciBpZGVudGl0eSBhbmQgYWxsb3dlZCBmaWVsZCBzZXQiLCAidXNlciBhbnN3ZXIgc2VhbGluZyBpbnRvIHRyYW5zYWN0aW9uIFNwZWMgSUQiLCAiTG90IGV2aWRlbmNlIGFuZCBpbnZlbnRvcnkgZWxpZ2liaWxpdHkgY2FsY3VsYXRpb24iLCAidHJhbnNhY3Rpb24tdGltZSByZXZhbGlkYXRpb24gYW5kIGF0b21pYyByZXNlcnZhdGlvbiIsICJpbW11dGFibGUgcGh5c2ljYWwtdHJhZGUgc25hcHNob3QiXSwKICAgICAgImxlZ2FsUmV2aWV3UmVxdWlyZWQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAiUEEtMDA1IiwKICAgICAgInB1YmxpY2F0aW9uTnVtYmVyIjogIlVTMTIyODI4OTJCMiIsCiAgICAgICJ0aXRsZSI6ICJEYXRhLWRyaXZlbiByZXF1aXJlbWVudHMgYW5hbHlzaXMgYW5kIG1hdGNoaW5nIiwKICAgICAgInVybCI6ICJodHRwczovL3BhdGVudHMuZ29vZ2xlLmNvbS9wYXRlbnQvVVMxMjI4Mjg5MkIyL2VuIiwKICAgICAgInNvdXJjZUF1dGhvcml0eSI6ICJHb29nbGUgUGF0ZW50cyBwdWJsaWNhdGlvbiBwYWdlIiwKICAgICAgInZlcmlmaWNhdGlvblN0YXR1cyI6ICJBQlNUUkFDVF9BTkRfQ0xBSU1TX1JFVklFV0VEIiwKICAgICAgImRpc2Nsb3NlZFRoZW1lcyI6IFsiZGF0YS1kcml2ZW4gcmVxdWlyZW1lbnRzIGFuYWx5c2lzIiwgInZlbmRvciBjYXBhYmlsaXR5IG1hdGNoaW5nIiwgImxvZ2ljIG1vZHVsZSIsICJyYW5rZWQgbWF0Y2ggZGF0YSIsICJwcm9jdXJlbWVudCBkaXNwbGF5Il0sCiAgICAgICJvdmVybGFwQXhlcyI6IFsicmVxdWlyZW1lbnRzLXRvLXN1cHBsaWVyIG1hdGNoaW5nIiwgImRhdGEgdHJhbnNmb3JtYXRpb24gYW5kIHJhbmtlZCBwcm9jdXJlbWVudCByZXN1bHRzIl0sCiAgICAgICJkaWZmZXJlbnRpYXRpb25RdWVzdGlvbnMiOiBbImV2aWRlbmNlIGxpZmVjeWNsZSBhcyBhIGhhcmQgb2ZmZXIgdmlzaWJpbGl0eSBnYXRlIiwgInZlcmlmaWVkIHBoeXNpY2FsIExvdCBpZGVudGl0eSIsICJpZGVtcG90ZW50IGF0b21pYyBpbnZlbnRvcnkgcmVzZXJ2YXRpb24iLCAidHJhZGUtdGltZSBpbW11dGFibGUgZXZpZGVuY2Ugc25hcHNob3QiLCAiZGVsaXZlcnkgZGlzcHV0ZSBhbmQgcXVhcmFudGluZSBzdGF0ZSBzZXBhcmF0aW9uIl0sCiAgICAgICJsZWdhbFJldmlld1JlcXVpcmVkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogIlBBLTAwNiIsCiAgICAgICJwdWJsaWNhdGlvbk51bWJlciI6ICJVUzIwMDcwMjE0MDY1QTEiLAogICAgICAidGl0bGUiOiAiSW52ZW50b3J5IHRyYW5zYWN0aW9uIGNvbW1vbiBvYmplY3QiLAogICAgICAidXJsIjogImh0dHBzOi8vcGF0ZW50cy5nb29nbGUuY29tL3BhdGVudC9VUzIwMDcwMjE0MDY1QTEvZW4iLAogICAgICAic291cmNlQXV0aG9yaXR5IjogIkdvb2dsZSBQYXRlbnRzIHB1YmxpY2F0aW9uIHBhZ2UiLAogICAgICAidmVyaWZpY2F0aW9uU3RhdHVzIjogIkFCU1RSQUNUX0FORF9DTEFJTVNfUkVWSUVXRUQiLAogICAgICAiZGlzY2xvc2VkVGhlbWVzIjogWyJpbnZlbnRvcnkgdHJhbnNhY3Rpb24gZGF0YSBtb2RlbCIsICJwdXJjaGFzZSBvcmRlciBsaW5lIGl0ZW0iLCAic291cmNlIGFuZCBkZXN0aW5hdGlvbiBpbnZlbnRvcnkgbG9jYXRpb25zIiwgImZyb250LW9mZmljZSBhbmQgYmFjay1vZmZpY2Ugc3luY2hyb25pemF0aW9uIl0sCiAgICAgICJvdmVybGFwQXhlcyI6IFsiaW52ZW50b3J5IHRyYW5zYWN0aW9uIG5vcm1hbGl6YXRpb24iLCAicHVyY2hhc2Ugb3JkZXIgYW5kIGludmVudG9yeSBzeW5jaHJvbml6YXRpb24iXSwKICAgICAgImRpZmZlcmVudGlhdGlvblF1ZXN0aW9ucyI6IFsiZXZpZGVuY2UtcXVhbGlmaWVkIExvdCByYXRoZXIgdGhhbiBnZW5lcmljIGludmVudG9yeSBvYmplY3QiLCAicGVyLUxvdCBwcm9vZiBleHBpcnkgYW5kIHB1YmxpYyBvZmZlciBzdGF0ZSIsICJhY2NlcHQtdGltZSByZXZhbGlkYXRpb24iLCAiaWRlbXBvdGVudCByZXNlcnZhdGlvbiBrZXkgYW5kIHRyYW5zYWN0aW9uIGxvY2siLCAiaW1tdXRhYmxlIHRyYWRlIHNuYXBzaG90IGFuZCBwb3N0LWRlbGl2ZXJ5IHF1YXJhbnRpbmUiXSwKICAgICAgImxlZ2FsUmV2aWV3UmVxdWlyZWQiOiB0cnVlCiAgICB9CiAgXSwKICAiY2FuZGlkYXRlRG9jdW1lbnRzIjogWwogICAgewogICAgICAiaWQiOiAiUEEtQy0wMDEiLAogICAgICAicHVibGljYXRpb25OdW1iZXIiOiAiSlAyMDI0NTA0MDQ2QSIsCiAgICAgICJ0aXRsZSI6ICJTeXN0ZW1zIGFuZCBtZXRob2RzIGZvciB0cmFjaW5nIGFuZCBxdWFsaXR5IGFzc3VyYW5jZSBvZiByYXcgbWF0ZXJpYWxzIiwKICAgICAgInVybCI6ICJodHRwczovL3BhdGVudHMuZ29vZ2xlLmNvbS9wYXRlbnQvSlAyMDI0NTA0MDQ2QS9lbiIsCiAgICAgICJ2ZXJpZmljYXRpb25TdGF0dXMiOiAiUEVORElOR19PRkZJQ0lBTF9DTEFJTV9SRVZJRVciLAogICAgICAic291cmNlQ2hlY2tEYXRlIjogIjIwMjYtMDktMTAiLAogICAgICAic291cmNlQ2hlY2tTdGF0dXMiOiAiQUJTVFJBQ1RfQU5EX0RFU0NSSVBUSU9OX1JFVklFV0VEX0NMQUlNU19QRU5ESU5HIiwKICAgICAgInNvdXJjZUNoZWNrTm90ZSI6ICLqs7XqsJwg7Y6Y7J207KeA7JeQ7IScIOybkOujjMK367Cw7LmYwrdDT0HCt+y2lOyggcK37ZKI7KeI67O07KadwrfsmrTshqHrrLjshJwg67CPIOuUlOyngO2EuCDspp3rqoXshJwg6rKw7IaNIOuCtOyaqeydhCDtmZXsnbjtlojsnLzrqbAsIOyyreq1rO2VrSDsoITssrTsmYAg7Yyo67CA66aswrfrspXsoIEg7IOB7YOc64qUIOuzgOumrOyCrCDsnqzqsoDthqAg64yA7IOB7Jy866GcIOuCqOq4tOuLpC4iLAogICAgICAib3ZlcmxhcEF4ZXMiOiBbInJhdyBtYXRlcmlhbCBsb3QgYW5kIENPQSB0cmFjZWFiaWxpdHkiLCAicXVhbGl0eSBhc3N1cmFuY2UiXSwKICAgICAgImRpZmZlcmVudGlhdGlvblF1ZXN0aW9ucyI6IFsicHJlLXRyYWRlIGZpdmUtZG9jdW1lbnQgZ2F0ZSIsICJhdG9taWMgTG90IHJlc2VydmF0aW9uIiwgImltbXV0YWJsZSB0cmFkZSBzbmFwc2hvdCIsICJwb3N0LWRlbGl2ZXJ5IHF1YXJhbnRpbmUiXSwKICAgICAgImxlZ2FsUmV2aWV3UmVxdWlyZWQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAiUEEtQy0wMDIiLAogICAgICAicHVibGljYXRpb25OdW1iZXIiOiAiV08yMDAxMDQ2ODgzQTIiLAogICAgICAidGl0bGUiOiAiTWV0aG9kIGFuZCBzeXN0ZW0gZm9yIHNwZWNpZnlpbmcgbWF0ZXJpYWxzIiwKICAgICAgInVybCI6ICJodHRwczovL3BhdGVudHMuZ29vZ2xlLmNvbS9wYXRlbnQvV08yMDAxMDQ2ODgzQTIvZW4iLAogICAgICAidmVyaWZpY2F0aW9uU3RhdHVzIjogIlBFTkRJTkdfT0ZGSUNJQUxfQ0xBSU1fUkVWSUVXIiwKICAgICAgInNvdXJjZUNoZWNrRGF0ZSI6ICIyMDI2LTA5LTEwIiwKICAgICAgInNvdXJjZUNoZWNrU3RhdHVzIjogIkFCU1RSQUNUX0FORF9DTEFJTVNfUFJFVklFV0VEX0ZVTExfQ0xBSU1TX1BFTkRJTkciLAogICAgICAic291cmNlQ2hlY2tOb3RlIjogIuqzteqwnCDtjpjsnbTsp4DsnZgg7LSI66Gd6rO8IOuMgO2RnCDssq3qtaztla0g66+466as67O06riw7JeQ7IScIOq1rOunpOyekMK36rO16riJ7J6QIOyerOujjCBmaW5nZXJwcmludCDsoJXsnZjCt+u5hOq1kMK37Iq57J24L+qxsOygiCDrsI8g7KO866y4IOy2lOyggeydhCDtmZXsnbjtlojsnLzrqbAsIOyghOyytCDssq3qtaztla3qs7wg7Yyo67CA66aswrfrspXsoIEg7IOB7YOc64qUIOuzgOumrOyCrCDsnqzqsoDthqAg64yA7IOB7Jy866GcIOuCqOq4tOuLpC4iLAogICAgICAib3ZlcmxhcEF4ZXMiOiBbIm1hdGVyaWFsIHNwZWNpZmljYXRpb24iLCAibWF0ZXJpYWwgaWRlbnRpdHkgb3IgZmluZ2VycHJpbnQgY29tcGFyaXNvbiJdLAogICAgICAiZGlmZmVyZW50aWF0aW9uUXVlc3Rpb25zIjogWyJidXllciBkaWFsb2d1ZSB0byBhcHByb3ZlZCBTcGVjIElEIiwgImV2aWRlbmNlLWxpZmVjeWNsZSBvZmZlciB2aXNpYmlsaXR5IiwgInRyYW5zYWN0aW9uLXRpbWUgcmVzZXJ2YXRpb24gYW5kIHNuYXBzaG90Il0sCiAgICAgICJsZWdhbFJldmlld1JlcXVpcmVkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogIlBBLUMtMDAzIiwKICAgICAgInB1YmxpY2F0aW9uTnVtYmVyIjogIkNOMTE0NDYzMDE5QiIsCiAgICAgICJ0aXRsZSI6ICJQcm9kdWN0IHRyYWNpbmcgbWV0aG9kIGFuZCBzeXN0ZW0gYmFzZWQgb24gYmxvY2tjaGFpbiIsCiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9wYXRlbnRzLmdvb2dsZS5jb20vcGF0ZW50L0NOMTE0NDYzMDE5Qi9lbiIsCiAgICAgICJ2ZXJpZmljYXRpb25TdGF0dXMiOiAiUEVORElOR19PRkZJQ0lBTF9DTEFJTV9SRVZJRVciLAogICAgICAic291cmNlQ2hlY2tEYXRlIjogIjIwMjYtMDktMTAiLAogICAgICAic291cmNlQ2hlY2tTdGF0dXMiOiAiQUJTVFJBQ1RfQU5EX0RFU0NSSVBUSU9OX1JFVklFV0VEX0NMQUlNU19QRU5ESU5HIiwKICAgICAgInNvdXJjZUNoZWNrTm90ZSI6ICLqs7XqsJwg7Y6Y7J207KeA7JeQ7IScIOuwsOy5mCDsm5Dro4zsnZgg7ZKI7KeI6rKA7IKsIOuNsOydtO2EsMK37J247Kad7IScwrfsnITsobDrsKnsp4Ag7L2U65OcwrfstpTsoIHsoJXrs7Trpbwg67iU66Gd7LK07J247JeQIOqysOyGje2VmOuKlCDrgrTsmqnsnYQg7ZmV7J247ZaI7Jy866mwLCDssq3qtaztla0g7KCE7LK07JmAIO2MqOuwgOumrMK367KV7KCBIOyDge2DnOuKlCDrs4Drpqzsgqwg7J6s6rKA7YagIOuMgOyDgeycvOuhnCDrgqjquLTri6QuIiwKICAgICAgIm92ZXJsYXBBeGVzIjogWyJiYXRjaCB0cmFjZWFiaWxpdHkiLCAicXVhbGl0eSBpbnNwZWN0aW9uIGFuZCBjZXJ0aWZpY2F0ZSBsaW5rYWdlIiwgInRhbXBlciBldmlkZW5jZSJdLAogICAgICAiZGlmZmVyZW50aWF0aW9uUXVlc3Rpb25zIjogWyJyZWxhdGlvbmFsIGV2aWRlbmNlIHN0YXRlIG1hY2hpbmUiLCAicHJlLXRyYWRlIGV4cG9zdXJlIGdhdGUiLCAiaWRlbXBvdGVudCBhdG9taWMgcmVzZXJ2YXRpb24iLCAic2VwYXJhdGUgZGVsaXZlcnkgZGlzcHV0ZSBzdGF0ZSJdLAogICAgICAibGVnYWxSZXZpZXdSZXF1aXJlZCI6IHRydWUKICAgIH0KICBdLAogICJyZXF1aXJlZE5leHRSZXZpZXciOiBbCiAgICAi6rCBIOusuO2XjOydmCDrj4Xrpr3Ct+yiheyGjSDssq3qtaztla0g7KCE7LK07JmAIO2MqOuwgOumrMK367KV7KCBIOyDge2DnOulvCDrs4DrpqzsgqzqsIAg7J6s6rKA7YagIiwKICAgICLqta3rgrTCt+uvuOq1rcK3UENU7JeQ7IScIGxvdMK3Q09BwrdpbnZlbnRvcnnCt3Jlc2VydmF0aW9uIOyhsO2VqSDstpTqsIAg6rKA7IOJIiwKICAgICLqs7XqsJwg67Kg7YOAIOyghCDstpzsm5DCt+yYgeyXheu5hOuwgCDrs7TsobQg67KU7JyEIO2ZleyglSIKICBdCn0K
+{
+  "schemaVersion": "PATENT-PRIOR-ART-0.1",
+  "researchDate": "2026-09-10",
+  "sourcePolicy": "공개 특허 문헌 조회 페이지의 초록·청구항 1차 대조만 기록하며, 법적 상태·등록성·침해·법률의견은 판단하지 않는다. 정부 특허청 원문·패밀리·법적 상태는 변리사가 재확인한다.",
+  "documents": [
+    {
+      "id": "PA-001",
+      "publicationNumber": "CN117436995B",
+      "title": "Digital supply chain purchasing transaction platform and method",
+      "url": "https://patents.google.com/patent/CN117436995B/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["producer-supplier-buyer modules", "purchase demand", "quality inspection", "supplier quotation", "price-quantity-specification matching"],
+      "overlapAxes": ["multi-party procurement", "quotation and matching", "quality evaluation"],
+      "differentiationQuestions": ["pre-trade evidence bundle gate", "same-lot evidence expiry state", "accept-time revalidation", "idempotent atomic lot reservation", "immutable trade snapshot", "post-delivery quarantine separation"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-002",
+      "publicationNumber": "CN115936878A",
+      "title": "A system and method for online purchase and transaction of steel scrap",
+      "url": "https://patents.google.com/patent/CN115936878A/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["buyer procurement request", "supplier finds request", "supplier quotation", "quantity quotation"],
+      "overlapAxes": ["buyer-request-to-supplier-quotation flow", "physical goods marketplace"],
+      "differentiationQuestions": ["Material Master Spec ID sealing", "evidence-lifecycle-driven offer visibility", "transaction-time revalidation and lot lock", "separate delivery dispute state"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-003",
+      "publicationNumber": "US20120209890A1",
+      "title": "Inter-enterprise ingredient specification compliance",
+      "url": "https://patents.google.com/patent/US20120209890A1/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["normalized ingredient data", "supplier and receiver entities", "ingredient attributes", "specification compliance", "certificate of analysis", "supplier risk or favorability profile"],
+      "overlapAxes": ["ingredient specification normalization", "COA and shipment attributes", "cross-enterprise supplier assessment"],
+      "differentiationQuestions": ["buyer question-driven immutable Material Master Spec", "five-document pre-trade evidence gate", "same-lot expiry and inventory availability state", "accept-time atomic reservation", "immutable trade snapshot", "post-delivery quarantine separation"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-004",
+      "publicationNumber": "CN118569220A",
+      "title": "A method and system for automatically generating procurement technical specifications",
+      "url": "https://patents.google.com/patent/CN118569220A/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["procurement technical specification", "pretrained language model", "document error correction", "sensitive word recognition", "manual audit"],
+      "overlapAxes": ["AI-assisted procurement specification generation", "human review of generated specification"],
+      "differentiationQuestions": ["Material Master identity and allowed field set", "user answer sealing into transaction Spec ID", "Lot evidence and inventory eligibility calculation", "transaction-time revalidation and atomic reservation", "immutable physical-trade snapshot"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-005",
+      "publicationNumber": "US12282892B2",
+      "title": "Data-driven requirements analysis and matching",
+      "url": "https://patents.google.com/patent/US12282892B2/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["data-driven requirements analysis", "vendor capability matching", "logic module", "ranked match data", "procurement display"],
+      "overlapAxes": ["requirements-to-supplier matching", "data transformation and ranked procurement results"],
+      "differentiationQuestions": ["evidence lifecycle as a hard offer visibility gate", "verified physical Lot identity", "idempotent atomic inventory reservation", "trade-time immutable evidence snapshot", "delivery dispute and quarantine state separation"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-006",
+      "publicationNumber": "US20070214065A1",
+      "title": "Inventory transaction common object",
+      "url": "https://patents.google.com/patent/US20070214065A1/en",
+      "sourceAuthority": "Google Patents publication page",
+      "verificationStatus": "ABSTRACT_AND_CLAIMS_REVIEWED",
+      "disclosedThemes": ["inventory transaction data model", "purchase order line item", "source and destination inventory locations", "front-office and back-office synchronization"],
+      "overlapAxes": ["inventory transaction normalization", "purchase order and inventory synchronization"],
+      "differentiationQuestions": ["evidence-qualified Lot rather than generic inventory object", "per-Lot proof expiry and public offer state", "accept-time revalidation", "idempotent reservation key and transaction lock", "immutable trade snapshot and post-delivery quarantine"],
+      "legalReviewRequired": true
+    }
+  ],
+  "candidateDocuments": [
+    {
+      "id": "PA-C-001",
+      "publicationNumber": "JP2024504046A",
+      "title": "Systems and methods for tracing and quality assurance of raw materials",
+      "url": "https://patents.google.com/patent/JP2024504046A/en",
+      "verificationStatus": "PENDING_OFFICIAL_CLAIM_REVIEW",
+      "sourceCheckDate": "2026-09-10",
+      "sourceCheckStatus": "ABSTRACT_AND_DESCRIPTION_REVIEWED_CLAIMS_PENDING",
+      "sourceCheckNote": "공개 페이지에서 원료·배치·COA·추적·품질보증·운송문서 및 디지털 증명서 결속 내용을 확인했으며, 청구항 전체와 패밀리·법적 상태는 변리사 재검토 대상으로 남긴다.",
+      "overlapAxes": ["raw material lot and COA traceability", "quality assurance"],
+      "differentiationQuestions": ["pre-trade five-document gate", "atomic Lot reservation", "immutable trade snapshot", "post-delivery quarantine"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-C-002",
+      "publicationNumber": "WO2001046883A2",
+      "title": "Method and system for specifying materials",
+      "url": "https://patents.google.com/patent/WO2001046883A2/en",
+      "verificationStatus": "PENDING_OFFICIAL_CLAIM_REVIEW",
+      "sourceCheckDate": "2026-09-10",
+      "sourceCheckStatus": "ABSTRACT_AND_CLAIMS_PREVIEWED_FULL_CLAIMS_PENDING",
+      "sourceCheckNote": "공개 페이지의 초록과 대표 청구항 미리보기에서 구매자·공급자 재료 fingerprint 정의·비교·승인/거절 및 주문 추적을 확인했으며, 전체 청구항과 패밀리·법적 상태는 변리사 재검토 대상으로 남긴다.",
+      "overlapAxes": ["material specification", "material identity or fingerprint comparison"],
+      "differentiationQuestions": ["buyer dialogue to approved Spec ID", "evidence-lifecycle offer visibility", "transaction-time reservation and snapshot"],
+      "legalReviewRequired": true
+    },
+    {
+      "id": "PA-C-003",
+      "publicationNumber": "CN114463019B",
+      "title": "Product tracing method and system based on blockchain",
+      "url": "https://patents.google.com/patent/CN114463019B/en",
+      "verificationStatus": "PENDING_OFFICIAL_CLAIM_REVIEW",
+      "sourceCheckDate": "2026-09-10",
+      "sourceCheckStatus": "ABSTRACT_AND_DESCRIPTION_REVIEWED_CLAIMS_PENDING",
+      "sourceCheckNote": "공개 페이지에서 배치 원료의 품질검사 데이터·인증서·위조방지 코드·추적정보를 블록체인에 결속하는 내용을 확인했으며, 청구항 전체와 패밀리·법적 상태는 변리사 재검토 대상으로 남긴다.",
+      "overlapAxes": ["batch traceability", "quality inspection and certificate linkage", "tamper evidence"],
+      "differentiationQuestions": ["relational evidence state machine", "pre-trade exposure gate", "idempotent atomic reservation", "separate delivery dispute state"],
+      "legalReviewRequired": true
+    }
+  ],
+  "requiredNextReview": [
+    "각 문헌의 독립·종속 청구항 전체와 패밀리·법적 상태를 변리사가 재검토",
+    "국내·미국·PCT에서 lot·COA·inventory·reservation 조합 추가 검색",
+    "공개 베타 전 출원·영업비밀 보존 범위 확정"
+  ]
+}

@@ -1,1 +1,28 @@
-ZXhwb3J0IGNvbnN0IGNyZWF0ZVNzZUZyYW1lID0gKGV2ZW50TmFtZSwgcGF5bG9hZCwgZXZlbnRJZCA9ICcnKSA9PiB7CiAgY29uc3QgaWRMaW5lID0gZXZlbnRJZCA/IGBpZDogJHtldmVudElkfVxuYCA6ICcnOwogIHJldHVybiBgJHtpZExpbmV9ZXZlbnQ6ICR7ZXZlbnROYW1lfVxuZGF0YTogJHtKU09OLnN0cmluZ2lmeShwYXlsb2FkKX1cblxuYDsKfTsKCmV4cG9ydCBjbGFzcyBTc2VFdmVudEJyb2tlciB7CiAgY29uc3RydWN0b3IoeyBoZWFydGJlYXRQYXlsb2FkID0geyBkYXRhU3RhdHVzOiAnU0lNVUxBVEVEX0JBQ0tFTkQnIH0gfSA9IHt9KSB7CiAgICB0aGlzLmNsaWVudHMgPSBuZXcgTWFwKCk7CiAgICB0aGlzLmhlYXJ0YmVhdFBheWxvYWQgPSBoZWFydGJlYXRQYXlsb2FkOwogIH0KCiAgYWRkKHJlc3BvbnNlLCB0cmFuc2Zvcm0gPSAocGF5bG9hZCkgPT4gcGF5bG9hZCkgewogICAgdGhpcy5jbGllbnRzLnNldChyZXNwb25zZSwgdHJhbnNmb3JtKTsKICAgIHJldHVybiAoKSA9PiB0aGlzLmNsaWVudHMuZGVsZXRlKHJlc3BvbnNlKTsKICB9CgogIHNlbmQocmVzcG9uc2UsIGV2ZW50TmFtZSwgcGF5bG9hZCwgZXZlbnRJZCA9ICcnKSB7CiAgICB0cnkgeyByZXNwb25zZS53cml0ZShjcmVhdGVTc2VGcmFtZShldmVudE5hbWUsIHBheWxvYWQsIGV2ZW50SWQpKTsgfSBjYXRjaCB7IHRoaXMuY2xpZW50cy5kZWxldGUocmVzcG9uc2UpOyB9CiAgfQoKICBwdWJsaXNoKGV2ZW50TmFtZSwgcGF5bG9hZCwgZXZlbnRJZCA9ICcnKSB7CiAgICBmb3IgKGNvbnN0IFtjbGllbnQsIHRyYW5zZm9ybV0gb2YgdGhpcy5jbGllbnRzKSB0aGlzLnNlbmQoY2xpZW50LCBldmVudE5hbWUsIHRyYW5zZm9ybShwYXlsb2FkKSwgZXZlbnRJZCk7CiAgfQoKICBoZWFydGJlYXQoKSB7CiAgICB0aGlzLnB1Ymxpc2goJ2hlYXJ0YmVhdCcsIHRoaXMuaGVhcnRiZWF0UGF5bG9hZCk7CiAgfQp9Cg==
+export const createSseFrame = (eventName, payload, eventId = '') => {
+  const idLine = eventId ? `id: ${eventId}\n` : '';
+  return `${idLine}event: ${eventName}\ndata: ${JSON.stringify(payload)}\n\n`;
+};
+
+export class SseEventBroker {
+  constructor({ heartbeatPayload = { dataStatus: 'SIMULATED_BACKEND' } } = {}) {
+    this.clients = new Map();
+    this.heartbeatPayload = heartbeatPayload;
+  }
+
+  add(response, transform = (payload) => payload) {
+    this.clients.set(response, transform);
+    return () => this.clients.delete(response);
+  }
+
+  send(response, eventName, payload, eventId = '') {
+    try { response.write(createSseFrame(eventName, payload, eventId)); } catch { this.clients.delete(response); }
+  }
+
+  publish(eventName, payload, eventId = '') {
+    for (const [client, transform] of this.clients) this.send(client, eventName, transform(payload), eventId);
+  }
+
+  heartbeat() {
+    this.publish('heartbeat', this.heartbeatPayload);
+  }
+}

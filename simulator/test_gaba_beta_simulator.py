@@ -1,1 +1,47 @@
-aW1wb3J0IHVuaXR0ZXN0Cgpmcm9tIGdhYmFfYmV0YV9zaW11bGF0b3IgaW1wb3J0IEdhYmFCZXRhU2ltdWxhdG9yLCBTaW11bGF0aW9uQ29uZmlnLCBydW5fbWFueQoKCmNsYXNzIEdhYmFCZXRhU2ltdWxhdG9yVGVzdHModW5pdHRlc3QuVGVzdENhc2UpOgogICAgZGVmIHRlc3Rfbm9ybWFsX3J1bl9oYXNfY29tcGxldGVkX3RyYWRlc19hbmRfbm9fZHVwbGljYXRlX3RyYWRlX2tleXMoc2VsZik6CiAgICAgICAgcmVzdWx0ID0gR2FiYUJldGFTaW11bGF0b3IoU2ltdWxhdGlvbkNvbmZpZyhkYXlzPTMwLCBvcmRlcnNfcGVyX2RheT01LCBzZWVkPTcpKS5ydW4oKQogICAgICAgIHNlbGYuYXNzZXJ0R3JlYXRlcihyZXN1bHQubWV0cmljc1sidHJhZGVfY291bnQiXSwgMCkKICAgICAgICBzZWxmLmFzc2VydEdyZWF0ZXIocmVzdWx0Lm1ldHJpY3NbImNvbXBsZXRlZF90cmFkZV9jb3VudCJdLCAwKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwocmVzdWx0Lm1ldHJpY3NbImR1cGxpY2F0ZV90cmFkZV9jb3VudCJdLCAwKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwocmVzdWx0Lm1ldHJpY3NbInByZXRyYWRlX3ZlcmlmaWNhdGlvbl9yYXRlIl0sIDEuMCkKCiAgICBkZWYgdGVzdF9kb2N1bWVudF9leHBpcnlfaXNfYmxvY2tlZF9iZWZvcmVfdHJhZGUoc2VsZik6CiAgICAgICAgcmVzdWx0ID0gR2FiYUJldGFTaW11bGF0b3IoCiAgICAgICAgICAgIFNpbXVsYXRpb25Db25maWcoZGF5cz00NSwgb3JkZXJzX3Blcl9kYXk9OCwgc2NlbmFyaW89ImRvY3VtZW50X2V4cGlyeSIsIHNlZWQ9NykKICAgICAgICApLnJ1bigpCiAgICAgICAgcmVhc29ucyA9IHtldmVudC5nZXQoInJlYXNvbiIpIGZvciBldmVudCBpbiByZXN1bHQuYmxvY2tlZF9ldmVudHN9CiAgICAgICAgc2VsZi5hc3NlcnRJbigiRE9DVU1FTlRfSU5WQUxJRCIsIHJlYXNvbnMpCiAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChyZXN1bHQubWV0cmljc1sicHJldHJhZGVfdmVyaWZpY2F0aW9uX3JhdGUiXSwgMS4wKQoKICAgIGRlZiB0ZXN0X3F1YWxpdHlfZmFpbHVyZV9pc19wb3N0X2RlbGl2ZXJ5X2Rpc3B1dGVfbm90X3ByZXRyYWRlX2ZhaWx1cmUoc2VsZik6CiAgICAgICAgcmVzdWx0ID0gR2FiYUJldGFTaW11bGF0b3IoCiAgICAgICAgICAgIFNpbXVsYXRpb25Db25maWcoZGF5cz02NSwgb3JkZXJzX3Blcl9kYXk9OCwgc2NlbmFyaW89InF1YWxpdHlfbWlzbWF0Y2giLCBzZWVkPTcpCiAgICAgICAgKS5ydW4oKQogICAgICAgIHNlbGYuYXNzZXJ0R3JlYXRlcihyZXN1bHQubWV0cmljc1siZGlzcHV0ZWRfdHJhZGVfY291bnQiXSwgMCkKICAgICAgICBzZWxmLmFzc2VydEVxdWFsKHJlc3VsdC5tZXRyaWNzWyJwcmV0cmFkZV92ZXJpZmljYXRpb25fcmF0ZSJdLCAxLjApCgogICAgZGVmIHRlc3Rfc3VwcGxpZXJfb3V0YWdlX3JlZHVjZXNfY29tcGxldGlvbihzZWxmKToKICAgICAgICBub3JtYWwgPSBHYWJhQmV0YVNpbXVsYXRvcihTaW11bGF0aW9uQ29uZmlnKGRheXM9NDAsIG9yZGVyc19wZXJfZGF5PTgsIHNlZWQ9NykpLnJ1bigpCiAgICAgICAgb3V0YWdlID0gR2FiYUJldGFTaW11bGF0b3IoCiAgICAgICAgICAgIFNpbXVsYXRpb25Db25maWcoZGF5cz00MCwgb3JkZXJzX3Blcl9kYXk9OCwgc2NlbmFyaW89InN1cHBsaWVyX291dGFnZSIsIHNlZWQ9NykKICAgICAgICApLnJ1bigpCiAgICAgICAgc2VsZi5hc3NlcnRMZXNzRXF1YWwoCiAgICAgICAgICAgIG91dGFnZS5tZXRyaWNzWyJjb21wbGV0ZWRfdHJhZGVfcmF0ZSJdLCBub3JtYWwubWV0cmljc1siY29tcGxldGVkX3RyYWRlX3JhdGUiXQogICAgICAgICkKCiAgICBkZWYgdGVzdF9tb250ZV9jYXJsb19zdW1tYXJ5X2lzX3JlcHJvZHVjaWJsZV9zaGFwZShzZWxmKToKICAgICAgICBzdW1tYXJ5ID0gcnVuX21hbnkoU2ltdWxhdGlvbkNvbmZpZyhkYXlzPTEwLCBvcmRlcnNfcGVyX2RheT00LCBzZWVkPTExKSwgcnVucz0zKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwoc3VtbWFyeVsicnVucyJdLCAzKQogICAgICAgIHNlbGYuYXNzZXJ0R3JlYXRlckVxdWFsKHN1bW1hcnlbImNvbXBsZXRlZF90cmFkZV9yYXRlX21pbiJdLCAwKQogICAgICAgIHNlbGYuYXNzZXJ0TGVzc0VxdWFsKHN1bW1hcnlbImNvbXBsZXRlZF90cmFkZV9yYXRlX21heCJdLCAxKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwoc3VtbWFyeVsiZHVwbGljYXRlX3RyYWRlX2NvdW50X3RvdGFsIl0sIDApCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHVuaXR0ZXN0Lm1haW4oKQo=
+import unittest
+
+from gaba_beta_simulator import GabaBetaSimulator, SimulationConfig, run_many
+
+
+class GabaBetaSimulatorTests(unittest.TestCase):
+    def test_normal_run_has_completed_trades_and_no_duplicate_trade_keys(self):
+        result = GabaBetaSimulator(SimulationConfig(days=30, orders_per_day=5, seed=7)).run()
+        self.assertGreater(result.metrics["trade_count"], 0)
+        self.assertGreater(result.metrics["completed_trade_count"], 0)
+        self.assertEqual(result.metrics["duplicate_trade_count"], 0)
+        self.assertEqual(result.metrics["pretrade_verification_rate"], 1.0)
+
+    def test_document_expiry_is_blocked_before_trade(self):
+        result = GabaBetaSimulator(
+            SimulationConfig(days=45, orders_per_day=8, scenario="document_expiry", seed=7)
+        ).run()
+        reasons = {event.get("reason") for event in result.blocked_events}
+        self.assertIn("DOCUMENT_INVALID", reasons)
+        self.assertEqual(result.metrics["pretrade_verification_rate"], 1.0)
+
+    def test_quality_failure_is_post_delivery_dispute_not_pretrade_failure(self):
+        result = GabaBetaSimulator(
+            SimulationConfig(days=65, orders_per_day=8, scenario="quality_mismatch", seed=7)
+        ).run()
+        self.assertGreater(result.metrics["disputed_trade_count"], 0)
+        self.assertEqual(result.metrics["pretrade_verification_rate"], 1.0)
+
+    def test_supplier_outage_reduces_completion(self):
+        normal = GabaBetaSimulator(SimulationConfig(days=40, orders_per_day=8, seed=7)).run()
+        outage = GabaBetaSimulator(
+            SimulationConfig(days=40, orders_per_day=8, scenario="supplier_outage", seed=7)
+        ).run()
+        self.assertLessEqual(
+            outage.metrics["completed_trade_rate"], normal.metrics["completed_trade_rate"]
+        )
+
+    def test_monte_carlo_summary_is_reproducible_shape(self):
+        summary = run_many(SimulationConfig(days=10, orders_per_day=4, seed=11), runs=3)
+        self.assertEqual(summary["runs"], 3)
+        self.assertGreaterEqual(summary["completed_trade_rate_min"], 0)
+        self.assertLessEqual(summary["completed_trade_rate_max"], 1)
+        self.assertEqual(summary["duplicate_trade_count_total"], 0)
+
+
+if __name__ == "__main__":
+    unittest.main()

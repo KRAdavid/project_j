@@ -1,1 +1,97 @@
-IyDsm5Dro4zrp4jsvJMg67Kg7YOAIO2FjOyKpO2KuCDtmZjqsr0KCkdBQkHrpbwg64yA7IOB7Jy866GcIOq1rOunpOyekOyZgCDqs7XquInsnpAg7Z2Q66aE7J2EIOyngeygkSDsi5ztl5jtlZjripQg66y07ISk7LmY7ZiVIO2UhOuhoO2KuOyXlOuTnCDrsqDtg4DsnoXri4jri6QuCgojIyDsoJzqs7XtlZjripQg7Z2Q66aECgoxLiBgR0FCQWAg65iQ64qUIGDqsIDrsJRgIOqygOyDiQoyLiDsiJzrj4TCt+ygnO2YlcK37JuQ7IKw7KeAwrftj6zsnqUg64uo7JyEIO2ZleyglQozLiDrj5nsnbwg7Iqk7Y6ZIO2Pieq3oCDqsbDrnpjqsIDsmYAgQUkg7LC46rOgIOyngO2RnCDtmZXsnbgKNC4g66ek7IiY6rCAwrfsiJjrn4nCt+2drOunnSDrgqnquLAg7J6F66ClCjUuIOyjvOusuCDsoJzstpwg67CPIOyjvOusuCDsg4Htg5wg7ZmV7J24CjYuIGDrtoTtlaAg67O06riwYOyXkOyEnCDqtazrp6TsnpDCt+qzteq4ieyekCDtmZTrqbTsnYQg64+Z7Iuc7JeQIO2ZleyduAo3LiBg6rO16riJ7J6QYCDsl63tlaDroZwg7KCE7ZmY7ZW0IOqygOymnSDsnqzqs6DsmYAg7KO866y4IOyytOqysCDtmZXsnbgKOC4g7Iuk7Iuc6rCEIOybkOujjCDssrTqsrDssL3sl5DshJwg6rCA6rKpwrftmLjqsIDCt+y1nOq3vCDssrTqsrDCt+ydtOuypO2KuCDqsLHsi6Ag7ZmV7J24CjkuIEV2aWRlbmNlLUxvY2tlZCBJbnZlbnRvcnnsnZgg7JiI7JW9wrfrgqntkojCt+qygOyImMK367aE7J+BIOyDge2DnCDtmZXsnbgKMTAuIOqzteq4ieyekCDspp3ruZkgNeyiheydhCDrqqjrkZAg7J246rCEIOqygO2GoCDsmYTro4ztlZwg65Kk7JeQ66eMIOyLoOq3nCDroZztirgg65Ox66GdCjExLiBg7Jq07JiB7J6QYCDsl63tlaDsl5DshJwgQUkg7J6Q64+Z7Jq07JiBIOyLpO2WicK37Iq57J24IOuMgOq4sMK37IOB7JqpIOyghO2ZmCDsg4Htg5zrpbwg67OE64+EIO2ZleyduAoxMi4gYC9hcGkvc3BlYy1jb21waWxlYOuhnCDtlZwg67KI7JeQIO2VmOuCmOyUqSDri7Xrs4DtlZjripQg7Iqk7Y6ZIOy7tO2MjOydvCDtnZDrpoTqs7wg66+47ZmV7KCVwrfrtojsnbzsuZgg7IOB7YOcIO2ZleyduAoKIyMg67aE7ZWgIOyLnOuurOugiOydtOyFmCDsgqzsmqnrspUKCuq4sOuzuCDtmZTrqbTsnYAgYOu2hO2VoCDrs7TquLBg7J6F64uI64ukLiDsmbzsqr0g6rWs66ek7J6QIO2ZlOuptOyXkOyEnCDrp6TsiJjqsIDsmYAg7IiY65+J7J2EIOyeheugpe2VmOqzoCBg6rWs66ekIOyjvOusuCDsoJzstpxg7J2EIOuIhOultOuptCwg7Jik66W47Kq9IOqzteq4ieyekCDtmZTrqbTsnZgg7KO866y47J20IOymieyLnCDtmZzshLHtmZTrkKnri4jri6QuIOqzteq4ieyekOqwgCBg6rWs66ek7J6QIOyjvOusuOydhCDssrTqsrDtlZjquLBg66W8IOuIhOultOuptCDslpHsqr0g7ZmU66m07J20IOqzteycoO2VmOuKlCDsi5zrrqzroIjsnbTshZgg7IOB7YOc6rCAIGDssrTqsrAg7JmE66OMYOuhnCDrsJTrgJ3ri4jri6QuCgojIyDsi6TtlokKCk5vZGUuanPqsIAg7J6I64qUIO2ZmOqyveyXkOyEnOuKlCDsoIDsnqXshozsl5Ag7Y+s7ZWo65CcIOustOyEpOy5mCDshJzrsoTrpbwg7Iuk7ZaJ7ZWp64uI64ukLgoKYGBgcG93ZXJzaGVsbApub2RlIHNlcnZlci5tanMKYGBgCgrqt7gg64uk7J2MIOu4jOudvOyasOyggOyXkOyEnCBgaHR0cDovLzEyNy4wLjAuMTo0MTczL2DsnYQg7Je964uI64ukLgoK7Jq07JiBIOygnOyWtO2DkSDsi5zrrqzroIjsnbTshZjsnYAgYGh0dHA6Ly8xMjcuMC4wLjE6NDE3My8/cm9sZT1vcGVyYXRvcmDroZwg67CU66GcIOyXtCDsiJgg7J6I7Iq164uI64ukLiDsnbQg7ZmU66m07J2AIOyatOyYgSDsg4Htg5zrpbwg67O07Jes7KO86riw66eMIO2VmOupsCwgQUnqsIAg7Iuk7KCcIOqxsOuemMK36rOE7JW9wrfsp4DquInsnYQg7Iq57J247ZWY7KeAIOyViuyKteuLiOuLpC4KCu2VteyLrCDssrTqsrAg6rec7LmZIO2ajOq3gCDthYzsiqTtirg6CgpgYGBwb3dlcnNoZWxsCm5vZGUgdGVzdC10cmFkZS1lbmdpbmUubWpzCmBgYAoK7YWM7Iqk7Yq464qUIOyKpO2OmSDrr7jtmZXsoJUg7KO866y4IOywqOuLqCwg6rGw656YIOyghCDspp3ruZkg6rKM7J207Yq4LCDrqbHrk7Eg7KO866y4wrfssrTqsrAsIOyerOqzoCDsnqDquIgsIOy0iOqzvO2MkOunpCDssKjri6jsnYQg7ZmV7J247ZWp64uI64ukLgoK7IOB7YOc66i47IugIOuqqOuTiCDthYzsiqTtirg6CgpgYGBwb3dlcnNoZWxsCm5vZGUgdGVzdC1pbnZlbnRvcnktbGVkZ2VyLm1qcwpgYGAKCuybkOyepSDsnbTrsqTtirgg7Iqk7Yq466a8IO2Gte2VqSDthYzsiqTtirg6CgpgYGBwb3dlcnNoZWxsCm5vZGUgdGVzdC1zc2UtaW50ZWdyYXRpb24ubWpzCmBgYAoK67Kg7YOAIOybkOyepSDsnqzsi5zsnpEg67O16rWsIO2FjOyKpO2KuDoKCmBgYHBvd2Vyc2hlbGwKbm9kZSAtLWV4cGVyaW1lbnRhbC1zcWxpdGUgdGVzdC1wZXJzaXN0ZW5jZS1zdG9yZS5tanMKbm9kZSAtLWV4cGVyaW1lbnRhbC1zcWxpdGUgdGVzdC1zZXJ2ZXItcGVyc2lzdGVuY2UubWpzCmBgYAoKU1FMaXRlIOyKpOuDheyDtyDrqqjrk5zroZwg66Gc7LusIOyEnOuyhOulvCDsi6TtlontlZjroKTrqbQg64uk7J2M7LKY65+8IOuqheyLnO2VqeuLiOuLpC4g7J20IOuqqOuTnOuKlCDqsJzrsJzCt+uzteq1rCDrpqztl4jshKTsmqnsnbTrqbAg7IOB7JqpIOybkOyepeydgCBQb3N0Z3JlU1FM66GcIOyghO2ZmO2VtOyVvCDtlanri4jri6QuCgpgYGBwb3dlcnNoZWxsCiRlbnY6UEVSU0lTVEVOQ0VfTU9ERSA9ICdzcWxpdGUnCiRlbnY6UEVSU0lTVEVOQ0VfRklMRSA9ICIkUFdEXC4uXGRhdGFcYmV0YS1sZWRnZXIuc3FsaXRlIgpub2RlIC0tZXhwZXJpbWVudGFsLXNxbGl0ZSBzZXJ2ZXIubWpzCmBgYAoKUG93ZXJTaGVsbOyXkOyEnCDsnbQg7Y+0642U66GcIOydtOuPme2VnCDrkqQg64uk7J2MIOuqheugueydhCDsi6Ttlontlanri4jri6QuCgpgYGBwb3dlcnNoZWxsClNldC1FeGVjdXRpb25Qb2xpY3kgLVNjb3BlIFByb2Nlc3MgQnlwYXNzCi5cc2VydmVyLnBzMQpgYGAKCuq3uCDri6TsnYwg67iM65287Jqw7KCA7JeQ7IScIGBodHRwOi8vMTI3LjAuMC4xOjQxNzMvYOydhCDsl73ri4jri6QuCgpOb2RlLmpzIOuYkOuKlCBQeXRob27snbQg7J6I64qUIO2ZmOqyveyXkOyEnOuKlCDsoJXsoIEg7ISc67KE66Gc64+EIOyLpO2Wie2VoCDsiJgg7J6I7Iq164uI64ukLgoKYGBgcG93ZXJzaGVsbApub2RlIC0tdmVyc2lvbgpweXRob24gLW0gaHR0cC5zZXJ2ZXIgNDE3MwpgYGAKCiMjIOuyoO2DgCDrspTsnITsmYAg7KCc7ZWcCgotIO2YhOyerCDrjbDsnbTthLDripQg66qo65GQIOyLnOuurOugiOydtOyFmCDrjbDsnbTthLDsnoXri4jri6QuCi0gYHNlcnZlci5tanNg64qUIGAvYXBpL3N0YXRlYCwgYC9hcGkvbWFya2V0LWJvYXJkP3NwZWNJZD1HQUJBLVNQRUMtMDAxYCwgYC9hcGkvb3JkZXJzYCwgYC9hcGkvb3JkZXJzLzpvcmRlcklkL2FjY2VwdGAg7LWc7IaMIOqxsOuemCDsm5DsnqXsnYQg7KCc6rO17ZWp64uI64ukLgotIGAvYXBpL21hcmtldC1ib2FyZGDripQg7ISc67KEIOybkOyepeydmCBgVkVSSUZJRURfRUxJR0lCTEVgIOuhnO2KuCDspJEg7Jyg7ZqoIOymneu5mcK36rCA7JqpIOyerOqzoMK37ZGc7KSAIOqxsOuemOuLqOychOulvCDrqqjrkZAg7Ya16rO87ZWcIOunpOusvOunjCDrsJjtmZjtlanri4jri6QuIOqzteqwnCDrp6TsiJgg7Zi46rCA64qUIOuzhOuPhCDqs7XqsJzsoJXssYUg7Iq57J24IOyghOq5jOyngCDruYgg67Cw7Je07J6F64uI64ukLgotIGBzZXJ2ZXIubWpzYOuKlCBgL2FwaS9tYXRlcmlhbHNgLCBgL2FwaS9tYXRlcmlhbHMvcmVzb2x2ZT9xPUdBQkFg66GcIO2RnOykgCDsm5Dro4zCt+uPmeydmOyWtCDrp6Tsua0g6rKw6rO866W8IOygnOqzte2VqeuLiOuLpC4KLSBgUE9TVCAvYXBpL2V2aWRlbmNlYOyZgCDsmrTsmIHsnpAg6rKA7YagIO2bhCBgUE9TVCAvYXBpL2xvdHNg66GcIOqxsOuemCDsoIQg7Kad67mZ7J20IOyZhOu5hOuQnCDroZztirjrp4wg66ek66y8IOuTseuhneydhCDtl4jsmqntlanri4jri6QuCi0g6riw67O4IOybkOyepeydgCDslYjsoITtlZwg7Iuc666s66CI7J207IWYIOuplOuqqOumrCDrqqjrk5zsnoXri4jri6QuIGBQRVJTSVNURU5DRV9NT0RFPXNxbGl0ZWDrpbwg66qF7Iuc7ZWY66m0IOuyoO2DgCDrs7Xqtawg66as7ZeI7ISk7JqpIOyKpOuDheyDtyDsm5DsnqXsnYQg7IKs7Jqp7ZWgIOyImCDsnojsirXri4jri6QuIGBQRVJTSVNURU5DRV9NT0RFPXBvc3RncmVzcWxg7J2AIGBwZ2Ag65Oc65287J2067KE7JmAIGBEQVRBQkFTRV9VUkxg7J20IOyLpOygnOuhnCDsl7DqsrDrkKAg65WM66eMIOq4sOuPme2VmOupsCwg7Jew6rKwIOyLpO2MqCDsi5wg66mU66qo66asIOuqqOuTnOuhnCDtj7TrsLHtlZjsp4Ag7JWK7Iq164uI64ukLiDsg4Hsmqkg7KCE7ZmYIOyghOyXkOuKlCBPYmplY3QgU3RvcmFnZcK36rCQ7IKsIOydtOuypO2KuCDsoIDsnqXshozrj4Qg67OE64+EIOyXsOqysO2VtOyVvCDtlanri4jri6QuCi0g7Iuk7KCcIO2ajOybkOqwgOyehcK366Gc6re47J24wrfrrLjshJwg7JeF66Gc65OcwrfqsrDsoJzCt+yghOyekOqzhOyVvcK37JWM66a8wrfrsLHsl5Trk5zripQg7Jew6rKw65CY7Ja0IOyeiOyngCDslYrsirXri4jri6QuCi0g67iM65287Jqw7KCA66W8IOyDiOuhnOqzoOy5qO2VtOuPhCDshJzrsoQg7JuQ7J6l7J2YIOyjvOusuMK37LK06rKwIOyDge2DnOulvCDri6Tsi5wg67aI65+s7Ji164uI64ukLiDrqZTrqqjrpqwg66qo65Oc7J2YIOyEnOuyhCDsnqzsi5zsnpEg7IucIOybkOyepeydgCDstIjquLDtmZTrkJjrqbAsIFNRTGl0ZSDrqqjrk5zripQg66eI7KeA66eJIOyggOyepSDsiqTrg4Xsg7fsl5DshJwg67O16rWs65Cp64uI64ukLgotIOyLpOygnCDqs7XqsJwg67Kg7YOAIOyghOyXkOuKlCDqs7XquInsnpAg7J247KadLCDsnqzqs6Ag7Kad67mZLCBDT0HCt+q3nOqyqeyEnCDsnKDtmqjshLEsIOuhnO2KuCDsnqDquIgsIOqzhOyVvcK367Cw7IahwrfqsoDsiJjCt+ygleyCsCDsl7Dqs4Trpbwg67CY65Oc7IucIOu2meyXrOyVvCDtlanri4jri6QuCg==
+# 원료마켓 베타 테스트 환경
+
+GABA를 대상으로 구매자와 공급자 흐름을 직접 시험하는 무설치형 프론트엔드 베타입니다.
+
+## 제공하는 흐름
+
+1. `GABA` 또는 `가바` 검색
+2. 순도·제형·원산지·포장 단위 확정
+3. 동일 스펙 평균 거래가와 AI 참고 지표 확인
+4. 매수가·수량·희망 납기 입력
+5. 주문 제출 및 주문 상태 확인
+6. `분할 보기`에서 구매자·공급자 화면을 동시에 확인
+7. `공급자` 역할로 전환해 검증 재고와 주문 체결 확인
+8. 실시간 원료 체결창에서 가격·호가·최근 체결·이벤트 갱신 확인
+9. Evidence-Locked Inventory의 예약·납품·검수·분쟁 상태 확인
+10. 공급자 증빙 5종을 모두 인간 검토 완료한 뒤에만 신규 로트 등록
+11. `운영자` 역할에서 AI 자동운영 실행·승인 대기·상용 전환 상태를 별도 확인
+12. `/api/spec-compile`로 한 번에 하나씩 답변하는 스펙 컴파일 흐름과 미확정·불일치 상태 확인
+
+## 분할 시뮬레이션 사용법
+
+기본 화면은 `분할 보기`입니다. 왼쪽 구매자 화면에서 매수가와 수량을 입력하고 `구매 주문 제출`을 누르면, 오른쪽 공급자 화면의 주문이 즉시 활성화됩니다. 공급자가 `구매자 주문을 체결하기`를 누르면 양쪽 화면이 공유하는 시뮬레이션 상태가 `체결 완료`로 바뀝니다.
+
+## 실행
+
+Node.js가 있는 환경에서는 저장소에 포함된 무설치 서버를 실행합니다.
+
+```powershell
+node server.mjs
+```
+
+그 다음 브라우저에서 `http://127.0.0.1:4173/`을 엽니다.
+
+운영 제어탑 시뮬레이션은 `http://127.0.0.1:4173/?role=operator`로 바로 열 수 있습니다. 이 화면은 운영 상태를 보여주기만 하며, AI가 실제 거래·계약·지급을 승인하지 않습니다.
+
+핵심 체결 규칙 회귀 테스트:
+
+```powershell
+node test-trade-engine.mjs
+```
+
+테스트는 스펙 미확정 주문 차단, 거래 전 증빙 게이트, 멱등 주문·체결, 재고 잠금, 초과판매 차단을 확인합니다.
+
+상태머신 모듈 테스트:
+
+```powershell
+node test-inventory-ledger.mjs
+```
+
+원장 이벤트 스트림 통합 테스트:
+
+```powershell
+node test-sse-integration.mjs
+```
+
+베타 원장 재시작 복구 테스트:
+
+```powershell
+node --experimental-sqlite test-persistence-store.mjs
+node --experimental-sqlite test-server-persistence.mjs
+```
+
+SQLite 스냅샷 모드로 로컬 서버를 실행하려면 다음처럼 명시합니다. 이 모드는 개발·복구 리허설용이며 상용 원장은 PostgreSQL로 전환해야 합니다.
+
+```powershell
+$env:PERSISTENCE_MODE = 'sqlite'
+$env:PERSISTENCE_FILE = "$PWD\..\data\beta-ledger.sqlite"
+node --experimental-sqlite server.mjs
+```
+
+PowerShell에서 이 폴더로 이동한 뒤 다음 명령을 실행합니다.
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+.\server.ps1
+```
+
+그 다음 브라우저에서 `http://127.0.0.1:4173/`을 엽니다.
+
+Node.js 또는 Python이 있는 환경에서는 정적 서버로도 실행할 수 있습니다.
+
+```powershell
+node --version
+python -m http.server 4173
+```
+
+## 베타 범위와 제한
+
+- 현재 데이터는 모두 시뮬레이션 데이터입니다.
+- `server.mjs`는 `/api/state`, `/api/market-board?specId=GABA-SPEC-001`, `/api/orders`, `/api/orders/:orderId/accept` 최소 거래 원장을 제공합니다.
+- `/api/market-board`는 서버 원장의 `VERIFIED_ELIGIBLE` 로트 중 유효 증빙·가용 재고·표준 거래단위를 모두 통과한 매물만 반환합니다. 공개 매수 호가는 별도 공개정책 승인 전까지 빈 배열입니다.
+- `server.mjs`는 `/api/materials`, `/api/materials/resolve?q=GABA`로 표준 원료·동의어 매칭 결과를 제공합니다.
+- `POST /api/evidence`와 운영자 검토 후 `POST /api/lots`로 거래 전 증빙이 완비된 로트만 매물 등록을 허용합니다.
+- 기본 원장은 안전한 시뮬레이션 메모리 모드입니다. `PERSISTENCE_MODE=sqlite`를 명시하면 베타 복구 리허설용 스냅샷 원장을 사용할 수 있습니다. `PERSISTENCE_MODE=postgresql`은 `pg` 드라이버와 `DATABASE_URL`이 실제로 연결될 때만 기동하며, 연결 실패 시 메모리 모드로 폴백하지 않습니다. 상용 전환 전에는 Object Storage·감사 이벤트 저장소도 별도 연결해야 합니다.
+- 실제 회원가입·로그인·문서 업로드·결제·전자계약·알림·백엔드는 연결되어 있지 않습니다.
+- 브라우저를 새로고침해도 서버 원장의 주문·체결 상태를 다시 불러옵니다. 메모리 모드의 서버 재시작 시 원장은 초기화되며, SQLite 모드는 마지막 저장 스냅샷에서 복구됩니다.
+- 실제 공개 베타 전에는 공급자 인증, 재고 증빙, COA·규격서 유효성, 로트 잠금, 계약·배송·검수·정산 연계를 반드시 붙여야 합니다.

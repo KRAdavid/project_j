@@ -1,1 +1,49 @@
-aW1wb3J0IHsgcmVhZEZpbGUgfSBmcm9tICdub2RlOmZzL3Byb21pc2VzJzsKaW1wb3J0IHsgcmVzb2x2ZSB9IGZyb20gJ25vZGU6cGF0aCc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7CmltcG9ydCB7IG5vcm1hbGl6ZUdvYWxDb250cmFjdCB9IGZyb20gJy4vZ29hbC1jb250cmFjdC5tanMnOwoKY29uc3Qgcm9vdCA9IHJlc29sdmUoZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuLicsIGltcG9ydC5tZXRhLnVybCkpKTsKY29uc3QgZG9tYWluUGFja1BhdGggPSByZXNvbHZlKHJvb3QsICdkYXRhL2RvbWFpbi1wYWNrLnJhdy1tYXRlcmlhbC1vcy1nYWJhLmpzb24nKTsKCmNvbnN0IHJlYWREb21haW5QYWNrID0gYXN5bmMgKCkgPT4gSlNPTi5wYXJzZShhd2FpdCByZWFkRmlsZShkb21haW5QYWNrUGF0aCwgJ3V0ZjgnKSk7Cgpjb25zdCBpc1Jhd01hdGVyaWFsSW50ZW50ID0gKGludGVudCkgPT4gL0dBQkF86rCA67CUfOybkOujjHzqsbDrnpjshox86rO16riJfOuCqe2SiC9pLnRlc3QoaW50ZW50KTsKCmV4cG9ydCBjb25zdCBjb21waWxlR29hbCA9IGFzeW5jICh7IGludGVudCwgY29udGV4dCA9IHt9IH0gPSB7fSkgPT4gewogIGNvbnN0IHJhdyA9IFN0cmluZyhpbnRlbnQgfHwgJycpLnRyaW0oKTsKICBpZiAoIXJhdykgdGhyb3cgbmV3IEVycm9yKCdHT0FMX0lOVEVOVF9SRVFVSVJFRCcpOwogIGNvbnN0IHJhd01hdGVyaWFsID0gaXNSYXdNYXRlcmlhbEludGVudChyYXcpOwogIGNvbnN0IGRvbWFpblBhY2sgPSByYXdNYXRlcmlhbCA/IGF3YWl0IHJlYWREb21haW5QYWNrKCkgOiBudWxsOwogIGNvbnN0IGFyY2hldHlwZXMgPSByYXdNYXRlcmlhbCA/IFsnVkFMSURBVElPTicsICdUUkFOU0FDVElPTl9FWEVDVVRJT04nLCAnT1BFUkFUSU9OUyddIDogWydPUEVSQVRJT05TJ107CiAgY29uc3QgZGVmaW5pdGlvbk9mRG9uZSA9IGNvbnRleHQuZGVmaW5pdGlvbk9mRG9uZSB8fCBkb21haW5QYWNrPy5kZWZpbml0aW9uT2ZEb25lVGVtcGxhdGVzIHx8IFt7CiAgICBwcmVkaWNhdGVJZDogJ09VVENPTUVfT0JTRVJWRUQnLAogICAgcHJlZGljYXRlOiAn66qp7ZGcIOqysOqzvOqwgCDrj4Xrpr0g6rKA7KadIOqwgOuKpe2VnCDspp3qsbDroZwg6rSA7LCw65CY7JeI64ukLicsCiAgICBldmlkZW5jZVR5cGU6ICdPVVRDT01FX09CU0VSVkFUSU9OJywKICAgIGV2YWx1YXRvcjogJ0FJLTA5IOy9mO2KuOudvCcsCiAgICB0aHJlc2hvbGQ6IDEsCiAgfV07CiAgY29uc3QgY29udHJhY3QgPSBub3JtYWxpemVHb2FsQ29udHJhY3QoewogICAgLi4uY29udGV4dCwKICAgIGludGVudE9yaWdpbmFsOiByYXcsCiAgICBvdXRjb21lTm9ybWFsaXplZDogY29udGV4dC5vdXRjb21lTm9ybWFsaXplZCB8fCAocmF3TWF0ZXJpYWwgPyAn7JuQ66OMIOyalOq1rOulvCDtkZzspIAg7Iqk7Y6Z6rO8IOqygOymnSDqsIDriqXtlZwg7Iuk66y8IOqxsOuemCDqsrDqs7zroZwg7KCE7ZmY7ZWc64ukLicgOiByYXcpLAogICAgZ29hbEFyY2hldHlwZXM6IGNvbnRleHQuZ29hbEFyY2hldHlwZXMgfHwgYXJjaGV0eXBlcywKICAgIGRlZmluaXRpb25PZkRvbmUsCiAgICBkb21haW5QYWNrVmVyc2lvbnM6IGNvbnRleHQuZG9tYWluUGFja1ZlcnNpb25zIHx8IChkb21haW5QYWNrID8geyBbZG9tYWluUGFjay5wYWNrSWRdOiBkb21haW5QYWNrLnZlcnNpb24gfSA6IHt9KSwKICAgIHNjb3BlSW46IGNvbnRleHQuc2NvcGVJbiB8fCAocmF3TWF0ZXJpYWwgPyBbJ01hdGVyaWFsIE1hc3RlcicsICdldmlkZW5jZSBnYXRlJywgJ2xvdCBpbnZlbnRvcnknLCAncGh5c2ljYWwgdHJhZGUgbGlmZWN5Y2xlJ10gOiBbJ2dvYWwgbm9ybWFsaXphdGlvbicsICdleGVjdXRpb24gcGxhbm5pbmcnLCAnb3V0Y29tZSB2ZXJpZmljYXRpb24nXSksCiAgICBzY29wZU91dDogY29udGV4dC5zY29wZU91dCB8fCBbJ0FJIGNvbnRyYWN0IHNpZ25hdHVyZScsICdBSSBwYXltZW50IHJlbGVhc2UnLCAndW5hcHByb3ZlZCBleHRlcm5hbCB3cml0ZSddLAogICAgaW52YXJpYW50czogY29udGV4dC5pbnZhcmlhbnRzIHx8IChkb21haW5QYWNrID8gWydQUkVfVFJBREVfRVZJREVOQ0VfUkVRVUlSRUQnLCAnRkFLRV9MSVNUSU5HX0ZBSUxfQ0xPU0VEJ10gOiBbXSksCiAgfSk7CiAgcmV0dXJuIHsKICAgIGNvbnRyYWN0LAogICAgY29tcGlsZXI6IHsKICAgICAgc2NoZW1hVmVyc2lvbjogJ0dPQUwtQ09NUElMRVItMC4xJywKICAgICAgZG9tYWluUGFjazogZG9tYWluUGFjaz8ucGFja0lkIHx8IG51bGwsCiAgICAgIGFtYmlndWl0eVNjb3JlOiBjb250cmFjdC5hbWJpZ3VpdHlTY29yZSwKICAgICAgZmVhc2liaWxpdHlTY29yZTogY29udHJhY3QuZmVhc2liaWxpdHlTY29yZSwKICAgICAgcmVxdWlyZXNIdW1hbkNsYXJpZmljYXRpb246IGNvbnRyYWN0LmFtYmlndWl0eVNjb3JlID49IDAuNywKICAgIH0sCiAgICBmaXJzdFZhbGlkQWN0aW9uczogZG9tYWluUGFjaz8uZmlyc3RWYWxpZEFjdGlvbnMgfHwgW3sgYWN0aW9uSWQ6ICdHRU5FUklDLUExJywgb2JqZWN0aXZlOiAn66qp7ZGc7J2YIOyZhOujjCDspp3qsbDsmYAg7LKrIOydveq4sCDsnpHsl4XsnYQg7ZmV7KCV7ZWc64ukLicsIHJpc2s6ICdMT1cnLCBtb2RlOiAnUkVBRF9PTkxZJyB9XSwKICAgIGV4ZWN1dGlvbkd1YXJkOiB7IHN0YXR1czogJ1BSRVBBUkVfT05MWScsIGV4dGVybmFsV3JpdGVBbGxvd2VkOiBmYWxzZSwgaHVtYW5BcHByb3ZhbFByaW5jaXBhbDogJ0gtMDEnIH0sCiAgfTsKfTsK
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { normalizeGoalContract } from './goal-contract.mjs';
+
+const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
+const domainPackPath = resolve(root, 'data/domain-pack.raw-material-os-gaba.json');
+
+const readDomainPack = async () => JSON.parse(await readFile(domainPackPath, 'utf8'));
+
+const isRawMaterialIntent = (intent) => /GABA|가바|원료|거래소|공급|납품/i.test(intent);
+
+export const compileGoal = async ({ intent, context = {} } = {}) => {
+  const raw = String(intent || '').trim();
+  if (!raw) throw new Error('GOAL_INTENT_REQUIRED');
+  const rawMaterial = isRawMaterialIntent(raw);
+  const domainPack = rawMaterial ? await readDomainPack() : null;
+  const archetypes = rawMaterial ? ['VALIDATION', 'TRANSACTION_EXECUTION', 'OPERATIONS'] : ['OPERATIONS'];
+  const definitionOfDone = context.definitionOfDone || domainPack?.definitionOfDoneTemplates || [{
+    predicateId: 'OUTCOME_OBSERVED',
+    predicate: '목표 결과가 독립 검증 가능한 증거로 관찰되었다.',
+    evidenceType: 'OUTCOME_OBSERVATION',
+    evaluator: 'AI-09 콘트라',
+    threshold: 1,
+  }];
+  const contract = normalizeGoalContract({
+    ...context,
+    intentOriginal: raw,
+    outcomeNormalized: context.outcomeNormalized || (rawMaterial ? '원료 요구를 표준 스펙과 검증 가능한 실물 거래 결과로 전환한다.' : raw),
+    goalArchetypes: context.goalArchetypes || archetypes,
+    definitionOfDone,
+    domainPackVersions: context.domainPackVersions || (domainPack ? { [domainPack.packId]: domainPack.version } : {}),
+    scopeIn: context.scopeIn || (rawMaterial ? ['Material Master', 'evidence gate', 'lot inventory', 'physical trade lifecycle'] : ['goal normalization', 'execution planning', 'outcome verification']),
+    scopeOut: context.scopeOut || ['AI contract signature', 'AI payment release', 'unapproved external write'],
+    invariants: context.invariants || (domainPack ? ['PRE_TRADE_EVIDENCE_REQUIRED', 'FAKE_LISTING_FAIL_CLOSED'] : []),
+  });
+  return {
+    contract,
+    compiler: {
+      schemaVersion: 'GOAL-COMPILER-0.1',
+      domainPack: domainPack?.packId || null,
+      ambiguityScore: contract.ambiguityScore,
+      feasibilityScore: contract.feasibilityScore,
+      requiresHumanClarification: contract.ambiguityScore >= 0.7,
+    },
+    firstValidActions: domainPack?.firstValidActions || [{ actionId: 'GENERIC-A1', objective: '목표의 완료 증거와 첫 읽기 작업을 확정한다.', risk: 'LOW', mode: 'READ_ONLY' }],
+    executionGuard: { status: 'PREPARE_ONLY', externalWriteAllowed: false, humanApprovalPrincipal: 'H-01' },
+  };
+};

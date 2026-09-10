@@ -1,1 +1,53 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIsIFBvc3RncmVzRG9tYWluQWRhcHRlckVycm9yIH0gZnJvbSAnLi9wb3N0Z3Jlcy1kb21haW4tYWRhcHRlci5tanMnOwoKY29uc3QgaWRzID0gewogIG9yZzogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA1MScsCiAgdXNlcjogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA1MicsCiAgb3JkZXI6ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwNTMnLAogIHRyYWRlOiAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDU0JywKICByZXNlcnZhdGlvbjogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA1NScsCn07CmNvbnN0IGNhbGxzID0gW107CmNvbnN0IGNsaWVudCA9IHsKICBhc3luYyBxdWVyeShzcWwsIHBhcmFtcyA9IFtdKSB7CiAgICBjYWxscy5wdXNoKHsgc3FsLCBwYXJhbXMgfSk7CiAgICBpZiAoWydCRUdJTicsICdDT01NSVQnLCAnUk9MTEJBQ0snXS5pbmNsdWRlcyhzcWwpKSByZXR1cm4geyByb3dzOiBbXSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSBvcmdhbml6YXRpb25zIFdIRVJFIG9yZ2FuaXphdGlvbl9pZCcpKSByZXR1cm4geyByb3dzOiBbeyBvcmdhbml6YXRpb25faWQ6IGlkcy5vcmcsIHZlcmlmaWVkX2F0OiAnMjAyNi0wMS0wMScsIHZlcmlmaWNhdGlvbl9ldmlkZW5jZTogeyBzb3VyY2U6ICd0ZXN0JyB9IH1dIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIG9yZ2FuaXphdGlvbl9tZW1iZXJzJykpIHJldHVybiB7IHJvd3M6IFt7IG9rOiAxIH1dIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIHB1cmNoYXNlX29yZGVycyBXSEVSRSBvcmRlcl9pZCcpKSByZXR1cm4geyByb3dzOiBbeyBvcmRlcl9pZDogaWRzLm9yZGVyLCBidXllcl9vcmdhbml6YXRpb25faWQ6IGlkcy5vcmcsIHNwZWNfaWQ6ICdHQUJBLVNQRUMtMDAxJywgc3RhdGU6ICdUUkFERV9DT05GSVJNRUQnLCBiaWRfcHJpY2U6ICcyMTgwMCcsIHJlcXVlc3RlZF9xdWFudGl0eTogJzEwMCcgfV0gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ0ZST00gdHJhZGVzIHQgSk9JTiBwdXJjaGFzZV9vcmRlcnMnKSkgcmV0dXJuIHsgcm93czogW3sgdHJhZGVfaWQ6IGlkcy50cmFkZSwgb3JkZXJfaWQ6IGlkcy5vcmRlciwgbG90X2lkOiAnTE9ULUFDQ0VQVC1JREVNUCcsIHN0YXRlOiAnQ09ORklSTUVEJywgc3VwcGxpZXJfb3JnYW5pemF0aW9uX2lkOiBpZHMub3JnLCBzcGVjX2lkOiAnR0FCQS1TUEVDLTAwMScsIHByaWNlOiAnMjE4MDAnLCBxdWFudGl0eTogJzEwMCcgfV0gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ0ZST00gcmVzZXJ2YXRpb25zIFdIRVJFIG9yZGVyX2lkJykpIHJldHVybiB7IHJvd3M6IFt7IHJlc2VydmF0aW9uX2lkOiBpZHMucmVzZXJ2YXRpb24sIHF1YW50aXR5OiAnMTAwJywgc3RhdGU6ICdBQ1RJVkUnIH1dIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdJTlNFUlQgSU5UTyB0cmFkZXMnKSkgdGhyb3cgbmV3IEVycm9yKCdhY2NlcHQgcmV0cnkgbXVzdCBub3QgaW5zZXJ0IGEgc2Vjb25kIHRyYWRlJyk7CiAgICByZXR1cm4geyByb3dzOiBbXSB9OwogIH0sCiAgcmVsZWFzZSgpIHt9LAp9Owpjb25zdCBhZGFwdGVyID0gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiBjbGllbnQ7IH0gfSk7CmNvbnN0IGZpcnN0UmV0cnkgPSBhd2FpdCBhZGFwdGVyLmFjY2VwdE9yZGVyKHsKICBvcmRlcklkOiBpZHMub3JkZXIsCiAgbG90SWQ6ICdMT1QtQUNDRVBULUlERU1QJywKICBzdXBwbGllck9yZ2FuaXphdGlvbklkOiBpZHMub3JnLAogIHN1cHBsaWVyVXNlcklkOiBpZHMudXNlciwKICBhY2NlcHRlZFF1YW50aXR5OiAxMDAsCiAgYWN0b3JSZWY6IGlkcy51c2VyLAogIGNvcnJlbGF0aW9uSWQ6ICdBQ0NFUFQtUkVUUlktMDAxJywKfSk7CmFzc2VydC5lcXVhbChmaXJzdFJldHJ5LmlkZW1wb3RlbnQsIHRydWUpOwphc3NlcnQuZXF1YWwoZmlyc3RSZXRyeS50cmFkZS50cmFkZV9pZCwgaWRzLnRyYWRlKTsKYXNzZXJ0LmVxdWFsKGNhbGxzLnNvbWUoKHsgc3FsIH0pID0+IHNxbC5pbmNsdWRlcygnSU5TRVJUIElOVE8gdHJhZGVzJykpLCBmYWxzZSk7Cgphd2FpdCBhc3NlcnQucmVqZWN0cygKICAoKSA9PiBhZGFwdGVyLmFjY2VwdE9yZGVyKHsKICAgIG9yZGVySWQ6IGlkcy5vcmRlciwKICAgIGxvdElkOiAnTE9ULUFDQ0VQVC1JREVNUCcsCiAgICBzdXBwbGllck9yZ2FuaXphdGlvbklkOiBpZHMub3JnLAogICAgc3VwcGxpZXJVc2VySWQ6IGlkcy51c2VyLAogICAgYWNjZXB0ZWRRdWFudGl0eTogOTksCiAgICBhY3RvclJlZjogaWRzLnVzZXIsCiAgICBjb3JyZWxhdGlvbklkOiAnQUNDRVBULVJFVFJZLU1JU01BVENIJywKICB9KSwKICAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgUG9zdGdyZXNEb21haW5BZGFwdGVyRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ0FDQ0VQVF9SRVRSWV9NSVNNQVRDSCcsCik7Cgpjb25zb2xlLmxvZygncG9zdGdyZXMgYWNjZXB0IGlkZW1wb3RlbmN5IHRlc3RzOiBQQVNTJyk7Cg==
+import assert from 'node:assert/strict';
+import { PostgresDomainAdapter, PostgresDomainAdapterError } from './postgres-domain-adapter.mjs';
+
+const ids = {
+  org: '00000000-0000-0000-0000-000000000051',
+  user: '00000000-0000-0000-0000-000000000052',
+  order: '00000000-0000-0000-0000-000000000053',
+  trade: '00000000-0000-0000-0000-000000000054',
+  reservation: '00000000-0000-0000-0000-000000000055',
+};
+const calls = [];
+const client = {
+  async query(sql, params = []) {
+    calls.push({ sql, params });
+    if (['BEGIN', 'COMMIT', 'ROLLBACK'].includes(sql)) return { rows: [] };
+    if (sql.includes('FROM organizations WHERE organization_id')) return { rows: [{ organization_id: ids.org, verified_at: '2026-01-01', verification_evidence: { source: 'test' } }] };
+    if (sql.includes('FROM organization_members')) return { rows: [{ ok: 1 }] };
+    if (sql.includes('FROM purchase_orders WHERE order_id')) return { rows: [{ order_id: ids.order, buyer_organization_id: ids.org, spec_id: 'GABA-SPEC-001', state: 'TRADE_CONFIRMED', bid_price: '21800', requested_quantity: '100' }] };
+    if (sql.includes('FROM trades t JOIN purchase_orders')) return { rows: [{ trade_id: ids.trade, order_id: ids.order, lot_id: 'LOT-ACCEPT-IDEMP', state: 'CONFIRMED', supplier_organization_id: ids.org, spec_id: 'GABA-SPEC-001', price: '21800', quantity: '100' }] };
+    if (sql.includes('FROM reservations WHERE order_id')) return { rows: [{ reservation_id: ids.reservation, quantity: '100', state: 'ACTIVE' }] };
+    if (sql.includes('INSERT INTO trades')) throw new Error('accept retry must not insert a second trade');
+    return { rows: [] };
+  },
+  release() {},
+};
+const adapter = new PostgresDomainAdapter({ async connect() { return client; } });
+const firstRetry = await adapter.acceptOrder({
+  orderId: ids.order,
+  lotId: 'LOT-ACCEPT-IDEMP',
+  supplierOrganizationId: ids.org,
+  supplierUserId: ids.user,
+  acceptedQuantity: 100,
+  actorRef: ids.user,
+  correlationId: 'ACCEPT-RETRY-001',
+});
+assert.equal(firstRetry.idempotent, true);
+assert.equal(firstRetry.trade.trade_id, ids.trade);
+assert.equal(calls.some(({ sql }) => sql.includes('INSERT INTO trades')), false);
+
+await assert.rejects(
+  () => adapter.acceptOrder({
+    orderId: ids.order,
+    lotId: 'LOT-ACCEPT-IDEMP',
+    supplierOrganizationId: ids.org,
+    supplierUserId: ids.user,
+    acceptedQuantity: 99,
+    actorRef: ids.user,
+    correlationId: 'ACCEPT-RETRY-MISMATCH',
+  }),
+  (error) => error instanceof PostgresDomainAdapterError && error.code === 'ACCEPT_RETRY_MISMATCH',
+);
+
+console.log('postgres accept idempotency tests: PASS');

@@ -1,1 +1,52 @@
-ewogICJzY2hlbWFWZXJzaW9uIjogIk1NUy1DT05UUkFDVC0wLjEiLAogICJlbnRpdHkiOiAiTWF0ZXJpYWxNYXN0ZXIiLAogICJzY29wZSI6ICJQSFlTSUNBTF9NQVRFUklBTF9PTkxZIiwKICAicmVxdWlyZWRSZWNvcmRGaWVsZHMiOiBbCiAgICAibWF0ZXJpYWxJZCIsCiAgICAiY2Fub25pY2FsTmFtZSIsCiAgICAiYWxpYXNlcyIsCiAgICAibWF0ZXJpYWxDbGFzcyIsCiAgICAiaWRlbnRpZmllcnMiLAogICAgInNwZWNTdGF0dXMiLAogICAgInNpbXVsYXRpb25TcGVjIiwKICAgICJyZXF1aXJlZFNwZWNGaWVsZHMiLAogICAgInNwZWNRdWVzdGlvbkZsb3ciLAogICAgInJlcXVpcmVkRXZpZGVuY2UiLAogICAgInRyYWRlUHJvZmlsZSIsCiAgICAicmVndWxhdG9yeVByb2ZpbGUiLAogICAgInN0b3JhZ2VQcm9maWxlIiwKICAgICJyaXNrUHJvZmlsZSIsCiAgICAicHJvdmVuYW5jZSIKICBdLAogICJtYXRlcmlhbENsYXNzZXMiOiBbIlJBV19NQVRFUklBTCIsICJBQ1RJVkVfSU5HUkVESUVOVCIsICJFWENJUElFTlQiLCAiRk9PRF9JTkdSRURJRU5UIiwgIkZFRURfSU5HUkVESUVOVCIsICJQQUNLQUdJTkciXSwKICAiaWRlbnRpZmllckNvbnRyYWN0IjogewogICAgInJlcXVpcmVkIjogWyJjYXRhbG9nSWRlbnRpdHkiLCAiZXh0ZXJuYWxJZGVudGlmaWVycyIsICJzdGF0dXMiXSwKICAgICJleHRlcm5hbElkZW50aWZpZXJTaGFwZSI6IFsic3lzdGVtIiwgInZhbHVlIiwgInN0YXR1cyJdCiAgfSwKICAic3BlY2lmaWNhdGlvbkNvbnRyYWN0IjogewogICAgInJlcXVpcmVkIjogWyJzcGVjSWQiLCAicHVyaXR5IiwgImZvcm0iLCAib3JpZ2luIiwgInBhY2siLCAiaW50ZW5kZWRVc2UiLCAiZGVsaXZlcnlDb25kaXRpb24iXSwKICAgICJmaWVsZFZhbHVlTXVzdEJlUXVlc3Rpb25CYWNrZWQiOiB0cnVlLAogICAgIm5vQWlHdWVzc2luZyI6IHRydWUsCiAgICAidmVyc2lvbmVkIjogdHJ1ZQogIH0sCiAgInF1ZXN0aW9uQ29udHJhY3QiOiB7CiAgICAicmVxdWlyZWQiOiBbImZpZWxkIiwgImxhYmVsIiwgInJlcXVpcmVkIiwgIm9wdGlvbnMiXSwKICAgICJyZXF1aXJlZE11c3RCZUV4cGxpY2l0IjogdHJ1ZSwKICAgICJvcHRpb25zTXVzdEJlTm9uRW1wdHkiOiB0cnVlCiAgfSwKICAiZXZpZGVuY2VUeXBlcyI6IFsiQ09BIiwgIlNEUyIsICJURFMiLCAiTE9UX1RSQUNFIiwgIklOVkVOVE9SWV9QUk9PRiIsICJTVVBQTElFUl9WRVJJRklDQVRJT04iXSwKICAidHJhZGVDb250cmFjdCI6IHsKICAgICJwaHlzaWNhbE1hdGVyaWFsT25seSI6IHRydWUsCiAgICAicmVxdWlyZWQiOiBbImJhc2VVbml0IiwgInByaWNlVW5pdCIsICJvcmRlclF1YW50aXR5VW5pdCIsICJjdXJyZW5jeSJdLAogICAgImZvcmJpZGRlblByb2R1Y3RUeXBlcyI6IFsiU0VDVVJJVFkiLCAiREVSSVZBVElWRSIsICJNQVJHSU4iLCAiRklOQU5DSUFMX1NFVFRMRU1FTlQiXQogIH0sCiAgInJpc2tDb250cmFjdCI6IHsKICAgICJyZXF1aXJlZFByZVRyYWRlR2F0ZXMiOiBbIlNQRUNfQ09ORklSTUVEIiwgIkVWSURFTkNFX1ZBTElEIiwgIklOVkVOVE9SWV9WRVJJRklFRCIsICJTVVBQTElFUl9WRVJJRklFRCJdLAogICAgInVua25vd25TdGF0ZVBvbGljeSI6ICJGQUlMX0NMT1NFRCIKICB9LAogICJwcm92ZW5hbmNlQ29udHJhY3QiOiB7CiAgICAicmVxdWlyZWQiOiBbInNvdXJjZVN0YXR1cyIsICJzb3VyY2VEb2N1bWVudHMiLCAiaHVtYW5BcHByb3ZlciIsICJhcHByb3ZlZEF0Il0sCiAgICAiaHVtYW5BcHByb3ZhbFJlcXVpcmVkRm9yQ2F0YWxvZ1B1YmxpY2F0aW9uIjogdHJ1ZQogIH0KfQo=
+{
+  "schemaVersion": "MMS-CONTRACT-0.1",
+  "entity": "MaterialMaster",
+  "scope": "PHYSICAL_MATERIAL_ONLY",
+  "requiredRecordFields": [
+    "materialId",
+    "canonicalName",
+    "aliases",
+    "materialClass",
+    "identifiers",
+    "specStatus",
+    "simulationSpec",
+    "requiredSpecFields",
+    "specQuestionFlow",
+    "requiredEvidence",
+    "tradeProfile",
+    "regulatoryProfile",
+    "storageProfile",
+    "riskProfile",
+    "provenance"
+  ],
+  "materialClasses": ["RAW_MATERIAL", "ACTIVE_INGREDIENT", "EXCIPIENT", "FOOD_INGREDIENT", "FEED_INGREDIENT", "PACKAGING"],
+  "identifierContract": {
+    "required": ["catalogIdentity", "externalIdentifiers", "status"],
+    "externalIdentifierShape": ["system", "value", "status"]
+  },
+  "specificationContract": {
+    "required": ["specId", "purity", "form", "origin", "pack", "intendedUse", "deliveryCondition"],
+    "fieldValueMustBeQuestionBacked": true,
+    "noAiGuessing": true,
+    "versioned": true
+  },
+  "questionContract": {
+    "required": ["field", "label", "required", "options"],
+    "requiredMustBeExplicit": true,
+    "optionsMustBeNonEmpty": true
+  },
+  "evidenceTypes": ["COA", "SDS", "TDS", "LOT_TRACE", "INVENTORY_PROOF", "SUPPLIER_VERIFICATION"],
+  "tradeContract": {
+    "physicalMaterialOnly": true,
+    "required": ["baseUnit", "priceUnit", "orderQuantityUnit", "currency"],
+    "forbiddenProductTypes": ["SECURITY", "DERIVATIVE", "MARGIN", "FINANCIAL_SETTLEMENT"]
+  },
+  "riskContract": {
+    "requiredPreTradeGates": ["SPEC_CONFIRMED", "EVIDENCE_VALID", "INVENTORY_VERIFIED", "SUPPLIER_VERIFIED"],
+    "unknownStatePolicy": "FAIL_CLOSED"
+  },
+  "provenanceContract": {
+    "required": ["sourceStatus", "sourceDocuments", "humanApprover", "approvedAt"],
+    "humanApprovalRequiredForCatalogPublication": true
+  }
+}

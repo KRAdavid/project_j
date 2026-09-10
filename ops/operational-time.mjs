@@ -1,1 +1,24 @@
-LyoqIFBhcnNlIElTTyBhbmQgdGhlIEtvcmVhbiBQb3dlclNoZWxsIGRhdGUgZm9ybWF0IHdpdGhvdXQgZ3Vlc3NpbmcgdW5rbm93biB2YWx1ZXMuICovCmV4cG9ydCBjb25zdCBwYXJzZU9wZXJhdGlvbmFsVGltZXN0YW1wID0gKHZhbHVlKSA9PiB7CiAgY29uc3QgcmF3ID0gU3RyaW5nKHZhbHVlIHx8ICcnKS50cmltKCk7CiAgaWYgKCFyYXcpIHJldHVybiBudWxsOwogIGNvbnN0IGRpcmVjdCA9IERhdGUucGFyc2UocmF3KTsKICBpZiAoTnVtYmVyLmlzRmluaXRlKGRpcmVjdCkpIHJldHVybiBkaXJlY3Q7CiAgY29uc3Qga29yZWFuID0gcmF3Lm1hdGNoKC9eKFxkezR9LVxkezJ9LVxkezJ9KVxzKyjsmKTsoIR87Jik7ZuEKVxzKyhcZHsxLDJ9KTooXGR7Mn0pKD86OihcZHsyfSkoPzpcLihcZHsxLDN9KSk/KT8kLyk7CiAgaWYgKCFrb3JlYW4pIHJldHVybiBudWxsOwogIGxldCBob3VyID0gTnVtYmVyKGtvcmVhblszXSk7CiAgaWYgKGtvcmVhblsyXSA9PT0gJ+yYpOyghCcgJiYgaG91ciA9PT0gMTIpIGhvdXIgPSAwOwogIGlmIChrb3JlYW5bMl0gPT09ICfsmKTtm4QnICYmIGhvdXIgPCAxMikgaG91ciArPSAxMjsKICBjb25zdCBtaW51dGUgPSBOdW1iZXIoa29yZWFuWzRdKTsKICBjb25zdCBzZWNvbmQgPSBOdW1iZXIoa29yZWFuWzVdIHx8IDApOwogIGNvbnN0IG1pbGxpc2Vjb25kID0gTnVtYmVyKFN0cmluZyhrb3JlYW5bNl0gfHwgJycpLnBhZEVuZCgzLCAnMCcpIHx8IDApOwogIGlmICghW2hvdXIsIG1pbnV0ZSwgc2Vjb25kLCBtaWxsaXNlY29uZF0uZXZlcnkoTnVtYmVyLmlzRmluaXRlKSB8fCBob3VyID4gMjMgfHwgbWludXRlID4gNTkgfHwgc2Vjb25kID4gNTkgfHwgbWlsbGlzZWNvbmQgPiA5OTkpIHJldHVybiBudWxsOwogIGNvbnN0IHBhcnNlZCA9IERhdGUucGFyc2UoYCR7a29yZWFuWzFdfVQke1N0cmluZyhob3VyKS5wYWRTdGFydCgyLCAnMCcpfToke2tvcmVhbls0XX06JHtTdHJpbmcoc2Vjb25kKS5wYWRTdGFydCgyLCAnMCcpfS4ke1N0cmluZyhtaWxsaXNlY29uZCkucGFkU3RhcnQoMywgJzAnKX0rMDk6MDBgKTsKICByZXR1cm4gTnVtYmVyLmlzRmluaXRlKHBhcnNlZCkgPyBwYXJzZWQgOiBudWxsOwp9OwoKZXhwb3J0IGNvbnN0IHRvT3BlcmF0aW9uYWxJc28gPSAodmFsdWUpID0+IHsKICBjb25zdCBwYXJzZWQgPSB2YWx1ZSBpbnN0YW5jZW9mIERhdGUgPyB2YWx1ZS5nZXRUaW1lKCkgOiBwYXJzZU9wZXJhdGlvbmFsVGltZXN0YW1wKHZhbHVlKTsKICByZXR1cm4gTnVtYmVyLmlzRmluaXRlKHBhcnNlZCkgPyBuZXcgRGF0ZShwYXJzZWQpLnRvSVNPU3RyaW5nKCkgOiBudWxsOwp9OwoK
+/** Parse ISO and the Korean PowerShell date format without guessing unknown values. */
+export const parseOperationalTimestamp = (value) => {
+  const raw = String(value || '').trim();
+  if (!raw) return null;
+  const direct = Date.parse(raw);
+  if (Number.isFinite(direct)) return direct;
+  const korean = raw.match(/^(\d{4}-\d{2}-\d{2})\s+(오전|오후)\s+(\d{1,2}):(\d{2})(?::(\d{2})(?:\.(\d{1,3}))?)?$/);
+  if (!korean) return null;
+  let hour = Number(korean[3]);
+  if (korean[2] === '오전' && hour === 12) hour = 0;
+  if (korean[2] === '오후' && hour < 12) hour += 12;
+  const minute = Number(korean[4]);
+  const second = Number(korean[5] || 0);
+  const millisecond = Number(String(korean[6] || '').padEnd(3, '0') || 0);
+  if (![hour, minute, second, millisecond].every(Number.isFinite) || hour > 23 || minute > 59 || second > 59 || millisecond > 999) return null;
+  const parsed = Date.parse(`${korean[1]}T${String(hour).padStart(2, '0')}:${korean[4]}:${String(second).padStart(2, '0')}.${String(millisecond).padStart(3, '0')}+09:00`);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
+export const toOperationalIso = (value) => {
+  const parsed = value instanceof Date ? value.getTime() : parseOperationalTimestamp(value);
+  return Number.isFinite(parsed) ? new Date(parsed).toISOString() : null;
+};
+

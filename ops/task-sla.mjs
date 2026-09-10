@@ -1,1 +1,61 @@
-aW1wb3J0IHsgcGFyc2VPcGVyYXRpb25hbFRpbWVzdGFtcCB9IGZyb20gJy4vb3BlcmF0aW9uYWwtdGltZS5tanMnOwoKZXhwb3J0IGNvbnN0IERFRkFVTFRfVEFTS19TTEFfSE9VUlMgPSB7CiAgcXVldWVkOiB7IGNyaXRpY2FsOiAyNCwgaGlnaDogNDgsIG1lZGl1bTogNzIsIGxvdzogMTIwIH0sCiAgd29ya2luZzogeyBjcml0aWNhbDogNDgsIGhpZ2g6IDcyLCBtZWRpdW06IDEyMCwgbG93OiAxNjggfSwKICByZXZpZXc6IHsgY3JpdGljYWw6IDI0LCBoaWdoOiA0OCwgbWVkaXVtOiA3MiwgbG93OiAxMjAgfSwKfTsKCmNvbnN0IEFDVElWRV9TVEFUVVNFUyA9IG5ldyBTZXQoWydxdWV1ZWQnLCAnd29ya2luZycsICdyZXZpZXcnXSk7Cgpjb25zdCBwYXJzZVRpbWUgPSAodmFsdWUpID0+IHsKICBjb25zdCBwYXJzZWQgPSBwYXJzZU9wZXJhdGlvbmFsVGltZXN0YW1wKHZhbHVlKTsKICByZXR1cm4gTnVtYmVyLmlzRmluaXRlKHBhcnNlZCkgPyBwYXJzZWQgOiBudWxsOwp9OwoKY29uc3QgdGhyZXNob2xkRm9yID0gKHN0YXR1cywgcmlzaywgc2xhSG91cnMpID0+IHsKICBjb25zdCBzdGF0dXNQb2xpY3kgPSBzbGFIb3Vycz8uW3N0YXR1c10gfHwge307CiAgY29uc3QgdmFsdWUgPSBOdW1iZXIoc3RhdHVzUG9saWN5W3Jpc2tdID8/IHN0YXR1c1BvbGljeS5oaWdoKTsKICByZXR1cm4gTnVtYmVyLmlzRmluaXRlKHZhbHVlKSAmJiB2YWx1ZSA+IDAgPyB2YWx1ZSA6IG51bGw7Cn07CgovKiogRXZhbHVhdGUgdGFzayBhZ2Ugd2l0aG91dCBpbnZlbnRpbmcgbWlzc2luZyBsaWZlY3ljbGUgaGlzdG9yeS4gKi8KZXhwb3J0IGNvbnN0IGV2YWx1YXRlVGFza1NsYSA9ICh7IHRhc2tzID0gW10sIG5vdyA9IG5ldyBEYXRlKCksIHNsYUhvdXJzID0gREVGQVVMVF9UQVNLX1NMQV9IT1VSUyB9ID0ge30pID0+IHsKICBjb25zdCBub3dNcyA9IG5vdyBpbnN0YW5jZW9mIERhdGUgPyBub3cuZ2V0VGltZSgpIDogRGF0ZS5wYXJzZShub3cpOwogIGlmICghTnVtYmVyLmlzRmluaXRlKG5vd01zKSkgdGhyb3cgbmV3IEVycm9yKCfsl4XrrLQgU0xBIOq4sOykgOyLnOqwgeydtCDsmKzrsJTrpbTsp4Ag7JWK7Iq164uI64ukLicpOwoKICBjb25zdCBldmFsdWF0ZWQgPSAoQXJyYXkuaXNBcnJheSh0YXNrcykgPyB0YXNrcyA6IFtdKQogICAgLmZpbHRlcigodGFzaykgPT4gQUNUSVZFX1NUQVRVU0VTLmhhcyh0YXNrPy5zdGF0dXMpKQogICAgLm1hcCgodGFzaykgPT4gewogICAgICBjb25zdCBjcmVhdGVkTXMgPSBwYXJzZVRpbWUodGFzay5jcmVhdGVkQXQpOwogICAgICBjb25zdCBjbGFpbWVkTXMgPSBwYXJzZVRpbWUodGFzay5jbGFpbWVkQXQpOwogICAgICBjb25zdCBiYXNlbGluZU1zID0gdGFzay5zdGF0dXMgPT09ICdxdWV1ZWQnID8gY3JlYXRlZE1zIDogY2xhaW1lZE1zOwogICAgICBjb25zdCB0aHJlc2hvbGRIb3VycyA9IHRocmVzaG9sZEZvcih0YXNrLnN0YXR1cywgdGFzay5yaXNrIHx8ICdoaWdoJywgc2xhSG91cnMpOwogICAgICBjb25zdCBtZXRhZGF0YUNvbXBsZXRlID0gYmFzZWxpbmVNcyAhPT0gbnVsbCAmJiB0aHJlc2hvbGRIb3VycyAhPT0gbnVsbDsKICAgICAgY29uc3QgYWdlSG91cnMgPSBtZXRhZGF0YUNvbXBsZXRlID8gTWF0aC5tYXgoMCwgKG5vd01zIC0gYmFzZWxpbmVNcykgLyAzNjAwMDAwKSA6IG51bGw7CiAgICAgIGNvbnN0IHN0YWxlID0gbWV0YWRhdGFDb21wbGV0ZSAmJiBhZ2VIb3VycyA+PSB0aHJlc2hvbGRIb3VyczsKICAgICAgcmV0dXJuIHsKICAgICAgICB0YXNrSWQ6IHRhc2suaWQgfHwgbnVsbCwKICAgICAgICBzdGF0dXM6IHRhc2suc3RhdHVzLAogICAgICAgIHJpc2s6IHRhc2sucmlzayB8fCAnaGlnaCcsCiAgICAgICAgb3duZXJBaTogdGFzay5vd25lckFpIHx8IG51bGwsCiAgICAgICAgY3JlYXRlZEF0OiB0YXNrLmNyZWF0ZWRBdCB8fCBudWxsLAogICAgICAgIGNsYWltZWRBdDogdGFzay5jbGFpbWVkQXQgfHwgbnVsbCwKICAgICAgICBhZ2VIb3VyczogYWdlSG91cnMgPT09IG51bGwgPyBudWxsIDogTnVtYmVyKGFnZUhvdXJzLnRvRml4ZWQoMikpLAogICAgICAgIHRocmVzaG9sZEhvdXJzLAogICAgICAgIG1ldGFkYXRhQ29tcGxldGUsCiAgICAgICAgc3RhbGUsCiAgICAgICAgYWN0aW9uOiBzdGFsZSA/ICdFU0NBTEFURV9BSTAxX0FORF9IMDEnIDogJ0NPTlRJTlVFX1dJVEhJTl9TTEEnLAogICAgICB9OwogICAgfSk7CgogIHJldHVybiB7CiAgICBldmFsdWF0ZWRBdDogbmV3IERhdGUobm93TXMpLnRvSVNPU3RyaW5nKCksCiAgICBhY3RpdmVDb3VudDogZXZhbHVhdGVkLmxlbmd0aCwKICAgIG1ldGFkYXRhQ29tcGxldGVDb3VudDogZXZhbHVhdGVkLmZpbHRlcigoaXRlbSkgPT4gaXRlbS5tZXRhZGF0YUNvbXBsZXRlKS5sZW5ndGgsCiAgICBzdGFsZUNvdW50OiBldmFsdWF0ZWQuZmlsdGVyKChpdGVtKSA9PiBpdGVtLnN0YWxlKS5sZW5ndGgsCiAgICBzdGF0dXM6IGV2YWx1YXRlZC5zb21lKChpdGVtKSA9PiBpdGVtLnN0YWxlKSA/ICdTVEFMRV9UQVNLUycgOiAnV0lUSElOX1NMQScsCiAgICBodW1hblByaW5jaXBhbDogJ0gtMDEnLAogICAgaXRlbXM6IGV2YWx1YXRlZCwKICB9Owp9Owo=
+import { parseOperationalTimestamp } from './operational-time.mjs';
+
+export const DEFAULT_TASK_SLA_HOURS = {
+  queued: { critical: 24, high: 48, medium: 72, low: 120 },
+  working: { critical: 48, high: 72, medium: 120, low: 168 },
+  review: { critical: 24, high: 48, medium: 72, low: 120 },
+};
+
+const ACTIVE_STATUSES = new Set(['queued', 'working', 'review']);
+
+const parseTime = (value) => {
+  const parsed = parseOperationalTimestamp(value);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
+const thresholdFor = (status, risk, slaHours) => {
+  const statusPolicy = slaHours?.[status] || {};
+  const value = Number(statusPolicy[risk] ?? statusPolicy.high);
+  return Number.isFinite(value) && value > 0 ? value : null;
+};
+
+/** Evaluate task age without inventing missing lifecycle history. */
+export const evaluateTaskSla = ({ tasks = [], now = new Date(), slaHours = DEFAULT_TASK_SLA_HOURS } = {}) => {
+  const nowMs = now instanceof Date ? now.getTime() : Date.parse(now);
+  if (!Number.isFinite(nowMs)) throw new Error('업무 SLA 기준시각이 올바르지 않습니다.');
+
+  const evaluated = (Array.isArray(tasks) ? tasks : [])
+    .filter((task) => ACTIVE_STATUSES.has(task?.status))
+    .map((task) => {
+      const createdMs = parseTime(task.createdAt);
+      const claimedMs = parseTime(task.claimedAt);
+      const baselineMs = task.status === 'queued' ? createdMs : claimedMs;
+      const thresholdHours = thresholdFor(task.status, task.risk || 'high', slaHours);
+      const metadataComplete = baselineMs !== null && thresholdHours !== null;
+      const ageHours = metadataComplete ? Math.max(0, (nowMs - baselineMs) / 3600000) : null;
+      const stale = metadataComplete && ageHours >= thresholdHours;
+      return {
+        taskId: task.id || null,
+        status: task.status,
+        risk: task.risk || 'high',
+        ownerAi: task.ownerAi || null,
+        createdAt: task.createdAt || null,
+        claimedAt: task.claimedAt || null,
+        ageHours: ageHours === null ? null : Number(ageHours.toFixed(2)),
+        thresholdHours,
+        metadataComplete,
+        stale,
+        action: stale ? 'ESCALATE_AI01_AND_H01' : 'CONTINUE_WITHIN_SLA',
+      };
+    });
+
+  return {
+    evaluatedAt: new Date(nowMs).toISOString(),
+    activeCount: evaluated.length,
+    metadataCompleteCount: evaluated.filter((item) => item.metadataComplete).length,
+    staleCount: evaluated.filter((item) => item.stale).length,
+    status: evaluated.some((item) => item.stale) ? 'STALE_TASKS' : 'WITHIN_SLA',
+    humanPrincipal: 'H-01',
+    items: evaluated,
+  };
+};

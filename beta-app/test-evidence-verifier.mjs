@@ -1,1 +1,41 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBoYXNoRG9jdW1lbnQsIGxvYWRFdmlkZW5jZVBvbGljeSwgdmVyaWZ5RXZpZGVuY2VCdW5kbGUgfSBmcm9tICcuL2V2aWRlbmNlLXZlcmlmaWVyLm1qcyc7Cgpjb25zdCBub3cgPSBuZXcgRGF0ZSgnMjAyNi0wOS0wOFQwMDowMDowMC4wMDBaJyk7CmNvbnN0IGV2aWRlbmNlVHlwZXMgPSBsb2FkRXZpZGVuY2VQb2xpY3koKS5yZXF1aXJlZFR5cGVzOwpjb25zdCB2YWxpZEV2aWRlbmNlID0gZXZpZGVuY2VUeXBlcy5tYXAoKGV2aWRlbmNlVHlwZSkgPT4gKHsKICBldmlkZW5jZUlkOiBgRS0ke2V2aWRlbmNlVHlwZX1gLAogIGxvdElkOiAnTE9ULTAwMScsCiAgZXZpZGVuY2VUeXBlLAogIGRvY3VtZW50VmVyc2lvbjogJ3YxJywKICBjb250ZW50U2hhMjU2OiBoYXNoRG9jdW1lbnQoYExPVC0wMDEtJHtldmlkZW5jZVR5cGV9LXYxYCksCiAgc3RhdGU6ICdWQUxJRCcsCiAgZXhwaXJlc0F0OiAnMjAyNy0wNy0zMScsCn0pKTsKCmNvbnN0IHZhbGlkID0gdmVyaWZ5RXZpZGVuY2VCdW5kbGUoeyBsb3RJZDogJ0xPVC0wMDEnLCBldmlkZW5jZTogdmFsaWRFdmlkZW5jZSwgbm93IH0pOwphc3NlcnQuZXF1YWwodmFsaWQuc3RhdHVzLCAnVkFMSUQnKTsKYXNzZXJ0LmVxdWFsKHZhbGlkLnByZVRyYWRlRWxpZ2libGUsIHRydWUpOwphc3NlcnQuZGVlcEVxdWFsKHZhbGlkLm1pc3NpbmcsIFtdKTsKCmNvbnN0IG1pc3NpbmcgPSB2ZXJpZnlFdmlkZW5jZUJ1bmRsZSh7IGxvdElkOiAnTE9ULTAwMScsIGV2aWRlbmNlOiB2YWxpZEV2aWRlbmNlLnNsaWNlKDAsIDMpLCBub3cgfSk7CmFzc2VydC5lcXVhbChtaXNzaW5nLnN0YXR1cywgJ0JMT0NLRUQnKTsKYXNzZXJ0LmRlZXBFcXVhbChtaXNzaW5nLm1pc3NpbmcsIFsnTE9UX1RSQUNFJywgJ0lOVkVOVE9SWV9QUk9PRiddKTsKCmNvbnN0IGV4cGlyZWQgPSB2ZXJpZnlFdmlkZW5jZUJ1bmRsZSh7CiAgbG90SWQ6ICdMT1QtMDAxJywKICBldmlkZW5jZTogdmFsaWRFdmlkZW5jZS5tYXAoKHJlY29yZCkgPT4gcmVjb3JkLmV2aWRlbmNlVHlwZSA9PT0gJ0NPQScgPyB7IC4uLnJlY29yZCwgZXhwaXJlc0F0OiAnMjAyNi0wOS0wNycgfSA6IHJlY29yZCksCiAgbm93LAp9KTsKYXNzZXJ0LmVxdWFsKGV4cGlyZWQuc3RhdHVzLCAnQkxPQ0tFRCcpOwphc3NlcnQub2soZXhwaXJlZC5pbnZhbGlkLmluY2x1ZGVzKCdDT0EnKSk7Cgpjb25zdCBkdXBsaWNhdGUgPSB2ZXJpZnlFdmlkZW5jZUJ1bmRsZSh7IGxvdElkOiAnTE9ULTAwMScsIGV2aWRlbmNlOiBbLi4udmFsaWRFdmlkZW5jZSwgeyAuLi52YWxpZEV2aWRlbmNlWzBdLCBldmlkZW5jZUlkOiAnRS1DT0EtT0xEJywgZG9jdW1lbnRWZXJzaW9uOiAndjAnIH1dLCBub3cgfSk7CmFzc2VydC5lcXVhbChkdXBsaWNhdGUuc3RhdHVzLCAnQkxPQ0tFRCcpOwphc3NlcnQuZGVlcEVxdWFsKGR1cGxpY2F0ZS5kdXBsaWNhdGVUeXBlcywgWydDT0EnXSk7Cgpjb25zdCBsb3RNaXNtYXRjaCA9IHZlcmlmeUV2aWRlbmNlQnVuZGxlKHsgbG90SWQ6ICdMT1QtMDAxJywgZXZpZGVuY2U6IHZhbGlkRXZpZGVuY2UubWFwKChyZWNvcmQpID0+IHJlY29yZC5ldmlkZW5jZVR5cGUgPT09ICdTRFMnID8geyAuLi5yZWNvcmQsIGxvdElkOiAnTE9ULTk5OScgfSA6IHJlY29yZCksIG5vdyB9KTsKYXNzZXJ0LmVxdWFsKGxvdE1pc21hdGNoLnN0YXR1cywgJ0JMT0NLRUQnKTsKYXNzZXJ0Lm9rKGxvdE1pc21hdGNoLmludmFsaWQuaW5jbHVkZXMoJ1NEUycpKTsKCmNvbnNvbGUubG9nKCdldmlkZW5jZS12ZXJpZmllciB0ZXN0czogUEFTUycpOwo=
+import assert from 'node:assert/strict';
+import { hashDocument, loadEvidencePolicy, verifyEvidenceBundle } from './evidence-verifier.mjs';
+
+const now = new Date('2026-09-08T00:00:00.000Z');
+const evidenceTypes = loadEvidencePolicy().requiredTypes;
+const validEvidence = evidenceTypes.map((evidenceType) => ({
+  evidenceId: `E-${evidenceType}`,
+  lotId: 'LOT-001',
+  evidenceType,
+  documentVersion: 'v1',
+  contentSha256: hashDocument(`LOT-001-${evidenceType}-v1`),
+  state: 'VALID',
+  expiresAt: '2027-07-31',
+}));
+
+const valid = verifyEvidenceBundle({ lotId: 'LOT-001', evidence: validEvidence, now });
+assert.equal(valid.status, 'VALID');
+assert.equal(valid.preTradeEligible, true);
+assert.deepEqual(valid.missing, []);
+
+const missing = verifyEvidenceBundle({ lotId: 'LOT-001', evidence: validEvidence.slice(0, 3), now });
+assert.equal(missing.status, 'BLOCKED');
+assert.deepEqual(missing.missing, ['LOT_TRACE', 'INVENTORY_PROOF']);
+
+const expired = verifyEvidenceBundle({
+  lotId: 'LOT-001',
+  evidence: validEvidence.map((record) => record.evidenceType === 'COA' ? { ...record, expiresAt: '2026-09-07' } : record),
+  now,
+});
+assert.equal(expired.status, 'BLOCKED');
+assert.ok(expired.invalid.includes('COA'));
+
+const duplicate = verifyEvidenceBundle({ lotId: 'LOT-001', evidence: [...validEvidence, { ...validEvidence[0], evidenceId: 'E-COA-OLD', documentVersion: 'v0' }], now });
+assert.equal(duplicate.status, 'BLOCKED');
+assert.deepEqual(duplicate.duplicateTypes, ['COA']);
+
+const lotMismatch = verifyEvidenceBundle({ lotId: 'LOT-001', evidence: validEvidence.map((record) => record.evidenceType === 'SDS' ? { ...record, lotId: 'LOT-999' } : record), now });
+assert.equal(lotMismatch.status, 'BLOCKED');
+assert.ok(lotMismatch.invalid.includes('SDS'));
+
+console.log('evidence-verifier tests: PASS');

@@ -1,1 +1,33 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQcmljZUZlZWQsIFByaWNlRmVlZEVycm9yIH0gZnJvbSAnLi9wcmljZS1mZWVkLm1qcyc7Cgpjb25zdCBmZWVkID0gbmV3IFByaWNlRmVlZCh7IHB1YmxpY2F0aW9uQXBwcm92ZWQ6IHRydWUsIGFwcHJvdmFsUmVmOiAnSC0wMS1QUklDRS0wMDEnIH0pOwphc3NlcnQudGhyb3dzKCgpID0+IGZlZWQuaW5nZXN0KHsgc291cmNlVHlwZTogJ1NVUFBMSUVSX1FVT1RFJywgb2JzZXJ2YXRpb25zOiBbeyBxdW90ZUlkOiAnUS0xJyB9XSB9KSwgKGVycm9yKSA9PiBlcnJvciBpbnN0YW5jZW9mIFByaWNlRmVlZEVycm9yICYmIGVycm9yLmNvZGUgPT09ICdQUklDRV9PQlNFUlZBVElPTl9JTlZBTElEJyk7CmNvbnN0IGJhc2UgPSB7IHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBzdXBwbGllcklkOiAnUy0xJywgcXVhbnRpdHk6IDEwMCwgcXVhbnRpdHlVbml0OiAnS0cnLCBwcmljZVVuaXQ6ICdLUldfUEVSX0tHJywgY3VycmVuY3k6ICdLUlcnLCBzdGF0dXM6ICdGVUxGSUxMRUQnLCBldmlkZW5jZVN0YXR1czogJ1ZBTElEJyB9Owpjb25zdCBhY2NlcHRlZCA9IGZlZWQuaW5nZXN0KHsgc291cmNlVHlwZTogJ0NPTVBMRVRFRF9QSFlTSUNBTF9UUkFERScsIG9ic2VydmF0aW9uczogWwogIHsgLi4uYmFzZSwgdHJhZGVJZDogJ1QtMScsIHByaWNlOiAyMTAwMCwgZnVsZmlsbGVkQXQ6ICcyMDI2LTA5LTAxJyB9LAogIHsgLi4uYmFzZSwgdHJhZGVJZDogJ1QtMicsIHN1cHBsaWVySWQ6ICdTLTInLCBwcmljZTogMjE1MDAsIGZ1bGZpbGxlZEF0OiAnMjAyNi0wOS0wMicgfSwKICB7IC4uLmJhc2UsIHRyYWRlSWQ6ICdULTMnLCBzdXBwbGllcklkOiAnUy0xJywgcHJpY2U6IDIyMjAwLCBmdWxmaWxsZWRBdDogJzIwMjYtMDktMDMnIH0sCl0gfSk7CmFzc2VydC5lcXVhbChhY2NlcHRlZC5hY2NlcHRlZCwgMyk7CmFzc2VydC50aHJvd3MoKCkgPT4gZmVlZC5pbmdlc3QoeyBzb3VyY2VUeXBlOiAnQ09NUExFVEVEX1BIWVNJQ0FMX1RSQURFJywgb2JzZXJ2YXRpb25zOiBbeyAuLi5iYXNlLCB0cmFkZUlkOiAnVC1NVCcsIHF1YW50aXR5VW5pdDogJ01UJywgcHJpY2U6IDIxMDAwLCBmdWxmaWxsZWRBdDogJzIwMjYtMDktMDQnIH1dIH0pLCAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgUHJpY2VGZWVkRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ1BSSUNFX09CU0VSVkFUSU9OX1VOSVRfTUlTTUFUQ0gnKTsKYXNzZXJ0LmVxdWFsKGZlZWQuaW5nZXN0KHsgc291cmNlVHlwZTogJ0NPTVBMRVRFRF9QSFlTSUNBTF9UUkFERScsIG9ic2VydmF0aW9uczogW3sgLi4uYmFzZSwgdHJhZGVJZDogJ1QtMScsIHByaWNlOiA5OTk5OSwgZnVsZmlsbGVkQXQ6ICcyMDI2LTA5LTAxJyB9XSB9KS5kdXBsaWNhdGVJZ25vcmVkLCAxKTsKY29uc3QgcmVzdWx0ID0gZmVlZC5jYWxjdWxhdGUoJ0dBQkEtU1BFQy0wMDEnLCBuZXcgRGF0ZSgnMjAyNi0wOS0wOCcpKTsKYXNzZXJ0LmVxdWFsKHJlc3VsdC5zdGF0dXMsICdBVkFJTEFCTEUnKTsKYXNzZXJ0LmVxdWFsKHJlc3VsdC5haVRyZW5kLmRpcmVjdGlvbiwgJ1VQV0FSRCcpOwphc3NlcnQuZXF1YWwoZmVlZC5zdGF0dXMoKS5yYXdTdXBwbGllcklkZW50aXR5UHVibGljLCBmYWxzZSk7CmFzc2VydC5lcXVhbChmZWVkLnN0YXR1cygpLmFwcHJvdmFsUmVmLCAnSC0wMS1QUklDRS0wMDEnKTsKY29uc3QgcmVzdG9yZWRGZWVkID0gbmV3IFByaWNlRmVlZCh7IHB1YmxpY2F0aW9uQXBwcm92ZWQ6IHRydWUsIGFwcHJvdmFsUmVmOiAnSC0wMS1QUklDRS0wMDEnIH0pOwpyZXN0b3JlZEZlZWQucmVzdG9yZShmZWVkLnNuYXBzaG90KCkpOwphc3NlcnQuZXF1YWwocmVzdG9yZWRGZWVkLnN0YXR1cygpLm9ic2VydmF0aW9uQ291bnQsIDMpOwphc3NlcnQuZXF1YWwocmVzdG9yZWRGZWVkLmNhbGN1bGF0ZSgnR0FCQS1TUEVDLTAwMScsIG5ldyBEYXRlKCcyMDI2LTA5LTA4JykpLmFpVHJlbmQuZGlyZWN0aW9uLCAnVVBXQVJEJyk7CmFzc2VydC50aHJvd3MoKCkgPT4gbmV3IFByaWNlRmVlZCgpLnJlc3RvcmUoW3sgLi4uYmFzZSwgc291cmNlVHlwZTogJ0NPTVBMRVRFRF9QSFlTSUNBTF9UUkFERScsIHRyYWRlSWQ6ICdSRVNUT1JFLU1UJywgcHJpY2U6IDIxMDAwLCBmdWxmaWxsZWRBdDogJzIwMjYtMDktMDQnLCBxdWFudGl0eVVuaXQ6ICdNVCcgfV0pLCAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgUHJpY2VGZWVkRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ1BSSUNFX09CU0VSVkFUSU9OX1VOSVRfTUlTTUFUQ0gnKTsKCmNvbnN0IHVucHVibGlzaGVkRmVlZCA9IG5ldyBQcmljZUZlZWQoKTsKdW5wdWJsaXNoZWRGZWVkLmluZ2VzdCh7IHNvdXJjZVR5cGU6ICdDT01QTEVURURfUEhZU0lDQUxfVFJBREUnLCBvYnNlcnZhdGlvbnM6IFsKICB7IC4uLmJhc2UsIHRyYWRlSWQ6ICdVLTEnLCBwcmljZTogMjEwMDAsIGZ1bGZpbGxlZEF0OiAnMjAyNi0wOS0wMScgfSwKICB7IC4uLmJhc2UsIHRyYWRlSWQ6ICdVLTInLCBzdXBwbGllcklkOiAnUy0yJywgcHJpY2U6IDIxNTAwLCBmdWxmaWxsZWRBdDogJzIwMjYtMDktMDInIH0sCiAgeyAuLi5iYXNlLCB0cmFkZUlkOiAnVS0zJywgc3VwcGxpZXJJZDogJ1MtMScsIHByaWNlOiAyMjIwMCwgZnVsZmlsbGVkQXQ6ICcyMDI2LTA5LTAzJyB9LApdIH0pOwphc3NlcnQuZXF1YWwodW5wdWJsaXNoZWRGZWVkLmNhbGN1bGF0ZSgnR0FCQS1TUEVDLTAwMScsIG5ldyBEYXRlKCcyMDI2LTA5LTA4JykpLnN0YXR1cywgJ1BFTkRJTkdfSFVNQU5fQVBQUk9WQUwnKTsKY29uc29sZS5sb2coJ3ByaWNlLWZlZWQgdGVzdHM6IFBBU1MnKTsK
+import assert from 'node:assert/strict';
+import { PriceFeed, PriceFeedError } from './price-feed.mjs';
+
+const feed = new PriceFeed({ publicationApproved: true, approvalRef: 'H-01-PRICE-001' });
+assert.throws(() => feed.ingest({ sourceType: 'SUPPLIER_QUOTE', observations: [{ quoteId: 'Q-1' }] }), (error) => error instanceof PriceFeedError && error.code === 'PRICE_OBSERVATION_INVALID');
+const base = { specId: 'GABA-SPEC-001', supplierId: 'S-1', quantity: 100, quantityUnit: 'KG', priceUnit: 'KRW_PER_KG', currency: 'KRW', status: 'FULFILLED', evidenceStatus: 'VALID' };
+const accepted = feed.ingest({ sourceType: 'COMPLETED_PHYSICAL_TRADE', observations: [
+  { ...base, tradeId: 'T-1', price: 21000, fulfilledAt: '2026-09-01' },
+  { ...base, tradeId: 'T-2', supplierId: 'S-2', price: 21500, fulfilledAt: '2026-09-02' },
+  { ...base, tradeId: 'T-3', supplierId: 'S-1', price: 22200, fulfilledAt: '2026-09-03' },
+] });
+assert.equal(accepted.accepted, 3);
+assert.throws(() => feed.ingest({ sourceType: 'COMPLETED_PHYSICAL_TRADE', observations: [{ ...base, tradeId: 'T-MT', quantityUnit: 'MT', price: 21000, fulfilledAt: '2026-09-04' }] }), (error) => error instanceof PriceFeedError && error.code === 'PRICE_OBSERVATION_UNIT_MISMATCH');
+assert.equal(feed.ingest({ sourceType: 'COMPLETED_PHYSICAL_TRADE', observations: [{ ...base, tradeId: 'T-1', price: 99999, fulfilledAt: '2026-09-01' }] }).duplicateIgnored, 1);
+const result = feed.calculate('GABA-SPEC-001', new Date('2026-09-08'));
+assert.equal(result.status, 'AVAILABLE');
+assert.equal(result.aiTrend.direction, 'UPWARD');
+assert.equal(feed.status().rawSupplierIdentityPublic, false);
+assert.equal(feed.status().approvalRef, 'H-01-PRICE-001');
+const restoredFeed = new PriceFeed({ publicationApproved: true, approvalRef: 'H-01-PRICE-001' });
+restoredFeed.restore(feed.snapshot());
+assert.equal(restoredFeed.status().observationCount, 3);
+assert.equal(restoredFeed.calculate('GABA-SPEC-001', new Date('2026-09-08')).aiTrend.direction, 'UPWARD');
+assert.throws(() => new PriceFeed().restore([{ ...base, sourceType: 'COMPLETED_PHYSICAL_TRADE', tradeId: 'RESTORE-MT', price: 21000, fulfilledAt: '2026-09-04', quantityUnit: 'MT' }]), (error) => error instanceof PriceFeedError && error.code === 'PRICE_OBSERVATION_UNIT_MISMATCH');
+
+const unpublishedFeed = new PriceFeed();
+unpublishedFeed.ingest({ sourceType: 'COMPLETED_PHYSICAL_TRADE', observations: [
+  { ...base, tradeId: 'U-1', price: 21000, fulfilledAt: '2026-09-01' },
+  { ...base, tradeId: 'U-2', supplierId: 'S-2', price: 21500, fulfilledAt: '2026-09-02' },
+  { ...base, tradeId: 'U-3', supplierId: 'S-1', price: 22200, fulfilledAt: '2026-09-03' },
+] });
+assert.equal(unpublishedFeed.calculate('GABA-SPEC-001', new Date('2026-09-08')).status, 'PENDING_HUMAN_APPROVAL');
+console.log('price-feed tests: PASS');

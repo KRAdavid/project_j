@@ -1,1 +1,91 @@
-aW1wb3J0IHsgcmVhZEZpbGVTeW5jIH0gZnJvbSAnbm9kZTpmcyc7CmltcG9ydCB7IHJlc29sdmUgfSBmcm9tICdub2RlOnBhdGgnOwppbXBvcnQgeyBmaWxlVVJMVG9QYXRoIH0gZnJvbSAnbm9kZTp1cmwnOwppbXBvcnQgeyBjYWxjdWxhdGVQcmljZUluZGV4IH0gZnJvbSAnLi9wcmljZS1pbmRleC5tanMnOwppbXBvcnQgeyBsb2FkUHJpY2VQb2xpY3kgfSBmcm9tICcuL3ByaWNlLWluZGV4Lm1qcyc7Cgpjb25zdCBjb250cmFjdFBhdGggPSByZXNvbHZlKGZpbGVVUkxUb1BhdGgobmV3IFVSTCgnLi4vZGF0YS9wcmljZS1zb3VyY2UtY29udHJhY3QuanNvbicsIGltcG9ydC5tZXRhLnVybCkpKTsKY29uc3QgY29udHJhY3QgPSBKU09OLnBhcnNlKHJlYWRGaWxlU3luYyhjb250cmFjdFBhdGgsICd1dGY4JykpOwpjb25zdCBwcmljZVBvbGljeSA9IGxvYWRQcmljZVBvbGljeSgpOwoKZXhwb3J0IGNsYXNzIFByaWNlRmVlZEVycm9yIGV4dGVuZHMgRXJyb3IgewogIGNvbnN0cnVjdG9yKG1lc3NhZ2UsIGNvZGUgPSAnUFJJQ0VfRkVFRF9GQUlMRUQnKSB7IHN1cGVyKG1lc3NhZ2UpOyB0aGlzLmNvZGUgPSBjb2RlOyB9Cn0KCmNvbnN0IGNsb25lID0gKHZhbHVlKSA9PiBKU09OLnBhcnNlKEpTT04uc3RyaW5naWZ5KHZhbHVlKSk7CmNvbnN0IG9ic2VydmF0aW9uSWRlbnRpdHkgPSAob2JzZXJ2YXRpb24pID0+IG9ic2VydmF0aW9uPy50cmFkZUlkIHx8IG9ic2VydmF0aW9uPy5xdW90ZUlkIHx8IG9ic2VydmF0aW9uPy5zb3VyY2VJZCB8fCBudWxsOwoKY29uc3QgdmFsaWRhdGVPYnNlcnZhdGlvbiA9IChzb3VyY2VUeXBlLCBvYnNlcnZhdGlvbikgPT4gewogIGNvbnN0IHNvdXJjZSA9IGNvbnRyYWN0LmFsbG93ZWRTb3VyY2VzLmZpbmQoKGNhbmRpZGF0ZSkgPT4gY2FuZGlkYXRlLnNvdXJjZVR5cGUgPT09IHNvdXJjZVR5cGUpOwogIGlmICghc291cmNlKSB0aHJvdyBuZXcgUHJpY2VGZWVkRXJyb3IoJ+2XiOyaqeuQmOyngCDslYrsnYAg6rCA6rKpIOybkOyynOyeheuLiOuLpC4nLCAnUFJJQ0VfU09VUkNFX05PVF9BTExPV0VEJyk7CiAgY29uc3QgbWlzc2luZyA9IHNvdXJjZS5yZXF1aXJlZEZpZWxkcy5maW5kKChmaWVsZCkgPT4gb2JzZXJ2YXRpb24/LltmaWVsZF0gPT09IHVuZGVmaW5lZCB8fCBvYnNlcnZhdGlvbj8uW2ZpZWxkXSA9PT0gbnVsbCB8fCBvYnNlcnZhdGlvbj8uW2ZpZWxkXSA9PT0gJycpOwogIGlmIChtaXNzaW5nKSB0aHJvdyBuZXcgUHJpY2VGZWVkRXJyb3IoYOqwgOqyqSDqtIDsuKHsuZgg7ZWE65Oc6rCAIOyXhuyKteuLiOuLpDogJHttaXNzaW5nfWAsICdQUklDRV9PQlNFUlZBVElPTl9JTlZBTElEJyk7CiAgaWYgKHNvdXJjZVR5cGUgIT09ICdQVUJMSUNfUkVGRVJFTkNFJyAmJiAoCiAgICBvYnNlcnZhdGlvbi5jdXJyZW5jeSAhPT0gcHJpY2VQb2xpY3kuY2Fub25pY2FsQ3VycmVuY3kKICAgIHx8IG9ic2VydmF0aW9uLnByaWNlVW5pdCAhPT0gcHJpY2VQb2xpY3kuY2Fub25pY2FsUHJpY2VVbml0CiAgICB8fCBvYnNlcnZhdGlvbi5xdWFudGl0eVVuaXQgIT09IHByaWNlUG9saWN5LmNhbm9uaWNhbFF1YW50aXR5VW5pdAogICkpIHRocm93IG5ldyBQcmljZUZlZWRFcnJvcign6rCA6rKpwrfsiJjrn4kg64uo7JyEIOuYkOuKlCDthrXtmZTqsIAg6riw7KSAIOyKpO2OmeqzvCDsnbzsuZjtlZjsp4Ag7JWK7Iq164uI64ukLicsICdQUklDRV9PQlNFUlZBVElPTl9VTklUX01JU01BVENIJyk7CiAgaWYgKCFvYnNlcnZhdGlvbklkZW50aXR5KG9ic2VydmF0aW9uKSkgdGhyb3cgbmV3IFByaWNlRmVlZEVycm9yKCfqsIDqsqkg6rSA7Lih7LmYIOyLneuzhOyekOqwgCDtlYTsmpTtlanri4jri6QuJywgJ1BSSUNFX09CU0VSVkFUSU9OX0lOVkFMSUQnKTsKICByZXR1cm4gc291cmNlOwp9OwoKZXhwb3J0IGNsYXNzIFByaWNlRmVlZCB7CiAgY29uc3RydWN0b3IoeyBwdWJsaWNhdGlvbkFwcHJvdmVkID0gZmFsc2UsIGFwcHJvdmFsUmVmID0gbnVsbCB9ID0ge30pIHsKICAgIHRoaXMub2JzZXJ2YXRpb25zID0gbmV3IE1hcCgpOwogICAgdGhpcy5wdWJsaWNhdGlvbkFwcHJvdmVkID0gQm9vbGVhbihwdWJsaWNhdGlvbkFwcHJvdmVkKTsKICAgIHRoaXMuYXBwcm92YWxSZWYgPSBhcHByb3ZhbFJlZiA/IFN0cmluZyhhcHByb3ZhbFJlZikgOiBudWxsOwogIH0KCiAgc25hcHNob3QoKSB7IHJldHVybiBbLi4udGhpcy5vYnNlcnZhdGlvbnMudmFsdWVzKCldLm1hcChjbG9uZSk7IH0KCiAgcmVzdG9yZShvYnNlcnZhdGlvbnMgPSBbXSkgewogICAgaWYgKCFBcnJheS5pc0FycmF5KG9ic2VydmF0aW9ucykpIHRocm93IG5ldyBQcmljZUZlZWRFcnJvcign6rCA6rKpIOq0gOy4oey5mCDrs7Xqtawg7ZiV7Iud7J20IOyYrOuwlOultOyngCDslYrsirXri4jri6QuJywgJ1BSSUNFX09CU0VSVkFUSU9OX0lOVkFMSUQnKTsKICAgIGNvbnN0IHJlc3RvcmVkID0gb2JzZXJ2YXRpb25zLm1hcCgob2JzZXJ2YXRpb24pID0+IHsKICAgICAgdmFsaWRhdGVPYnNlcnZhdGlvbihvYnNlcnZhdGlvbj8uc291cmNlVHlwZSwgb2JzZXJ2YXRpb24pOwogICAgICByZXR1cm4gW1N0cmluZyhvYnNlcnZhdGlvbklkZW50aXR5KG9ic2VydmF0aW9uKSksIGNsb25lKG9ic2VydmF0aW9uKV07CiAgICB9KTsKICAgIHRoaXMub2JzZXJ2YXRpb25zID0gbmV3IE1hcChyZXN0b3JlZCk7CiAgICByZXR1cm4gdGhpcy5zdGF0dXMoKTsKICB9CgogIGluZ2VzdCh7IHNvdXJjZVR5cGUsIG9ic2VydmF0aW9ucyA9IFtdIH0gPSB7fSkgewogICAgY29uc3Qgc291cmNlID0gY29udHJhY3QuYWxsb3dlZFNvdXJjZXMuZmluZCgoY2FuZGlkYXRlKSA9PiBjYW5kaWRhdGUuc291cmNlVHlwZSA9PT0gc291cmNlVHlwZSk7CiAgICBpZiAoIXNvdXJjZSkgdGhyb3cgbmV3IFByaWNlRmVlZEVycm9yKCftl4jsmqnrkJjsp4Ag7JWK7J2AIOqwgOqyqSDsm5DsspzsnoXri4jri6QuJywgJ1BSSUNFX1NPVVJDRV9OT1RfQUxMT1dFRCcpOwogICAgaWYgKCFBcnJheS5pc0FycmF5KG9ic2VydmF0aW9ucykgfHwgb2JzZXJ2YXRpb25zLmxlbmd0aCA9PT0gMCkgdGhyb3cgbmV3IFByaWNlRmVlZEVycm9yKCfqsIDqsqkg6rSA7Lih7LmY6rCAIO2VhOyalO2VqeuLiOuLpC4nLCAnUFJJQ0VfT0JTRVJWQVRJT05fUkVRVUlSRUQnKTsKICAgIGNvbnN0IGFjY2VwdGVkID0gW107CiAgICBmb3IgKGNvbnN0IG9ic2VydmF0aW9uIG9mIG9ic2VydmF0aW9ucykgewogICAgICB2YWxpZGF0ZU9ic2VydmF0aW9uKHNvdXJjZVR5cGUsIG9ic2VydmF0aW9uKTsKICAgICAgY29uc3QgaWRlbnRpdHkgPSBTdHJpbmcob2JzZXJ2YXRpb25JZGVudGl0eShvYnNlcnZhdGlvbikpOwogICAgICBpZiAodGhpcy5vYnNlcnZhdGlvbnMuaGFzKGlkZW50aXR5KSkgY29udGludWU7CiAgICAgIGNvbnN0IG5vcm1hbGl6ZWQgPSB7IC4uLmNsb25lKG9ic2VydmF0aW9uKSwgc291cmNlVHlwZSwgaW5nZXN0ZWRBdDogbmV3IERhdGUoKS50b0lTT1N0cmluZygpIH07CiAgICAgIHRoaXMub2JzZXJ2YXRpb25zLnNldChpZGVudGl0eSwgbm9ybWFsaXplZCk7CiAgICAgIGFjY2VwdGVkLnB1c2gobm9ybWFsaXplZCk7CiAgICB9CiAgICByZXR1cm4geyBhY2NlcHRlZDogYWNjZXB0ZWQubGVuZ3RoLCBhY2NlcHRlZE9ic2VydmF0aW9uczogYWNjZXB0ZWQubWFwKGNsb25lKSwgZHVwbGljYXRlSWdub3JlZDogb2JzZXJ2YXRpb25zLmxlbmd0aCAtIGFjY2VwdGVkLmxlbmd0aCwgdG90YWw6IHRoaXMub2JzZXJ2YXRpb25zLnNpemUgfTsKICB9CgogIGNhbGN1bGF0ZShzcGVjSWQsIG5vdyA9IG5ldyBEYXRlKCkpIHsKICAgIGNvbnN0IGluZGV4ID0gY2FsY3VsYXRlUHJpY2VJbmRleCh7IHNwZWNJZCwgb2JzZXJ2YXRpb25zOiBbLi4udGhpcy5vYnNlcnZhdGlvbnMudmFsdWVzKCldLCBub3cgfSk7CiAgICBpZiAoaW5kZXguc3RhdHVzICE9PSAnQVZBSUxBQkxFJykgcmV0dXJuIHsgLi4uaW5kZXgsIGFpVHJlbmQ6IHsgc3RhdHVzOiAnVU5BVkFJTEFCTEUnLCBkaXJlY3Rpb246IG51bGwsIGNoYW5nZVBjdDogbnVsbCwgbGFiZWw6ICftkZzrs7gg67aA7KGx7Jy866GcIOy2lOyEuOulvCDsgrDstpztlZjsp4Ag7JWK7J2MJyB9IH07CiAgICBpZiAoIXRoaXMucHVibGljYXRpb25BcHByb3ZlZCkgcmV0dXJuIHsKICAgICAgLi4uaW5kZXgsCiAgICAgIHN0YXR1czogJ1BFTkRJTkdfSFVNQU5fQVBQUk9WQUwnLAogICAgICB2YWx1ZTogbnVsbCwKICAgICAgY29uZmlkZW5jZTogMCwKICAgICAgcmVhc29uOiAnUFJJQ0VfUFVCTElDQVRJT05fQVBQUk9WQUxfUkVRVUlSRUQnLAogICAgICBhaVRyZW5kOiB7IHN0YXR1czogJ1VOQVZBSUxBQkxFJywgZGlyZWN0aW9uOiBudWxsLCBjaGFuZ2VQY3Q6IG51bGwsIGxhYmVsOiAn7J246rCEIOqzteqwnCDsirnsnbgg7KCE7JeQ64qUIOqwgOqyqcK37LaU7IS466W8IOqzteqwnO2VmOyngCDslYrsnYwnIH0sCiAgICB9OwogICAgY29uc3QgZWxpZ2libGUgPSBbLi4udGhpcy5vYnNlcnZhdGlvbnMudmFsdWVzKCldCiAgICAgIC5maWx0ZXIoKG9ic2VydmF0aW9uKSA9PiBpbmRleC5wcm92ZW5hbmNlLmluY2x1ZGVzKG9ic2VydmF0aW9uLnRyYWRlSWQpKQogICAgICAuc29ydCgoYSwgYikgPT4gbmV3IERhdGUoYS5mdWxmaWxsZWRBdCkgLSBuZXcgRGF0ZShiLmZ1bGZpbGxlZEF0KSk7CiAgICBjb25zdCBtaWRwb2ludCA9IE1hdGgubWF4KDEsIE1hdGguZmxvb3IoZWxpZ2libGUubGVuZ3RoIC8gMikpOwogICAgY29uc3QgYXZlcmFnZSA9IChpdGVtcykgPT4gaXRlbXMucmVkdWNlKChzdW0sIGl0ZW0pID0+IHN1bSArIE51bWJlcihpdGVtLnByaWNlKSAqIE51bWJlcihpdGVtLnF1YW50aXR5KSwgMCkgLyBpdGVtcy5yZWR1Y2UoKHN1bSwgaXRlbSkgPT4gc3VtICsgTnVtYmVyKGl0ZW0ucXVhbnRpdHkpLCAwKTsKICAgIGNvbnN0IGZpcnN0ID0gYXZlcmFnZShlbGlnaWJsZS5zbGljZSgwLCBtaWRwb2ludCkpOwogICAgY29uc3QgbGFzdCA9IGF2ZXJhZ2UoZWxpZ2libGUuc2xpY2UobWlkcG9pbnQpKTsKICAgIGNvbnN0IGNoYW5nZVBjdCA9IE51bWJlcigoKChsYXN0IC0gZmlyc3QpIC8gZmlyc3QpICogMTAwKS50b0ZpeGVkKDIpKTsKICAgIGNvbnN0IGRpcmVjdGlvbiA9IGNoYW5nZVBjdCA+IDEgPyAnVVBXQVJEJyA6IGNoYW5nZVBjdCA8IC0xID8gJ0RPV05XQVJEJyA6ICdTVEFCTEUnOwogICAgcmV0dXJuIHsgLi4uaW5kZXgsIGFpVHJlbmQ6IHsgc3RhdHVzOiAnQVZBSUxBQkxFJywgZGlyZWN0aW9uLCBjaGFuZ2VQY3QsIGxhYmVsOiBkaXJlY3Rpb24gPT09ICdVUFdBUkQnID8gJ+yDgeyKuSDstpTshLgnIDogZGlyZWN0aW9uID09PSAnRE9XTldBUkQnID8gJ+2VmOudvSDstpTshLgnIDogJ+uztO2VqSDstpTshLgnLCBkaXNjbGFpbWVyOiBjb250cmFjdC5wdWJsaWNhdGlvbi5tb2RlbFByZWRpY3Rpb25MYWJlbCB9IH07CiAgfQoKICBzdGF0dXMoKSB7IHJldHVybiB7IHNvdXJjZVN0YXR1czogY29udHJhY3Quc3RhdHVzLCBvYnNlcnZhdGlvbkNvdW50OiB0aGlzLm9ic2VydmF0aW9ucy5zaXplLCBwdWJsaWNhdGlvbkFwcHJvdmVkOiB0aGlzLnB1YmxpY2F0aW9uQXBwcm92ZWQsIGFwcHJvdmFsUmVmOiB0aGlzLmFwcHJvdmFsUmVmLCBwdWJsaWNhdGlvbkFwcHJvdmFsUmVxdWlyZWQ6IGNvbnRyYWN0LnB1YmxpY2F0aW9uLmh1bWFuQXBwcm92YWxSZXF1aXJlZCwgcmF3U3VwcGxpZXJJZGVudGl0eVB1YmxpYzogY29udHJhY3QucHVibGljYXRpb24ucmF3U3VwcGxpZXJJZGVudGl0eVB1YmxpYyB9OyB9Cn0K
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { calculatePriceIndex } from './price-index.mjs';
+import { loadPricePolicy } from './price-index.mjs';
+
+const contractPath = resolve(fileURLToPath(new URL('../data/price-source-contract.json', import.meta.url)));
+const contract = JSON.parse(readFileSync(contractPath, 'utf8'));
+const pricePolicy = loadPricePolicy();
+
+export class PriceFeedError extends Error {
+  constructor(message, code = 'PRICE_FEED_FAILED') { super(message); this.code = code; }
+}
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+const observationIdentity = (observation) => observation?.tradeId || observation?.quoteId || observation?.sourceId || null;
+
+const validateObservation = (sourceType, observation) => {
+  const source = contract.allowedSources.find((candidate) => candidate.sourceType === sourceType);
+  if (!source) throw new PriceFeedError('허용되지 않은 가격 원천입니다.', 'PRICE_SOURCE_NOT_ALLOWED');
+  const missing = source.requiredFields.find((field) => observation?.[field] === undefined || observation?.[field] === null || observation?.[field] === '');
+  if (missing) throw new PriceFeedError(`가격 관측치 필드가 없습니다: ${missing}`, 'PRICE_OBSERVATION_INVALID');
+  if (sourceType !== 'PUBLIC_REFERENCE' && (
+    observation.currency !== pricePolicy.canonicalCurrency
+    || observation.priceUnit !== pricePolicy.canonicalPriceUnit
+    || observation.quantityUnit !== pricePolicy.canonicalQuantityUnit
+  )) throw new PriceFeedError('가격·수량 단위 또는 통화가 기준 스펙과 일치하지 않습니다.', 'PRICE_OBSERVATION_UNIT_MISMATCH');
+  if (!observationIdentity(observation)) throw new PriceFeedError('가격 관측치 식별자가 필요합니다.', 'PRICE_OBSERVATION_INVALID');
+  return source;
+};
+
+export class PriceFeed {
+  constructor({ publicationApproved = false, approvalRef = null } = {}) {
+    this.observations = new Map();
+    this.publicationApproved = Boolean(publicationApproved);
+    this.approvalRef = approvalRef ? String(approvalRef) : null;
+  }
+
+  snapshot() { return [...this.observations.values()].map(clone); }
+
+  restore(observations = []) {
+    if (!Array.isArray(observations)) throw new PriceFeedError('가격 관측치 복구 형식이 올바르지 않습니다.', 'PRICE_OBSERVATION_INVALID');
+    const restored = observations.map((observation) => {
+      validateObservation(observation?.sourceType, observation);
+      return [String(observationIdentity(observation)), clone(observation)];
+    });
+    this.observations = new Map(restored);
+    return this.status();
+  }
+
+  ingest({ sourceType, observations = [] } = {}) {
+    const source = contract.allowedSources.find((candidate) => candidate.sourceType === sourceType);
+    if (!source) throw new PriceFeedError('허용되지 않은 가격 원천입니다.', 'PRICE_SOURCE_NOT_ALLOWED');
+    if (!Array.isArray(observations) || observations.length === 0) throw new PriceFeedError('가격 관측치가 필요합니다.', 'PRICE_OBSERVATION_REQUIRED');
+    const accepted = [];
+    for (const observation of observations) {
+      validateObservation(sourceType, observation);
+      const identity = String(observationIdentity(observation));
+      if (this.observations.has(identity)) continue;
+      const normalized = { ...clone(observation), sourceType, ingestedAt: new Date().toISOString() };
+      this.observations.set(identity, normalized);
+      accepted.push(normalized);
+    }
+    return { accepted: accepted.length, acceptedObservations: accepted.map(clone), duplicateIgnored: observations.length - accepted.length, total: this.observations.size };
+  }
+
+  calculate(specId, now = new Date()) {
+    const index = calculatePriceIndex({ specId, observations: [...this.observations.values()], now });
+    if (index.status !== 'AVAILABLE') return { ...index, aiTrend: { status: 'UNAVAILABLE', direction: null, changePct: null, label: '표본 부족으로 추세를 산출하지 않음' } };
+    if (!this.publicationApproved) return {
+      ...index,
+      status: 'PENDING_HUMAN_APPROVAL',
+      value: null,
+      confidence: 0,
+      reason: 'PRICE_PUBLICATION_APPROVAL_REQUIRED',
+      aiTrend: { status: 'UNAVAILABLE', direction: null, changePct: null, label: '인간 공개 승인 전에는 가격·추세를 공개하지 않음' },
+    };
+    const eligible = [...this.observations.values()]
+      .filter((observation) => index.provenance.includes(observation.tradeId))
+      .sort((a, b) => new Date(a.fulfilledAt) - new Date(b.fulfilledAt));
+    const midpoint = Math.max(1, Math.floor(eligible.length / 2));
+    const average = (items) => items.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0) / items.reduce((sum, item) => sum + Number(item.quantity), 0);
+    const first = average(eligible.slice(0, midpoint));
+    const last = average(eligible.slice(midpoint));
+    const changePct = Number((((last - first) / first) * 100).toFixed(2));
+    const direction = changePct > 1 ? 'UPWARD' : changePct < -1 ? 'DOWNWARD' : 'STABLE';
+    return { ...index, aiTrend: { status: 'AVAILABLE', direction, changePct, label: direction === 'UPWARD' ? '상승 추세' : direction === 'DOWNWARD' ? '하락 추세' : '보합 추세', disclaimer: contract.publication.modelPredictionLabel } };
+  }
+
+  status() { return { sourceStatus: contract.status, observationCount: this.observations.size, publicationApproved: this.publicationApproved, approvalRef: this.approvalRef, publicationApprovalRequired: contract.publication.humanApprovalRequired, rawSupplierIdentityPublic: contract.publication.rawSupplierIdentityPublic }; }
+}

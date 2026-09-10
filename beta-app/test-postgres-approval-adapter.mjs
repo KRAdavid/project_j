@@ -1,1 +1,51 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIsIFBvc3RncmVzRG9tYWluQWRhcHRlckVycm9yIH0gZnJvbSAnLi9wb3N0Z3Jlcy1kb21haW4tYWRhcHRlci5tanMnOwoKY29uc3QgYXBwcm92YWwgPSB7CiAgYXBwcm92YWxfaWQ6ICdBUFBST1ZBTC1QRy0wMDEnLAogIHRhc2tfaWQ6ICdUQVNLLVBHLTAwMScsCiAgc291cmNlX3J1bl9pZDogJ1JVTi1QRy0wMDEnLAogIHJlcXVpcmVkX3ByaW5jaXBhbDogJ0gtMDEnLAogIG9iamVjdGl2ZTogJ1Bvc3RncmVTUUwg7Iq57J24IOybkOyepSDqsoDspp0nLAogIHJpc2s6ICdjcml0aWNhbCcsCiAgcmV2aWV3ZXJzOiBbJ0FJLTExIOyLpOuTnCddLAogIHN0YXRlOiAnUEVORElORycsCiAgZGVjaXNpb246IG51bGwsCiAgZGVjaXNpb25fbm90ZTogbnVsbCwKICBkZWNpZGVkX2J5OiBudWxsLAogIGNyZWF0ZWRfYXQ6ICcyMDI2LTA5LTA4VDAwOjAwOjAwLjAwMFonLAogIGRlY2lkZWRfYXQ6IG51bGwsCn07CmNvbnN0IHF1ZXJpZXMgPSBbXTsKY29uc3QgY2xpZW50ID0gewogIGFzeW5jIHF1ZXJ5KHNxbCwgcGFyYW1zID0gW10pIHsKICAgIHF1ZXJpZXMucHVzaCh7IHNxbCwgcGFyYW1zIH0pOwogICAgaWYgKC9eKEJFR0lOfENPTU1JVHxST0xMQkFDSykvLnRlc3Qoc3FsKSB8fCBzcWwuaW5jbHVkZXMoJ3BnX2Fkdmlzb3J5X3hhY3RfbG9jaycpKSByZXR1cm4geyByb3dzOiBbXSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnU0VMRUNUICogRlJPTSBvcGVyYXRpb25hbF9hcHByb3ZhbHMnKSkgcmV0dXJuIHsgcm93czogW3sgLi4uYXBwcm92YWwgfV0gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ1VQREFURSBvcGVyYXRpb25hbF9hcHByb3ZhbHMnKSkgewogICAgICBPYmplY3QuYXNzaWduKGFwcHJvdmFsLCB7IHN0YXRlOiBwYXJhbXNbMF0sIGRlY2lzaW9uOiBwYXJhbXNbMV0sIGRlY2lzaW9uX25vdGU6IHBhcmFtc1syXSwgZGVjaWRlZF9ieTogcGFyYW1zWzNdLCBkZWNpZGVkX2F0OiAnMjAyNi0wOS0wOFQwMDowMTowMC4wMDBaJyB9KTsKICAgICAgcmV0dXJuIHsgcm93czogW3sgLi4uYXBwcm92YWwgfV0gfTsKICAgIH0KICAgIGlmIChzcWwuaW5jbHVkZXMoJ0lOU0VSVCBJTlRPIGFwcHJvdmFsX2V2ZW50cycpKSByZXR1cm4geyByb3dzOiBbXSB9OwogICAgdGhyb3cgbmV3IEVycm9yKGB1bmV4cGVjdGVkIHF1ZXJ5OiAke3NxbH1gKTsKICB9LAogIHJlbGVhc2UoKSB7fSwKfTsKY29uc3QgcG9vbCA9IHsKICBhc3luYyBjb25uZWN0KCkgeyByZXR1cm4gY2xpZW50OyB9LAogIGFzeW5jIHF1ZXJ5KHNxbCkgewogICAgaWYgKHNxbC5pbmNsdWRlcygnU0VMRUNUICogRlJPTSBvcGVyYXRpb25hbF9hcHByb3ZhbHMgT1JERVIgQlknKSkgcmV0dXJuIHsgcm93czogW3sgLi4uYXBwcm92YWwgfV0gfTsKICAgIHRocm93IG5ldyBFcnJvcihgdW5leHBlY3RlZCBwb29sIHF1ZXJ5OiAke3NxbH1gKTsKICB9LAp9OwoKY29uc3QgYWRhcHRlciA9IG5ldyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIocG9vbCk7CmFzc2VydC5lcXVhbCgoYXdhaXQgYWRhcHRlci5saXN0T3BlcmF0aW9uYWxBcHByb3ZhbHMoKSlbMF0uc3RhdHVzLCAnUEVORElORycpOwpjb25zdCBkZWNpZGVkID0gYXdhaXQgYWRhcHRlci5kZWNpZGVPcGVyYXRpb25hbEFwcHJvdmFsKHsgYXBwcm92YWxJZDogYXBwcm92YWwuYXBwcm92YWxfaWQsIGRlY2lzaW9uOiAnaG9sZCcsIGRlY2lkZWRCeTogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMScsIGFjdG9yS2luZDogJ0hVTUFOJywgY29ycmVsYXRpb25JZDogJ0NPUlItUEctMDAxJywgbm90ZTogJ+y2lOqwgCDspp3qsbAg7ZmV7J24JyB9KTsKYXNzZXJ0LmVxdWFsKGRlY2lkZWQuaXRlbS5zdGF0dXMsICdIRUxEJyk7CmFzc2VydC5lcXVhbChkZWNpZGVkLmlkZW1wb3RlbnQsIGZhbHNlKTsKY29uc3QgaWRlbXBvdGVudCA9IGF3YWl0IGFkYXB0ZXIuZGVjaWRlT3BlcmF0aW9uYWxBcHByb3ZhbCh7IGFwcHJvdmFsSWQ6IGFwcHJvdmFsLmFwcHJvdmFsX2lkLCBkZWNpc2lvbjogJ2hvbGQnLCBkZWNpZGVkQnk6ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDEnLCBhY3RvcktpbmQ6ICdIVU1BTicsIGNvcnJlbGF0aW9uSWQ6ICdDT1JSLVBHLTAwMicgfSk7CmFzc2VydC5lcXVhbChpZGVtcG90ZW50LmlkZW1wb3RlbnQsIHRydWUpOwphd2FpdCBhc3NlcnQucmVqZWN0cygoKSA9PiBhZGFwdGVyLmRlY2lkZU9wZXJhdGlvbmFsQXBwcm92YWwoeyBhcHByb3ZhbElkOiBhcHByb3ZhbC5hcHByb3ZhbF9pZCwgZGVjaXNpb246ICdhcHByb3ZlJywgZGVjaWRlZEJ5OiAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAxJywgYWN0b3JLaW5kOiAnSFVNQU4nLCBjb3JyZWxhdGlvbklkOiAnQ09SUi1QRy0wMDMnIH0pLCAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgUG9zdGdyZXNEb21haW5BZGFwdGVyRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ0FQUFJPVkFMX0FMUkVBRFlfREVDSURFRCcpOwphc3NlcnQuZXF1YWwocXVlcmllcy5maWx0ZXIoKHsgc3FsIH0pID0+IHNxbC5pbmNsdWRlcygnSU5TRVJUIElOVE8gYXBwcm92YWxfZXZlbnRzJykpLmxlbmd0aCwgMSk7CmNvbnNvbGUubG9nKCdwb3N0Z3JlcyBhcHByb3ZhbCBhZGFwdGVyIHRlc3RzOiBQQVNTJyk7Cg==
+import assert from 'node:assert/strict';
+import { PostgresDomainAdapter, PostgresDomainAdapterError } from './postgres-domain-adapter.mjs';
+
+const approval = {
+  approval_id: 'APPROVAL-PG-001',
+  task_id: 'TASK-PG-001',
+  source_run_id: 'RUN-PG-001',
+  required_principal: 'H-01',
+  objective: 'PostgreSQL 승인 원장 검증',
+  risk: 'critical',
+  reviewers: ['AI-11 실드'],
+  state: 'PENDING',
+  decision: null,
+  decision_note: null,
+  decided_by: null,
+  created_at: '2026-09-08T00:00:00.000Z',
+  decided_at: null,
+};
+const queries = [];
+const client = {
+  async query(sql, params = []) {
+    queries.push({ sql, params });
+    if (/^(BEGIN|COMMIT|ROLLBACK)/.test(sql) || sql.includes('pg_advisory_xact_lock')) return { rows: [] };
+    if (sql.includes('SELECT * FROM operational_approvals')) return { rows: [{ ...approval }] };
+    if (sql.includes('UPDATE operational_approvals')) {
+      Object.assign(approval, { state: params[0], decision: params[1], decision_note: params[2], decided_by: params[3], decided_at: '2026-09-08T00:01:00.000Z' });
+      return { rows: [{ ...approval }] };
+    }
+    if (sql.includes('INSERT INTO approval_events')) return { rows: [] };
+    throw new Error(`unexpected query: ${sql}`);
+  },
+  release() {},
+};
+const pool = {
+  async connect() { return client; },
+  async query(sql) {
+    if (sql.includes('SELECT * FROM operational_approvals ORDER BY')) return { rows: [{ ...approval }] };
+    throw new Error(`unexpected pool query: ${sql}`);
+  },
+};
+
+const adapter = new PostgresDomainAdapter(pool);
+assert.equal((await adapter.listOperationalApprovals())[0].status, 'PENDING');
+const decided = await adapter.decideOperationalApproval({ approvalId: approval.approval_id, decision: 'hold', decidedBy: '00000000-0000-0000-0000-000000000001', actorKind: 'HUMAN', correlationId: 'CORR-PG-001', note: '추가 증거 확인' });
+assert.equal(decided.item.status, 'HELD');
+assert.equal(decided.idempotent, false);
+const idempotent = await adapter.decideOperationalApproval({ approvalId: approval.approval_id, decision: 'hold', decidedBy: '00000000-0000-0000-0000-000000000001', actorKind: 'HUMAN', correlationId: 'CORR-PG-002' });
+assert.equal(idempotent.idempotent, true);
+await assert.rejects(() => adapter.decideOperationalApproval({ approvalId: approval.approval_id, decision: 'approve', decidedBy: '00000000-0000-0000-0000-000000000001', actorKind: 'HUMAN', correlationId: 'CORR-PG-003' }), (error) => error instanceof PostgresDomainAdapterError && error.code === 'APPROVAL_ALREADY_DECIDED');
+assert.equal(queries.filter(({ sql }) => sql.includes('INSERT INTO approval_events')).length, 1);
+console.log('postgres approval adapter tests: PASS');

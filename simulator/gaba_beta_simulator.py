@@ -1,1 +1,454 @@
-IiIiR0FCQSDsm5Dro4wg6rGw656Y7IaMIOuyoO2DgCDsi5zrrqzroIjsnbTthLAuCgrsi6TsoJwg6rGw656YwrfqsrDsoJzCt0FJIEFQSeulvCDtmLjstpztlZjsp4Ag7JWK64qUIOqysOygleuhoOyggSDrsqDsnbTsiqTrnbzsnbjsnbTri6QuCu2VteyLrCDqsoDspp0g64yA7IOBOgogIOyKpO2OmSDtmZXsoJUgLT4g7Y+J6reg6rCA6rKpIC0+IOq1rOunpOyjvOusuCAtPiDsgqzsoITqsoDspp0gLT4g7YyQ66ek7J6QIOyytOqysAogIC0+IOuCqe2SiC/qsoDsiJggLT4g7KCV7IKwCgrsi6TsoJwg642w7J207YSw7JmAIOq1rOu2hO2VmOq4sCDsnITtlbQg66qo65OgIOqysOqzvOyXkCBzaW11bGF0aW9uX3J1bl9pZOulvCDrtoDsl6ztlZzri6QuCiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGFyZ3BhcnNlCmltcG9ydCBjc3YKaW1wb3J0IGpzb24KaW1wb3J0IG1hdGgKaW1wb3J0IHJhbmRvbQppbXBvcnQgc3RhdGlzdGljcwppbXBvcnQgdXVpZApmcm9tIGRhdGFjbGFzc2VzIGltcG9ydCBhc2RpY3QsIGRhdGFjbGFzcywgZmllbGQKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZSwgdGltZWRlbHRhCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aApmcm9tIHR5cGluZyBpbXBvcnQgSXRlcmFibGUKCgpTUEVDX0lEID0gIkdBQkEtU0lNLTAwMSIKQkFTRV9QUklDRSA9IDM4XzUwMC4wCgoKQGRhdGFjbGFzcyhmcm96ZW49VHJ1ZSkKY2xhc3MgR2FiYVNwZWM6CiAgICBzcGVjX2lkOiBzdHIgPSBTUEVDX0lECiAgICBuYW1lOiBzdHIgPSAiR0FCQSIKICAgIGZvcm06IHN0ciA9ICJwb3dkZXIiCiAgICBncmFkZTogc3RyID0gImZvb2QtZ3JhZGUtc2ltdWxhdGlvbiIKICAgIHB1cml0eTogc3RyID0gIlNJTVVMQVRFRCIKICAgIG9yaWdpbjogc3RyID0gIlNJTVVMQVRFRCIKICAgIHVuaXQ6IHN0ciA9ICJrZyIKCgpAZGF0YWNsYXNzCmNsYXNzIFNlbGxlckxvdDoKICAgIHNlbGxlcl9pZDogc3RyCiAgICBsb3RfaWQ6IHN0cgogICAgc3BlY19pZDogc3RyCiAgICBhdmFpbGFibGVfcXR5OiBpbnQKICAgIGFza19wcmljZTogZmxvYXQKICAgIGRlbGl2ZXJ5X2RheXM6IGludAogICAgZG9jdW1lbnRfdmFsaWQ6IGJvb2wgPSBUcnVlCiAgICBpbnZlbnRvcnlfdmVyaWZpZWQ6IGJvb2wgPSBUcnVlCiAgICBzdXBwbGllcl92ZXJpZmllZDogYm9vbCA9IFRydWUKICAgIHF1YWxpdHlfdmVyaWZpZWQ6IGJvb2wgPSBUcnVlCiAgICBtYXhfZGFpbHlfc3VwcGx5OiBpbnQgPSAxXzAwMAoKCkBkYXRhY2xhc3MKY2xhc3MgQnV5ZXJQcm9maWxlOgogICAgYnV5ZXJfaWQ6IHN0cgogICAgbW9udGhseV9kZW1hbmQ6IGludAogICAgbWF4X3ByaWNlOiBmbG9hdAogICAgcHJlZmVycmVkX2RlbGl2ZXJ5X2RheXM6IGludAogICAgcmVwZWF0X3Byb2JhYmlsaXR5OiBmbG9hdAoKCkBkYXRhY2xhc3MKY2xhc3MgQnV5ZXJPcmRlcjoKICAgIG9yZGVyX2lkOiBzdHIKICAgIGJ1eWVyX2lkOiBzdHIKICAgIHNwZWNfaWQ6IHN0cgogICAgYmlkX3ByaWNlOiBmbG9hdAogICAgcmVxdWVzdGVkX3F0eTogaW50CiAgICBkZWxpdmVyeV9kYXlzOiBpbnQKICAgIHZhbGlkX2Zvcl9kYXlzOiBpbnQKICAgIHBhcnRpYWxfZmlsbF9hbGxvd2VkOiBib29sID0gVHJ1ZQoKCkBkYXRhY2xhc3MKY2xhc3MgVHJhZGU6CiAgICB0cmFkZV9pZDogc3RyCiAgICBvcmRlcl9pZDogc3RyCiAgICBidXllcl9pZDogc3RyCiAgICBzZWxsZXJfaWQ6IHN0cgogICAgbG90X2lkOiBzdHIKICAgIHNwZWNfaWQ6IHN0cgogICAgcHJpY2U6IGZsb2F0CiAgICBxdHk6IGludAogICAgZGF5OiBpbnQKICAgIHByZXRyYWRlX3ZlcmlmaWVkOiBib29sCiAgICBkZWxpdmVyeV9vazogYm9vbAogICAgcXVhbGl0eV9vazogYm9vbAogICAgc2V0dGxlbWVudF9vazogYm9vbAogICAgc3RhdHVzOiBzdHIKICAgIGJsb2NrX3JlYXNvbjogc3RyIHwgTm9uZSA9IE5vbmUKCgpAZGF0YWNsYXNzCmNsYXNzIFNpbXVsYXRpb25Db25maWc6CiAgICBkYXlzOiBpbnQgPSA5MAogICAgYnV5ZXJzOiBpbnQgPSAxMAogICAgc2VsbGVyczogaW50ID0gMjAKICAgIGluaXRpYWxfbG90c19wZXJfc2VsbGVyOiBpbnQgPSAyCiAgICBvcmRlcnNfcGVyX2RheTogaW50ID0gOAogICAgc2VlZDogaW50ID0gNDIKICAgIHNjZW5hcmlvOiBzdHIgPSAibm9ybWFsIgoKCkBkYXRhY2xhc3MKY2xhc3MgU2ltdWxhdGlvblJlc3VsdDoKICAgIHNpbXVsYXRpb25fcnVuX2lkOiBzdHIKICAgIHNjZW5hcmlvOiBzdHIKICAgIGNvbmZpZzogZGljdAogICAgbWV0cmljczogZGljdAogICAgdHJhZGVzOiBsaXN0W1RyYWRlXSA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1saXN0KQogICAgcHJpY2Vfc2VyaWVzOiBsaXN0W2RpY3RdID0gZmllbGQoZGVmYXVsdF9mYWN0b3J5PWxpc3QpCiAgICBibG9ja2VkX2V2ZW50czogbGlzdFtkaWN0XSA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1saXN0KQoKICAgIGRlZiB0b19kaWN0KHNlbGYpIC0+IGRpY3Q6CiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgInNpbXVsYXRpb25fcnVuX2lkIjogc2VsZi5zaW11bGF0aW9uX3J1bl9pZCwKICAgICAgICAgICAgInNjZW5hcmlvIjogc2VsZi5zY2VuYXJpbywKICAgICAgICAgICAgImNvbmZpZyI6IHNlbGYuY29uZmlnLAogICAgICAgICAgICAibWV0cmljcyI6IHNlbGYubWV0cmljcywKICAgICAgICAgICAgInRyYWRlcyI6IFthc2RpY3QodCkgZm9yIHQgaW4gc2VsZi50cmFkZXNdLAogICAgICAgICAgICAicHJpY2Vfc2VyaWVzIjogc2VsZi5wcmljZV9zZXJpZXMsCiAgICAgICAgICAgICJibG9ja2VkX2V2ZW50cyI6IHNlbGYuYmxvY2tlZF9ldmVudHMsCiAgICAgICAgfQoKCmNsYXNzIEdhYmFCZXRhU2ltdWxhdG9yOgogICAgIiIi6rCA7IOBIOq1rOunpOyekMK37YyQ66ek7J6Q7JmAIOqxsOuemOyGjCDqt5zsuZnsnYQg7Iuk7ZaJ7ZWY64qUIOyLnOuurOugiOydtO2EsC4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgY29uZmlnOiBTaW11bGF0aW9uQ29uZmlnKToKICAgICAgICBzZWxmLmNvbmZpZyA9IGNvbmZpZwogICAgICAgIHNlbGYucm5nID0gcmFuZG9tLlJhbmRvbShjb25maWcuc2VlZCkKICAgICAgICBzZWxmLnNwZWMgPSBHYWJhU3BlYygpCiAgICAgICAgc2VsZi5idXllcnMgPSBzZWxmLl9tYWtlX2J1eWVycygpCiAgICAgICAgc2VsZi5sb3RzID0gc2VsZi5fbWFrZV9sb3RzKCkKICAgICAgICBzZWxmLnRyYWRlczogbGlzdFtUcmFkZV0gPSBbXQogICAgICAgIHNlbGYucHJpY2Vfc2VyaWVzOiBsaXN0W2RpY3RdID0gW10KICAgICAgICBzZWxmLmJsb2NrZWRfZXZlbnRzOiBsaXN0W2RpY3RdID0gW10KICAgICAgICBzZWxmLl9vcmRlcl9jb3VudGVyID0gMAoKICAgIGRlZiBfbWFrZV9idXllcnMoc2VsZikgLT4gbGlzdFtCdXllclByb2ZpbGVdOgogICAgICAgIHJldHVybiBbCiAgICAgICAgICAgIEJ1eWVyUHJvZmlsZSgKICAgICAgICAgICAgICAgIGJ1eWVyX2lkPWYiQlVZRVIte2k6MDJkfSIsCiAgICAgICAgICAgICAgICBtb250aGx5X2RlbWFuZD1zZWxmLnJuZy5yYW5kaW50KDYwLCAyMjApLAogICAgICAgICAgICAgICAgbWF4X3ByaWNlPUJBU0VfUFJJQ0UgKiBzZWxmLnJuZy51bmlmb3JtKDAuOTcsIDEuMDgpLAogICAgICAgICAgICAgICAgcHJlZmVycmVkX2RlbGl2ZXJ5X2RheXM9c2VsZi5ybmcucmFuZGludCg1LCAxOCksCiAgICAgICAgICAgICAgICByZXBlYXRfcHJvYmFiaWxpdHk9c2VsZi5ybmcudW5pZm9ybSgwLjI1LCAwLjc1KSwKICAgICAgICAgICAgKQogICAgICAgICAgICBmb3IgaSBpbiByYW5nZSgxLCBzZWxmLmNvbmZpZy5idXllcnMgKyAxKQogICAgICAgIF0KCiAgICBkZWYgX21ha2VfbG90cyhzZWxmKSAtPiBsaXN0W1NlbGxlckxvdF06CiAgICAgICAgbG90czogbGlzdFtTZWxsZXJMb3RdID0gW10KICAgICAgICBmb3Igc2VsbGVyX2luZGV4IGluIHJhbmdlKDEsIHNlbGYuY29uZmlnLnNlbGxlcnMgKyAxKToKICAgICAgICAgICAgZm9yIGxvdF9pbmRleCBpbiByYW5nZSgxLCBzZWxmLmNvbmZpZy5pbml0aWFsX2xvdHNfcGVyX3NlbGxlciArIDEpOgogICAgICAgICAgICAgICAgcHJpY2UgPSBCQVNFX1BSSUNFICogc2VsZi5ybmcudW5pZm9ybSgwLjk0LCAxLjA3KQogICAgICAgICAgICAgICAgbG90cy5hcHBlbmQoCiAgICAgICAgICAgICAgICAgICAgU2VsbGVyTG90KAogICAgICAgICAgICAgICAgICAgICAgICBzZWxsZXJfaWQ9ZiJTRUxMRVIte3NlbGxlcl9pbmRleDowMmR9IiwKICAgICAgICAgICAgICAgICAgICAgICAgbG90X2lkPWYiTE9ULXtzZWxsZXJfaW5kZXg6MDJkfS17bG90X2luZGV4OjAyZH0iLAogICAgICAgICAgICAgICAgICAgICAgICBzcGVjX2lkPVNQRUNfSUQsCiAgICAgICAgICAgICAgICAgICAgICAgIGF2YWlsYWJsZV9xdHk9c2VsZi5ybmcucmFuZGludCg4MCwgNDUwKSwKICAgICAgICAgICAgICAgICAgICAgICAgYXNrX3ByaWNlPXJvdW5kKHByaWNlLCAyKSwKICAgICAgICAgICAgICAgICAgICAgICAgZGVsaXZlcnlfZGF5cz1zZWxmLnJuZy5yYW5kaW50KDMsIDIwKSwKICAgICAgICAgICAgICAgICAgICAgICAgbWF4X2RhaWx5X3N1cHBseT1zZWxmLnJuZy5yYW5kaW50KDgwLCA0MDApLAogICAgICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgICkKICAgICAgICByZXR1cm4gbG90cwoKICAgIGRlZiBfc2NlbmFyaW9fcHJpY2VfZmFjdG9yKHNlbGYsIGRheTogaW50KSAtPiBmbG9hdDoKICAgICAgICBmYWN0b3IgPSAxLjAgKyAwLjAxNSAqIG1hdGguc2luKGRheSAvIDguMCkKICAgICAgICBzY2VuYXJpbyA9IHNlbGYuY29uZmlnLnNjZW5hcmlvCiAgICAgICAgaWYgc2NlbmFyaW8gPT0gImRlbWFuZF9zdXJnZSIgYW5kIDI1IDw9IGRheSA8PSA0MDoKICAgICAgICAgICAgZmFjdG9yICs9IDAuMTIKICAgICAgICBpZiBzY2VuYXJpbyA9PSAicHJpY2Vfc3Bpa2UiIGFuZCA0NSA8PSBkYXkgPD0gNTA6CiAgICAgICAgICAgIGZhY3RvciArPSAwLjI1CiAgICAgICAgaWYgc2NlbmFyaW8gPT0gInByaWNlX2Ryb3AiIGFuZCA1NSA8PSBkYXkgPD0gNjI6CiAgICAgICAgICAgIGZhY3RvciAtPSAwLjE4CiAgICAgICAgbm9pc2UgPSBzZWxmLnJuZy5nYXVzcygwLCAwLjAwOCkKICAgICAgICByZXR1cm4gbWF4KDAuNSwgZmFjdG9yICsgbm9pc2UpCgogICAgZGVmIF9yZWZlcmVuY2VfcHJpY2Uoc2VsZikgLT4gZmxvYXQ6CiAgICAgICAgY29tcGxldGVkID0gWwogICAgICAgICAgICB0LnByaWNlICogdC5xdHkKICAgICAgICAgICAgZm9yIHQgaW4gc2VsZi50cmFkZXMKICAgICAgICAgICAgaWYgdC5zdGF0dXMgPT0gIkNPTVBMRVRFRCIgYW5kIHQuc3BlY19pZCA9PSBTUEVDX0lECiAgICAgICAgXQogICAgICAgIHF1YW50aXR5ID0gW3QucXR5IGZvciB0IGluIHNlbGYudHJhZGVzIGlmIHQuc3RhdHVzID09ICJDT01QTEVURUQiIGFuZCB0LnNwZWNfaWQgPT0gU1BFQ19JRF0KICAgICAgICBpZiBub3QgcXVhbnRpdHk6CiAgICAgICAgICAgIHJldHVybiBCQVNFX1BSSUNFCiAgICAgICAgcmV0dXJuIHN1bShjb21wbGV0ZWQpIC8gc3VtKHF1YW50aXR5KQoKICAgIGRlZiBfbWFrZV9vcmRlcihzZWxmLCBidXllcjogQnV5ZXJQcm9maWxlLCBkYXk6IGludCwgcmVmZXJlbmNlX3ByaWNlOiBmbG9hdCkgLT4gQnV5ZXJPcmRlcjoKICAgICAgICBzZWxmLl9vcmRlcl9jb3VudGVyICs9IDEKICAgICAgICBzdXJnZSA9IDEuMAogICAgICAgIGlmIHNlbGYuY29uZmlnLnNjZW5hcmlvID09ICJkZW1hbmRfc3VyZ2UiIGFuZCAyNSA8PSBkYXkgPD0gNDA6CiAgICAgICAgICAgIHN1cmdlID0gMS4zCiAgICAgICAgcmVxdWVzdGVkX3F0eSA9IG1heCgxMCwgaW50KGJ1eWVyLm1vbnRobHlfZGVtYW5kIC8gMjAgKiBzdXJnZSAqIHNlbGYucm5nLnVuaWZvcm0oMC43LCAxLjQpKSkKICAgICAgICBiaWQgPSBtaW4oYnV5ZXIubWF4X3ByaWNlLCByZWZlcmVuY2VfcHJpY2UgKiBzZWxmLnJuZy51bmlmb3JtKDAuOTYsIDEuMDQpKQogICAgICAgIHJldHVybiBCdXllck9yZGVyKAogICAgICAgICAgICBvcmRlcl9pZD1mIk9SREVSLXtzZWxmLl9vcmRlcl9jb3VudGVyOjA1ZH0iLAogICAgICAgICAgICBidXllcl9pZD1idXllci5idXllcl9pZCwKICAgICAgICAgICAgc3BlY19pZD1TUEVDX0lELAogICAgICAgICAgICBiaWRfcHJpY2U9cm91bmQoYmlkLCAyKSwKICAgICAgICAgICAgcmVxdWVzdGVkX3F0eT1yZXF1ZXN0ZWRfcXR5LAogICAgICAgICAgICBkZWxpdmVyeV9kYXlzPWJ1eWVyLnByZWZlcnJlZF9kZWxpdmVyeV9kYXlzLAogICAgICAgICAgICB2YWxpZF9mb3JfZGF5cz1zZWxmLnJuZy5jaG9pY2UoWzEsIDIsIDNdKSwKICAgICAgICAgICAgcGFydGlhbF9maWxsX2FsbG93ZWQ9VHJ1ZSwKICAgICAgICApCgogICAgZGVmIF9hcHBseV9zY2VuYXJpb190b19sb3RzKHNlbGYsIGRheTogaW50KSAtPiBOb25lOgogICAgICAgIHNjZW5hcmlvID0gc2VsZi5jb25maWcuc2NlbmFyaW8KICAgICAgICBmb3IgbG90IGluIHNlbGYubG90czoKICAgICAgICAgICAgbG90LmRvY3VtZW50X3ZhbGlkID0gVHJ1ZQogICAgICAgICAgICBsb3QuaW52ZW50b3J5X3ZlcmlmaWVkID0gVHJ1ZQogICAgICAgICAgICBsb3Quc3VwcGxpZXJfdmVyaWZpZWQgPSBUcnVlCiAgICAgICAgICAgIGxvdC5xdWFsaXR5X3ZlcmlmaWVkID0gVHJ1ZQogICAgICAgICAgICBpZiBzY2VuYXJpbyA9PSAic3VwcGxpZXJfb3V0YWdlIiBhbmQgMjAgPD0gZGF5IDw9IDM1IGFuZCBsb3Quc2VsbGVyX2lkIGluIHsiU0VMTEVSLTAxIiwgIlNFTExFUi0wMiIsICJTRUxMRVItMDMifToKICAgICAgICAgICAgICAgIGxvdC5hdmFpbGFibGVfcXR5ID0gMAogICAgICAgICAgICBpZiBzY2VuYXJpbyA9PSAiZG9jdW1lbnRfZXhwaXJ5IiBhbmQgMzAgPD0gZGF5IDw9IDQ1IGFuZCBsb3QubG90X2lkLmVuZHN3aXRoKCItMDIiKToKICAgICAgICAgICAgICAgIGxvdC5kb2N1bWVudF92YWxpZCA9IEZhbHNlCiAgICAgICAgICAgIGlmIHNjZW5hcmlvID09ICJpbnZlbnRvcnlfbWlzbWF0Y2giIGFuZCA0MCA8PSBkYXkgPD0gNTUgYW5kIGxvdC5sb3RfaWQuZW5kc3dpdGgoIi0wMSIpOgogICAgICAgICAgICAgICAgbG90LmludmVudG9yeV92ZXJpZmllZCA9IEZhbHNlCiAgICAgICAgICAgICMgQSBxdWFsaXR5IG1pc21hdGNoIGlzIGludGVudGlvbmFsbHkgZGV0ZWN0ZWQgYWZ0ZXIgZGVsaXZlcnkuCiAgICAgICAgICAgICMgUHJlLXRyYWRlIGV2aWRlbmNlIGNhbiBiZSB2YWxpZCB3aGlsZSB0aGUgZGVsaXZlcmVkIG1hdGVyaWFsCiAgICAgICAgICAgICMgc3RpbGwgZmFpbHMgdGhlIGNvbnRyYWN0IHNwZWNpZmljYXRpb24gZHVyaW5nIGluc3BlY3Rpb24uCiAgICAgICAgICAgIGlmIHNjZW5hcmlvID09ICJzZWxsZXJfdmVyaWZpY2F0aW9uX2ZhaWx1cmUiIGFuZCAxNSA8PSBkYXkgPD0gMjUgYW5kIGxvdC5zZWxsZXJfaWQgPT0gIlNFTExFUi0wNCI6CiAgICAgICAgICAgICAgICBsb3Quc3VwcGxpZXJfdmVyaWZpZWQgPSBGYWxzZQoKICAgIGRlZiBfcHJldHJhZGVfZ2F0ZShzZWxmLCBvcmRlcjogQnV5ZXJPcmRlciwgbG90OiBTZWxsZXJMb3QsIGRheTogaW50KSAtPiB0dXBsZVtib29sLCBzdHIgfCBOb25lXToKICAgICAgICBjaGVja3MgPSBbCiAgICAgICAgICAgIChsb3Quc3BlY19pZCA9PSBvcmRlci5zcGVjX2lkLCAiU1BFQ19NSVNNQVRDSCIpLAogICAgICAgICAgICAobG90LnN1cHBsaWVyX3ZlcmlmaWVkLCAiU1VQUExJRVJfTk9UX1ZFUklGSUVEIiksCiAgICAgICAgICAgIChsb3QuZG9jdW1lbnRfdmFsaWQsICJET0NVTUVOVF9JTlZBTElEIiksCiAgICAgICAgICAgIChsb3QuaW52ZW50b3J5X3ZlcmlmaWVkLCAiSU5WRU5UT1JZX05PVF9WRVJJRklFRCIpLAogICAgICAgICAgICAobG90LnF1YWxpdHlfdmVyaWZpZWQsICJRVUFMSVRZX05PVF9WRVJJRklFRCIpLAogICAgICAgICAgICAobG90LmF2YWlsYWJsZV9xdHkgPiAwLCAiTk9fQVZBSUxBQkxFX0lOVkVOVE9SWSIpLAogICAgICAgICAgICAobG90LmRlbGl2ZXJ5X2RheXMgPD0gb3JkZXIuZGVsaXZlcnlfZGF5cywgIkRFTElWRVJZX05PVF9GRUFTSUJMRSIpLAogICAgICAgICAgICAobG90LmFza19wcmljZSA8PSBvcmRlci5iaWRfcHJpY2UsICJQUklDRV9OT1RfQUNDRVBUQUJMRSIpLAogICAgICAgIF0KICAgICAgICBmb3IgcGFzc2VkLCByZWFzb24gaW4gY2hlY2tzOgogICAgICAgICAgICBpZiBub3QgcGFzc2VkOgogICAgICAgICAgICAgICAgcmV0dXJuIEZhbHNlLCByZWFzb24KICAgICAgICByZXR1cm4gVHJ1ZSwgTm9uZQoKICAgIGRlZiBfZWxpZ2libGVfbG90cyhzZWxmLCBvcmRlcjogQnV5ZXJPcmRlciwgZGF5OiBpbnQpIC0+IGxpc3RbU2VsbGVyTG90XToKICAgICAgICBjYW5kaWRhdGVzOiBsaXN0W1NlbGxlckxvdF0gPSBbXQogICAgICAgIGZvciBsb3QgaW4gc2VsZi5sb3RzOgogICAgICAgICAgICBwYXNzZWQsIHJlYXNvbiA9IHNlbGYuX3ByZXRyYWRlX2dhdGUob3JkZXIsIGxvdCwgZGF5KQogICAgICAgICAgICBpZiBwYXNzZWQ6CiAgICAgICAgICAgICAgICBjYW5kaWRhdGVzLmFwcGVuZChsb3QpCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICBzZWxmLmJsb2NrZWRfZXZlbnRzLmFwcGVuZCgKICAgICAgICAgICAgICAgICAgICB7ImRheSI6IGRheSwgIm9yZGVyX2lkIjogb3JkZXIub3JkZXJfaWQsICJsb3RfaWQiOiBsb3QubG90X2lkLCAicmVhc29uIjogcmVhc29ufQogICAgICAgICAgICAgICAgKQogICAgICAgIHJldHVybiBzb3J0ZWQoY2FuZGlkYXRlcywga2V5PWxhbWJkYSBsb3Q6IChsb3QuYXNrX3ByaWNlLCBsb3QuZGVsaXZlcnlfZGF5cywgbG90LnNlbGxlcl9pZCkpCgogICAgZGVmIF9leGVjdXRlX29yZGVyKHNlbGYsIG9yZGVyOiBCdXllck9yZGVyLCBkYXk6IGludCkgLT4gTm9uZToKICAgICAgICByZW1haW5pbmcgPSBvcmRlci5yZXF1ZXN0ZWRfcXR5CiAgICAgICAgZm9yIGxvdCBpbiBzZWxmLl9lbGlnaWJsZV9sb3RzKG9yZGVyLCBkYXkpOgogICAgICAgICAgICBpZiByZW1haW5pbmcgPD0gMDoKICAgICAgICAgICAgICAgIGJyZWFrCiAgICAgICAgICAgIHF0eSA9IG1pbihyZW1haW5pbmcsIGxvdC5hdmFpbGFibGVfcXR5LCBsb3QubWF4X2RhaWx5X3N1cHBseSkKICAgICAgICAgICAgaWYgcXR5IDw9IDA6CiAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICBsb3QuYXZhaWxhYmxlX3F0eSAtPSBxdHkKICAgICAgICAgICAgcmVtYWluaW5nIC09IHF0eQogICAgICAgICAgICB0cmFkZSA9IFRyYWRlKAogICAgICAgICAgICAgICAgdHJhZGVfaWQ9ZiJUUkFERS17bGVuKHNlbGYudHJhZGVzKSArIDE6MDVkfSIsCiAgICAgICAgICAgICAgICBvcmRlcl9pZD1vcmRlci5vcmRlcl9pZCwKICAgICAgICAgICAgICAgIGJ1eWVyX2lkPW9yZGVyLmJ1eWVyX2lkLAogICAgICAgICAgICAgICAgc2VsbGVyX2lkPWxvdC5zZWxsZXJfaWQsCiAgICAgICAgICAgICAgICBsb3RfaWQ9bG90LmxvdF9pZCwKICAgICAgICAgICAgICAgIHNwZWNfaWQ9b3JkZXIuc3BlY19pZCwKICAgICAgICAgICAgICAgIHByaWNlPWxvdC5hc2tfcHJpY2UsCiAgICAgICAgICAgICAgICBxdHk9cXR5LAogICAgICAgICAgICAgICAgZGF5PWRheSwKICAgICAgICAgICAgICAgIHByZXRyYWRlX3ZlcmlmaWVkPVRydWUsCiAgICAgICAgICAgICAgICBkZWxpdmVyeV9vaz1UcnVlLAogICAgICAgICAgICAgICAgcXVhbGl0eV9vaz1UcnVlLAogICAgICAgICAgICAgICAgc2V0dGxlbWVudF9vaz1UcnVlLAogICAgICAgICAgICAgICAgc3RhdHVzPSJDT01QTEVURUQiLAogICAgICAgICAgICApCiAgICAgICAgICAgIHNlbGYudHJhZGVzLmFwcGVuZCh0cmFkZSkKICAgICAgICAgICAgc2VsZi5fZnVsZmlsbF90cmFkZSh0cmFkZSwgbG90LCBkYXkpCiAgICAgICAgICAgIGlmIG5vdCBvcmRlci5wYXJ0aWFsX2ZpbGxfYWxsb3dlZCBhbmQgcmVtYWluaW5nID4gMDoKICAgICAgICAgICAgICAgIGJyZWFrCgogICAgICAgIGlmIHJlbWFpbmluZyA+IDA6CiAgICAgICAgICAgIHNlbGYuYmxvY2tlZF9ldmVudHMuYXBwZW5kKAogICAgICAgICAgICAgICAgeyJkYXkiOiBkYXksICJvcmRlcl9pZCI6IG9yZGVyLm9yZGVyX2lkLCAicmVhc29uIjogIlBBUlRJQUxMWV9PUl9OT1RfRklMTEVEIiwgInJlbWFpbmluZ19xdHkiOiByZW1haW5pbmd9CiAgICAgICAgICAgICkKCiAgICBkZWYgX2Z1bGZpbGxfdHJhZGUoc2VsZiwgdHJhZGU6IFRyYWRlLCBsb3Q6IFNlbGxlckxvdCwgZGF5OiBpbnQpIC0+IE5vbmU6CiAgICAgICAgc2NlbmFyaW8gPSBzZWxmLmNvbmZpZy5zY2VuYXJpbwogICAgICAgICMgU0VMTEVSLTA3IHJlbWFpbnMgYWN0aXZlIGluIHRoZSBkZXRlcm1pbmlzdGljIHBpbG90IHNlZWQsIGVuc3VyaW5nCiAgICAgICAgIyB0aGUgc2NlbmFyaW8gYWN0dWFsbHkgcmVhY2hlcyBkZWxpdmVyeSBhbmQgZXhlcmNpc2VzIHRoZSBkZWxheSBwYXRoLgogICAgICAgIGlmIHNjZW5hcmlvID09ICJkZWxpdmVyeV9kZWxheSIgYW5kIDM1IDw9IGRheSA8PSA1MCBhbmQgbG90LnNlbGxlcl9pZCA9PSAiU0VMTEVSLTA3IjoKICAgICAgICAgICAgdHJhZGUuZGVsaXZlcnlfb2sgPSBGYWxzZQogICAgICAgIGlmIHNjZW5hcmlvID09ICJxdWFsaXR5X21pc21hdGNoIiBhbmQgNTAgPD0gZGF5IDw9IDY1IGFuZCBsb3QubG90X2lkLmVuZHN3aXRoKCItMDIiKToKICAgICAgICAgICAgdHJhZGUucXVhbGl0eV9vayA9IEZhbHNlCiAgICAgICAgaWYgc2NlbmFyaW8gPT0gInNldHRsZW1lbnRfZXJyb3IiIGFuZCA2MCA8PSBkYXkgPD0gNzUgYW5kIHRyYWRlLnRyYWRlX2lkLmVuZHN3aXRoKCgiMyIsICI3IikpOgogICAgICAgICAgICB0cmFkZS5zZXR0bGVtZW50X29rID0gRmFsc2UKICAgICAgICBpZiBub3QgdHJhZGUuZGVsaXZlcnlfb2s6CiAgICAgICAgICAgIHRyYWRlLnN0YXR1cyA9ICJESVNQVVRFRCIKICAgICAgICAgICAgdHJhZGUuYmxvY2tfcmVhc29uID0gIkRFTElWRVJZX0RFTEFZIgogICAgICAgIGVsaWYgbm90IHRyYWRlLnF1YWxpdHlfb2s6CiAgICAgICAgICAgIHRyYWRlLnN0YXR1cyA9ICJESVNQVVRFRCIKICAgICAgICAgICAgdHJhZGUuYmxvY2tfcmVhc29uID0gIlBPU1RfREVMSVZFUllfUVVBTElUWV9NSVNNQVRDSCIKICAgICAgICBlbGlmIG5vdCB0cmFkZS5zZXR0bGVtZW50X29rOgogICAgICAgICAgICB0cmFkZS5zdGF0dXMgPSAiU0VUVExFTUVOVF9IT0xEIgogICAgICAgICAgICB0cmFkZS5ibG9ja19yZWFzb24gPSAiU0VUVExFTUVOVF9SRUNPTkNJTElBVElPTl9FUlJPUiIKCiAgICBkZWYgcnVuKHNlbGYpIC0+IFNpbXVsYXRpb25SZXN1bHQ6CiAgICAgICAgcnVuX2lkID0gZiJTSU0te3V1aWQudXVpZDQoKS5oZXhbOjEwXS51cHBlcigpfSIKICAgICAgICBmb3IgZGF5IGluIHJhbmdlKDEsIHNlbGYuY29uZmlnLmRheXMgKyAxKToKICAgICAgICAgICAgc2VsZi5fYXBwbHlfc2NlbmFyaW9fdG9fbG90cyhkYXkpCiAgICAgICAgICAgIGZhY3RvciA9IHNlbGYuX3NjZW5hcmlvX3ByaWNlX2ZhY3RvcihkYXkpCiAgICAgICAgICAgIHJlZmVyZW5jZSA9IHNlbGYuX3JlZmVyZW5jZV9wcmljZSgpICogZmFjdG9yCiAgICAgICAgICAgIHNlbGYucHJpY2Vfc2VyaWVzLmFwcGVuZCgKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAiZGF5IjogZGF5LAogICAgICAgICAgICAgICAgICAgICJkYXRlIjogKGRhdGUudG9kYXkoKSArIHRpbWVkZWx0YShkYXlzPWRheSAtIDEpKS5pc29mb3JtYXQoKSwKICAgICAgICAgICAgICAgICAgICAic3BlY19pZCI6IFNQRUNfSUQsCiAgICAgICAgICAgICAgICAgICAgInJlZmVyZW5jZV9wcmljZSI6IHJvdW5kKHJlZmVyZW5jZSwgMiksCiAgICAgICAgICAgICAgICAgICAgImRhdGFfc3RhdHVzIjogIlNJTVVMQVRFRCIsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICkKICAgICAgICAgICAgYnV5ZXJzID0gc2VsZi5ybmcuc2FtcGxlKHNlbGYuYnV5ZXJzLCBrPW1pbihsZW4oc2VsZi5idXllcnMpLCBzZWxmLmNvbmZpZy5vcmRlcnNfcGVyX2RheSkpCiAgICAgICAgICAgIGZvciBidXllciBpbiBidXllcnM6CiAgICAgICAgICAgICAgICBzZWxmLl9leGVjdXRlX29yZGVyKHNlbGYuX21ha2Vfb3JkZXIoYnV5ZXIsIGRheSwgcmVmZXJlbmNlKSwgZGF5KQoKICAgICAgICBtZXRyaWNzID0gc2VsZi5fbWV0cmljcygpCiAgICAgICAgcmV0dXJuIFNpbXVsYXRpb25SZXN1bHQoCiAgICAgICAgICAgIHNpbXVsYXRpb25fcnVuX2lkPXJ1bl9pZCwKICAgICAgICAgICAgc2NlbmFyaW89c2VsZi5jb25maWcuc2NlbmFyaW8sCiAgICAgICAgICAgIGNvbmZpZz1hc2RpY3Qoc2VsZi5jb25maWcpLAogICAgICAgICAgICBtZXRyaWNzPW1ldHJpY3MsCiAgICAgICAgICAgIHRyYWRlcz1zZWxmLnRyYWRlcywKICAgICAgICAgICAgcHJpY2Vfc2VyaWVzPXNlbGYucHJpY2Vfc2VyaWVzLAogICAgICAgICAgICBibG9ja2VkX2V2ZW50cz1zZWxmLmJsb2NrZWRfZXZlbnRzLAogICAgICAgICkKCiAgICBkZWYgX21ldHJpY3Moc2VsZikgLT4gZGljdDoKICAgICAgICB0b3RhbCA9IGxlbihzZWxmLnRyYWRlcykKICAgICAgICBjb21wbGV0ZWQgPSBzdW0odC5zdGF0dXMgPT0gIkNPTVBMRVRFRCIgZm9yIHQgaW4gc2VsZi50cmFkZXMpCiAgICAgICAgZGlzcHV0ZWQgPSBzdW0odC5zdGF0dXMgPT0gIkRJU1BVVEVEIiBmb3IgdCBpbiBzZWxmLnRyYWRlcykKICAgICAgICBzZXR0bGVtZW50X2hvbGRzID0gc3VtKHQuc3RhdHVzID09ICJTRVRUTEVNRU5UX0hPTEQiIGZvciB0IGluIHNlbGYudHJhZGVzKQogICAgICAgIHByZXRyYWRlX3ZlcmlmaWVkID0gc3VtKHQucHJldHJhZGVfdmVyaWZpZWQgZm9yIHQgaW4gc2VsZi50cmFkZXMpCiAgICAgICAgZGVsaXZlcnlfb2sgPSBzdW0odC5kZWxpdmVyeV9vayBmb3IgdCBpbiBzZWxmLnRyYWRlcykKICAgICAgICBxdWFsaXR5X29rID0gc3VtKHQucXVhbGl0eV9vayBmb3IgdCBpbiBzZWxmLnRyYWRlcykKICAgICAgICBzZXR0bGVtZW50X29rID0gc3VtKHQuc2V0dGxlbWVudF9vayBmb3IgdCBpbiBzZWxmLnRyYWRlcykKICAgICAgICBvYnNlcnZlZF9wcmljZXMgPSBbdC5wcmljZSBmb3IgdCBpbiBzZWxmLnRyYWRlc10KICAgICAgICBibG9ja2VkID0gbGVuKHNlbGYuYmxvY2tlZF9ldmVudHMpCiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgInRyYWRlX2NvdW50IjogdG90YWwsCiAgICAgICAgICAgICJjb21wbGV0ZWRfdHJhZGVfY291bnQiOiBjb21wbGV0ZWQsCiAgICAgICAgICAgICJjb21wbGV0ZWRfdHJhZGVfcmF0ZSI6IHJvdW5kKGNvbXBsZXRlZCAvIHRvdGFsLCA0KSBpZiB0b3RhbCBlbHNlIDAuMCwKICAgICAgICAgICAgImRpc3B1dGVkX3RyYWRlX2NvdW50IjogZGlzcHV0ZWQsCiAgICAgICAgICAgICJzZXR0bGVtZW50X2hvbGRfY291bnQiOiBzZXR0bGVtZW50X2hvbGRzLAogICAgICAgICAgICAicHJldHJhZGVfdmVyaWZpY2F0aW9uX3JhdGUiOiByb3VuZChwcmV0cmFkZV92ZXJpZmllZCAvIHRvdGFsLCA0KSBpZiB0b3RhbCBlbHNlIDAuMCwKICAgICAgICAgICAgImRlbGl2ZXJ5X3N1Y2Nlc3NfcmF0ZSI6IHJvdW5kKGRlbGl2ZXJ5X29rIC8gdG90YWwsIDQpIGlmIHRvdGFsIGVsc2UgMC4wLAogICAgICAgICAgICAicXVhbGl0eV9zdWNjZXNzX3JhdGUiOiByb3VuZChxdWFsaXR5X29rIC8gdG90YWwsIDQpIGlmIHRvdGFsIGVsc2UgMC4wLAogICAgICAgICAgICAic2V0dGxlbWVudF9zdWNjZXNzX3JhdGUiOiByb3VuZChzZXR0bGVtZW50X29rIC8gdG90YWwsIDQpIGlmIHRvdGFsIGVsc2UgMC4wLAogICAgICAgICAgICAiYmxvY2tlZF9ldmVudF9jb3VudCI6IGJsb2NrZWQsCiAgICAgICAgICAgICJwYXJ0aWFsX2ZpbGxfZXZlbnRfY291bnQiOiBzdW0oZXZlbnQuZ2V0KCJyZWFzb24iKSA9PSAiUEFSVElBTExZX09SX05PVF9GSUxMRUQiIGZvciBldmVudCBpbiBzZWxmLmJsb2NrZWRfZXZlbnRzKSwKICAgICAgICAgICAgImR1cGxpY2F0ZV90cmFkZV9jb3VudCI6IHNlbGYuX2R1cGxpY2F0ZV90cmFkZV9jb3VudCgpLAogICAgICAgICAgICAiYXZnX2NvbXBsZXRlZF9wcmljZSI6IHJvdW5kKHN0YXRpc3RpY3MubWVhbihvYnNlcnZlZF9wcmljZXMpLCAyKSBpZiBvYnNlcnZlZF9wcmljZXMgZWxzZSBOb25lLAogICAgICAgICAgICAidG90YWxfY29tcGxldGVkX3F0eSI6IHN1bSh0LnF0eSBmb3IgdCBpbiBzZWxmLnRyYWRlcyBpZiB0LnN0YXR1cyA9PSAiQ09NUExFVEVEIiksCiAgICAgICAgICAgICJwcmljZV9vYnNlcnZhdGlvbl9jb3VudCI6IGxlbihvYnNlcnZlZF9wcmljZXMpLAogICAgICAgIH0KCiAgICBkZWYgX2R1cGxpY2F0ZV90cmFkZV9jb3VudChzZWxmKSAtPiBpbnQ6CiAgICAgICAga2V5cyA9IFsodC5idXllcl9pZCwgdC5zZWxsZXJfaWQsIHQubG90X2lkLCB0LmRheSkgZm9yIHQgaW4gc2VsZi50cmFkZXNdCiAgICAgICAgcmV0dXJuIGxlbihrZXlzKSAtIGxlbihzZXQoa2V5cykpCgoKZGVmIHJ1bl9tYW55KGNvbmZpZzogU2ltdWxhdGlvbkNvbmZpZywgcnVuczogaW50KSAtPiBkaWN0OgogICAgcmVzdWx0cyA9IFtdCiAgICBmb3Igb2Zmc2V0IGluIHJhbmdlKHJ1bnMpOgogICAgICAgIHJ1bl9jb25maWcgPSBTaW11bGF0aW9uQ29uZmlnKCoqeyoqYXNkaWN0KGNvbmZpZyksICJzZWVkIjogY29uZmlnLnNlZWQgKyBvZmZzZXR9KQogICAgICAgIHJlc3VsdHMuYXBwZW5kKEdhYmFCZXRhU2ltdWxhdG9yKHJ1bl9jb25maWcpLnJ1bigpKQogICAgbWV0cmljcyA9IFtyZXN1bHQubWV0cmljcyBmb3IgcmVzdWx0IGluIHJlc3VsdHNdCiAgICBjb21wbGV0ZWRfcmF0ZXMgPSBbbVsiY29tcGxldGVkX3RyYWRlX3JhdGUiXSBmb3IgbSBpbiBtZXRyaWNzXQogICAgcmV0dXJuIHsKICAgICAgICAic2NlbmFyaW8iOiBjb25maWcuc2NlbmFyaW8sCiAgICAgICAgInJ1bnMiOiBydW5zLAogICAgICAgICJjb21wbGV0ZWRfdHJhZGVfcmF0ZV9tZWFuIjogcm91bmQoc3RhdGlzdGljcy5tZWFuKGNvbXBsZXRlZF9yYXRlcyksIDQpLAogICAgICAgICJjb21wbGV0ZWRfdHJhZGVfcmF0ZV9taW4iOiByb3VuZChtaW4oY29tcGxldGVkX3JhdGVzKSwgNCksCiAgICAgICAgImNvbXBsZXRlZF90cmFkZV9yYXRlX21heCI6IHJvdW5kKG1heChjb21wbGV0ZWRfcmF0ZXMpLCA0KSwKICAgICAgICAiZHVwbGljYXRlX3RyYWRlX2NvdW50X3RvdGFsIjogc3VtKG1bImR1cGxpY2F0ZV90cmFkZV9jb3VudCJdIGZvciBtIGluIG1ldHJpY3MpLAogICAgICAgICJwcmV0cmFkZV92ZXJpZmljYXRpb25fcmF0ZV9taW4iOiBtaW4obVsicHJldHJhZGVfdmVyaWZpY2F0aW9uX3JhdGUiXSBmb3IgbSBpbiBtZXRyaWNzKSwKICAgICAgICAicXVhbGl0eV9zdWNjZXNzX3JhdGVfbWluIjogbWluKG1bInF1YWxpdHlfc3VjY2Vzc19yYXRlIl0gZm9yIG0gaW4gbWV0cmljcyksCiAgICAgICAgInNldHRsZW1lbnRfc3VjY2Vzc19yYXRlX21pbiI6IG1pbihtWyJzZXR0bGVtZW50X3N1Y2Nlc3NfcmF0ZSJdIGZvciBtIGluIG1ldHJpY3MpLAogICAgfQoKCmRlZiB3cml0ZV9yZXN1bHQocmVzdWx0OiBTaW11bGF0aW9uUmVzdWx0LCBvdXRwdXQ6IFBhdGgpIC0+IE5vbmU6CiAgICBvdXRwdXQucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgIG91dHB1dC53cml0ZV90ZXh0KGpzb24uZHVtcHMocmVzdWx0LnRvX2RpY3QoKSwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MiksIGVuY29kaW5nPSJ1dGYtOCIpCgoKZGVmIHdyaXRlX3RyYWRlX2NzdihyZXN1bHQ6IFNpbXVsYXRpb25SZXN1bHQsIG91dHB1dDogUGF0aCkgLT4gTm9uZToKICAgIG91dHB1dC5wYXJlbnQubWtkaXIocGFyZW50cz1UcnVlLCBleGlzdF9vaz1UcnVlKQogICAgZmllbGRzID0gbGlzdChhc2RpY3QocmVzdWx0LnRyYWRlc1swXSkua2V5cygpKSBpZiByZXN1bHQudHJhZGVzIGVsc2UgbGlzdChhc2RpY3QoVHJhZGUoIiIsICIiLCAiIiwgIiIsICIiLCAiIiwgMCwgMCwgMCwgRmFsc2UsIEZhbHNlLCBGYWxzZSwgRmFsc2UsICIiKSkua2V5cygpKQogICAgd2l0aCBvdXRwdXQub3BlbigidyIsIG5ld2xpbmU9IiIsIGVuY29kaW5nPSJ1dGYtOC1zaWciKSBhcyBoYW5kbGU6CiAgICAgICAgd3JpdGVyID0gY3N2LkRpY3RXcml0ZXIoaGFuZGxlLCBmaWVsZG5hbWVzPWZpZWxkcykKICAgICAgICB3cml0ZXIud3JpdGVoZWFkZXIoKQogICAgICAgIHdyaXRlci53cml0ZXJvd3MoYXNkaWN0KHRyYWRlKSBmb3IgdHJhZGUgaW4gcmVzdWx0LnRyYWRlcykKCgpkZWYgYnVpbGRfcGFyc2VyKCkgLT4gYXJncGFyc2UuQXJndW1lbnRQYXJzZXI6CiAgICBwYXJzZXIgPSBhcmdwYXJzZS5Bcmd1bWVudFBhcnNlcihkZXNjcmlwdGlvbj0iR0FCQSDsm5Dro4wg6rGw656Y7IaMIOuyoO2DgCDsi5zrrqzroIjsnbTthLAiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1zY2VuYXJpbyIsIGRlZmF1bHQ9Im5vcm1hbCIsIGNob2ljZXM9WwogICAgICAgICJub3JtYWwiLCAiZGVtYW5kX3N1cmdlIiwgInN1cHBsaWVyX291dGFnZSIsICJkb2N1bWVudF9leHBpcnkiLAogICAgICAgICJpbnZlbnRvcnlfbWlzbWF0Y2giLCAicXVhbGl0eV9taXNtYXRjaCIsICJkZWxpdmVyeV9kZWxheSIsCiAgICAgICAgInNldHRsZW1lbnRfZXJyb3IiLCAicHJpY2Vfc3Bpa2UiLCAicHJpY2VfZHJvcCIsICJzZWxsZXJfdmVyaWZpY2F0aW9uX2ZhaWx1cmUiLAogICAgXSkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tZGF5cyIsIHR5cGU9aW50LCBkZWZhdWx0PTkwKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1vcmRlcnMtcGVyLWRheSIsIHR5cGU9aW50LCBkZWZhdWx0PTgpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXNlZWQiLCB0eXBlPWludCwgZGVmYXVsdD00MikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tcnVucyIsIHR5cGU9aW50LCBkZWZhdWx0PTEpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLW91dHB1dCIsIHR5cGU9UGF0aCwgZGVmYXVsdD1QYXRoKCJzaW11bGF0aW9uX291dHB1dC9nYWJhX3Jlc3VsdC5qc29uIikpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLWNzdiIsIHR5cGU9UGF0aCwgZGVmYXVsdD1Ob25lKQogICAgcmV0dXJuIHBhcnNlcgoKCmRlZiBtYWluKCkgLT4gTm9uZToKICAgIGFyZ3MgPSBidWlsZF9wYXJzZXIoKS5wYXJzZV9hcmdzKCkKICAgIGNvbmZpZyA9IFNpbXVsYXRpb25Db25maWcoCiAgICAgICAgZGF5cz1hcmdzLmRheXMsCiAgICAgICAgb3JkZXJzX3Blcl9kYXk9YXJncy5vcmRlcnNfcGVyX2RheSwKICAgICAgICBzZWVkPWFyZ3Muc2VlZCwKICAgICAgICBzY2VuYXJpbz1hcmdzLnNjZW5hcmlvLAogICAgKQogICAgaWYgYXJncy5ydW5zID4gMToKICAgICAgICBzdW1tYXJ5ID0gcnVuX21hbnkoY29uZmlnLCBhcmdzLnJ1bnMpCiAgICAgICAgYXJncy5vdXRwdXQucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgICAgICBhcmdzLm91dHB1dC53cml0ZV90ZXh0KGpzb24uZHVtcHMoc3VtbWFyeSwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MiksIGVuY29kaW5nPSJ1dGYtOCIpCiAgICAgICAgcHJpbnQoanNvbi5kdW1wcyhzdW1tYXJ5LCBlbnN1cmVfYXNjaWk9RmFsc2UsIGluZGVudD0yKSkKICAgICAgICByZXR1cm4KCiAgICByZXN1bHQgPSBHYWJhQmV0YVNpbXVsYXRvcihjb25maWcpLnJ1bigpCiAgICB3cml0ZV9yZXN1bHQocmVzdWx0LCBhcmdzLm91dHB1dCkKICAgIGlmIGFyZ3MuY3N2OgogICAgICAgIHdyaXRlX3RyYWRlX2NzdihyZXN1bHQsIGFyZ3MuY3N2KQogICAgcHJpbnQoanNvbi5kdW1wcyh7InNpbXVsYXRpb25fcnVuX2lkIjogcmVzdWx0LnNpbXVsYXRpb25fcnVuX2lkLCAqKnJlc3VsdC5tZXRyaWNzfSwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MikpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKQo=
+"""GABA 원료 거래소 베타 시뮬레이터.
+
+실제 거래·결제·AI API를 호출하지 않는 결정론적 베이스라인이다.
+핵심 검증 대상:
+  스펙 확정 -> 평균가격 -> 구매주문 -> 사전검증 -> 판매자 체결
+  -> 납품/검수 -> 정산
+
+실제 데이터와 구분하기 위해 모든 결과에 simulation_run_id를 부여한다.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import math
+import random
+import statistics
+import uuid
+from dataclasses import asdict, dataclass, field
+from datetime import date, timedelta
+from pathlib import Path
+from typing import Iterable
+
+
+SPEC_ID = "GABA-SIM-001"
+BASE_PRICE = 38_500.0
+
+
+@dataclass(frozen=True)
+class GabaSpec:
+    spec_id: str = SPEC_ID
+    name: str = "GABA"
+    form: str = "powder"
+    grade: str = "food-grade-simulation"
+    purity: str = "SIMULATED"
+    origin: str = "SIMULATED"
+    unit: str = "kg"
+
+
+@dataclass
+class SellerLot:
+    seller_id: str
+    lot_id: str
+    spec_id: str
+    available_qty: int
+    ask_price: float
+    delivery_days: int
+    document_valid: bool = True
+    inventory_verified: bool = True
+    supplier_verified: bool = True
+    quality_verified: bool = True
+    max_daily_supply: int = 1_000
+
+
+@dataclass
+class BuyerProfile:
+    buyer_id: str
+    monthly_demand: int
+    max_price: float
+    preferred_delivery_days: int
+    repeat_probability: float
+
+
+@dataclass
+class BuyerOrder:
+    order_id: str
+    buyer_id: str
+    spec_id: str
+    bid_price: float
+    requested_qty: int
+    delivery_days: int
+    valid_for_days: int
+    partial_fill_allowed: bool = True
+
+
+@dataclass
+class Trade:
+    trade_id: str
+    order_id: str
+    buyer_id: str
+    seller_id: str
+    lot_id: str
+    spec_id: str
+    price: float
+    qty: int
+    day: int
+    pretrade_verified: bool
+    delivery_ok: bool
+    quality_ok: bool
+    settlement_ok: bool
+    status: str
+    block_reason: str | None = None
+
+
+@dataclass
+class SimulationConfig:
+    days: int = 90
+    buyers: int = 10
+    sellers: int = 20
+    initial_lots_per_seller: int = 2
+    orders_per_day: int = 8
+    seed: int = 42
+    scenario: str = "normal"
+
+
+@dataclass
+class SimulationResult:
+    simulation_run_id: str
+    scenario: str
+    config: dict
+    metrics: dict
+    trades: list[Trade] = field(default_factory=list)
+    price_series: list[dict] = field(default_factory=list)
+    blocked_events: list[dict] = field(default_factory=list)
+
+    def to_dict(self) -> dict:
+        return {
+            "simulation_run_id": self.simulation_run_id,
+            "scenario": self.scenario,
+            "config": self.config,
+            "metrics": self.metrics,
+            "trades": [asdict(t) for t in self.trades],
+            "price_series": self.price_series,
+            "blocked_events": self.blocked_events,
+        }
+
+
+class GabaBetaSimulator:
+    """가상 구매자·판매자와 거래소 규칙을 실행하는 시뮬레이터."""
+
+    def __init__(self, config: SimulationConfig):
+        self.config = config
+        self.rng = random.Random(config.seed)
+        self.spec = GabaSpec()
+        self.buyers = self._make_buyers()
+        self.lots = self._make_lots()
+        self.trades: list[Trade] = []
+        self.price_series: list[dict] = []
+        self.blocked_events: list[dict] = []
+        self._order_counter = 0
+
+    def _make_buyers(self) -> list[BuyerProfile]:
+        return [
+            BuyerProfile(
+                buyer_id=f"BUYER-{i:02d}",
+                monthly_demand=self.rng.randint(60, 220),
+                max_price=BASE_PRICE * self.rng.uniform(0.97, 1.08),
+                preferred_delivery_days=self.rng.randint(5, 18),
+                repeat_probability=self.rng.uniform(0.25, 0.75),
+            )
+            for i in range(1, self.config.buyers + 1)
+        ]
+
+    def _make_lots(self) -> list[SellerLot]:
+        lots: list[SellerLot] = []
+        for seller_index in range(1, self.config.sellers + 1):
+            for lot_index in range(1, self.config.initial_lots_per_seller + 1):
+                price = BASE_PRICE * self.rng.uniform(0.94, 1.07)
+                lots.append(
+                    SellerLot(
+                        seller_id=f"SELLER-{seller_index:02d}",
+                        lot_id=f"LOT-{seller_index:02d}-{lot_index:02d}",
+                        spec_id=SPEC_ID,
+                        available_qty=self.rng.randint(80, 450),
+                        ask_price=round(price, 2),
+                        delivery_days=self.rng.randint(3, 20),
+                        max_daily_supply=self.rng.randint(80, 400),
+                    )
+                )
+        return lots
+
+    def _scenario_price_factor(self, day: int) -> float:
+        factor = 1.0 + 0.015 * math.sin(day / 8.0)
+        scenario = self.config.scenario
+        if scenario == "demand_surge" and 25 <= day <= 40:
+            factor += 0.12
+        if scenario == "price_spike" and 45 <= day <= 50:
+            factor += 0.25
+        if scenario == "price_drop" and 55 <= day <= 62:
+            factor -= 0.18
+        noise = self.rng.gauss(0, 0.008)
+        return max(0.5, factor + noise)
+
+    def _reference_price(self) -> float:
+        completed = [
+            t.price * t.qty
+            for t in self.trades
+            if t.status == "COMPLETED" and t.spec_id == SPEC_ID
+        ]
+        quantity = [t.qty for t in self.trades if t.status == "COMPLETED" and t.spec_id == SPEC_ID]
+        if not quantity:
+            return BASE_PRICE
+        return sum(completed) / sum(quantity)
+
+    def _make_order(self, buyer: BuyerProfile, day: int, reference_price: float) -> BuyerOrder:
+        self._order_counter += 1
+        surge = 1.0
+        if self.config.scenario == "demand_surge" and 25 <= day <= 40:
+            surge = 1.3
+        requested_qty = max(10, int(buyer.monthly_demand / 20 * surge * self.rng.uniform(0.7, 1.4)))
+        bid = min(buyer.max_price, reference_price * self.rng.uniform(0.96, 1.04))
+        return BuyerOrder(
+            order_id=f"ORDER-{self._order_counter:05d}",
+            buyer_id=buyer.buyer_id,
+            spec_id=SPEC_ID,
+            bid_price=round(bid, 2),
+            requested_qty=requested_qty,
+            delivery_days=buyer.preferred_delivery_days,
+            valid_for_days=self.rng.choice([1, 2, 3]),
+            partial_fill_allowed=True,
+        )
+
+    def _apply_scenario_to_lots(self, day: int) -> None:
+        scenario = self.config.scenario
+        for lot in self.lots:
+            lot.document_valid = True
+            lot.inventory_verified = True
+            lot.supplier_verified = True
+            lot.quality_verified = True
+            if scenario == "supplier_outage" and 20 <= day <= 35 and lot.seller_id in {"SELLER-01", "SELLER-02", "SELLER-03"}:
+                lot.available_qty = 0
+            if scenario == "document_expiry" and 30 <= day <= 45 and lot.lot_id.endswith("-02"):
+                lot.document_valid = False
+            if scenario == "inventory_mismatch" and 40 <= day <= 55 and lot.lot_id.endswith("-01"):
+                lot.inventory_verified = False
+            # A quality mismatch is intentionally detected after delivery.
+            # Pre-trade evidence can be valid while the delivered material
+            # still fails the contract specification during inspection.
+            if scenario == "seller_verification_failure" and 15 <= day <= 25 and lot.seller_id == "SELLER-04":
+                lot.supplier_verified = False
+
+    def _pretrade_gate(self, order: BuyerOrder, lot: SellerLot, day: int) -> tuple[bool, str | None]:
+        checks = [
+            (lot.spec_id == order.spec_id, "SPEC_MISMATCH"),
+            (lot.supplier_verified, "SUPPLIER_NOT_VERIFIED"),
+            (lot.document_valid, "DOCUMENT_INVALID"),
+            (lot.inventory_verified, "INVENTORY_NOT_VERIFIED"),
+            (lot.quality_verified, "QUALITY_NOT_VERIFIED"),
+            (lot.available_qty > 0, "NO_AVAILABLE_INVENTORY"),
+            (lot.delivery_days <= order.delivery_days, "DELIVERY_NOT_FEASIBLE"),
+            (lot.ask_price <= order.bid_price, "PRICE_NOT_ACCEPTABLE"),
+        ]
+        for passed, reason in checks:
+            if not passed:
+                return False, reason
+        return True, None
+
+    def _eligible_lots(self, order: BuyerOrder, day: int) -> list[SellerLot]:
+        candidates: list[SellerLot] = []
+        for lot in self.lots:
+            passed, reason = self._pretrade_gate(order, lot, day)
+            if passed:
+                candidates.append(lot)
+            else:
+                self.blocked_events.append(
+                    {"day": day, "order_id": order.order_id, "lot_id": lot.lot_id, "reason": reason}
+                )
+        return sorted(candidates, key=lambda lot: (lot.ask_price, lot.delivery_days, lot.seller_id))
+
+    def _execute_order(self, order: BuyerOrder, day: int) -> None:
+        remaining = order.requested_qty
+        for lot in self._eligible_lots(order, day):
+            if remaining <= 0:
+                break
+            qty = min(remaining, lot.available_qty, lot.max_daily_supply)
+            if qty <= 0:
+                continue
+            lot.available_qty -= qty
+            remaining -= qty
+            trade = Trade(
+                trade_id=f"TRADE-{len(self.trades) + 1:05d}",
+                order_id=order.order_id,
+                buyer_id=order.buyer_id,
+                seller_id=lot.seller_id,
+                lot_id=lot.lot_id,
+                spec_id=order.spec_id,
+                price=lot.ask_price,
+                qty=qty,
+                day=day,
+                pretrade_verified=True,
+                delivery_ok=True,
+                quality_ok=True,
+                settlement_ok=True,
+                status="COMPLETED",
+            )
+            self.trades.append(trade)
+            self._fulfill_trade(trade, lot, day)
+            if not order.partial_fill_allowed and remaining > 0:
+                break
+
+        if remaining > 0:
+            self.blocked_events.append(
+                {"day": day, "order_id": order.order_id, "reason": "PARTIALLY_OR_NOT_FILLED", "remaining_qty": remaining}
+            )
+
+    def _fulfill_trade(self, trade: Trade, lot: SellerLot, day: int) -> None:
+        scenario = self.config.scenario
+        # SELLER-07 remains active in the deterministic pilot seed, ensuring
+        # the scenario actually reaches delivery and exercises the delay path.
+        if scenario == "delivery_delay" and 35 <= day <= 50 and lot.seller_id == "SELLER-07":
+            trade.delivery_ok = False
+        if scenario == "quality_mismatch" and 50 <= day <= 65 and lot.lot_id.endswith("-02"):
+            trade.quality_ok = False
+        if scenario == "settlement_error" and 60 <= day <= 75 and trade.trade_id.endswith(("3", "7")):
+            trade.settlement_ok = False
+        if not trade.delivery_ok:
+            trade.status = "DISPUTED"
+            trade.block_reason = "DELIVERY_DELAY"
+        elif not trade.quality_ok:
+            trade.status = "DISPUTED"
+            trade.block_reason = "POST_DELIVERY_QUALITY_MISMATCH"
+        elif not trade.settlement_ok:
+            trade.status = "SETTLEMENT_HOLD"
+            trade.block_reason = "SETTLEMENT_RECONCILIATION_ERROR"
+
+    def run(self) -> SimulationResult:
+        run_id = f"SIM-{uuid.uuid4().hex[:10].upper()}"
+        for day in range(1, self.config.days + 1):
+            self._apply_scenario_to_lots(day)
+            factor = self._scenario_price_factor(day)
+            reference = self._reference_price() * factor
+            self.price_series.append(
+                {
+                    "day": day,
+                    "date": (date.today() + timedelta(days=day - 1)).isoformat(),
+                    "spec_id": SPEC_ID,
+                    "reference_price": round(reference, 2),
+                    "data_status": "SIMULATED",
+                }
+            )
+            buyers = self.rng.sample(self.buyers, k=min(len(self.buyers), self.config.orders_per_day))
+            for buyer in buyers:
+                self._execute_order(self._make_order(buyer, day, reference), day)
+
+        metrics = self._metrics()
+        return SimulationResult(
+            simulation_run_id=run_id,
+            scenario=self.config.scenario,
+            config=asdict(self.config),
+            metrics=metrics,
+            trades=self.trades,
+            price_series=self.price_series,
+            blocked_events=self.blocked_events,
+        )
+
+    def _metrics(self) -> dict:
+        total = len(self.trades)
+        completed = sum(t.status == "COMPLETED" for t in self.trades)
+        disputed = sum(t.status == "DISPUTED" for t in self.trades)
+        settlement_holds = sum(t.status == "SETTLEMENT_HOLD" for t in self.trades)
+        pretrade_verified = sum(t.pretrade_verified for t in self.trades)
+        delivery_ok = sum(t.delivery_ok for t in self.trades)
+        quality_ok = sum(t.quality_ok for t in self.trades)
+        settlement_ok = sum(t.settlement_ok for t in self.trades)
+        observed_prices = [t.price for t in self.trades]
+        blocked = len(self.blocked_events)
+        return {
+            "trade_count": total,
+            "completed_trade_count": completed,
+            "completed_trade_rate": round(completed / total, 4) if total else 0.0,
+            "disputed_trade_count": disputed,
+            "settlement_hold_count": settlement_holds,
+            "pretrade_verification_rate": round(pretrade_verified / total, 4) if total else 0.0,
+            "delivery_success_rate": round(delivery_ok / total, 4) if total else 0.0,
+            "quality_success_rate": round(quality_ok / total, 4) if total else 0.0,
+            "settlement_success_rate": round(settlement_ok / total, 4) if total else 0.0,
+            "blocked_event_count": blocked,
+            "partial_fill_event_count": sum(event.get("reason") == "PARTIALLY_OR_NOT_FILLED" for event in self.blocked_events),
+            "duplicate_trade_count": self._duplicate_trade_count(),
+            "avg_completed_price": round(statistics.mean(observed_prices), 2) if observed_prices else None,
+            "total_completed_qty": sum(t.qty for t in self.trades if t.status == "COMPLETED"),
+            "price_observation_count": len(observed_prices),
+        }
+
+    def _duplicate_trade_count(self) -> int:
+        keys = [(t.buyer_id, t.seller_id, t.lot_id, t.day) for t in self.trades]
+        return len(keys) - len(set(keys))
+
+
+def run_many(config: SimulationConfig, runs: int) -> dict:
+    results = []
+    for offset in range(runs):
+        run_config = SimulationConfig(**{**asdict(config), "seed": config.seed + offset})
+        results.append(GabaBetaSimulator(run_config).run())
+    metrics = [result.metrics for result in results]
+    completed_rates = [m["completed_trade_rate"] for m in metrics]
+    return {
+        "scenario": config.scenario,
+        "runs": runs,
+        "completed_trade_rate_mean": round(statistics.mean(completed_rates), 4),
+        "completed_trade_rate_min": round(min(completed_rates), 4),
+        "completed_trade_rate_max": round(max(completed_rates), 4),
+        "duplicate_trade_count_total": sum(m["duplicate_trade_count"] for m in metrics),
+        "pretrade_verification_rate_min": min(m["pretrade_verification_rate"] for m in metrics),
+        "quality_success_rate_min": min(m["quality_success_rate"] for m in metrics),
+        "settlement_success_rate_min": min(m["settlement_success_rate"] for m in metrics),
+    }
+
+
+def write_result(result: SimulationResult, output: Path) -> None:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(result.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def write_trade_csv(result: SimulationResult, output: Path) -> None:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fields = list(asdict(result.trades[0]).keys()) if result.trades else list(asdict(Trade("", "", "", "", "", "", 0, 0, 0, False, False, False, False, "")).keys())
+    with output.open("w", newline="", encoding="utf-8-sig") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(asdict(trade) for trade in result.trades)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="GABA 원료 거래소 베타 시뮬레이터")
+    parser.add_argument("--scenario", default="normal", choices=[
+        "normal", "demand_surge", "supplier_outage", "document_expiry",
+        "inventory_mismatch", "quality_mismatch", "delivery_delay",
+        "settlement_error", "price_spike", "price_drop", "seller_verification_failure",
+    ])
+    parser.add_argument("--days", type=int, default=90)
+    parser.add_argument("--orders-per-day", type=int, default=8)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--runs", type=int, default=1)
+    parser.add_argument("--output", type=Path, default=Path("simulation_output/gaba_result.json"))
+    parser.add_argument("--csv", type=Path, default=None)
+    return parser
+
+
+def main() -> None:
+    args = build_parser().parse_args()
+    config = SimulationConfig(
+        days=args.days,
+        orders_per_day=args.orders_per_day,
+        seed=args.seed,
+        scenario=args.scenario,
+    )
+    if args.runs > 1:
+        summary = run_many(config, args.runs)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
+        return
+
+    result = GabaBetaSimulator(config).run()
+    write_result(result, args.output)
+    if args.csv:
+        write_trade_csv(result, args.csv)
+    print(json.dumps({"simulation_run_id": result.simulation_run_id, **result.metrics}, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    main()

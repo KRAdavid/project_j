@@ -1,1 +1,42 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBybSB9IGZyb20gJ25vZGU6ZnMvcHJvbWlzZXMnOwppbXBvcnQgeyBqb2luIH0gZnJvbSAnbm9kZTpwYXRoJzsKaW1wb3J0IHsgdG1wZGlyIH0gZnJvbSAnbm9kZTpvcyc7CmltcG9ydCB7IGNyZWF0ZURvY3VtZW50U3RvcmFnZSwgRG9jdW1lbnRTdG9yYWdlRXJyb3IsIEZpbGVEb2N1bWVudFN0b3JhZ2UsIE1lbW9yeURvY3VtZW50U3RvcmFnZSwgUzNEb2N1bWVudFN0b3JhZ2UgfSBmcm9tICcuL2RvY3VtZW50LXN0b3JhZ2UubWpzJzsKaW1wb3J0IHsgaGFzaERvY3VtZW50IH0gZnJvbSAnLi9ldmlkZW5jZS12ZXJpZmllci5tanMnOwoKY29uc3Qgc3RvcmFnZSA9IGNyZWF0ZURvY3VtZW50U3RvcmFnZSh7IGVudmlyb25tZW50OiAnc2ltdWxhdGlvbicgfSk7CmFzc2VydC5vayhzdG9yYWdlIGluc3RhbmNlb2YgTWVtb3J5RG9jdW1lbnRTdG9yYWdlKTsKY29uc3QgY29udGVudCA9ICdsb3QgZXZpZGVuY2UnOwpjb25zdCBzYXZlZCA9IGF3YWl0IHN0b3JhZ2UucHV0KHsga2V5OiAnTE9ULTAwMS9DT0EvdjEnLCBjb250ZW50LCBjb250ZW50U2hhMjU2OiBoYXNoRG9jdW1lbnQoY29udGVudCkgfSk7CmFzc2VydC5tYXRjaChzYXZlZC5zdG9yYWdlUmVmLCAvXm1lbW9yeTpcL1wvZXZpZGVuY2VcLy8pOwphc3NlcnQuZXF1YWwoKGF3YWl0IHN0b3JhZ2UuZ2V0KCdMT1QtMDAxL0NPQS92MScpKS5jb250ZW50LCBjb250ZW50KTsKYXdhaXQgYXNzZXJ0LnJlamVjdHMoKCkgPT4gc3RvcmFnZS5wdXQoeyBrZXk6ICdMT1QtMDAxL1NEUy92MScsIGNvbnRlbnQsIGNvbnRlbnRTaGEyNTY6ICcwJy5yZXBlYXQoNjQpIH0pLCAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgRG9jdW1lbnRTdG9yYWdlRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ0RPQ1VNRU5UX0hBU0hfTUlTTUFUQ0gnKTsKYXdhaXQgYXNzZXJ0LnJlamVjdHMoKCkgPT4gc3RvcmFnZS5wdXQoeyBrZXk6ICdMT1QtMDAxL1REUy92MScsIGNvbnRlbnQ6ICcnIH0pLCAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgRG9jdW1lbnRTdG9yYWdlRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ0RPQ1VNRU5UX0NPTlRFTlRfUkVRVUlSRUQnKTsKYXNzZXJ0LnRocm93cygoKSA9PiBjcmVhdGVEb2N1bWVudFN0b3JhZ2UoeyBlbnZpcm9ubWVudDogJ3Byb2R1Y3Rpb24nIH0pLCAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgRG9jdW1lbnRTdG9yYWdlRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ09CSkVDVF9TVE9SQUdFX1VOQVZBSUxBQkxFJyk7Cgpjb25zdCByb290ID0gam9pbih0bXBkaXIoKSwgYHJhdy1tYXRlcmlhbC1ldmlkZW5jZS0ke0RhdGUubm93KCl9YCk7CmNvbnN0IGZpbGVTdG9yYWdlID0gY3JlYXRlRG9jdW1lbnRTdG9yYWdlKHsgZW52aXJvbm1lbnQ6ICdzaW11bGF0aW9uJywgcGVyc2lzdGVuY2VNb2RlOiAnc3FsaXRlJywgcm9vdCB9KTsKYXNzZXJ0Lm9rKGZpbGVTdG9yYWdlIGluc3RhbmNlb2YgRmlsZURvY3VtZW50U3RvcmFnZSk7CmF3YWl0IGZpbGVTdG9yYWdlLnB1dCh7IGtleTogJ0xPVC0wMDIvQ09BL3YxJywgY29udGVudDogJ2R1cmFibGUgY29hJyB9KTsKY29uc3QgcmVzdGFydGVkRmlsZVN0b3JhZ2UgPSBjcmVhdGVEb2N1bWVudFN0b3JhZ2UoeyBlbnZpcm9ubWVudDogJ3NpbXVsYXRpb24nLCBwZXJzaXN0ZW5jZU1vZGU6ICdzcWxpdGUnLCByb290IH0pOwphc3NlcnQuZXF1YWwoKGF3YWl0IHJlc3RhcnRlZEZpbGVTdG9yYWdlLmdldCgnTE9ULTAwMi9DT0EvdjEnKSkuY29udGVudCwgJ2R1cmFibGUgY29hJyk7CmF3YWl0IHJtKHJvb3QsIHsgcmVjdXJzaXZlOiB0cnVlLCBmb3JjZTogdHJ1ZSB9KTsKCmNvbnN0IHMzQ29udGVudCA9ICdzMyBkdXJhYmxlIGNvYSc7CmNvbnN0IHMzT2JqZWN0cyA9IG5ldyBNYXAoKTsKY29uc3QgczNTdG9yYWdlID0gbmV3IFMzRG9jdW1lbnRTdG9yYWdlKHsgZW5kcG9pbnQ6ICdodHRwczovL29iamVjdHMuZXhhbXBsZS50ZXN0JywgYnVja2V0OiAncmF3LW1hdGVyaWFsJywgYWNjZXNzS2V5SWQ6ICdBQ0NFU1MnLCBzZWNyZXRBY2Nlc3NLZXk6ICdzZWNyZXQnLCBmZXRjaEltcGw6IGFzeW5jICh1cmwsIG9wdGlvbnMpID0+IHsKICBjb25zdCBrZXkgPSB1cmwucGF0aG5hbWUuc3BsaXQoJy8nKS5zbGljZSgyKS5qb2luKCcvJyk7CiAgaWYgKG9wdGlvbnMubWV0aG9kID09PSAnUFVUJykgewogICAgczNPYmplY3RzLnNldChrZXksIHsgY29udGVudDogb3B0aW9ucy5ib2R5LCBoYXNoOiBoYXNoRG9jdW1lbnQob3B0aW9ucy5ib2R5KSwgYXV0aG9yaXphdGlvbjogb3B0aW9ucy5oZWFkZXJzLmF1dGhvcml6YXRpb24gfSk7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCcnLCB7IHN0YXR1czogMjAwIH0pOwogIH0KICBjb25zdCBvYmplY3QgPSBzM09iamVjdHMuZ2V0KGtleSk7CiAgcmV0dXJuIG5ldyBSZXNwb25zZShvYmplY3Q/LmNvbnRlbnQgfHwgJycsIHsgc3RhdHVzOiBvYmplY3QgPyAyMDAgOiA0MDQsIGhlYWRlcnM6IG9iamVjdCA/IHsgJ3gtYW16LW1ldGEtY29udGVudC1zaGEyNTYnOiBvYmplY3QuaGFzaCB9IDoge30gfSk7Cn0gfSk7CmFzc2VydC5vayhzM1N0b3JhZ2UgaW5zdGFuY2VvZiBTM0RvY3VtZW50U3RvcmFnZSk7CmNvbnN0IHMzU2F2ZWQgPSBhd2FpdCBzM1N0b3JhZ2UucHV0KHsga2V5OiAnTE9ULTAwMy9DT0EvdjEnLCBjb250ZW50OiBzM0NvbnRlbnQgfSk7CmFzc2VydC5tYXRjaChzM1NhdmVkLnN0b3JhZ2VSZWYsIC9eczM6XC9cL3Jhdy1tYXRlcmlhbFwvLyk7CmFzc2VydC5tYXRjaChzM09iamVjdHMuZ2V0KCdMT1QtMDAzL0NPQS92MScpLmF1dGhvcml6YXRpb24sIC9eQVdTNC1ITUFDLVNIQTI1Ni8pOwphc3NlcnQuZXF1YWwoKGF3YWl0IHMzU3RvcmFnZS5nZXQoJ0xPVC0wMDMvQ09BL3YxJykpLmNvbnRlbnQsIHMzQ29udGVudCk7CmNvbnNvbGUubG9nKCdkb2N1bWVudCBzdG9yYWdlIHRlc3RzOiBQQVNTJyk7Cg==
+import assert from 'node:assert/strict';
+import { rm } from 'node:fs/promises';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { createDocumentStorage, DocumentStorageError, FileDocumentStorage, MemoryDocumentStorage, S3DocumentStorage } from './document-storage.mjs';
+import { hashDocument } from './evidence-verifier.mjs';
+
+const storage = createDocumentStorage({ environment: 'simulation' });
+assert.ok(storage instanceof MemoryDocumentStorage);
+const content = 'lot evidence';
+const saved = await storage.put({ key: 'LOT-001/COA/v1', content, contentSha256: hashDocument(content) });
+assert.match(saved.storageRef, /^memory:\/\/evidence\//);
+assert.equal((await storage.get('LOT-001/COA/v1')).content, content);
+await assert.rejects(() => storage.put({ key: 'LOT-001/SDS/v1', content, contentSha256: '0'.repeat(64) }), (error) => error instanceof DocumentStorageError && error.code === 'DOCUMENT_HASH_MISMATCH');
+await assert.rejects(() => storage.put({ key: 'LOT-001/TDS/v1', content: '' }), (error) => error instanceof DocumentStorageError && error.code === 'DOCUMENT_CONTENT_REQUIRED');
+assert.throws(() => createDocumentStorage({ environment: 'production' }), (error) => error instanceof DocumentStorageError && error.code === 'OBJECT_STORAGE_UNAVAILABLE');
+
+const root = join(tmpdir(), `raw-material-evidence-${Date.now()}`);
+const fileStorage = createDocumentStorage({ environment: 'simulation', persistenceMode: 'sqlite', root });
+assert.ok(fileStorage instanceof FileDocumentStorage);
+await fileStorage.put({ key: 'LOT-002/COA/v1', content: 'durable coa' });
+const restartedFileStorage = createDocumentStorage({ environment: 'simulation', persistenceMode: 'sqlite', root });
+assert.equal((await restartedFileStorage.get('LOT-002/COA/v1')).content, 'durable coa');
+await rm(root, { recursive: true, force: true });
+
+const s3Content = 's3 durable coa';
+const s3Objects = new Map();
+const s3Storage = new S3DocumentStorage({ endpoint: 'https://objects.example.test', bucket: 'raw-material', accessKeyId: 'ACCESS', secretAccessKey: 'secret', fetchImpl: async (url, options) => {
+  const key = url.pathname.split('/').slice(2).join('/');
+  if (options.method === 'PUT') {
+    s3Objects.set(key, { content: options.body, hash: hashDocument(options.body), authorization: options.headers.authorization });
+    return new Response('', { status: 200 });
+  }
+  const object = s3Objects.get(key);
+  return new Response(object?.content || '', { status: object ? 200 : 404, headers: object ? { 'x-amz-meta-content-sha256': object.hash } : {} });
+} });
+assert.ok(s3Storage instanceof S3DocumentStorage);
+const s3Saved = await s3Storage.put({ key: 'LOT-003/COA/v1', content: s3Content });
+assert.match(s3Saved.storageRef, /^s3:\/\/raw-material\//);
+assert.match(s3Objects.get('LOT-003/COA/v1').authorization, /^AWS4-HMAC-SHA256/);
+assert.equal((await s3Storage.get('LOT-003/COA/v1')).content, s3Content);
+console.log('document storage tests: PASS');

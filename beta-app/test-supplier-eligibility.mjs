@@ -1,1 +1,117 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIgfSBmcm9tICcuL3Bvc3RncmVzLWRvbWFpbi1hZGFwdGVyLm1qcyc7Cgpjb25zdCBvcmdhbml6YXRpb25JZCA9ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwODEnOwpjb25zdCByb3cgPSB7CiAgb3JnYW5pemF0aW9uX2lkOiBvcmdhbml6YXRpb25JZCwKICBsZWdhbF9uYW1lOiAn6rKA7KadIOqzteq4ieq4sOyXhScsCiAgdmVyaWZpZWRfYXQ6ICcyMDI2LTA5LTA4VDAwOjAwOjAwLjAwMFonLAogIGhhc192ZXJpZmljYXRpb25fZXZpZGVuY2U6IHRydWUsCiAgYWN0aXZlX3N1cHBsaWVyX21lbWJlcnNoaXA6IHRydWUsCn07CmNvbnN0IHBvb2wgPSB7CiAgYXN5bmMgY29ubmVjdCgpIHsgdGhyb3cgbmV3IEVycm9yKCdlbGlnaWJpbGl0eSBjb250cmFjdCB0ZXN0IG11c3QgdXNlIHRoZSByZWFkLW9ubHkgcG9vbCBxdWVyeSBwYXRoJyk7IH0sCiAgYXN5bmMgcXVlcnkoc3FsLCBwYXJhbXMgPSBbXSkgewogICAgaWYgKHNxbC5pbmNsdWRlcygnc3VwcGxpZXJfdmVyaWZpY2F0aW9uX3JlcXVlc3RzJykpIHJldHVybiB7IHJvd3M6IFtdIH07CiAgICBhc3NlcnQubWF0Y2goc3FsLCAvRlJPTSBvcmdhbml6YXRpb25zIG8vKTsKICAgIGFzc2VydC5kZWVwRXF1YWwocGFyYW1zLCBbb3JnYW5pemF0aW9uSWRdKTsKICAgIHJldHVybiB7IHJvd3M6IFtyb3ddIH07CiAgfSwKfTsKCmNvbnN0IGVsaWdpYmlsaXR5ID0gYXdhaXQgbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcihwb29sKS5zdXBwbGllckVsaWdpYmlsaXR5KG9yZ2FuaXphdGlvbklkKTsKYXNzZXJ0LmVxdWFsKGVsaWdpYmlsaXR5Lm9yZ2FuaXphdGlvblZlcmlmaWVkLCB0cnVlKTsKYXNzZXJ0LmVxdWFsKGVsaWdpYmlsaXR5LmFjdGl2ZVN1cHBsaWVyTWVtYmVyc2hpcCwgdHJ1ZSk7CmFzc2VydC5lcXVhbChlbGlnaWJpbGl0eS5lbGlnaWJsZVRvU3VibWl0TG90LCB0cnVlKTsKYXNzZXJ0LmRlZXBFcXVhbChlbGlnaWJpbGl0eS5yZWFzb25zLCBbXSk7CmFzc2VydC5kZWVwRXF1YWwoZWxpZ2liaWxpdHkucG9saWN5LnJlcXVpcmVkTG90RXZpZGVuY2UsIFsnQ09BJywgJ1NEUycsICdURFMnLCAnTE9UX1RSQUNFJywgJ0lOVkVOVE9SWV9QUk9PRiddKTsKY29uc29sZS5sb2coJ3N1cHBsaWVyIGVsaWdpYmlsaXR5IGNvbnRyYWN0IHRlc3RzOiBQQVNTJyk7Cgpjb25zdCByZXF1ZXN0SWQgPSAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDgyJzsKY29uc3QgcmVxdWVzdFVzZXJJZCA9ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwODMnOwpjb25zdCByZXF1ZXN0Um93ID0gewogIHJlcXVlc3RfaWQ6IHJlcXVlc3RJZCwKICBvcmdhbml6YXRpb25faWQ6IG9yZ2FuaXphdGlvbklkLAogIHJlcXVlc3RlZF9ieTogcmVxdWVzdFVzZXJJZCwKICBidXNpbmVzc19yZWdpc3RyYXRpb25fcmVmOiAndmF1bHQ6Ly9idXNpbmVzcy1yZWdpc3RyYXRpb24vMDAxJywKICBldmlkZW5jZV9yZWZzOiB7IGJ1c2luZXNzUmVnaXN0cmF0aW9uOiAndmF1bHQ6Ly9idXNpbmVzcy1yZWdpc3RyYXRpb24vMDAxJywgc3VwcGxpZXJJZGVudGl0eTogJ3ZhdWx0Oi8vc3VwcGxpZXItaWRlbnRpdHkvMDAxJyB9LAogIHN0YXRlOiAnUkVRVUVTVEVEJywKICBkZWNpc2lvbl9ub3RlOiBudWxsLAogIGRlY2lkZWRfYnk6IG51bGwsCiAgcmVxdWVzdGVkX2F0OiAnMjAyNi0wOS0wOFQwMDowMDowMC4wMDBaJywKICBkZWNpZGVkX2F0OiBudWxsLAp9Owpjb25zdCBvcGVuUmVxdWVzdFJvdyA9IHsKICAuLi5yZXF1ZXN0Um93LAogIGxlZ2FsX25hbWU6ICfqsoDspp0g64yA6riwIOqzteq4ieq4sOyXhScsCiAgYXBwcm92YWxfc3RhdGU6ICdQRU5ESU5HJywKfTsKY29uc3QgbGlzdFBvb2wgPSB7CiAgYXN5bmMgY29ubmVjdCgpIHsgdGhyb3cgbmV3IEVycm9yKCdzdXBwbGllciB2ZXJpZmljYXRpb24gbGlzdCBjb250cmFjdCB0ZXN0IG11c3QgdXNlIHRoZSByZWFkLW9ubHkgcG9vbCBxdWVyeSBwYXRoJyk7IH0sCiAgYXN5bmMgcXVlcnkoc3FsKSB7CiAgICBhc3NlcnQubWF0Y2goc3FsLCAvRlJPTSBzdXBwbGllcl92ZXJpZmljYXRpb25fcmVxdWVzdHMgci8pOwogICAgYXNzZXJ0Lm1hdGNoKHNxbCwgL29wZXJhdGlvbmFsX2FwcHJvdmFscy8pOwogICAgcmV0dXJuIHsgcm93czogW29wZW5SZXF1ZXN0Um93XSB9OwogIH0sCn07CmNvbnN0IG9wZW5SZXF1ZXN0cyA9IGF3YWl0IG5ldyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIobGlzdFBvb2wpLmxpc3RTdXBwbGllclZlcmlmaWNhdGlvblJlcXVlc3RzKCk7CmFzc2VydC5lcXVhbChvcGVuUmVxdWVzdHMubGVuZ3RoLCAxKTsKYXNzZXJ0LmVxdWFsKG9wZW5SZXF1ZXN0c1swXS5vcmdhbml6YXRpb25OYW1lLCAn6rKA7KadIOuMgOq4sCDqs7XquInquLDsl4UnKTsKYXNzZXJ0LmVxdWFsKG9wZW5SZXF1ZXN0c1swXS5hcHByb3ZhbFN0YXR1cywgJ1BFTkRJTkcnKTsKYXNzZXJ0LmVxdWFsKG9wZW5SZXF1ZXN0c1swXS5zdGF0dXMsICdSRVFVRVNURUQnKTsKY29uc29sZS5sb2coJ3N1cHBsaWVyIHZlcmlmaWNhdGlvbiBvcGVyYXRvciBxdWV1ZSBjb250cmFjdDogUEFTUycpOwoKY29uc3QgcmVxdWVzdENsaWVudCA9IHsKICBhc3luYyBxdWVyeShzcWwpIHsKICAgIGlmICgvXihCRUdJTnxDT01NSVR8Uk9MTEJBQ0spLy50ZXN0KHNxbCkgfHwgc3FsLmluY2x1ZGVzKCdwZ19hZHZpc29yeV94YWN0X2xvY2snKSkgcmV0dXJuIHsgcm93czogW10gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ0ZST00gb3JnYW5pemF0aW9uX21lbWJlcnMnKSkgcmV0dXJuIHsgcm93czogW3sgb2s6IDEgfV0gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ0ZST00gb3JnYW5pemF0aW9ucyBXSEVSRScpKSByZXR1cm4geyByb3dzOiBbeyBvcmdhbml6YXRpb25faWQ6IG9yZ2FuaXphdGlvbklkLCB2ZXJpZmllZF9hdDogbnVsbCwgdmVyaWZpY2F0aW9uX2V2aWRlbmNlOiB7fSB9XSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSBzdXBwbGllcl92ZXJpZmljYXRpb25fcmVxdWVzdHMnKSkgcmV0dXJuIHsgcm93czogW10gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ0lOU0VSVCBJTlRPIHN1cHBsaWVyX3ZlcmlmaWNhdGlvbl9yZXF1ZXN0cycpKSByZXR1cm4geyByb3dzOiBbcmVxdWVzdFJvd10gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ0lOU0VSVCBJTlRPIG9wZXJhdGlvbmFsX2FwcHJvdmFscycpKSByZXR1cm4geyByb3dzOiBbXSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnSU5TRVJUIElOVE8gdHJhZGVfZXZlbnRzJykpIHJldHVybiB7IHJvd3M6IFtdIH07CiAgICB0aHJvdyBuZXcgRXJyb3IoYHVuZXhwZWN0ZWQgcXVlcnk6ICR7c3FsfWApOwogIH0sCiAgcmVsZWFzZSgpIHt9LAp9Owpjb25zdCByZXF1ZXN0ZWQgPSBhd2FpdCBuZXcgUG9zdGdyZXNEb21haW5BZGFwdGVyKHsgYXN5bmMgY29ubmVjdCgpIHsgcmV0dXJuIHJlcXVlc3RDbGllbnQ7IH0gfSkucmVxdWVzdFN1cHBsaWVyVmVyaWZpY2F0aW9uKHsKICBzdXBwbGllck9yZ2FuaXphdGlvbklkOiBvcmdhbml6YXRpb25JZCwKICBzdXBwbGllclVzZXJJZDogcmVxdWVzdFVzZXJJZCwKICBidXNpbmVzc1JlZ2lzdHJhdGlvblJlZjogcmVxdWVzdFJvdy5idXNpbmVzc19yZWdpc3RyYXRpb25fcmVmLAogIGV2aWRlbmNlUmVmczogcmVxdWVzdFJvdy5ldmlkZW5jZV9yZWZzLAogIGFjdG9yS2luZDogJ0hVTUFOJywKICBhY3RvclJlZjogcmVxdWVzdFVzZXJJZCwKICBjb3JyZWxhdGlvbklkOiAnU1VQUExJRVItVkVSSUZZLUNPTlRSQUNULTAwMScsCn0pOwphc3NlcnQuZXF1YWwocmVxdWVzdGVkLnN0YXR1cywgJ1JFUVVFU1RFRCcpOwphc3NlcnQuZXF1YWwocmVxdWVzdGVkLmlkZW1wb3RlbnQsIGZhbHNlKTsKYXNzZXJ0LmVxdWFsKHJlcXVlc3RlZC5yZXF1ZXN0LnJlcXVlc3RJZCwgcmVxdWVzdElkKTsKY29uc29sZS5sb2coJ3N1cHBsaWVyIHZlcmlmaWNhdGlvbiByZXF1ZXN0IGNvbnRyYWN0OiBQQVNTJyk7Cgpjb25zdCByZXZpZXdlZFJlcXVlc3QgPSB7IC4uLnJlcXVlc3RSb3csIGFwcHJvdmFsX2lkOiBgU1VQUExJRVItVkVSSUZZLSR7b3JnYW5pemF0aW9uSWR9YCB9Owpjb25zdCByZXZpZXdDbGllbnQgPSB7CiAgYXN5bmMgcXVlcnkoc3FsKSB7CiAgICBpZiAoL14oQkVHSU58Q09NTUlUfFJPTExCQUNLKS8udGVzdChzcWwpIHx8IHNxbC5pbmNsdWRlcygncGdfYWR2aXNvcnlfeGFjdF9sb2NrJykpIHJldHVybiB7IHJvd3M6IFtdIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIG9yZ2FuaXphdGlvbl9tZW1iZXJzJykpIHJldHVybiB7IHJvd3M6IFt7IG9rOiAxIH1dIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIHN1cHBsaWVyX3ZlcmlmaWNhdGlvbl9yZXF1ZXN0cyByIEpPSU4gb3JnYW5pemF0aW9ucycpKSByZXR1cm4geyByb3dzOiBbcmV2aWV3ZWRSZXF1ZXN0XSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSBvcGVyYXRpb25hbF9hcHByb3ZhbHMnKSkgcmV0dXJuIHsgcm93czogW3sgc3RhdGU6ICdBUFBST1ZFRCcgfV0gfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ1VQREFURSBvcmdhbml6YXRpb25zJykpIHJldHVybiB7IHJvd3M6IFtdIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdVUERBVEUgc3VwcGxpZXJfdmVyaWZpY2F0aW9uX3JlcXVlc3RzJykpIHJldHVybiB7IHJvd3M6IFt7IC4uLnJldmlld2VkUmVxdWVzdCwgc3RhdGU6ICdBUFBST1ZFRCcsIGRlY2lkZWRfYnk6IHJlcXVlc3RVc2VySWQsIGRlY2lkZWRfYXQ6ICcyMDI2LTA5LTA4VDAwOjAyOjAwLjAwMFonIH1dIH07CiAgICBpZiAoc3FsLmluY2x1ZGVzKCdJTlNFUlQgSU5UTyB0cmFkZV9ldmVudHMnKSkgcmV0dXJuIHsgcm93czogW10gfTsKICAgIHRocm93IG5ldyBFcnJvcihgdW5leHBlY3RlZCBxdWVyeTogJHtzcWx9YCk7CiAgfSwKICByZWxlYXNlKCkge30sCn07CmNvbnN0IHJldmlld2VkID0gYXdhaXQgbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiByZXZpZXdDbGllbnQ7IH0gfSkucmV2aWV3U3VwcGxpZXJWZXJpZmljYXRpb24oewogIHJlcXVlc3RJZCwKICByZXZpZXdlck9yZ2FuaXphdGlvbklkOiBvcmdhbml6YXRpb25JZCwKICByZXZpZXdlclVzZXJJZDogcmVxdWVzdFVzZXJJZCwKICBkZWNpc2lvbjogJ0FQUFJPVkVEJywKICBhY3RvcktpbmQ6ICdIVU1BTicsCiAgYWN0b3JSZWY6IHJlcXVlc3RVc2VySWQsCiAgY29ycmVsYXRpb25JZDogJ1NVUFBMSUVSLVZFUklGWS1SRVZJRVctMDAxJywKfSk7CmFzc2VydC5lcXVhbChyZXZpZXdlZC5zdGF0dXMsICdBUFBST1ZFRCcpOwphc3NlcnQuZXF1YWwocmV2aWV3ZWQuaWRlbXBvdGVudCwgZmFsc2UpOwphc3NlcnQuZXF1YWwocmV2aWV3ZWQucmVxdWVzdC5zdGF0dXMsICdBUFBST1ZFRCcpOwpjb25zb2xlLmxvZygnc3VwcGxpZXIgdmVyaWZpY2F0aW9uIGZpbmFsIHJldmlldyBjb250cmFjdDogUEFTUycpOwo=
+import assert from 'node:assert/strict';
+import { PostgresDomainAdapter } from './postgres-domain-adapter.mjs';
+
+const organizationId = '00000000-0000-0000-0000-000000000081';
+const row = {
+  organization_id: organizationId,
+  legal_name: '검증 공급기업',
+  verified_at: '2026-09-08T00:00:00.000Z',
+  has_verification_evidence: true,
+  active_supplier_membership: true,
+};
+const pool = {
+  async connect() { throw new Error('eligibility contract test must use the read-only pool query path'); },
+  async query(sql, params = []) {
+    if (sql.includes('supplier_verification_requests')) return { rows: [] };
+    assert.match(sql, /FROM organizations o/);
+    assert.deepEqual(params, [organizationId]);
+    return { rows: [row] };
+  },
+};
+
+const eligibility = await new PostgresDomainAdapter(pool).supplierEligibility(organizationId);
+assert.equal(eligibility.organizationVerified, true);
+assert.equal(eligibility.activeSupplierMembership, true);
+assert.equal(eligibility.eligibleToSubmitLot, true);
+assert.deepEqual(eligibility.reasons, []);
+assert.deepEqual(eligibility.policy.requiredLotEvidence, ['COA', 'SDS', 'TDS', 'LOT_TRACE', 'INVENTORY_PROOF']);
+console.log('supplier eligibility contract tests: PASS');
+
+const requestId = '00000000-0000-0000-0000-000000000082';
+const requestUserId = '00000000-0000-0000-0000-000000000083';
+const requestRow = {
+  request_id: requestId,
+  organization_id: organizationId,
+  requested_by: requestUserId,
+  business_registration_ref: 'vault://business-registration/001',
+  evidence_refs: { businessRegistration: 'vault://business-registration/001', supplierIdentity: 'vault://supplier-identity/001' },
+  state: 'REQUESTED',
+  decision_note: null,
+  decided_by: null,
+  requested_at: '2026-09-08T00:00:00.000Z',
+  decided_at: null,
+};
+const openRequestRow = {
+  ...requestRow,
+  legal_name: '검증 대기 공급기업',
+  approval_state: 'PENDING',
+};
+const listPool = {
+  async connect() { throw new Error('supplier verification list contract test must use the read-only pool query path'); },
+  async query(sql) {
+    assert.match(sql, /FROM supplier_verification_requests r/);
+    assert.match(sql, /operational_approvals/);
+    return { rows: [openRequestRow] };
+  },
+};
+const openRequests = await new PostgresDomainAdapter(listPool).listSupplierVerificationRequests();
+assert.equal(openRequests.length, 1);
+assert.equal(openRequests[0].organizationName, '검증 대기 공급기업');
+assert.equal(openRequests[0].approvalStatus, 'PENDING');
+assert.equal(openRequests[0].status, 'REQUESTED');
+console.log('supplier verification operator queue contract: PASS');
+
+const requestClient = {
+  async query(sql) {
+    if (/^(BEGIN|COMMIT|ROLLBACK)/.test(sql) || sql.includes('pg_advisory_xact_lock')) return { rows: [] };
+    if (sql.includes('FROM organization_members')) return { rows: [{ ok: 1 }] };
+    if (sql.includes('FROM organizations WHERE')) return { rows: [{ organization_id: organizationId, verified_at: null, verification_evidence: {} }] };
+    if (sql.includes('FROM supplier_verification_requests')) return { rows: [] };
+    if (sql.includes('INSERT INTO supplier_verification_requests')) return { rows: [requestRow] };
+    if (sql.includes('INSERT INTO operational_approvals')) return { rows: [] };
+    if (sql.includes('INSERT INTO trade_events')) return { rows: [] };
+    throw new Error(`unexpected query: ${sql}`);
+  },
+  release() {},
+};
+const requested = await new PostgresDomainAdapter({ async connect() { return requestClient; } }).requestSupplierVerification({
+  supplierOrganizationId: organizationId,
+  supplierUserId: requestUserId,
+  businessRegistrationRef: requestRow.business_registration_ref,
+  evidenceRefs: requestRow.evidence_refs,
+  actorKind: 'HUMAN',
+  actorRef: requestUserId,
+  correlationId: 'SUPPLIER-VERIFY-CONTRACT-001',
+});
+assert.equal(requested.status, 'REQUESTED');
+assert.equal(requested.idempotent, false);
+assert.equal(requested.request.requestId, requestId);
+console.log('supplier verification request contract: PASS');
+
+const reviewedRequest = { ...requestRow, approval_id: `SUPPLIER-VERIFY-${organizationId}` };
+const reviewClient = {
+  async query(sql) {
+    if (/^(BEGIN|COMMIT|ROLLBACK)/.test(sql) || sql.includes('pg_advisory_xact_lock')) return { rows: [] };
+    if (sql.includes('FROM organization_members')) return { rows: [{ ok: 1 }] };
+    if (sql.includes('FROM supplier_verification_requests r JOIN organizations')) return { rows: [reviewedRequest] };
+    if (sql.includes('FROM operational_approvals')) return { rows: [{ state: 'APPROVED' }] };
+    if (sql.includes('UPDATE organizations')) return { rows: [] };
+    if (sql.includes('UPDATE supplier_verification_requests')) return { rows: [{ ...reviewedRequest, state: 'APPROVED', decided_by: requestUserId, decided_at: '2026-09-08T00:02:00.000Z' }] };
+    if (sql.includes('INSERT INTO trade_events')) return { rows: [] };
+    throw new Error(`unexpected query: ${sql}`);
+  },
+  release() {},
+};
+const reviewed = await new PostgresDomainAdapter({ async connect() { return reviewClient; } }).reviewSupplierVerification({
+  requestId,
+  reviewerOrganizationId: organizationId,
+  reviewerUserId: requestUserId,
+  decision: 'APPROVED',
+  actorKind: 'HUMAN',
+  actorRef: requestUserId,
+  correlationId: 'SUPPLIER-VERIFY-REVIEW-001',
+});
+assert.equal(reviewed.status, 'APPROVED');
+assert.equal(reviewed.idempotent, false);
+assert.equal(reviewed.request.status, 'APPROVED');
+console.log('supplier verification final review contract: PASS');

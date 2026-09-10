@@ -1,1 +1,35 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBzcGF3biB9IGZyb20gJ25vZGU6Y2hpbGRfcHJvY2Vzcyc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7Cgpjb25zdCBwb3J0ID0gNDE3ODsKY29uc3QgY3dkID0gZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuJywgaW1wb3J0Lm1ldGEudXJsKSk7CmNvbnN0IGNoaWxkID0gc3Bhd24ocHJvY2Vzcy5leGVjUGF0aCwgWydzZXJ2ZXIubWpzJ10sIHsgY3dkLCBlbnY6IHsgLi4ucHJvY2Vzcy5lbnYsIFBPUlQ6IFN0cmluZyhwb3J0KSwgQVBQX0VOVjogJ3NpbXVsYXRpb24nLCBQRVJTSVNURU5DRV9NT0RFOiAnbWVtb3J5JyB9LCBzdGRpbzogJ2lnbm9yZScgfSk7CmNvbnN0IGJhc2UgPSBgaHR0cDovLzEyNy4wLjAuMToke3BvcnR9YDsKdHJ5IHsKICBsZXQgcmVzcG9uc2U7CiAgZm9yIChsZXQgYXR0ZW1wdCA9IDA7IGF0dGVtcHQgPCA0MDsgYXR0ZW1wdCArPSAxKSB7CiAgICB0cnkgewogICAgICByZXNwb25zZSA9IGF3YWl0IGZldGNoKGAke2Jhc2V9L2FwaS9tYXJrZXQtYm9hcmQ/c3BlY0lkPUdBQkEtU1BFQy0wMDFgKTsKICAgICAgYnJlYWs7CiAgICB9IGNhdGNoIHsKICAgICAgYXdhaXQgbmV3IFByb21pc2UoKHJlc29sdmUpID0+IHNldFRpbWVvdXQocmVzb2x2ZSwgMTAwKSk7CiAgICB9CiAgfQogIGFzc2VydC5lcXVhbChyZXNwb25zZT8uc3RhdHVzLCAyMDApOwogIGNvbnN0IGJvYXJkID0gYXdhaXQgcmVzcG9uc2UuanNvbigpOwogIGFzc2VydC5lcXVhbChib2FyZC5zY2hlbWFWZXJzaW9uLCAnU0VSVkVSLVZFUklGSUVELU1BUktFVC1CT0FSRC0wLjEnKTsKICBhc3NlcnQuZXF1YWwoYm9hcmQuZGF0YVN0YXR1cywgJ1NFUlZFUl9WRVJJRklFRF9PRkZFUlMnKTsKICBhc3NlcnQuZGVlcEVxdWFsKGJvYXJkLmFza3MubWFwKChvZmZlcikgPT4gb2ZmZXIubG90SWQpLCBbJ0dCQS1LUi0yNDA3J10pOwogIGFzc2VydC5lcXVhbChib2FyZC5hc2tzWzBdLmV2aWRlbmNlU3RhdHVzLCAnUFJFVFJBREVfVkVSSUZJRUQnKTsKICBhc3NlcnQuZXF1YWwoYm9hcmQuYXNrc1swXS5hdmFpbGFibGVRdHksIDEyMDApOwogIGFzc2VydC5lcXVhbCgnc3VwcGxpZXJPcmdhbml6YXRpb25JZCcgaW4gYm9hcmQuYXNrc1swXSwgZmFsc2UpOwogIGFzc2VydC5kZWVwRXF1YWwoYm9hcmQuYmlkcywgW10pOwogIGNvbnN0IG90aGVyU3BlYyA9IGF3YWl0IGZldGNoKGAke2Jhc2V9L2FwaS9tYXJrZXQtYm9hcmQ/c3BlY0lkPVVOS05PV04tU1BFQ2ApOwogIGFzc2VydC5lcXVhbChvdGhlclNwZWMuc3RhdHVzLCAyMDApOwogIGFzc2VydC5lcXVhbCgoYXdhaXQgb3RoZXJTcGVjLmpzb24oKSkuZGF0YVN0YXR1cywgJ05PX1ZFUklGSUVEX09GRkVSUycpOwogIGNvbnNvbGUubG9nKCdtYXJrZXQgYm9hcmQgQVBJIHRlc3RzOiBQQVNTJyk7Cn0gZmluYWxseSB7CiAgY2hpbGQua2lsbCgpOwp9Cgo=
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const port = 4178;
+const cwd = fileURLToPath(new URL('.', import.meta.url));
+const child = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, PORT: String(port), APP_ENV: 'simulation', PERSISTENCE_MODE: 'memory' }, stdio: 'ignore' });
+const base = `http://127.0.0.1:${port}`;
+try {
+  let response;
+  for (let attempt = 0; attempt < 40; attempt += 1) {
+    try {
+      response = await fetch(`${base}/api/market-board?specId=GABA-SPEC-001`);
+      break;
+    } catch {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+  }
+  assert.equal(response?.status, 200);
+  const board = await response.json();
+  assert.equal(board.schemaVersion, 'SERVER-VERIFIED-MARKET-BOARD-0.1');
+  assert.equal(board.dataStatus, 'SERVER_VERIFIED_OFFERS');
+  assert.deepEqual(board.asks.map((offer) => offer.lotId), ['GBA-KR-2407']);
+  assert.equal(board.asks[0].evidenceStatus, 'PRETRADE_VERIFIED');
+  assert.equal(board.asks[0].availableQty, 1200);
+  assert.equal('supplierOrganizationId' in board.asks[0], false);
+  assert.deepEqual(board.bids, []);
+  const otherSpec = await fetch(`${base}/api/market-board?specId=UNKNOWN-SPEC`);
+  assert.equal(otherSpec.status, 200);
+  assert.equal((await otherSpec.json()).dataStatus, 'NO_VERIFIED_OFFERS');
+  console.log('market board API tests: PASS');
+} finally {
+  child.kill();
+}
+

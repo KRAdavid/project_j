@@ -1,1 +1,52 @@
-aW1wb3J0IHsgcmVhZEZpbGUgfSBmcm9tICdub2RlOmZzL3Byb21pc2VzJzsKCmNvbnN0IFRFUk1JTkFMX1NUQVRVU0VTID0gbmV3IFNldChbJ2RvbmUnLCAncmVqZWN0ZWQnLCAncmVzb2x2ZWQnLCAnYXBwcm92ZWQnXSk7CmNvbnN0IEFMTE9XRURfU1RBVFVTRVMgPSBuZXcgU2V0KFsncXVldWVkJywgJ3dvcmtpbmcnLCAncmV2aWV3JywgLi4uVEVSTUlOQUxfU1RBVFVTRVNdKTsKCmV4cG9ydCBjb25zdCBidWlsZFRlYW1MYWJlbHMgPSAocm9zdGVyKSA9PiBuZXcgTWFwKAogIHJvc3Rlci5tZW1iZXJzLm1hcCgobWVtYmVyKSA9PiBbYCR7bWVtYmVyLmlkfSAke21lbWJlci5uYW1lfWAsIG1lbWJlcl0pLAopOwoKZXhwb3J0IGNvbnN0IHZhbGlkYXRlVGFza1F1ZXVlID0gKHsgcm9zdGVyLCBxdWV1ZSB9KSA9PiB7CiAgY29uc3QgZXJyb3JzID0gW107CiAgaWYgKHJvc3Rlcj8uaHVtYW5BcHByb3ZhbFByaW5jaXBhbCAhPT0gJ0gtMDEnKSBlcnJvcnMucHVzaCgnaHVtYW4gYXBwcm92YWwgcHJpbmNpcGFsIG11c3QgYmUgSC0wMScpOwogIGlmICghQXJyYXkuaXNBcnJheShxdWV1ZT8udGFza3MpIHx8IHF1ZXVlLnRhc2tzLmxlbmd0aCA9PT0gMCkgewogICAgZXJyb3JzLnB1c2goJ3Rhc2sgcXVldWUgbXVzdCBjb250YWluIGF0IGxlYXN0IG9uZSB0YXNrJyk7CiAgICByZXR1cm4gZXJyb3JzOwogIH0KCiAgY29uc3QgbGFiZWxzID0gYnVpbGRUZWFtTGFiZWxzKHJvc3Rlcik7CiAgY29uc3QgaWRzID0gbmV3IFNldCgpOwogIGZvciAoY29uc3QgdGFzayBvZiBxdWV1ZS50YXNrcykgewogICAgaWYgKCF0YXNrPy5pZCB8fCBpZHMuaGFzKHRhc2suaWQpKSBlcnJvcnMucHVzaChgZHVwbGljYXRlIG9yIG1pc3NpbmcgdGFzayBpZDogJHt0YXNrPy5pZCB8fCAnKG1pc3NpbmcpJ31gKTsKICAgIGlkcy5hZGQodGFzaz8uaWQpOwogICAgaWYgKCF0YXNrPy5vYmplY3RpdmUpIGVycm9ycy5wdXNoKGAke3Rhc2s/LmlkIHx8ICcobWlzc2luZyknfTogb2JqZWN0aXZlIGlzIHJlcXVpcmVkYCk7CiAgICBpZiAoIUFMTE9XRURfU1RBVFVTRVMuaGFzKHRhc2s/LnN0YXR1cykpIGVycm9ycy5wdXNoKGAke3Rhc2s/LmlkIHx8ICcobWlzc2luZyknfTogaW52YWxpZCBzdGF0dXNgKTsKICAgIGNvbnN0IG93bmVyID0gbGFiZWxzLmdldCh0YXNrPy5vd25lckFpKTsKICAgIGlmICghb3duZXIpIGVycm9ycy5wdXNoKGAke3Rhc2s/LmlkIHx8ICcobWlzc2luZyknfTogb3duZXIgaXMgbm90IGluIHRlYW0gcm9zdGVyYCk7CiAgICBlbHNlIGlmIChvd25lci5raW5kICE9PSAnQUknIHx8IG93bmVyLmF1dG9ub215ICE9PSAnQU5BTFlaRV9QUkVQQVJFJykgewogICAgICBlcnJvcnMucHVzaChgJHt0YXNrLmlkfTogb3duZXIgbXVzdCBiZSBhbiBhbmFseXNpcy9wcmVwYXJlIEFJYCk7CiAgICB9CiAgICBpZiAoIUFycmF5LmlzQXJyYXkodGFzaz8ucmV2aWV3ZXJzKSB8fCB0YXNrLnJldmlld2Vycy5sZW5ndGggPT09IDApIHsKICAgICAgZXJyb3JzLnB1c2goYCR7dGFzaz8uaWQgfHwgJyhtaXNzaW5nKSd9OiBhdCBsZWFzdCBvbmUgcmV2aWV3ZXIgaXMgcmVxdWlyZWRgKTsKICAgIH0gZWxzZSB7CiAgICAgIGZvciAoY29uc3QgcmV2aWV3ZXJMYWJlbCBvZiB0YXNrLnJldmlld2VycykgewogICAgICAgIGNvbnN0IHJldmlld2VyID0gbGFiZWxzLmdldChyZXZpZXdlckxhYmVsKTsKICAgICAgICBpZiAoIXJldmlld2VyKSBlcnJvcnMucHVzaChgJHt0YXNrLmlkfTogcmV2aWV3ZXIgaXMgbm90IGluIHRlYW0gcm9zdGVyOiAke3Jldmlld2VyTGFiZWx9YCk7CiAgICAgICAgZWxzZSBpZiAocmV2aWV3ZXIua2luZCAhPT0gJ0FJJyB8fCByZXZpZXdlci5hdXRvbm9teSAhPT0gJ0FOQUxZWkVfUFJFUEFSRScpIHsKICAgICAgICAgIGVycm9ycy5wdXNoKGAke3Rhc2suaWR9OiByZXZpZXdlciBtdXN0IGJlIGFuIGFuYWx5c2lzL3ByZXBhcmUgQUk6ICR7cmV2aWV3ZXJMYWJlbH1gKTsKICAgICAgICB9CiAgICAgIH0KICAgIH0KICAgIGlmICh0YXNrPy5odW1hbkdhdGUgIT09ICdhcHByb3ZhbCcpIGVycm9ycy5wdXNoKGAke3Rhc2s/LmlkIHx8ICcobWlzc2luZyknfTogaHVtYW5HYXRlIG11c3QgYmUgYXBwcm92YWxgKTsKICAgIGlmIChURVJNSU5BTF9TVEFUVVNFUy5oYXModGFzaz8uc3RhdHVzKSAmJiB0YXNrPy5odW1hbkdhdGUgIT09ICdhcHByb3ZhbCcpIHsKICAgICAgZXJyb3JzLnB1c2goYCR7dGFzay5pZH06IHRlcm1pbmFsIHRhc2sgY2Fubm90IGJ5cGFzcyB0aGUgaHVtYW4gZ2F0ZWApOwogICAgfQogIH0KICByZXR1cm4gZXJyb3JzOwp9OwoKZXhwb3J0IGNvbnN0IHJlYWRUYXNrT3duZXJzaGlwSW5wdXRzID0gYXN5bmMgKHsgcm9zdGVyUGF0aCwgcXVldWVQYXRoIH0pID0+ICh7CiAgcm9zdGVyOiBKU09OLnBhcnNlKGF3YWl0IHJlYWRGaWxlKHJvc3RlclBhdGgsICd1dGY4JykpLAogIHF1ZXVlOiBKU09OLnBhcnNlKGF3YWl0IHJlYWRGaWxlKHF1ZXVlUGF0aCwgJ3V0ZjgnKSksCn0pOwo=
+import { readFile } from 'node:fs/promises';
+
+const TERMINAL_STATUSES = new Set(['done', 'rejected', 'resolved', 'approved']);
+const ALLOWED_STATUSES = new Set(['queued', 'working', 'review', ...TERMINAL_STATUSES]);
+
+export const buildTeamLabels = (roster) => new Map(
+  roster.members.map((member) => [`${member.id} ${member.name}`, member]),
+);
+
+export const validateTaskQueue = ({ roster, queue }) => {
+  const errors = [];
+  if (roster?.humanApprovalPrincipal !== 'H-01') errors.push('human approval principal must be H-01');
+  if (!Array.isArray(queue?.tasks) || queue.tasks.length === 0) {
+    errors.push('task queue must contain at least one task');
+    return errors;
+  }
+
+  const labels = buildTeamLabels(roster);
+  const ids = new Set();
+  for (const task of queue.tasks) {
+    if (!task?.id || ids.has(task.id)) errors.push(`duplicate or missing task id: ${task?.id || '(missing)'}`);
+    ids.add(task?.id);
+    if (!task?.objective) errors.push(`${task?.id || '(missing)'}: objective is required`);
+    if (!ALLOWED_STATUSES.has(task?.status)) errors.push(`${task?.id || '(missing)'}: invalid status`);
+    const owner = labels.get(task?.ownerAi);
+    if (!owner) errors.push(`${task?.id || '(missing)'}: owner is not in team roster`);
+    else if (owner.kind !== 'AI' || owner.autonomy !== 'ANALYZE_PREPARE') {
+      errors.push(`${task.id}: owner must be an analysis/prepare AI`);
+    }
+    if (!Array.isArray(task?.reviewers) || task.reviewers.length === 0) {
+      errors.push(`${task?.id || '(missing)'}: at least one reviewer is required`);
+    } else {
+      for (const reviewerLabel of task.reviewers) {
+        const reviewer = labels.get(reviewerLabel);
+        if (!reviewer) errors.push(`${task.id}: reviewer is not in team roster: ${reviewerLabel}`);
+        else if (reviewer.kind !== 'AI' || reviewer.autonomy !== 'ANALYZE_PREPARE') {
+          errors.push(`${task.id}: reviewer must be an analysis/prepare AI: ${reviewerLabel}`);
+        }
+      }
+    }
+    if (task?.humanGate !== 'approval') errors.push(`${task?.id || '(missing)'}: humanGate must be approval`);
+    if (TERMINAL_STATUSES.has(task?.status) && task?.humanGate !== 'approval') {
+      errors.push(`${task.id}: terminal task cannot bypass the human gate`);
+    }
+  }
+  return errors;
+};
+
+export const readTaskOwnershipInputs = async ({ rosterPath, queuePath }) => ({
+  roster: JSON.parse(await readFile(rosterPath, 'utf8')),
+  queue: JSON.parse(await readFile(queuePath, 'utf8')),
+});

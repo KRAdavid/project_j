@@ -1,1 +1,52 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBjYWxjdWxhdGVQcmljZUluZGV4LCBsb2FkUHJpY2VQb2xpY3kgfSBmcm9tICcuL3ByaWNlLWluZGV4Lm1qcyc7Cgpjb25zdCBub3cgPSBuZXcgRGF0ZSgnMjAyNi0wOS0wOFQwMDowMDowMC4wMDBaJyk7CmFzc2VydC5lcXVhbChsb2FkUHJpY2VQb2xpY3koKS5zdGF0dXMsICdTSU1VTEFUSU9OX09OTFknKTsKCmNvbnN0IGVtcHR5ID0gY2FsY3VsYXRlUHJpY2VJbmRleCh7IHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBvYnNlcnZhdGlvbnM6IFtdLCBub3cgfSk7CmFzc2VydC5lcXVhbChlbXB0eS5zdGF0dXMsICdVTkFWQUlMQUJMRScpOwphc3NlcnQuZXF1YWwoZW1wdHkudmFsdWUsIG51bGwpOwphc3NlcnQuZXF1YWwoZW1wdHkucmVhc29uLCAnSU5TVUZGSUNJRU5UX0NPTVBMRVRFRF9UUkFERVMnKTsKCmNvbnN0IG9ic2VydmF0aW9ucyA9IFsKICB7IHRyYWRlSWQ6ICdULTAwMScsIHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBzdXBwbGllcklkOiAnUy0wMDEnLCBwcmljZTogMjE0NTAsIHF1YW50aXR5OiAxMDAsIHF1YW50aXR5VW5pdDogJ0tHJywgcHJpY2VVbml0OiAnS1JXX1BFUl9LRycsIGN1cnJlbmN5OiAnS1JXJywgZnVsZmlsbGVkQXQ6ICcyMDI2LTA5LTAxJywgc3RhdHVzOiAnRlVMRklMTEVEJywgZXZpZGVuY2VTdGF0dXM6ICdWQUxJRCcgfSwKICB7IHRyYWRlSWQ6ICdULTAwMicsIHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBzdXBwbGllcklkOiAnUy0wMDInLCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMDAsIHF1YW50aXR5VW5pdDogJ0tHJywgcHJpY2VVbml0OiAnS1JXX1BFUl9LRycsIGN1cnJlbmN5OiAnS1JXJywgZnVsZmlsbGVkQXQ6ICcyMDI2LTA5LTAyJywgc3RhdHVzOiAnRlVMRklMTEVEJywgZXZpZGVuY2VTdGF0dXM6ICdWQUxJRCcgfSwKICB7IHRyYWRlSWQ6ICdULTAwMycsIHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBzdXBwbGllcklkOiAnUy0wMDEnLCBwcmljZTogMjIwMDAsIHF1YW50aXR5OiAxMDAsIHF1YW50aXR5VW5pdDogJ0tHJywgcHJpY2VVbml0OiAnS1JXX1BFUl9LRycsIGN1cnJlbmN5OiAnS1JXJywgZnVsZmlsbGVkQXQ6ICcyMDI2LTA5LTAzJywgc3RhdHVzOiAnRlVMRklMTEVEJywgZXZpZGVuY2VTdGF0dXM6ICdWQUxJRCcgfSwKICB7IHRyYWRlSWQ6ICdULTAwNCcsIHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBzdXBwbGllcklkOiAnUy0wMDMnLCBwcmljZTogMTAwMCwgcXVhbnRpdHk6IDEwMCwgcXVhbnRpdHlVbml0OiAnS0cnLCBwcmljZVVuaXQ6ICdLUldfUEVSX0tHJywgY3VycmVuY3k6ICdLUlcnLCBmdWxmaWxsZWRBdDogJzIwMjYtMDgtMDEnLCBzdGF0dXM6ICdGVUxGSUxMRUQnLCBldmlkZW5jZVN0YXR1czogJ1ZBTElEJyB9LApdOwoKY29uc3QgaW5kZXggPSBjYWxjdWxhdGVQcmljZUluZGV4KHsgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIG9ic2VydmF0aW9ucywgbm93IH0pOwphc3NlcnQuZXF1YWwoaW5kZXguc3RhdHVzLCAnQVZBSUxBQkxFJyk7CmFzc2VydC5lcXVhbChpbmRleC52YWx1ZSwgMjE3NjMpOwphc3NlcnQuZXF1YWwoaW5kZXguc2FtcGxlU2l6ZSwgMyk7CmFzc2VydC5lcXVhbChpbmRleC5kaXN0aW5jdFN1cHBsaWVycywgMik7CmFzc2VydC5vayhpbmRleC5jb25maWRlbmNlID4gMCk7CmFzc2VydC5kZWVwRXF1YWwoaW5kZXgucHJvdmVuYW5jZSwgWydULTAwMScsICdULTAwMicsICdULTAwMyddKTsKYXNzZXJ0LmRlZXBFcXVhbChpbmRleC5wcmljZVNlcmllcywgWwogIHsgZnVsZmlsbGVkQXQ6ICcyMDI2LTA5LTAxJywgcHJpY2U6IDIxNDUwIH0sCiAgeyBmdWxmaWxsZWRBdDogJzIwMjYtMDktMDInLCBwcmljZTogMjE4MDAgfSwKICB7IGZ1bGZpbGxlZEF0OiAnMjAyNi0wOS0wMycsIHByaWNlOiAyMjAwMCB9LApdKTsKYXNzZXJ0Lm9rKGluZGV4LnByaWNlU2VyaWVzLmV2ZXJ5KChwb2ludCkgPT4gIU9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbChwb2ludCwgJ3N1cHBsaWVySWQnKSkpOwphc3NlcnQuZXF1YWwoaW5kZXguY3VycmVuY3ksICdLUlcnKTsKYXNzZXJ0LmVxdWFsKGluZGV4LnByaWNlVW5pdCwgJ0tSV19QRVJfS0cnKTsKYXNzZXJ0LmVxdWFsKGluZGV4LnF1YW50aXR5VW5pdCwgJ0tHJyk7Cgpjb25zdCBtaXhlZFVuaXRJbmRleCA9IGNhbGN1bGF0ZVByaWNlSW5kZXgoewogIHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLAogIG9ic2VydmF0aW9uczogb2JzZXJ2YXRpb25zLm1hcCgoaXRlbSwgaW5kZXgpID0+IGluZGV4ID09PSAyID8geyAuLi5pdGVtLCBxdWFudGl0eVVuaXQ6ICdNVCcgfSA6IGl0ZW0pLAogIG5vdywKfSk7CmFzc2VydC5lcXVhbChtaXhlZFVuaXRJbmRleC5zdGF0dXMsICdVTkFWQUlMQUJMRScpOwphc3NlcnQuZXF1YWwobWl4ZWRVbml0SW5kZXguc2FtcGxlU2l6ZSwgMik7Cgpjb25zdCBzaW5nbGVTdXBwbGllciA9IGNhbGN1bGF0ZVByaWNlSW5kZXgoewogIHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLAogIG9ic2VydmF0aW9uczogb2JzZXJ2YXRpb25zLm1hcCgoaXRlbSkgPT4gKHsgLi4uaXRlbSwgc3VwcGxpZXJJZDogJ1MtMDAxJyB9KSksCiAgbm93LAp9KTsKYXNzZXJ0LmVxdWFsKHNpbmdsZVN1cHBsaWVyLnN0YXR1cywgJ1VOQVZBSUxBQkxFJyk7CmFzc2VydC5lcXVhbChzaW5nbGVTdXBwbGllci5yZWFzb24sICdJTlNVRkZJQ0lFTlRfRElTVElOQ1RfU1VQUExJRVJTJyk7Cgpjb25zb2xlLmxvZygncHJpY2UtaW5kZXggdGVzdHM6IFBBU1MnKTsK
+import assert from 'node:assert/strict';
+import { calculatePriceIndex, loadPricePolicy } from './price-index.mjs';
+
+const now = new Date('2026-09-08T00:00:00.000Z');
+assert.equal(loadPricePolicy().status, 'SIMULATION_ONLY');
+
+const empty = calculatePriceIndex({ specId: 'GABA-SPEC-001', observations: [], now });
+assert.equal(empty.status, 'UNAVAILABLE');
+assert.equal(empty.value, null);
+assert.equal(empty.reason, 'INSUFFICIENT_COMPLETED_TRADES');
+
+const observations = [
+  { tradeId: 'T-001', specId: 'GABA-SPEC-001', supplierId: 'S-001', price: 21450, quantity: 100, quantityUnit: 'KG', priceUnit: 'KRW_PER_KG', currency: 'KRW', fulfilledAt: '2026-09-01', status: 'FULFILLED', evidenceStatus: 'VALID' },
+  { tradeId: 'T-002', specId: 'GABA-SPEC-001', supplierId: 'S-002', price: 21800, quantity: 200, quantityUnit: 'KG', priceUnit: 'KRW_PER_KG', currency: 'KRW', fulfilledAt: '2026-09-02', status: 'FULFILLED', evidenceStatus: 'VALID' },
+  { tradeId: 'T-003', specId: 'GABA-SPEC-001', supplierId: 'S-001', price: 22000, quantity: 100, quantityUnit: 'KG', priceUnit: 'KRW_PER_KG', currency: 'KRW', fulfilledAt: '2026-09-03', status: 'FULFILLED', evidenceStatus: 'VALID' },
+  { tradeId: 'T-004', specId: 'GABA-SPEC-001', supplierId: 'S-003', price: 1000, quantity: 100, quantityUnit: 'KG', priceUnit: 'KRW_PER_KG', currency: 'KRW', fulfilledAt: '2026-08-01', status: 'FULFILLED', evidenceStatus: 'VALID' },
+];
+
+const index = calculatePriceIndex({ specId: 'GABA-SPEC-001', observations, now });
+assert.equal(index.status, 'AVAILABLE');
+assert.equal(index.value, 21763);
+assert.equal(index.sampleSize, 3);
+assert.equal(index.distinctSuppliers, 2);
+assert.ok(index.confidence > 0);
+assert.deepEqual(index.provenance, ['T-001', 'T-002', 'T-003']);
+assert.deepEqual(index.priceSeries, [
+  { fulfilledAt: '2026-09-01', price: 21450 },
+  { fulfilledAt: '2026-09-02', price: 21800 },
+  { fulfilledAt: '2026-09-03', price: 22000 },
+]);
+assert.ok(index.priceSeries.every((point) => !Object.prototype.hasOwnProperty.call(point, 'supplierId')));
+assert.equal(index.currency, 'KRW');
+assert.equal(index.priceUnit, 'KRW_PER_KG');
+assert.equal(index.quantityUnit, 'KG');
+
+const mixedUnitIndex = calculatePriceIndex({
+  specId: 'GABA-SPEC-001',
+  observations: observations.map((item, index) => index === 2 ? { ...item, quantityUnit: 'MT' } : item),
+  now,
+});
+assert.equal(mixedUnitIndex.status, 'UNAVAILABLE');
+assert.equal(mixedUnitIndex.sampleSize, 2);
+
+const singleSupplier = calculatePriceIndex({
+  specId: 'GABA-SPEC-001',
+  observations: observations.map((item) => ({ ...item, supplierId: 'S-001' })),
+  now,
+});
+assert.equal(singleSupplier.status, 'UNAVAILABLE');
+assert.equal(singleSupplier.reason, 'INSUFFICIENT_DISTINCT_SUPPLIERS');
+
+console.log('price-index tests: PASS');

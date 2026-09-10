@@ -1,1 +1,93 @@
-ewogICJjb250cmFjdFZlcnNpb24iOiAiUEctRE9NQUlOLUFEQVBURVItMC4xIiwKICAic2NvcGUiOiAiUEhZU0lDQUxfTUFURVJJQUxfT05MWSIsCiAgInN0YXR1cyI6ICJERVNJR05fT05MWSIsCiAgInB1cnBvc2UiOiAiU25hcHNob3QgYnJpZGdl6rCAIOyVhOuLjCDsoJXqt5wgUG9zdGdyZVNRTCDrj4TrqZTsnbgg7JuQ7J6l7Jy866GcIOyjvOusuMK37JiI7JW9wrfssrTqsrDCt+ymneu5mcK36rCA6rKpIOq0gOy4oey5mOulvCDsm5DsnpDsoIHsnLzroZwg6riw66Gd7ZWc64ukLiIsCiAgInJlcXVpcmVkVGFibGVzIjogWwogICAgIm9yZ2FuaXphdGlvbnMiLAogICAgInN1cHBsaWVyX3ZlcmlmaWNhdGlvbl9yZXF1ZXN0cyIsCiAgICAib3JnYW5pemF0aW9uX21lbWJlcnMiLAogICAgIm1hdGVyaWFscyIsCiAgICAic3BlY2lmaWNhdGlvbnMiLAogICAgImxvdHMiLAogICAgImV2aWRlbmNlcyIsCiAgICAib2ZmZXJzIiwKICAgICJwdXJjaGFzZV9vcmRlcnMiLAogICAgInJlc2VydmF0aW9ucyIsCiAgICAidHJhZGVzIiwKICAgICJ0cmFkZV9pbnNwZWN0aW9ucyIsCiAgICAidHJhZGVfZXZlbnRzIiwKICAgICJwcmljZV9vYnNlcnZhdGlvbnMiLAogICAgIm9wZXJhdGlvbmFsX2FwcHJvdmFscyIsCiAgICAiYXBwcm92YWxfZXZlbnRzIgogIF0sCiAgInJlcXVpcmVkQXRvbWljT3BlcmF0aW9ucyI6IFsKICAgIHsKICAgICAgIm9wZXJhdGlvbiI6ICJyZXF1ZXN0X3N1cHBsaWVyX3ZlcmlmaWNhdGlvbiIsCiAgICAgICJ3cml0ZXMiOiBbInN1cHBsaWVyX3ZlcmlmaWNhdGlvbl9yZXF1ZXN0cyIsICJ0cmFkZV9ldmVudHMiXSwKICAgICAgImludmFyaWFudHMiOiBbInN1cHBsaWVyX21lbWJlcnNoaXAiLCAiZXZpZGVuY2VfcmVmZXJlbmNlX3ByZXNlbnQiLCAiaHVtYW5fcmV2aWV3X3JlcXVpcmVkIiwgImlkZW1wb3RlbnRfb3Blbl9yZXF1ZXN0Il0KICAgIH0sCiAgICB7CiAgICAgICJvcGVyYXRpb24iOiAic3VibWl0X29yZGVyIiwKICAgICAgIndyaXRlcyI6IFsicHVyY2hhc2Vfb3JkZXJzIiwgInRyYWRlX2V2ZW50cyJdLAogICAgICAiaW52YXJpYW50cyI6IFsic3BlY2lmaWNhdGlvbl9hcHByb3ZlZCIsICJwaHlzaWNhbF9tYXRlcmlhbF9vbmx5IiwgImJ1eWVyX21lbWJlcnNoaXAiLCAiaWRlbXBvdGVuY3lfa2V5X3VuaXF1ZSJdCiAgICB9LAogICAgewogICAgICAib3BlcmF0aW9uIjogInJlc2VydmVfaW52ZW50b3J5IiwKICAgICAgIndyaXRlcyI6IFsibG90cyIsICJyZXNlcnZhdGlvbnMiLCAidHJhZGVfZXZlbnRzIl0sCiAgICAgICJpbnZhcmlhbnRzIjogWyJyb3dfbG9jayIsICJhdmFpbGFibGVfcXVhbnRpdHlfbm9ubmVnYXRpdmUiLCAiaWRlbXBvdGVuY3lfa2V5X3VuaXF1ZSJdCiAgICB9LAogICAgewogICAgICAib3BlcmF0aW9uIjogImNvbmZpcm1fdHJhZGUiLAogICAgICAid3JpdGVzIjogWyJ0cmFkZXMiLCAicHVyY2hhc2Vfb3JkZXJzIiwgInRyYWRlX2V2ZW50cyJdLAogICAgICAiaW52YXJpYW50cyI6IFsicHJldHJhZGVfZXZpZGVuY2VfdmFsaWQiLCAibG90X3NuYXBzaG90X3NlYWxlZCIsICJvcmdhbml6YXRpb25fbWVtYmVyc2hpcCJdCiAgICB9LAogICAgewogICAgICAib3BlcmF0aW9uIjogInJlY29yZF9jb21wbGV0ZWRfdHJhZGVfcHJpY2UiLAogICAgICAid3JpdGVzIjogWyJwcmljZV9vYnNlcnZhdGlvbnMiLCAidHJhZGVfZXZlbnRzIl0sCiAgICAgICJpbnZhcmlhbnRzIjogWyJkZWxpdmVyeV9hbmRfaW5zcGVjdGlvbl9jb21wbGV0ZSIsICJzb3VyY2VfcHJvdmVuYW5jZSIsICJkZWR1cGxpY2F0ZWRfaWRlbnRpdHkiXQogICAgfSwKICAgIHsKICAgICAgIm9wZXJhdGlvbiI6ICJpbnNwZWN0X2FuZF9yZWNvcmRfY29tcGxldGVkX3ByaWNlIiwKICAgICAgIndyaXRlcyI6IFsidHJhZGVzIiwgInJlc2VydmF0aW9ucyIsICJsb3RzIiwgInRyYWRlX2luc3BlY3Rpb25zIiwgInByaWNlX29ic2VydmF0aW9ucyIsICJ0cmFkZV9ldmVudHMiXSwKICAgICAgImludmFyaWFudHMiOiBbImluc3BlY3Rpb25fYW5kX3ByaWNlX2F0b21pYyIsICJkZWxpdmVyeV9hbmRfaW5zcGVjdGlvbl9jb21wbGV0ZSIsICJzb3VyY2VfcHJvdmVuYW5jZSIsICJkZWR1cGxpY2F0ZWRfaWRlbnRpdHkiXQogICAgfSwKICAgIHsKICAgICAgIm9wZXJhdGlvbiI6ICJyZWdpc3Rlcl9sb3RfZHJhZnQiLAogICAgICAid3JpdGVzIjogWyJsb3RzIiwgImV2aWRlbmNlcyIsICJ0cmFkZV9ldmVudHMiXSwKICAgICAgImludmFyaWFudHMiOiBbInN1cHBsaWVyX21lbWJlcnNoaXAiLCAiZXZpZGVuY2VfcGVuZGluZyIsICJvZmZlcl9ub3RfdmlzaWJsZSJdCiAgICB9LAogICAgewogICAgICAib3BlcmF0aW9uIjogInJldmlld19ldmlkZW5jZV9hbmRfcHVibGlzaF9vZmZlciIsCiAgICAgICJ3cml0ZXMiOiBbImV2aWRlbmNlcyIsICJsb3RzIiwgIm9mZmVycyIsICJ0cmFkZV9ldmVudHMiXSwKICAgICAgImludmFyaWFudHMiOiBbIm9wZXJhdG9yX3JldmlldyIsICJhbGxfcmVxdWlyZWRfZXZpZGVuY2VfdmFsaWQiLCAib2ZmZXJfdmlzaWJsZV9vbmx5X2FmdGVyX2dhdGUiXQogICAgfSwKICAgIHsKICAgICAgIm9wZXJhdGlvbiI6ICJjb3VudGVyX29yZGVyIiwKICAgICAgIndyaXRlcyI6IFsicHVyY2hhc2Vfb3JkZXJzIiwgInRyYWRlX2V2ZW50cyJdLAogICAgICAiaW52YXJpYW50cyI6IFsic3VwcGxpZXJfbWVtYmVyc2hpcCIsICJzcGVjX21hdGNoIiwgImxvdF9lbGlnaWJsZSJdCiAgICB9LAogICAgewogICAgICAib3BlcmF0aW9uIjogInJlamVjdF9vcl9leHBpcmVfb3JkZXIiLAogICAgICAid3JpdGVzIjogWyJwdXJjaGFzZV9vcmRlcnMiLCAidHJhZGVfZXZlbnRzIl0sCiAgICAgICJpbnZhcmlhbnRzIjogWyJ2YWxpZF9zdGF0ZV90cmFuc2l0aW9uIiwgImF1ZGl0X2V2ZW50Il0KICAgIH0KICBdLAogICJyZXF1aXJlZEV2aWRlbmNlIjogWwogICAgImludGVncmF0aW9uX3Rlc3Rfd2l0aF9wb3N0Z3Jlc3FsIiwKICAgICJvcmRlcl9pZGVtcG90ZW5jeV90ZXN0IiwKICAgICJjb25jdXJyZW50X3Jlc2VydmF0aW9uX3Rlc3QiLAogICAgInJvbGxiYWNrX3Rlc3QiLAogICAgImJhY2t1cF9yZXN0b3JlX3dpdGhfZG9tYWluX3Jvd3MiLAogICAgInJlY29uY2lsaWF0aW9uX3NuYXBzaG90X3ZzX2RvbWFpbl90YWJsZXMiCiAgXSwKICAiY3VycmVudEltcGxlbWVudGF0aW9uIjogewogICAgInNuYXBzaG90QnJpZGdlIjogdHJ1ZSwKICAgICJub3JtYWxpemVkRG9tYWluV3JpdGVzIjogZmFsc2UsCiAgICAibm9ybWFsaXplZERvbWFpbkFwaVdpcmluZyI6ICJDT01QTEVURV9ET01BSU5fQ09NTUFORF9QQVRIU19BTkRfUkVDT05DSUxJQVRJT04iLAogICAgIm5vcm1hbGl6ZWREb21haW5BcGlSZW1haW5pbmciOiBbInJlY29uY2lsaWF0aW9uX2Vudmlyb25tZW50X2V2aWRlbmNlIl0sCiAgICAicHJvZHVjdGlvblJlYWR5IjogZmFsc2UsCiAgICAiZ29SZXF1aXJlc0h1bWFuQXBwcm92YWwiOiB0cnVlCiAgfSwKICAiZ29SdWxlIjogIm5vcm1hbGl6ZWREb21haW5Xcml0ZXPsmYAg66qo65OgIHJlcXVpcmVkRXZpZGVuY2XqsIAg6rKA7Kad65CY6rOgIEgtMDHsnbQg7Iq57J247ZWY6riwIOyghOyXkOuKlCDsg4Hsmqkg6rGw656Y66W8IO2XiOyaqe2VmOyngCDslYrripTri6QuIgp9Cg==
+{
+  "contractVersion": "PG-DOMAIN-ADAPTER-0.1",
+  "scope": "PHYSICAL_MATERIAL_ONLY",
+  "status": "DESIGN_ONLY",
+  "purpose": "Snapshot bridge가 아닌 정규 PostgreSQL 도메인 원장으로 주문·예약·체결·증빙·가격 관측치를 원자적으로 기록한다.",
+  "requiredTables": [
+    "organizations",
+    "supplier_verification_requests",
+    "organization_members",
+    "materials",
+    "specifications",
+    "lots",
+    "evidences",
+    "offers",
+    "purchase_orders",
+    "reservations",
+    "trades",
+    "trade_inspections",
+    "trade_events",
+    "price_observations",
+    "operational_approvals",
+    "approval_events"
+  ],
+  "requiredAtomicOperations": [
+    {
+      "operation": "request_supplier_verification",
+      "writes": ["supplier_verification_requests", "trade_events"],
+      "invariants": ["supplier_membership", "evidence_reference_present", "human_review_required", "idempotent_open_request"]
+    },
+    {
+      "operation": "submit_order",
+      "writes": ["purchase_orders", "trade_events"],
+      "invariants": ["specification_approved", "physical_material_only", "buyer_membership", "idempotency_key_unique"]
+    },
+    {
+      "operation": "reserve_inventory",
+      "writes": ["lots", "reservations", "trade_events"],
+      "invariants": ["row_lock", "available_quantity_nonnegative", "idempotency_key_unique"]
+    },
+    {
+      "operation": "confirm_trade",
+      "writes": ["trades", "purchase_orders", "trade_events"],
+      "invariants": ["pretrade_evidence_valid", "lot_snapshot_sealed", "organization_membership"]
+    },
+    {
+      "operation": "record_completed_trade_price",
+      "writes": ["price_observations", "trade_events"],
+      "invariants": ["delivery_and_inspection_complete", "source_provenance", "deduplicated_identity"]
+    },
+    {
+      "operation": "inspect_and_record_completed_price",
+      "writes": ["trades", "reservations", "lots", "trade_inspections", "price_observations", "trade_events"],
+      "invariants": ["inspection_and_price_atomic", "delivery_and_inspection_complete", "source_provenance", "deduplicated_identity"]
+    },
+    {
+      "operation": "register_lot_draft",
+      "writes": ["lots", "evidences", "trade_events"],
+      "invariants": ["supplier_membership", "evidence_pending", "offer_not_visible"]
+    },
+    {
+      "operation": "review_evidence_and_publish_offer",
+      "writes": ["evidences", "lots", "offers", "trade_events"],
+      "invariants": ["operator_review", "all_required_evidence_valid", "offer_visible_only_after_gate"]
+    },
+    {
+      "operation": "counter_order",
+      "writes": ["purchase_orders", "trade_events"],
+      "invariants": ["supplier_membership", "spec_match", "lot_eligible"]
+    },
+    {
+      "operation": "reject_or_expire_order",
+      "writes": ["purchase_orders", "trade_events"],
+      "invariants": ["valid_state_transition", "audit_event"]
+    }
+  ],
+  "requiredEvidence": [
+    "integration_test_with_postgresql",
+    "order_idempotency_test",
+    "concurrent_reservation_test",
+    "rollback_test",
+    "backup_restore_with_domain_rows",
+    "reconciliation_snapshot_vs_domain_tables"
+  ],
+  "currentImplementation": {
+    "snapshotBridge": true,
+    "normalizedDomainWrites": false,
+    "normalizedDomainApiWiring": "COMPLETE_DOMAIN_COMMAND_PATHS_AND_RECONCILIATION",
+    "normalizedDomainApiRemaining": ["reconciliation_environment_evidence"],
+    "productionReady": false,
+    "goRequiresHumanApproval": true
+  },
+  "goRule": "normalizedDomainWrites와 모든 requiredEvidence가 검증되고 H-01이 승인하기 전에는 상용 거래를 허용하지 않는다."
+}

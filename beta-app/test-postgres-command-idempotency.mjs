@@ -1,1 +1,124 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIsIFBvc3RncmVzRG9tYWluQWRhcHRlckVycm9yIH0gZnJvbSAnLi9wb3N0Z3Jlcy1kb21haW4tYWRhcHRlci5tanMnOwoKY29uc3QgaWRzID0gewogIG9yZzogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA0MScsCiAgdXNlcjogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA0MicsCiAgdHJhZGU6ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwNDMnLAogIG9yZGVyOiAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDQ0JywKICByZXNlcnZhdGlvbjogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA0NScsCn07Cgpjb25zdCB0ZXJtaW5hbFRyYWRlID0gKHN0YXRlKSA9PiAoewogIHRyYWRlX2lkOiBpZHMudHJhZGUsCiAgb3JkZXJfaWQ6IGlkcy5vcmRlciwKICBsb3RfaWQ6ICdMT1QtSURFTVAnLAogIHN0YXRlLAogIHN1cHBsaWVyX29yZ2FuaXphdGlvbl9pZDogaWRzLm9yZywKICBwcmljZTogJzIxODAwJywKICBxdWFudGl0eTogJzEwMCcsCiAgc3BlY19pZDogJ0dBQkEtU1BFQy0wMDEnLAogIHJlc2VydmF0aW9uX2lkOiBpZHMucmVzZXJ2YXRpb24sCiAgcmVzZXJ2YXRpb25fc3RhdGU6IHN0YXRlID09PSAnQ09NUExFVEVEJyA/ICdDT05TVU1FRCcgOiAnQUNUSVZFJywKICBjdXJyZW5jeTogJ0tSVycsCiAgcHJpY2VfdW5pdDogJ0tSV19QRVJfS0cnLAogIHF1YW50aXR5X3VuaXQ6ICdLRycsCn0pOwoKY29uc3QgbWFrZUNsaWVudCA9ICh7IHN0YXRlLCBpbnNwZWN0aW9uLCBvYnNlcnZhdGlvbiA9IG51bGwgfSkgPT4gewogIGNvbnN0IGNhbGxzID0gW107CiAgY29uc3QgY2xpZW50ID0gewogICAgYXN5bmMgcXVlcnkoc3FsLCBwYXJhbXMgPSBbXSkgewogICAgICBjYWxscy5wdXNoKHsgc3FsLCBwYXJhbXMgfSk7CiAgICAgIGlmIChbJ0JFR0lOJywgJ0NPTU1JVCcsICdST0xMQkFDSyddLmluY2x1ZGVzKHNxbCkpIHJldHVybiB7IHJvd3M6IFtdIH07CiAgICAgIGlmIChzcWwuaW5jbHVkZXMoJ0ZST00gb3JnYW5pemF0aW9uX21lbWJlcnMnKSkgcmV0dXJuIHsgcm93czogW3sgb2s6IDEgfV0gfTsKICAgICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSB0cmFkZXMgdCBKT0lOJykpIHJldHVybiB7IHJvd3M6IFt0ZXJtaW5hbFRyYWRlKHN0YXRlKV0gfTsKICAgICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSB0cmFkZV9pbnNwZWN0aW9ucycpKSByZXR1cm4geyByb3dzOiBpbnNwZWN0aW9uID8gW2luc3BlY3Rpb25dIDogW10gfTsKICAgICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSBwcmljZV9vYnNlcnZhdGlvbnMnKSkgcmV0dXJuIHsgcm93czogb2JzZXJ2YXRpb24gPyBbb2JzZXJ2YXRpb25dIDogW10gfTsKICAgICAgaWYgKHNxbC5pbmNsdWRlcygnVVBEQVRFIHRyYWRlcyBTRVQgc3RhdGUnKSkgdGhyb3cgbmV3IEVycm9yKCd0ZXJtaW5hbCByZXRyeSBtdXN0IG5vdCB1cGRhdGUgdHJhZGVzJyk7CiAgICAgIGlmIChzcWwuaW5jbHVkZXMoJ0lOU0VSVCBJTlRPIHRyYWRlX2luc3BlY3Rpb25zJykpIHRocm93IG5ldyBFcnJvcigndGVybWluYWwgcmV0cnkgbXVzdCBub3QgaW5zZXJ0IGluc3BlY3Rpb24nKTsKICAgICAgaWYgKHNxbC5pbmNsdWRlcygnSU5TRVJUIElOVE8gcHJpY2Vfb2JzZXJ2YXRpb25zJykpIHRocm93IG5ldyBFcnJvcigndGVybWluYWwgcmV0cnkgbXVzdCBub3QgaW5zZXJ0IHByaWNlIG9ic2VydmF0aW9uJyk7CiAgICAgIHJldHVybiB7IHJvd3M6IFtdIH07CiAgICB9LAogICAgcmVsZWFzZSgpIHt9LAogIH07CiAgcmV0dXJuIHsgY2xpZW50LCBjYWxscyB9Owp9OwoKY29uc3QgZGVsaXZlcmVkQ2xpZW50ID0gbWFrZUNsaWVudCh7IHN0YXRlOiAnREVMSVZFUkVEJyB9KTsKY29uc3QgZGVsaXZlcmVkQWRhcHRlciA9IG5ldyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIoeyBhc3luYyBjb25uZWN0KCkgeyByZXR1cm4gZGVsaXZlcmVkQ2xpZW50LmNsaWVudDsgfSB9KTsKY29uc3QgZGVsaXZlcmVkID0gYXdhaXQgZGVsaXZlcmVkQWRhcHRlci5tYXJrRGVsaXZlcmVkKHsKICB0cmFkZUlkOiBpZHMudHJhZGUsCiAgc3VwcGxpZXJPcmdhbml6YXRpb25JZDogaWRzLm9yZywKICBzdXBwbGllclVzZXJJZDogaWRzLnVzZXIsCiAgYWN0b3JSZWY6IGlkcy51c2VyLAogIGNvcnJlbGF0aW9uSWQ6ICdERUxJVkVSLVJFVFJZLTAwMScsCn0pOwphc3NlcnQuZXF1YWwoZGVsaXZlcmVkLmlkZW1wb3RlbnQsIHRydWUpOwphc3NlcnQuZXF1YWwoZGVsaXZlcmVkLnRyYWRlLnN0YXRlLCAnREVMSVZFUkVEJyk7CmFzc2VydC5lcXVhbChkZWxpdmVyZWRDbGllbnQuY2FsbHMuc29tZSgoeyBzcWwgfSkgPT4gc3FsLmluY2x1ZGVzKCdVUERBVEUgdHJhZGVzIFNFVCBzdGF0ZScpKSwgZmFsc2UpOwoKY29uc3QgaW5zcGVjdGlvbiA9IHsgdHJhZGVfaWQ6IGlkcy50cmFkZSwgcmVzZXJ2YXRpb25faWQ6IGlkcy5yZXNlcnZhdGlvbiwgc3RhdGU6ICdDT01QTEVURUQnLCBzcGVjX21hdGNoOiB0cnVlLCBxdWFsaXR5X3Bhc3M6IHRydWUgfTsKY29uc3QgaW5zcGVjdENsaWVudCA9IG1ha2VDbGllbnQoeyBzdGF0ZTogJ0NPTVBMRVRFRCcsIGluc3BlY3Rpb24gfSk7CmNvbnN0IGluc3BlY3RBZGFwdGVyID0gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiBpbnNwZWN0Q2xpZW50LmNsaWVudDsgfSB9KTsKY29uc3QgaW5zcGVjdGVkID0gYXdhaXQgaW5zcGVjdEFkYXB0ZXIuaW5zcGVjdFRyYWRlKHsKICB0cmFkZUlkOiBpZHMudHJhZGUsCiAgb3BlcmF0b3JPcmdhbml6YXRpb25JZDogaWRzLm9yZywKICBvcGVyYXRvclVzZXJJZDogaWRzLnVzZXIsCiAgc3BlY01hdGNoOiB0cnVlLAogIHF1YWxpdHlQYXNzOiB0cnVlLAogIGFjdG9yUmVmOiBpZHMudXNlciwKICBjb3JyZWxhdGlvbklkOiAnSU5TUEVDVC1SRVRSWS0wMDEnLAp9KTsKYXNzZXJ0LmVxdWFsKGluc3BlY3RlZC5pZGVtcG90ZW50LCB0cnVlKTsKYXNzZXJ0LmVxdWFsKGluc3BlY3RlZC5pbnNwZWN0aW9uLnRyYWRlX2lkLCBpZHMudHJhZGUpOwphd2FpdCBhc3NlcnQucmVqZWN0cygKICAoKSA9PiBpbnNwZWN0QWRhcHRlci5pbnNwZWN0VHJhZGUoewogICAgdHJhZGVJZDogaWRzLnRyYWRlLAogICAgb3BlcmF0b3JPcmdhbml6YXRpb25JZDogaWRzLm9yZywKICAgIG9wZXJhdG9yVXNlcklkOiBpZHMudXNlciwKICAgIHNwZWNNYXRjaDogZmFsc2UsCiAgICBxdWFsaXR5UGFzczogdHJ1ZSwKICAgIGFjdG9yUmVmOiBpZHMudXNlciwKICAgIGNvcnJlbGF0aW9uSWQ6ICdJTlNQRUNULVJFVFJZLU1JU01BVENIJywKICB9KSwKICAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgUG9zdGdyZXNEb21haW5BZGFwdGVyRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ0lOU1BFQ1RJT05fUkVUUllfTUlTTUFUQ0gnLAopOwoKY29uc3QgcHJpY2VkQ2xpZW50ID0gbWFrZUNsaWVudCh7CiAgc3RhdGU6ICdDT01QTEVURUQnLAogIGluc3BlY3Rpb24sCiAgb2JzZXJ2YXRpb246IHsgb2JzZXJ2YXRpb25faWQ6IGlkcy50cmFkZSwgdHJhZGVfaWQ6IGlkcy50cmFkZSwgcHJpY2U6ICcyMTgwMCcsIHF1YW50aXR5OiAnMTAwJyB9LAp9KTsKY29uc3QgcHJpY2VkQWRhcHRlciA9IG5ldyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIoeyBhc3luYyBjb25uZWN0KCkgeyByZXR1cm4gcHJpY2VkQ2xpZW50LmNsaWVudDsgfSB9KTsKY29uc3QgcHJpY2VkID0gYXdhaXQgcHJpY2VkQWRhcHRlci5pbnNwZWN0VHJhZGVBbmRSZWNvcmRQcmljZSh7CiAgdHJhZGVJZDogaWRzLnRyYWRlLAogIG9wZXJhdG9yT3JnYW5pemF0aW9uSWQ6IGlkcy5vcmcsCiAgb3BlcmF0b3JVc2VySWQ6IGlkcy51c2VyLAogIHNwZWNNYXRjaDogdHJ1ZSwKICBxdWFsaXR5UGFzczogdHJ1ZSwKICBhY3RvclJlZjogaWRzLnVzZXIsCiAgb2JzZXJ2YXRpb25JZDogaWRzLnRyYWRlLAogIGNvcnJlbGF0aW9uSWQ6ICdJTlNQRUNULVBSSUNFLVJFVFJZLTAwMScsCn0pOwphc3NlcnQuZXF1YWwocHJpY2VkLmlkZW1wb3RlbnQsIHRydWUpOwphc3NlcnQuZXF1YWwocHJpY2VkLnByaWNlT2JzZXJ2YXRpb25JZGVtcG90ZW50LCB0cnVlKTsKYXNzZXJ0LmVxdWFsKHByaWNlZC5vYnNlcnZhdGlvbi5vYnNlcnZhdGlvbl9pZCwgaWRzLnRyYWRlKTsKYXNzZXJ0LmVxdWFsKHByaWNlZENsaWVudC5jYWxscy5zb21lKCh7IHNxbCB9KSA9PiBzcWwuaW5jbHVkZXMoJ0lOU0VSVCBJTlRPIHRyYWRlX2luc3BlY3Rpb25zJykpLCBmYWxzZSk7CmFzc2VydC5lcXVhbChwcmljZWRDbGllbnQuY2FsbHMuc29tZSgoeyBzcWwgfSkgPT4gc3FsLmluY2x1ZGVzKCdJTlNFUlQgSU5UTyBwcmljZV9vYnNlcnZhdGlvbnMnKSksIGZhbHNlKTsKYXdhaXQgYXNzZXJ0LnJlamVjdHMoCiAgKCkgPT4gcHJpY2VkQWRhcHRlci5pbnNwZWN0VHJhZGVBbmRSZWNvcmRQcmljZSh7CiAgICB0cmFkZUlkOiBpZHMudHJhZGUsCiAgICBvcGVyYXRvck9yZ2FuaXphdGlvbklkOiBpZHMub3JnLAogICAgb3BlcmF0b3JVc2VySWQ6IGlkcy51c2VyLAogICAgc3BlY01hdGNoOiB0cnVlLAogICAgcXVhbGl0eVBhc3M6IHRydWUsCiAgICBwcmljZTogMjE5MDAsCiAgICBhY3RvclJlZjogaWRzLnVzZXIsCiAgICBvYnNlcnZhdGlvbklkOiBpZHMudHJhZGUsCiAgICBjb3JyZWxhdGlvbklkOiAnSU5TUEVDVC1QUklDRS1SRVRSWS1NSVNNQVRDSCcsCiAgfSksCiAgKGVycm9yKSA9PiBlcnJvciBpbnN0YW5jZW9mIFBvc3RncmVzRG9tYWluQWRhcHRlckVycm9yICYmIGVycm9yLmNvZGUgPT09ICdQUklDRV9UUkFERV9WQUxVRV9NSVNNQVRDSCcsCik7Cgpjb25zb2xlLmxvZygncG9zdGdyZXMgY29tbWFuZCBpZGVtcG90ZW5jeSB0ZXN0czogUEFTUycpOwo=
+import assert from 'node:assert/strict';
+import { PostgresDomainAdapter, PostgresDomainAdapterError } from './postgres-domain-adapter.mjs';
+
+const ids = {
+  org: '00000000-0000-0000-0000-000000000041',
+  user: '00000000-0000-0000-0000-000000000042',
+  trade: '00000000-0000-0000-0000-000000000043',
+  order: '00000000-0000-0000-0000-000000000044',
+  reservation: '00000000-0000-0000-0000-000000000045',
+};
+
+const terminalTrade = (state) => ({
+  trade_id: ids.trade,
+  order_id: ids.order,
+  lot_id: 'LOT-IDEMP',
+  state,
+  supplier_organization_id: ids.org,
+  price: '21800',
+  quantity: '100',
+  spec_id: 'GABA-SPEC-001',
+  reservation_id: ids.reservation,
+  reservation_state: state === 'COMPLETED' ? 'CONSUMED' : 'ACTIVE',
+  currency: 'KRW',
+  price_unit: 'KRW_PER_KG',
+  quantity_unit: 'KG',
+});
+
+const makeClient = ({ state, inspection, observation = null }) => {
+  const calls = [];
+  const client = {
+    async query(sql, params = []) {
+      calls.push({ sql, params });
+      if (['BEGIN', 'COMMIT', 'ROLLBACK'].includes(sql)) return { rows: [] };
+      if (sql.includes('FROM organization_members')) return { rows: [{ ok: 1 }] };
+      if (sql.includes('FROM trades t JOIN')) return { rows: [terminalTrade(state)] };
+      if (sql.includes('FROM trade_inspections')) return { rows: inspection ? [inspection] : [] };
+      if (sql.includes('FROM price_observations')) return { rows: observation ? [observation] : [] };
+      if (sql.includes('UPDATE trades SET state')) throw new Error('terminal retry must not update trades');
+      if (sql.includes('INSERT INTO trade_inspections')) throw new Error('terminal retry must not insert inspection');
+      if (sql.includes('INSERT INTO price_observations')) throw new Error('terminal retry must not insert price observation');
+      return { rows: [] };
+    },
+    release() {},
+  };
+  return { client, calls };
+};
+
+const deliveredClient = makeClient({ state: 'DELIVERED' });
+const deliveredAdapter = new PostgresDomainAdapter({ async connect() { return deliveredClient.client; } });
+const delivered = await deliveredAdapter.markDelivered({
+  tradeId: ids.trade,
+  supplierOrganizationId: ids.org,
+  supplierUserId: ids.user,
+  actorRef: ids.user,
+  correlationId: 'DELIVER-RETRY-001',
+});
+assert.equal(delivered.idempotent, true);
+assert.equal(delivered.trade.state, 'DELIVERED');
+assert.equal(deliveredClient.calls.some(({ sql }) => sql.includes('UPDATE trades SET state')), false);
+
+const inspection = { trade_id: ids.trade, reservation_id: ids.reservation, state: 'COMPLETED', spec_match: true, quality_pass: true };
+const inspectClient = makeClient({ state: 'COMPLETED', inspection });
+const inspectAdapter = new PostgresDomainAdapter({ async connect() { return inspectClient.client; } });
+const inspected = await inspectAdapter.inspectTrade({
+  tradeId: ids.trade,
+  operatorOrganizationId: ids.org,
+  operatorUserId: ids.user,
+  specMatch: true,
+  qualityPass: true,
+  actorRef: ids.user,
+  correlationId: 'INSPECT-RETRY-001',
+});
+assert.equal(inspected.idempotent, true);
+assert.equal(inspected.inspection.trade_id, ids.trade);
+await assert.rejects(
+  () => inspectAdapter.inspectTrade({
+    tradeId: ids.trade,
+    operatorOrganizationId: ids.org,
+    operatorUserId: ids.user,
+    specMatch: false,
+    qualityPass: true,
+    actorRef: ids.user,
+    correlationId: 'INSPECT-RETRY-MISMATCH',
+  }),
+  (error) => error instanceof PostgresDomainAdapterError && error.code === 'INSPECTION_RETRY_MISMATCH',
+);
+
+const pricedClient = makeClient({
+  state: 'COMPLETED',
+  inspection,
+  observation: { observation_id: ids.trade, trade_id: ids.trade, price: '21800', quantity: '100' },
+});
+const pricedAdapter = new PostgresDomainAdapter({ async connect() { return pricedClient.client; } });
+const priced = await pricedAdapter.inspectTradeAndRecordPrice({
+  tradeId: ids.trade,
+  operatorOrganizationId: ids.org,
+  operatorUserId: ids.user,
+  specMatch: true,
+  qualityPass: true,
+  actorRef: ids.user,
+  observationId: ids.trade,
+  correlationId: 'INSPECT-PRICE-RETRY-001',
+});
+assert.equal(priced.idempotent, true);
+assert.equal(priced.priceObservationIdempotent, true);
+assert.equal(priced.observation.observation_id, ids.trade);
+assert.equal(pricedClient.calls.some(({ sql }) => sql.includes('INSERT INTO trade_inspections')), false);
+assert.equal(pricedClient.calls.some(({ sql }) => sql.includes('INSERT INTO price_observations')), false);
+await assert.rejects(
+  () => pricedAdapter.inspectTradeAndRecordPrice({
+    tradeId: ids.trade,
+    operatorOrganizationId: ids.org,
+    operatorUserId: ids.user,
+    specMatch: true,
+    qualityPass: true,
+    price: 21900,
+    actorRef: ids.user,
+    observationId: ids.trade,
+    correlationId: 'INSPECT-PRICE-RETRY-MISMATCH',
+  }),
+  (error) => error instanceof PostgresDomainAdapterError && error.code === 'PRICE_TRADE_VALUE_MISMATCH',
+);
+
+console.log('postgres command idempotency tests: PASS');

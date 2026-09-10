@@ -1,1 +1,38 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBjcmVhdGVIbWFjIH0gZnJvbSAnbm9kZTpjcnlwdG8nOwppbXBvcnQgeyBhdXRob3JpemUsIEF1dGhvcml6YXRpb25FcnJvciwgbG9hZEF1dGhvcml6YXRpb25Qb2xpY3ksIHJlc29sdmVQcmluY2lwYWwgfSBmcm9tICcuL2F1dGhvcml6YXRpb24ubWpzJzsKCmNvbnN0IHBvbGljeSA9IGF3YWl0IGxvYWRBdXRob3JpemF0aW9uUG9saWN5KCk7CmNvbnN0IHJlcXVlc3QgPSB7IGhlYWRlcnM6IHt9IH07CmNvbnN0IGJ1eWVyID0gcmVzb2x2ZVByaW5jaXBhbChyZXF1ZXN0LCB7IGVudmlyb25tZW50OiAnc2ltdWxhdGlvbicsIGZhbGxiYWNrUm9sZTogJ0JVWUVSJyB9KTsKYXNzZXJ0LmVxdWFsKGJ1eWVyLnJvbGUsICdCVVlFUicpOwphc3NlcnQuZXF1YWwoYnV5ZXIub3JnYW5pemF0aW9uSWQsICdTSU0tQlVZRVItT1JHJyk7CmFzc2VydC5lcXVhbChhdXRob3JpemUoYnV5ZXIsICdjcmVhdGVfb3JkZXInLCBwb2xpY3kpLCB0cnVlKTsKCmNvbnN0IHN1cHBsaWVyUmVxdWVzdCA9IHsgaGVhZGVyczogeyAneC1kZW1vLXJvbGUnOiAnU1VQUExJRVInIH0gfTsKY29uc3Qgc3VwcGxpZXIgPSByZXNvbHZlUHJpbmNpcGFsKHN1cHBsaWVyUmVxdWVzdCwgeyBlbnZpcm9ubWVudDogJ3NpbXVsYXRpb24nLCBmYWxsYmFja1JvbGU6ICdCVVlFUicgfSk7CmFzc2VydC5lcXVhbChzdXBwbGllci51c2VySWQsICdTSU0tU1VQUExJRVItMDAxJyk7CmFzc2VydC5lcXVhbChhdXRob3JpemUoc3VwcGxpZXIsICdhY2NlcHRfb3JkZXInLCBwb2xpY3kpLCB0cnVlKTsKYXNzZXJ0LnRocm93cygoKSA9PiBhdXRob3JpemUoc3VwcGxpZXIsICdjcmVhdGVfb3JkZXInLCBwb2xpY3kpLCAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgQXV0aG9yaXphdGlvbkVycm9yICYmIGVycm9yLmNvZGUgPT09ICdGT1JCSURERU5fQUNUSU9OJyk7Cgpjb25zdCBhaSA9IHsgcm9sZTogJ0FJJywgdXNlcklkOiAnQUktMDEnLCBvcmdhbml6YXRpb25JZDogJ0FJLU9SRycsIGVudmlyb25tZW50OiAnc2ltdWxhdGlvbicgfTsKYXNzZXJ0LnRocm93cygoKSA9PiBhdXRob3JpemUoYWksICdhcHByb3ZlX3RyYWRlJywgcG9saWN5KSwgKGVycm9yKSA9PiBlcnJvciBpbnN0YW5jZW9mIEF1dGhvcml6YXRpb25FcnJvciAmJiBlcnJvci5jb2RlID09PSAnRk9SQklEREVOX0FDVElPTicpOwphc3NlcnQudGhyb3dzKCgpID0+IHJlc29sdmVQcmluY2lwYWwoeyBoZWFkZXJzOiB7ICd4LWRlbW8tcm9sZSc6ICdCVVlFUicgfSB9LCB7IGVudmlyb25tZW50OiAncHJvZHVjdGlvbicgfSksIChlcnJvcikgPT4gWydBVVRIRU5USUNBVElPTl9SRVFVSVJFRCcsICdBVVRIX1BST1ZJREVSX05PVF9DT05GSUdVUkVEJ10uaW5jbHVkZXMoZXJyb3IuY29kZSkpOwoKY29uc3QgcHJldmlvdXNTZWNyZXQgPSBwcm9jZXNzLmVudi5BVVRIX0pXVF9TRUNSRVQ7CmNvbnN0IHByZXZpb3VzSXNzdWVyID0gcHJvY2Vzcy5lbnYuQVVUSF9KV1RfSVNTVUVSOwpjb25zdCBwcmV2aW91c0F1ZGllbmNlID0gcHJvY2Vzcy5lbnYuQVVUSF9KV1RfQVVESUVOQ0U7CnByb2Nlc3MuZW52LkFVVEhfSldUX1NFQ1JFVCA9ICd0ZXN0LXNlY3JldC10aGF0LWlzLWF0LWxlYXN0LTMyLWJ5dGVzLWxvbmcnOwpwcm9jZXNzLmVudi5BVVRIX0pXVF9JU1NVRVIgPSAndGVzdC1pc3N1ZXInOwpwcm9jZXNzLmVudi5BVVRIX0pXVF9BVURJRU5DRSA9ICd0ZXN0LWF1ZGllbmNlJzsKY29uc3QgZW5jb2RlID0gKHZhbHVlKSA9PiBCdWZmZXIuZnJvbShKU09OLnN0cmluZ2lmeSh2YWx1ZSkpLnRvU3RyaW5nKCdiYXNlNjR1cmwnKTsKY29uc3QgaGVhZGVyID0gZW5jb2RlKHsgYWxnOiAnSFMyNTYnLCB0eXA6ICdKV1QnIH0pOwpjb25zdCBwYXlsb2FkID0gZW5jb2RlKHsgc3ViOiAnVVNFUi0wMDEnLCBvcmc6ICdPUkctMDAxJywgcm9sZTogJ1NVUFBMSUVSJywgaXNzOiAndGVzdC1pc3N1ZXInLCBhdWQ6ICd0ZXN0LWF1ZGllbmNlJywgZXhwOiBNYXRoLmZsb29yKERhdGUubm93KCkgLyAxMDAwKSArIDM2MDAgfSk7CmNvbnN0IHNpZ25hdHVyZSA9IGNyZWF0ZUhtYWMoJ3NoYTI1NicsIHByb2Nlc3MuZW52LkFVVEhfSldUX1NFQ1JFVCkudXBkYXRlKGAke2hlYWRlcn0uJHtwYXlsb2FkfWApLmRpZ2VzdCgnYmFzZTY0dXJsJyk7CmNvbnN0IHByaW5jaXBhbCA9IHJlc29sdmVQcmluY2lwYWwoeyBoZWFkZXJzOiB7IGF1dGhvcml6YXRpb246IGBCZWFyZXIgJHtoZWFkZXJ9LiR7cGF5bG9hZH0uJHtzaWduYXR1cmV9YCwgJ3gtcmF3LXJvbGUnOiAnT1dORVInIH0gfSwgeyBlbnZpcm9ubWVudDogJ3Byb2R1Y3Rpb24nIH0pOwphc3NlcnQuZGVlcEVxdWFsKHByaW5jaXBhbCwgeyByb2xlOiAnU1VQUExJRVInLCB1c2VySWQ6ICdVU0VSLTAwMScsIG9yZ2FuaXphdGlvbklkOiAnT1JHLTAwMScsIGVudmlyb25tZW50OiAncHJvZHVjdGlvbicgfSk7CmFzc2VydC50aHJvd3MoKCkgPT4gcmVzb2x2ZVByaW5jaXBhbCh7IGhlYWRlcnM6IHsgYXV0aG9yaXphdGlvbjogYEJlYXJlciAke2hlYWRlcn0uJHtwYXlsb2FkfS4keycwJy5yZXBlYXQoc2lnbmF0dXJlLmxlbmd0aCl9YCB9IH0sIHsgZW52aXJvbm1lbnQ6ICdwcm9kdWN0aW9uJyB9KSwgKGVycm9yKSA9PiBlcnJvci5jb2RlID09PSAnQVVUSEVOVElDQVRJT05fSU5WQUxJRCcpOwppZiAocHJldmlvdXNTZWNyZXQgPT09IHVuZGVmaW5lZCkgZGVsZXRlIHByb2Nlc3MuZW52LkFVVEhfSldUX1NFQ1JFVDsgZWxzZSBwcm9jZXNzLmVudi5BVVRIX0pXVF9TRUNSRVQgPSBwcmV2aW91c1NlY3JldDsKaWYgKHByZXZpb3VzSXNzdWVyID09PSB1bmRlZmluZWQpIGRlbGV0ZSBwcm9jZXNzLmVudi5BVVRIX0pXVF9JU1NVRVI7IGVsc2UgcHJvY2Vzcy5lbnYuQVVUSF9KV1RfSVNTVUVSID0gcHJldmlvdXNJc3N1ZXI7CmlmIChwcmV2aW91c0F1ZGllbmNlID09PSB1bmRlZmluZWQpIGRlbGV0ZSBwcm9jZXNzLmVudi5BVVRIX0pXVF9BVURJRU5DRTsgZWxzZSBwcm9jZXNzLmVudi5BVVRIX0pXVF9BVURJRU5DRSA9IHByZXZpb3VzQXVkaWVuY2U7CmNvbnNvbGUubG9nKCdhdXRob3JpemF0aW9uIHRlc3RzOiBQQVNTJyk7Cg==
+import assert from 'node:assert/strict';
+import { createHmac } from 'node:crypto';
+import { authorize, AuthorizationError, loadAuthorizationPolicy, resolvePrincipal } from './authorization.mjs';
+
+const policy = await loadAuthorizationPolicy();
+const request = { headers: {} };
+const buyer = resolvePrincipal(request, { environment: 'simulation', fallbackRole: 'BUYER' });
+assert.equal(buyer.role, 'BUYER');
+assert.equal(buyer.organizationId, 'SIM-BUYER-ORG');
+assert.equal(authorize(buyer, 'create_order', policy), true);
+
+const supplierRequest = { headers: { 'x-demo-role': 'SUPPLIER' } };
+const supplier = resolvePrincipal(supplierRequest, { environment: 'simulation', fallbackRole: 'BUYER' });
+assert.equal(supplier.userId, 'SIM-SUPPLIER-001');
+assert.equal(authorize(supplier, 'accept_order', policy), true);
+assert.throws(() => authorize(supplier, 'create_order', policy), (error) => error instanceof AuthorizationError && error.code === 'FORBIDDEN_ACTION');
+
+const ai = { role: 'AI', userId: 'AI-01', organizationId: 'AI-ORG', environment: 'simulation' };
+assert.throws(() => authorize(ai, 'approve_trade', policy), (error) => error instanceof AuthorizationError && error.code === 'FORBIDDEN_ACTION');
+assert.throws(() => resolvePrincipal({ headers: { 'x-demo-role': 'BUYER' } }, { environment: 'production' }), (error) => ['AUTHENTICATION_REQUIRED', 'AUTH_PROVIDER_NOT_CONFIGURED'].includes(error.code));
+
+const previousSecret = process.env.AUTH_JWT_SECRET;
+const previousIssuer = process.env.AUTH_JWT_ISSUER;
+const previousAudience = process.env.AUTH_JWT_AUDIENCE;
+process.env.AUTH_JWT_SECRET = 'test-secret-that-is-at-least-32-bytes-long';
+process.env.AUTH_JWT_ISSUER = 'test-issuer';
+process.env.AUTH_JWT_AUDIENCE = 'test-audience';
+const encode = (value) => Buffer.from(JSON.stringify(value)).toString('base64url');
+const header = encode({ alg: 'HS256', typ: 'JWT' });
+const payload = encode({ sub: 'USER-001', org: 'ORG-001', role: 'SUPPLIER', iss: 'test-issuer', aud: 'test-audience', exp: Math.floor(Date.now() / 1000) + 3600 });
+const signature = createHmac('sha256', process.env.AUTH_JWT_SECRET).update(`${header}.${payload}`).digest('base64url');
+const principal = resolvePrincipal({ headers: { authorization: `Bearer ${header}.${payload}.${signature}`, 'x-raw-role': 'OWNER' } }, { environment: 'production' });
+assert.deepEqual(principal, { role: 'SUPPLIER', userId: 'USER-001', organizationId: 'ORG-001', environment: 'production' });
+assert.throws(() => resolvePrincipal({ headers: { authorization: `Bearer ${header}.${payload}.${'0'.repeat(signature.length)}` } }, { environment: 'production' }), (error) => error.code === 'AUTHENTICATION_INVALID');
+if (previousSecret === undefined) delete process.env.AUTH_JWT_SECRET; else process.env.AUTH_JWT_SECRET = previousSecret;
+if (previousIssuer === undefined) delete process.env.AUTH_JWT_ISSUER; else process.env.AUTH_JWT_ISSUER = previousIssuer;
+if (previousAudience === undefined) delete process.env.AUTH_JWT_AUDIENCE; else process.env.AUTH_JWT_AUDIENCE = previousAudience;
+console.log('authorization tests: PASS');

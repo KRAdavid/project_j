@@ -1,1 +1,35 @@
-aW1wb3J0IHsgcmVhZEZpbGUgfSBmcm9tICdub2RlOmZzL3Byb21pc2VzJzsKaW1wb3J0IHsgcmVzb2x2ZSB9IGZyb20gJ25vZGU6cGF0aCc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7CmltcG9ydCB7IGJ1aWxkUmVhZGluZXNzRGlhZ25vc3RpY3MgfSBmcm9tICcuL3JlYWRpbmVzcy1kaWFnbm9zdGljcy5tanMnOwoKY29uc3QgY29uZmlnUGF0aCA9IHJlc29sdmUoZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuLi9vcHMvcmVsZWFzZS1yZWFkaW5lc3MuanNvbicsIGltcG9ydC5tZXRhLnVybCkpKTsKCmV4cG9ydCBjb25zdCBsb2FkUmVsZWFzZVJlYWRpbmVzcyA9IGFzeW5jICgpID0+IEpTT04ucGFyc2UoYXdhaXQgcmVhZEZpbGUoY29uZmlnUGF0aCwgJ3V0ZjgnKSk7CgpleHBvcnQgY29uc3QgZXZhbHVhdGVSZWxlYXNlUmVhZGluZXNzID0gYXN5bmMgKHsgZW52aXJvbm1lbnQgPSBwcm9jZXNzLmVudi5BUFBfRU5WIHx8ICdzaW11bGF0aW9uJywgZW52ID0gcHJvY2Vzcy5lbnYgfSA9IHt9KSA9PiB7CiAgY29uc3QgY29uZmlnID0gYXdhaXQgbG9hZFJlbGVhc2VSZWFkaW5lc3MoKTsKICBjb25zdCBkaWFnbm9zdGljcyA9IGJ1aWxkUmVhZGluZXNzRGlhZ25vc3RpY3MoeyBlbnZpcm9ubWVudCwgZW52IH0pOwogIGNvbnN0IGRpYWdub3N0aWNDdXJyZW50ID0gT2JqZWN0LmZyb21FbnRyaWVzKGRpYWdub3N0aWNzLm1hcCgoaXRlbSkgPT4gW2l0ZW0uaWQsIGl0ZW0uc3RhdHVzID09PSAnUkVBRFknXSkpOwogIGNvbnN0IGN1cnJlbnQgPSB7CiAgICAnUi0wMSc6IGRpYWdub3N0aWNDdXJyZW50WydSLTAxJ10sCiAgICAnUi0wMic6IGRpYWdub3N0aWNDdXJyZW50WydSLTAyJ10sCiAgICAnUi0wMyc6IHRydWUsCiAgICAnUi0wNCc6IGRpYWdub3N0aWNDdXJyZW50WydSLTA0J10sCiAgICAnUi0wNSc6IGRpYWdub3N0aWNDdXJyZW50WydSLTA1J10sCiAgICAnUi0wNic6IGRpYWdub3N0aWNDdXJyZW50WydSLTA2J10sCiAgICAnUi0wNyc6IGRpYWdub3N0aWNDdXJyZW50WydSLTA3J10sCiAgICAnUi0wOCc6IHRydWUsCiAgfTsKICBjb25zdCBjaGVja3MgPSBjb25maWcuY2hlY2tzLm1hcCgoY2hlY2spID0+ICh7IC4uLmNoZWNrLCBjdXJyZW50OiBjaGVjay5yZXF1aXJlZCA/IEJvb2xlYW4oY3VycmVudFtjaGVjay5pZF0pIDogdHJ1ZSB9KSk7CiAgY29uc3QgcmVxdWlyZWQgPSBjaGVja3MuZmlsdGVyKChjaGVjaykgPT4gY2hlY2sucmVxdWlyZWQpOwogIHJldHVybiB7CiAgICAuLi5jb25maWcsCiAgICBlbnZpcm9ubWVudCwKICAgIGRlY2lzaW9uOiByZXF1aXJlZC5ldmVyeSgoY2hlY2spID0+IGNoZWNrLmN1cnJlbnQpID8gJ0dPJyA6ICdOT19HTycsCiAgICBjaGVja3MsCiAgICBkaWFnbm9zdGljcywKICAgIG1pc3Npbmc6IHJlcXVpcmVkLmZpbHRlcigoY2hlY2spID0+ICFjaGVjay5jdXJyZW50KS5tYXAoKGNoZWNrKSA9PiBjaGVjay5pZCksCiAgICBldmFsdWF0ZWRBdDogbmV3IERhdGUoKS50b0lTT1N0cmluZygpLAogIH07Cn07Cg==
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { buildReadinessDiagnostics } from './readiness-diagnostics.mjs';
+
+const configPath = resolve(fileURLToPath(new URL('../ops/release-readiness.json', import.meta.url)));
+
+export const loadReleaseReadiness = async () => JSON.parse(await readFile(configPath, 'utf8'));
+
+export const evaluateReleaseReadiness = async ({ environment = process.env.APP_ENV || 'simulation', env = process.env } = {}) => {
+  const config = await loadReleaseReadiness();
+  const diagnostics = buildReadinessDiagnostics({ environment, env });
+  const diagnosticCurrent = Object.fromEntries(diagnostics.map((item) => [item.id, item.status === 'READY']));
+  const current = {
+    'R-01': diagnosticCurrent['R-01'],
+    'R-02': diagnosticCurrent['R-02'],
+    'R-03': true,
+    'R-04': diagnosticCurrent['R-04'],
+    'R-05': diagnosticCurrent['R-05'],
+    'R-06': diagnosticCurrent['R-06'],
+    'R-07': diagnosticCurrent['R-07'],
+    'R-08': true,
+  };
+  const checks = config.checks.map((check) => ({ ...check, current: check.required ? Boolean(current[check.id]) : true }));
+  const required = checks.filter((check) => check.required);
+  return {
+    ...config,
+    environment,
+    decision: required.every((check) => check.current) ? 'GO' : 'NO_GO',
+    checks,
+    diagnostics,
+    missing: required.filter((check) => !check.current).map((check) => check.id),
+    evaluatedAt: new Date().toISOString(),
+  };
+};

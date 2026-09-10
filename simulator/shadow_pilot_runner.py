@@ -1,1 +1,215 @@
-IiIi7Y+Q7IeE7ZiVIEdBQkEgU2hhZG93IFBpbG907J2YIOuqqOuToCDtlYTsiJgg7Iuc64KY66as7Jik66W8IOyLpO2Wie2VmOqzoCDtjJDsoJXtlZzri6QuIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgYXJncGFyc2UKaW1wb3J0IGpzb24KZnJvbSBkYXRhY2xhc3NlcyBpbXBvcnQgYXNkaWN0CmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lem9uZQpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKCmZyb20gZ2FiYV9iZXRhX3NpbXVsYXRvciBpbXBvcnQgR2FiYUJldGFTaW11bGF0b3IsIFNpbXVsYXRpb25Db25maWcKCgpST09UID0gUGF0aChfX2ZpbGVfXykucmVzb2x2ZSgpLnBhcmVudC5wYXJlbnQKUExBTl9QQVRIID0gUk9PVCAvICJvcHMiIC8gInNoYWRvdy1waWxvdC1wbGFuLmpzb24iCgoKZGVmIHZhbGlkYXRlX3BpbG90X3BsYW4ocGxhbjogZGljdCkgLT4gZGljdDoKICAgICIiIuywuOqwgOyekCDsoJHqt7wg7KCE7JeQIO2PkOyHhO2YlSBTaGFkb3cgUGlsb3Qg7ISk7KCV7J2EIGZhaWwtY2xvc2Vk66GcIOqygOymne2VnOuLpC4iIiIKICAgIHZpb2xhdGlvbnM6IGxpc3Rbc3RyXSA9IFtdCiAgICBwYXJ0aWNpcGFudHMgPSBwbGFuLmdldCgicGFydGljaXBhbnRzIiwgW10pCiAgICBzY2VuYXJpb3MgPSBwbGFuLmdldCgic2NlbmFyaW9zIiwgW10pCiAgICBzdG9wX3J1bGVzID0gcGxhbi5nZXQoInN0b3BSdWxlcyIsIFtdKQogICAgZXZpZGVuY2UgPSBwbGFuLmdldCgiZXZpZGVuY2VUb0NhcHR1cmUiLCBbXSkKICAgIHBhcnRpY2lwYW50X2lkcyA9IFtpdGVtLmdldCgicGFydGljaXBhbnRJZCIpIGZvciBpdGVtIGluIHBhcnRpY2lwYW50c10KICAgIHBhcnRpY2lwYW50X3JvbGVzID0ge2l0ZW0uZ2V0KCJyb2xlIikgZm9yIGl0ZW0gaW4gcGFydGljaXBhbnRzfQogICAgc2NlbmFyaW9faWRzID0gW2l0ZW0uZ2V0KCJpZCIpIGZvciBpdGVtIGluIHNjZW5hcmlvc10KICAgIHJlcXVpcmVkX2V2aWRlbmNlID0gewogICAgICAgICJzaW11bGF0aW9uX3J1bl9pZCIsCiAgICAgICAgInBhcnRpY2lwYW50X3JvbGUiLAogICAgICAgICJzcGVjX2lkIiwKICAgICAgICAibG90X2lkIiwKICAgICAgICAib3JkZXJfaWQiLAogICAgICAgICJ0cmFkZV9pZCIsCiAgICAgICAgInByZXRyYWRlX2NoZWNrcyIsCiAgICAgICAgInN0YXRlX3RyYW5zaXRpb25fbG9nIiwKICAgICAgICAiYmxvY2tlZF9ldmVudHMiLAogICAgICAgICJzY2VuYXJpb19ibG9ja19yZWFzb24iLAogICAgICAgICJpbnZhbGlkX2xvdF90cmFkZV9jb3VudCIsCiAgICAgICAgImh1bWFuX2RlY2lzaW9uX2lkIiwKICAgIH0KCiAgICBpZiBwbGFuLmdldCgibW9kZSIpICE9ICJDTE9TRURfU0lNVUxBVElPTiI6CiAgICAgICAgdmlvbGF0aW9ucy5hcHBlbmQoIm1vZGUgbXVzdCBiZSBDTE9TRURfU0lNVUxBVElPTiIpCiAgICBpZiBhbnkocGxhbi5nZXQoZmxhZykgaXMgbm90IEZhbHNlIGZvciBmbGFnIGluICgKICAgICAgICAicmVhbFRyYW5zYWN0aW9uc0VuYWJsZWQiLAogICAgICAgICJyZWFsTW9uZXlFbmFibGVkIiwKICAgICAgICAiZXh0ZXJuYWxOb3RpZmljYXRpb25zRW5hYmxlZCIsCiAgICApKToKICAgICAgICB2aW9sYXRpb25zLmFwcGVuZCgicmVhbCB0cmFuc2FjdGlvbnMsIG1vbmV5LCBhbmQgZXh0ZXJuYWwgbm90aWZpY2F0aW9ucyBtdXN0IHJlbWFpbiBkaXNhYmxlZCIpCiAgICBpZiBwbGFuLmdldCgiaHVtYW5QcmluY2lwYWwiKSAhPSAiSC0wMSI6CiAgICAgICAgdmlvbGF0aW9ucy5hcHBlbmQoImh1bWFuUHJpbmNpcGFsIG11c3QgYmUgSC0wMSIpCiAgICBpZiBwbGFuLmdldCgicmVxdWlyZWRBcHByb3ZhbCIpICE9ICJILTAxX0FQUFJPVkFMX0JFRk9SRV9QQVJUSUNJUEFOVF9BQ0NFU1MiOgogICAgICAgIHZpb2xhdGlvbnMuYXBwZW5kKCJwYXJ0aWNpcGFudCBhY2Nlc3MgbXVzdCByZXF1aXJlIEgtMDEgYXBwcm92YWwiKQogICAgaWYgbGVuKHBhcnRpY2lwYW50cykgPCAzIG9yIG5vdCB7IkJVWUVSIiwgIlNVUFBMSUVSIiwgIk9CU0VSVkVSIn0uaXNzdWJzZXQocGFydGljaXBhbnRfcm9sZXMpOgogICAgICAgIHZpb2xhdGlvbnMuYXBwZW5kKCJCVVlFUiwgU1VQUExJRVIsIGFuZCBPQlNFUlZFUiBwYXJ0aWNpcGFudHMgYXJlIHJlcXVpcmVkIikKICAgIGlmIGFueShub3QgaXRlbS5nZXQoInBhcnRpY2lwYW50SWQiKSBvciBub3QgaXRlbS5nZXQoIm9yZ2FuaXphdGlvbiIpIGZvciBpdGVtIGluIHBhcnRpY2lwYW50cyk6CiAgICAgICAgdmlvbGF0aW9ucy5hcHBlbmQoImV2ZXJ5IHBhcnRpY2lwYW50IHJlcXVpcmVzIGFuIGlkIGFuZCBvcmdhbml6YXRpb24iKQogICAgaWYgbGVuKHBhcnRpY2lwYW50X2lkcykgIT0gbGVuKHNldChwYXJ0aWNpcGFudF9pZHMpKToKICAgICAgICB2aW9sYXRpb25zLmFwcGVuZCgicGFydGljaXBhbnQgaWRzIG11c3QgYmUgdW5pcXVlIikKICAgIGlmIGxlbihzY2VuYXJpb3MpIDwgNyBvciBsZW4oc2NlbmFyaW9faWRzKSAhPSBsZW4oc2V0KHNjZW5hcmlvX2lkcykpOgogICAgICAgIHZpb2xhdGlvbnMuYXBwZW5kKCJhdCBsZWFzdCBzZXZlbiB1bmlxdWVseSBpZGVudGlmaWVkIHNjZW5hcmlvcyBhcmUgcmVxdWlyZWQiKQogICAgaWYgbGVuKHN0b3BfcnVsZXMpIDwgNToKICAgICAgICB2aW9sYXRpb25zLmFwcGVuZCgiYXQgbGVhc3QgZml2ZSBzdG9wIHJ1bGVzIGFyZSByZXF1aXJlZCIpCiAgICBpZiBub3QgcmVxdWlyZWRfZXZpZGVuY2UuaXNzdWJzZXQoc2V0KGV2aWRlbmNlKSk6CiAgICAgICAgdmlvbGF0aW9ucy5hcHBlbmQoInJlcXVpcmVkIGV2aWRlbmNlIGZpZWxkcyBhcmUgaW5jb21wbGV0ZSIpCgogICAgcmV0dXJuIHsKICAgICAgICAicGFzc2VkIjogbm90IHZpb2xhdGlvbnMsCiAgICAgICAgInZpb2xhdGlvbnMiOiB2aW9sYXRpb25zLAogICAgICAgICJwYXJ0aWNpcGFudF9hY2Nlc3NfZW5hYmxlZCI6IEZhbHNlLAogICAgICAgICJyZXF1aXJlZF9hcHByb3ZhbCI6IHBsYW4uZ2V0KCJyZXF1aXJlZEFwcHJvdmFsIiksCiAgICAgICAgImNoZWNrcyI6IHsKICAgICAgICAgICAgImNsb3NlZF9zaW11bGF0aW9uX21vZGUiOiBwbGFuLmdldCgibW9kZSIpID09ICJDTE9TRURfU0lNVUxBVElPTiIsCiAgICAgICAgICAgICJyZWFsX3NpZGVfZWZmZWN0c19kaXNhYmxlZCI6IG5vdCBhbnkocGxhbi5nZXQoZmxhZykgaXMgbm90IEZhbHNlIGZvciBmbGFnIGluICgKICAgICAgICAgICAgICAgICJyZWFsVHJhbnNhY3Rpb25zRW5hYmxlZCIsCiAgICAgICAgICAgICAgICAicmVhbE1vbmV5RW5hYmxlZCIsCiAgICAgICAgICAgICAgICAiZXh0ZXJuYWxOb3RpZmljYXRpb25zRW5hYmxlZCIsCiAgICAgICAgICAgICkpLAogICAgICAgICAgICAiaHVtYW5fZ2F0ZV9jb25maWd1cmVkIjogcGxhbi5nZXQoImh1bWFuUHJpbmNpcGFsIikgPT0gIkgtMDEiCiAgICAgICAgICAgIGFuZCBwbGFuLmdldCgicmVxdWlyZWRBcHByb3ZhbCIpID09ICJILTAxX0FQUFJPVkFMX0JFRk9SRV9QQVJUSUNJUEFOVF9BQ0NFU1MiLAogICAgICAgICAgICAicGFydGljaXBhbnRzX2NvbXBsZXRlIjogbGVuKHBhcnRpY2lwYW50cykgPj0gMwogICAgICAgICAgICBhbmQgeyJCVVlFUiIsICJTVVBQTElFUiIsICJPQlNFUlZFUiJ9Lmlzc3Vic2V0KHBhcnRpY2lwYW50X3JvbGVzKQogICAgICAgICAgICBhbmQgbGVuKHBhcnRpY2lwYW50X2lkcykgPT0gbGVuKHNldChwYXJ0aWNpcGFudF9pZHMpKSwKICAgICAgICAgICAgInNjZW5hcmlvX21hdHJpeF9jb21wbGV0ZSI6IGxlbihzY2VuYXJpb3MpID49IDcKICAgICAgICAgICAgYW5kIGxlbihzY2VuYXJpb19pZHMpID09IGxlbihzZXQoc2NlbmFyaW9faWRzKSksCiAgICAgICAgICAgICJzdG9wX3J1bGVzX3ByZXNlbnQiOiBsZW4oc3RvcF9ydWxlcykgPj0gNSwKICAgICAgICAgICAgImV2aWRlbmNlX2NvbnRyYWN0X2NvbXBsZXRlIjogcmVxdWlyZWRfZXZpZGVuY2UuaXNzdWJzZXQoc2V0KGV2aWRlbmNlKSksCiAgICAgICAgfSwKICAgIH0KCgpkZWYgZXZhbHVhdGVfc2NlbmFyaW8oc2NlbmFyaW86IGRpY3QsIHNlZWQ6IGludCA9IDIwMjYwOTA4KSAtPiBkaWN0OgogICAgc2ltdWxhdG9yX3NjZW5hcmlvID0gc2NlbmFyaW9bInNpbXVsYXRvclNjZW5hcmlvIl0KICAgIGNvbmZpZyA9IFNpbXVsYXRpb25Db25maWcoCiAgICAgICAgZGF5cz05MCwKICAgICAgICBvcmRlcnNfcGVyX2RheT04LAogICAgICAgIHNjZW5hcmlvPXNpbXVsYXRvcl9zY2VuYXJpbywKICAgICAgICBzZWVkPXNlZWQsCiAgICApCiAgICByZXN1bHQgPSBHYWJhQmV0YVNpbXVsYXRvcihjb25maWcpLnJ1bigpCiAgICBtZXRyaWNzID0gcmVzdWx0Lm1ldHJpY3MKICAgIGV4cGVjdGVkID0gc2NlbmFyaW9bImV4cGVjdGVkIl0KICAgIHNjZW5hcmlvX2Jsb2NrX3JlYXNvbiA9IHsKICAgICAgICAiZG9jdW1lbnRfZXhwaXJ5IjogIkRPQ1VNRU5UX0lOVkFMSUQiLAogICAgICAgICJpbnZlbnRvcnlfbWlzbWF0Y2giOiAiSU5WRU5UT1JZX05PVF9WRVJJRklFRCIsCiAgICAgICAgInNlbGxlcl92ZXJpZmljYXRpb25fZmFpbHVyZSI6ICJTVVBQTElFUl9OT1RfVkVSSUZJRUQiLAogICAgfS5nZXQoc2ltdWxhdG9yX3NjZW5hcmlvKQogICAgc2NlbmFyaW9fYmxvY2tlZF9ldmVudHMgPSBbCiAgICAgICAgZXZlbnQgZm9yIGV2ZW50IGluIHJlc3VsdC5ibG9ja2VkX2V2ZW50cwogICAgICAgIGlmIHNjZW5hcmlvX2Jsb2NrX3JlYXNvbiBhbmQgZXZlbnQuZ2V0KCJyZWFzb24iKSA9PSBzY2VuYXJpb19ibG9ja19yZWFzb24KICAgIF0KICAgIGludmFsaWRfbG90X2RhdGVzID0gewogICAgICAgIChldmVudC5nZXQoImxvdF9pZCIpLCBldmVudC5nZXQoImRheSIpKQogICAgICAgIGZvciBldmVudCBpbiBzY2VuYXJpb19ibG9ja2VkX2V2ZW50cwogICAgICAgIGlmIGV2ZW50LmdldCgibG90X2lkIikgYW5kIGV2ZW50LmdldCgiZGF5IikgaXMgbm90IE5vbmUKICAgIH0KICAgIHNjZW5hcmlvX2ludmFsaWRfbG90X3RyYWRlX2NvdW50ID0gc3VtKAogICAgICAgICh0cmFkZS5sb3RfaWQsIHRyYWRlLmRheSkgaW4gaW52YWxpZF9sb3RfZGF0ZXMKICAgICAgICBmb3IgdHJhZGUgaW4gcmVzdWx0LnRyYWRlcwogICAgKQogICAgY2hlY2tzID0gewogICAgICAgICJwcmV0cmFkZV92ZXJpZmljYXRpb25fcmF0ZSI6IG1ldHJpY3NbInByZXRyYWRlX3ZlcmlmaWNhdGlvbl9yYXRlIl0gPT0gMS4wLAogICAgICAgICJkdXBsaWNhdGVfdHJhZGVfY291bnQiOiBtZXRyaWNzWyJkdXBsaWNhdGVfdHJhZGVfY291bnQiXSA9PSAwLAogICAgICAgICJleHBlY3RlZF9vdXRjb21lIjogVHJ1ZSwKICAgIH0KICAgIGlmIGV4cGVjdGVkID09ICJUUkFERV9DT05GSVJNRUQiOgogICAgICAgIGNoZWNrc1siZXhwZWN0ZWRfb3V0Y29tZSJdID0gbWV0cmljc1siY29tcGxldGVkX3RyYWRlX2NvdW50Il0gPiAwCiAgICBlbGlmIGV4cGVjdGVkID09ICJCTE9DS0VEX0JFRk9SRV9UUkFERSI6CiAgICAgICAgY2hlY2tzWyJzY2VuYXJpb19ibG9ja2VkX2V2ZW50X2NvdW50Il0gPSBsZW4oc2NlbmFyaW9fYmxvY2tlZF9ldmVudHMpID4gMAogICAgICAgIGNoZWNrc1siaW52YWxpZF9sb3RfdHJhZGVfY291bnQiXSA9IHNjZW5hcmlvX2ludmFsaWRfbG90X3RyYWRlX2NvdW50ID09IDAKICAgICAgICBjaGVja3NbImV4cGVjdGVkX291dGNvbWUiXSA9IGNoZWNrc1sic2NlbmFyaW9fYmxvY2tlZF9ldmVudF9jb3VudCJdIGFuZCBjaGVja3NbImludmFsaWRfbG90X3RyYWRlX2NvdW50Il0KICAgIGVsaWYgZXhwZWN0ZWQgPT0gIlBBUlRJQUxfRklMTF9UUkFDRUFCTEUiOgogICAgICAgIGNoZWNrc1siZXhwZWN0ZWRfb3V0Y29tZSJdID0gbWV0cmljc1sicGFydGlhbF9maWxsX2V2ZW50X2NvdW50Il0gPiAwCiAgICBlbGlmIGV4cGVjdGVkID09ICJESVNQVVRFRF9BRlRFUl9ERUxJVkVSWSI6CiAgICAgICAgY2hlY2tzWyJleHBlY3RlZF9vdXRjb21lIl0gPSBtZXRyaWNzWyJkaXNwdXRlZF90cmFkZV9jb3VudCJdID4gMAogICAgZWxpZiBleHBlY3RlZCA9PSAiU0VUVExFTUVOVF9IT0xEIjoKICAgICAgICBjaGVja3NbImV4cGVjdGVkX291dGNvbWUiXSA9IG1ldHJpY3NbInNldHRsZW1lbnRfaG9sZF9jb3VudCJdID4gMAogICAgcGFzc2VkID0gYWxsKGNoZWNrcy52YWx1ZXMoKSkKICAgIHJldHVybiB7CiAgICAgICAgInNjZW5hcmlvX2lkIjogc2NlbmFyaW9bImlkIl0sCiAgICAgICAgIm5hbWUiOiBzY2VuYXJpb1sibmFtZSJdLAogICAgICAgICJzaW11bGF0b3Jfc2NlbmFyaW8iOiBzaW11bGF0b3Jfc2NlbmFyaW8sCiAgICAgICAgImV4cGVjdGVkIjogZXhwZWN0ZWQsCiAgICAgICAgInNjZW5hcmlvX2Jsb2NrX3JlYXNvbiI6IHNjZW5hcmlvX2Jsb2NrX3JlYXNvbiwKICAgICAgICAic2NlbmFyaW9fYmxvY2tlZF9ldmVudF9jb3VudCI6IGxlbihzY2VuYXJpb19ibG9ja2VkX2V2ZW50cyksCiAgICAgICAgInNjZW5hcmlvX2ludmFsaWRfbG90X3RyYWRlX2NvdW50Ijogc2NlbmFyaW9faW52YWxpZF9sb3RfdHJhZGVfY291bnQsCiAgICAgICAgInBhc3NlZCI6IHBhc3NlZCwKICAgICAgICAiY2hlY2tzIjogY2hlY2tzLAogICAgICAgICJzaW11bGF0aW9uX3J1bl9pZCI6IHJlc3VsdC5zaW11bGF0aW9uX3J1bl9pZCwKICAgICAgICAibWV0cmljcyI6IHsKICAgICAgICAgICAgKiptZXRyaWNzLAogICAgICAgICAgICAic2NlbmFyaW9fYmxvY2tlZF9ldmVudF9jb3VudCI6IGxlbihzY2VuYXJpb19ibG9ja2VkX2V2ZW50cyksCiAgICAgICAgICAgICJzY2VuYXJpb19pbnZhbGlkX2xvdF90cmFkZV9jb3VudCI6IHNjZW5hcmlvX2ludmFsaWRfbG90X3RyYWRlX2NvdW50LAogICAgICAgIH0sCiAgICB9CgoKZGVmIHJ1bl9zaGFkb3dfcGlsb3Qoc2VlZDogaW50ID0gMjAyNjA5MDgpIC0+IGRpY3Q6CiAgICBwbGFuID0ganNvbi5sb2FkcyhQTEFOX1BBVEgucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpKQogICAgcHJlZmxpZ2h0ID0gdmFsaWRhdGVfcGlsb3RfcGxhbihwbGFuKQogICAgaWYgbm90IHByZWZsaWdodFsicGFzc2VkIl06CiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgInNjaGVtYV92ZXJzaW9uIjogIlNIQURPVy1QSUxPVC1SVU4tMC4yIiwKICAgICAgICAgICAgInNoYWRvd19waWxvdF9pZCI6IHBsYW4uZ2V0KCJwaWxvdElkIiksCiAgICAgICAgICAgICJnZW5lcmF0ZWRfYXQiOiBkYXRldGltZS5ub3codGltZXpvbmUudXRjKS5pc29mb3JtYXQoKSwKICAgICAgICAgICAgIm1vZGUiOiBwbGFuLmdldCgibW9kZSIpLAogICAgICAgICAgICAicmVhbF90cmFuc2FjdGlvbnNfZW5hYmxlZCI6IHBsYW4uZ2V0KCJyZWFsVHJhbnNhY3Rpb25zRW5hYmxlZCIpLAogICAgICAgICAgICAicmVhbF9tb25leV9lbmFibGVkIjogcGxhbi5nZXQoInJlYWxNb25leUVuYWJsZWQiKSwKICAgICAgICAgICAgImV4dGVybmFsX25vdGlmaWNhdGlvbnNfZW5hYmxlZCI6IHBsYW4uZ2V0KCJleHRlcm5hbE5vdGlmaWNhdGlvbnNFbmFibGVkIiksCiAgICAgICAgICAgICJodW1hbl9wcmluY2lwYWwiOiBwbGFuLmdldCgiaHVtYW5QcmluY2lwYWwiKSwKICAgICAgICAgICAgInBhcnRpY2lwYW50X2FjY2Vzc19lbmFibGVkIjogRmFsc2UsCiAgICAgICAgICAgICJwcmVmbGlnaHQiOiBwcmVmbGlnaHQsCiAgICAgICAgICAgICJkZWNpc2lvbiI6ICJTVE9QX0lOQ0lERU5UIiwKICAgICAgICAgICAgInNjZW5hcmlvX2NvdW50IjogMCwKICAgICAgICAgICAgInBhc3NlZF9zY2VuYXJpb19jb3VudCI6IDAsCiAgICAgICAgICAgICJyZXN1bHRzIjogW10sCiAgICAgICAgICAgICJndWFyZHJhaWwiOiAiU2hhZG93IFBpbG90IOyCrOyghCDqsozsnbTtirgg7Iuk7YyoIOyLnCDssLjqsIDsnpAg7KCR6re86rO8IOyLnOuCmOumrOyYpCDsi6TtlonsnYQg66qo65GQIOywqOuLqO2VnOuLpC4iLAogICAgICAgIH0KICAgIHJlc3VsdHMgPSBbZXZhbHVhdGVfc2NlbmFyaW8oc2NlbmFyaW8sIHNlZWQ9c2VlZCArIGluZGV4KSBmb3IgaW5kZXgsIHNjZW5hcmlvIGluIGVudW1lcmF0ZShwbGFuWyJzY2VuYXJpb3MiXSldCiAgICBwYXNzZWQgPSBhbGwocmVzdWx0WyJwYXNzZWQiXSBmb3IgcmVzdWx0IGluIHJlc3VsdHMpCiAgICByZXR1cm4gewogICAgICAgICJzY2hlbWFfdmVyc2lvbiI6ICJTSEFET1ctUElMT1QtUlVOLTAuMiIsCiAgICAgICAgInNoYWRvd19waWxvdF9pZCI6IHBsYW5bInBpbG90SWQiXSwKICAgICAgICAiZ2VuZXJhdGVkX2F0IjogZGF0ZXRpbWUubm93KHRpbWV6b25lLnV0YykuaXNvZm9ybWF0KCksCiAgICAgICAgIm1vZGUiOiBwbGFuWyJtb2RlIl0sCiAgICAgICAgInJlYWxfdHJhbnNhY3Rpb25zX2VuYWJsZWQiOiBwbGFuWyJyZWFsVHJhbnNhY3Rpb25zRW5hYmxlZCJdLAogICAgICAgICJyZWFsX21vbmV5X2VuYWJsZWQiOiBwbGFuWyJyZWFsTW9uZXlFbmFibGVkIl0sCiAgICAgICAgImV4dGVybmFsX25vdGlmaWNhdGlvbnNfZW5hYmxlZCI6IHBsYW5bImV4dGVybmFsTm90aWZpY2F0aW9uc0VuYWJsZWQiXSwKICAgICAgICAiaHVtYW5fcHJpbmNpcGFsIjogcGxhblsiaHVtYW5QcmluY2lwYWwiXSwKICAgICAgICAicGFydGljaXBhbnRfYWNjZXNzX2VuYWJsZWQiOiBGYWxzZSwKICAgICAgICAicHJlZmxpZ2h0IjogcHJlZmxpZ2h0LAogICAgICAgICJkZWNpc2lvbiI6ICJQQVNTX1JFVklFV19SRVFVSVJFRCIgaWYgcGFzc2VkIGVsc2UgIlNUT1BfSU5DSURFTlQiLAogICAgICAgICJzY2VuYXJpb19jb3VudCI6IGxlbihyZXN1bHRzKSwKICAgICAgICAicGFzc2VkX3NjZW5hcmlvX2NvdW50Ijogc3VtKHJlc3VsdFsicGFzc2VkIl0gZm9yIHJlc3VsdCBpbiByZXN1bHRzKSwKICAgICAgICAicmVzdWx0cyI6IHJlc3VsdHMsCiAgICAgICAgImd1YXJkcmFpbCI6ICLsi5zrgpjrpqzsmKQgUEFTU+uKlCDssLjqsIDsnpAg7KCR6re8IOyKueyduOydtOuCmCDsi6TqsbDrnpgg7ZeI6rCA66W8IOydmOuvuO2VmOyngCDslYrripTri6QuIiwKICAgIH0KCgpkZWYgbWFpbigpIC0+IE5vbmU6CiAgICBwYXJzZXIgPSBhcmdwYXJzZS5Bcmd1bWVudFBhcnNlcihkZXNjcmlwdGlvbj0iR0FCQSDtj5Dsh4TtmJUgU2hhZG93IFBpbG90IOyLpO2Wieq4sCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXNlZWQiLCB0eXBlPWludCwgZGVmYXVsdD0yMDI2MDkwOCkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tb3V0cHV0IiwgdHlwZT1QYXRoLCBkZWZhdWx0PVJPT1QgLyAib3BzIiAvICJsYXRlc3Qtc2hhZG93LXBpbG90Lmpzb24iKQogICAgYXJncyA9IHBhcnNlci5wYXJzZV9hcmdzKCkKICAgIHJlcG9ydCA9IHJ1bl9zaGFkb3dfcGlsb3Qoc2VlZD1hcmdzLnNlZWQpCiAgICBhcmdzLm91dHB1dC5wYXJlbnQubWtkaXIocGFyZW50cz1UcnVlLCBleGlzdF9vaz1UcnVlKQogICAgYXJncy5vdXRwdXQud3JpdGVfdGV4dChqc29uLmR1bXBzKHJlcG9ydCwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MiksIGVuY29kaW5nPSJ1dGYtOCIpCiAgICBwcmludChqc29uLmR1bXBzKHsiZGVjaXNpb24iOiByZXBvcnRbImRlY2lzaW9uIl0sICJzY2VuYXJpb19jb3VudCI6IHJlcG9ydFsic2NlbmFyaW9fY291bnQiXSwgInBhc3NlZCI6IHJlcG9ydFsicGFzc2VkX3NjZW5hcmlvX2NvdW50Il19LCBlbnN1cmVfYXNjaWk9RmFsc2UpKQogICAgaWYgcmVwb3J0WyJkZWNpc2lvbiJdID09ICJTVE9QX0lOQ0lERU5UIjoKICAgICAgICByYWlzZSBTeXN0ZW1FeGl0KDEpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKQo=
+"""폐쇄형 GABA Shadow Pilot의 모든 필수 시나리오를 실행하고 판정한다."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from dataclasses import asdict
+from datetime import datetime, timezone
+from pathlib import Path
+
+from gaba_beta_simulator import GabaBetaSimulator, SimulationConfig
+
+
+ROOT = Path(__file__).resolve().parent.parent
+PLAN_PATH = ROOT / "ops" / "shadow-pilot-plan.json"
+
+
+def validate_pilot_plan(plan: dict) -> dict:
+    """참가자 접근 전에 폐쇄형 Shadow Pilot 설정을 fail-closed로 검증한다."""
+    violations: list[str] = []
+    participants = plan.get("participants", [])
+    scenarios = plan.get("scenarios", [])
+    stop_rules = plan.get("stopRules", [])
+    evidence = plan.get("evidenceToCapture", [])
+    participant_ids = [item.get("participantId") for item in participants]
+    participant_roles = {item.get("role") for item in participants}
+    scenario_ids = [item.get("id") for item in scenarios]
+    required_evidence = {
+        "simulation_run_id",
+        "participant_role",
+        "spec_id",
+        "lot_id",
+        "order_id",
+        "trade_id",
+        "pretrade_checks",
+        "state_transition_log",
+        "blocked_events",
+        "scenario_block_reason",
+        "invalid_lot_trade_count",
+        "human_decision_id",
+    }
+
+    if plan.get("mode") != "CLOSED_SIMULATION":
+        violations.append("mode must be CLOSED_SIMULATION")
+    if any(plan.get(flag) is not False for flag in (
+        "realTransactionsEnabled",
+        "realMoneyEnabled",
+        "externalNotificationsEnabled",
+    )):
+        violations.append("real transactions, money, and external notifications must remain disabled")
+    if plan.get("humanPrincipal") != "H-01":
+        violations.append("humanPrincipal must be H-01")
+    if plan.get("requiredApproval") != "H-01_APPROVAL_BEFORE_PARTICIPANT_ACCESS":
+        violations.append("participant access must require H-01 approval")
+    if len(participants) < 3 or not {"BUYER", "SUPPLIER", "OBSERVER"}.issubset(participant_roles):
+        violations.append("BUYER, SUPPLIER, and OBSERVER participants are required")
+    if any(not item.get("participantId") or not item.get("organization") for item in participants):
+        violations.append("every participant requires an id and organization")
+    if len(participant_ids) != len(set(participant_ids)):
+        violations.append("participant ids must be unique")
+    if len(scenarios) < 7 or len(scenario_ids) != len(set(scenario_ids)):
+        violations.append("at least seven uniquely identified scenarios are required")
+    if len(stop_rules) < 5:
+        violations.append("at least five stop rules are required")
+    if not required_evidence.issubset(set(evidence)):
+        violations.append("required evidence fields are incomplete")
+
+    return {
+        "passed": not violations,
+        "violations": violations,
+        "participant_access_enabled": False,
+        "required_approval": plan.get("requiredApproval"),
+        "checks": {
+            "closed_simulation_mode": plan.get("mode") == "CLOSED_SIMULATION",
+            "real_side_effects_disabled": not any(plan.get(flag) is not False for flag in (
+                "realTransactionsEnabled",
+                "realMoneyEnabled",
+                "externalNotificationsEnabled",
+            )),
+            "human_gate_configured": plan.get("humanPrincipal") == "H-01"
+            and plan.get("requiredApproval") == "H-01_APPROVAL_BEFORE_PARTICIPANT_ACCESS",
+            "participants_complete": len(participants) >= 3
+            and {"BUYER", "SUPPLIER", "OBSERVER"}.issubset(participant_roles)
+            and len(participant_ids) == len(set(participant_ids)),
+            "scenario_matrix_complete": len(scenarios) >= 7
+            and len(scenario_ids) == len(set(scenario_ids)),
+            "stop_rules_present": len(stop_rules) >= 5,
+            "evidence_contract_complete": required_evidence.issubset(set(evidence)),
+        },
+    }
+
+
+def evaluate_scenario(scenario: dict, seed: int = 20260908) -> dict:
+    simulator_scenario = scenario["simulatorScenario"]
+    config = SimulationConfig(
+        days=90,
+        orders_per_day=8,
+        scenario=simulator_scenario,
+        seed=seed,
+    )
+    result = GabaBetaSimulator(config).run()
+    metrics = result.metrics
+    expected = scenario["expected"]
+    scenario_block_reason = {
+        "document_expiry": "DOCUMENT_INVALID",
+        "inventory_mismatch": "INVENTORY_NOT_VERIFIED",
+        "seller_verification_failure": "SUPPLIER_NOT_VERIFIED",
+    }.get(simulator_scenario)
+    scenario_blocked_events = [
+        event for event in result.blocked_events
+        if scenario_block_reason and event.get("reason") == scenario_block_reason
+    ]
+    invalid_lot_dates = {
+        (event.get("lot_id"), event.get("day"))
+        for event in scenario_blocked_events
+        if event.get("lot_id") and event.get("day") is not None
+    }
+    scenario_invalid_lot_trade_count = sum(
+        (trade.lot_id, trade.day) in invalid_lot_dates
+        for trade in result.trades
+    )
+    checks = {
+        "pretrade_verification_rate": metrics["pretrade_verification_rate"] == 1.0,
+        "duplicate_trade_count": metrics["duplicate_trade_count"] == 0,
+        "expected_outcome": True,
+    }
+    if expected == "TRADE_CONFIRMED":
+        checks["expected_outcome"] = metrics["completed_trade_count"] > 0
+    elif expected == "BLOCKED_BEFORE_TRADE":
+        checks["scenario_blocked_event_count"] = len(scenario_blocked_events) > 0
+        checks["invalid_lot_trade_count"] = scenario_invalid_lot_trade_count == 0
+        checks["expected_outcome"] = checks["scenario_blocked_event_count"] and checks["invalid_lot_trade_count"]
+    elif expected == "PARTIAL_FILL_TRACEABLE":
+        checks["expected_outcome"] = metrics["partial_fill_event_count"] > 0
+    elif expected == "DISPUTED_AFTER_DELIVERY":
+        checks["expected_outcome"] = metrics["disputed_trade_count"] > 0
+    elif expected == "SETTLEMENT_HOLD":
+        checks["expected_outcome"] = metrics["settlement_hold_count"] > 0
+    passed = all(checks.values())
+    return {
+        "scenario_id": scenario["id"],
+        "name": scenario["name"],
+        "simulator_scenario": simulator_scenario,
+        "expected": expected,
+        "scenario_block_reason": scenario_block_reason,
+        "scenario_blocked_event_count": len(scenario_blocked_events),
+        "scenario_invalid_lot_trade_count": scenario_invalid_lot_trade_count,
+        "passed": passed,
+        "checks": checks,
+        "simulation_run_id": result.simulation_run_id,
+        "metrics": {
+            **metrics,
+            "scenario_blocked_event_count": len(scenario_blocked_events),
+            "scenario_invalid_lot_trade_count": scenario_invalid_lot_trade_count,
+        },
+    }
+
+
+def run_shadow_pilot(seed: int = 20260908) -> dict:
+    plan = json.loads(PLAN_PATH.read_text(encoding="utf-8"))
+    preflight = validate_pilot_plan(plan)
+    if not preflight["passed"]:
+        return {
+            "schema_version": "SHADOW-PILOT-RUN-0.2",
+            "shadow_pilot_id": plan.get("pilotId"),
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "mode": plan.get("mode"),
+            "real_transactions_enabled": plan.get("realTransactionsEnabled"),
+            "real_money_enabled": plan.get("realMoneyEnabled"),
+            "external_notifications_enabled": plan.get("externalNotificationsEnabled"),
+            "human_principal": plan.get("humanPrincipal"),
+            "participant_access_enabled": False,
+            "preflight": preflight,
+            "decision": "STOP_INCIDENT",
+            "scenario_count": 0,
+            "passed_scenario_count": 0,
+            "results": [],
+            "guardrail": "Shadow Pilot 사전 게이트 실패 시 참가자 접근과 시나리오 실행을 모두 차단한다.",
+        }
+    results = [evaluate_scenario(scenario, seed=seed + index) for index, scenario in enumerate(plan["scenarios"])]
+    passed = all(result["passed"] for result in results)
+    return {
+        "schema_version": "SHADOW-PILOT-RUN-0.2",
+        "shadow_pilot_id": plan["pilotId"],
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "mode": plan["mode"],
+        "real_transactions_enabled": plan["realTransactionsEnabled"],
+        "real_money_enabled": plan["realMoneyEnabled"],
+        "external_notifications_enabled": plan["externalNotificationsEnabled"],
+        "human_principal": plan["humanPrincipal"],
+        "participant_access_enabled": False,
+        "preflight": preflight,
+        "decision": "PASS_REVIEW_REQUIRED" if passed else "STOP_INCIDENT",
+        "scenario_count": len(results),
+        "passed_scenario_count": sum(result["passed"] for result in results),
+        "results": results,
+        "guardrail": "시나리오 PASS는 참가자 접근 승인이나 실거래 허가를 의미하지 않는다.",
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="GABA 폐쇄형 Shadow Pilot 실행기")
+    parser.add_argument("--seed", type=int, default=20260908)
+    parser.add_argument("--output", type=Path, default=ROOT / "ops" / "latest-shadow-pilot.json")
+    args = parser.parse_args()
+    report = run_shadow_pilot(seed=args.seed)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(json.dumps({"decision": report["decision"], "scenario_count": report["scenario_count"], "passed": report["passed_scenario_count"]}, ensure_ascii=False))
+    if report["decision"] == "STOP_INCIDENT":
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()

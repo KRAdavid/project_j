@@ -1,1 +1,34 @@
-aW1wb3J0IHsgcmVhZEZpbGVTeW5jIH0gZnJvbSAnbm9kZTpmcyc7CmltcG9ydCB7IHJlc29sdmUgfSBmcm9tICdub2RlOnBhdGgnOwppbXBvcnQgeyBmaWxlVVJMVG9QYXRoIH0gZnJvbSAnbm9kZTp1cmwnOwoKY29uc3QgY29uZmlnUGF0aCA9IHJlc29sdmUoZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuLi9kYXRhL3BlcnNpc3RlbmNlLWNvbmZpZy5qc29uJywgaW1wb3J0Lm1ldGEudXJsKSkpOwpjb25zdCBjb25maWcgPSBKU09OLnBhcnNlKHJlYWRGaWxlU3luYyhjb25maWdQYXRoLCAndXRmOCcpKTsKCmV4cG9ydCBjb25zdCBwZXJzaXN0ZW5jZVN0YXR1cyA9ICgpID0+ICh7CiAgbW9kZTogY29uZmlnLmN1cnJlbnRNb2RlLAogIHByb2R1Y3Rpb25Nb2RlOiBjb25maWcucHJvZHVjdGlvbk1vZGUsCiAgZHVyYWJsZTogY29uZmlnLmN1cnJlbnRNb2RlID09PSBjb25maWcucHJvZHVjdGlvbk1vZGUsCiAgZmFpbENsb3NlZDogY29uZmlnLmN1cnJlbnRNb2RlICE9PSBjb25maWcucHJvZHVjdGlvbk1vZGUsCiAgcmVxdWlyZWRGb3JQcm9kdWN0aW9uOiBbLi4uY29uZmlnLnByb2R1Y3Rpb25SZXF1aXJlZF0sCn0pOwoKZXhwb3J0IGNvbnN0IGFzc2VydFByb2R1Y3Rpb25DdXRvdmVyID0gKHsgZGF0YWJhc2VVcmwsIHNjaGVtYUFwcGxpZWQsIGJhY2t1cERyaWxsUGFzc2VkLCBpc29sYXRpb25WZXJpZmllZCwgYXVkaXRQb2xpY3lBcHBsaWVkLCBvYmplY3RTdG9yYWdlUmVhZHksIGV2aWRlbmNlU3RvcmVSZWFkeSwgYXV0aFByb3ZpZGVyUmVhZHksIGF1dGhKd3RTZWNyZXQsIGF1dGhKd3RJc3N1ZXIsIGF1dGhKd3RBdWRpZW5jZSwgcG9zdGdyZXNEb21haW5BZGFwdGVyUmVhZHksIHBvc3RncmVzRG9tYWluQXBpUmVhZHksIHBvc3RncmVzRG9tYWluUmVjb25jaWxpYXRpb25WZXJpZmllZCB9ID0ge30pID0+IHsKICBjb25zdCBjaGVja3MgPSB7CiAgICBkYXRhYmFzZVVybDogQm9vbGVhbihkYXRhYmFzZVVybCksCiAgICBzY2hlbWFBcHBsaWVkOiBzY2hlbWFBcHBsaWVkID09PSB0cnVlLAogICAgYmFja3VwRHJpbGxQYXNzZWQ6IGJhY2t1cERyaWxsUGFzc2VkID09PSB0cnVlLAogICAgaXNvbGF0aW9uVmVyaWZpZWQ6IGlzb2xhdGlvblZlcmlmaWVkID09PSB0cnVlLAogICAgYXVkaXRQb2xpY3lBcHBsaWVkOiBhdWRpdFBvbGljeUFwcGxpZWQgPT09IHRydWUsCiAgICBvYmplY3RTdG9yYWdlUmVhZHk6IG9iamVjdFN0b3JhZ2VSZWFkeSA9PT0gdHJ1ZSwKICAgIGV2aWRlbmNlU3RvcmVSZWFkeTogZXZpZGVuY2VTdG9yZVJlYWR5ID09PSB0cnVlLAogICAgYXV0aFByb3ZpZGVyUmVhZHk6IGF1dGhQcm92aWRlclJlYWR5ID09PSB0cnVlLAogICAgYXV0aEp3dFNlY3JldDogdHlwZW9mIGF1dGhKd3RTZWNyZXQgPT09ICdzdHJpbmcnICYmIGF1dGhKd3RTZWNyZXQubGVuZ3RoID49IDMyLAogICAgYXV0aEp3dElzc3VlcjogdHlwZW9mIGF1dGhKd3RJc3N1ZXIgPT09ICdzdHJpbmcnICYmIGF1dGhKd3RJc3N1ZXIudHJpbSgpLmxlbmd0aCA+IDAsCiAgICBhdXRoSnd0QXVkaWVuY2U6IHR5cGVvZiBhdXRoSnd0QXVkaWVuY2UgPT09ICdzdHJpbmcnICYmIGF1dGhKd3RBdWRpZW5jZS50cmltKCkubGVuZ3RoID4gMCwKICAgIHBvc3RncmVzRG9tYWluQWRhcHRlclJlYWR5OiBwb3N0Z3Jlc0RvbWFpbkFkYXB0ZXJSZWFkeSA9PT0gdHJ1ZSwKICAgIHBvc3RncmVzRG9tYWluQXBpUmVhZHk6IHBvc3RncmVzRG9tYWluQXBpUmVhZHkgPT09IHRydWUsCiAgICBwb3N0Z3Jlc0RvbWFpblJlY29uY2lsaWF0aW9uVmVyaWZpZWQ6IHBvc3RncmVzRG9tYWluUmVjb25jaWxpYXRpb25WZXJpZmllZCA9PT0gdHJ1ZSwKICB9OwogIHJldHVybiB7IHJlYWR5OiBPYmplY3QudmFsdWVzKGNoZWNrcykuZXZlcnkoQm9vbGVhbiksIGNoZWNrcyB9Owp9Owo=
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const configPath = resolve(fileURLToPath(new URL('../data/persistence-config.json', import.meta.url)));
+const config = JSON.parse(readFileSync(configPath, 'utf8'));
+
+export const persistenceStatus = () => ({
+  mode: config.currentMode,
+  productionMode: config.productionMode,
+  durable: config.currentMode === config.productionMode,
+  failClosed: config.currentMode !== config.productionMode,
+  requiredForProduction: [...config.productionRequired],
+});
+
+export const assertProductionCutover = ({ databaseUrl, schemaApplied, backupDrillPassed, isolationVerified, auditPolicyApplied, objectStorageReady, evidenceStoreReady, authProviderReady, authJwtSecret, authJwtIssuer, authJwtAudience, postgresDomainAdapterReady, postgresDomainApiReady, postgresDomainReconciliationVerified } = {}) => {
+  const checks = {
+    databaseUrl: Boolean(databaseUrl),
+    schemaApplied: schemaApplied === true,
+    backupDrillPassed: backupDrillPassed === true,
+    isolationVerified: isolationVerified === true,
+    auditPolicyApplied: auditPolicyApplied === true,
+    objectStorageReady: objectStorageReady === true,
+    evidenceStoreReady: evidenceStoreReady === true,
+    authProviderReady: authProviderReady === true,
+    authJwtSecret: typeof authJwtSecret === 'string' && authJwtSecret.length >= 32,
+    authJwtIssuer: typeof authJwtIssuer === 'string' && authJwtIssuer.trim().length > 0,
+    authJwtAudience: typeof authJwtAudience === 'string' && authJwtAudience.trim().length > 0,
+    postgresDomainAdapterReady: postgresDomainAdapterReady === true,
+    postgresDomainApiReady: postgresDomainApiReady === true,
+    postgresDomainReconciliationVerified: postgresDomainReconciliationVerified === true,
+  };
+  return { ready: Object.values(checks).every(Boolean), checks };
+};

@@ -1,1 +1,208 @@
-aW1wb3J0IHsgbWtkaXIgfSBmcm9tICdub2RlOmZzL3Byb21pc2VzJzsKaW1wb3J0IHsgZGlybmFtZSwgcmVzb2x2ZSB9IGZyb20gJ25vZGU6cGF0aCc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7CmltcG9ydCB7IFBvc3RncmVzRG9tYWluQWRhcHRlciB9IGZyb20gJy4vcG9zdGdyZXMtZG9tYWluLWFkYXB0ZXIubWpzJzsKCmNvbnN0IGRlZmF1bHRGaWxlUGF0aCA9IHJlc29sdmUoZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuLi9kYXRhL2JldGEtbGVkZ2VyLnNxbGl0ZScsIGltcG9ydC5tZXRhLnVybCkpKTsKCmV4cG9ydCBjbGFzcyBQZXJzaXN0ZW5jZVN0b3JlRXJyb3IgZXh0ZW5kcyBFcnJvciB7CiAgY29uc3RydWN0b3IobWVzc2FnZSwgY29kZSA9ICdQRVJTSVNURU5DRV9TVE9SRV9GQUlMRUQnKSB7CiAgICBzdXBlcihtZXNzYWdlKTsKICAgIHRoaXMuY29kZSA9IGNvZGU7CiAgfQp9CgpjbGFzcyBNZW1vcnlTdG9yZSB7CiAgY29uc3RydWN0b3IoKSB7IHRoaXMubW9kZSA9ICdtZW1vcnknOyB0aGlzLnNuYXBzaG90ID0gbnVsbDsgdGhpcy5ldmlkZW5jZVNuYXBzaG90ID0gbnVsbDsgdGhpcy5wcmljZU9ic2VydmF0aW9ucyA9IFtdOyB9CiAgYXN5bmMgbG9hZCgpIHsgcmV0dXJuIHRoaXMuc25hcHNob3Q7IH0KICBhc3luYyBzYXZlKHNuYXBzaG90KSB7IHRoaXMuc25hcHNob3QgPSBKU09OLnBhcnNlKEpTT04uc3RyaW5naWZ5KHNuYXBzaG90KSk7IH0KICBhc3luYyBsb2FkRXZpZGVuY2UoKSB7IHJldHVybiB0aGlzLmV2aWRlbmNlU25hcHNob3Q7IH0KICBhc3luYyBzYXZlRXZpZGVuY2Uoc25hcHNob3QpIHsgdGhpcy5ldmlkZW5jZVNuYXBzaG90ID0gSlNPTi5wYXJzZShKU09OLnN0cmluZ2lmeShzbmFwc2hvdCkpOyB9CiAgYXN5bmMgbG9hZFByaWNlT2JzZXJ2YXRpb25zKCkgeyByZXR1cm4gSlNPTi5wYXJzZShKU09OLnN0cmluZ2lmeSh0aGlzLnByaWNlT2JzZXJ2YXRpb25zKSk7IH0KICBhc3luYyBzYXZlUHJpY2VPYnNlcnZhdGlvbnMob2JzZXJ2YXRpb25zID0gW10pIHsgdGhpcy5wcmljZU9ic2VydmF0aW9ucy5wdXNoKC4uLkpTT04ucGFyc2UoSlNPTi5zdHJpbmdpZnkob2JzZXJ2YXRpb25zKSkpOyB9CiAgYXN5bmMgY2xvc2UoKSB7fQp9CgpjbGFzcyBTcWxpdGVTbmFwc2hvdFN0b3JlIHsKICBjb25zdHJ1Y3RvcihkYXRhYmFzZSwgZmlsZVBhdGgpIHsKICAgIHRoaXMubW9kZSA9ICdzcWxpdGUnOwogICAgdGhpcy5kYXRhYmFzZSA9IGRhdGFiYXNlOwogICAgdGhpcy5maWxlUGF0aCA9IGZpbGVQYXRoOwogICAgdGhpcy5kYXRhYmFzZS5leGVjKCdDUkVBVEUgVEFCTEUgSUYgTk9UIEVYSVNUUyBsZWRnZXJfc25hcHNob3RzIChzbmFwc2hvdF9pZCBJTlRFR0VSIFBSSU1BUlkgS0VZIEFVVE9JTkNSRU1FTlQsIHBheWxvYWQgVEVYVCBOT1QgTlVMTCwgY3JlYXRlZF9hdCBURVhUIE5PVCBOVUxMKScpOwogICAgdGhpcy5kYXRhYmFzZS5leGVjKCdDUkVBVEUgVEFCTEUgSUYgTk9UIEVYSVNUUyBldmlkZW5jZV9zbmFwc2hvdHMgKHNuYXBzaG90X2lkIElOVEVHRVIgUFJJTUFSWSBLRVkgQVVUT0lOQ1JFTUVOVCwgcGF5bG9hZCBURVhUIE5PVCBOVUxMLCBjcmVhdGVkX2F0IFRFWFQgTk9UIE5VTEwpJyk7CiAgICB0aGlzLmRhdGFiYXNlLmV4ZWMoJ0NSRUFURSBUQUJMRSBJRiBOT1QgRVhJU1RTIHByaWNlX29ic2VydmF0aW9ucyAob2JzZXJ2YXRpb25faWQgVEVYVCBQUklNQVJZIEtFWSwgcGF5bG9hZCBURVhUIE5PVCBOVUxMLCBjcmVhdGVkX2F0IFRFWFQgTk9UIE5VTEwpJyk7CiAgfQoKICBhc3luYyBsb2FkKCkgewogICAgY29uc3Qgcm93ID0gdGhpcy5kYXRhYmFzZS5wcmVwYXJlKCdTRUxFQ1QgcGF5bG9hZCBGUk9NIGxlZGdlcl9zbmFwc2hvdHMgT1JERVIgQlkgc25hcHNob3RfaWQgREVTQyBMSU1JVCAxJykuZ2V0KCk7CiAgICByZXR1cm4gcm93ID8gSlNPTi5wYXJzZShyb3cucGF5bG9hZCkgOiBudWxsOwogIH0KCiAgYXN5bmMgc2F2ZShzbmFwc2hvdCkgewogICAgdGhpcy5kYXRhYmFzZS5wcmVwYXJlKCdJTlNFUlQgSU5UTyBsZWRnZXJfc25hcHNob3RzKHBheWxvYWQsIGNyZWF0ZWRfYXQpIFZBTFVFUyAoPywgPyknKS5ydW4oSlNPTi5zdHJpbmdpZnkoc25hcHNob3QpLCBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCkpOwogIH0KCiAgYXN5bmMgbG9hZEV2aWRlbmNlKCkgewogICAgY29uc3Qgcm93ID0gdGhpcy5kYXRhYmFzZS5wcmVwYXJlKCdTRUxFQ1QgcGF5bG9hZCBGUk9NIGV2aWRlbmNlX3NuYXBzaG90cyBPUkRFUiBCWSBzbmFwc2hvdF9pZCBERVNDIExJTUlUIDEnKS5nZXQoKTsKICAgIHJldHVybiByb3cgPyBKU09OLnBhcnNlKHJvdy5wYXlsb2FkKSA6IG51bGw7CiAgfQoKICBhc3luYyBzYXZlRXZpZGVuY2Uoc25hcHNob3QpIHsKICAgIHRoaXMuZGF0YWJhc2UucHJlcGFyZSgnSU5TRVJUIElOVE8gZXZpZGVuY2Vfc25hcHNob3RzKHBheWxvYWQsIGNyZWF0ZWRfYXQpIFZBTFVFUyAoPywgPyknKS5ydW4oSlNPTi5zdHJpbmdpZnkoc25hcHNob3QpLCBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCkpOwogIH0KCiAgYXN5bmMgbG9hZFByaWNlT2JzZXJ2YXRpb25zKCkgewogICAgcmV0dXJuIHRoaXMuZGF0YWJhc2UucHJlcGFyZSgnU0VMRUNUIHBheWxvYWQgRlJPTSBwcmljZV9vYnNlcnZhdGlvbnMgT1JERVIgQlkgY3JlYXRlZF9hdCBBU0MnKS5hbGwoKS5tYXAoKHJvdykgPT4gSlNPTi5wYXJzZShyb3cucGF5bG9hZCkpOwogIH0KCiAgYXN5bmMgc2F2ZVByaWNlT2JzZXJ2YXRpb25zKG9ic2VydmF0aW9ucyA9IFtdKSB7CiAgICBjb25zdCBzdGF0ZW1lbnQgPSB0aGlzLmRhdGFiYXNlLnByZXBhcmUoJ0lOU0VSVCBPUiBJR05PUkUgSU5UTyBwcmljZV9vYnNlcnZhdGlvbnMob2JzZXJ2YXRpb25faWQsIHBheWxvYWQsIGNyZWF0ZWRfYXQpIFZBTFVFUyAoPywgPywgPyknKTsKICAgIGZvciAoY29uc3Qgb2JzZXJ2YXRpb24gb2Ygb2JzZXJ2YXRpb25zKSBzdGF0ZW1lbnQucnVuKFN0cmluZyhvYnNlcnZhdGlvbi50cmFkZUlkIHx8IG9ic2VydmF0aW9uLnF1b3RlSWQgfHwgb2JzZXJ2YXRpb24uc291cmNlSWQpLCBKU09OLnN0cmluZ2lmeShvYnNlcnZhdGlvbiksIG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSk7CiAgfQoKICBhc3luYyBjbG9zZSgpIHsgdGhpcy5kYXRhYmFzZS5jbG9zZSgpOyB9Cn0KCmV4cG9ydCBjbGFzcyBQb3N0Z3Jlc1NuYXBzaG90U3RvcmUgewogIGNvbnN0cnVjdG9yKHBvb2wpIHsKICAgIHRoaXMubW9kZSA9ICdwb3N0Z3Jlc3FsJzsKICAgIHRoaXMucG9vbCA9IHBvb2w7CiAgICB0aGlzLmRvbWFpbkFkYXB0ZXIgPSB0eXBlb2YgcG9vbD8uY29ubmVjdCA9PT0gJ2Z1bmN0aW9uJyA/IG5ldyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIocG9vbCkgOiBudWxsOwogIH0KCiAgYXN5bmMgdmVyaWZ5U2NoZW1hKCkgewogICAgY29uc3QgcmVxdWlyZWRUYWJsZXMgPSBbJ29yZ2FuaXphdGlvbnMnLCAnb3JnYW5pemF0aW9uX21lbWJlcnMnLCAnbWF0ZXJpYWxzJywgJ21hdGVyaWFsX2FsaWFzZXMnLCAnc3BlY2lmaWNhdGlvbnMnLCAnbG90cycsICdldmlkZW5jZXMnLCAnb2ZmZXJzJywgJ3B1cmNoYXNlX29yZGVycycsICdyZXNlcnZhdGlvbnMnLCAndHJhZGVzJywgJ3RyYWRlX2luc3BlY3Rpb25zJywgJ3RyYWRlX2V2ZW50cycsICdvcGVyYXRpb25hbF9hcHByb3ZhbHMnLCAnYXBwcm92YWxfZXZlbnRzJywgJ2xlZGdlcl9zbmFwc2hvdHMnLCAnZXZpZGVuY2Vfc25hcHNob3RzJywgJ3ByaWNlX29ic2VydmF0aW9ucyddOwogICAgY29uc3QgdGFibGVzID0gYXdhaXQgdGhpcy5wb29sLnF1ZXJ5KCJTRUxFQ1QgdGFibGVfbmFtZSBGUk9NIGluZm9ybWF0aW9uX3NjaGVtYS50YWJsZXMgV0hFUkUgdGFibGVfc2NoZW1hID0gJ3B1YmxpYycgQU5EIHRhYmxlX25hbWUgPSBBTlkoJDE6OnRleHRbXSkiLCBbcmVxdWlyZWRUYWJsZXNdKTsKICAgIGNvbnN0IHByZXNlbnQgPSBuZXcgU2V0KHRhYmxlcy5yb3dzLm1hcCgocm93KSA9PiByb3cudGFibGVfbmFtZSkpOwogICAgY29uc3QgbWlzc2luZyA9IHJlcXVpcmVkVGFibGVzLmZpbHRlcigodGFibGUpID0+ICFwcmVzZW50Lmhhcyh0YWJsZSkpOwogICAgaWYgKG1pc3NpbmcubGVuZ3RoKSB0aHJvdyBuZXcgUGVyc2lzdGVuY2VTdG9yZUVycm9yKGBQb3N0Z3JlU1FMIOybkOyepSDsiqTtgqTrp4jqsIAg67aI7JmE7KCE7ZWp64uI64ukOiAke21pc3Npbmcuam9pbignLCAnKX1gLCAnUE9TVEdSRVNfU0NIRU1BX0lOQ09NUExFVEUnKTsKICAgIGNvbnN0IGZ1bmN0aW9uUmVzdWx0ID0gYXdhaXQgdGhpcy5wb29sLnF1ZXJ5KCJTRUxFQ1QgdG9fcmVncHJvY2VkdXJlKCdwdWJsaWMucmVzZXJ2ZV9sb3QodXVpZCx0ZXh0LG51bWVyaWMsdGV4dCknKSBBUyBmdW5jdGlvbl9uYW1lIik7CiAgICBpZiAoIWZ1bmN0aW9uUmVzdWx0LnJvd3NbMF0/LmZ1bmN0aW9uX25hbWUpIHRocm93IG5ldyBQZXJzaXN0ZW5jZVN0b3JlRXJyb3IoJ1Bvc3RncmVTUUwg7JuQ7J6QIOyYiOyVvSDtlajsiJjqsIAg7JeG7Ja0IOyDgeyaqSDsm5DsnqXsnYQg7Iuc7J6R7ZWgIOyImCDsl4bsirXri4jri6QuJywgJ1BPU1RHUkVTX1JFU0VSVkFUSU9OX0ZVTkNUSU9OX01JU1NJTkcnKTsKICAgIHJldHVybiB7IHRhYmxlczogcmVxdWlyZWRUYWJsZXMsIHJlc2VydmF0aW9uRnVuY3Rpb246IGZ1bmN0aW9uUmVzdWx0LnJvd3NbMF0uZnVuY3Rpb25fbmFtZSB9OwogIH0KCiAgYXN5bmMgaXNPcmdhbml6YXRpb25NZW1iZXIoeyB1c2VySWQsIG9yZ2FuaXphdGlvbklkLCByb2xlIH0gPSB7fSkgewogICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgdGhpcy5wb29sLnF1ZXJ5KCJTRUxFQ1QgMSBGUk9NIG9yZ2FuaXphdGlvbl9tZW1iZXJzIFdIRVJFIG9yZ2FuaXphdGlvbl9pZDo6dGV4dCA9ICQxIEFORCB1c2VyX2lkOjp0ZXh0ID0gJDIgQU5EIHJvbGUgPSAkMzo6b3JnYW5pemF0aW9uX21lbWJlcl9yb2xlIEFORCBhY3RpdmUgPSB0cnVlIExJTUlUIDEiLCBbU3RyaW5nKG9yZ2FuaXphdGlvbklkIHx8ICcnKSwgU3RyaW5nKHVzZXJJZCB8fCAnJyksIFN0cmluZyhyb2xlIHx8ICcnKV0pOwogICAgcmV0dXJuIHJlc3VsdC5yb3dzLmxlbmd0aCA+IDA7CiAgfQoKICBhc3luYyBsb2FkKCkgewogICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgdGhpcy5wb29sLnF1ZXJ5KCdTRUxFQ1QgcGF5bG9hZCBGUk9NIGxlZGdlcl9zbmFwc2hvdHMgT1JERVIgQlkgc25hcHNob3RfaWQgREVTQyBMSU1JVCAxJyk7CiAgICByZXR1cm4gcmVzdWx0LnJvd3NbMF0/LnBheWxvYWQgfHwgbnVsbDsKICB9CgogIGFzeW5jIGxvYWRFdmlkZW5jZSgpIHsKICAgIGNvbnN0IHJlc3VsdCA9IGF3YWl0IHRoaXMucG9vbC5xdWVyeSgnU0VMRUNUIHBheWxvYWQgRlJPTSBldmlkZW5jZV9zbmFwc2hvdHMgT1JERVIgQlkgc25hcHNob3RfaWQgREVTQyBMSU1JVCAxJyk7CiAgICByZXR1cm4gcmVzdWx0LnJvd3NbMF0/LnBheWxvYWQgfHwgbnVsbDsKICB9CgogIGFzeW5jIHNhdmUoc25hcHNob3QpIHsKICAgIGNvbnN0IGNsaWVudCA9IGF3YWl0IHRoaXMucG9vbC5jb25uZWN0KCk7CiAgICB0cnkgewogICAgICBhd2FpdCBjbGllbnQucXVlcnkoJ0JFR0lOJyk7CiAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnSU5TRVJUIElOVE8gbGVkZ2VyX3NuYXBzaG90cyhwYXlsb2FkKSBWQUxVRVMgKCQxOjpqc29uYiknLCBbSlNPTi5zdHJpbmdpZnkoc25hcHNob3QpXSk7CiAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnQ09NTUlUJyk7CiAgICB9IGNhdGNoIChlcnJvcikgewogICAgICB0cnkgeyBhd2FpdCBjbGllbnQucXVlcnkoJ1JPTExCQUNLJyk7IH0gY2F0Y2gge30KICAgICAgdGhyb3cgZXJyb3I7CiAgICB9IGZpbmFsbHkgewogICAgICBjbGllbnQucmVsZWFzZSgpOwogICAgfQogIH0KCiAgYXN5bmMgc2F2ZUV2aWRlbmNlKHNuYXBzaG90KSB7CiAgICBjb25zdCBjbGllbnQgPSBhd2FpdCB0aGlzLnBvb2wuY29ubmVjdCgpOwogICAgdHJ5IHsKICAgICAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdCRUdJTicpOwogICAgICBhd2FpdCBjbGllbnQucXVlcnkoJ0lOU0VSVCBJTlRPIGV2aWRlbmNlX3NuYXBzaG90cyhwYXlsb2FkKSBWQUxVRVMgKCQxOjpqc29uYiknLCBbSlNPTi5zdHJpbmdpZnkoc25hcHNob3QpXSk7CiAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnQ09NTUlUJyk7CiAgICB9IGNhdGNoIChlcnJvcikgewogICAgICB0cnkgeyBhd2FpdCBjbGllbnQucXVlcnkoJ1JPTExCQUNLJyk7IH0gY2F0Y2gge30KICAgICAgdGhyb3cgZXJyb3I7CiAgICB9IGZpbmFsbHkgewogICAgICBjbGllbnQucmVsZWFzZSgpOwogICAgfQogIH0KCiAgYXN5bmMgbG9hZFByaWNlT2JzZXJ2YXRpb25zKCkgewogICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgdGhpcy5wb29sLnF1ZXJ5KCdTRUxFQ1QgcGF5bG9hZCBGUk9NIHByaWNlX29ic2VydmF0aW9ucyBPUkRFUiBCWSBjcmVhdGVkX2F0IEFTQycpOwogICAgcmV0dXJuIHJlc3VsdC5yb3dzLm1hcCgocm93KSA9PiByb3cucGF5bG9hZCk7CiAgfQoKICBhc3luYyBzYXZlUHJpY2VPYnNlcnZhdGlvbnMob2JzZXJ2YXRpb25zID0gW10pIHsKICAgIGlmICghb2JzZXJ2YXRpb25zLmxlbmd0aCkgcmV0dXJuOwogICAgY29uc3QgY2xpZW50ID0gYXdhaXQgdGhpcy5wb29sLmNvbm5lY3QoKTsKICAgIHRyeSB7CiAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnQkVHSU4nKTsKICAgICAgZm9yIChjb25zdCBvYnNlcnZhdGlvbiBvZiBvYnNlcnZhdGlvbnMpIHsKICAgICAgICBjb25zdCBpZGVudGl0eSA9IFN0cmluZyhvYnNlcnZhdGlvbi50cmFkZUlkIHx8IG9ic2VydmF0aW9uLnF1b3RlSWQgfHwgb2JzZXJ2YXRpb24uc291cmNlSWQpOwogICAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnSU5TRVJUIElOVE8gcHJpY2Vfb2JzZXJ2YXRpb25zKG9ic2VydmF0aW9uX2lkLCBzb3VyY2VfdHlwZSwgc3BlY19pZCwgc3VwcGxpZXJfaWQsIHRyYWRlX2lkLCBxdW90ZV9pZCwgcHJpY2UsIHF1YW50aXR5LCBjdXJyZW5jeSwgcHJpY2VfdW5pdCwgcXVhbnRpdHlfdW5pdCwgZnVsZmlsbGVkX2F0LCBldmlkZW5jZV9zdGF0dXMsIHBheWxvYWQpIFZBTFVFUyAoJDEsICQyLCAkMywgJDQsICQ1LCAkNiwgJDcsICQ4LCAkOSwgJDEwLCAkMTEsICQxMiwgJDEzLCAkMTQ6Ompzb25iKSBPTiBDT05GTElDVCAob2JzZXJ2YXRpb25faWQpIERPIE5PVEhJTkcnLCBbaWRlbnRpdHksIG9ic2VydmF0aW9uLnNvdXJjZVR5cGUsIG9ic2VydmF0aW9uLnNwZWNJZCwgb2JzZXJ2YXRpb24uc3VwcGxpZXJJZCB8fCBudWxsLCBvYnNlcnZhdGlvbi50cmFkZUlkIHx8IG51bGwsIG9ic2VydmF0aW9uLnF1b3RlSWQgfHwgbnVsbCwgb2JzZXJ2YXRpb24ucHJpY2UsIG9ic2VydmF0aW9uLnF1YW50aXR5LCBvYnNlcnZhdGlvbi5jdXJyZW5jeSB8fCAnS1JXJywgb2JzZXJ2YXRpb24ucHJpY2VVbml0IHx8ICdLUldfUEVSX0tHJywgb2JzZXJ2YXRpb24ucXVhbnRpdHlVbml0IHx8ICdLRycsIG9ic2VydmF0aW9uLmZ1bGZpbGxlZEF0IHx8IG51bGwsIG9ic2VydmF0aW9uLmV2aWRlbmNlU3RhdHVzIHx8IG51bGwsIEpTT04uc3RyaW5naWZ5KG9ic2VydmF0aW9uKV0pOwogICAgICB9CiAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnQ09NTUlUJyk7CiAgICB9IGNhdGNoIChlcnJvcikgewogICAgICB0cnkgeyBhd2FpdCBjbGllbnQucXVlcnkoJ1JPTExCQUNLJyk7IH0gY2F0Y2gge30KICAgICAgdGhyb3cgZXJyb3I7CiAgICB9IGZpbmFsbHkgewogICAgICBjbGllbnQucmVsZWFzZSgpOwogICAgfQogIH0KCiAgYXN5bmMgcnVuQXRvbWljKGVuZ2luZSwgbXV0YXRpb24pIHsKICAgIGNvbnN0IGNsaWVudCA9IGF3YWl0IHRoaXMucG9vbC5jb25uZWN0KCk7CiAgICBjb25zdCBpbk1lbW9yeUJlZm9yZSA9IGVuZ2luZS5zbmFwc2hvdCgpOwogICAgdHJ5IHsKICAgICAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdCRUdJTicpOwogICAgICBhd2FpdCBjbGllbnQucXVlcnkoIlNFTEVDVCBwZ19hZHZpc29yeV94YWN0X2xvY2soaGFzaHRleHQoJ3Jhdy1tYXRlcmlhbC1vczpsZWRnZXInKSkiKTsKICAgICAgY29uc3QgbGF0ZXN0ID0gYXdhaXQgY2xpZW50LnF1ZXJ5KCdTRUxFQ1QgcGF5bG9hZCBGUk9NIGxlZGdlcl9zbmFwc2hvdHMgT1JERVIgQlkgc25hcHNob3RfaWQgREVTQyBMSU1JVCAxJyk7CiAgICAgIGlmIChsYXRlc3Qucm93c1swXT8ucGF5bG9hZCkgZW5naW5lLnJlc3RvcmUobGF0ZXN0LnJvd3NbMF0ucGF5bG9hZCk7CiAgICAgIGNvbnN0IHJlc3VsdCA9IG11dGF0aW9uKCk7CiAgICAgIGNvbnN0IHNuYXBzaG90ID0gZW5naW5lLnNuYXBzaG90KCk7CiAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnSU5TRVJUIElOVE8gbGVkZ2VyX3NuYXBzaG90cyhwYXlsb2FkKSBWQUxVRVMgKCQxOjpqc29uYiknLCBbSlNPTi5zdHJpbmdpZnkoc25hcHNob3QpXSk7CiAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnQ09NTUlUJyk7CiAgICAgIHJldHVybiB7IHJlc3VsdCwgc25hcHNob3QgfTsKICAgIH0gY2F0Y2ggKGVycm9yKSB7CiAgICAgIHRyeSB7IGF3YWl0IGNsaWVudC5xdWVyeSgnUk9MTEJBQ0snKTsgfSBjYXRjaCB7fQogICAgICBlbmdpbmUucmVzdG9yZShpbk1lbW9yeUJlZm9yZSk7CiAgICAgIHRocm93IGVycm9yOwogICAgfSBmaW5hbGx5IHsKICAgICAgY2xpZW50LnJlbGVhc2UoKTsKICAgIH0KICB9CgogIGFzeW5jIGNsb3NlKCkgeyBhd2FpdCB0aGlzLnBvb2wuZW5kKCk7IH0KfQoKZXhwb3J0IGNvbnN0IGNyZWF0ZVBlcnNpc3RlbmNlU3RvcmUgPSBhc3luYyAoeyBtb2RlID0gJ21lbW9yeScsIGZpbGVQYXRoID0gZGVmYXVsdEZpbGVQYXRoLCBkYXRhYmFzZVVybCA9IHByb2Nlc3MuZW52LkRBVEFCQVNFX1VSTCB9ID0ge30pID0+IHsKICBpZiAobW9kZSA9PT0gJ3Bvc3RncmVzcWwnKSB7CiAgICBpZiAoIWRhdGFiYXNlVXJsKSB0aHJvdyBuZXcgUGVyc2lzdGVuY2VTdG9yZUVycm9yKCdQb3N0Z3JlU1FMIERBVEFCQVNFX1VSTOydtCDsl4bslrQg7IOB7JqpIOybkOyepeydhCDsi5zsnpHtlaAg7IiYIOyXhuyKteuLiOuLpC4nLCAnUE9TVEdSRVNfREFUQUJBU0VfVVJMX1JFUVVJUkVEJyk7CiAgICB0cnkgewogICAgICBjb25zdCB7IFBvb2wgfSA9IGF3YWl0IGltcG9ydCgncGcnKTsKICAgICAgY29uc3QgcG9vbCA9IG5ldyBQb29sKHsKICAgICAgICBjb25uZWN0aW9uU3RyaW5nOiBkYXRhYmFzZVVybCwKICAgICAgICBtYXg6IE51bWJlcihwcm9jZXNzLmVudi5QR19QT09MX01BWCB8fCAyMCksCiAgICAgICAgaWRsZVRpbWVvdXRNaWxsaXM6IE51bWJlcihwcm9jZXNzLmVudi5QR19JRExFX1RJTUVPVVRfTVMgfHwgMTAwMDApLAogICAgICAgIGNvbm5lY3Rpb25UaW1lb3V0TWlsbGlzOiBOdW1iZXIocHJvY2Vzcy5lbnYuUEdfQ09OTkVDVElPTl9USU1FT1VUX01TIHx8IDMwMDApLAogICAgICB9KTsKICAgICAgdHJ5IHsKICAgICAgICBhd2FpdCBwb29sLnF1ZXJ5KCdTRUxFQ1QgMScpOwogICAgICAgIGNvbnN0IHN0b3JlID0gbmV3IFBvc3RncmVzU25hcHNob3RTdG9yZShwb29sKTsKICAgICAgICBhd2FpdCBzdG9yZS52ZXJpZnlTY2hlbWEoKTsKICAgICAgICByZXR1cm4gc3RvcmU7CiAgICAgIH0gY2F0Y2ggKGVycm9yKSB7CiAgICAgICAgYXdhaXQgcG9vbC5lbmQoKTsKICAgICAgICB0aHJvdyBlcnJvcjsKICAgICAgfQogICAgfSBjYXRjaCAoZXJyb3IpIHsKICAgICAgaWYgKGVycm9yIGluc3RhbmNlb2YgUGVyc2lzdGVuY2VTdG9yZUVycm9yKSB0aHJvdyBlcnJvcjsKICAgICAgdGhyb3cgbmV3IFBlcnNpc3RlbmNlU3RvcmVFcnJvcihgUG9zdGdyZVNRTCDsm5DsnqXsl5Ag7Jew6rKw7ZWgIOyImCDsl4bsirXri4jri6Q6ICR7ZXJyb3IubWVzc2FnZX1gLCAnUE9TVEdSRVNfVU5BVkFJTEFCTEUnKTsKICAgIH0KICB9CiAgaWYgKG1vZGUgIT09ICdzcWxpdGUnKSByZXR1cm4gbmV3IE1lbW9yeVN0b3JlKCk7CiAgdHJ5IHsKICAgIGNvbnN0IHsgRGF0YWJhc2VTeW5jIH0gPSBhd2FpdCBpbXBvcnQoJ25vZGU6c3FsaXRlJyk7CiAgICBhd2FpdCBta2RpcihkaXJuYW1lKGZpbGVQYXRoKSwgeyByZWN1cnNpdmU6IHRydWUgfSk7CiAgICByZXR1cm4gbmV3IFNxbGl0ZVNuYXBzaG90U3RvcmUobmV3IERhdGFiYXNlU3luYyhmaWxlUGF0aCksIGZpbGVQYXRoKTsKICB9IGNhdGNoIChlcnJvcikgewogICAgdGhyb3cgbmV3IFBlcnNpc3RlbmNlU3RvcmVFcnJvcignU1FMaXRlIOuyoO2DgCDsmIHsho0g66qo65Oc66W8IOyCrOyaqe2VoCDsiJgg7JeG7Iq164uI64ukLiAtLWV4cGVyaW1lbnRhbC1zcWxpdGUg65+w7YOA7J6E7J2EIO2ZleyduO2VmOyEuOyalC4nLCAnU1FMSVRFX1VOQVZBSUxBQkxFJyk7CiAgfQp9Owo=
+import { mkdir } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { PostgresDomainAdapter } from './postgres-domain-adapter.mjs';
+
+const defaultFilePath = resolve(fileURLToPath(new URL('../data/beta-ledger.sqlite', import.meta.url)));
+
+export class PersistenceStoreError extends Error {
+  constructor(message, code = 'PERSISTENCE_STORE_FAILED') {
+    super(message);
+    this.code = code;
+  }
+}
+
+class MemoryStore {
+  constructor() { this.mode = 'memory'; this.snapshot = null; this.evidenceSnapshot = null; this.priceObservations = []; }
+  async load() { return this.snapshot; }
+  async save(snapshot) { this.snapshot = JSON.parse(JSON.stringify(snapshot)); }
+  async loadEvidence() { return this.evidenceSnapshot; }
+  async saveEvidence(snapshot) { this.evidenceSnapshot = JSON.parse(JSON.stringify(snapshot)); }
+  async loadPriceObservations() { return JSON.parse(JSON.stringify(this.priceObservations)); }
+  async savePriceObservations(observations = []) { this.priceObservations.push(...JSON.parse(JSON.stringify(observations))); }
+  async close() {}
+}
+
+class SqliteSnapshotStore {
+  constructor(database, filePath) {
+    this.mode = 'sqlite';
+    this.database = database;
+    this.filePath = filePath;
+    this.database.exec('CREATE TABLE IF NOT EXISTS ledger_snapshots (snapshot_id INTEGER PRIMARY KEY AUTOINCREMENT, payload TEXT NOT NULL, created_at TEXT NOT NULL)');
+    this.database.exec('CREATE TABLE IF NOT EXISTS evidence_snapshots (snapshot_id INTEGER PRIMARY KEY AUTOINCREMENT, payload TEXT NOT NULL, created_at TEXT NOT NULL)');
+    this.database.exec('CREATE TABLE IF NOT EXISTS price_observations (observation_id TEXT PRIMARY KEY, payload TEXT NOT NULL, created_at TEXT NOT NULL)');
+  }
+
+  async load() {
+    const row = this.database.prepare('SELECT payload FROM ledger_snapshots ORDER BY snapshot_id DESC LIMIT 1').get();
+    return row ? JSON.parse(row.payload) : null;
+  }
+
+  async save(snapshot) {
+    this.database.prepare('INSERT INTO ledger_snapshots(payload, created_at) VALUES (?, ?)').run(JSON.stringify(snapshot), new Date().toISOString());
+  }
+
+  async loadEvidence() {
+    const row = this.database.prepare('SELECT payload FROM evidence_snapshots ORDER BY snapshot_id DESC LIMIT 1').get();
+    return row ? JSON.parse(row.payload) : null;
+  }
+
+  async saveEvidence(snapshot) {
+    this.database.prepare('INSERT INTO evidence_snapshots(payload, created_at) VALUES (?, ?)').run(JSON.stringify(snapshot), new Date().toISOString());
+  }
+
+  async loadPriceObservations() {
+    return this.database.prepare('SELECT payload FROM price_observations ORDER BY created_at ASC').all().map((row) => JSON.parse(row.payload));
+  }
+
+  async savePriceObservations(observations = []) {
+    const statement = this.database.prepare('INSERT OR IGNORE INTO price_observations(observation_id, payload, created_at) VALUES (?, ?, ?)');
+    for (const observation of observations) statement.run(String(observation.tradeId || observation.quoteId || observation.sourceId), JSON.stringify(observation), new Date().toISOString());
+  }
+
+  async close() { this.database.close(); }
+}
+
+export class PostgresSnapshotStore {
+  constructor(pool) {
+    this.mode = 'postgresql';
+    this.pool = pool;
+    this.domainAdapter = typeof pool?.connect === 'function' ? new PostgresDomainAdapter(pool) : null;
+  }
+
+  async verifySchema() {
+    const requiredTables = ['organizations', 'organization_members', 'materials', 'material_aliases', 'specifications', 'lots', 'evidences', 'offers', 'purchase_orders', 'reservations', 'trades', 'trade_inspections', 'trade_events', 'operational_approvals', 'approval_events', 'ledger_snapshots', 'evidence_snapshots', 'price_observations'];
+    const tables = await this.pool.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name = ANY($1::text[])", [requiredTables]);
+    const present = new Set(tables.rows.map((row) => row.table_name));
+    const missing = requiredTables.filter((table) => !present.has(table));
+    if (missing.length) throw new PersistenceStoreError(`PostgreSQL 원장 스키마가 불완전합니다: ${missing.join(', ')}`, 'POSTGRES_SCHEMA_INCOMPLETE');
+    const functionResult = await this.pool.query("SELECT to_regprocedure('public.reserve_lot(uuid,text,numeric,text)') AS function_name");
+    if (!functionResult.rows[0]?.function_name) throw new PersistenceStoreError('PostgreSQL 원자 예약 함수가 없어 상용 원장을 시작할 수 없습니다.', 'POSTGRES_RESERVATION_FUNCTION_MISSING');
+    return { tables: requiredTables, reservationFunction: functionResult.rows[0].function_name };
+  }
+
+  async isOrganizationMember({ userId, organizationId, role } = {}) {
+    const result = await this.pool.query("SELECT 1 FROM organization_members WHERE organization_id::text = $1 AND user_id::text = $2 AND role = $3::organization_member_role AND active = true LIMIT 1", [String(organizationId || ''), String(userId || ''), String(role || '')]);
+    return result.rows.length > 0;
+  }
+
+  async load() {
+    const result = await this.pool.query('SELECT payload FROM ledger_snapshots ORDER BY snapshot_id DESC LIMIT 1');
+    return result.rows[0]?.payload || null;
+  }
+
+  async loadEvidence() {
+    const result = await this.pool.query('SELECT payload FROM evidence_snapshots ORDER BY snapshot_id DESC LIMIT 1');
+    return result.rows[0]?.payload || null;
+  }
+
+  async save(snapshot) {
+    const client = await this.pool.connect();
+    try {
+      await client.query('BEGIN');
+      await client.query('INSERT INTO ledger_snapshots(payload) VALUES ($1::jsonb)', [JSON.stringify(snapshot)]);
+      await client.query('COMMIT');
+    } catch (error) {
+      try { await client.query('ROLLBACK'); } catch {}
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+
+  async saveEvidence(snapshot) {
+    const client = await this.pool.connect();
+    try {
+      await client.query('BEGIN');
+      await client.query('INSERT INTO evidence_snapshots(payload) VALUES ($1::jsonb)', [JSON.stringify(snapshot)]);
+      await client.query('COMMIT');
+    } catch (error) {
+      try { await client.query('ROLLBACK'); } catch {}
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+
+  async loadPriceObservations() {
+    const result = await this.pool.query('SELECT payload FROM price_observations ORDER BY created_at ASC');
+    return result.rows.map((row) => row.payload);
+  }
+
+  async savePriceObservations(observations = []) {
+    if (!observations.length) return;
+    const client = await this.pool.connect();
+    try {
+      await client.query('BEGIN');
+      for (const observation of observations) {
+        const identity = String(observation.tradeId || observation.quoteId || observation.sourceId);
+        await client.query('INSERT INTO price_observations(observation_id, source_type, spec_id, supplier_id, trade_id, quote_id, price, quantity, currency, price_unit, quantity_unit, fulfilled_at, evidence_status, payload) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14::jsonb) ON CONFLICT (observation_id) DO NOTHING', [identity, observation.sourceType, observation.specId, observation.supplierId || null, observation.tradeId || null, observation.quoteId || null, observation.price, observation.quantity, observation.currency || 'KRW', observation.priceUnit || 'KRW_PER_KG', observation.quantityUnit || 'KG', observation.fulfilledAt || null, observation.evidenceStatus || null, JSON.stringify(observation)]);
+      }
+      await client.query('COMMIT');
+    } catch (error) {
+      try { await client.query('ROLLBACK'); } catch {}
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+
+  async runAtomic(engine, mutation) {
+    const client = await this.pool.connect();
+    const inMemoryBefore = engine.snapshot();
+    try {
+      await client.query('BEGIN');
+      await client.query("SELECT pg_advisory_xact_lock(hashtext('raw-material-os:ledger'))");
+      const latest = await client.query('SELECT payload FROM ledger_snapshots ORDER BY snapshot_id DESC LIMIT 1');
+      if (latest.rows[0]?.payload) engine.restore(latest.rows[0].payload);
+      const result = mutation();
+      const snapshot = engine.snapshot();
+      await client.query('INSERT INTO ledger_snapshots(payload) VALUES ($1::jsonb)', [JSON.stringify(snapshot)]);
+      await client.query('COMMIT');
+      return { result, snapshot };
+    } catch (error) {
+      try { await client.query('ROLLBACK'); } catch {}
+      engine.restore(inMemoryBefore);
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+
+  async close() { await this.pool.end(); }
+}
+
+export const createPersistenceStore = async ({ mode = 'memory', filePath = defaultFilePath, databaseUrl = process.env.DATABASE_URL } = {}) => {
+  if (mode === 'postgresql') {
+    if (!databaseUrl) throw new PersistenceStoreError('PostgreSQL DATABASE_URL이 없어 상용 원장을 시작할 수 없습니다.', 'POSTGRES_DATABASE_URL_REQUIRED');
+    try {
+      const { Pool } = await import('pg');
+      const pool = new Pool({
+        connectionString: databaseUrl,
+        max: Number(process.env.PG_POOL_MAX || 20),
+        idleTimeoutMillis: Number(process.env.PG_IDLE_TIMEOUT_MS || 10000),
+        connectionTimeoutMillis: Number(process.env.PG_CONNECTION_TIMEOUT_MS || 3000),
+      });
+      try {
+        await pool.query('SELECT 1');
+        const store = new PostgresSnapshotStore(pool);
+        await store.verifySchema();
+        return store;
+      } catch (error) {
+        await pool.end();
+        throw error;
+      }
+    } catch (error) {
+      if (error instanceof PersistenceStoreError) throw error;
+      throw new PersistenceStoreError(`PostgreSQL 원장에 연결할 수 없습니다: ${error.message}`, 'POSTGRES_UNAVAILABLE');
+    }
+  }
+  if (mode !== 'sqlite') return new MemoryStore();
+  try {
+    const { DatabaseSync } = await import('node:sqlite');
+    await mkdir(dirname(filePath), { recursive: true });
+    return new SqliteSnapshotStore(new DatabaseSync(filePath), filePath);
+  } catch (error) {
+    throw new PersistenceStoreError('SQLite 베타 영속 모드를 사용할 수 없습니다. --experimental-sqlite 런타임을 확인하세요.', 'SQLITE_UNAVAILABLE');
+  }
+};

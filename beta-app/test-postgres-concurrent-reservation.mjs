@@ -1,1 +1,72 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyByYW5kb21VVUlEIH0gZnJvbSAnbm9kZTpjcnlwdG8nOwppbXBvcnQgeyBjcmVhdGVQZXJzaXN0ZW5jZVN0b3JlIH0gZnJvbSAnLi9wZXJzaXN0ZW5jZS1zdG9yZS5tanMnOwoKaWYgKCFwcm9jZXNzLmVudi5EQVRBQkFTRV9VUkwpIHsKICBjb25zb2xlLmxvZygncG9zdGdyZXMgY29uY3VycmVudCByZXNlcnZhdGlvbiB0ZXN0czogU0tJUCAoREFUQUJBU0VfVVJMIG5vdCBwcm92aWRlZCknKTsKICBwcm9jZXNzLmV4aXQoMCk7Cn0KCmNvbnN0IHN0b3JlID0gYXdhaXQgY3JlYXRlUGVyc2lzdGVuY2VTdG9yZSh7IG1vZGU6ICdwb3N0Z3Jlc3FsJywgZGF0YWJhc2VVcmw6IHByb2Nlc3MuZW52LkRBVEFCQVNFX1VSTCB9KTsKY29uc3QgY2xpZW50ID0gYXdhaXQgc3RvcmUucG9vbC5jb25uZWN0KCk7CmNvbnN0IGJ1eWVyT3JnYW5pemF0aW9uSWQgPSByYW5kb21VVUlEKCk7CmNvbnN0IHN1cHBsaWVyT3JnYW5pemF0aW9uSWQgPSByYW5kb21VVUlEKCk7CmNvbnN0IGJ1eWVyVXNlcklkID0gcmFuZG9tVVVJRCgpOwpjb25zdCBzdXBwbGllclVzZXJJZCA9IHJhbmRvbVVVSUQoKTsKY29uc3Qgc3VmZml4ID0gcmFuZG9tVVVJRCgpLnJlcGxhY2VBbGwoJy0nLCAnJykuc2xpY2UoMCwgMTIpOwpjb25zdCBtYXRlcmlhbElkID0gYFRFU1QtQ09OQ1VSUkVOQ1ktJHtzdWZmaXh9YDsKY29uc3Qgc3BlY0lkID0gYFRFU1QtQ09OQ1VSUkVOQ1ktU1BFQy0ke3N1ZmZpeH1gOwpjb25zdCBsb3RJZCA9IGBURVNULUNPTkNVUlJFTkNZLUxPVC0ke3N1ZmZpeH1gOwpjb25zdCB0ZXN0U3BlY0F0dHJpYnV0ZXMgPSB7IHB1cml0eTogJzk5JScgfTsKY29uc3Qgb3JkZXJJZHMgPSBbXTsKbGV0IHN1Y2Nlc3NmdWxSZXNlcnZhdGlvbjsKCnRyeSB7CiAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdCRUdJTicpOwogIGF3YWl0IGNsaWVudC5xdWVyeSgnSU5TRVJUIElOVE8gb3JnYW5pemF0aW9ucyhvcmdhbml6YXRpb25faWQsIGxlZ2FsX25hbWUpIFZBTFVFUyAoJDE6OnV1aWQsICQyKSwgKCQzOjp1dWlkLCAkNCknLCBbYnV5ZXJPcmdhbml6YXRpb25JZCwgYENvbmN1cnJlbnQgQnV5ZXIgJHtzdWZmaXh9YCwgc3VwcGxpZXJPcmdhbml6YXRpb25JZCwgYENvbmN1cnJlbnQgU3VwcGxpZXIgJHtzdWZmaXh9YF0pOwogIGF3YWl0IGNsaWVudC5xdWVyeSgnSU5TRVJUIElOVE8gb3JnYW5pemF0aW9uX21lbWJlcnMob3JnYW5pemF0aW9uX2lkLCB1c2VyX2lkLCByb2xlKSBWQUxVRVMgKCQxOjp1dWlkLCAkMjo6dXVpZCwgXCdCVVlFUlwnOjpvcmdhbml6YXRpb25fbWVtYmVyX3JvbGUpLCAoJDM6OnV1aWQsICQ0Ojp1dWlkLCBcJ1NVUFBMSUVSXCc6Om9yZ2FuaXphdGlvbl9tZW1iZXJfcm9sZSknLCBbYnV5ZXJPcmdhbml6YXRpb25JZCwgYnV5ZXJVc2VySWQsIHN1cHBsaWVyT3JnYW5pemF0aW9uSWQsIHN1cHBsaWVyVXNlcklkXSk7CiAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdJTlNFUlQgSU5UTyBtYXRlcmlhbHMobWF0ZXJpYWxfaWQsIGNhbm9uaWNhbF9uYW1lLCBzdGF0dXMpIFZBTFVFUyAoJDEsICQyLCBcJ0FQUFJPVkVEXCcpJywgW21hdGVyaWFsSWQsIGBDb25jdXJyZW50IHRlc3QgbWF0ZXJpYWwgJHtzdWZmaXh9YF0pOwogIGF3YWl0IGNsaWVudC5xdWVyeSgnSU5TRVJUIElOVE8gc3BlY2lmaWNhdGlvbnMoc3BlY19pZCwgbWF0ZXJpYWxfaWQsIHN0YXR1cywgYXR0cmlidXRlcykgVkFMVUVTICgkMSwgJDIsIFwnQVBQUk9WRURcJywgJDM6Ompzb25iKScsIFtzcGVjSWQsIG1hdGVyaWFsSWQsIEpTT04uc3RyaW5naWZ5KHRlc3RTcGVjQXR0cmlidXRlcyldKTsKICBhd2FpdCBjbGllbnQucXVlcnkoJ0lOU0VSVCBJTlRPIGxvdHMobG90X2lkLCBzdXBwbGllcl9vcmdhbml6YXRpb25faWQsIHNwZWNfaWQsIHN0YXRlLCB0b3RhbF9xdWFudGl0eSwgYXZhaWxhYmxlX3F1YW50aXR5LCBhc2tfcHJpY2UsIGRlbGl2ZXJ5X2RheXMpIFZBTFVFUyAoJDEsICQyOjp1dWlkLCAkMywgXCdWRVJJRklFRF9FTElHSUJMRVwnLCAxMDAsIDEwMCwgMjE4MDAsIDEwKScsIFtsb3RJZCwgc3VwcGxpZXJPcmdhbml6YXRpb25JZCwgc3BlY0lkXSk7CiAgZm9yIChjb25zdCBldmlkZW5jZVR5cGUgb2YgWydDT0EnLCAnU0RTJywgJ1REUycsICdMT1RfVFJBQ0UnLCAnSU5WRU5UT1JZX1BST09GJ10pIHsKICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnSU5TRVJUIElOVE8gZXZpZGVuY2VzKGxvdF9pZCwgZXZpZGVuY2VfdHlwZSwgZG9jdW1lbnRfdmVyc2lvbiwgY29udGVudF9zaGEyNTYsIHN0b3JhZ2VfcmVmLCBleHBpcmVzX2F0LCBzdGF0ZSkgVkFMVUVTICgkMSwgJDIsICQzLCAkNCwgJDUsICQ2OjpkYXRlLCBcJ1ZBTElEXCc6OmV2aWRlbmNlX3N0YXRlKScsIFtsb3RJZCwgZXZpZGVuY2VUeXBlLCAnMS4wJywgJ2InLnJlcGVhdCg2NCksIGBpbnRlZ3JhdGlvbi8ke2xvdElkfS8ke2V2aWRlbmNlVHlwZX1gLCAnMjAyNy0wMS0wMSddKTsKICB9CiAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdDT01NSVQnKTsKCiAgY29uc3QgYWRhcHRlciA9IHN0b3JlLmRvbWFpbkFkYXB0ZXI7CiAgY29uc3QgbWFrZU9yZGVyID0gKGluZGV4KSA9PiBhZGFwdGVyLnN1Ym1pdE9yZGVyKHsgYnV5ZXJPcmdhbml6YXRpb25JZCwgdXNlcklkOiBidXllclVzZXJJZCwgc3BlY0lkLCBzcGVjQXR0cmlidXRlczogdGVzdFNwZWNBdHRyaWJ1dGVzLCBiaWRQcmljZTogMjE4MDAsIHJlcXVlc3RlZFF1YW50aXR5OiAxMDAsIGRlbGl2ZXJ5RGVhZGxpbmU6ICcyMDI2LTEwLTAxJywgYWN0b3JLaW5kOiAnSFVNQU4nLCBhY3RvclJlZjogYnV5ZXJVc2VySWQsIGNvcnJlbGF0aW9uSWQ6IGBDT1JSLUNPTkNVUlJFTlQtU1VCTUlULSR7c3VmZml4fS0ke2luZGV4fWAgfSk7CiAgY29uc3Qgc3VibWl0dGVkID0gYXdhaXQgUHJvbWlzZS5hbGwoW21ha2VPcmRlcigxKSwgbWFrZU9yZGVyKDIpXSk7CiAgb3JkZXJJZHMucHVzaCguLi5zdWJtaXR0ZWQubWFwKCh7IG9yZGVyIH0pID0+IG9yZGVyLm9yZGVyX2lkKSk7CgogIGNvbnN0IHJlc3VsdHMgPSBhd2FpdCBQcm9taXNlLmFsbFNldHRsZWQob3JkZXJJZHMubWFwKChvcmRlcklkLCBpbmRleCkgPT4gYWRhcHRlci5yZXNlcnZlSW52ZW50b3J5KHsgb3JkZXJJZCwgbG90SWQsIHF1YW50aXR5OiAxMDAsIGlkZW1wb3RlbmN5S2V5OiBgSURFTVAtQ09OQ1VSUkVOVC0ke3N1ZmZpeH0tJHtpbmRleH1gLCBhY3RvcktpbmQ6ICdTWVNURU0nLCBhY3RvclJlZjogJ0FJLTA4JywgY29ycmVsYXRpb25JZDogYENPUlItQ09OQ1VSUkVOVC1SRVNFUlZFLSR7c3VmZml4fS0ke2luZGV4fWAgfSkpKTsKICBhc3NlcnQuZXF1YWwocmVzdWx0cy5maWx0ZXIoKHJlc3VsdCkgPT4gcmVzdWx0LnN0YXR1cyA9PT0gJ2Z1bGZpbGxlZCcpLmxlbmd0aCwgMSk7CiAgYXNzZXJ0LmVxdWFsKHJlc3VsdHMuZmlsdGVyKChyZXN1bHQpID0+IHJlc3VsdC5zdGF0dXMgPT09ICdyZWplY3RlZCcpLmxlbmd0aCwgMSk7CiAgc3VjY2Vzc2Z1bFJlc2VydmF0aW9uID0gcmVzdWx0cy5maW5kKChyZXN1bHQpID0+IHJlc3VsdC5zdGF0dXMgPT09ICdmdWxmaWxsZWQnKT8udmFsdWUucmVzZXJ2YXRpb24ucmVzZXJ2YXRpb25faWQ7CiAgY29uc3QgbG90ID0gYXdhaXQgc3RvcmUucG9vbC5xdWVyeSgnU0VMRUNUIGF2YWlsYWJsZV9xdWFudGl0eSwgcmVzZXJ2ZWRfcXVhbnRpdHkgRlJPTSBsb3RzIFdIRVJFIGxvdF9pZCA9ICQxJywgW2xvdElkXSk7CiAgYXNzZXJ0LmVxdWFsKE51bWJlcihsb3Qucm93c1swXS5hdmFpbGFibGVfcXVhbnRpdHkpLCAwKTsKICBhc3NlcnQuZXF1YWwoTnVtYmVyKGxvdC5yb3dzWzBdLnJlc2VydmVkX3F1YW50aXR5KSwgMTAwKTsKICBjb25zb2xlLmxvZygncG9zdGdyZXMgY29uY3VycmVudCByZXNlcnZhdGlvbiB0ZXN0czogUEFTUycpOwp9IGZpbmFsbHkgewogIHRyeSB7IGF3YWl0IGNsaWVudC5xdWVyeSgnQkVHSU4nKTsgfSBjYXRjaCB7fQogIHRyeSB7CiAgICBmb3IgKGNvbnN0IG9yZGVySWQgb2Ygb3JkZXJJZHMpIHsKICAgICAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdERUxFVEUgRlJPTSB0cmFkZV9ldmVudHMgV0hFUkUgb3JkZXJfaWQgPSAkMTo6dXVpZCcsIFtvcmRlcklkXSk7CiAgICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnREVMRVRFIEZST00gcmVzZXJ2YXRpb25zIFdIRVJFIG9yZGVyX2lkID0gJDE6OnV1aWQnLCBbb3JkZXJJZF0pOwogICAgICBhd2FpdCBjbGllbnQucXVlcnkoJ0RFTEVURSBGUk9NIHB1cmNoYXNlX29yZGVycyBXSEVSRSBvcmRlcl9pZCA9ICQxOjp1dWlkJywgW29yZGVySWRdKTsKICAgIH0KICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnREVMRVRFIEZST00gdHJhZGVfZXZlbnRzIFdIRVJFIGxvdF9pZCA9ICQxJywgW2xvdElkXSk7CiAgICBhd2FpdCBjbGllbnQucXVlcnkoJ0RFTEVURSBGUk9NIGV2aWRlbmNlcyBXSEVSRSBsb3RfaWQgPSAkMScsIFtsb3RJZF0pOwogICAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdERUxFVEUgRlJPTSBsb3RzIFdIRVJFIGxvdF9pZCA9ICQxJywgW2xvdElkXSk7CiAgICBhd2FpdCBjbGllbnQucXVlcnkoJ0RFTEVURSBGUk9NIHNwZWNpZmljYXRpb25zIFdIRVJFIHNwZWNfaWQgPSAkMScsIFtzcGVjSWRdKTsKICAgIGF3YWl0IGNsaWVudC5xdWVyeSgnREVMRVRFIEZST00gbWF0ZXJpYWxzIFdIRVJFIG1hdGVyaWFsX2lkID0gJDEnLCBbbWF0ZXJpYWxJZF0pOwogICAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdERUxFVEUgRlJPTSBvcmdhbml6YXRpb25fbWVtYmVycyBXSEVSRSBvcmdhbml6YXRpb25faWQgSU4gKCQxOjp1dWlkLCAkMjo6dXVpZCknLCBbYnV5ZXJPcmdhbml6YXRpb25JZCwgc3VwcGxpZXJPcmdhbml6YXRpb25JZF0pOwogICAgYXdhaXQgY2xpZW50LnF1ZXJ5KCdERUxFVEUgRlJPTSBvcmdhbml6YXRpb25zIFdIRVJFIG9yZ2FuaXphdGlvbl9pZCBJTiAoJDE6OnV1aWQsICQyOjp1dWlkKScsIFtidXllck9yZ2FuaXphdGlvbklkLCBzdXBwbGllck9yZ2FuaXphdGlvbklkXSk7CiAgICBhd2FpdCBjbGllbnQucXVlcnkoJ0NPTU1JVCcpOwogIH0gY2F0Y2ggKGVycm9yKSB7CiAgICB0cnkgeyBhd2FpdCBjbGllbnQucXVlcnkoJ1JPTExCQUNLJyk7IH0gY2F0Y2gge30KICAgIHRocm93IGVycm9yOwogIH0gZmluYWxseSB7CiAgICBjbGllbnQucmVsZWFzZSgpOwogICAgYXdhaXQgc3RvcmUuY2xvc2UoKTsKICB9Cn0K
+import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
+import { createPersistenceStore } from './persistence-store.mjs';
+
+if (!process.env.DATABASE_URL) {
+  console.log('postgres concurrent reservation tests: SKIP (DATABASE_URL not provided)');
+  process.exit(0);
+}
+
+const store = await createPersistenceStore({ mode: 'postgresql', databaseUrl: process.env.DATABASE_URL });
+const client = await store.pool.connect();
+const buyerOrganizationId = randomUUID();
+const supplierOrganizationId = randomUUID();
+const buyerUserId = randomUUID();
+const supplierUserId = randomUUID();
+const suffix = randomUUID().replaceAll('-', '').slice(0, 12);
+const materialId = `TEST-CONCURRENCY-${suffix}`;
+const specId = `TEST-CONCURRENCY-SPEC-${suffix}`;
+const lotId = `TEST-CONCURRENCY-LOT-${suffix}`;
+const testSpecAttributes = { purity: '99%' };
+const orderIds = [];
+let successfulReservation;
+
+try {
+  await client.query('BEGIN');
+  await client.query('INSERT INTO organizations(organization_id, legal_name) VALUES ($1::uuid, $2), ($3::uuid, $4)', [buyerOrganizationId, `Concurrent Buyer ${suffix}`, supplierOrganizationId, `Concurrent Supplier ${suffix}`]);
+  await client.query('INSERT INTO organization_members(organization_id, user_id, role) VALUES ($1::uuid, $2::uuid, \'BUYER\'::organization_member_role), ($3::uuid, $4::uuid, \'SUPPLIER\'::organization_member_role)', [buyerOrganizationId, buyerUserId, supplierOrganizationId, supplierUserId]);
+  await client.query('INSERT INTO materials(material_id, canonical_name, status) VALUES ($1, $2, \'APPROVED\')', [materialId, `Concurrent test material ${suffix}`]);
+  await client.query('INSERT INTO specifications(spec_id, material_id, status, attributes) VALUES ($1, $2, \'APPROVED\', $3::jsonb)', [specId, materialId, JSON.stringify(testSpecAttributes)]);
+  await client.query('INSERT INTO lots(lot_id, supplier_organization_id, spec_id, state, total_quantity, available_quantity, ask_price, delivery_days) VALUES ($1, $2::uuid, $3, \'VERIFIED_ELIGIBLE\', 100, 100, 21800, 10)', [lotId, supplierOrganizationId, specId]);
+  for (const evidenceType of ['COA', 'SDS', 'TDS', 'LOT_TRACE', 'INVENTORY_PROOF']) {
+    await client.query('INSERT INTO evidences(lot_id, evidence_type, document_version, content_sha256, storage_ref, expires_at, state) VALUES ($1, $2, $3, $4, $5, $6::date, \'VALID\'::evidence_state)', [lotId, evidenceType, '1.0', 'b'.repeat(64), `integration/${lotId}/${evidenceType}`, '2027-01-01']);
+  }
+  await client.query('COMMIT');
+
+  const adapter = store.domainAdapter;
+  const makeOrder = (index) => adapter.submitOrder({ buyerOrganizationId, userId: buyerUserId, specId, specAttributes: testSpecAttributes, bidPrice: 21800, requestedQuantity: 100, deliveryDeadline: '2026-10-01', actorKind: 'HUMAN', actorRef: buyerUserId, correlationId: `CORR-CONCURRENT-SUBMIT-${suffix}-${index}` });
+  const submitted = await Promise.all([makeOrder(1), makeOrder(2)]);
+  orderIds.push(...submitted.map(({ order }) => order.order_id));
+
+  const results = await Promise.allSettled(orderIds.map((orderId, index) => adapter.reserveInventory({ orderId, lotId, quantity: 100, idempotencyKey: `IDEMP-CONCURRENT-${suffix}-${index}`, actorKind: 'SYSTEM', actorRef: 'AI-08', correlationId: `CORR-CONCURRENT-RESERVE-${suffix}-${index}` })));
+  assert.equal(results.filter((result) => result.status === 'fulfilled').length, 1);
+  assert.equal(results.filter((result) => result.status === 'rejected').length, 1);
+  successfulReservation = results.find((result) => result.status === 'fulfilled')?.value.reservation.reservation_id;
+  const lot = await store.pool.query('SELECT available_quantity, reserved_quantity FROM lots WHERE lot_id = $1', [lotId]);
+  assert.equal(Number(lot.rows[0].available_quantity), 0);
+  assert.equal(Number(lot.rows[0].reserved_quantity), 100);
+  console.log('postgres concurrent reservation tests: PASS');
+} finally {
+  try { await client.query('BEGIN'); } catch {}
+  try {
+    for (const orderId of orderIds) {
+      await client.query('DELETE FROM trade_events WHERE order_id = $1::uuid', [orderId]);
+      await client.query('DELETE FROM reservations WHERE order_id = $1::uuid', [orderId]);
+      await client.query('DELETE FROM purchase_orders WHERE order_id = $1::uuid', [orderId]);
+    }
+    await client.query('DELETE FROM trade_events WHERE lot_id = $1', [lotId]);
+    await client.query('DELETE FROM evidences WHERE lot_id = $1', [lotId]);
+    await client.query('DELETE FROM lots WHERE lot_id = $1', [lotId]);
+    await client.query('DELETE FROM specifications WHERE spec_id = $1', [specId]);
+    await client.query('DELETE FROM materials WHERE material_id = $1', [materialId]);
+    await client.query('DELETE FROM organization_members WHERE organization_id IN ($1::uuid, $2::uuid)', [buyerOrganizationId, supplierOrganizationId]);
+    await client.query('DELETE FROM organizations WHERE organization_id IN ($1::uuid, $2::uuid)', [buyerOrganizationId, supplierOrganizationId]);
+    await client.query('COMMIT');
+  } catch (error) {
+    try { await client.query('ROLLBACK'); } catch {}
+    throw error;
+  } finally {
+    client.release();
+    await store.close();
+  }
+}

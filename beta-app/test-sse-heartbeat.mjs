@@ -1,1 +1,33 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBzcGF3biB9IGZyb20gJ25vZGU6Y2hpbGRfcHJvY2Vzcyc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7Cgpjb25zdCBwb3J0ID0gNDE4MDsKY29uc3QgY3dkID0gZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuJywgaW1wb3J0Lm1ldGEudXJsKSk7CmNvbnN0IGNoaWxkID0gc3Bhd24ocHJvY2Vzcy5leGVjUGF0aCwgWydzZXJ2ZXIubWpzJ10sIHsgY3dkLCBlbnY6IHsgLi4ucHJvY2Vzcy5lbnYsIFBPUlQ6IFN0cmluZyhwb3J0KSwgQVBQX0VOVjogJ3NpbXVsYXRpb24nLCBIRUFSVEJFQVRfSU5URVJWQUxfTVM6ICc1MCcsIEFMTE9XX1RFU1RfU0hVVERPV046ICd0cnVlJyB9LCBzdGRpbzogJ2lnbm9yZScgfSk7CmNvbnN0IGJhc2UgPSBgaHR0cDovLzEyNy4wLjAuMToke3BvcnR9YDsKdHJ5IHsKICBsZXQgcmVzcG9uc2U7CiAgZm9yIChsZXQgYXR0ZW1wdCA9IDA7IGF0dGVtcHQgPCA0MDsgYXR0ZW1wdCArPSAxKSB7CiAgICB0cnkgeyByZXNwb25zZSA9IGF3YWl0IGZldGNoKGAke2Jhc2V9L2FwaS9ldmVudHNgKTsgYnJlYWs7IH0gY2F0Y2ggeyBhd2FpdCBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gc2V0VGltZW91dChyZXNvbHZlLCAxMDApKTsgfQogIH0KICBhc3NlcnQuZXF1YWwocmVzcG9uc2U/LnN0YXR1cywgMjAwKTsKICBjb25zdCByZWFkZXIgPSByZXNwb25zZS5ib2R5LmdldFJlYWRlcigpOwogIGNvbnN0IGRlY29kZXIgPSBuZXcgVGV4dERlY29kZXIoKTsKICBsZXQgdGV4dCA9ICcnOwogIGNvbnN0IGRlYWRsaW5lID0gRGF0ZS5ub3coKSArIDMwMDA7CiAgd2hpbGUgKCF0ZXh0LmluY2x1ZGVzKCdldmVudDogaGVhcnRiZWF0JykgJiYgRGF0ZS5ub3coKSA8IGRlYWRsaW5lKSB7CiAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBQcm9taXNlLnJhY2UoW3JlYWRlci5yZWFkKCksIG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiBzZXRUaW1lb3V0KCgpID0+IHJlc29sdmUoeyBkb25lOiB0cnVlIH0pLCA1MDApKV0pOwogICAgaWYgKHJlc3VsdC5kb25lKSBicmVhazsKICAgIHRleHQgKz0gZGVjb2Rlci5kZWNvZGUocmVzdWx0LnZhbHVlKTsKICB9CiAgYXNzZXJ0Lm1hdGNoKHRleHQsIC9ldmVudDogaGVhcnRiZWF0Lyk7CiAgYXdhaXQgcmVhZGVyLmNhbmNlbCgpOwogIGNvbnNvbGUubG9nKCdzc2UgaGVhcnRiZWF0IHRlc3RzOiBQQVNTJyk7Cn0gZmluYWxseSB7CiAgdHJ5IHsgYXdhaXQgZmV0Y2goYCR7YmFzZX0vYXBpL3Rlc3Qvc2h1dGRvd25gLCB7IG1ldGhvZDogJ1BPU1QnIH0pOyB9IGNhdGNoIHt9CiAgaWYgKGNoaWxkLmV4aXRDb2RlID09PSBudWxsKSB7CiAgICBhd2FpdCBQcm9taXNlLnJhY2UoW25ldyBQcm9taXNlKChyZXNvbHZlKSA9PiBjaGlsZC5vbmNlKCdleGl0JywgcmVzb2x2ZSkpLCBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gc2V0VGltZW91dChyZXNvbHZlLCAxMDAwKSldKTsKICAgIGlmIChjaGlsZC5leGl0Q29kZSA9PT0gbnVsbCkgY2hpbGQua2lsbCgpOwogIH0KfQo=
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const port = 4180;
+const cwd = fileURLToPath(new URL('.', import.meta.url));
+const child = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, PORT: String(port), APP_ENV: 'simulation', HEARTBEAT_INTERVAL_MS: '50', ALLOW_TEST_SHUTDOWN: 'true' }, stdio: 'ignore' });
+const base = `http://127.0.0.1:${port}`;
+try {
+  let response;
+  for (let attempt = 0; attempt < 40; attempt += 1) {
+    try { response = await fetch(`${base}/api/events`); break; } catch { await new Promise((resolve) => setTimeout(resolve, 100)); }
+  }
+  assert.equal(response?.status, 200);
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let text = '';
+  const deadline = Date.now() + 3000;
+  while (!text.includes('event: heartbeat') && Date.now() < deadline) {
+    const result = await Promise.race([reader.read(), new Promise((resolve) => setTimeout(() => resolve({ done: true }), 500))]);
+    if (result.done) break;
+    text += decoder.decode(result.value);
+  }
+  assert.match(text, /event: heartbeat/);
+  await reader.cancel();
+  console.log('sse heartbeat tests: PASS');
+} finally {
+  try { await fetch(`${base}/api/test/shutdown`, { method: 'POST' }); } catch {}
+  if (child.exitCode === null) {
+    await Promise.race([new Promise((resolve) => child.once('exit', resolve)), new Promise((resolve) => setTimeout(resolve, 1000))]);
+    if (child.exitCode === null) child.kill();
+  }
+}

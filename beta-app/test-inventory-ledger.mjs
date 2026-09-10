@@ -1,1 +1,85 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBFdmlkZW5jZUxvY2tlZEludmVudG9yeSwgSU5WRU5UT1JZX1NUQVRFUywgSW52ZW50b3J5UnVsZUVycm9yIH0gZnJvbSAnLi9pbnZlbnRvcnktbGVkZ2VyLm1qcyc7Cgpjb25zdCBub3cgPSBuZXcgRGF0ZSgnMjAyNi0wOS0wOFQwMDowMDowMC4wMDBaJyk7CmNvbnN0IGxlZGdlciA9IG5ldyBFdmlkZW5jZUxvY2tlZEludmVudG9yeSh7IG5vdzogKCkgPT4gbmV3IERhdGUobm93KSB9KTsKZm9yIChjb25zdCBpbnZhbGlkTG90IG9mIFsKICB7IGxvdElkOiAnTE9ULU5FR0FUSVZFLVBSSUNFJywgYXNrUHJpY2U6IC0xLCBhdmFpbGFibGVRdHk6IDEsIHJlc2VydmVkUXR5OiAwLCBkZWxpdmVyeURheXM6IDEgfSwKICB7IGxvdElkOiAnTE9ULVpFUk8tUFJJQ0UnLCBhc2tQcmljZTogMCwgYXZhaWxhYmxlUXR5OiAxLCByZXNlcnZlZFF0eTogMCwgZGVsaXZlcnlEYXlzOiAxIH0sCiAgeyBsb3RJZDogJ0xPVC1ORUdBVElWRS1SRVNFUlZFRCcsIGFza1ByaWNlOiAxLCBhdmFpbGFibGVRdHk6IDEsIHJlc2VydmVkUXR5OiAtMSwgZGVsaXZlcnlEYXlzOiAxIH0sCiAgeyBsb3RJZDogJ0xPVC1ORUdBVElWRS1ERUxJVkVSWScsIGFza1ByaWNlOiAxLCBhdmFpbGFibGVRdHk6IDEsIHJlc2VydmVkUXR5OiAwLCBkZWxpdmVyeURheXM6IC0xIH0sCiAgeyBsb3RJZDogJ0xPVC1OQU4tREVMSVZFUlknLCBhc2tQcmljZTogMSwgYXZhaWxhYmxlUXR5OiAxLCByZXNlcnZlZFF0eTogMCwgZGVsaXZlcnlEYXlzOiBOdW1iZXIuTmFOIH0sCl0pIHsKICBhc3NlcnQudGhyb3dzKCgpID0+IGxlZGdlci5yZWdpc3RlckxvdChpbnZhbGlkTG90KSwgKGVycm9yKSA9PiB7CiAgICBhc3NlcnQub2soZXJyb3IgaW5zdGFuY2VvZiBJbnZlbnRvcnlSdWxlRXJyb3IpOwogICAgYXNzZXJ0LmVxdWFsKGVycm9yLmNvZGUsICdJTlZBTElEX0xPVCcpOwogICAgcmV0dXJuIHRydWU7CiAgfSwgYOyemOuqu+uQnCDroZztirgg7J6F66ClICR7aW52YWxpZExvdC5sb3RJZH3ripQg65Ox66Gd65CY66m0IOyViCDrkKnri4jri6QuYCk7Cn0KbGVkZ2VyLnJlZ2lzdGVyTG90KHsKICBsb3RJZDogJ0xPVC0wMDEnLAogIHN1cHBsaWVyOiAn7ZWc67mb67CU7J207JikJywKICBzcGVjSWQ6ICdHQUJBLVNQRUMtMDAxJywKICBhc2tQcmljZTogMjE4MDAsCiAgYXZhaWxhYmxlUXR5OiAxMjAwLAogIHN0YXR1czogSU5WRU5UT1JZX1NUQVRFUy5WRVJJRklFRF9FTElHSUJMRSwKICBldmlkZW5jZTogeyBjb2E6ICdWQUxJRCcsIHNkczogJ1ZBTElEJywgdGRzOiAnVkFMSUQnLCBsb3RUcmFjZTogJ1ZBTElEJywgaW52ZW50b3J5UHJvb2Y6ICdWQUxJRCcsIGV4cGlyZXNBdDogJzIwMjctMDctMzEnIH0sCiAgZGVsaXZlcnlEYXlzOiAxMCwKfSk7Cgpjb25zdCBjYW5kaWRhdGUgPSBsZWRnZXIuZmluZEVsaWdpYmxlKHsgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIHByaWNlOiAyMTgwMCwgcXVhbnRpdHk6IDEwMDAsIGRlbGl2ZXJ5RGF5czogMTQgfSk7CmFzc2VydC5lcXVhbChjYW5kaWRhdGUubG90SWQsICdMT1QtMDAxJyk7Cgpjb25zdCBleHBpcmVkTGVkZ2VyID0gbmV3IEV2aWRlbmNlTG9ja2VkSW52ZW50b3J5KHsgbm93OiAoKSA9PiBuZXcgRGF0ZShub3cpIH0pOwpleHBpcmVkTGVkZ2VyLnJlZ2lzdGVyTG90KHsKICBsb3RJZDogJ0xPVC1FWFBJUkVEJywKICBzdXBwbGllcjogJ+unjOujjOqzteq4ieyekCcsCiAgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsCiAgYXNrUHJpY2U6IDIxMDAwLAogIGF2YWlsYWJsZVF0eTogMTAwMCwKICBzdGF0dXM6IElOVkVOVE9SWV9TVEFURVMuVkVSSUZJRURfRUxJR0lCTEUsCiAgZXZpZGVuY2U6IHsgY29hOiAnVkFMSUQnLCBzZHM6ICdWQUxJRCcsIHNwZWNpZmljYXRpb246ICdWQUxJRCcsIGV4cGlyZXNBdDogJzIwMjYtMDktMDcnIH0sCiAgZGVsaXZlcnlEYXlzOiAxMCwKfSk7CmFzc2VydC5lcXVhbChleHBpcmVkTGVkZ2VyLmZpbmRFbGlnaWJsZSh7IHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBwcmljZTogMjIwMDAsIHF1YW50aXR5OiAyMCwgZGVsaXZlcnlEYXlzOiAxNCB9KSwgbnVsbCwgJ+unjOujjCDspp3ruZkg66Gc7Yq464qUIOuFuOy2nOuQmOuptCDslYgg65Cp64uI64ukLicpOwoKY29uc3QgcmVzZXJ2ZWQgPSBsZWRnZXIucmVzZXJ2ZSgnTE9ULTAwMScsIDEwMDAsICdPUkRFUi0wMDEnLCB7IHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBkZWxpdmVyeURheXM6IDE0IH0pOwphc3NlcnQuZXF1YWwocmVzZXJ2ZWQubG90LmF2YWlsYWJsZVF0eSwgMjAwKTsKYXNzZXJ0LmVxdWFsKHJlc2VydmVkLmxvdC5yZXNlcnZlZFF0eSwgMTAwMCk7Cgpjb25zdCBkdXBsaWNhdGVSZXNlcnZhdGlvbiA9IGxlZGdlci5yZXNlcnZlKCdMT1QtMDAxJywgMTAwMCwgJ09SREVSLTAwMScsIHsgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIGRlbGl2ZXJ5RGF5czogMTQgfSk7CmFzc2VydC5kZWVwRXF1YWwoZHVwbGljYXRlUmVzZXJ2YXRpb24sIHJlc2VydmVkLCAn6rCZ7J2AIOyYiOyVvSBJROuKlCDsnqzqs6Drpbwg64uk7IucIOywqOqwkO2VmOyngCDslYrslYTslbwg7ZWp64uI64ukLicpOwoKYXNzZXJ0LnRocm93cygoKSA9PiBsZWRnZXIucmVzZXJ2ZSgnTE9ULTAwMScsIDkwMCwgJ09SREVSLTAwMScsIHsgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIGRlbGl2ZXJ5RGF5czogMTQgfSksIChlcnJvcikgPT4gewogIGFzc2VydC5vayhlcnJvciBpbnN0YW5jZW9mIEludmVudG9yeVJ1bGVFcnJvcik7CiAgYXNzZXJ0LmVxdWFsKGVycm9yLmNvZGUsICdSRVNFUlZBVElPTl9JRF9SRVVTRV9NSVNNQVRDSCcpOwogIHJldHVybiB0cnVlOwp9LCAn6rCZ7J2AIOyYiOyVvSBJROydmCDri6Trpbgg7IiY65+JIOyalOyyreydgCDsobDsmqntnogg7J6s7IKs7Jqp65CY66m0IOyViCDrkKnri4jri6QuJyk7Cgphc3NlcnQudGhyb3dzKCgpID0+IGxlZGdlci5yZXNlcnZlKCdMT1QtMDAxJywgMTAwMCwgJ09SREVSLTAwMScsIHsgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIGRlbGl2ZXJ5RGF5czogMTAgfSksIChlcnJvcikgPT4gewogIGFzc2VydC5vayhlcnJvciBpbnN0YW5jZW9mIEludmVudG9yeVJ1bGVFcnJvcik7CiAgYXNzZXJ0LmVxdWFsKGVycm9yLmNvZGUsICdSRVNFUlZBVElPTl9JRF9SRVVTRV9NSVNNQVRDSCcpOwogIHJldHVybiB0cnVlOwp9LCAn6rCZ7J2AIOyYiOyVvSBJROydmCDri6Trpbgg64Kp6riwIOyhsOqxtOuPhCDsnqzsgqzsmqnrkJjrqbQg7JWIIOuQqeuLiOuLpC4nKTsKCmFzc2VydC50aHJvd3MoKCkgPT4gbGVkZ2VyLnJlc2VydmUoJ0xPVC0wMDEnLCAzMDAsICdPUkRFUi0wMDInLCB7IHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBkZWxpdmVyeURheXM6IDE0IH0pLCAoZXJyb3IpID0+IHsKICBhc3NlcnQub2soZXJyb3IgaW5zdGFuY2VvZiBJbnZlbnRvcnlSdWxlRXJyb3IpOwogIGFzc2VydC5lcXVhbChlcnJvci5jb2RlLCAnSU5WRU5UT1JZQVZBSUxBQkxFJyk7CiAgcmV0dXJuIHRydWU7Cn0pOwoKZm9yIChjb25zdCBpbnZhbGlkUXVhbnRpdHkgb2YgWzAsIC0xLCBOdW1iZXIuTmFOLCBOdW1iZXIuUE9TSVRJVkVfSU5GSU5JVFldKSB7CiAgYXNzZXJ0LnRocm93cygoKSA9PiBsZWRnZXIucmVzZXJ2ZSgnTE9ULTAwMScsIGludmFsaWRRdWFudGl0eSwgYElOVkFMSUQtJHtTdHJpbmcoaW52YWxpZFF1YW50aXR5KX1gLCB7IHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBkZWxpdmVyeURheXM6IDE0IH0pLCAoZXJyb3IpID0+IHsKICAgIGFzc2VydC5vayhlcnJvciBpbnN0YW5jZW9mIEludmVudG9yeVJ1bGVFcnJvcik7CiAgICBhc3NlcnQuZXF1YWwoZXJyb3IuY29kZSwgJ0lOVkFMSURfUkVTRVJWQVRJT05fUVVBTlRJVFknKTsKICAgIHJldHVybiB0cnVlOwogIH0sIGDsnpjrqrvrkJwg7JiI7JW9IOyImOufiSAke1N0cmluZyhpbnZhbGlkUXVhbnRpdHkpfeuKlCDssKjri6jrkJjslrTslbwg7ZWp64uI64ukLmApOwp9CmFzc2VydC5lcXVhbChsZWRnZXIuc25hcHNob3QoKS5sb3RzWzBdLmF2YWlsYWJsZVF0eSwgMjAwLCAn7J6Y66q765CcIOyYiOyVvSDsnoXroKXsnYAg7J6s6rOg66W8IOuzgOqyve2VmOuptCDslYgg65Cp64uI64ukLicpOwoKbGVkZ2VyLm1hcmtEZWxpdmVyZWQoJ09SREVSLTAwMScpOwpjb25zdCBkaXNwdXRlID0gbGVkZ2VyLmluc3BlY3QoJ09SREVSLTAwMScsIHsgc3BlY01hdGNoOiBmYWxzZSwgcXVhbGl0eVBhc3M6IGZhbHNlLCBub3RlOiAn64Kp7ZKIIOuhnO2KuCDsi5ztl5gg6rKw6rO8IOu2iOydvOy5mCcgfSk7CmFzc2VydC5lcXVhbChkaXNwdXRlLnJlc2VydmF0aW9uLnN0YXR1cywgJ0RJU1BVVEVEJyk7CmFzc2VydC5lcXVhbChkaXNwdXRlLmxvdC5zdGF0dXMsIElOVkVOVE9SWV9TVEFURVMuUVVBUkFOVElORUQpOwoKY29uc29sZS5sb2coJ2ludmVudG9yeS1sZWRnZXIgdGVzdHM6IFBBU1MnKTsK
+import assert from 'node:assert/strict';
+import { EvidenceLockedInventory, INVENTORY_STATES, InventoryRuleError } from './inventory-ledger.mjs';
+
+const now = new Date('2026-09-08T00:00:00.000Z');
+const ledger = new EvidenceLockedInventory({ now: () => new Date(now) });
+for (const invalidLot of [
+  { lotId: 'LOT-NEGATIVE-PRICE', askPrice: -1, availableQty: 1, reservedQty: 0, deliveryDays: 1 },
+  { lotId: 'LOT-ZERO-PRICE', askPrice: 0, availableQty: 1, reservedQty: 0, deliveryDays: 1 },
+  { lotId: 'LOT-NEGATIVE-RESERVED', askPrice: 1, availableQty: 1, reservedQty: -1, deliveryDays: 1 },
+  { lotId: 'LOT-NEGATIVE-DELIVERY', askPrice: 1, availableQty: 1, reservedQty: 0, deliveryDays: -1 },
+  { lotId: 'LOT-NAN-DELIVERY', askPrice: 1, availableQty: 1, reservedQty: 0, deliveryDays: Number.NaN },
+]) {
+  assert.throws(() => ledger.registerLot(invalidLot), (error) => {
+    assert.ok(error instanceof InventoryRuleError);
+    assert.equal(error.code, 'INVALID_LOT');
+    return true;
+  }, `잘못된 로트 입력 ${invalidLot.lotId}는 등록되면 안 됩니다.`);
+}
+ledger.registerLot({
+  lotId: 'LOT-001',
+  supplier: '한빛바이오',
+  specId: 'GABA-SPEC-001',
+  askPrice: 21800,
+  availableQty: 1200,
+  status: INVENTORY_STATES.VERIFIED_ELIGIBLE,
+  evidence: { coa: 'VALID', sds: 'VALID', tds: 'VALID', lotTrace: 'VALID', inventoryProof: 'VALID', expiresAt: '2027-07-31' },
+  deliveryDays: 10,
+});
+
+const candidate = ledger.findEligible({ specId: 'GABA-SPEC-001', price: 21800, quantity: 1000, deliveryDays: 14 });
+assert.equal(candidate.lotId, 'LOT-001');
+
+const expiredLedger = new EvidenceLockedInventory({ now: () => new Date(now) });
+expiredLedger.registerLot({
+  lotId: 'LOT-EXPIRED',
+  supplier: '만료공급자',
+  specId: 'GABA-SPEC-001',
+  askPrice: 21000,
+  availableQty: 1000,
+  status: INVENTORY_STATES.VERIFIED_ELIGIBLE,
+  evidence: { coa: 'VALID', sds: 'VALID', specification: 'VALID', expiresAt: '2026-09-07' },
+  deliveryDays: 10,
+});
+assert.equal(expiredLedger.findEligible({ specId: 'GABA-SPEC-001', price: 22000, quantity: 20, deliveryDays: 14 }), null, '만료 증빙 로트는 노출되면 안 됩니다.');
+
+const reserved = ledger.reserve('LOT-001', 1000, 'ORDER-001', { specId: 'GABA-SPEC-001', deliveryDays: 14 });
+assert.equal(reserved.lot.availableQty, 200);
+assert.equal(reserved.lot.reservedQty, 1000);
+
+const duplicateReservation = ledger.reserve('LOT-001', 1000, 'ORDER-001', { specId: 'GABA-SPEC-001', deliveryDays: 14 });
+assert.deepEqual(duplicateReservation, reserved, '같은 예약 ID는 재고를 다시 차감하지 않아야 합니다.');
+
+assert.throws(() => ledger.reserve('LOT-001', 900, 'ORDER-001', { specId: 'GABA-SPEC-001', deliveryDays: 14 }), (error) => {
+  assert.ok(error instanceof InventoryRuleError);
+  assert.equal(error.code, 'RESERVATION_ID_REUSE_MISMATCH');
+  return true;
+}, '같은 예약 ID의 다른 수량 요청은 조용히 재사용되면 안 됩니다.');
+
+assert.throws(() => ledger.reserve('LOT-001', 1000, 'ORDER-001', { specId: 'GABA-SPEC-001', deliveryDays: 10 }), (error) => {
+  assert.ok(error instanceof InventoryRuleError);
+  assert.equal(error.code, 'RESERVATION_ID_REUSE_MISMATCH');
+  return true;
+}, '같은 예약 ID의 다른 납기 조건도 재사용되면 안 됩니다.');
+
+assert.throws(() => ledger.reserve('LOT-001', 300, 'ORDER-002', { specId: 'GABA-SPEC-001', deliveryDays: 14 }), (error) => {
+  assert.ok(error instanceof InventoryRuleError);
+  assert.equal(error.code, 'INVENTORYAVAILABLE');
+  return true;
+});
+
+for (const invalidQuantity of [0, -1, Number.NaN, Number.POSITIVE_INFINITY]) {
+  assert.throws(() => ledger.reserve('LOT-001', invalidQuantity, `INVALID-${String(invalidQuantity)}`, { specId: 'GABA-SPEC-001', deliveryDays: 14 }), (error) => {
+    assert.ok(error instanceof InventoryRuleError);
+    assert.equal(error.code, 'INVALID_RESERVATION_QUANTITY');
+    return true;
+  }, `잘못된 예약 수량 ${String(invalidQuantity)}는 차단되어야 합니다.`);
+}
+assert.equal(ledger.snapshot().lots[0].availableQty, 200, '잘못된 예약 입력은 재고를 변경하면 안 됩니다.');
+
+ledger.markDelivered('ORDER-001');
+const dispute = ledger.inspect('ORDER-001', { specMatch: false, qualityPass: false, note: '납품 로트 시험 결과 불일치' });
+assert.equal(dispute.reservation.status, 'DISPUTED');
+assert.equal(dispute.lot.status, INVENTORY_STATES.QUARANTINED);
+
+console.log('inventory-ledger tests: PASS');

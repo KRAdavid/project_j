@@ -1,1 +1,46 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBzcGF3biB9IGZyb20gJ25vZGU6Y2hpbGRfcHJvY2Vzcyc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7Cgpjb25zdCBwb3J0ID0gNDE4MTsKY29uc3QgY3dkID0gZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuJywgaW1wb3J0Lm1ldGEudXJsKSk7CmNvbnN0IGNoaWxkID0gc3Bhd24ocHJvY2Vzcy5leGVjUGF0aCwgWydzZXJ2ZXIubWpzJ10sIHsKICBjd2QsCiAgZW52OiB7CiAgICAuLi5wcm9jZXNzLmVudiwKICAgIEFQUF9FTlY6ICdwcm9kdWN0aW9uJywKICAgIFBFUlNJU1RFTkNFX01PREU6ICdwb3N0Z3Jlc3FsJywKICAgIERBVEFCQVNFX1VSTDogJ3Bvc3RncmVzcWw6Ly8xMjcuMC4wLjE6MS9yYXdfbWF0ZXJpYWxfb3MnLAogICAgUEVSU0lTVEVOQ0VfU0NIRU1BX0FQUExJRUQ6ICd0cnVlJywKICAgIEJBQ0tVUF9EUklMTF9QQVNTRUQ6ICd0cnVlJywKICAgIFRSQU5TQUNUSU9OX0lTT0xBVElPTl9WRVJJRklFRDogJ3RydWUnLAogICAgQVVESVRfUE9MSUNZX0FQUExJRUQ6ICd0cnVlJywKICAgIE9CSkVDVF9TVE9SQUdFX1JFQURZOiAndHJ1ZScsCiAgICBFVklERU5DRV9TVE9SRV9SRUFEWTogJ3RydWUnLAogICAgQVVUSF9QUk9WSURFUl9SRUFEWTogJ3RydWUnLAogICAgQVVUSF9KV1RfU0VDUkVUOiAndGVzdC1zZWNyZXQtdGhhdC1pcy1hdC1sZWFzdC0zMi1ieXRlcy1sb25nJywKICAgIEFVVEhfSldUX0lTU1VFUjogJ3Jhdy1tYXRlcmlhbC1vcy10ZXN0JywKICAgIEFVVEhfSldUX0FVRElFTkNFOiAncmF3LW1hdGVyaWFsLW9zLWFwaScsCiAgICBQT1NUR1JFU19ET01BSU5fQURBUFRFUl9SRUFEWTogJ3RydWUnLAogICAgUE9TVEdSRVNfRE9NQUlOX0FQSV9SRUFEWTogJ3RydWUnLAogICAgUE9SVDogU3RyaW5nKHBvcnQpLAogIH0sCiAgc3RkaW86IFsnaWdub3JlJywgJ3BpcGUnLCAncGlwZSddLAp9KTsKCmxldCBvdXRwdXQgPSAnJzsKY2hpbGQuc3Rkb3V0Lm9uKCdkYXRhJywgKGNodW5rKSA9PiB7IG91dHB1dCArPSBjaHVuay50b1N0cmluZygpOyB9KTsKY2hpbGQuc3RkZXJyLm9uKCdkYXRhJywgKGNodW5rKSA9PiB7IG91dHB1dCArPSBjaHVuay50b1N0cmluZygpOyB9KTsKCmNvbnN0IGV4aXRDb2RlID0gYXdhaXQgbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4gewogIGNvbnN0IHRpbWVyID0gc2V0VGltZW91dCgoKSA9PiB7CiAgICBjaGlsZC5raWxsKCk7CiAgICByZWplY3QobmV3IEVycm9yKCfsg4HsmqkgUG9zdGdyZVNRTCDsl7DqsrAg7Iuk7YyoIOyLnCDshJzrsoTqsIAg7KCc7ZWc7Iuc6rCEIOuCtOyXkCDsooXro4zrkJjsp4Ag7JWK7JWY7Iq164uI64ukLicpKTsKICB9LCA3MDAwKTsKICBjaGlsZC5vbmNlKCdlcnJvcicsIHJlamVjdCk7CiAgY2hpbGQub25jZSgnZXhpdCcsIChjb2RlKSA9PiB7IGNsZWFyVGltZW91dCh0aW1lcik7IHJlc29sdmUoY29kZSk7IH0pOwp9KTsKCmFzc2VydC5ub3RFcXVhbChleGl0Q29kZSwgMCk7CmFzc2VydC5tYXRjaChvdXRwdXQsIC9Qb3N0Z3JlU1FMfHBnfOybkOyepXxjb25uZWN0aW9uL2kpOwpjb25zb2xlLmxvZygncHJvZHVjdGlvbiBmYWlsLWNsb3NlZCB0ZXN0czogUEFTUycpOwo=
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const port = 4181;
+const cwd = fileURLToPath(new URL('.', import.meta.url));
+const child = spawn(process.execPath, ['server.mjs'], {
+  cwd,
+  env: {
+    ...process.env,
+    APP_ENV: 'production',
+    PERSISTENCE_MODE: 'postgresql',
+    DATABASE_URL: 'postgresql://127.0.0.1:1/raw_material_os',
+    PERSISTENCE_SCHEMA_APPLIED: 'true',
+    BACKUP_DRILL_PASSED: 'true',
+    TRANSACTION_ISOLATION_VERIFIED: 'true',
+    AUDIT_POLICY_APPLIED: 'true',
+    OBJECT_STORAGE_READY: 'true',
+    EVIDENCE_STORE_READY: 'true',
+    AUTH_PROVIDER_READY: 'true',
+    AUTH_JWT_SECRET: 'test-secret-that-is-at-least-32-bytes-long',
+    AUTH_JWT_ISSUER: 'raw-material-os-test',
+    AUTH_JWT_AUDIENCE: 'raw-material-os-api',
+    POSTGRES_DOMAIN_ADAPTER_READY: 'true',
+    POSTGRES_DOMAIN_API_READY: 'true',
+    PORT: String(port),
+  },
+  stdio: ['ignore', 'pipe', 'pipe'],
+});
+
+let output = '';
+child.stdout.on('data', (chunk) => { output += chunk.toString(); });
+child.stderr.on('data', (chunk) => { output += chunk.toString(); });
+
+const exitCode = await new Promise((resolve, reject) => {
+  const timer = setTimeout(() => {
+    child.kill();
+    reject(new Error('상용 PostgreSQL 연결 실패 시 서버가 제한시간 내에 종료되지 않았습니다.'));
+  }, 7000);
+  child.once('error', reject);
+  child.once('exit', (code) => { clearTimeout(timer); resolve(code); });
+});
+
+assert.notEqual(exitCode, 0);
+assert.match(output, /PostgreSQL|pg|원장|connection/i);
+console.log('production fail-closed tests: PASS');

@@ -1,1 +1,9 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBoYXNoU25hcHNob3QsIHNlYWxUcmFkZVNuYXBzaG90LCB0cmFkZUludGVncml0eVBheWxvYWQsIHZlcmlmeVRyYWRlU25hcHNob3QgfSBmcm9tICcuL3NuYXBzaG90LWludGVncml0eS5tanMnOwoKY29uc3QgdHJhZGUgPSB7IHRyYWRlSWQ6ICdULTEnLCBvcmRlcklkOiAnTy0xJywgYnV5ZXJJZDogJ0ItMScsIHN1cHBsaWVySWQ6ICdTLTEnLCBzdXBwbGllck9yZ2FuaXphdGlvbklkOiAnT1JHLTEnLCBtYXRlcmlhbElkOiAnR0FCQScsIHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBzcGVjU25hcHNob3Q6IHt9LCBsb3RTbmFwc2hvdDogeyBsb3RJZDogJ0xPVC0xJyB9LCBldmlkZW5jZVNuYXBzaG90OiB7IGNvYTogJ1ZBTElEJyB9LCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMCwgZGVsaXZlcnlEYXRlOiAnMjAyNi0wOS0xNScsIHByZVRyYWRlQ2hlY2tzOiB7IGV2aWRlbmNlVmFsaWQ6IHRydWUgfSwgcmVzZXJ2YXRpb25JZDogJ1ItMScsIGNvbmZpcm1lZEF0OiAnMjAyNi0wOS0wOFQwMDowMDowMC4wMDBaJyB9Owpjb25zdCBzZWFsZWQgPSBzZWFsVHJhZGVTbmFwc2hvdCh0cmFkZSk7CmFzc2VydC5lcXVhbChzZWFsZWQudHJhZGVTbmFwc2hvdEhhc2gsIGhhc2hTbmFwc2hvdCh0cmFkZUludGVncml0eVBheWxvYWQodHJhZGUpKSk7CmFzc2VydC5lcXVhbCh2ZXJpZnlUcmFkZVNuYXBzaG90KHNlYWxlZCksIHRydWUpOwphc3NlcnQuZXF1YWwodmVyaWZ5VHJhZGVTbmFwc2hvdCh7IC4uLnNlYWxlZCwgcXVhbnRpdHk6IDIxIH0pLCBmYWxzZSk7CmNvbnNvbGUubG9nKCdzbmFwc2hvdCBpbnRlZ3JpdHkgdGVzdHM6IFBBU1MnKTsK
+import assert from 'node:assert/strict';
+import { hashSnapshot, sealTradeSnapshot, tradeIntegrityPayload, verifyTradeSnapshot } from './snapshot-integrity.mjs';
+
+const trade = { tradeId: 'T-1', orderId: 'O-1', buyerId: 'B-1', supplierId: 'S-1', supplierOrganizationId: 'ORG-1', materialId: 'GABA', specId: 'GABA-SPEC-001', specSnapshot: {}, lotSnapshot: { lotId: 'LOT-1' }, evidenceSnapshot: { coa: 'VALID' }, price: 21800, quantity: 20, deliveryDate: '2026-09-15', preTradeChecks: { evidenceValid: true }, reservationId: 'R-1', confirmedAt: '2026-09-08T00:00:00.000Z' };
+const sealed = sealTradeSnapshot(trade);
+assert.equal(sealed.tradeSnapshotHash, hashSnapshot(tradeIntegrityPayload(trade)));
+assert.equal(verifyTradeSnapshot(sealed), true);
+assert.equal(verifyTradeSnapshot({ ...sealed, quantity: 21 }), false);
+console.log('snapshot integrity tests: PASS');

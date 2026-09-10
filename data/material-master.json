@@ -1,1 +1,66 @@
-ewogICJzY2hlbWFWZXJzaW9uIjogIk1NUy0wLjIiLAogICJjYXRhbG9nU3RhdHVzIjogIlNJTVVMQVRJT05fT05MWSIsCiAgInJlY29yZHMiOiBbCiAgICB7CiAgICAgICJtYXRlcmlhbElkIjogIkdBQkEiLAogICAgICAiY2Fub25pY2FsTmFtZSI6ICJHYW1tYS1BbWlub2J1dHlyaWMgQWNpZCIsCiAgICAgICJhbGlhc2VzIjogWyJHQUJBIiwgIuqwgOuwlCJdLAogICAgICAibWF0ZXJpYWxDbGFzcyI6ICJSQVdfTUFURVJJQUwiLAogICAgICAiaWRlbnRpZmllcnMiOiB7CiAgICAgICAgImNhdGFsb2dJZGVudGl0eSI6ICJHQUJBIiwKICAgICAgICAiZXh0ZXJuYWxJZGVudGlmaWVycyI6IFtdLAogICAgICAgICJzdGF0dXMiOiAiSFVNQU5fUkVWSUVXX1JFUVVJUkVEIgogICAgICB9LAogICAgICAic3BlY1N0YXR1cyI6ICJQRU5ESU5HX0hVTUFOX0FQUFJPVkFMIiwKICAgICAgInNpbXVsYXRpb25TcGVjIjogewogICAgICAgICJzcGVjSWQiOiAiR0FCQS1TUEVDLTAwMSIsCiAgICAgICAgInB1cml0eSI6ICI5OSUg7J207IOBIiwKICAgICAgICAiZm9ybSI6ICLrtoTrp5AiLAogICAgICAgICJvcmlnaW4iOiAi7ZWc6rWt7IKwIiwKICAgICAgICAicGFjayI6ICIyMCBrZyIsCiAgICAgICAgImludGVuZGVkVXNlIjogIuq4sOuKpeyEsSDsi53tkogg7JuQ66OMIOqwnOuwnCIsCiAgICAgICAgImRlbGl2ZXJ5Q29uZGl0aW9uIjogIuyDgeyYqMK367CA67SJIOuwsOyGoSIKICAgICAgfSwKICAgICAgInNwZWNRdWVzdGlvbkZsb3ciOiBbCiAgICAgICAgeyAiZmllbGQiOiAiaW50ZW5kZWRVc2UiLCAibGFiZWwiOiAi7IKs7JqpIOuqqeyggSIsICJyZXF1aXJlZCI6IHRydWUsICJvcHRpb25zIjogWyLquLDriqXshLEg7Iud7ZKIIOybkOujjCDqsJzrsJwiLCAi7J2867CYIOyLne2SiCDsm5Dro4wg6rCc67CcIiwgIuyCrOujjMK36rO17JeF7JqpIOybkOujjCJdIH0sCiAgICAgICAgeyAiZmllbGQiOiAicHVyaXR5IiwgImxhYmVsIjogIuyInOuPhCIsICJyZXF1aXJlZCI6IHRydWUsICJvcHRpb25zIjogWyI5OSUg7J207IOBIiwgIjk4JSDsnbTsg4EiXSB9LAogICAgICAgIHsgImZpZWxkIjogImZvcm0iLCAibGFiZWwiOiAi7KCc7ZiVIiwgInJlcXVpcmVkIjogdHJ1ZSwgIm9wdGlvbnMiOiBbIuu2hOunkCIsICLqs7zrpr0iXSB9LAogICAgICAgIHsgImZpZWxkIjogIm9yaWdpbiIsICJsYWJlbCI6ICLsm5DsgrDsp4AiLCAicmVxdWlyZWQiOiB0cnVlLCAib3B0aW9ucyI6IFsi7ZWc6rWt7IKwIiwgIuykkeq1reyCsCIsICLsm5DsgrDsp4Ag66y06rSAIl0gfSwKICAgICAgICB7ICJmaWVsZCI6ICJwYWNrIiwgImxhYmVsIjogIu2PrOyepSDri6jsnIQiLCAicmVxdWlyZWQiOiB0cnVlLCAib3B0aW9ucyI6IFsiMjAga2ciLCAiMjUga2ciLCAiNTAwIGtnIl0gfSwKICAgICAgICB7ICJmaWVsZCI6ICJkZWxpdmVyeUNvbmRpdGlvbiIsICJsYWJlbCI6ICLrgqntkogg7KGw6rG0IiwgInJlcXVpcmVkIjogdHJ1ZSwgIm9wdGlvbnMiOiBbIuyDgeyYqMK367CA67SJIOuwsOyGoSIsICLrg4nsnqUg7KGw6rG0IO2ZleyduCIsICLqs7XquInsnpAg7KCc7JWIIO2VhOyalCJdIH0KICAgICAgXSwKICAgICAgInJlcXVpcmVkU3BlY0ZpZWxkcyI6IFsiaW50ZW5kZWRVc2UiLCAicHVyaXR5IiwgImZvcm0iLCAib3JpZ2luIiwgInBhY2siLCAiZGVsaXZlcnlDb25kaXRpb24iXSwKICAgICAgInJlcXVpcmVkRXZpZGVuY2UiOiBbIkNPQSIsICJTRFMiLCAiVERTIiwgImxvdFRyYWNlIiwgImludmVudG9yeVByb29mIl0sCiAgICAgICJ0cmFkZVByb2ZpbGUiOiB7CiAgICAgICAgInBoeXNpY2FsTWF0ZXJpYWxPbmx5IjogdHJ1ZSwKICAgICAgICAiY3VycmVuY3kiOiAiS1JXIiwKICAgICAgICAiYmFzZVVuaXQiOiAiS0ciLAogICAgICAgICJwcmljZVVuaXQiOiAiS1JXX1BFUl9LRyIsCiAgICAgICAgIm9yZGVyUXVhbnRpdHlVbml0IjogIktHIiwKICAgICAgICAicGFja2FnaW5nT3B0aW9ucyI6IFsiMjAga2ciXQogICAgICB9LAogICAgICAicmVndWxhdG9yeVByb2ZpbGUiOiB7CiAgICAgICAgImp1cmlzZGljdGlvbnMiOiBbIktSIl0sCiAgICAgICAgImludGVuZGVkVXNlUmVxdWlyZWQiOiB0cnVlLAogICAgICAgICJzdGF0dXMiOiAiSFVNQU5fUkVWSUVXX1JFUVVJUkVEIiwKICAgICAgICAic291cmNlRG9jdW1lbnRzIjogW10KICAgICAgfSwKICAgICAgInN0b3JhZ2VQcm9maWxlIjogewogICAgICAgICJ0ZW1wZXJhdHVyZSI6ICJIVU1BTl9SRVZJRVdfUkVRVUlSRUQiLAogICAgICAgICJodW1pZGl0eSI6ICJIVU1BTl9SRVZJRVdfUkVRVUlSRUQiLAogICAgICAgICJsaWdodCI6ICJIVU1BTl9SRVZJRVdfUkVRVUlSRUQiCiAgICAgIH0sCiAgICAgICJyaXNrUHJvZmlsZSI6IHsKICAgICAgICAibGV2ZWwiOiAiSFVNQU5fUkVWSUVXX1JFUVVJUkVEIiwKICAgICAgICAicHJlVHJhZGVHYXRlcyI6IFsiU1BFQ19DT05GSVJNRUQiLCAiRVZJREVOQ0VfVkFMSUQiLCAiSU5WRU5UT1JZX1ZFUklGSUVEIiwgIlNVUFBMSUVSX1ZFUklGSUVEIl0KICAgICAgfSwKICAgICAgInByb3ZlbmFuY2UiOiB7CiAgICAgICAgInNvdXJjZVN0YXR1cyI6ICJTSU1VTEFUSU9OX0RFRkFVTFQiLAogICAgICAgICJzb3VyY2VEb2N1bWVudHMiOiBbXSwKICAgICAgICAiaHVtYW5BcHByb3ZlciI6IG51bGwsCiAgICAgICAgImFwcHJvdmVkQXQiOiBudWxsCiAgICAgIH0KICAgIH0KICBdCn0K
+{
+  "schemaVersion": "MMS-0.2",
+  "catalogStatus": "SIMULATION_ONLY",
+  "records": [
+    {
+      "materialId": "GABA",
+      "canonicalName": "Gamma-Aminobutyric Acid",
+      "aliases": ["GABA", "가바"],
+      "materialClass": "RAW_MATERIAL",
+      "identifiers": {
+        "catalogIdentity": "GABA",
+        "externalIdentifiers": [],
+        "status": "HUMAN_REVIEW_REQUIRED"
+      },
+      "specStatus": "PENDING_HUMAN_APPROVAL",
+      "simulationSpec": {
+        "specId": "GABA-SPEC-001",
+        "purity": "99% 이상",
+        "form": "분말",
+        "origin": "한국산",
+        "pack": "20 kg",
+        "intendedUse": "기능성 식품 원료 개발",
+        "deliveryCondition": "상온·밀봉 배송"
+      },
+      "specQuestionFlow": [
+        { "field": "intendedUse", "label": "사용 목적", "required": true, "options": ["기능성 식품 원료 개발", "일반 식품 원료 개발", "사료·공업용 원료"] },
+        { "field": "purity", "label": "순도", "required": true, "options": ["99% 이상", "98% 이상"] },
+        { "field": "form", "label": "제형", "required": true, "options": ["분말", "과립"] },
+        { "field": "origin", "label": "원산지", "required": true, "options": ["한국산", "중국산", "원산지 무관"] },
+        { "field": "pack", "label": "포장 단위", "required": true, "options": ["20 kg", "25 kg", "500 kg"] },
+        { "field": "deliveryCondition", "label": "납품 조건", "required": true, "options": ["상온·밀봉 배송", "냉장 조건 확인", "공급자 제안 필요"] }
+      ],
+      "requiredSpecFields": ["intendedUse", "purity", "form", "origin", "pack", "deliveryCondition"],
+      "requiredEvidence": ["COA", "SDS", "TDS", "lotTrace", "inventoryProof"],
+      "tradeProfile": {
+        "physicalMaterialOnly": true,
+        "currency": "KRW",
+        "baseUnit": "KG",
+        "priceUnit": "KRW_PER_KG",
+        "orderQuantityUnit": "KG",
+        "packagingOptions": ["20 kg"]
+      },
+      "regulatoryProfile": {
+        "jurisdictions": ["KR"],
+        "intendedUseRequired": true,
+        "status": "HUMAN_REVIEW_REQUIRED",
+        "sourceDocuments": []
+      },
+      "storageProfile": {
+        "temperature": "HUMAN_REVIEW_REQUIRED",
+        "humidity": "HUMAN_REVIEW_REQUIRED",
+        "light": "HUMAN_REVIEW_REQUIRED"
+      },
+      "riskProfile": {
+        "level": "HUMAN_REVIEW_REQUIRED",
+        "preTradeGates": ["SPEC_CONFIRMED", "EVIDENCE_VALID", "INVENTORY_VERIFIED", "SUPPLIER_VERIFIED"]
+      },
+      "provenance": {
+        "sourceStatus": "SIMULATION_DEFAULT",
+        "sourceDocuments": [],
+        "humanApprover": null,
+        "approvedAt": null
+      }
+    }
+  ]
+}

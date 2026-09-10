@@ -1,1 +1,77 @@
-Y29uc3QgY2xvbmUgPSAodmFsdWUpID0+IEpTT04ucGFyc2UoSlNPTi5zdHJpbmdpZnkodmFsdWUgPz8gbnVsbCkpOwoKY29uc3QgYXNJZCA9ICh2YWx1ZSkgPT4gU3RyaW5nKHZhbHVlID8/ICcnKS50cmltKCk7Cgpjb25zdCBjb2xsZWN0aW9uID0gKHNuYXBzaG90LCBuYW1lKSA9PiAoQXJyYXkuaXNBcnJheShzbmFwc2hvdD8uW25hbWVdKSA/IHNuYXBzaG90W25hbWVdIDogW10pOwoKY29uc3QgaW5kZXhCeUlkID0gKGl0ZW1zLCBpZEZpZWxkLCBjb2xsZWN0aW9uTmFtZSwgaXNzdWVzKSA9PiB7CiAgY29uc3QgaW5kZXggPSBuZXcgTWFwKCk7CiAgZm9yIChjb25zdCBpdGVtIG9mIGl0ZW1zKSB7CiAgICBjb25zdCBpZCA9IGFzSWQoaXRlbT8uW2lkRmllbGRdKTsKICAgIGlmICghaWQpIHsKICAgICAgaXNzdWVzLnB1c2goeyBjb2RlOiAnSURFTlRJRklFUl9NSVNTSU5HJywgY29sbGVjdGlvbjogY29sbGVjdGlvbk5hbWUsIGlkRmllbGQgfSk7CiAgICAgIGNvbnRpbnVlOwogICAgfQogICAgaWYgKGluZGV4LmhhcyhpZCkpIGlzc3Vlcy5wdXNoKHsgY29kZTogJ0RVUExJQ0FURV9JREVOVElGSUVSJywgY29sbGVjdGlvbjogY29sbGVjdGlvbk5hbWUsIGlkIH0pOwogICAgaW5kZXguc2V0KGlkLCBpdGVtKTsKICB9CiAgcmV0dXJuIGluZGV4Owp9OwoKY29uc3QgY29tcGFyYWJsZSA9IChyZWNvcmQsIGZpZWxkcykgPT4gT2JqZWN0LmZyb21FbnRyaWVzKGZpZWxkcy5tYXAoKGZpZWxkKSA9PiBbZmllbGQsIHJlY29yZD8uW2ZpZWxkXSA/PyBudWxsXSkpOwoKY29uc3QgY29tcGFyZUNvbGxlY3Rpb24gPSAoeyBicmlkZ2VTbmFwc2hvdCwgZG9tYWluU25hcHNob3QsIG5hbWUsIGlkRmllbGQsIGZpZWxkcywgaXNzdWVzIH0pID0+IHsKICBjb25zdCBicmlkZ2VJdGVtcyA9IGNvbGxlY3Rpb24oYnJpZGdlU25hcHNob3QsIG5hbWUpOwogIGNvbnN0IGRvbWFpbkl0ZW1zID0gY29sbGVjdGlvbihkb21haW5TbmFwc2hvdCwgbmFtZSk7CiAgY29uc3QgYnJpZGdlSW5kZXggPSBpbmRleEJ5SWQoYnJpZGdlSXRlbXMsIGlkRmllbGQsIG5hbWUsIGlzc3Vlcyk7CiAgY29uc3QgZG9tYWluSW5kZXggPSBpbmRleEJ5SWQoZG9tYWluSXRlbXMsIGlkRmllbGQsIG5hbWUsIGlzc3Vlcyk7CiAgZm9yIChjb25zdCBpZCBvZiBicmlkZ2VJbmRleC5rZXlzKCkpIHsKICAgIGlmICghZG9tYWluSW5kZXguaGFzKGlkKSkgewogICAgICBpc3N1ZXMucHVzaCh7IGNvZGU6ICdET01BSU5fUkVDT1JEX01JU1NJTkcnLCBjb2xsZWN0aW9uOiBuYW1lLCBpZCB9KTsKICAgICAgY29udGludWU7CiAgICB9CiAgICBjb25zdCBleHBlY3RlZCA9IGNvbXBhcmFibGUoYnJpZGdlSW5kZXguZ2V0KGlkKSwgZmllbGRzKTsKICAgIGNvbnN0IGFjdHVhbCA9IGNvbXBhcmFibGUoZG9tYWluSW5kZXguZ2V0KGlkKSwgZmllbGRzKTsKICAgIGlmIChKU09OLnN0cmluZ2lmeShleHBlY3RlZCkgIT09IEpTT04uc3RyaW5naWZ5KGFjdHVhbCkpIGlzc3Vlcy5wdXNoKHsgY29kZTogJ0ZJRUxEX01JU01BVENIJywgY29sbGVjdGlvbjogbmFtZSwgaWQsIGV4cGVjdGVkLCBhY3R1YWwgfSk7CiAgfQogIGZvciAoY29uc3QgaWQgb2YgZG9tYWluSW5kZXgua2V5cygpKSB7CiAgICBpZiAoIWJyaWRnZUluZGV4LmhhcyhpZCkpIGlzc3Vlcy5wdXNoKHsgY29kZTogJ0JSSURHRV9SRUNPUkRfTUlTU0lORycsIGNvbGxlY3Rpb246IG5hbWUsIGlkIH0pOwogIH0KICByZXR1cm4geyBjb2xsZWN0aW9uOiBuYW1lLCBicmlkZ2VDb3VudDogYnJpZGdlSW5kZXguc2l6ZSwgZG9tYWluQ291bnQ6IGRvbWFpbkluZGV4LnNpemUgfTsKfTsKCmNvbnN0IGNoZWNrRG9tYWluSW52YXJpYW50cyA9IChkb21haW5TbmFwc2hvdCwgaXNzdWVzKSA9PiB7CiAgZm9yIChjb25zdCBsb3Qgb2YgY29sbGVjdGlvbihkb21haW5TbmFwc2hvdCwgJ2xvdHMnKSkgewogICAgY29uc3QgYXZhaWxhYmxlID0gTnVtYmVyKGxvdC5hdmFpbGFibGVRdHkpOwogICAgY29uc3QgcmVzZXJ2ZWQgPSBOdW1iZXIobG90LnJlc2VydmVkUXR5KTsKICAgIGlmICghTnVtYmVyLmlzRmluaXRlKGF2YWlsYWJsZSkgfHwgYXZhaWxhYmxlIDwgMCkgaXNzdWVzLnB1c2goeyBjb2RlOiAnTE9UX0FWQUlMQUJMRV9JTlZBTElEJywgY29sbGVjdGlvbjogJ2xvdHMnLCBpZDogYXNJZChsb3QubG90SWQpIH0pOwogICAgaWYgKCFOdW1iZXIuaXNGaW5pdGUocmVzZXJ2ZWQpIHx8IHJlc2VydmVkIDwgMCkgaXNzdWVzLnB1c2goeyBjb2RlOiAnTE9UX1JFU0VSVkVEX0lOVkFMSUQnLCBjb2xsZWN0aW9uOiAnbG90cycsIGlkOiBhc0lkKGxvdC5sb3RJZCkgfSk7CiAgfQogIGNvbnN0IG9yZGVySWRzID0gbmV3IFNldChjb2xsZWN0aW9uKGRvbWFpblNuYXBzaG90LCAnb3JkZXJzJykubWFwKChvcmRlcikgPT4gYXNJZChvcmRlci5vcmRlcklkKSkpOwogIGNvbnN0IGxvdElkcyA9IG5ldyBTZXQoY29sbGVjdGlvbihkb21haW5TbmFwc2hvdCwgJ2xvdHMnKS5tYXAoKGxvdCkgPT4gYXNJZChsb3QubG90SWQpKSk7CiAgZm9yIChjb25zdCB0cmFkZSBvZiBjb2xsZWN0aW9uKGRvbWFpblNuYXBzaG90LCAndHJhZGVzJykpIHsKICAgIGlmICghb3JkZXJJZHMuaGFzKGFzSWQodHJhZGUub3JkZXJJZCkpKSBpc3N1ZXMucHVzaCh7IGNvZGU6ICdUUkFERV9PUkRFUl9NSVNTSU5HJywgY29sbGVjdGlvbjogJ3RyYWRlcycsIGlkOiBhc0lkKHRyYWRlLnRyYWRlSWQpIH0pOwogICAgaWYgKCFsb3RJZHMuaGFzKGFzSWQodHJhZGUubG90SWQpKSkgaXNzdWVzLnB1c2goeyBjb2RlOiAnVFJBREVfTE9UX01JU1NJTkcnLCBjb2xsZWN0aW9uOiAndHJhZGVzJywgaWQ6IGFzSWQodHJhZGUudHJhZGVJZCkgfSk7CiAgICBpZiAoIWFzSWQodHJhZGUudHJhZGVTbmFwc2hvdEhhc2gpKSBpc3N1ZXMucHVzaCh7IGNvZGU6ICdUUkFERV9TTkFQU0hPVF9IQVNIX01JU1NJTkcnLCBjb2xsZWN0aW9uOiAndHJhZGVzJywgaWQ6IGFzSWQodHJhZGUudHJhZGVJZCkgfSk7CiAgfQp9OwoKZXhwb3J0IGNvbnN0IHJlY29uY2lsZURvbWFpblN0YXRlID0gKHsgYnJpZGdlU25hcHNob3QsIGRvbWFpblNuYXBzaG90IH0gPSB7fSkgPT4gewogIGNvbnN0IGNoZWNrZWRBdCA9IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKTsKICBpZiAoIWJyaWRnZVNuYXBzaG90IHx8IHR5cGVvZiBicmlkZ2VTbmFwc2hvdCAhPT0gJ29iamVjdCcgfHwgQXJyYXkuaXNBcnJheShicmlkZ2VTbmFwc2hvdCkpIHsKICAgIHJldHVybiB7IHN0YXR1czogJ05PX1JFRkVSRU5DRScsIHNhZmU6IGZhbHNlLCBjaGVja2VkQXQsIGlzc3VlQ291bnQ6IDEsIGlzc3VlczogW3sgY29kZTogJ0JSSURHRV9SRUZFUkVOQ0VfTUlTU0lORycgfV0sIGNvbXBhcmVkQ29sbGVjdGlvbnM6IFtdIH07CiAgfQogIGlmICghZG9tYWluU25hcHNob3QgfHwgdHlwZW9mIGRvbWFpblNuYXBzaG90ICE9PSAnb2JqZWN0JyB8fCBBcnJheS5pc0FycmF5KGRvbWFpblNuYXBzaG90KSkgewogICAgcmV0dXJuIHsgc3RhdHVzOiAnTUlTTUFUQ0gnLCBzYWZlOiBmYWxzZSwgY2hlY2tlZEF0LCBpc3N1ZUNvdW50OiAxLCBpc3N1ZXM6IFt7IGNvZGU6ICdET01BSU5fU1RBVEVfTUlTU0lORycgfV0sIGNvbXBhcmVkQ29sbGVjdGlvbnM6IFtdIH07CiAgfQogIGNvbnN0IGlzc3VlcyA9IFtdOwogIGNvbnN0IGNvbXBhcmVkQ29sbGVjdGlvbnMgPSBbCiAgICBjb21wYXJlQ29sbGVjdGlvbih7IGJyaWRnZVNuYXBzaG90LCBkb21haW5TbmFwc2hvdCwgbmFtZTogJ2xvdHMnLCBpZEZpZWxkOiAnbG90SWQnLCBmaWVsZHM6IFsnbG90SWQnLCAnc3BlY0lkJywgJ3N0YXR1cycsICdhdmFpbGFibGVRdHknLCAncmVzZXJ2ZWRRdHknXSwgaXNzdWVzIH0pLAogICAgY29tcGFyZUNvbGxlY3Rpb24oeyBicmlkZ2VTbmFwc2hvdCwgZG9tYWluU25hcHNob3QsIG5hbWU6ICdvcmRlcnMnLCBpZEZpZWxkOiAnb3JkZXJJZCcsIGZpZWxkczogWydvcmRlcklkJywgJ3NwZWNJZCcsICdzdGF0dXMnLCAncHJpY2UnLCAncXVhbnRpdHknLCAnZGVsaXZlcnlEYXRlJ10sIGlzc3VlcyB9KSwKICAgIGNvbXBhcmVDb2xsZWN0aW9uKHsgYnJpZGdlU25hcHNob3QsIGRvbWFpblNuYXBzaG90LCBuYW1lOiAndHJhZGVzJywgaWRGaWVsZDogJ3RyYWRlSWQnLCBmaWVsZHM6IFsndHJhZGVJZCcsICdvcmRlcklkJywgJ2xvdElkJywgJ3NwZWNJZCcsICdzdGF0dXMnLCAncHJpY2UnLCAncXVhbnRpdHknLCAnZGVsaXZlcnlEYXRlJywgJ3RyYWRlU25hcHNob3RIYXNoJ10sIGlzc3VlcyB9KSwKICBdOwogIGNoZWNrRG9tYWluSW52YXJpYW50cyhkb21haW5TbmFwc2hvdCwgaXNzdWVzKTsKICByZXR1cm4geyBzdGF0dXM6IGlzc3Vlcy5sZW5ndGggPyAnTUlTTUFUQ0gnIDogJ01BVENIJywgc2FmZTogaXNzdWVzLmxlbmd0aCA9PT0gMCwgY2hlY2tlZEF0LCBpc3N1ZUNvdW50OiBpc3N1ZXMubGVuZ3RoLCBpc3N1ZXMsIGNvbXBhcmVkQ29sbGVjdGlvbnMsIGJyaWRnZURhdGFTdGF0dXM6IGJyaWRnZVNuYXBzaG90LmRhdGFTdGF0dXMgfHwgbnVsbCwgZG9tYWluRGF0YVN0YXR1czogZG9tYWluU25hcHNob3QuZGF0YVN0YXR1cyB8fCBudWxsIH07Cn07CgpleHBvcnQgY29uc3QgcmVjb25jaWxpYXRpb25GaW5nZXJwcmludCA9IChyZXN1bHQpID0+IEpTT04uc3RyaW5naWZ5KHsgc3RhdHVzOiByZXN1bHQ/LnN0YXR1cywgaXNzdWVDb3VudDogcmVzdWx0Py5pc3N1ZUNvdW50LCBpc3N1ZXM6IGNsb25lKHJlc3VsdD8uaXNzdWVzIHx8IFtdKSB9KTsK
+const clone = (value) => JSON.parse(JSON.stringify(value ?? null));
+
+const asId = (value) => String(value ?? '').trim();
+
+const collection = (snapshot, name) => (Array.isArray(snapshot?.[name]) ? snapshot[name] : []);
+
+const indexById = (items, idField, collectionName, issues) => {
+  const index = new Map();
+  for (const item of items) {
+    const id = asId(item?.[idField]);
+    if (!id) {
+      issues.push({ code: 'IDENTIFIER_MISSING', collection: collectionName, idField });
+      continue;
+    }
+    if (index.has(id)) issues.push({ code: 'DUPLICATE_IDENTIFIER', collection: collectionName, id });
+    index.set(id, item);
+  }
+  return index;
+};
+
+const comparable = (record, fields) => Object.fromEntries(fields.map((field) => [field, record?.[field] ?? null]));
+
+const compareCollection = ({ bridgeSnapshot, domainSnapshot, name, idField, fields, issues }) => {
+  const bridgeItems = collection(bridgeSnapshot, name);
+  const domainItems = collection(domainSnapshot, name);
+  const bridgeIndex = indexById(bridgeItems, idField, name, issues);
+  const domainIndex = indexById(domainItems, idField, name, issues);
+  for (const id of bridgeIndex.keys()) {
+    if (!domainIndex.has(id)) {
+      issues.push({ code: 'DOMAIN_RECORD_MISSING', collection: name, id });
+      continue;
+    }
+    const expected = comparable(bridgeIndex.get(id), fields);
+    const actual = comparable(domainIndex.get(id), fields);
+    if (JSON.stringify(expected) !== JSON.stringify(actual)) issues.push({ code: 'FIELD_MISMATCH', collection: name, id, expected, actual });
+  }
+  for (const id of domainIndex.keys()) {
+    if (!bridgeIndex.has(id)) issues.push({ code: 'BRIDGE_RECORD_MISSING', collection: name, id });
+  }
+  return { collection: name, bridgeCount: bridgeIndex.size, domainCount: domainIndex.size };
+};
+
+const checkDomainInvariants = (domainSnapshot, issues) => {
+  for (const lot of collection(domainSnapshot, 'lots')) {
+    const available = Number(lot.availableQty);
+    const reserved = Number(lot.reservedQty);
+    if (!Number.isFinite(available) || available < 0) issues.push({ code: 'LOT_AVAILABLE_INVALID', collection: 'lots', id: asId(lot.lotId) });
+    if (!Number.isFinite(reserved) || reserved < 0) issues.push({ code: 'LOT_RESERVED_INVALID', collection: 'lots', id: asId(lot.lotId) });
+  }
+  const orderIds = new Set(collection(domainSnapshot, 'orders').map((order) => asId(order.orderId)));
+  const lotIds = new Set(collection(domainSnapshot, 'lots').map((lot) => asId(lot.lotId)));
+  for (const trade of collection(domainSnapshot, 'trades')) {
+    if (!orderIds.has(asId(trade.orderId))) issues.push({ code: 'TRADE_ORDER_MISSING', collection: 'trades', id: asId(trade.tradeId) });
+    if (!lotIds.has(asId(trade.lotId))) issues.push({ code: 'TRADE_LOT_MISSING', collection: 'trades', id: asId(trade.tradeId) });
+    if (!asId(trade.tradeSnapshotHash)) issues.push({ code: 'TRADE_SNAPSHOT_HASH_MISSING', collection: 'trades', id: asId(trade.tradeId) });
+  }
+};
+
+export const reconcileDomainState = ({ bridgeSnapshot, domainSnapshot } = {}) => {
+  const checkedAt = new Date().toISOString();
+  if (!bridgeSnapshot || typeof bridgeSnapshot !== 'object' || Array.isArray(bridgeSnapshot)) {
+    return { status: 'NO_REFERENCE', safe: false, checkedAt, issueCount: 1, issues: [{ code: 'BRIDGE_REFERENCE_MISSING' }], comparedCollections: [] };
+  }
+  if (!domainSnapshot || typeof domainSnapshot !== 'object' || Array.isArray(domainSnapshot)) {
+    return { status: 'MISMATCH', safe: false, checkedAt, issueCount: 1, issues: [{ code: 'DOMAIN_STATE_MISSING' }], comparedCollections: [] };
+  }
+  const issues = [];
+  const comparedCollections = [
+    compareCollection({ bridgeSnapshot, domainSnapshot, name: 'lots', idField: 'lotId', fields: ['lotId', 'specId', 'status', 'availableQty', 'reservedQty'], issues }),
+    compareCollection({ bridgeSnapshot, domainSnapshot, name: 'orders', idField: 'orderId', fields: ['orderId', 'specId', 'status', 'price', 'quantity', 'deliveryDate'], issues }),
+    compareCollection({ bridgeSnapshot, domainSnapshot, name: 'trades', idField: 'tradeId', fields: ['tradeId', 'orderId', 'lotId', 'specId', 'status', 'price', 'quantity', 'deliveryDate', 'tradeSnapshotHash'], issues }),
+  ];
+  checkDomainInvariants(domainSnapshot, issues);
+  return { status: issues.length ? 'MISMATCH' : 'MATCH', safe: issues.length === 0, checkedAt, issueCount: issues.length, issues, comparedCollections, bridgeDataStatus: bridgeSnapshot.dataStatus || null, domainDataStatus: domainSnapshot.dataStatus || null };
+};
+
+export const reconciliationFingerprint = (result) => JSON.stringify({ status: result?.status, issueCount: result?.issueCount, issues: clone(result?.issues || []) });

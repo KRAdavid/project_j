@@ -1,1 +1,53 @@
-aW1wb3J0IHsgY3JlYXRlSGFzaCB9IGZyb20gJ25vZGU6Y3J5cHRvJzsKaW1wb3J0IHsgcmVhZEZpbGVTeW5jIH0gZnJvbSAnbm9kZTpmcyc7CmltcG9ydCB7IHJlc29sdmUgfSBmcm9tICdub2RlOnBhdGgnOwppbXBvcnQgeyBmaWxlVVJMVG9QYXRoIH0gZnJvbSAnbm9kZTp1cmwnOwoKY29uc3QgcG9saWN5UGF0aCA9IHJlc29sdmUoZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuLi9kYXRhL2V2aWRlbmNlLXBvbGljeS5qc29uJywgaW1wb3J0Lm1ldGEudXJsKSkpOwpjb25zdCBwb2xpY3kgPSBKU09OLnBhcnNlKHJlYWRGaWxlU3luYyhwb2xpY3lQYXRoLCAndXRmOCcpKTsKCmNvbnN0IGNsb25lID0gKHZhbHVlKSA9PiBKU09OLnBhcnNlKEpTT04uc3RyaW5naWZ5KHZhbHVlKSk7CgpleHBvcnQgY29uc3QgaGFzaERvY3VtZW50ID0gKGNvbnRlbnQpID0+IGNyZWF0ZUhhc2goJ3NoYTI1NicpLnVwZGF0ZShTdHJpbmcoY29udGVudCksICd1dGY4JykuZGlnZXN0KCdoZXgnKTsKZXhwb3J0IGNvbnN0IGxvYWRFdmlkZW5jZVBvbGljeSA9ICgpID0+IGNsb25lKHBvbGljeSk7Cgpjb25zdCBpc1NoYTI1NiA9ICh2YWx1ZSkgPT4gL15bYS1mMC05XXs2NH0kL2kudGVzdChTdHJpbmcodmFsdWUgfHwgJycpKTsKCmV4cG9ydCBjb25zdCB2ZXJpZnlFdmlkZW5jZUJ1bmRsZSA9ICh7IGxvdElkLCBldmlkZW5jZSA9IFtdLCBub3cgPSBuZXcgRGF0ZSgpIH0gPSB7fSkgPT4gewogIGNvbnN0IHJlZmVyZW5jZVRpbWUgPSBuZXcgRGF0ZShub3cpOwogIGNvbnN0IHJlY29yZHNCeVR5cGUgPSBuZXcgTWFwKCk7CiAgY29uc3QgZHVwbGljYXRlVHlwZXMgPSBbXTsKICBmb3IgKGNvbnN0IHJlY29yZCBvZiBldmlkZW5jZSkgewogICAgaWYgKHJlY29yZHNCeVR5cGUuaGFzKHJlY29yZC5ldmlkZW5jZVR5cGUpKSBkdXBsaWNhdGVUeXBlcy5wdXNoKHJlY29yZC5ldmlkZW5jZVR5cGUpOwogICAgcmVjb3Jkc0J5VHlwZS5zZXQocmVjb3JkLmV2aWRlbmNlVHlwZSwgcmVjb3JkKTsKICB9CiAgY29uc3QgY2hlY2tzID0gcG9saWN5LnJlcXVpcmVkVHlwZXMubWFwKChldmlkZW5jZVR5cGUpID0+IHsKICAgIGNvbnN0IHJlY29yZCA9IHJlY29yZHNCeVR5cGUuZ2V0KGV2aWRlbmNlVHlwZSk7CiAgICBjb25zdCBleHBpcmVzQXQgPSByZWNvcmQgPyBuZXcgRGF0ZShyZWNvcmQuZXhwaXJlc0F0IHx8ICcnKSA6IG51bGw7CiAgICBjb25zdCB2YWxpZCA9IEJvb2xlYW4ocmVjb3JkKQogICAgICAmJiByZWNvcmQubG90SWQgPT09IGxvdElkCiAgICAgICYmIHJlY29yZC5zdGF0ZSA9PT0gJ1ZBTElEJwogICAgICAmJiBpc1NoYTI1NihyZWNvcmQuY29udGVudFNoYTI1NikKICAgICAgJiYgIU51bWJlci5pc05hTihleHBpcmVzQXQudmFsdWVPZigpKQogICAgICAmJiBleHBpcmVzQXQgPj0gcmVmZXJlbmNlVGltZTsKICAgIHJldHVybiB7CiAgICAgIGV2aWRlbmNlVHlwZSwKICAgICAgdmFsaWQsCiAgICAgIHJlYXNvbjogIXJlY29yZCA/ICdNSVNTSU5HJyA6IHJlY29yZC5sb3RJZCAhPT0gbG90SWQgPyAnTE9UX01JU01BVENIJyA6IHJlY29yZC5zdGF0ZSAhPT0gJ1ZBTElEJyA/ICdOT1RfVkFMSUQnIDogIWlzU2hhMjU2KHJlY29yZC5jb250ZW50U2hhMjU2KSA/ICdJTlZBTElEX0hBU0gnIDogTnVtYmVyLmlzTmFOKGV4cGlyZXNBdC52YWx1ZU9mKCkpIHx8IGV4cGlyZXNBdCA8IHJlZmVyZW5jZVRpbWUgPyAnRVhQSVJFRF9PUl9JTlZBTElEX0RBVEUnIDogbnVsbCwKICAgICAgZXZpZGVuY2VJZDogcmVjb3JkPy5ldmlkZW5jZUlkIHx8IG51bGwsCiAgICB9OwogIH0pOwogIGNvbnN0IGR1cGxpY2F0ZUNoZWNrID0geyBldmlkZW5jZVR5cGU6ICdEVVBMSUNBVEVfVFlQRScsIHZhbGlkOiBkdXBsaWNhdGVUeXBlcy5sZW5ndGggPT09IDAsIGR1cGxpY2F0ZVR5cGVzIH07CiAgY29uc3QgYWxsVmFsaWQgPSBjaGVja3MuZXZlcnkoKGNoZWNrKSA9PiBjaGVjay52YWxpZCkgJiYgZHVwbGljYXRlQ2hlY2sudmFsaWQ7CiAgcmV0dXJuIHsKICAgIGxvdElkLAogICAgc3RhdHVzOiBhbGxWYWxpZCA/ICdWQUxJRCcgOiAnQkxPQ0tFRCcsCiAgICBwcmVUcmFkZUVsaWdpYmxlOiBhbGxWYWxpZCwKICAgIHZlcmlmaWVkQXQ6IHJlZmVyZW5jZVRpbWUudG9JU09TdHJpbmcoKSwKICAgIGNoZWNrczogWy4uLmNoZWNrcywgZHVwbGljYXRlQ2hlY2tdLAogICAgbWlzc2luZzogY2hlY2tzLmZpbHRlcigoY2hlY2spID0+IGNoZWNrLnJlYXNvbiA9PT0gJ01JU1NJTkcnKS5tYXAoKGNoZWNrKSA9PiBjaGVjay5ldmlkZW5jZVR5cGUpLAogICAgaW52YWxpZDogY2hlY2tzLmZpbHRlcigoY2hlY2spID0+ICFjaGVjay52YWxpZCAmJiBjaGVjay5yZWFzb24gIT09ICdNSVNTSU5HJykubWFwKChjaGVjaykgPT4gY2hlY2suZXZpZGVuY2VUeXBlKSwKICAgIGR1cGxpY2F0ZVR5cGVzLAogICAgcG9saWN5SWQ6IHBvbGljeS5zY2hlbWFWZXJzaW9uLAogIH07Cn07Cg==
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const policyPath = resolve(fileURLToPath(new URL('../data/evidence-policy.json', import.meta.url)));
+const policy = JSON.parse(readFileSync(policyPath, 'utf8'));
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+
+export const hashDocument = (content) => createHash('sha256').update(String(content), 'utf8').digest('hex');
+export const loadEvidencePolicy = () => clone(policy);
+
+const isSha256 = (value) => /^[a-f0-9]{64}$/i.test(String(value || ''));
+
+export const verifyEvidenceBundle = ({ lotId, evidence = [], now = new Date() } = {}) => {
+  const referenceTime = new Date(now);
+  const recordsByType = new Map();
+  const duplicateTypes = [];
+  for (const record of evidence) {
+    if (recordsByType.has(record.evidenceType)) duplicateTypes.push(record.evidenceType);
+    recordsByType.set(record.evidenceType, record);
+  }
+  const checks = policy.requiredTypes.map((evidenceType) => {
+    const record = recordsByType.get(evidenceType);
+    const expiresAt = record ? new Date(record.expiresAt || '') : null;
+    const valid = Boolean(record)
+      && record.lotId === lotId
+      && record.state === 'VALID'
+      && isSha256(record.contentSha256)
+      && !Number.isNaN(expiresAt.valueOf())
+      && expiresAt >= referenceTime;
+    return {
+      evidenceType,
+      valid,
+      reason: !record ? 'MISSING' : record.lotId !== lotId ? 'LOT_MISMATCH' : record.state !== 'VALID' ? 'NOT_VALID' : !isSha256(record.contentSha256) ? 'INVALID_HASH' : Number.isNaN(expiresAt.valueOf()) || expiresAt < referenceTime ? 'EXPIRED_OR_INVALID_DATE' : null,
+      evidenceId: record?.evidenceId || null,
+    };
+  });
+  const duplicateCheck = { evidenceType: 'DUPLICATE_TYPE', valid: duplicateTypes.length === 0, duplicateTypes };
+  const allValid = checks.every((check) => check.valid) && duplicateCheck.valid;
+  return {
+    lotId,
+    status: allValid ? 'VALID' : 'BLOCKED',
+    preTradeEligible: allValid,
+    verifiedAt: referenceTime.toISOString(),
+    checks: [...checks, duplicateCheck],
+    missing: checks.filter((check) => check.reason === 'MISSING').map((check) => check.evidenceType),
+    invalid: checks.filter((check) => !check.valid && check.reason !== 'MISSING').map((check) => check.evidenceType),
+    duplicateTypes,
+    policyId: policy.schemaVersion,
+  };
+};

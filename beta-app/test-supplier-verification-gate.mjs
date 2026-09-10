@@ -1,1 +1,16 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIsIFBvc3RncmVzRG9tYWluQWRhcHRlckVycm9yIH0gZnJvbSAnLi9wb3N0Z3Jlcy1kb21haW4tYWRhcHRlci5tanMnOwoKY29uc3QgaWRzID0geyBvcmc6ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwNzEnLCBzdXBwbGllcjogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA3MicgfTsKY29uc3QgYnVuZGxlID0gWydDT0EnLCAnU0RTJywgJ1REUycsICdMT1RfVFJBQ0UnLCAnSU5WRU5UT1JZX1BST09GJ10ubWFwKChldmlkZW5jZVR5cGUpID0+ICh7IGV2aWRlbmNlVHlwZSwgZG9jdW1lbnRWZXJzaW9uOiAnMScsIGNvbnRlbnRTaGEyNTY6ICdiJy5yZXBlYXQoNjQpLCBzdG9yYWdlUmVmOiBgczM6Ly9ldmlkZW5jZS8ke2V2aWRlbmNlVHlwZX1gIH0pKTsKY29uc3QgY2xpZW50ID0gewogIGFzeW5jIHF1ZXJ5KHNxbCkgewogICAgaWYgKFsnQkVHSU4nLCAnQ09NTUlUJywgJ1JPTExCQUNLJ10uaW5jbHVkZXMoc3FsKSB8fCBzcWwuaW5jbHVkZXMoJ3BnX2Fkdmlzb3J5X3hhY3RfbG9jaycpKSByZXR1cm4geyByb3dzOiBbXSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSBvcmdhbml6YXRpb25zIFdIRVJFIG9yZ2FuaXphdGlvbl9pZCcpKSByZXR1cm4geyByb3dzOiBbXSB9OwogICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSBvcmdhbml6YXRpb25fbWVtYmVycycpKSByZXR1cm4geyByb3dzOiBbeyBvazogMSB9XSB9OwogICAgcmV0dXJuIHsgcm93czogW10gfTsKICB9LAogIHJlbGVhc2UoKSB7fSwKfTsKYXdhaXQgYXNzZXJ0LnJlamVjdHMoKCkgPT4gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiBjbGllbnQ7IH0gfSkucmVnaXN0ZXJMb3REcmFmdCh7IGxvdElkOiAnTE9ULVVOVkVSSUZJRUQnLCBzdXBwbGllck9yZ2FuaXphdGlvbklkOiBpZHMub3JnLCBzdXBwbGllclVzZXJJZDogaWRzLnN1cHBsaWVyLCBzcGVjSWQ6ICdHQUJBLVNQRUMtMDAxJywgYXZhaWxhYmxlUXR5OiAxMDAsIGFza1ByaWNlOiAyMTgwMCwgZGVsaXZlcnlEYXlzOiAxMCwgZXZpZGVuY2VCdW5kbGU6IGJ1bmRsZSwgYWN0b3JLaW5kOiAnSFVNQU4nLCBhY3RvclJlZjogaWRzLnN1cHBsaWVyLCBjb3JyZWxhdGlvbklkOiAnU1VQUExJRVItR0FURS0wMDEnIH0pLCAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgUG9zdGdyZXNEb21haW5BZGFwdGVyRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ1NVUFBMSUVSX09SR0FOSVpBVElPTl9OT1RfVkVSSUZJRUQnKTsKY29uc29sZS5sb2coJ3N1cHBsaWVyIHZlcmlmaWNhdGlvbiBnYXRlIHRlc3RzOiBQQVNTJyk7Cg==
+import assert from 'node:assert/strict';
+import { PostgresDomainAdapter, PostgresDomainAdapterError } from './postgres-domain-adapter.mjs';
+
+const ids = { org: '00000000-0000-0000-0000-000000000071', supplier: '00000000-0000-0000-0000-000000000072' };
+const bundle = ['COA', 'SDS', 'TDS', 'LOT_TRACE', 'INVENTORY_PROOF'].map((evidenceType) => ({ evidenceType, documentVersion: '1', contentSha256: 'b'.repeat(64), storageRef: `s3://evidence/${evidenceType}` }));
+const client = {
+  async query(sql) {
+    if (['BEGIN', 'COMMIT', 'ROLLBACK'].includes(sql) || sql.includes('pg_advisory_xact_lock')) return { rows: [] };
+    if (sql.includes('FROM organizations WHERE organization_id')) return { rows: [] };
+    if (sql.includes('FROM organization_members')) return { rows: [{ ok: 1 }] };
+    return { rows: [] };
+  },
+  release() {},
+};
+await assert.rejects(() => new PostgresDomainAdapter({ async connect() { return client; } }).registerLotDraft({ lotId: 'LOT-UNVERIFIED', supplierOrganizationId: ids.org, supplierUserId: ids.supplier, specId: 'GABA-SPEC-001', availableQty: 100, askPrice: 21800, deliveryDays: 10, evidenceBundle: bundle, actorKind: 'HUMAN', actorRef: ids.supplier, correlationId: 'SUPPLIER-GATE-001' }), (error) => error instanceof PostgresDomainAdapterError && error.code === 'SUPPLIER_ORGANIZATION_NOT_VERIFIED');
+console.log('supplier verification gate tests: PASS');

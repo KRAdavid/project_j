@@ -1,1 +1,169 @@
-aW1wb3J0IHsgYXBwZW5kRmlsZSwgbWtkaXIsIHJlYWRGaWxlIH0gZnJvbSAnbm9kZTpmcy9wcm9taXNlcyc7CmltcG9ydCB7IGNyZWF0ZUhhc2ggfSBmcm9tICdub2RlOmNyeXB0byc7CmltcG9ydCB7IGRpcm5hbWUgfSBmcm9tICdub2RlOnBhdGgnOwoKY29uc3QgY2xvbmUgPSAodmFsdWUpID0+IEpTT04ucGFyc2UoSlNPTi5zdHJpbmdpZnkodmFsdWUpKTsKCmNvbnN0IHJlYWRSZWNvcmRzID0gYXN5bmMgKG91dGJveFBhdGgpID0+IHsKICB0cnkgewogICAgY29uc3QgcmF3ID0gYXdhaXQgcmVhZEZpbGUob3V0Ym94UGF0aCwgJ3V0ZjgnKTsKICAgIHJldHVybiByYXcuc3BsaXQoL1xyP1xuLykuZmlsdGVyKEJvb2xlYW4pLm1hcCgobGluZSkgPT4gSlNPTi5wYXJzZShsaW5lKSk7CiAgfSBjYXRjaCAoZXJyb3IpIHsKICAgIGlmIChlcnJvci5jb2RlID09PSAnRU5PRU5UJykgcmV0dXJuIFtdOwogICAgdGhyb3cgZXJyb3I7CiAgfQp9OwoKY29uc3QgYWRkTm90aWZpY2F0aW9uID0gKG5vdGlmaWNhdGlvbnMsIG5vdGlmaWNhdGlvbikgPT4gewogIGlmICghbm90aWZpY2F0aW9ucy5zb21lKChpdGVtKSA9PiBpdGVtLmZpbmdlcnByaW50ID09PSBub3RpZmljYXRpb24uZmluZ2VycHJpbnQpKSBub3RpZmljYXRpb25zLnB1c2gobm90aWZpY2F0aW9uKTsKfTsKCmNvbnN0IG5vdGlmaWNhdGlvbklkRm9yID0gKG5vdGlmaWNhdGlvbikgPT4gbm90aWZpY2F0aW9uLm5vdGlmaWNhdGlvbklkCiAgfHwgYE5PVElGWS0ke2NyZWF0ZUhhc2goJ3NoYTI1NicpLnVwZGF0ZShTdHJpbmcobm90aWZpY2F0aW9uLmZpbmdlcnByaW50IHx8IG5vdGlmaWNhdGlvbi50aXRsZSB8fCAnVU5LTk9XTicpKS5kaWdlc3QoJ2hleCcpLnNsaWNlKDAsIDIwKX1gOwoKZXhwb3J0IGNvbnN0IGxhdGVzdE9wZXJhdGlvbmFsTm90aWZpY2F0aW9ucyA9IChyZWNvcmRzID0gW10pID0+IHsKICBjb25zdCBsYXRlc3QgPSBuZXcgTWFwKCk7CiAgZm9yIChjb25zdCByZWNvcmQgb2YgcmVjb3JkcykgewogICAgaWYgKCFyZWNvcmQgfHwgdHlwZW9mIHJlY29yZCAhPT0gJ29iamVjdCcpIGNvbnRpbnVlOwogICAgY29uc3Qgbm90aWZpY2F0aW9uSWQgPSBub3RpZmljYXRpb25JZEZvcihyZWNvcmQpOwogICAgbGF0ZXN0LnNldChub3RpZmljYXRpb25JZCwgeyAuLi5yZWNvcmQsIG5vdGlmaWNhdGlvbklkIH0pOwogIH0KICByZXR1cm4gWy4uLmxhdGVzdC52YWx1ZXMoKV07Cn07CgpleHBvcnQgY2xhc3MgTm90aWZpY2F0aW9uT3V0Ym94RXJyb3IgZXh0ZW5kcyBFcnJvciB7CiAgY29uc3RydWN0b3IobWVzc2FnZSwgY29kZSA9ICdOT1RJRklDQVRJT05fT1VUQk9YX0VSUk9SJykgewogICAgc3VwZXIobWVzc2FnZSk7CiAgICB0aGlzLmNvZGUgPSBjb2RlOwogIH0KfQoKZXhwb3J0IGNvbnN0IGJ1aWxkT3BlcmF0aW9uYWxOb3RpZmljYXRpb25zID0gKHsgY3ljbGUgPSB7fSwgcmV2aWV3ID0ge30sIGdlbmVyYXRlZEF0ID0gbmV3IERhdGUoKS50b0lTT1N0cmluZygpIH0gPSB7fSkgPT4gewogIGNvbnN0IG5vdGlmaWNhdGlvbnMgPSBbXTsKICBjb25zdCBtaXNzaW5nID0gQXJyYXkuaXNBcnJheShjeWNsZS5yZWFkaW5lc3M/Lm1pc3NpbmcpID8gY3ljbGUucmVhZGluZXNzLm1pc3NpbmcgOiBbXTsKICBjb25zdCBzZWxlY3RlZFRhc2tJZCA9IGN5Y2xlLmF1dG9waWxvdD8udGFza0lkIHx8IG51bGw7CiAgY29uc3QgbW9uaXRvclN0YXR1cyA9IGN5Y2xlLm1vbml0b3I/LnN0YXR1cyB8fCAnVU5LTk9XTic7CgogIGlmIChtb25pdG9yU3RhdHVzICE9PSAnT0snKSB7CiAgICBhZGROb3RpZmljYXRpb24obm90aWZpY2F0aW9ucywgewogICAgICBzY2hlbWFWZXJzaW9uOiAnT1BTLU5PVElGSUNBVElPTi0wLjEnLAogICAgICBub3RpZmljYXRpb25UeXBlOiAnSU5DSURFTlRfSFVNQU5fUkVWSUVXJywKICAgICAgc2V2ZXJpdHk6ICdDUklUSUNBTCcsCiAgICAgIGZpbmdlcnByaW50OiBgbW9uaXRvcjoke21vbml0b3JTdGF0dXN9YCwKICAgICAgdGl0bGU6ICfsmrTsmIEg6rG06rCV7IOB7YOcIOydtOyDgSDCtyDsi6Dqt5wg6rGw656YIOykkeyngCDqsoDthqAg7ZWE7JqUJywKICAgICAgbWVzc2FnZTogYOuqqOuLiO2EsOungSDsg4Htg5zqsIAgJHttb25pdG9yU3RhdHVzfeyeheuLiOuLpC4g7JuQ7J6lwrfspp3qsbAg7IOB7YOc66W8IO2ZleyduO2VmOq4sCDsoITquYzsp4Ag7Iug6recIOyytOqysOydhCDtl4jsmqntlZjsp4Ag7JWK7Iq164uI64ukLmAsCiAgICAgIHJlcXVpcmVkUHJpbmNpcGFsOiAnSC0wMScsCiAgICAgIGFjdGlvbjogJ1JFQURfT05MWV9BTkRfSU5WRVNUSUdBVEUnLAogICAgICBnZW5lcmF0ZWRBdCwKICAgIH0pOwogIH0KCiAgaWYgKGN5Y2xlLnJlYWRpbmVzcz8uZGVjaXNpb24gIT09ICdHTycpIHsKICAgIGFkZE5vdGlmaWNhdGlvbihub3RpZmljYXRpb25zLCB7CiAgICAgIHNjaGVtYVZlcnNpb246ICdPUFMtTk9USUZJQ0FUSU9OLTAuMScsCiAgICAgIG5vdGlmaWNhdGlvblR5cGU6ICdSRUxFQVNFX05PX0dPJywKICAgICAgc2V2ZXJpdHk6ICdDUklUSUNBTCcsCiAgICAgIGZpbmdlcnByaW50OiBgcmVhZGluZXNzOiR7bWlzc2luZy5qb2luKCd8JykgfHwgJ1VOS05PV04nfWAsCiAgICAgIHRpdGxlOiAn7IOB7JqpIOyghO2ZmCDrs7TrpZggwrcg7ZWE7IiYIOyhsOqxtCDrr7jstqnsobEnLAogICAgICBtZXNzYWdlOiBg7IOB7JqpIOyghO2ZmCDtlYTsiJjsobDqsbTsnbQg7Lap7KGx65CY7KeAIOyViuyVmOyKteuLiOuLpDogJHttaXNzaW5nLmpvaW4oJywgJykgfHwgJ+yDge2DnCDtmZXsnbgg7ZWE7JqUJ30uYCwKICAgICAgcmVxdWlyZWRQcmluY2lwYWw6ICdILTAxJywKICAgICAgYWN0aW9uOiAnSE9MRF9SRUFMX09QRVJBVElPTlMnLAogICAgICBnZW5lcmF0ZWRBdCwKICAgIH0pOwogIH0KCiAgaWYgKGN5Y2xlLmRlY2lzaW9uID09PSAnSFVNQU5fUkVWSUVXX1JFUVVJUkVEJyB8fCBjeWNsZS5kZWNpc2lvbiA9PT0gJ0lOQ0lERU5UX0hVTUFOX1JFVklFV19SRVFVSVJFRCcpIHsKICAgIGFkZE5vdGlmaWNhdGlvbihub3RpZmljYXRpb25zLCB7CiAgICAgIHNjaGVtYVZlcnNpb246ICdPUFMtTk9USUZJQ0FUSU9OLTAuMScsCiAgICAgIG5vdGlmaWNhdGlvblR5cGU6ICdIVU1BTl9SRVZJRVdfUkVRVUlSRUQnLAogICAgICBzZXZlcml0eTogY3ljbGUuZGVjaXNpb24gPT09ICdJTkNJREVOVF9IVU1BTl9SRVZJRVdfUkVRVUlSRUQnID8gJ0NSSVRJQ0FMJyA6ICdISUdIJywKICAgICAgZmluZ2VycHJpbnQ6IGByZXZpZXc6JHtzZWxlY3RlZFRhc2tJZCB8fCBjeWNsZS5kZWNpc2lvbn1gLAogICAgICB0aXRsZTogJ0gtMDEg7Iq57J24IOuMgOq4sCDsl4XrrLTqsIAg7IOd7ISx65CoJywKICAgICAgbWVzc2FnZTogYOyekOuPmeyatOyYgSDqsrDqs7wgJHtzZWxlY3RlZFRhc2tJZCB8fCAn6rKA7YagIOuMgOyDgSd97JeQIOuMgO2VnCDsnbjqsIQg6rKw7KCV7J20IO2VhOyalO2VqeuLiOuLpC5gLAogICAgICByZXF1aXJlZFByaW5jaXBhbDogJ0gtMDEnLAogICAgICBhY3Rpb246ICdSRVZJRVdfQVBQUk9WQUxfSU5CT1gnLAogICAgICBnZW5lcmF0ZWRBdCwKICAgIH0pOwogIH0KCiAgY29uc3Qgc3RhbGVDb3VudCA9IE51bWJlcihyZXZpZXcuYXBwcm92YWxzPy5zbGE/LnN0YWxlQ291bnQgfHwgMCk7CiAgaWYgKHN0YWxlQ291bnQgPiAwKSB7CiAgICBhZGROb3RpZmljYXRpb24obm90aWZpY2F0aW9ucywgewogICAgICBzY2hlbWFWZXJzaW9uOiAnT1BTLU5PVElGSUNBVElPTi0wLjEnLAogICAgICBub3RpZmljYXRpb25UeXBlOiAnU1RBTEVfQVBQUk9WQUxTJywKICAgICAgc2V2ZXJpdHk6ICdISUdIJywKICAgICAgZmluZ2VycHJpbnQ6IGBzdGFsZS1hcHByb3ZhbHM6JHtzdGFsZUNvdW50fWAsCiAgICAgIHRpdGxlOiAn7Iq57J24IFNMQSDstIjqs7wgwrcgSC0wMSDqsoDthqAg7ZWE7JqUJywKICAgICAgbWVzc2FnZTogYOyKueyduCDrjIDquLAgJHtzdGFsZUNvdW50feqxtOydtCDsoJXtlbTsp4QgU0xB66W8IOy0iOqzvO2WiOyKteuLiOuLpC4g7J6Q64+ZIOyLpO2WieydgCDqs4Tsho0g67O066WY7ZWp64uI64ukLmAsCiAgICAgIHJlcXVpcmVkUHJpbmNpcGFsOiAnSC0wMScsCiAgICAgIGFjdGlvbjogJ0VTQ0FMQVRFX0gwMV9SRVZJRVcnLAogICAgICBnZW5lcmF0ZWRBdCwKICAgIH0pOwogIH0KCiAgY29uc3Qgc3RhbGVUYXNrQ291bnQgPSBOdW1iZXIocmV2aWV3LnRhc2tzPy5zbGE/LnN0YWxlQ291bnQgfHwgMCk7CiAgaWYgKHN0YWxlVGFza0NvdW50ID4gMCkgewogICAgYWRkTm90aWZpY2F0aW9uKG5vdGlmaWNhdGlvbnMsIHsKICAgICAgc2NoZW1hVmVyc2lvbjogJ09QUy1OT1RJRklDQVRJT04tMC4xJywKICAgICAgbm90aWZpY2F0aW9uVHlwZTogJ1NUQUxFX1RBU0tTJywKICAgICAgc2V2ZXJpdHk6ICdISUdIJywKICAgICAgZmluZ2VycHJpbnQ6IGBzdGFsZS10YXNrczoke3N0YWxlVGFza0NvdW50fWAsCiAgICAgIHRpdGxlOiAn7JeF66y0IFNMQSDstIjqs7wgwrcg64u064u5IOyngOybkCDrsI8gSC0wMSDqsoDthqAg7ZWE7JqUJywKICAgICAgbWVzc2FnZTogYO2ZnOyEsSDsl4XrrLQgJHtzdGFsZVRhc2tDb3VudH3qsbTsnbQg7KCV7ZW07KeEIFNMQeulvCDstIjqs7ztlojsirXri4jri6QuIEFJ64qUIOuLtOuLuSDrs4Dqsr3Ct+q4sO2VnCDrs4Dqsr3Ct+yLpO2WiSDsnqzqsJzrpbwg7J6Q64+ZIOyymOumrO2VmOyngCDslYrsirXri4jri6QuYCwKICAgICAgcmVxdWlyZWRQcmluY2lwYWw6ICdILTAxJywKICAgICAgYWN0aW9uOiAnRVNDQUxBVEVfQUkwMV9BTkRfSDAxJywKICAgICAgZ2VuZXJhdGVkQXQsCiAgICB9KTsKICB9CgogIHJldHVybiBub3RpZmljYXRpb25zOwp9OwoKZXhwb3J0IGNvbnN0IGFwcGVuZE9wZXJhdGlvbmFsTm90aWZpY2F0aW9ucyA9IGFzeW5jIChvdXRib3hQYXRoLCBub3RpZmljYXRpb25zID0gW10sIHsgZ2VuZXJhdGVkQXQgPSBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCkgfSA9IHt9KSA9PiB7CiAgaWYgKCFvdXRib3hQYXRoKSB0aHJvdyBuZXcgRXJyb3IoJ+yVjOumvCDrjIDquLDtlagg7KCA7J6lIOqyveuhnOqwgCDtlYTsmpTtlanri4jri6QuJyk7CiAgaWYgKCFBcnJheS5pc0FycmF5KG5vdGlmaWNhdGlvbnMpKSB0aHJvdyBuZXcgRXJyb3IoJ+yVjOumvCDrqqnroZ0g7ZiV7Iud7J20IOyYrOuwlOultOyngCDslYrsirXri4jri6QuJyk7CiAgY29uc3QgZXhpc3RpbmdSYXcgPSBhd2FpdCByZWFkUmVjb3JkcyhvdXRib3hQYXRoKTsKICBjb25zdCBleGlzdGluZyA9IGxhdGVzdE9wZXJhdGlvbmFsTm90aWZpY2F0aW9ucyhleGlzdGluZ1Jhdyk7CiAgY29uc3Qga25vd24gPSBuZXcgU2V0KGV4aXN0aW5nLmZpbHRlcigocmVjb3JkKSA9PiByZWNvcmQuc3RhdGUgIT09ICdSRVNPTFZFRCcpLm1hcCgocmVjb3JkKSA9PiByZWNvcmQuZmluZ2VycHJpbnQpKTsKICBjb25zdCBhZGRpdGlvbnMgPSBub3RpZmljYXRpb25zCiAgICAuZmlsdGVyKChub3RpZmljYXRpb24pID0+IG5vdGlmaWNhdGlvbj8uZmluZ2VycHJpbnQgJiYgIWtub3duLmhhcyhub3RpZmljYXRpb24uZmluZ2VycHJpbnQpKQogICAgLm1hcCgobm90aWZpY2F0aW9uKSA9PiAoeyAuLi5jbG9uZShub3RpZmljYXRpb24pLCBub3RpZmljYXRpb25JZDogbm90aWZpY2F0aW9uSWRGb3Iobm90aWZpY2F0aW9uKSwgc3RhdGU6ICdQRU5ESU5HJywgZGVsaXZlcnk6ICdPVVRCT1hfT05MWScsIGNyZWF0ZWRBdDogbm90aWZpY2F0aW9uLmdlbmVyYXRlZEF0IHx8IGdlbmVyYXRlZEF0IH0pKTsKICBpZiAoYWRkaXRpb25zLmxlbmd0aCkgewogICAgYXdhaXQgbWtkaXIoZGlybmFtZShvdXRib3hQYXRoKSwgeyByZWN1cnNpdmU6IHRydWUgfSk7CiAgICBhd2FpdCBhcHBlbmRGaWxlKG91dGJveFBhdGgsIGFkZGl0aW9ucy5tYXAoKHJlY29yZCkgPT4gYCR7SlNPTi5zdHJpbmdpZnkocmVjb3JkKX1cbmApLmpvaW4oJycpLCAndXRmOCcpOwogIH0KICByZXR1cm4gewogICAgc2NoZW1hVmVyc2lvbjogJ09QUy1OT1RJRklDQVRJT04tT1VUQk9YLTAuMScsCiAgICBnZW5lcmF0ZWRBdCwKICAgIGRlbGl2ZXJ5OiAnT1VUQk9YX09OTFknLAogICAgZXh0ZXJuYWxOb3RpZmljYXRpb25TZW50OiBmYWxzZSwKICAgIHBlbmRpbmdDb3VudDogWy4uLmV4aXN0aW5nLCAuLi5hZGRpdGlvbnNdLmZpbHRlcigocmVjb3JkKSA9PiByZWNvcmQuc3RhdGUgPT09ICdQRU5ESU5HJykubGVuZ3RoLAogICAgYWRkZWRDb3VudDogYWRkaXRpb25zLmxlbmd0aCwKICAgIGFkZGl0aW9uczogYWRkaXRpb25zLm1hcChjbG9uZSksCiAgICBndWFyZHJhaWw6ICfslYzrprzsnYAg64yA6riw7ZWo7JeQ66eMIOq4sOuhne2VnOuLpC4g7Iq57J2465CcIOyZuOu2gCDssYTrhJAg7Jew6rKwIOyghOyXkOuKlCDsmbjrtoAg66mU7Iuc7KeA66W8IOyekOuPmSDrsJzshqHtlZjsp4Ag7JWK64qU64ukLicsCiAgfTsKfTsKCmV4cG9ydCBjb25zdCBhY2tub3dsZWRnZU9wZXJhdGlvbmFsTm90aWZpY2F0aW9uID0gYXN5bmMgKG91dGJveFBhdGgsIG5vdGlmaWNhdGlvbklkLCB7IGFja25vd2xlZGdlZEJ5LCBhY2tub3dsZWRnZWRBdCA9IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSwgbm90ZSA9ICcnIH0gPSB7fSkgPT4gewogIGlmICghb3V0Ym94UGF0aCkgdGhyb3cgbmV3IE5vdGlmaWNhdGlvbk91dGJveEVycm9yKCfslYzrprwg64yA6riw7ZWoIOyggOyepSDqsr3roZzqsIAg7ZWE7JqU7ZWp64uI64ukLicsICdPVVRCT1hfUEFUSF9SRVFVSVJFRCcpOwogIGlmICghYWNrbm93bGVkZ2VkQnkpIHRocm93IG5ldyBOb3RpZmljYXRpb25PdXRib3hFcnJvcign7JWM66a8IO2ZleyduOyekCDsi53rs4TsnpDqsIAg7ZWE7JqU7ZWp64uI64ukLicsICdBQ0tOT1dMRURHRVJfUkVRVUlSRUQnKTsKICBjb25zdCBleGlzdGluZ1JhdyA9IGF3YWl0IHJlYWRSZWNvcmRzKG91dGJveFBhdGgpOwogIGNvbnN0IGxhdGVzdCA9IGxhdGVzdE9wZXJhdGlvbmFsTm90aWZpY2F0aW9ucyhleGlzdGluZ1Jhdyk7CiAgY29uc3QgaXRlbSA9IGxhdGVzdC5maW5kKChyZWNvcmQpID0+IHJlY29yZC5ub3RpZmljYXRpb25JZCA9PT0gbm90aWZpY2F0aW9uSWQgfHwgcmVjb3JkLmZpbmdlcnByaW50ID09PSBub3RpZmljYXRpb25JZCk7CiAgaWYgKCFpdGVtKSB0aHJvdyBuZXcgTm90aWZpY2F0aW9uT3V0Ym94RXJyb3IoJ+yVjOumvOydhCDssL7snYQg7IiYIOyXhuyKteuLiOuLpC4nLCAnTk9USUZJQ0FUSU9OX05PVF9GT1VORCcpOwogIGlmIChpdGVtLnN0YXRlICE9PSAnUEVORElORycpIHsKICAgIGlmIChpdGVtLnN0YXRlID09PSAnQUNLTk9XTEVER0VEJyAmJiBpdGVtLmFja25vd2xlZGdlZEJ5ID09PSBhY2tub3dsZWRnZWRCeSkgcmV0dXJuIHsgcmVjb3JkOiBpdGVtLCBpZGVtcG90ZW50OiB0cnVlIH07CiAgICB0aHJvdyBuZXcgTm90aWZpY2F0aW9uT3V0Ym94RXJyb3IoJ+ydtOuvuCDtmZXsnbjrkJjsl4jqsbDrgpgg7KKF6rKw65CcIOyVjOumvOydgCDri6Tsi5wg67OA6rK97ZWgIOyImCDsl4bsirXri4jri6QuJywgJ05PVElGSUNBVElPTl9BTFJFQURZX0FDS05PV0xFREdFRCcpOwogIH0KICBjb25zdCByZWNvcmQgPSB7CiAgICAuLi5jbG9uZShpdGVtKSwKICAgIG5vdGlmaWNhdGlvbklkOiBub3RpZmljYXRpb25JZEZvcihpdGVtKSwKICAgIHN0YXRlOiAnQUNLTk9XTEVER0VEJywKICAgIGFja25vd2xlZGdlZEJ5LAogICAgYWNrbm93bGVkZ2VkQXQsCiAgICBhY2tub3dsZWRnbWVudE5vdGU6IFN0cmluZyhub3RlIHx8ICcnKS5zbGljZSgwLCAyMDAwKSwKICB9OwogIGF3YWl0IG1rZGlyKGRpcm5hbWUob3V0Ym94UGF0aCksIHsgcmVjdXJzaXZlOiB0cnVlIH0pOwogIGF3YWl0IGFwcGVuZEZpbGUob3V0Ym94UGF0aCwgYCR7SlNPTi5zdHJpbmdpZnkocmVjb3JkKX1cbmAsICd1dGY4Jyk7CiAgcmV0dXJuIHsgcmVjb3JkLCBpZGVtcG90ZW50OiBmYWxzZSB9Owp9Owo=
+import { appendFile, mkdir, readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { dirname } from 'node:path';
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+
+const readRecords = async (outboxPath) => {
+  try {
+    const raw = await readFile(outboxPath, 'utf8');
+    return raw.split(/\r?\n/).filter(Boolean).map((line) => JSON.parse(line));
+  } catch (error) {
+    if (error.code === 'ENOENT') return [];
+    throw error;
+  }
+};
+
+const addNotification = (notifications, notification) => {
+  if (!notifications.some((item) => item.fingerprint === notification.fingerprint)) notifications.push(notification);
+};
+
+const notificationIdFor = (notification) => notification.notificationId
+  || `NOTIFY-${createHash('sha256').update(String(notification.fingerprint || notification.title || 'UNKNOWN')).digest('hex').slice(0, 20)}`;
+
+export const latestOperationalNotifications = (records = []) => {
+  const latest = new Map();
+  for (const record of records) {
+    if (!record || typeof record !== 'object') continue;
+    const notificationId = notificationIdFor(record);
+    latest.set(notificationId, { ...record, notificationId });
+  }
+  return [...latest.values()];
+};
+
+export class NotificationOutboxError extends Error {
+  constructor(message, code = 'NOTIFICATION_OUTBOX_ERROR') {
+    super(message);
+    this.code = code;
+  }
+}
+
+export const buildOperationalNotifications = ({ cycle = {}, review = {}, generatedAt = new Date().toISOString() } = {}) => {
+  const notifications = [];
+  const missing = Array.isArray(cycle.readiness?.missing) ? cycle.readiness.missing : [];
+  const selectedTaskId = cycle.autopilot?.taskId || null;
+  const monitorStatus = cycle.monitor?.status || 'UNKNOWN';
+
+  if (monitorStatus !== 'OK') {
+    addNotification(notifications, {
+      schemaVersion: 'OPS-NOTIFICATION-0.1',
+      notificationType: 'INCIDENT_HUMAN_REVIEW',
+      severity: 'CRITICAL',
+      fingerprint: `monitor:${monitorStatus}`,
+      title: '운영 건강상태 이상 · 신규 거래 중지 검토 필요',
+      message: `모니터링 상태가 ${monitorStatus}입니다. 원장·증거 상태를 확인하기 전까지 신규 체결을 허용하지 않습니다.`,
+      requiredPrincipal: 'H-01',
+      action: 'READ_ONLY_AND_INVESTIGATE',
+      generatedAt,
+    });
+  }
+
+  if (cycle.readiness?.decision !== 'GO') {
+    addNotification(notifications, {
+      schemaVersion: 'OPS-NOTIFICATION-0.1',
+      notificationType: 'RELEASE_NO_GO',
+      severity: 'CRITICAL',
+      fingerprint: `readiness:${missing.join('|') || 'UNKNOWN'}`,
+      title: '상용 전환 보류 · 필수 조건 미충족',
+      message: `상용 전환 필수조건이 충족되지 않았습니다: ${missing.join(', ') || '상태 확인 필요'}.`,
+      requiredPrincipal: 'H-01',
+      action: 'HOLD_REAL_OPERATIONS',
+      generatedAt,
+    });
+  }
+
+  if (cycle.decision === 'HUMAN_REVIEW_REQUIRED' || cycle.decision === 'INCIDENT_HUMAN_REVIEW_REQUIRED') {
+    addNotification(notifications, {
+      schemaVersion: 'OPS-NOTIFICATION-0.1',
+      notificationType: 'HUMAN_REVIEW_REQUIRED',
+      severity: cycle.decision === 'INCIDENT_HUMAN_REVIEW_REQUIRED' ? 'CRITICAL' : 'HIGH',
+      fingerprint: `review:${selectedTaskId || cycle.decision}`,
+      title: 'H-01 승인 대기 업무가 생성됨',
+      message: `자동운영 결과 ${selectedTaskId || '검토 대상'}에 대한 인간 결정이 필요합니다.`,
+      requiredPrincipal: 'H-01',
+      action: 'REVIEW_APPROVAL_INBOX',
+      generatedAt,
+    });
+  }
+
+  const staleCount = Number(review.approvals?.sla?.staleCount || 0);
+  if (staleCount > 0) {
+    addNotification(notifications, {
+      schemaVersion: 'OPS-NOTIFICATION-0.1',
+      notificationType: 'STALE_APPROVALS',
+      severity: 'HIGH',
+      fingerprint: `stale-approvals:${staleCount}`,
+      title: '승인 SLA 초과 · H-01 검토 필요',
+      message: `승인 대기 ${staleCount}건이 정해진 SLA를 초과했습니다. 자동 실행은 계속 보류합니다.`,
+      requiredPrincipal: 'H-01',
+      action: 'ESCALATE_H01_REVIEW',
+      generatedAt,
+    });
+  }
+
+  const staleTaskCount = Number(review.tasks?.sla?.staleCount || 0);
+  if (staleTaskCount > 0) {
+    addNotification(notifications, {
+      schemaVersion: 'OPS-NOTIFICATION-0.1',
+      notificationType: 'STALE_TASKS',
+      severity: 'HIGH',
+      fingerprint: `stale-tasks:${staleTaskCount}`,
+      title: '업무 SLA 초과 · 담당 지원 및 H-01 검토 필요',
+      message: `활성 업무 ${staleTaskCount}건이 정해진 SLA를 초과했습니다. AI는 담당 변경·기한 변경·실행 재개를 자동 처리하지 않습니다.`,
+      requiredPrincipal: 'H-01',
+      action: 'ESCALATE_AI01_AND_H01',
+      generatedAt,
+    });
+  }
+
+  return notifications;
+};
+
+export const appendOperationalNotifications = async (outboxPath, notifications = [], { generatedAt = new Date().toISOString() } = {}) => {
+  if (!outboxPath) throw new Error('알림 대기함 저장 경로가 필요합니다.');
+  if (!Array.isArray(notifications)) throw new Error('알림 목록 형식이 올바르지 않습니다.');
+  const existingRaw = await readRecords(outboxPath);
+  const existing = latestOperationalNotifications(existingRaw);
+  const known = new Set(existing.filter((record) => record.state !== 'RESOLVED').map((record) => record.fingerprint));
+  const additions = notifications
+    .filter((notification) => notification?.fingerprint && !known.has(notification.fingerprint))
+    .map((notification) => ({ ...clone(notification), notificationId: notificationIdFor(notification), state: 'PENDING', delivery: 'OUTBOX_ONLY', createdAt: notification.generatedAt || generatedAt }));
+  if (additions.length) {
+    await mkdir(dirname(outboxPath), { recursive: true });
+    await appendFile(outboxPath, additions.map((record) => `${JSON.stringify(record)}\n`).join(''), 'utf8');
+  }
+  return {
+    schemaVersion: 'OPS-NOTIFICATION-OUTBOX-0.1',
+    generatedAt,
+    delivery: 'OUTBOX_ONLY',
+    externalNotificationSent: false,
+    pendingCount: [...existing, ...additions].filter((record) => record.state === 'PENDING').length,
+    addedCount: additions.length,
+    additions: additions.map(clone),
+    guardrail: '알림은 대기함에만 기록한다. 승인된 외부 채널 연결 전에는 외부 메시지를 자동 발송하지 않는다.',
+  };
+};
+
+export const acknowledgeOperationalNotification = async (outboxPath, notificationId, { acknowledgedBy, acknowledgedAt = new Date().toISOString(), note = '' } = {}) => {
+  if (!outboxPath) throw new NotificationOutboxError('알림 대기함 저장 경로가 필요합니다.', 'OUTBOX_PATH_REQUIRED');
+  if (!acknowledgedBy) throw new NotificationOutboxError('알림 확인자 식별자가 필요합니다.', 'ACKNOWLEDGER_REQUIRED');
+  const existingRaw = await readRecords(outboxPath);
+  const latest = latestOperationalNotifications(existingRaw);
+  const item = latest.find((record) => record.notificationId === notificationId || record.fingerprint === notificationId);
+  if (!item) throw new NotificationOutboxError('알림을 찾을 수 없습니다.', 'NOTIFICATION_NOT_FOUND');
+  if (item.state !== 'PENDING') {
+    if (item.state === 'ACKNOWLEDGED' && item.acknowledgedBy === acknowledgedBy) return { record: item, idempotent: true };
+    throw new NotificationOutboxError('이미 확인되었거나 종결된 알림은 다시 변경할 수 없습니다.', 'NOTIFICATION_ALREADY_ACKNOWLEDGED');
+  }
+  const record = {
+    ...clone(item),
+    notificationId: notificationIdFor(item),
+    state: 'ACKNOWLEDGED',
+    acknowledgedBy,
+    acknowledgedAt,
+    acknowledgmentNote: String(note || '').slice(0, 2000),
+  };
+  await mkdir(dirname(outboxPath), { recursive: true });
+  await appendFile(outboxPath, `${JSON.stringify(record)}\n`, 'utf8');
+  return { record, idempotent: false };
+};

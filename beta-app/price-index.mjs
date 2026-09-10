@@ -1,1 +1,69 @@
-aW1wb3J0IHsgcmVhZEZpbGVTeW5jIH0gZnJvbSAnbm9kZTpmcyc7CmltcG9ydCB7IHJlc29sdmUgfSBmcm9tICdub2RlOnBhdGgnOwppbXBvcnQgeyBmaWxlVVJMVG9QYXRoIH0gZnJvbSAnbm9kZTp1cmwnOwoKY29uc3QgcG9saWN5UGF0aCA9IHJlc29sdmUoZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuLi9kYXRhL3ByaWNlLWluZGV4LXBvbGljeS5qc29uJywgaW1wb3J0Lm1ldGEudXJsKSkpOwpjb25zdCBwb2xpY3kgPSBKU09OLnBhcnNlKHJlYWRGaWxlU3luYyhwb2xpY3lQYXRoLCAndXRmOCcpKTsKY29uc3Qgc291cmNlQ29udHJhY3RQYXRoID0gcmVzb2x2ZShmaWxlVVJMVG9QYXRoKG5ldyBVUkwoJy4uL2RhdGEvcHJpY2Utc291cmNlLWNvbnRyYWN0Lmpzb24nLCBpbXBvcnQubWV0YS51cmwpKSk7CmNvbnN0IHNvdXJjZUNvbnRyYWN0ID0gSlNPTi5wYXJzZShyZWFkRmlsZVN5bmMoc291cmNlQ29udHJhY3RQYXRoLCAndXRmOCcpKTsKCmNvbnN0IGNsb25lID0gKHZhbHVlKSA9PiBKU09OLnBhcnNlKEpTT04uc3RyaW5naWZ5KHZhbHVlKSk7CgpleHBvcnQgY29uc3QgbG9hZFByaWNlUG9saWN5ID0gKCkgPT4gY2xvbmUocG9saWN5KTsKCmNvbnN0IHZhbGlkT2JzZXJ2YXRpb24gPSAob2JzZXJ2YXRpb24sIHNwZWNJZCwgY3V0b2ZmKSA9PiB7CiAgY29uc3QgZnVsZmlsbGVkQXQgPSBuZXcgRGF0ZShvYnNlcnZhdGlvbi5mdWxmaWxsZWRBdCB8fCAnJyk7CiAgcmV0dXJuIG9ic2VydmF0aW9uLnNwZWNJZCA9PT0gc3BlY0lkCiAgICAmJiBvYnNlcnZhdGlvbi5zdGF0dXMgPT09IHBvbGljeS5yZXF1aXJlZFRyYWRlU3RhdHVzCiAgICAmJiBvYnNlcnZhdGlvbi5ldmlkZW5jZVN0YXR1cyA9PT0gcG9saWN5LnJlcXVpcmVkRXZpZGVuY2VTdGF0dXMKICAgICYmIG9ic2VydmF0aW9uLmN1cnJlbmN5ID09PSBwb2xpY3kuY2Fub25pY2FsQ3VycmVuY3kKICAgICYmIG9ic2VydmF0aW9uLnByaWNlVW5pdCA9PT0gcG9saWN5LmNhbm9uaWNhbFByaWNlVW5pdAogICAgJiYgb2JzZXJ2YXRpb24ucXVhbnRpdHlVbml0ID09PSBwb2xpY3kuY2Fub25pY2FsUXVhbnRpdHlVbml0CiAgICAmJiBCb29sZWFuKG9ic2VydmF0aW9uLnRyYWRlSWQpCiAgICAmJiBCb29sZWFuKG9ic2VydmF0aW9uLnN1cHBsaWVySWQpCiAgICAmJiBOdW1iZXIuaXNGaW5pdGUoTnVtYmVyKG9ic2VydmF0aW9uLnByaWNlKSkKICAgICYmIE51bWJlcihvYnNlcnZhdGlvbi5wcmljZSkgPiAwCiAgICAmJiBOdW1iZXIuaXNGaW5pdGUoTnVtYmVyKG9ic2VydmF0aW9uLnF1YW50aXR5KSkKICAgICYmIE51bWJlcihvYnNlcnZhdGlvbi5xdWFudGl0eSkgPiAwCiAgICAmJiAhTnVtYmVyLmlzTmFOKGZ1bGZpbGxlZEF0LnZhbHVlT2YoKSkKICAgICYmIGZ1bGZpbGxlZEF0ID49IGN1dG9mZjsKfTsKCmV4cG9ydCBjb25zdCBjYWxjdWxhdGVQcmljZUluZGV4ID0gKHsgc3BlY0lkLCBvYnNlcnZhdGlvbnMgPSBbXSwgbm93ID0gbmV3IERhdGUoKSB9ID0ge30pID0+IHsKICBjb25zdCBjdXRvZmYgPSBuZXcgRGF0ZShuZXcgRGF0ZShub3cpLnZhbHVlT2YoKSAtIHBvbGljeS5sb29rYmFja0RheXMgKiAyNCAqIDYwICogNjAgKiAxMDAwKTsKICBjb25zdCBlbGlnaWJsZSA9IG9ic2VydmF0aW9ucy5maWx0ZXIoKG9ic2VydmF0aW9uKSA9PiB2YWxpZE9ic2VydmF0aW9uKG9ic2VydmF0aW9uLCBzcGVjSWQsIGN1dG9mZikpOwogIGNvbnN0IGRpc3RpbmN0U3VwcGxpZXJzID0gbmV3IFNldChlbGlnaWJsZS5tYXAoKG9ic2VydmF0aW9uKSA9PiBvYnNlcnZhdGlvbi5zdXBwbGllcklkKSk7CiAgY29uc3QgYmFzZVJlc3VsdCA9IHsKICAgIHBvbGljeUlkOiBwb2xpY3kucG9saWN5SWQsCiAgICBzcGVjSWQsCiAgICBjdXJyZW5jeTogcG9saWN5LmNhbm9uaWNhbEN1cnJlbmN5LAogICAgcHJpY2VVbml0OiBwb2xpY3kuY2Fub25pY2FsUHJpY2VVbml0LAogICAgcXVhbnRpdHlVbml0OiBwb2xpY3kuY2Fub25pY2FsUXVhbnRpdHlVbml0LAogICAgd2luZG93RGF5czogcG9saWN5Lmxvb2tiYWNrRGF5cywKICAgIHNhbXBsZVNpemU6IGVsaWdpYmxlLmxlbmd0aCwKICAgIGRpc3RpbmN0U3VwcGxpZXJzOiBkaXN0aW5jdFN1cHBsaWVycy5zaXplLAogICAgc291cmNlU3RhdHVzOiBwb2xpY3kuc3RhdHVzLAogICAgcHVibGljYXRpb246IGNsb25lKHNvdXJjZUNvbnRyYWN0LnB1YmxpY2F0aW9uKSwKICAgIHByb3ZlbmFuY2U6IGVsaWdpYmxlLm1hcCgob2JzZXJ2YXRpb24pID0+IG9ic2VydmF0aW9uLnRyYWRlSWQpLAogICAgcHJpY2VTZXJpZXM6IFsuLi5lbGlnaWJsZV0KICAgICAgLnNvcnQoKGEsIGIpID0+IG5ldyBEYXRlKGEuZnVsZmlsbGVkQXQpIC0gbmV3IERhdGUoYi5mdWxmaWxsZWRBdCkpCiAgICAgIC5tYXAoKG9ic2VydmF0aW9uKSA9PiAoeyBmdWxmaWxsZWRBdDogb2JzZXJ2YXRpb24uZnVsZmlsbGVkQXQsIHByaWNlOiBOdW1iZXIob2JzZXJ2YXRpb24ucHJpY2UpIH0pKSwKICB9OwogIGlmIChlbGlnaWJsZS5sZW5ndGggPCBwb2xpY3kubWluQ29tcGxldGVkVHJhZGVzKSB7CiAgICByZXR1cm4geyAuLi5iYXNlUmVzdWx0LCBzdGF0dXM6ICdVTkFWQUlMQUJMRScsIHZhbHVlOiBudWxsLCBjb25maWRlbmNlOiAwLCByZWFzb246ICdJTlNVRkZJQ0lFTlRfQ09NUExFVEVEX1RSQURFUycgfTsKICB9CiAgaWYgKGRpc3RpbmN0U3VwcGxpZXJzLnNpemUgPCBwb2xpY3kubWluRGlzdGluY3RTdXBwbGllcnMpIHsKICAgIHJldHVybiB7IC4uLmJhc2VSZXN1bHQsIHN0YXR1czogJ1VOQVZBSUxBQkxFJywgdmFsdWU6IG51bGwsIGNvbmZpZGVuY2U6IDAsIHJlYXNvbjogJ0lOU1VGRklDSUVOVF9ESVNUSU5DVF9TVVBQTElFUlMnIH07CiAgfQogIGNvbnN0IHRvdGFsUXVhbnRpdHkgPSBlbGlnaWJsZS5yZWR1Y2UoKHN1bSwgb2JzZXJ2YXRpb24pID0+IHN1bSArIE51bWJlcihvYnNlcnZhdGlvbi5xdWFudGl0eSksIDApOwogIGNvbnN0IHdlaWdodGVkVmFsdWUgPSBlbGlnaWJsZS5yZWR1Y2UoKHN1bSwgb2JzZXJ2YXRpb24pID0+IHN1bSArIE51bWJlcihvYnNlcnZhdGlvbi5wcmljZSkgKiBOdW1iZXIob2JzZXJ2YXRpb24ucXVhbnRpdHkpLCAwKSAvIHRvdGFsUXVhbnRpdHk7CiAgY29uc3QgY29uZmlkZW5jZSA9IE1hdGgubWluKDk5LCBNYXRoLnJvdW5kKDYwICsgKGVsaWdpYmxlLmxlbmd0aCAvIChlbGlnaWJsZS5sZW5ndGggKyAzKSkgKiAzMCArIChkaXN0aW5jdFN1cHBsaWVycy5zaXplIC8gKGRpc3RpbmN0U3VwcGxpZXJzLnNpemUgKyAyKSkgKiAxMCkpOwogIHJldHVybiB7CiAgICAuLi5iYXNlUmVzdWx0LAogICAgc3RhdHVzOiAnQVZBSUxBQkxFJywKICAgIHZhbHVlOiBNYXRoLnJvdW5kKHdlaWdodGVkVmFsdWUpLAogICAgY29uZmlkZW5jZSwKICAgIHRvdGFsUXVhbnRpdHksCiAgICByZWFzb246ICdTVUZGSUNJRU5UX0NPTVBMRVRFRF9FVklERU5DRURfVFJBREVTJywKICB9Owp9Owo=
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const policyPath = resolve(fileURLToPath(new URL('../data/price-index-policy.json', import.meta.url)));
+const policy = JSON.parse(readFileSync(policyPath, 'utf8'));
+const sourceContractPath = resolve(fileURLToPath(new URL('../data/price-source-contract.json', import.meta.url)));
+const sourceContract = JSON.parse(readFileSync(sourceContractPath, 'utf8'));
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+
+export const loadPricePolicy = () => clone(policy);
+
+const validObservation = (observation, specId, cutoff) => {
+  const fulfilledAt = new Date(observation.fulfilledAt || '');
+  return observation.specId === specId
+    && observation.status === policy.requiredTradeStatus
+    && observation.evidenceStatus === policy.requiredEvidenceStatus
+    && observation.currency === policy.canonicalCurrency
+    && observation.priceUnit === policy.canonicalPriceUnit
+    && observation.quantityUnit === policy.canonicalQuantityUnit
+    && Boolean(observation.tradeId)
+    && Boolean(observation.supplierId)
+    && Number.isFinite(Number(observation.price))
+    && Number(observation.price) > 0
+    && Number.isFinite(Number(observation.quantity))
+    && Number(observation.quantity) > 0
+    && !Number.isNaN(fulfilledAt.valueOf())
+    && fulfilledAt >= cutoff;
+};
+
+export const calculatePriceIndex = ({ specId, observations = [], now = new Date() } = {}) => {
+  const cutoff = new Date(new Date(now).valueOf() - policy.lookbackDays * 24 * 60 * 60 * 1000);
+  const eligible = observations.filter((observation) => validObservation(observation, specId, cutoff));
+  const distinctSuppliers = new Set(eligible.map((observation) => observation.supplierId));
+  const baseResult = {
+    policyId: policy.policyId,
+    specId,
+    currency: policy.canonicalCurrency,
+    priceUnit: policy.canonicalPriceUnit,
+    quantityUnit: policy.canonicalQuantityUnit,
+    windowDays: policy.lookbackDays,
+    sampleSize: eligible.length,
+    distinctSuppliers: distinctSuppliers.size,
+    sourceStatus: policy.status,
+    publication: clone(sourceContract.publication),
+    provenance: eligible.map((observation) => observation.tradeId),
+    priceSeries: [...eligible]
+      .sort((a, b) => new Date(a.fulfilledAt) - new Date(b.fulfilledAt))
+      .map((observation) => ({ fulfilledAt: observation.fulfilledAt, price: Number(observation.price) })),
+  };
+  if (eligible.length < policy.minCompletedTrades) {
+    return { ...baseResult, status: 'UNAVAILABLE', value: null, confidence: 0, reason: 'INSUFFICIENT_COMPLETED_TRADES' };
+  }
+  if (distinctSuppliers.size < policy.minDistinctSuppliers) {
+    return { ...baseResult, status: 'UNAVAILABLE', value: null, confidence: 0, reason: 'INSUFFICIENT_DISTINCT_SUPPLIERS' };
+  }
+  const totalQuantity = eligible.reduce((sum, observation) => sum + Number(observation.quantity), 0);
+  const weightedValue = eligible.reduce((sum, observation) => sum + Number(observation.price) * Number(observation.quantity), 0) / totalQuantity;
+  const confidence = Math.min(99, Math.round(60 + (eligible.length / (eligible.length + 3)) * 30 + (distinctSuppliers.size / (distinctSuppliers.size + 2)) * 10));
+  return {
+    ...baseResult,
+    status: 'AVAILABLE',
+    value: Math.round(weightedValue),
+    confidence,
+    totalQuantity,
+    reason: 'SUFFICIENT_COMPLETED_EVIDENCED_TRADES',
+  };
+};

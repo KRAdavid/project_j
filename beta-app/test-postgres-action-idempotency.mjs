@@ -1,1 +1,71 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBQb3N0Z3Jlc0RvbWFpbkFkYXB0ZXIsIFBvc3RncmVzRG9tYWluQWRhcHRlckVycm9yIH0gZnJvbSAnLi9wb3N0Z3Jlcy1kb21haW4tYWRhcHRlci5tanMnOwoKY29uc3QgaWRzID0gewogIG9yZzogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA2MScsCiAgdXNlcjogJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDA2MicsCiAgb3JkZXI6ICcwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwNjMnLAogIGV2aWRlbmNlOiAnMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDY0JywKfTsKCmNvbnN0IGNvdW50ZXJPZmZlciA9IHsKICBzcGVjSWQ6ICdHQUJBLVNQRUMtMDAxJywgcHJpY2U6IDIyMDAwLCBxdWFudGl0eTogNTAsIGRlbGl2ZXJ5RGF5czogNywKICBjdXJyZW5jeTogJ0tSVycsIHByaWNlVW5pdDogJ0tSV19QRVJfS0cnLCBxdWFudGl0eVVuaXQ6ICdLRycsIGxvdElkOiAnTE9ULUFDVElPTicsIHN1cHBsaWVyT3JnYW5pemF0aW9uSWQ6IGlkcy5vcmcsCn07Cgpjb25zdCBtYWtlQ2xpZW50ID0gKHsgb3JkZXJTdGF0ZSwgZXZpZGVuY2VTdGF0ZSA9IG51bGwsIHJldmlld2VkQnkgPSBudWxsIH0pID0+IHsKICBjb25zdCBjYWxscyA9IFtdOwogIGNvbnN0IGNsaWVudCA9IHsKICAgIGFzeW5jIHF1ZXJ5KHNxbCwgcGFyYW1zID0gW10pIHsKICAgICAgY2FsbHMucHVzaCh7IHNxbCwgcGFyYW1zIH0pOwogICAgICBpZiAoWydCRUdJTicsICdDT01NSVQnLCAnUk9MTEJBQ0snXS5pbmNsdWRlcyhzcWwpKSByZXR1cm4geyByb3dzOiBbXSB9OwogICAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIG9yZ2FuaXphdGlvbnMgV0hFUkUgb3JnYW5pemF0aW9uX2lkJykpIHJldHVybiB7IHJvd3M6IFt7IG9yZ2FuaXphdGlvbl9pZDogaWRzLm9yZywgdmVyaWZpZWRfYXQ6ICcyMDI2LTAxLTAxJywgdmVyaWZpY2F0aW9uX2V2aWRlbmNlOiB7IHNvdXJjZTogJ3Rlc3QnIH0gfV0gfTsKICAgICAgaWYgKHNxbC5pbmNsdWRlcygnRlJPTSBvcmdhbml6YXRpb25fbWVtYmVycycpKSByZXR1cm4geyByb3dzOiBbeyBvazogMSB9XSB9OwogICAgICBpZiAoc3FsLmluY2x1ZGVzKCdGUk9NIHB1cmNoYXNlX29yZGVycyBXSEVSRSBvcmRlcl9pZCcpKSByZXR1cm4geyByb3dzOiBbeyBvcmRlcl9pZDogaWRzLm9yZGVyLCBzdGF0ZTogb3JkZXJTdGF0ZSwgc3BlY19pZDogJ0dBQkEtU1BFQy0wMDEnLCBjb3VudGVyX29mZmVyOiBvcmRlclN0YXRlID09PSAnQ09VTlRFUkVEJyA/IGNvdW50ZXJPZmZlciA6IG51bGwsIGV4cGlyZXNfYXQ6ICcyMDI2LTAxLTAxVDAwOjAwOjAwLjAwMFonIH1dIH07CiAgICAgIGlmIChzcWwuaW5jbHVkZXMoJ0ZST00gZXZpZGVuY2VzIFdIRVJFIGV2aWRlbmNlX2lkJykpIHJldHVybiB7IHJvd3M6IFt7IGV2aWRlbmNlX2lkOiBpZHMuZXZpZGVuY2UsIHN0YXRlOiBldmlkZW5jZVN0YXRlLCByZXZpZXdlZF9ieTogcmV2aWV3ZWRCeSwgbG90X2lkOiAnTE9ULUFDVElPTicsIGV2aWRlbmNlX3R5cGU6ICdDT0EnLCBjb250ZW50X3NoYTI1NjogJ2EnLnJlcGVhdCg2NCksIHN0b3JhZ2VfcmVmOiAnczM6Ly90ZXN0L2NvYScsIGRvY3VtZW50X3ZlcnNpb246ICcxLjAnIH1dIH07CiAgICAgIGlmIChzcWwuaW5jbHVkZXMoJ1VQREFURSBwdXJjaGFzZV9vcmRlcnMnKSkgdGhyb3cgbmV3IEVycm9yKCd0ZXJtaW5hbCBhY3Rpb24gcmV0cnkgbXVzdCBub3QgdXBkYXRlIHRoZSBvcmRlcicpOwogICAgICBpZiAoc3FsLmluY2x1ZGVzKCdVUERBVEUgZXZpZGVuY2VzJykpIHRocm93IG5ldyBFcnJvcigndGVybWluYWwgcmV2aWV3IHJldHJ5IG11c3Qgbm90IHVwZGF0ZSBldmlkZW5jZScpOwogICAgICByZXR1cm4geyByb3dzOiBbXSB9OwogICAgfSwKICAgIHJlbGVhc2UoKSB7fSwKICB9OwogIHJldHVybiB7IGNsaWVudCwgY2FsbHMgfTsKfTsKCmNvbnN0IGNvdW50ZXIgPSBtYWtlQ2xpZW50KHsgb3JkZXJTdGF0ZTogJ0NPVU5URVJFRCcgfSk7CmNvbnN0IGNvdW50ZXJBZGFwdGVyID0gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiBjb3VudGVyLmNsaWVudDsgfSB9KTsKY29uc3QgY291bnRlclJldHJ5ID0gYXdhaXQgY291bnRlckFkYXB0ZXIuY291bnRlck9yZGVyKHsKICBvcmRlcklkOiBpZHMub3JkZXIsIHN1cHBsaWVyT3JnYW5pemF0aW9uSWQ6IGlkcy5vcmcsIHN1cHBsaWVyVXNlcklkOiBpZHMudXNlciwgLi4uY291bnRlck9mZmVyLAogIGFjdG9yUmVmOiBpZHMudXNlciwgY29ycmVsYXRpb25JZDogJ0NPVU5URVItUkVUUlktMDAxJywKfSk7CmFzc2VydC5lcXVhbChjb3VudGVyUmV0cnkuaWRlbXBvdGVudCwgdHJ1ZSk7CmFzc2VydC5lcXVhbChjb3VudGVyUmV0cnkub3JkZXIub3JkZXJfaWQsIGlkcy5vcmRlcik7CmF3YWl0IGFzc2VydC5yZWplY3RzKAogICgpID0+IGNvdW50ZXJBZGFwdGVyLmNvdW50ZXJPcmRlcih7CiAgICBvcmRlcklkOiBpZHMub3JkZXIsIHN1cHBsaWVyT3JnYW5pemF0aW9uSWQ6IGlkcy5vcmcsIHN1cHBsaWVyVXNlcklkOiBpZHMudXNlciwgLi4uY291bnRlck9mZmVyLCBwcmljZTogMjIxMDAsCiAgICBhY3RvclJlZjogaWRzLnVzZXIsIGNvcnJlbGF0aW9uSWQ6ICdDT1VOVEVSLVJFVFJZLU1JU01BVENIJywKICB9KSwKICAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgUG9zdGdyZXNEb21haW5BZGFwdGVyRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ0NPVU5URVJfUkVUUllfTUlTTUFUQ0gnLAopOwoKY29uc3QgcmVqZWN0ZWQgPSBtYWtlQ2xpZW50KHsgb3JkZXJTdGF0ZTogJ1JFSkVDVEVEJyB9KTsKY29uc3QgcmVqZWN0ZWRBZGFwdGVyID0gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiByZWplY3RlZC5jbGllbnQ7IH0gfSk7CmFzc2VydC5lcXVhbCgoYXdhaXQgcmVqZWN0ZWRBZGFwdGVyLnJlamVjdE9yZGVyKHsgb3JkZXJJZDogaWRzLm9yZGVyLCBzdXBwbGllck9yZ2FuaXphdGlvbklkOiBpZHMub3JnLCBzdXBwbGllclVzZXJJZDogaWRzLnVzZXIsIGFjdG9yUmVmOiBpZHMudXNlciwgY29ycmVsYXRpb25JZDogJ1JFSkVDVC1SRVRSWS0wMDEnIH0pKS5pZGVtcG90ZW50LCB0cnVlKTsKYXNzZXJ0LmVxdWFsKHJlamVjdGVkLmNhbGxzLnNvbWUoKHsgc3FsIH0pID0+IHNxbC5pbmNsdWRlcygnVVBEQVRFIHB1cmNoYXNlX29yZGVycycpKSwgZmFsc2UpOwoKY29uc3QgZXhwaXJlZCA9IG1ha2VDbGllbnQoeyBvcmRlclN0YXRlOiAnRVhQSVJFRCcgfSk7CmNvbnN0IGV4cGlyZWRBZGFwdGVyID0gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiBleHBpcmVkLmNsaWVudDsgfSB9KTsKYXNzZXJ0LmVxdWFsKChhd2FpdCBleHBpcmVkQWRhcHRlci5leHBpcmVPcmRlcih7IG9yZGVySWQ6IGlkcy5vcmRlciwgYWN0b3JSZWY6ICdTWVNURU0nLCBjb3JyZWxhdGlvbklkOiAnRVhQSVJFLVJFVFJZLTAwMScgfSkpLmlkZW1wb3RlbnQsIHRydWUpOwphc3NlcnQuZXF1YWwoZXhwaXJlZC5jYWxscy5zb21lKCh7IHNxbCB9KSA9PiBzcWwuaW5jbHVkZXMoJ1VQREFURSBwdXJjaGFzZV9vcmRlcnMnKSksIGZhbHNlKTsKCmNvbnN0IHJldmlld2VkID0gbWFrZUNsaWVudCh7IG9yZGVyU3RhdGU6ICdTVUJNSVRURUQnLCBldmlkZW5jZVN0YXRlOiAnVkFMSUQnLCByZXZpZXdlZEJ5OiBpZHMudXNlciB9KTsKY29uc3QgcmV2aWV3ZWRBZGFwdGVyID0gbmV3IFBvc3RncmVzRG9tYWluQWRhcHRlcih7IGFzeW5jIGNvbm5lY3QoKSB7IHJldHVybiByZXZpZXdlZC5jbGllbnQ7IH0gfSk7CmNvbnN0IGV2aWRlbmNlUmV0cnkgPSBhd2FpdCByZXZpZXdlZEFkYXB0ZXIucmV2aWV3RXZpZGVuY2UoeyBldmlkZW5jZUlkOiBpZHMuZXZpZGVuY2UsIG9wZXJhdG9yT3JnYW5pemF0aW9uSWQ6IGlkcy5vcmcsIG9wZXJhdG9yVXNlcklkOiBpZHMudXNlciwgZGVjaXNpb246ICdWQUxJRCcsIGFjdG9yUmVmOiBpZHMudXNlciwgY29ycmVsYXRpb25JZDogJ0VWSURFTkNFLVJFVFJZLTAwMScgfSk7CmFzc2VydC5lcXVhbChldmlkZW5jZVJldHJ5LmlkZW1wb3RlbnQsIHRydWUpOwphd2FpdCBhc3NlcnQucmVqZWN0cygKICAoKSA9PiByZXZpZXdlZEFkYXB0ZXIucmV2aWV3RXZpZGVuY2UoeyBldmlkZW5jZUlkOiBpZHMuZXZpZGVuY2UsIG9wZXJhdG9yT3JnYW5pemF0aW9uSWQ6IGlkcy5vcmcsIG9wZXJhdG9yVXNlcklkOiBpZHMudXNlciwgZGVjaXNpb246ICdSRUpFQ1RFRCcsIGFjdG9yUmVmOiBpZHMudXNlciwgY29ycmVsYXRpb25JZDogJ0VWSURFTkNFLVJFVFJZLU1JU01BVENIJyB9KSwKICAoZXJyb3IpID0+IGVycm9yIGluc3RhbmNlb2YgUG9zdGdyZXNEb21haW5BZGFwdGVyRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ0VWSURFTkNFX1JFVklFV19SRVRSWV9NSVNNQVRDSCcsCik7CmFzc2VydC5lcXVhbChyZXZpZXdlZC5jYWxscy5zb21lKCh7IHNxbCB9KSA9PiBzcWwuaW5jbHVkZXMoJ1VQREFURSBldmlkZW5jZXMnKSksIGZhbHNlKTsKCmNvbnNvbGUubG9nKCdwb3N0Z3JlcyBhY3Rpb24gaWRlbXBvdGVuY3kgdGVzdHM6IFBBU1MnKTsK
+import assert from 'node:assert/strict';
+import { PostgresDomainAdapter, PostgresDomainAdapterError } from './postgres-domain-adapter.mjs';
+
+const ids = {
+  org: '00000000-0000-0000-0000-000000000061',
+  user: '00000000-0000-0000-0000-000000000062',
+  order: '00000000-0000-0000-0000-000000000063',
+  evidence: '00000000-0000-0000-0000-000000000064',
+};
+
+const counterOffer = {
+  specId: 'GABA-SPEC-001', price: 22000, quantity: 50, deliveryDays: 7,
+  currency: 'KRW', priceUnit: 'KRW_PER_KG', quantityUnit: 'KG', lotId: 'LOT-ACTION', supplierOrganizationId: ids.org,
+};
+
+const makeClient = ({ orderState, evidenceState = null, reviewedBy = null }) => {
+  const calls = [];
+  const client = {
+    async query(sql, params = []) {
+      calls.push({ sql, params });
+      if (['BEGIN', 'COMMIT', 'ROLLBACK'].includes(sql)) return { rows: [] };
+      if (sql.includes('FROM organizations WHERE organization_id')) return { rows: [{ organization_id: ids.org, verified_at: '2026-01-01', verification_evidence: { source: 'test' } }] };
+      if (sql.includes('FROM organization_members')) return { rows: [{ ok: 1 }] };
+      if (sql.includes('FROM purchase_orders WHERE order_id')) return { rows: [{ order_id: ids.order, state: orderState, spec_id: 'GABA-SPEC-001', counter_offer: orderState === 'COUNTERED' ? counterOffer : null, expires_at: '2026-01-01T00:00:00.000Z' }] };
+      if (sql.includes('FROM evidences WHERE evidence_id')) return { rows: [{ evidence_id: ids.evidence, state: evidenceState, reviewed_by: reviewedBy, lot_id: 'LOT-ACTION', evidence_type: 'COA', content_sha256: 'a'.repeat(64), storage_ref: 's3://test/coa', document_version: '1.0' }] };
+      if (sql.includes('UPDATE purchase_orders')) throw new Error('terminal action retry must not update the order');
+      if (sql.includes('UPDATE evidences')) throw new Error('terminal review retry must not update evidence');
+      return { rows: [] };
+    },
+    release() {},
+  };
+  return { client, calls };
+};
+
+const counter = makeClient({ orderState: 'COUNTERED' });
+const counterAdapter = new PostgresDomainAdapter({ async connect() { return counter.client; } });
+const counterRetry = await counterAdapter.counterOrder({
+  orderId: ids.order, supplierOrganizationId: ids.org, supplierUserId: ids.user, ...counterOffer,
+  actorRef: ids.user, correlationId: 'COUNTER-RETRY-001',
+});
+assert.equal(counterRetry.idempotent, true);
+assert.equal(counterRetry.order.order_id, ids.order);
+await assert.rejects(
+  () => counterAdapter.counterOrder({
+    orderId: ids.order, supplierOrganizationId: ids.org, supplierUserId: ids.user, ...counterOffer, price: 22100,
+    actorRef: ids.user, correlationId: 'COUNTER-RETRY-MISMATCH',
+  }),
+  (error) => error instanceof PostgresDomainAdapterError && error.code === 'COUNTER_RETRY_MISMATCH',
+);
+
+const rejected = makeClient({ orderState: 'REJECTED' });
+const rejectedAdapter = new PostgresDomainAdapter({ async connect() { return rejected.client; } });
+assert.equal((await rejectedAdapter.rejectOrder({ orderId: ids.order, supplierOrganizationId: ids.org, supplierUserId: ids.user, actorRef: ids.user, correlationId: 'REJECT-RETRY-001' })).idempotent, true);
+assert.equal(rejected.calls.some(({ sql }) => sql.includes('UPDATE purchase_orders')), false);
+
+const expired = makeClient({ orderState: 'EXPIRED' });
+const expiredAdapter = new PostgresDomainAdapter({ async connect() { return expired.client; } });
+assert.equal((await expiredAdapter.expireOrder({ orderId: ids.order, actorRef: 'SYSTEM', correlationId: 'EXPIRE-RETRY-001' })).idempotent, true);
+assert.equal(expired.calls.some(({ sql }) => sql.includes('UPDATE purchase_orders')), false);
+
+const reviewed = makeClient({ orderState: 'SUBMITTED', evidenceState: 'VALID', reviewedBy: ids.user });
+const reviewedAdapter = new PostgresDomainAdapter({ async connect() { return reviewed.client; } });
+const evidenceRetry = await reviewedAdapter.reviewEvidence({ evidenceId: ids.evidence, operatorOrganizationId: ids.org, operatorUserId: ids.user, decision: 'VALID', actorRef: ids.user, correlationId: 'EVIDENCE-RETRY-001' });
+assert.equal(evidenceRetry.idempotent, true);
+await assert.rejects(
+  () => reviewedAdapter.reviewEvidence({ evidenceId: ids.evidence, operatorOrganizationId: ids.org, operatorUserId: ids.user, decision: 'REJECTED', actorRef: ids.user, correlationId: 'EVIDENCE-RETRY-MISMATCH' }),
+  (error) => error instanceof PostgresDomainAdapterError && error.code === 'EVIDENCE_REVIEW_RETRY_MISMATCH',
+);
+assert.equal(reviewed.calls.some(({ sql }) => sql.includes('UPDATE evidences')), false);
+
+console.log('postgres action idempotency tests: PASS');

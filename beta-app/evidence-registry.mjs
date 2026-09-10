@@ -1,1 +1,94 @@
-aW1wb3J0IHsgcmFuZG9tVVVJRCB9IGZyb20gJ25vZGU6Y3J5cHRvJzsKaW1wb3J0IHsgaGFzaERvY3VtZW50LCBsb2FkRXZpZGVuY2VQb2xpY3ksIHZlcmlmeUV2aWRlbmNlQnVuZGxlIH0gZnJvbSAnLi9ldmlkZW5jZS12ZXJpZmllci5tanMnOwoKY29uc3QgY2xvbmUgPSAodmFsdWUpID0+IEpTT04ucGFyc2UoSlNPTi5zdHJpbmdpZnkodmFsdWUpKTsKY29uc3QgcG9saWN5ID0gbG9hZEV2aWRlbmNlUG9saWN5KCk7CgpleHBvcnQgY2xhc3MgRXZpZGVuY2VSZWdpc3RyeUVycm9yIGV4dGVuZHMgRXJyb3IgewogIGNvbnN0cnVjdG9yKG1lc3NhZ2UsIGNvZGUgPSAnRVZJREVOQ0VfUkVHSVNUUllfRkFJTEVEJykgewogICAgc3VwZXIobWVzc2FnZSk7CiAgICB0aGlzLmNvZGUgPSBjb2RlOwogIH0KfQoKZXhwb3J0IGNsYXNzIEV2aWRlbmNlUmVnaXN0cnkgewogIGNvbnN0cnVjdG9yKHsgbm93ID0gKCkgPT4gbmV3IERhdGUoKSwgc25hcHNob3QgPSBudWxsIH0gPSB7fSkgewogICAgdGhpcy5ub3cgPSBub3c7CiAgICB0aGlzLnJlY29yZHMgPSBuZXcgTWFwKCk7CiAgICB0aGlzLmV2ZW50cyA9IFtdOwogICAgaWYgKHNuYXBzaG90KSB0aGlzLnJlc3RvcmUoc25hcHNob3QpOwogIH0KCiAgcmVjb3JkRXZlbnQodHlwZSwgZGV0YWlscykgewogICAgdGhpcy5ldmVudHMudW5zaGlmdCh7IGV2ZW50SWQ6IGBFVklERU5DRS1FVkVOVC0ke3JhbmRvbVVVSUQoKS5zbGljZSgwLCA4KS50b1VwcGVyQ2FzZSgpfWAsIHR5cGUsIGRldGFpbHMsIG9jY3VycmVkQXQ6IHRoaXMubm93KCkudG9JU09TdHJpbmcoKSB9KTsKICAgIHRoaXMuZXZlbnRzID0gdGhpcy5ldmVudHMuc2xpY2UoMCwgMTAwKTsKICB9CgogIHN1Ym1pdChpbnB1dCA9IHt9KSB7CiAgICBjb25zdCBsb3RJZCA9IFN0cmluZyhpbnB1dC5sb3RJZCB8fCAnJyk7CiAgICBjb25zdCBldmlkZW5jZVR5cGUgPSBTdHJpbmcoaW5wdXQuZXZpZGVuY2VUeXBlIHx8ICcnKTsKICAgIGNvbnN0IGRvY3VtZW50VmVyc2lvbiA9IFN0cmluZyhpbnB1dC5kb2N1bWVudFZlcnNpb24gfHwgJycpOwogICAgY29uc3Qgc3VibWl0dGVkQnkgPSBTdHJpbmcoaW5wdXQuc3VibWl0dGVkQnkgfHwgJycpOwogICAgaWYgKCFsb3RJZCB8fCAhZG9jdW1lbnRWZXJzaW9uIHx8ICFzdWJtaXR0ZWRCeSkgdGhyb3cgbmV3IEV2aWRlbmNlUmVnaXN0cnlFcnJvcign66Gc7Yq4wrfrrLjshJwg67KE7KCEwrfsoJzstpzsnpDqsIAg7ZWE7JqU7ZWp64uI64ukLicsICdFVklERU5DRV9NRVRBREFUQV9SRVFVSVJFRCcpOwogICAgaWYgKCFwb2xpY3kucmVxdWlyZWRUeXBlcy5pbmNsdWRlcyhldmlkZW5jZVR5cGUpKSB0aHJvdyBuZXcgRXZpZGVuY2VSZWdpc3RyeUVycm9yKCftl4jsmqnrkJjsp4Ag7JWK7J2AIOymneu5mSDsnKDtmJXsnoXri4jri6QuJywgJ0VWSURFTkNFX1RZUEVfTk9UX0FMTE9XRUQnKTsKICAgIGNvbnN0IGR1cGxpY2F0ZSA9IFsuLi50aGlzLnJlY29yZHMudmFsdWVzKCldLmZpbmQoKHJlY29yZCkgPT4gcmVjb3JkLmxvdElkID09PSBsb3RJZCAmJiByZWNvcmQuZXZpZGVuY2VUeXBlID09PSBldmlkZW5jZVR5cGUgJiYgcmVjb3JkLmRvY3VtZW50VmVyc2lvbiA9PT0gZG9jdW1lbnRWZXJzaW9uICYmIHJlY29yZC5zdGF0ZSAhPT0gJ1NVUEVSU0VERUQnKTsKICAgIGlmIChkdXBsaWNhdGUpIHRocm93IG5ldyBFdmlkZW5jZVJlZ2lzdHJ5RXJyb3IoJ+uPmeydvCDroZztirjCt+ymneu5mSDsnKDtmJXCt+uyhOyghOydtCDsnbTrr7gg7KCc7Lac65CY7JeI7Iq164uI64ukLicsICdFVklERU5DRV9BTFJFQURZX1NVQk1JVFRFRCcpOwogICAgY29uc3QgY29udGVudCA9IGlucHV0LmNvbnRlbnQgPT09IHVuZGVmaW5lZCA/ICcnIDogU3RyaW5nKGlucHV0LmNvbnRlbnQpOwogICAgY29uc3QgY29udGVudFNoYTI1NiA9IFN0cmluZyhpbnB1dC5jb250ZW50U2hhMjU2IHx8IChjb250ZW50ID8gaGFzaERvY3VtZW50KGNvbnRlbnQpIDogJycpKTsKICAgIGNvbnN0IHJlY29yZCA9IHsKICAgICAgZXZpZGVuY2VJZDogYEVWSURFTkNFLSR7cmFuZG9tVVVJRCgpLnNsaWNlKDAsIDgpLnRvVXBwZXJDYXNlKCl9YCwKICAgICAgbG90SWQsCiAgICAgIGV2aWRlbmNlVHlwZSwKICAgICAgZG9jdW1lbnRWZXJzaW9uLAogICAgICBjb250ZW50U2hhMjU2LAogICAgICBzdG9yYWdlUmVmOiBTdHJpbmcoaW5wdXQuc3RvcmFnZVJlZiB8fCBgc2ltOi8vZXZpZGVuY2UvJHtsb3RJZH0vJHtldmlkZW5jZVR5cGV9LyR7ZG9jdW1lbnRWZXJzaW9ufWApLAogICAgICBvcmdhbml6YXRpb25JZDogU3RyaW5nKGlucHV0Lm9yZ2FuaXphdGlvbklkIHx8ICcnKSwKICAgICAgaXNzdWVkQXQ6IGlucHV0Lmlzc3VlZEF0ID8gU3RyaW5nKGlucHV0Lmlzc3VlZEF0KSA6IG51bGwsCiAgICAgIGV4cGlyZXNBdDogaW5wdXQuZXhwaXJlc0F0ID8gU3RyaW5nKGlucHV0LmV4cGlyZXNBdCkgOiBudWxsLAogICAgICBzdGF0ZTogJ1BFTkRJTkcnLAogICAgICBzdWJtaXR0ZWRCeSwKICAgICAgc3VibWl0dGVkQXQ6IHRoaXMubm93KCkudG9JU09TdHJpbmcoKSwKICAgICAgcmV2aWV3ZWRCeTogbnVsbCwKICAgICAgcmV2aWV3ZWRBdDogbnVsbCwKICAgIH07CiAgICB0aGlzLnJlY29yZHMuc2V0KHJlY29yZC5ldmlkZW5jZUlkLCByZWNvcmQpOwogICAgdGhpcy5yZWNvcmRFdmVudCgnRVZJREVOQ0VfU1VCTUlUVEVEJywgeyBldmlkZW5jZUlkOiByZWNvcmQuZXZpZGVuY2VJZCwgbG90SWQsIGV2aWRlbmNlVHlwZSB9KTsKICAgIHJldHVybiBjbG9uZShyZWNvcmQpOwogIH0KCiAgcmV2aWV3KGV2aWRlbmNlSWQsIHsgZGVjaXNpb24sIHJldmlld2VyUm9sZSwgcmV2aWV3ZXJJZCB9ID0ge30pIHsKICAgIGNvbnN0IHJlY29yZCA9IHRoaXMucmVjb3Jkcy5nZXQoU3RyaW5nKGV2aWRlbmNlSWQpKTsKICAgIGlmICghcmVjb3JkKSB0aHJvdyBuZXcgRXZpZGVuY2VSZWdpc3RyeUVycm9yKCfspp3ruZnsnYQg7LC+7J2EIOyImCDsl4bsirXri4jri6QuJywgJ0VWSURFTkNFX05PVF9GT1VORCcpOwogICAgaWYgKCFbJ09XTkVSJywgJ09QRVJBVE9SJ10uaW5jbHVkZXMoU3RyaW5nKHJldmlld2VyUm9sZSkpKSB0aHJvdyBuZXcgRXZpZGVuY2VSZWdpc3RyeUVycm9yKCdBSSDrmJDripQg7J2867CYIOyCrOyaqeyekOuKlCDspp3ruZnsnYQg7Iq57J247ZWgIOyImCDsl4bsirXri4jri6QuJywgJ0hVTUFOX1JFVklFV19SRVFVSVJFRCcpOwogICAgaWYgKCFyZXZpZXdlcklkKSB0aHJvdyBuZXcgRXZpZGVuY2VSZWdpc3RyeUVycm9yKCfqsoDthqDsnpAgSUTqsIAg7ZWE7JqU7ZWp64uI64ukLicsICdSRVZJRVdFUl9SRVFVSVJFRCcpOwogICAgaWYgKCFbJ1ZBTElEJywgJ1JFSkVDVEVEJ10uaW5jbHVkZXMoU3RyaW5nKGRlY2lzaW9uKSkpIHRocm93IG5ldyBFdmlkZW5jZVJlZ2lzdHJ5RXJyb3IoJ+qygO2GoCDqsrDsoJXsnYAgVkFMSUQg65iQ64qUIFJFSkVDVEVE7Jes7JW8IO2VqeuLiOuLpC4nLCAnSU5WQUxJRF9SRVZJRVdfREVDSVNJT04nKTsKICAgIHJlY29yZC5zdGF0ZSA9IGRlY2lzaW9uOwogICAgcmVjb3JkLnJldmlld2VkQnkgPSBTdHJpbmcocmV2aWV3ZXJJZCk7CiAgICByZWNvcmQucmV2aWV3ZWRBdCA9IHRoaXMubm93KCkudG9JU09TdHJpbmcoKTsKICAgIHRoaXMucmVjb3JkRXZlbnQoJ0VWSURFTkNFX1JFVklFV0VEJywgeyBldmlkZW5jZUlkOiByZWNvcmQuZXZpZGVuY2VJZCwgZGVjaXNpb24sIHJldmlld2VySWQ6IHJlY29yZC5yZXZpZXdlZEJ5IH0pOwogICAgcmV0dXJuIGNsb25lKHJlY29yZCk7CiAgfQoKICBsaXN0KGxvdElkKSB7CiAgICByZXR1cm4gWy4uLnRoaXMucmVjb3Jkcy52YWx1ZXMoKV0uZmlsdGVyKChyZWNvcmQpID0+ICFsb3RJZCB8fCByZWNvcmQubG90SWQgPT09IFN0cmluZyhsb3RJZCkpLm1hcChjbG9uZSk7CiAgfQoKICBnZXQoZXZpZGVuY2VJZCkgewogICAgY29uc3QgcmVjb3JkID0gdGhpcy5yZWNvcmRzLmdldChTdHJpbmcoZXZpZGVuY2VJZCkpOwogICAgaWYgKCFyZWNvcmQpIHRocm93IG5ldyBFdmlkZW5jZVJlZ2lzdHJ5RXJyb3IoJ+ymneu5meydhCDssL7snYQg7IiYIOyXhuyKteuLiOuLpC4nLCAnRVZJREVOQ0VfTk9UX0ZPVU5EJyk7CiAgICByZXR1cm4gY2xvbmUocmVjb3JkKTsKICB9CgogIGVsaWdpYmlsaXR5KGxvdElkKSB7CiAgICByZXR1cm4gdmVyaWZ5RXZpZGVuY2VCdW5kbGUoeyBsb3RJZDogU3RyaW5nKGxvdElkIHx8ICcnKSwgZXZpZGVuY2U6IHRoaXMubGlzdChsb3RJZCksIG5vdzogdGhpcy5ub3coKSB9KTsKICB9CgogIHNuYXBzaG90KCkgewogICAgcmV0dXJuIHsgcmVjb3JkczogdGhpcy5saXN0KCksIGV2ZW50czogY2xvbmUodGhpcy5ldmVudHMpIH07CiAgfQoKICByZXN0b3JlKHNuYXBzaG90ID0ge30pIHsKICAgIHRoaXMucmVjb3JkcyA9IG5ldyBNYXAoKHNuYXBzaG90LnJlY29yZHMgfHwgW10pLm1hcCgocmVjb3JkKSA9PiBbcmVjb3JkLmV2aWRlbmNlSWQsIGNsb25lKHJlY29yZCldKSk7CiAgICB0aGlzLmV2ZW50cyA9IGNsb25lKHNuYXBzaG90LmV2ZW50cyB8fCBbXSk7CiAgfQp9Cg==
+import { randomUUID } from 'node:crypto';
+import { hashDocument, loadEvidencePolicy, verifyEvidenceBundle } from './evidence-verifier.mjs';
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+const policy = loadEvidencePolicy();
+
+export class EvidenceRegistryError extends Error {
+  constructor(message, code = 'EVIDENCE_REGISTRY_FAILED') {
+    super(message);
+    this.code = code;
+  }
+}
+
+export class EvidenceRegistry {
+  constructor({ now = () => new Date(), snapshot = null } = {}) {
+    this.now = now;
+    this.records = new Map();
+    this.events = [];
+    if (snapshot) this.restore(snapshot);
+  }
+
+  recordEvent(type, details) {
+    this.events.unshift({ eventId: `EVIDENCE-EVENT-${randomUUID().slice(0, 8).toUpperCase()}`, type, details, occurredAt: this.now().toISOString() });
+    this.events = this.events.slice(0, 100);
+  }
+
+  submit(input = {}) {
+    const lotId = String(input.lotId || '');
+    const evidenceType = String(input.evidenceType || '');
+    const documentVersion = String(input.documentVersion || '');
+    const submittedBy = String(input.submittedBy || '');
+    if (!lotId || !documentVersion || !submittedBy) throw new EvidenceRegistryError('로트·문서 버전·제출자가 필요합니다.', 'EVIDENCE_METADATA_REQUIRED');
+    if (!policy.requiredTypes.includes(evidenceType)) throw new EvidenceRegistryError('허용되지 않은 증빙 유형입니다.', 'EVIDENCE_TYPE_NOT_ALLOWED');
+    const duplicate = [...this.records.values()].find((record) => record.lotId === lotId && record.evidenceType === evidenceType && record.documentVersion === documentVersion && record.state !== 'SUPERSEDED');
+    if (duplicate) throw new EvidenceRegistryError('동일 로트·증빙 유형·버전이 이미 제출되었습니다.', 'EVIDENCE_ALREADY_SUBMITTED');
+    const content = input.content === undefined ? '' : String(input.content);
+    const contentSha256 = String(input.contentSha256 || (content ? hashDocument(content) : ''));
+    const record = {
+      evidenceId: `EVIDENCE-${randomUUID().slice(0, 8).toUpperCase()}`,
+      lotId,
+      evidenceType,
+      documentVersion,
+      contentSha256,
+      storageRef: String(input.storageRef || `sim://evidence/${lotId}/${evidenceType}/${documentVersion}`),
+      organizationId: String(input.organizationId || ''),
+      issuedAt: input.issuedAt ? String(input.issuedAt) : null,
+      expiresAt: input.expiresAt ? String(input.expiresAt) : null,
+      state: 'PENDING',
+      submittedBy,
+      submittedAt: this.now().toISOString(),
+      reviewedBy: null,
+      reviewedAt: null,
+    };
+    this.records.set(record.evidenceId, record);
+    this.recordEvent('EVIDENCE_SUBMITTED', { evidenceId: record.evidenceId, lotId, evidenceType });
+    return clone(record);
+  }
+
+  review(evidenceId, { decision, reviewerRole, reviewerId } = {}) {
+    const record = this.records.get(String(evidenceId));
+    if (!record) throw new EvidenceRegistryError('증빙을 찾을 수 없습니다.', 'EVIDENCE_NOT_FOUND');
+    if (!['OWNER', 'OPERATOR'].includes(String(reviewerRole))) throw new EvidenceRegistryError('AI 또는 일반 사용자는 증빙을 승인할 수 없습니다.', 'HUMAN_REVIEW_REQUIRED');
+    if (!reviewerId) throw new EvidenceRegistryError('검토자 ID가 필요합니다.', 'REVIEWER_REQUIRED');
+    if (!['VALID', 'REJECTED'].includes(String(decision))) throw new EvidenceRegistryError('검토 결정은 VALID 또는 REJECTED여야 합니다.', 'INVALID_REVIEW_DECISION');
+    record.state = decision;
+    record.reviewedBy = String(reviewerId);
+    record.reviewedAt = this.now().toISOString();
+    this.recordEvent('EVIDENCE_REVIEWED', { evidenceId: record.evidenceId, decision, reviewerId: record.reviewedBy });
+    return clone(record);
+  }
+
+  list(lotId) {
+    return [...this.records.values()].filter((record) => !lotId || record.lotId === String(lotId)).map(clone);
+  }
+
+  get(evidenceId) {
+    const record = this.records.get(String(evidenceId));
+    if (!record) throw new EvidenceRegistryError('증빙을 찾을 수 없습니다.', 'EVIDENCE_NOT_FOUND');
+    return clone(record);
+  }
+
+  eligibility(lotId) {
+    return verifyEvidenceBundle({ lotId: String(lotId || ''), evidence: this.list(lotId), now: this.now() });
+  }
+
+  snapshot() {
+    return { records: this.list(), events: clone(this.events) };
+  }
+
+  restore(snapshot = {}) {
+    this.records = new Map((snapshot.records || []).map((record) => [record.evidenceId, clone(record)]));
+    this.events = clone(snapshot.events || []);
+  }
+}

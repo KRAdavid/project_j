@@ -1,1 +1,112 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBybSB9IGZyb20gJ25vZGU6ZnMvcHJvbWlzZXMnOwppbXBvcnQgeyB0bXBkaXIgfSBmcm9tICdub2RlOm9zJzsKaW1wb3J0IHsgam9pbiB9IGZyb20gJ25vZGU6cGF0aCc7CmltcG9ydCB7IGNyZWF0ZVBlcnNpc3RlbmNlU3RvcmUsIFBlcnNpc3RlbmNlU3RvcmVFcnJvciwgUG9zdGdyZXNTbmFwc2hvdFN0b3JlIH0gZnJvbSAnLi9wZXJzaXN0ZW5jZS1zdG9yZS5tanMnOwppbXBvcnQgeyBhc3NlcnRQcm9kdWN0aW9uQ3V0b3ZlciB9IGZyb20gJy4vcGVyc2lzdGVuY2UtbW9kZS5tanMnOwppbXBvcnQgeyBHQUJBX1NQRUNfQVRUUklCVVRFUywgR0FCQV9TUEVDX0lELCBUcmFkZUVuZ2luZSB9IGZyb20gJy4vdHJhZGUtZW5naW5lLm1qcyc7Cgpjb25zdCBzbmFwc2hvdCA9IHsgZGF0YVN0YXR1czogJ1NJTVVMQVRFRF9CQUNLRU5EJywgb3JkZXJzOiBbeyBvcmRlcklkOiAnT1JERVItMDAxJyB9XSwgdHJhZGVzOiBbXSB9Owpjb25zdCBwcmljZU9ic2VydmF0aW9uID0geyB0cmFkZUlkOiAnVC1QUklDRS0wMDEnLCBzb3VyY2VUeXBlOiAnQ09NUExFVEVEX1BIWVNJQ0FMX1RSQURFJywgc3BlY0lkOiBHQUJBX1NQRUNfSUQsIHN1cHBsaWVySWQ6ICdTLVBSSUNFLTAwMScsIHByaWNlOiAyMTgwMCwgcXVhbnRpdHk6IDIwMCwgZnVsZmlsbGVkQXQ6ICcyMDI2LTA5LTA4Jywgc3RhdHVzOiAnRlVMRklMTEVEJywgZXZpZGVuY2VTdGF0dXM6ICdWQUxJRCcgfTsKY29uc3QgcHJvZHVjdGlvbkNvbmZpZyA9IHsgZGF0YWJhc2VVcmw6ICdwb3N0Z3JlczovL3JlZGFjdGVkJywgc2NoZW1hQXBwbGllZDogdHJ1ZSwgYmFja3VwRHJpbGxQYXNzZWQ6IHRydWUsIGlzb2xhdGlvblZlcmlmaWVkOiB0cnVlLCBhdWRpdFBvbGljeUFwcGxpZWQ6IHRydWUsIG9iamVjdFN0b3JhZ2VSZWFkeTogdHJ1ZSwgZXZpZGVuY2VTdG9yZVJlYWR5OiB0cnVlLCBhdXRoUHJvdmlkZXJSZWFkeTogdHJ1ZSwgYXV0aEp3dFNlY3JldDogJ3Rlc3Qtc2VjcmV0LXRoYXQtaXMtYXQtbGVhc3QtMzItYnl0ZXMtbG9uZycsIGF1dGhKd3RJc3N1ZXI6ICdyYXctbWF0ZXJpYWwtb3MtdGVzdCcsIGF1dGhKd3RBdWRpZW5jZTogJ3Jhdy1tYXRlcmlhbC1vcy1hcGknLCBwb3N0Z3Jlc0RvbWFpbkFkYXB0ZXJSZWFkeTogdHJ1ZSwgcG9zdGdyZXNEb21haW5BcGlSZWFkeTogdHJ1ZSwgcG9zdGdyZXNEb21haW5SZWNvbmNpbGlhdGlvblZlcmlmaWVkOiB0cnVlIH07CmFzc2VydC5lcXVhbChhc3NlcnRQcm9kdWN0aW9uQ3V0b3Zlcihwcm9kdWN0aW9uQ29uZmlnKS5yZWFkeSwgdHJ1ZSk7CmFzc2VydC5lcXVhbChhc3NlcnRQcm9kdWN0aW9uQ3V0b3Zlcih7IC4uLnByb2R1Y3Rpb25Db25maWcsIGF1dGhKd3RTZWNyZXQ6ICd0b28tc2hvcnQnIH0pLnJlYWR5LCBmYWxzZSk7CmFzc2VydC5lcXVhbChhc3NlcnRQcm9kdWN0aW9uQ3V0b3Zlcih7IC4uLnByb2R1Y3Rpb25Db25maWcsIGF1dGhKd3RTZWNyZXQ6IHVuZGVmaW5lZCB9KS5yZWFkeSwgZmFsc2UpOwphc3NlcnQuZXF1YWwoYXNzZXJ0UHJvZHVjdGlvbkN1dG92ZXIoeyAuLi5wcm9kdWN0aW9uQ29uZmlnLCBhdXRoSnd0SXNzdWVyOiB1bmRlZmluZWQgfSkucmVhZHksIGZhbHNlKTsKYXNzZXJ0LmVxdWFsKGFzc2VydFByb2R1Y3Rpb25DdXRvdmVyKHsgLi4ucHJvZHVjdGlvbkNvbmZpZywgcG9zdGdyZXNEb21haW5BZGFwdGVyUmVhZHk6IGZhbHNlIH0pLnJlYWR5LCBmYWxzZSk7CmFzc2VydC5lcXVhbChhc3NlcnRQcm9kdWN0aW9uQ3V0b3Zlcih7IC4uLnByb2R1Y3Rpb25Db25maWcsIHBvc3RncmVzRG9tYWluQXBpUmVhZHk6IGZhbHNlIH0pLnJlYWR5LCBmYWxzZSk7CmFzc2VydC5lcXVhbChhc3NlcnRQcm9kdWN0aW9uQ3V0b3Zlcih7IC4uLnByb2R1Y3Rpb25Db25maWcsIHBvc3RncmVzRG9tYWluUmVjb25jaWxpYXRpb25WZXJpZmllZDogZmFsc2UgfSkucmVhZHksIGZhbHNlKTsKY29uc3QgbWVtb3J5ID0gYXdhaXQgY3JlYXRlUGVyc2lzdGVuY2VTdG9yZSh7IG1vZGU6ICdtZW1vcnknIH0pOwphd2FpdCBtZW1vcnkuc2F2ZShzbmFwc2hvdCk7CmFzc2VydC5kZWVwRXF1YWwoYXdhaXQgbWVtb3J5LmxvYWQoKSwgc25hcHNob3QpOwphd2FpdCBtZW1vcnkuc2F2ZUV2aWRlbmNlKHsgcmVjb3JkczogW3sgZXZpZGVuY2VJZDogJ0UtMDAxJyB9XSwgZXZlbnRzOiBbXSB9KTsKYXNzZXJ0LmRlZXBFcXVhbChhd2FpdCBtZW1vcnkubG9hZEV2aWRlbmNlKCksIHsgcmVjb3JkczogW3sgZXZpZGVuY2VJZDogJ0UtMDAxJyB9XSwgZXZlbnRzOiBbXSB9KTsKYXdhaXQgbWVtb3J5LnNhdmVQcmljZU9ic2VydmF0aW9ucyhbcHJpY2VPYnNlcnZhdGlvbl0pOwphc3NlcnQuZGVlcEVxdWFsKGF3YWl0IG1lbW9yeS5sb2FkUHJpY2VPYnNlcnZhdGlvbnMoKSwgW3ByaWNlT2JzZXJ2YXRpb25dKTsKYXdhaXQgbWVtb3J5LmNsb3NlKCk7Cgphd2FpdCBhc3NlcnQucmVqZWN0cygKICAoKSA9PiBjcmVhdGVQZXJzaXN0ZW5jZVN0b3JlKHsgbW9kZTogJ3Bvc3RncmVzcWwnIH0pLAogIChlcnJvcikgPT4gZXJyb3IgaW5zdGFuY2VvZiBQZXJzaXN0ZW5jZVN0b3JlRXJyb3IgJiYgZXJyb3IuY29kZSA9PT0gJ1BPU1RHUkVTX0RBVEFCQVNFX1VSTF9SRVFVSVJFRCcsCik7Cgpjb25zdCBmYWtlUXVlcmllcyA9IFtdOwpjb25zdCBmYWtlQ2xpZW50ID0gewogIGFzeW5jIHF1ZXJ5KHNxbCwgcGFyYW1zKSB7CiAgICBmYWtlUXVlcmllcy5wdXNoKHsgc3FsLCBwYXJhbXMgfSk7CiAgICBpZiAoc3FsLnN0YXJ0c1dpdGgoJ1NFTEVDVCBwYXlsb2FkJykpIHJldHVybiB7IHJvd3M6IFtdIH07CiAgICByZXR1cm4geyByb3dzOiBbXSB9OwogIH0sCiAgcmVsZWFzZSgpIHt9LAp9Owpjb25zdCBmYWtlUG9vbCA9IHsKICBhc3luYyBjb25uZWN0KCkgeyByZXR1cm4gZmFrZUNsaWVudDsgfSwKICBhc3luYyBxdWVyeSgpIHsgcmV0dXJuIHsgcm93czogW10gfTsgfSwKICBhc3luYyBlbmQoKSB7fSwKfTsKY29uc3QgYXRvbWljU3RvcmUgPSBuZXcgUG9zdGdyZXNTbmFwc2hvdFN0b3JlKGZha2VQb29sKTsKY29uc3Qgc2NoZW1hVGFibGVzID0gWydvcmdhbml6YXRpb25zJywgJ29yZ2FuaXphdGlvbl9tZW1iZXJzJywgJ21hdGVyaWFscycsICdtYXRlcmlhbF9hbGlhc2VzJywgJ3NwZWNpZmljYXRpb25zJywgJ2xvdHMnLCAnZXZpZGVuY2VzJywgJ29mZmVycycsICdwdXJjaGFzZV9vcmRlcnMnLCAncmVzZXJ2YXRpb25zJywgJ3RyYWRlcycsICd0cmFkZV9pbnNwZWN0aW9ucycsICd0cmFkZV9ldmVudHMnLCAnb3BlcmF0aW9uYWxfYXBwcm92YWxzJywgJ2FwcHJvdmFsX2V2ZW50cycsICdsZWRnZXJfc25hcHNob3RzJywgJ2V2aWRlbmNlX3NuYXBzaG90cycsICdwcmljZV9vYnNlcnZhdGlvbnMnXTsKY29uc3Qgc2NoZW1hUG9vbCA9IHsKICBhc3luYyBxdWVyeShzcWwpIHsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ2luZm9ybWF0aW9uX3NjaGVtYS50YWJsZXMnKSkgcmV0dXJuIHsgcm93czogc2NoZW1hVGFibGVzLm1hcCgodGFibGVfbmFtZSkgPT4gKHsgdGFibGVfbmFtZSB9KSkgfTsKICAgIGlmIChzcWwuaW5jbHVkZXMoJ3RvX3JlZ3Byb2NlZHVyZScpKSByZXR1cm4geyByb3dzOiBbeyBmdW5jdGlvbl9uYW1lOiAncmVzZXJ2ZV9sb3QodXVpZCx0ZXh0LG51bWVyaWMsdGV4dCknIH1dIH07CiAgICByZXR1cm4geyByb3dzOiBbXSB9OwogIH0sCn07CmNvbnN0IHNjaGVtYVN0b3JlID0gbmV3IFBvc3RncmVzU25hcHNob3RTdG9yZShzY2hlbWFQb29sKTsKYXNzZXJ0LmRlZXBFcXVhbCgoYXdhaXQgc2NoZW1hU3RvcmUudmVyaWZ5U2NoZW1hKCkpLnRhYmxlcywgc2NoZW1hVGFibGVzKTsKYXdhaXQgYXNzZXJ0LnJlamVjdHMoKCkgPT4gbmV3IFBvc3RncmVzU25hcHNob3RTdG9yZSh7IGFzeW5jIHF1ZXJ5KHNxbCkgeyBpZiAoc3FsLmluY2x1ZGVzKCdpbmZvcm1hdGlvbl9zY2hlbWEudGFibGVzJykpIHJldHVybiB7IHJvd3M6IFtdIH07IHJldHVybiB7IHJvd3M6IFtdIH07IH0gfSkudmVyaWZ5U2NoZW1hKCksIChlcnJvcikgPT4gZXJyb3IuY29kZSA9PT0gJ1BPU1RHUkVTX1NDSEVNQV9JTkNPTVBMRVRFJyk7CmNvbnN0IG1lbWJlcnNoaXBTdG9yZSA9IG5ldyBQb3N0Z3Jlc1NuYXBzaG90U3RvcmUoeyBhc3luYyBxdWVyeShzcWwsIHBhcmFtcykgeyBpZiAoc3FsLmluY2x1ZGVzKCdvcmdhbml6YXRpb25fbWVtYmVycycpKSByZXR1cm4geyByb3dzOiBwYXJhbXNbMV0gPT09ICdVU0VSLTAwMScgPyBbeyAnP2NvbHVtbj8nOiAxIH1dIDogW10gfTsgcmV0dXJuIHsgcm93czogW10gfTsgfSB9KTsKYXNzZXJ0LmVxdWFsKGF3YWl0IG1lbWJlcnNoaXBTdG9yZS5pc09yZ2FuaXphdGlvbk1lbWJlcih7IHVzZXJJZDogJ1VTRVItMDAxJywgb3JnYW5pemF0aW9uSWQ6ICdPUkctMDAxJywgcm9sZTogJ0JVWUVSJyB9KSwgdHJ1ZSk7CmFzc2VydC5lcXVhbChhd2FpdCBtZW1iZXJzaGlwU3RvcmUuaXNPcmdhbml6YXRpb25NZW1iZXIoeyB1c2VySWQ6ICdVU0VSLTAwMicsIG9yZ2FuaXphdGlvbklkOiAnT1JHLTAwMScsIHJvbGU6ICdCVVlFUicgfSksIGZhbHNlKTsKY29uc3QgYXRvbWljRW5naW5lID0gbmV3IFRyYWRlRW5naW5lKCk7CmNvbnN0IGF0b21pY1Jlc3VsdCA9IGF3YWl0IGF0b21pY1N0b3JlLnJ1bkF0b21pYyhhdG9taWNFbmdpbmUsICgpID0+IGF0b21pY0VuZ2luZS5zdWJtaXRPcmRlcih7IHNwZWNJZDogR0FCQV9TUEVDX0lELCBzcGVjQXR0cmlidXRlczogR0FCQV9TUEVDX0FUVFJJQlVURVMsIHByaWNlOiAyMTgwMCwgcXVhbnRpdHk6IDEwMCwgZGVsaXZlcnlEYXlzOiAxNCB9KSk7CmFzc2VydC5lcXVhbChhdG9taWNSZXN1bHQucmVzdWx0Lm9yZGVyLm9yZGVySWQsICdPUkRFUi0wMDAwMScpOwphc3NlcnQub2soZmFrZVF1ZXJpZXMuc29tZSgoeyBzcWwgfSkgPT4gc3FsLmluY2x1ZGVzKCdwZ19hZHZpc29yeV94YWN0X2xvY2snKSkpOwphc3NlcnQub2soZmFrZVF1ZXJpZXMuc29tZSgoeyBzcWwgfSkgPT4gc3FsID09PSAnQ09NTUlUJykpOwoKY29uc3Qgcm9sbGJhY2tRdWVyaWVzID0gW107CmNvbnN0IHJvbGxiYWNrQ2xpZW50ID0gewogIGFzeW5jIHF1ZXJ5KHNxbCwgcGFyYW1zKSB7CiAgICByb2xsYmFja1F1ZXJpZXMucHVzaCh7IHNxbCwgcGFyYW1zIH0pOwogICAgaWYgKHNxbC5zdGFydHNXaXRoKCdJTlNFUlQgSU5UTyBsZWRnZXJfc25hcHNob3RzJykpIHRocm93IG5ldyBFcnJvcignc2ltdWxhdGVkIHdyaXRlIGZhaWx1cmUnKTsKICAgIHJldHVybiB7IHJvd3M6IFtdIH07CiAgfSwKICByZWxlYXNlKCkge30sCn07CmNvbnN0IHJvbGxiYWNrU3RvcmUgPSBuZXcgUG9zdGdyZXNTbmFwc2hvdFN0b3JlKHsgYXN5bmMgY29ubmVjdCgpIHsgcmV0dXJuIHJvbGxiYWNrQ2xpZW50OyB9LCBhc3luYyBxdWVyeSgpIHsgcmV0dXJuIHsgcm93czogW10gfTsgfSwgYXN5bmMgZW5kKCkge30gfSk7CmNvbnN0IHJvbGxiYWNrRW5naW5lID0gbmV3IFRyYWRlRW5naW5lKCk7CmNvbnN0IHJvbGxiYWNrQmVmb3JlID0gcm9sbGJhY2tFbmdpbmUuc25hcHNob3QoKTsKYXdhaXQgYXNzZXJ0LnJlamVjdHMoKCkgPT4gcm9sbGJhY2tTdG9yZS5ydW5BdG9taWMocm9sbGJhY2tFbmdpbmUsICgpID0+IHJvbGxiYWNrRW5naW5lLnN1Ym1pdE9yZGVyKHsgc3BlY0lkOiBHQUJBX1NQRUNfSUQsIHNwZWNBdHRyaWJ1dGVzOiBHQUJBX1NQRUNfQVRUUklCVVRFUywgcHJpY2U6IDIxODAwLCBxdWFudGl0eTogMTAwLCBkZWxpdmVyeURheXM6IDE0IH0pKSwgL3NpbXVsYXRlZCB3cml0ZSBmYWlsdXJlLyk7CmFzc2VydC5kZWVwRXF1YWwocm9sbGJhY2tFbmdpbmUuc25hcHNob3QoKSwgcm9sbGJhY2tCZWZvcmUpOwphc3NlcnQub2socm9sbGJhY2tRdWVyaWVzLnNvbWUoKHsgc3FsIH0pID0+IHNxbCA9PT0gJ1JPTExCQUNLJykpOwoKY29uc3QgZmlsZVBhdGggPSBqb2luKHRtcGRpcigpLCBgcmF3LW1hdGVyaWFsLWxlZGdlci0ke0RhdGUubm93KCl9LnNxbGl0ZWApOwpjb25zdCBzcWxpdGUgPSBhd2FpdCBjcmVhdGVQZXJzaXN0ZW5jZVN0b3JlKHsgbW9kZTogJ3NxbGl0ZScsIGZpbGVQYXRoIH0pOwphd2FpdCBzcWxpdGUuc2F2ZShzbmFwc2hvdCk7CmFzc2VydC5kZWVwRXF1YWwoYXdhaXQgc3FsaXRlLmxvYWQoKSwgc25hcHNob3QpOwphd2FpdCBzcWxpdGUuc2F2ZUV2aWRlbmNlKHsgcmVjb3JkczogW3sgZXZpZGVuY2VJZDogJ0UtMDAyJyB9XSwgZXZlbnRzOiBbXSB9KTsKYXNzZXJ0LmRlZXBFcXVhbChhd2FpdCBzcWxpdGUubG9hZEV2aWRlbmNlKCksIHsgcmVjb3JkczogW3sgZXZpZGVuY2VJZDogJ0UtMDAyJyB9XSwgZXZlbnRzOiBbXSB9KTsKYXdhaXQgc3FsaXRlLnNhdmVQcmljZU9ic2VydmF0aW9ucyhbcHJpY2VPYnNlcnZhdGlvbl0pOwphc3NlcnQuZGVlcEVxdWFsKGF3YWl0IHNxbGl0ZS5sb2FkUHJpY2VPYnNlcnZhdGlvbnMoKSwgW3ByaWNlT2JzZXJ2YXRpb25dKTsKYXdhaXQgc3FsaXRlLmNsb3NlKCk7CmF3YWl0IHJtKGZpbGVQYXRoLCB7IGZvcmNlOiB0cnVlIH0pOwoKY29uc3QgcmVjb3ZlcnlQYXRoID0gam9pbih0bXBkaXIoKSwgYHJhdy1tYXRlcmlhbC1yZWNvdmVyeS0ke0RhdGUubm93KCl9LnNxbGl0ZWApOwpjb25zdCBmaXJzdFN0b3JlID0gYXdhaXQgY3JlYXRlUGVyc2lzdGVuY2VTdG9yZSh7IG1vZGU6ICdzcWxpdGUnLCBmaWxlUGF0aDogcmVjb3ZlcnlQYXRoIH0pOwpjb25zdCBmaXJzdEVuZ2luZSA9IG5ldyBUcmFkZUVuZ2luZSgpOwpjb25zdCBvcmRlciA9IGZpcnN0RW5naW5lLnN1Ym1pdE9yZGVyKHsgc3BlY0lkOiBHQUJBX1NQRUNfSUQsIHNwZWNBdHRyaWJ1dGVzOiBHQUJBX1NQRUNfQVRUUklCVVRFUywgcHJpY2U6IDIxODAwLCBxdWFudGl0eTogMjAwLCBkZWxpdmVyeURheXM6IDE0IH0pOwpmaXJzdEVuZ2luZS5hY2NlcHRPcmRlcihvcmRlci5vcmRlci5vcmRlcklkLCB7IGxvdElkOiAnR0JBLUtSLTI0MDcnIH0pOwphd2FpdCBmaXJzdFN0b3JlLnNhdmUoZmlyc3RFbmdpbmUuc25hcHNob3QoKSk7CmF3YWl0IGZpcnN0U3RvcmUuY2xvc2UoKTsKCmNvbnN0IHNlY29uZFN0b3JlID0gYXdhaXQgY3JlYXRlUGVyc2lzdGVuY2VTdG9yZSh7IG1vZGU6ICdzcWxpdGUnLCBmaWxlUGF0aDogcmVjb3ZlcnlQYXRoIH0pOwpjb25zdCBzZWNvbmRFbmdpbmUgPSBuZXcgVHJhZGVFbmdpbmUoYXdhaXQgc2Vjb25kU3RvcmUubG9hZCgpKTsKYXNzZXJ0LmVxdWFsKHNlY29uZEVuZ2luZS5zbmFwc2hvdCgpLm9yZGVyc1swXS5zdGF0dXMsICdUUkFERV9DT05GSVJNRUQnKTsKYXNzZXJ0LmVxdWFsKHNlY29uZEVuZ2luZS5zbmFwc2hvdCgpLmxvdHNbMF0uYXZhaWxhYmxlUXR5LCAxMDAwKTsKY29uc3QgbmV4dE9yZGVyID0gc2Vjb25kRW5naW5lLnN1Ym1pdE9yZGVyKHsgc3BlY0lkOiBHQUJBX1NQRUNfSUQsIHNwZWNBdHRyaWJ1dGVzOiBHQUJBX1NQRUNfQVRUUklCVVRFUywgcHJpY2U6IDIxODAwLCBxdWFudGl0eTogMjAwLCBkZWxpdmVyeURheXM6IDE0IH0pOwphc3NlcnQuZXF1YWwobmV4dE9yZGVyLm9yZGVyLm9yZGVySWQsICdPUkRFUi0wMDAwMicpOwphd2FpdCBzZWNvbmRTdG9yZS5jbG9zZSgpOwphd2FpdCBybShyZWNvdmVyeVBhdGgsIHsgZm9yY2U6IHRydWUgfSk7Cgpjb25zb2xlLmxvZygncGVyc2lzdGVuY2Ugc3RvcmUgdGVzdHM6IFBBU1MnKTsK
+import assert from 'node:assert/strict';
+import { rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { createPersistenceStore, PersistenceStoreError, PostgresSnapshotStore } from './persistence-store.mjs';
+import { assertProductionCutover } from './persistence-mode.mjs';
+import { GABA_SPEC_ATTRIBUTES, GABA_SPEC_ID, TradeEngine } from './trade-engine.mjs';
+
+const snapshot = { dataStatus: 'SIMULATED_BACKEND', orders: [{ orderId: 'ORDER-001' }], trades: [] };
+const priceObservation = { tradeId: 'T-PRICE-001', sourceType: 'COMPLETED_PHYSICAL_TRADE', specId: GABA_SPEC_ID, supplierId: 'S-PRICE-001', price: 21800, quantity: 200, fulfilledAt: '2026-09-08', status: 'FULFILLED', evidenceStatus: 'VALID' };
+const productionConfig = { databaseUrl: 'postgres://redacted', schemaApplied: true, backupDrillPassed: true, isolationVerified: true, auditPolicyApplied: true, objectStorageReady: true, evidenceStoreReady: true, authProviderReady: true, authJwtSecret: 'test-secret-that-is-at-least-32-bytes-long', authJwtIssuer: 'raw-material-os-test', authJwtAudience: 'raw-material-os-api', postgresDomainAdapterReady: true, postgresDomainApiReady: true, postgresDomainReconciliationVerified: true };
+assert.equal(assertProductionCutover(productionConfig).ready, true);
+assert.equal(assertProductionCutover({ ...productionConfig, authJwtSecret: 'too-short' }).ready, false);
+assert.equal(assertProductionCutover({ ...productionConfig, authJwtSecret: undefined }).ready, false);
+assert.equal(assertProductionCutover({ ...productionConfig, authJwtIssuer: undefined }).ready, false);
+assert.equal(assertProductionCutover({ ...productionConfig, postgresDomainAdapterReady: false }).ready, false);
+assert.equal(assertProductionCutover({ ...productionConfig, postgresDomainApiReady: false }).ready, false);
+assert.equal(assertProductionCutover({ ...productionConfig, postgresDomainReconciliationVerified: false }).ready, false);
+const memory = await createPersistenceStore({ mode: 'memory' });
+await memory.save(snapshot);
+assert.deepEqual(await memory.load(), snapshot);
+await memory.saveEvidence({ records: [{ evidenceId: 'E-001' }], events: [] });
+assert.deepEqual(await memory.loadEvidence(), { records: [{ evidenceId: 'E-001' }], events: [] });
+await memory.savePriceObservations([priceObservation]);
+assert.deepEqual(await memory.loadPriceObservations(), [priceObservation]);
+await memory.close();
+
+await assert.rejects(
+  () => createPersistenceStore({ mode: 'postgresql' }),
+  (error) => error instanceof PersistenceStoreError && error.code === 'POSTGRES_DATABASE_URL_REQUIRED',
+);
+
+const fakeQueries = [];
+const fakeClient = {
+  async query(sql, params) {
+    fakeQueries.push({ sql, params });
+    if (sql.startsWith('SELECT payload')) return { rows: [] };
+    return { rows: [] };
+  },
+  release() {},
+};
+const fakePool = {
+  async connect() { return fakeClient; },
+  async query() { return { rows: [] }; },
+  async end() {},
+};
+const atomicStore = new PostgresSnapshotStore(fakePool);
+const schemaTables = ['organizations', 'organization_members', 'materials', 'material_aliases', 'specifications', 'lots', 'evidences', 'offers', 'purchase_orders', 'reservations', 'trades', 'trade_inspections', 'trade_events', 'operational_approvals', 'approval_events', 'ledger_snapshots', 'evidence_snapshots', 'price_observations'];
+const schemaPool = {
+  async query(sql) {
+    if (sql.includes('information_schema.tables')) return { rows: schemaTables.map((table_name) => ({ table_name })) };
+    if (sql.includes('to_regprocedure')) return { rows: [{ function_name: 'reserve_lot(uuid,text,numeric,text)' }] };
+    return { rows: [] };
+  },
+};
+const schemaStore = new PostgresSnapshotStore(schemaPool);
+assert.deepEqual((await schemaStore.verifySchema()).tables, schemaTables);
+await assert.rejects(() => new PostgresSnapshotStore({ async query(sql) { if (sql.includes('information_schema.tables')) return { rows: [] }; return { rows: [] }; } }).verifySchema(), (error) => error.code === 'POSTGRES_SCHEMA_INCOMPLETE');
+const membershipStore = new PostgresSnapshotStore({ async query(sql, params) { if (sql.includes('organization_members')) return { rows: params[1] === 'USER-001' ? [{ '?column?': 1 }] : [] }; return { rows: [] }; } });
+assert.equal(await membershipStore.isOrganizationMember({ userId: 'USER-001', organizationId: 'ORG-001', role: 'BUYER' }), true);
+assert.equal(await membershipStore.isOrganizationMember({ userId: 'USER-002', organizationId: 'ORG-001', role: 'BUYER' }), false);
+const atomicEngine = new TradeEngine();
+const atomicResult = await atomicStore.runAtomic(atomicEngine, () => atomicEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 100, deliveryDays: 14 }));
+assert.equal(atomicResult.result.order.orderId, 'ORDER-00001');
+assert.ok(fakeQueries.some(({ sql }) => sql.includes('pg_advisory_xact_lock')));
+assert.ok(fakeQueries.some(({ sql }) => sql === 'COMMIT'));
+
+const rollbackQueries = [];
+const rollbackClient = {
+  async query(sql, params) {
+    rollbackQueries.push({ sql, params });
+    if (sql.startsWith('INSERT INTO ledger_snapshots')) throw new Error('simulated write failure');
+    return { rows: [] };
+  },
+  release() {},
+};
+const rollbackStore = new PostgresSnapshotStore({ async connect() { return rollbackClient; }, async query() { return { rows: [] }; }, async end() {} });
+const rollbackEngine = new TradeEngine();
+const rollbackBefore = rollbackEngine.snapshot();
+await assert.rejects(() => rollbackStore.runAtomic(rollbackEngine, () => rollbackEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 100, deliveryDays: 14 })), /simulated write failure/);
+assert.deepEqual(rollbackEngine.snapshot(), rollbackBefore);
+assert.ok(rollbackQueries.some(({ sql }) => sql === 'ROLLBACK'));
+
+const filePath = join(tmpdir(), `raw-material-ledger-${Date.now()}.sqlite`);
+const sqlite = await createPersistenceStore({ mode: 'sqlite', filePath });
+await sqlite.save(snapshot);
+assert.deepEqual(await sqlite.load(), snapshot);
+await sqlite.saveEvidence({ records: [{ evidenceId: 'E-002' }], events: [] });
+assert.deepEqual(await sqlite.loadEvidence(), { records: [{ evidenceId: 'E-002' }], events: [] });
+await sqlite.savePriceObservations([priceObservation]);
+assert.deepEqual(await sqlite.loadPriceObservations(), [priceObservation]);
+await sqlite.close();
+await rm(filePath, { force: true });
+
+const recoveryPath = join(tmpdir(), `raw-material-recovery-${Date.now()}.sqlite`);
+const firstStore = await createPersistenceStore({ mode: 'sqlite', filePath: recoveryPath });
+const firstEngine = new TradeEngine();
+const order = firstEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 200, deliveryDays: 14 });
+firstEngine.acceptOrder(order.order.orderId, { lotId: 'GBA-KR-2407' });
+await firstStore.save(firstEngine.snapshot());
+await firstStore.close();
+
+const secondStore = await createPersistenceStore({ mode: 'sqlite', filePath: recoveryPath });
+const secondEngine = new TradeEngine(await secondStore.load());
+assert.equal(secondEngine.snapshot().orders[0].status, 'TRADE_CONFIRMED');
+assert.equal(secondEngine.snapshot().lots[0].availableQty, 1000);
+const nextOrder = secondEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 200, deliveryDays: 14 });
+assert.equal(nextOrder.order.orderId, 'ORDER-00002');
+await secondStore.close();
+await rm(recoveryPath, { force: true });
+
+console.log('persistence store tests: PASS');

@@ -1,1 +1,92 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBzcGF3biB9IGZyb20gJ25vZGU6Y2hpbGRfcHJvY2Vzcyc7CmltcG9ydCB7IHJtIH0gZnJvbSAnbm9kZTpmcy9wcm9taXNlcyc7CmltcG9ydCB7IHRtcGRpciB9IGZyb20gJ25vZGU6b3MnOwppbXBvcnQgeyBqb2luIH0gZnJvbSAnbm9kZTpwYXRoJzsKaW1wb3J0IHsgZmlsZVVSTFRvUGF0aCB9IGZyb20gJ25vZGU6dXJsJzsKaW1wb3J0IHsgc2V0VGltZW91dCBhcyB3YWl0IH0gZnJvbSAnbm9kZTp0aW1lcnMvcHJvbWlzZXMnOwppbXBvcnQgeyBHQUJBX1NQRUNfQVRUUklCVVRFUyB9IGZyb20gJy4vdHJhZGUtZW5naW5lLm1qcyc7Cgpjb25zdCBwb3J0ID0gNDE3NjsKY29uc3QgZmlsZVBhdGggPSBqb2luKHRtcGRpcigpLCBgcmF3LW1hdGVyaWFsLXNlcnZlci0ke0RhdGUubm93KCl9LnNxbGl0ZWApOwpjb25zdCBkb2N1bWVudFJvb3QgPSBqb2luKHRtcGRpcigpLCBgcmF3LW1hdGVyaWFsLXNlcnZlci1kb2NzLSR7RGF0ZS5ub3coKX1gKTsKY29uc3QgYXBwUm9vdCA9IGZpbGVVUkxUb1BhdGgobmV3IFVSTCgnLicsIGltcG9ydC5tZXRhLnVybCkpOwpjb25zdCBjaGlsZHJlbiA9IG5ldyBTZXQoKTsKCmNvbnN0IHdhaXRGb3JIZWFsdGggPSBhc3luYyAoY2hpbGQpID0+IHsKICBjb25zdCBkZWFkbGluZSA9IERhdGUubm93KCkgKyA4MDAwOwogIHdoaWxlIChEYXRlLm5vdygpIDwgZGVhZGxpbmUpIHsKICAgIHRyeSB7CiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goYGh0dHA6Ly8xMjcuMC4wLjE6JHtwb3J0fS9hcGkvaGVhbHRoYCk7CiAgICAgIGlmIChyZXNwb25zZS5vaykgcmV0dXJuIHJlc3BvbnNlLmpzb24oKTsKICAgIH0gY2F0Y2gge30KICAgIGF3YWl0IG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiBzZXRUaW1lb3V0KHJlc29sdmUsIDEwMCkpOwogIH0KICBjaGlsZC5raWxsKCk7CiAgY2hpbGRyZW4uZGVsZXRlKGNoaWxkKTsKICB0aHJvdyBuZXcgRXJyb3IoJ+yEnOuyhOqwgCDsoJztlZzsi5zqsIQg64K07JeQIOyLnOyekeuQmOyngCDslYrslZjsirXri4jri6QuJyk7Cn07Cgpjb25zdCBzdGFydFNlcnZlciA9IGFzeW5jICgpID0+IHsKICBjb25zdCBjaGlsZCA9IHNwYXduKHByb2Nlc3MuZXhlY1BhdGgsIFsnLS1leHBlcmltZW50YWwtc3FsaXRlJywgJ3NlcnZlci5tanMnXSwgewogICAgY3dkOiBhcHBSb290LAogICAgZW52OiB7IC4uLnByb2Nlc3MuZW52LCBQT1JUOiBTdHJpbmcocG9ydCksIFBFUlNJU1RFTkNFX01PREU6ICdzcWxpdGUnLCBQRVJTSVNURU5DRV9GSUxFOiBmaWxlUGF0aCwgRE9DVU1FTlRfU1RPUkFHRV9ST09UOiBkb2N1bWVudFJvb3QsIEFMTE9XX1RFU1RfU0hVVERPV046ICd0cnVlJyB9LAogICAgc3RkaW86IFsnaWdub3JlJywgJ3BpcGUnLCAncGlwZSddLAogIH0pOwogIGNoaWxkcmVuLmFkZChjaGlsZCk7CiAgY2hpbGQub24oJ2Vycm9yJywgKGVycm9yKSA9PiB7IHRocm93IGVycm9yOyB9KTsKICBjaGlsZC5zdGRvdXQucmVzdW1lKCk7CiAgY2hpbGQuc3RkZXJyLnJlc3VtZSgpOwogIGF3YWl0IHdhaXRGb3JIZWFsdGgoY2hpbGQpOwogIHJldHVybiBjaGlsZDsKfTsKCmNvbnN0IHJlcXVlc3QgPSBhc3luYyAocGF0aCwgb3B0aW9ucyA9IHt9KSA9PiAoYXdhaXQgZmV0Y2goYGh0dHA6Ly8xMjcuMC4wLjE6JHtwb3J0fSR7cGF0aH1gLCB7IC4uLm9wdGlvbnMsIHNpZ25hbDogQWJvcnRTaWduYWwudGltZW91dCgzMDAwKSB9KSkuanNvbigpOwpjb25zdCBqc29uT3B0aW9ucyA9IChib2R5KSA9PiAoeyBtZXRob2Q6ICdQT1NUJywgaGVhZGVyczogeyAnY29udGVudC10eXBlJzogJ2FwcGxpY2F0aW9uL2pzb24nIH0sIGJvZHk6IEpTT04uc3RyaW5naWZ5KGJvZHkpIH0pOwpjb25zdCB3YWl0Rm9yRXhpdCA9IGFzeW5jIChjaGlsZCwgdGltZW91dE1zID0gMzAwMCkgPT4gewogIGNvbnN0IGRlYWRsaW5lID0gRGF0ZS5ub3coKSArIHRpbWVvdXRNczsKICB3aGlsZSAoY2hpbGQuZXhpdENvZGUgPT09IG51bGwgJiYgRGF0ZS5ub3coKSA8IGRlYWRsaW5lKSBhd2FpdCB3YWl0KDEwMCk7CiAgcmV0dXJuIGNoaWxkLmV4aXRDb2RlICE9PSBudWxsOwp9Owpjb25zdCBzdG9wU2VydmVyID0gYXN5bmMgKGNoaWxkKSA9PiB7CiAgaWYgKGNoaWxkLmV4aXRDb2RlICE9PSBudWxsKSB7IGNoaWxkcmVuLmRlbGV0ZShjaGlsZCk7IHJldHVybjsgfQogIHRyeSB7IGF3YWl0IGZldGNoKGBodHRwOi8vMTI3LjAuMC4xOiR7cG9ydH0vYXBpL3Rlc3Qvc2h1dGRvd25gLCB7IG1ldGhvZDogJ1BPU1QnLCBzaWduYWw6IEFib3J0U2lnbmFsLnRpbWVvdXQoMTAwMCkgfSk7IH0gY2F0Y2gge30KICBpZiAoYXdhaXQgd2FpdEZvckV4aXQoY2hpbGQpKSB7IGNoaWxkcmVuLmRlbGV0ZShjaGlsZCk7IHJldHVybjsgfQogIGNoaWxkLmtpbGwoJ1NJR0lOVCcpOwogIGlmIChhd2FpdCB3YWl0Rm9yRXhpdChjaGlsZCkpIHsgY2hpbGRyZW4uZGVsZXRlKGNoaWxkKTsgcmV0dXJuOyB9CiAgY2hpbGQua2lsbCgpOwogIGlmICghKGF3YWl0IHdhaXRGb3JFeGl0KGNoaWxkLCAyMDAwKSkpIHRocm93IG5ldyBFcnJvcign7ISc67KE6rCAIOyiheujjOuQmOyngCDslYrslYQgU1FMaXRlIO2MjOydvOydhCDslYjsoITtlZjqsowg7KCV66as7ZWgIOyImCDsl4bsirXri4jri6QuJyk7CiAgY2hpbGRyZW4uZGVsZXRlKGNoaWxkKTsKfTsKCnRyeSB7CiAgY29uc3QgZmlyc3QgPSBhd2FpdCBzdGFydFNlcnZlcigpOwogIGNvbnN0IGhlYWx0aCA9IGF3YWl0IHJlcXVlc3QoJy9hcGkvaGVhbHRoJyk7CiAgYXNzZXJ0LmVxdWFsKGhlYWx0aC5wZXJzaXN0ZW5jZS5ydW50aW1lTW9kZSwgJ3NxbGl0ZScpOwoKICBjb25zdCBwZXJzaXN0ZWRFdmlkZW5jZSA9IGF3YWl0IHJlcXVlc3QoJy9hcGkvZXZpZGVuY2UnLCBqc29uT3B0aW9ucyh7IGxvdElkOiAnTE9ULVBFUlNJU1QnLCBldmlkZW5jZVR5cGU6ICdDT0EnLCBkb2N1bWVudFZlcnNpb246ICd2MScsIGNvbnRlbnQ6ICdwZXJzaXN0ZWQgY29hJywgZXhwaXJlc0F0OiAnMjAyNy0xMi0zMScgfSkpOwogIGFzc2VydC5vayhwZXJzaXN0ZWRFdmlkZW5jZS5ldmlkZW5jZUlkKTsKCiAgY29uc3Qgb3JkZXJSZXNwb25zZSA9IGF3YWl0IHJlcXVlc3QoJy9hcGkvb3JkZXJzJywganNvbk9wdGlvbnMoeyBzcGVjSWQ6ICdHQUJBLVNQRUMtMDAxJywgc3BlY0F0dHJpYnV0ZXM6IEdBQkFfU1BFQ19BVFRSSUJVVEVTLCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMDAsIGRlbGl2ZXJ5RGF5czogMTQsIGlkZW1wb3RlbmN5S2V5OiAnc2VydmVyLW9yZGVyLTAwMScgfSkpOwogIGNvbnN0IGFjY2VwdGVkID0gYXdhaXQgcmVxdWVzdChgL2FwaS9vcmRlcnMvJHtvcmRlclJlc3BvbnNlLm9yZGVyLm9yZGVySWR9L2FjY2VwdGAsIGpzb25PcHRpb25zKHsgbG90SWQ6ICdHQkEtS1ItMjQwNycsIGlkZW1wb3RlbmN5S2V5OiAnc2VydmVyLWFjY2VwdC0wMDEnIH0pKTsKICBhd2FpdCBzdG9wU2VydmVyKGZpcnN0KTsKCiAgY29uc3Qgc2Vjb25kID0gYXdhaXQgc3RhcnRTZXJ2ZXIoKTsKICBjb25zdCByZWNvdmVyZWQgPSBhd2FpdCByZXF1ZXN0KCcvYXBpL3N0YXRlJyk7CiAgYXNzZXJ0LmVxdWFsKHJlY292ZXJlZC5vcmRlcnNbMF0uc3RhdHVzLCAnVFJBREVfQ09ORklSTUVEJyk7CiAgYXNzZXJ0LmVxdWFsKHJlY292ZXJlZC50cmFkZXMubGVuZ3RoLCAxKTsKICBhc3NlcnQuZXF1YWwocmVjb3ZlcmVkLmxvdHNbMF0uYXZhaWxhYmxlUXR5LCAxMDAwKTsKICBjb25zdCByZWNvdmVyZWRFdmlkZW5jZSA9IGF3YWl0IHJlcXVlc3QoJy9hcGkvZXZpZGVuY2U/bG90SWQ9TE9ULVBFUlNJU1QnLCB7IGhlYWRlcnM6IHsgJ3gtcmF3LXJvbGUnOiAnT1BFUkFUT1InIH0gfSk7CiAgYXNzZXJ0LmVxdWFsKHJlY292ZXJlZEV2aWRlbmNlLmxlbmd0aCwgMSk7CiAgYXNzZXJ0LmVxdWFsKHJlY292ZXJlZEV2aWRlbmNlWzBdLmNvbnRlbnRTaGEyNTYubGVuZ3RoLCA2NCk7CiAgY29uc3QgbmV4dCA9IGF3YWl0IHJlcXVlc3QoJy9hcGkvb3JkZXJzJywganNvbk9wdGlvbnMoeyBzcGVjSWQ6ICdHQUJBLVNQRUMtMDAxJywgc3BlY0F0dHJpYnV0ZXM6IEdBQkFfU1BFQ19BVFRSSUJVVEVTLCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMDAsIGRlbGl2ZXJ5RGF5czogMTQsIGlkZW1wb3RlbmN5S2V5OiAnc2VydmVyLW9yZGVyLTAwMicgfSkpOwogIGFzc2VydC5lcXVhbChuZXh0Lm9yZGVyLm9yZGVySWQsICdPUkRFUi0wMDAwMicpOwogIGF3YWl0IHN0b3BTZXJ2ZXIoc2Vjb25kKTsKICBjb25zb2xlLmxvZygnc2VydmVyIHBlcnNpc3RlbmNlIHJlY292ZXJ5IHRlc3RzOiBQQVNTJyk7Cn0gZmluYWxseSB7CiAgZm9yIChjb25zdCBjaGlsZCBvZiBbLi4uY2hpbGRyZW5dKSB7CiAgICB0cnkgeyBhd2FpdCBzdG9wU2VydmVyKGNoaWxkKTsgfSBjYXRjaCB7IHRyeSB7IGNoaWxkLmtpbGwoKTsgfSBjYXRjaCB7fSB9CiAgfQogIGF3YWl0IHJtKGZpbGVQYXRoLCB7IGZvcmNlOiB0cnVlLCBtYXhSZXRyaWVzOiA1MCwgcmV0cnlEZWxheTogMjAwIH0pOwogIGF3YWl0IHJtKGRvY3VtZW50Um9vdCwgeyByZWN1cnNpdmU6IHRydWUsIGZvcmNlOiB0cnVlLCBtYXhSZXRyaWVzOiA1MCwgcmV0cnlEZWxheTogMjAwIH0pOwp9Cg==
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { setTimeout as wait } from 'node:timers/promises';
+import { GABA_SPEC_ATTRIBUTES } from './trade-engine.mjs';
+
+const port = 4176;
+const filePath = join(tmpdir(), `raw-material-server-${Date.now()}.sqlite`);
+const documentRoot = join(tmpdir(), `raw-material-server-docs-${Date.now()}`);
+const appRoot = fileURLToPath(new URL('.', import.meta.url));
+const children = new Set();
+
+const waitForHealth = async (child) => {
+  const deadline = Date.now() + 8000;
+  while (Date.now() < deadline) {
+    try {
+      const response = await fetch(`http://127.0.0.1:${port}/api/health`);
+      if (response.ok) return response.json();
+    } catch {}
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  child.kill();
+  children.delete(child);
+  throw new Error('서버가 제한시간 내에 시작되지 않았습니다.');
+};
+
+const startServer = async () => {
+  const child = spawn(process.execPath, ['--experimental-sqlite', 'server.mjs'], {
+    cwd: appRoot,
+    env: { ...process.env, PORT: String(port), PERSISTENCE_MODE: 'sqlite', PERSISTENCE_FILE: filePath, DOCUMENT_STORAGE_ROOT: documentRoot, ALLOW_TEST_SHUTDOWN: 'true' },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  children.add(child);
+  child.on('error', (error) => { throw error; });
+  child.stdout.resume();
+  child.stderr.resume();
+  await waitForHealth(child);
+  return child;
+};
+
+const request = async (path, options = {}) => (await fetch(`http://127.0.0.1:${port}${path}`, { ...options, signal: AbortSignal.timeout(3000) })).json();
+const jsonOptions = (body) => ({ method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+const waitForExit = async (child, timeoutMs = 3000) => {
+  const deadline = Date.now() + timeoutMs;
+  while (child.exitCode === null && Date.now() < deadline) await wait(100);
+  return child.exitCode !== null;
+};
+const stopServer = async (child) => {
+  if (child.exitCode !== null) { children.delete(child); return; }
+  try { await fetch(`http://127.0.0.1:${port}/api/test/shutdown`, { method: 'POST', signal: AbortSignal.timeout(1000) }); } catch {}
+  if (await waitForExit(child)) { children.delete(child); return; }
+  child.kill('SIGINT');
+  if (await waitForExit(child)) { children.delete(child); return; }
+  child.kill();
+  if (!(await waitForExit(child, 2000))) throw new Error('서버가 종료되지 않아 SQLite 파일을 안전하게 정리할 수 없습니다.');
+  children.delete(child);
+};
+
+try {
+  const first = await startServer();
+  const health = await request('/api/health');
+  assert.equal(health.persistence.runtimeMode, 'sqlite');
+
+  const persistedEvidence = await request('/api/evidence', jsonOptions({ lotId: 'LOT-PERSIST', evidenceType: 'COA', documentVersion: 'v1', content: 'persisted coa', expiresAt: '2027-12-31' }));
+  assert.ok(persistedEvidence.evidenceId);
+
+  const orderResponse = await request('/api/orders', jsonOptions({ specId: 'GABA-SPEC-001', specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 200, deliveryDays: 14, idempotencyKey: 'server-order-001' }));
+  const accepted = await request(`/api/orders/${orderResponse.order.orderId}/accept`, jsonOptions({ lotId: 'GBA-KR-2407', idempotencyKey: 'server-accept-001' }));
+  await stopServer(first);
+
+  const second = await startServer();
+  const recovered = await request('/api/state');
+  assert.equal(recovered.orders[0].status, 'TRADE_CONFIRMED');
+  assert.equal(recovered.trades.length, 1);
+  assert.equal(recovered.lots[0].availableQty, 1000);
+  const recoveredEvidence = await request('/api/evidence?lotId=LOT-PERSIST', { headers: { 'x-raw-role': 'OPERATOR' } });
+  assert.equal(recoveredEvidence.length, 1);
+  assert.equal(recoveredEvidence[0].contentSha256.length, 64);
+  const next = await request('/api/orders', jsonOptions({ specId: 'GABA-SPEC-001', specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 200, deliveryDays: 14, idempotencyKey: 'server-order-002' }));
+  assert.equal(next.order.orderId, 'ORDER-00002');
+  await stopServer(second);
+  console.log('server persistence recovery tests: PASS');
+} finally {
+  for (const child of [...children]) {
+    try { await stopServer(child); } catch { try { child.kill(); } catch {} }
+  }
+  await rm(filePath, { force: true, maxRetries: 50, retryDelay: 200 });
+  await rm(documentRoot, { recursive: true, force: true, maxRetries: 50, retryDelay: 200 });
+}

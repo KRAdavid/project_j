@@ -1,1 +1,37 @@
-ewogICJjb250cmFjdFZlcnNpb24iOiAiUFJJQ0UtU09VUkNFLTAuMSIsCiAgInN0YXR1cyI6ICJTSU1VTEFUSU9OX09OTFkiLAogICJhbGxvd2VkU291cmNlcyI6IFsKICAgIHsKICAgICAgInNvdXJjZVR5cGUiOiAiQ09NUExFVEVEX1BIWVNJQ0FMX1RSQURFIiwKICAgICAgInJlcXVpcmVkRmllbGRzIjogWyJ0cmFkZUlkIiwgInNwZWNJZCIsICJzdXBwbGllcklkIiwgInByaWNlIiwgInF1YW50aXR5IiwgInF1YW50aXR5VW5pdCIsICJwcmljZVVuaXQiLCAiY3VycmVuY3kiLCAiZnVsZmlsbGVkQXQiLCAiZXZpZGVuY2VTdGF0dXMiXSwKICAgICAgImVsaWdpYmxlRm9yUHVibGlzaGVkSW5kZXgiOiB0cnVlLAogICAgICAicmVmcmVzaENhZGVuY2UiOiAiZXZlbnR1YWwiCiAgICB9LAogICAgewogICAgICAic291cmNlVHlwZSI6ICJTVVBQTElFUl9RVU9URSIsCiAgICAgICJyZXF1aXJlZEZpZWxkcyI6IFsicXVvdGVJZCIsICJzcGVjSWQiLCAic3VwcGxpZXJJZCIsICJwcmljZSIsICJxdWFudGl0eSIsICJxdWFudGl0eVVuaXQiLCAicHJpY2VVbml0IiwgImN1cnJlbmN5IiwgInZhbGlkVW50aWwiLCAiZXZpZGVuY2VTdGF0dXMiXSwKICAgICAgImVsaWdpYmxlRm9yUHVibGlzaGVkSW5kZXgiOiBmYWxzZSwKICAgICAgInJlZnJlc2hDYWRlbmNlIjogImRhaWx5IgogICAgfSwKICAgIHsKICAgICAgInNvdXJjZVR5cGUiOiAiUFVCTElDX1JFRkVSRU5DRSIsCiAgICAgICJyZXF1aXJlZEZpZWxkcyI6IFsic291cmNlSWQiLCAicHVibGlzaGVkQXQiLCAidW5pdCIsICJ2YWx1ZSIsICJsaWNlbnNlUmVmIl0sCiAgICAgICJlbGlnaWJsZUZvclB1Ymxpc2hlZEluZGV4IjogZmFsc2UsCiAgICAgICJyZWZyZXNoQ2FkZW5jZSI6ICJkYWlseSIKICAgIH0KICBdLAogICJxdWFsaXR5Q2hlY2tzIjogWwogICAgIuqxsOuemCDsiqTtjpnqs7wg6rCA6rKpIOuLqOychOqwgCDsnbzsuZjtlbTslbwg7ZWc64ukLiIsCiAgICAi7JmE66OMIOqxsOuemOuKlCDrgqntkojCt+qygOyImCDsg4Htg5zsmYAg7Jyg7ZqoIOymneu5meydhCDqsIDsoLjslbwg7ZWc64ukLiIsCiAgICAi7KSR67O1IOqxsOuemCDsi53rs4TsnpDripQg7ZWcIOuyiOunjCDrsJjsmIHtlZzri6QuIiwKICAgICLqt7nri6jqsJLsnYAg7IKt7KCc7ZWY7KeAIOunkOqzoCDqsoDthqAg64yA6riwIO2RnOuzuOycvOuhnCDrtoTrpqztlZzri6QuIiwKICAgICLtkZzrs7jCt+qzteq4ieyekCDri6TslpHshLEg6riw7KSAIOuvuOuLrCDsi5wg6rCA6rKp6rCS6rO8IOy2lOyEuOulvCDqs7XqsJztlZjsp4Ag7JWK64qU64ukLiIKICBdLAogICJwdWJsaWNhdGlvbiI6IHsKICAgICJyYXdTdXBwbGllcklkZW50aXR5UHVibGljIjogZmFsc2UsCiAgICAic291cmNlRGlzY2xvc3VyZVJlcXVpcmVkIjogdHJ1ZSwKICAgICJodW1hbkFwcHJvdmFsUmVxdWlyZWQiOiB0cnVlLAogICAgIm1vZGVsUHJlZGljdGlvbkxhYmVsIjogIuywuOqzoOyaqSDstpTshLjsnbTrqbAg67O07J6l6rCS7J20IOyVhOuLmCIKICB9Cn0K
+{
+  "contractVersion": "PRICE-SOURCE-0.1",
+  "status": "SIMULATION_ONLY",
+  "allowedSources": [
+    {
+      "sourceType": "COMPLETED_PHYSICAL_TRADE",
+      "requiredFields": ["tradeId", "specId", "supplierId", "price", "quantity", "quantityUnit", "priceUnit", "currency", "fulfilledAt", "evidenceStatus"],
+      "eligibleForPublishedIndex": true,
+      "refreshCadence": "eventual"
+    },
+    {
+      "sourceType": "SUPPLIER_QUOTE",
+      "requiredFields": ["quoteId", "specId", "supplierId", "price", "quantity", "quantityUnit", "priceUnit", "currency", "validUntil", "evidenceStatus"],
+      "eligibleForPublishedIndex": false,
+      "refreshCadence": "daily"
+    },
+    {
+      "sourceType": "PUBLIC_REFERENCE",
+      "requiredFields": ["sourceId", "publishedAt", "unit", "value", "licenseRef"],
+      "eligibleForPublishedIndex": false,
+      "refreshCadence": "daily"
+    }
+  ],
+  "qualityChecks": [
+    "거래 스펙과 가격 단위가 일치해야 한다.",
+    "완료 거래는 납품·검수 상태와 유효 증빙을 가져야 한다.",
+    "중복 거래 식별자는 한 번만 반영한다.",
+    "극단값은 삭제하지 말고 검토 대기 표본으로 분리한다.",
+    "표본·공급자 다양성 기준 미달 시 가격값과 추세를 공개하지 않는다."
+  ],
+  "publication": {
+    "rawSupplierIdentityPublic": false,
+    "sourceDisclosureRequired": true,
+    "humanApprovalRequired": true,
+    "modelPredictionLabel": "참고용 추세이며 보장값이 아님"
+  }
+}

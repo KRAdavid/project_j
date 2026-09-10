@@ -1,1 +1,19 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBjcmVhdGVTc2VGcmFtZSwgU3NlRXZlbnRCcm9rZXIgfSBmcm9tICcuL2V2ZW50LWJyb2tlci5tanMnOwoKY29uc3QgZnJhbWUgPSBjcmVhdGVTc2VGcmFtZSgnbGVkZ2VyJywgeyBvazogdHJ1ZSB9LCAnRVZFTlQtMDAxJyk7CmFzc2VydC5tYXRjaChmcmFtZSwgL15pZDogRVZFTlQtMDAxXG5ldmVudDogbGVkZ2VyXG5kYXRhOiBceyJvayI6dHJ1ZVx9XG5cbiQvKTsKCmNvbnN0IGJyb2tlciA9IG5ldyBTc2VFdmVudEJyb2tlcigpOwpjb25zdCB3cml0ZXMgPSBbXTsKY29uc3QgcmVtb3ZlID0gYnJva2VyLmFkZCh7IHdyaXRlOiAodmFsdWUpID0+IHdyaXRlcy5wdXNoKHZhbHVlKSB9KTsKYnJva2VyLnB1Ymxpc2goJ3NuYXBzaG90JywgeyBkYXRhU3RhdHVzOiAnU0lNVUxBVEVEX0JBQ0tFTkQnIH0sICdFVkVOVC0wMDInKTsKYXNzZXJ0LmVxdWFsKHdyaXRlcy5sZW5ndGgsIDEpOwphc3NlcnQubWF0Y2god3JpdGVzWzBdLCAvZXZlbnQ6IHNuYXBzaG90Lyk7CmJyb2tlci5zZW5kKHsgd3JpdGU6ICh2YWx1ZSkgPT4gd3JpdGVzLnB1c2godmFsdWUpIH0sICdoZWFydGJlYXQnLCB7IGRhdGFTdGF0dXM6ICdTSU1VTEFURURfQkFDS0VORCcgfSk7CmFzc2VydC5lcXVhbCh3cml0ZXMubGVuZ3RoLCAyLCAn7LSI6riwIOyKpOuDheyDt+ydgCDsp4DsoJXtlZwg7Jew6rKw7JeQ66eMIOuztOuCvCDsiJgg7J6I7Ja07JW8IO2VqeuLiOuLpC4nKTsKcmVtb3ZlKCk7CmJyb2tlci5wdWJsaXNoKCdoZWFydGJlYXQnLCB7IGRhdGFTdGF0dXM6ICdTSU1VTEFURURfQkFDS0VORCcgfSk7CmFzc2VydC5lcXVhbCh3cml0ZXMubGVuZ3RoLCAyLCAn7Jew6rKwIO2VtOygnOuQnCDtgbTrnbzsnbTslrjtirjsl5DripQg7J2067Kk7Yq466W8IOuztOuCtOuptCDslYgg65Cp64uI64ukLicpOwoKY29uc29sZS5sb2coJ2V2ZW50LWJyb2tlciB0ZXN0czogUEFTUycpOwo=
+import assert from 'node:assert/strict';
+import { createSseFrame, SseEventBroker } from './event-broker.mjs';
+
+const frame = createSseFrame('ledger', { ok: true }, 'EVENT-001');
+assert.match(frame, /^id: EVENT-001\nevent: ledger\ndata: \{"ok":true\}\n\n$/);
+
+const broker = new SseEventBroker();
+const writes = [];
+const remove = broker.add({ write: (value) => writes.push(value) });
+broker.publish('snapshot', { dataStatus: 'SIMULATED_BACKEND' }, 'EVENT-002');
+assert.equal(writes.length, 1);
+assert.match(writes[0], /event: snapshot/);
+broker.send({ write: (value) => writes.push(value) }, 'heartbeat', { dataStatus: 'SIMULATED_BACKEND' });
+assert.equal(writes.length, 2, '초기 스냅샷은 지정한 연결에만 보낼 수 있어야 합니다.');
+remove();
+broker.publish('heartbeat', { dataStatus: 'SIMULATED_BACKEND' });
+assert.equal(writes.length, 2, '연결 해제된 클라이언트에는 이벤트를 보내면 안 됩니다.');
+
+console.log('event-broker tests: PASS');

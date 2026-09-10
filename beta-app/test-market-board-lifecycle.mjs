@@ -1,1 +1,103 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBta2R0ZW1wLCBybSB9IGZyb20gJ25vZGU6ZnMvcHJvbWlzZXMnOwppbXBvcnQgeyBqb2luIH0gZnJvbSAnbm9kZTpwYXRoJzsKaW1wb3J0IHsgdG1wZGlyIH0gZnJvbSAnbm9kZTpvcyc7CmltcG9ydCB7IHNwYXduIH0gZnJvbSAnbm9kZTpjaGlsZF9wcm9jZXNzJzsKaW1wb3J0IHsgZmlsZVVSTFRvUGF0aCB9IGZyb20gJ25vZGU6dXJsJzsKaW1wb3J0IHsgR0FCQV9TUEVDX0FUVFJJQlVURVMgfSBmcm9tICcuL3RyYWRlLWVuZ2luZS5tanMnOwoKY29uc3QgcG9ydCA9IE51bWJlcihwcm9jZXNzLmVudi5NQVJLRVRfQk9BUkRfTElGRUNZQ0xFX1BPUlQgfHwgKDQzMDAgKyAocHJvY2Vzcy5waWQgJSAxMDAwKSkpOwpjb25zdCBjd2QgPSBmaWxlVVJMVG9QYXRoKG5ldyBVUkwoJy4nLCBpbXBvcnQubWV0YS51cmwpKTsKY29uc3Qgb3BzUm9vdCA9IGF3YWl0IG1rZHRlbXAoam9pbih0bXBkaXIoKSwgJ3Jhdy1tYXRlcmlhbC1tYXJrZXQtYm9hcmQtJykpOwpjb25zdCBiYXNlID0gYGh0dHA6Ly8xMjcuMC4wLjE6JHtwb3J0fWA7CmNvbnN0IGNoaWxkID0gc3Bhd24ocHJvY2Vzcy5leGVjUGF0aCwgWydzZXJ2ZXIubWpzJ10sIHsKICBjd2QsCiAgZW52OiB7IC4uLnByb2Nlc3MuZW52LCBQT1JUOiBTdHJpbmcocG9ydCksIEFQUF9FTlY6ICdzaW11bGF0aW9uJywgT1BTX1JPT1Q6IG9wc1Jvb3QgfSwKICBzdGRpbzogJ2lnbm9yZScsCn0pOwoKY29uc3QganNvbiA9IChib2R5LCBoZWFkZXJzID0ge30pID0+ICh7CiAgbWV0aG9kOiAnUE9TVCcsCiAgaGVhZGVyczogeyAnY29udGVudC10eXBlJzogJ2FwcGxpY2F0aW9uL2pzb24nLCAuLi5oZWFkZXJzIH0sCiAgYm9keTogSlNPTi5zdHJpbmdpZnkoYm9keSksCn0pOwoKY29uc3QgcmVxdWVzdCA9IGFzeW5jIChwYXRoLCBvcHRpb25zKSA9PiB7CiAgZm9yIChsZXQgYXR0ZW1wdCA9IDA7IGF0dGVtcHQgPCA1MDsgYXR0ZW1wdCArPSAxKSB7CiAgICB0cnkgeyByZXR1cm4gYXdhaXQgZmV0Y2goYCR7YmFzZX0ke3BhdGh9YCwgb3B0aW9ucyk7IH0gY2F0Y2ggewogICAgICBhd2FpdCBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gc2V0VGltZW91dChyZXNvbHZlLCAxMDApKTsKICAgIH0KICB9CiAgdGhyb3cgbmV3IEVycm9yKCdtYXJrZXQgYm9hcmQgbGlmZWN5Y2xlIHNlcnZlciB1bmF2YWlsYWJsZScpOwp9OwoKY29uc3QgYm9hcmQgPSBhc3luYyAoKSA9PiB7CiAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCByZXF1ZXN0KCcvYXBpL21hcmtldC1ib2FyZD9zcGVjSWQ9R0FCQS1TUEVDLTAwMScsIHsgaGVhZGVyczogeyAneC1kZW1vLXJvbGUnOiAnQlVZRVInIH0gfSk7CiAgYXNzZXJ0LmVxdWFsKHJlc3BvbnNlLnN0YXR1cywgMjAwKTsKICByZXR1cm4gcmVzcG9uc2UuanNvbigpOwp9OwoKdHJ5IHsKICBjb25zdCBiZWZvcmUgPSBhd2FpdCBib2FyZCgpOwogIGFzc2VydC5lcXVhbChiZWZvcmUuZGF0YVN0YXR1cywgJ1NFUlZFUl9WRVJJRklFRF9PRkZFUlMnKTsKICBhc3NlcnQuZXF1YWwoYmVmb3JlLmFjdGl2aXR5U3RhdHVzLCAnTk9fQ09NUExFVEVEX1RSQURFUycpOwogIGFzc2VydC5lcXVhbChiZWZvcmUucmVjZW50VHJhZGVzLmxlbmd0aCwgMCk7CiAgYXNzZXJ0LmVxdWFsKGJlZm9yZS5hc2tzLmxlbmd0aCwgMSk7CiAgYXNzZXJ0LmVxdWFsKGJlZm9yZS5hc2tzWzBdLmF2YWlsYWJsZVF0eSwgMTIwMCk7CgogIGNvbnN0IG9yZGVyUmVzcG9uc2UgPSBhd2FpdCByZXF1ZXN0KCcvYXBpL29yZGVycycsIGpzb24oewogICAgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsCiAgICBzcGVjQXR0cmlidXRlczogR0FCQV9TUEVDX0FUVFJJQlVURVMsCiAgICBwcmljZTogMjE4MDAsCiAgICBxdWFudGl0eTogMjAwLAogICAgZGVsaXZlcnlEYXlzOiAxNCwKICB9KSk7CiAgYXNzZXJ0LmVxdWFsKG9yZGVyUmVzcG9uc2Uuc3RhdHVzLCAyMDEpOwogIGNvbnN0IG9yZGVyID0gYXdhaXQgb3JkZXJSZXNwb25zZS5qc29uKCk7CgogIGNvbnN0IGFjY2VwdGVkUmVzcG9uc2UgPSBhd2FpdCByZXF1ZXN0KGAvYXBpL29yZGVycy8ke29yZGVyLm9yZGVyLm9yZGVySWR9L2FjY2VwdGAsIGpzb24oCiAgICB7IGxvdElkOiAnR0JBLUtSLTI0MDcnIH0sCiAgICB7ICd4LWRlbW8tcm9sZSc6ICdTVVBQTElFUicgfSwKICApKTsKICBhc3NlcnQuZXF1YWwoYWNjZXB0ZWRSZXNwb25zZS5zdGF0dXMsIDIwMCk7CiAgY29uc3QgYWNjZXB0ZWQgPSBhd2FpdCBhY2NlcHRlZFJlc3BvbnNlLmpzb24oKTsKICBjb25zdCBhZnRlckFjY2VwdCA9IGF3YWl0IGJvYXJkKCk7CiAgYXNzZXJ0LmVxdWFsKGFmdGVyQWNjZXB0LmFjdGl2aXR5U3RhdHVzLCAnTk9fQ09NUExFVEVEX1RSQURFUycpOwogIGFzc2VydC5lcXVhbChhZnRlckFjY2VwdC5yZWNlbnRUcmFkZXMubGVuZ3RoLCAwKTsKICBhc3NlcnQuZXF1YWwoYWZ0ZXJBY2NlcHQuYXNrc1swXS5hdmFpbGFibGVRdHksIDEwMDApOwoKICBjb25zdCBkZWxpdmVyZWRSZXNwb25zZSA9IGF3YWl0IHJlcXVlc3QoYC9hcGkvdHJhZGVzLyR7YWNjZXB0ZWQudHJhZGUudHJhZGVJZH0vZGVsaXZlcmAsIGpzb24oCiAgICB7fSwKICAgIHsgJ3gtZGVtby1yb2xlJzogJ1NVUFBMSUVSJyB9LAogICkpOwogIGFzc2VydC5lcXVhbChkZWxpdmVyZWRSZXNwb25zZS5zdGF0dXMsIDIwMCk7CiAgYXNzZXJ0LmVxdWFsKChhd2FpdCBkZWxpdmVyZWRSZXNwb25zZS5qc29uKCkpLnRyYWRlLnN0YXR1cywgJ0RFTElWRVJFRCcpOwoKICBjb25zdCBpbnNwZWN0ZWRSZXNwb25zZSA9IGF3YWl0IHJlcXVlc3QoYC9hcGkvdHJhZGVzLyR7YWNjZXB0ZWQudHJhZGUudHJhZGVJZH0vaW5zcGVjdGAsIGpzb24oCiAgICB7IHNwZWNNYXRjaDogdHJ1ZSwgcXVhbGl0eVBhc3M6IHRydWUgfSwKICAgIHsgJ3gtZGVtby1yb2xlJzogJ09QRVJBVE9SJyB9LAogICkpOwogIGFzc2VydC5lcXVhbChpbnNwZWN0ZWRSZXNwb25zZS5zdGF0dXMsIDIwMCk7CiAgYXNzZXJ0LmVxdWFsKChhd2FpdCBpbnNwZWN0ZWRSZXNwb25zZS5qc29uKCkpLnRyYWRlLnN0YXR1cywgJ0ZVTEZJTExFRCcpOwoKICBjb25zdCBhZnRlckZ1bGZpbGxtZW50ID0gYXdhaXQgYm9hcmQoKTsKICBhc3NlcnQuZXF1YWwoYWZ0ZXJGdWxmaWxsbWVudC5hY3Rpdml0eVN0YXR1cywgJ1NFUlZFUl9WRVJJRklFRF9DT01QTEVURURfVFJBREVTJyk7CiAgYXNzZXJ0LmVxdWFsKGFmdGVyRnVsZmlsbG1lbnQucmVjZW50VHJhZGVzLmxlbmd0aCwgMSk7CiAgYXNzZXJ0LmVxdWFsKGFmdGVyRnVsZmlsbG1lbnQucmVjZW50VHJhZGVzWzBdLnByaWNlLCAyMTgwMCk7CiAgYXNzZXJ0LmVxdWFsKGFmdGVyRnVsZmlsbG1lbnQucmVjZW50VHJhZGVzWzBdLnF1YW50aXR5LCAyMDApOwogIGFzc2VydC5lcXVhbChhZnRlckZ1bGZpbGxtZW50LnJlY2VudFRyYWRlc1swXS5kaXNjbG9zdXJlU3RhdHVzLCAnQ09NUExFVEVEX1BIWVNJQ0FMX1RSQURFJyk7CgogIGNvbnN0IHByaWNlSW5kZXhSZXNwb25zZSA9IGF3YWl0IHJlcXVlc3QoJy9hcGkvcHJpY2UtaW5kZXg/c3BlY0lkPUdBQkEtU1BFQy0wMDEnLCB7IGhlYWRlcnM6IHsgJ3gtZGVtby1yb2xlJzogJ0JVWUVSJyB9IH0pOwogIGFzc2VydC5lcXVhbChwcmljZUluZGV4UmVzcG9uc2Uuc3RhdHVzLCAyMDApOwogIGNvbnN0IHByaWNlSW5kZXggPSBhd2FpdCBwcmljZUluZGV4UmVzcG9uc2UuanNvbigpOwogIGFzc2VydC5lcXVhbChwcmljZUluZGV4LnNhbXBsZVNpemUsIDEpOwogIGFzc2VydC5lcXVhbChwcmljZUluZGV4LnN0YXR1cywgJ1VOQVZBSUxBQkxFJyk7CiAgYXNzZXJ0LmVxdWFsKHByaWNlSW5kZXgucmVhc29uLCAnSU5TVUZGSUNJRU5UX0NPTVBMRVRFRF9UUkFERVMnKTsKICBhc3NlcnQuZGVlcEVxdWFsKHByaWNlSW5kZXgucHJpY2VTZXJpZXMsIFt7IGZ1bGZpbGxlZEF0OiBwcmljZUluZGV4LnByaWNlU2VyaWVzWzBdLmZ1bGZpbGxlZEF0LCBwcmljZTogMjE4MDAgfV0pOwogIGFzc2VydC5vayhwcmljZUluZGV4LnByaWNlU2VyaWVzLmV2ZXJ5KChwb2ludCkgPT4gIU9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbChwb2ludCwgJ3N1cHBsaWVySWQnKSkpOwoKICBjb25zb2xlLmxvZygnbWFya2V0IGJvYXJkIGxpZmVjeWNsZSB0ZXN0czogUEFTUycpOwp9IGZpbmFsbHkgewogIGNoaWxkLmtpbGwoKTsKICBhd2FpdCBybShvcHNSb290LCB7IHJlY3Vyc2l2ZTogdHJ1ZSwgZm9yY2U6IHRydWUgfSk7Cn0K
+import assert from 'node:assert/strict';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { GABA_SPEC_ATTRIBUTES } from './trade-engine.mjs';
+
+const port = Number(process.env.MARKET_BOARD_LIFECYCLE_PORT || (4300 + (process.pid % 1000)));
+const cwd = fileURLToPath(new URL('.', import.meta.url));
+const opsRoot = await mkdtemp(join(tmpdir(), 'raw-material-market-board-'));
+const base = `http://127.0.0.1:${port}`;
+const child = spawn(process.execPath, ['server.mjs'], {
+  cwd,
+  env: { ...process.env, PORT: String(port), APP_ENV: 'simulation', OPS_ROOT: opsRoot },
+  stdio: 'ignore',
+});
+
+const json = (body, headers = {}) => ({
+  method: 'POST',
+  headers: { 'content-type': 'application/json', ...headers },
+  body: JSON.stringify(body),
+});
+
+const request = async (path, options) => {
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    try { return await fetch(`${base}${path}`, options); } catch {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+  }
+  throw new Error('market board lifecycle server unavailable');
+};
+
+const board = async () => {
+  const response = await request('/api/market-board?specId=GABA-SPEC-001', { headers: { 'x-demo-role': 'BUYER' } });
+  assert.equal(response.status, 200);
+  return response.json();
+};
+
+try {
+  const before = await board();
+  assert.equal(before.dataStatus, 'SERVER_VERIFIED_OFFERS');
+  assert.equal(before.activityStatus, 'NO_COMPLETED_TRADES');
+  assert.equal(before.recentTrades.length, 0);
+  assert.equal(before.asks.length, 1);
+  assert.equal(before.asks[0].availableQty, 1200);
+
+  const orderResponse = await request('/api/orders', json({
+    specId: 'GABA-SPEC-001',
+    specAttributes: GABA_SPEC_ATTRIBUTES,
+    price: 21800,
+    quantity: 200,
+    deliveryDays: 14,
+  }));
+  assert.equal(orderResponse.status, 201);
+  const order = await orderResponse.json();
+
+  const acceptedResponse = await request(`/api/orders/${order.order.orderId}/accept`, json(
+    { lotId: 'GBA-KR-2407' },
+    { 'x-demo-role': 'SUPPLIER' },
+  ));
+  assert.equal(acceptedResponse.status, 200);
+  const accepted = await acceptedResponse.json();
+  const afterAccept = await board();
+  assert.equal(afterAccept.activityStatus, 'NO_COMPLETED_TRADES');
+  assert.equal(afterAccept.recentTrades.length, 0);
+  assert.equal(afterAccept.asks[0].availableQty, 1000);
+
+  const deliveredResponse = await request(`/api/trades/${accepted.trade.tradeId}/deliver`, json(
+    {},
+    { 'x-demo-role': 'SUPPLIER' },
+  ));
+  assert.equal(deliveredResponse.status, 200);
+  assert.equal((await deliveredResponse.json()).trade.status, 'DELIVERED');
+
+  const inspectedResponse = await request(`/api/trades/${accepted.trade.tradeId}/inspect`, json(
+    { specMatch: true, qualityPass: true },
+    { 'x-demo-role': 'OPERATOR' },
+  ));
+  assert.equal(inspectedResponse.status, 200);
+  assert.equal((await inspectedResponse.json()).trade.status, 'FULFILLED');
+
+  const afterFulfillment = await board();
+  assert.equal(afterFulfillment.activityStatus, 'SERVER_VERIFIED_COMPLETED_TRADES');
+  assert.equal(afterFulfillment.recentTrades.length, 1);
+  assert.equal(afterFulfillment.recentTrades[0].price, 21800);
+  assert.equal(afterFulfillment.recentTrades[0].quantity, 200);
+  assert.equal(afterFulfillment.recentTrades[0].disclosureStatus, 'COMPLETED_PHYSICAL_TRADE');
+
+  const priceIndexResponse = await request('/api/price-index?specId=GABA-SPEC-001', { headers: { 'x-demo-role': 'BUYER' } });
+  assert.equal(priceIndexResponse.status, 200);
+  const priceIndex = await priceIndexResponse.json();
+  assert.equal(priceIndex.sampleSize, 1);
+  assert.equal(priceIndex.status, 'UNAVAILABLE');
+  assert.equal(priceIndex.reason, 'INSUFFICIENT_COMPLETED_TRADES');
+  assert.deepEqual(priceIndex.priceSeries, [{ fulfilledAt: priceIndex.priceSeries[0].fulfilledAt, price: 21800 }]);
+  assert.ok(priceIndex.priceSeries.every((point) => !Object.prototype.hasOwnProperty.call(point, 'supplierId')));
+
+  console.log('market board lifecycle tests: PASS');
+} finally {
+  child.kill();
+  await rm(opsRoot, { recursive: true, force: true });
+}

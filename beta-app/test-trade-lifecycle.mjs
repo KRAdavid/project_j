@@ -1,1 +1,34 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBzcGF3biB9IGZyb20gJ25vZGU6Y2hpbGRfcHJvY2Vzcyc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7CmltcG9ydCB7IEdBQkFfU1BFQ19BVFRSSUJVVEVTIH0gZnJvbSAnLi90cmFkZS1lbmdpbmUubWpzJzsKCmNvbnN0IHBvcnQgPSA0MTc5Owpjb25zdCBjd2QgPSBmaWxlVVJMVG9QYXRoKG5ldyBVUkwoJy4nLCBpbXBvcnQubWV0YS51cmwpKTsKY29uc3QgYmFzZSA9IGBodHRwOi8vMTI3LjAuMC4xOiR7cG9ydH1gOwpjb25zdCBjaGlsZCA9IHNwYXduKHByb2Nlc3MuZXhlY1BhdGgsIFsnc2VydmVyLm1qcyddLCB7IGN3ZCwgZW52OiB7IC4uLnByb2Nlc3MuZW52LCBQT1JUOiBTdHJpbmcocG9ydCksIEFQUF9FTlY6ICdzaW11bGF0aW9uJyB9LCBzdGRpbzogJ2lnbm9yZScgfSk7CmNvbnN0IGpzb24gPSAoYm9keSwgaGVhZGVycyA9IHt9KSA9PiAoeyBtZXRob2Q6ICdQT1NUJywgaGVhZGVyczogeyAnY29udGVudC10eXBlJzogJ2FwcGxpY2F0aW9uL2pzb24nLCAuLi5oZWFkZXJzIH0sIGJvZHk6IEpTT04uc3RyaW5naWZ5KGJvZHkpIH0pOwpjb25zdCByZXF1ZXN0ID0gYXN5bmMgKHBhdGgsIG9wdGlvbnMpID0+IHsKICBmb3IgKGxldCBhdHRlbXB0ID0gMDsgYXR0ZW1wdCA8IDQwOyBhdHRlbXB0ICs9IDEpIHsKICAgIHRyeSB7IHJldHVybiBhd2FpdCBmZXRjaChgJHtiYXNlfSR7cGF0aH1gLCBvcHRpb25zKTsgfSBjYXRjaCB7IGF3YWl0IG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiBzZXRUaW1lb3V0KHJlc29sdmUsIDEwMCkpOyB9CiAgfQogIHRocm93IG5ldyBFcnJvcigndHJhZGUgbGlmZWN5Y2xlIHNlcnZlciB1bmF2YWlsYWJsZScpOwp9OwoKdHJ5IHsKICBjb25zdCBvcmRlclJlc3BvbnNlID0gYXdhaXQgcmVxdWVzdCgnL2FwaS9vcmRlcnMnLCBqc29uKHsgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIHNwZWNBdHRyaWJ1dGVzOiBHQUJBX1NQRUNfQVRUUklCVVRFUywgcHJpY2U6IDIxODAwLCBxdWFudGl0eTogMjAwLCBkZWxpdmVyeURheXM6IDE0IH0pKTsKICBhc3NlcnQuZXF1YWwob3JkZXJSZXNwb25zZS5zdGF0dXMsIDIwMSk7CiAgY29uc3Qgb3JkZXIgPSBhd2FpdCBvcmRlclJlc3BvbnNlLmpzb24oKTsKICBjb25zdCBhY2NlcHRSZXNwb25zZSA9IGF3YWl0IHJlcXVlc3QoYC9hcGkvb3JkZXJzLyR7b3JkZXIub3JkZXIub3JkZXJJZH0vYWNjZXB0YCwganNvbih7IGxvdElkOiAnR0JBLUtSLTI0MDcnIH0sIHsgJ3gtZGVtby1yb2xlJzogJ1NVUFBMSUVSJyB9KSk7CiAgYXNzZXJ0LmVxdWFsKGFjY2VwdFJlc3BvbnNlLnN0YXR1cywgMjAwKTsKICBjb25zdCBhY2NlcHRlZCA9IGF3YWl0IGFjY2VwdFJlc3BvbnNlLmpzb24oKTsKICBjb25zdCBkZWxpdmVyUmVzcG9uc2UgPSBhd2FpdCByZXF1ZXN0KGAvYXBpL3RyYWRlcy8ke2FjY2VwdGVkLnRyYWRlLnRyYWRlSWR9L2RlbGl2ZXJgLCBqc29uKHt9LCB7ICd4LWRlbW8tcm9sZSc6ICdTVVBQTElFUicgfSkpOwogIGFzc2VydC5lcXVhbChkZWxpdmVyUmVzcG9uc2Uuc3RhdHVzLCAyMDApOwogIGFzc2VydC5lcXVhbCgoYXdhaXQgZGVsaXZlclJlc3BvbnNlLmpzb24oKSkudHJhZGUuc3RhdHVzLCAnREVMSVZFUkVEJyk7CiAgY29uc3QgaW5zcGVjdFJlc3BvbnNlID0gYXdhaXQgcmVxdWVzdChgL2FwaS90cmFkZXMvJHthY2NlcHRlZC50cmFkZS50cmFkZUlkfS9pbnNwZWN0YCwganNvbih7IHNwZWNNYXRjaDogdHJ1ZSwgcXVhbGl0eVBhc3M6IHRydWUgfSwgeyAneC1kZW1vLXJvbGUnOiAnT1BFUkFUT1InIH0pKTsKICBhc3NlcnQuZXF1YWwoaW5zcGVjdFJlc3BvbnNlLnN0YXR1cywgMjAwKTsKICBhc3NlcnQuZXF1YWwoKGF3YWl0IGluc3BlY3RSZXNwb25zZS5qc29uKCkpLnRyYWRlLnN0YXR1cywgJ0ZVTEZJTExFRCcpOwogIGNvbnNvbGUubG9nKCd0cmFkZSBsaWZlY3ljbGUgdGVzdHM6IFBBU1MnKTsKfSBmaW5hbGx5IHsKICBjaGlsZC5raWxsKCk7Cn0K
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { GABA_SPEC_ATTRIBUTES } from './trade-engine.mjs';
+
+const port = 4179;
+const cwd = fileURLToPath(new URL('.', import.meta.url));
+const base = `http://127.0.0.1:${port}`;
+const child = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, PORT: String(port), APP_ENV: 'simulation' }, stdio: 'ignore' });
+const json = (body, headers = {}) => ({ method: 'POST', headers: { 'content-type': 'application/json', ...headers }, body: JSON.stringify(body) });
+const request = async (path, options) => {
+  for (let attempt = 0; attempt < 40; attempt += 1) {
+    try { return await fetch(`${base}${path}`, options); } catch { await new Promise((resolve) => setTimeout(resolve, 100)); }
+  }
+  throw new Error('trade lifecycle server unavailable');
+};
+
+try {
+  const orderResponse = await request('/api/orders', json({ specId: 'GABA-SPEC-001', specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 200, deliveryDays: 14 }));
+  assert.equal(orderResponse.status, 201);
+  const order = await orderResponse.json();
+  const acceptResponse = await request(`/api/orders/${order.order.orderId}/accept`, json({ lotId: 'GBA-KR-2407' }, { 'x-demo-role': 'SUPPLIER' }));
+  assert.equal(acceptResponse.status, 200);
+  const accepted = await acceptResponse.json();
+  const deliverResponse = await request(`/api/trades/${accepted.trade.tradeId}/deliver`, json({}, { 'x-demo-role': 'SUPPLIER' }));
+  assert.equal(deliverResponse.status, 200);
+  assert.equal((await deliverResponse.json()).trade.status, 'DELIVERED');
+  const inspectResponse = await request(`/api/trades/${accepted.trade.tradeId}/inspect`, json({ specMatch: true, qualityPass: true }, { 'x-demo-role': 'OPERATOR' }));
+  assert.equal(inspectResponse.status, 200);
+  assert.equal((await inspectResponse.json()).trade.status, 'FULFILLED');
+  console.log('trade lifecycle tests: PASS');
+} finally {
+  child.kill();
+}

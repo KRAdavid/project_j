@@ -1,1 +1,14 @@
-ewogICJjb250cmFjdFZlcnNpb24iOiAiUkVBTFRJTUUtMC4xIiwKICAidHJhbnNwb3J0IjogIlNTRSIsCiAgInN0YXR1cyI6ICJTSU1VTEFURURfQkFDS0VORCIsCiAgImV2ZW50cyI6IFsKICAgIHsgIm5hbWUiOiAic25hcHNob3QiLCAicHVycG9zZSI6ICLsl7DqsrAg7KeB7ZuEIO2YhOyerCDsm5DsnqUg7IOB7YOcIOyghOuLrCIsICJyZXBsYXlhYmxlIjogdHJ1ZSB9LAogICAgeyAibmFtZSI6ICJsZWRnZXIiLCAicHVycG9zZSI6ICLso7zrrLjCt+yytOqysMK37Jet7KCc7JWIwrfqsbDsoIjCt+unjOujjCDsg4Htg5wg67OA6rK9IOyghOuLrCIsICJyZXBsYXlhYmxlIjogdHJ1ZSB9LAogICAgeyAibmFtZSI6ICJoZWFydGJlYXQiLCAicHVycG9zZSI6ICLsl7DqsrAg7IOd7KG0IO2ZleyduCIsICJyZXBsYXlhYmxlIjogZmFsc2UgfQogIF0sCiAgIm9yZGVyaW5nS2V5IjogImV2ZW50SWQiLAogICJyZXF1aXJlZFBheWxvYWQiOiBbImRhdGFTdGF0dXMiLCAiZXZlbnQiLCAic25hcHNob3QiXSwKICAicmVjb25uZWN0UnVsZSI6ICLsnqzsl7DqsrAg7IucIOy1nOyLoCBzbmFwc2hvdOydhCDrqLzsoIAg7IiY7Iug7ZWY6rOgIOydtO2bhCBsZWRnZXIg7J2067Kk7Yq466W8IOyggeyaqe2VnOuLpC4iLAogICJwZXJtaXNzaW9uUnVsZSI6ICLqtazrp6TsnpDCt+qzteq4ieyekOuKlCDqtoztlZzsl5Ag66ee64qUIOy1nOyGjCDsoJXrs7Trp4wg7IiY7Iug7ZWY66mwIOybkOyepSDshJzrsoTqsIAg7IOB7YOc7J2YIOq4sOykgOydtOuLpC4iCn0K
+{
+  "contractVersion": "REALTIME-0.1",
+  "transport": "SSE",
+  "status": "SIMULATED_BACKEND",
+  "events": [
+    { "name": "snapshot", "purpose": "연결 직후 현재 원장 상태 전달", "replayable": true },
+    { "name": "ledger", "purpose": "주문·체결·역제안·거절·만료 상태 변경 전달", "replayable": true },
+    { "name": "heartbeat", "purpose": "연결 생존 확인", "replayable": false }
+  ],
+  "orderingKey": "eventId",
+  "requiredPayload": ["dataStatus", "event", "snapshot"],
+  "reconnectRule": "재연결 시 최신 snapshot을 먼저 수신하고 이후 ledger 이벤트를 적용한다.",
+  "permissionRule": "구매자·공급자는 권한에 맞는 최소 정보만 수신하며 원장 서버가 상태의 기준이다."
+}

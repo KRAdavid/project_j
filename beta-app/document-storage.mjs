@@ -1,1 +1,164 @@
-aW1wb3J0IHsgY3JlYXRlSGFzaCwgY3JlYXRlSG1hYyB9IGZyb20gJ25vZGU6Y3J5cHRvJzsKaW1wb3J0IHsgbWtkaXIsIHJlYWRGaWxlLCB3cml0ZUZpbGUgfSBmcm9tICdub2RlOmZzL3Byb21pc2VzJzsKaW1wb3J0IHsgZGlybmFtZSwgam9pbiwgcmVzb2x2ZSB9IGZyb20gJ25vZGU6cGF0aCc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7CmltcG9ydCB7IGhhc2hEb2N1bWVudCB9IGZyb20gJy4vZXZpZGVuY2UtdmVyaWZpZXIubWpzJzsKCmNvbnN0IHNoYTI1NiA9ICh2YWx1ZSkgPT4gY3JlYXRlSGFzaCgnc2hhMjU2JykudXBkYXRlKHZhbHVlKS5kaWdlc3QoJ2hleCcpOwpjb25zdCBobWFjID0gKGtleSwgdmFsdWUpID0+IGNyZWF0ZUhtYWMoJ3NoYTI1NicsIGtleSkudXBkYXRlKHZhbHVlKS5kaWdlc3QoKTsKY29uc3QgZW5jb2RlUGF0aCA9ICh2YWx1ZSkgPT4gU3RyaW5nKHZhbHVlKS5zcGxpdCgnLycpLm1hcCgoc2VnbWVudCkgPT4gZW5jb2RlVVJJQ29tcG9uZW50KHNlZ21lbnQpKS5qb2luKCcvJyk7CgpleHBvcnQgY2xhc3MgRG9jdW1lbnRTdG9yYWdlRXJyb3IgZXh0ZW5kcyBFcnJvciB7CiAgY29uc3RydWN0b3IobWVzc2FnZSwgY29kZSA9ICdET0NVTUVOVF9TVE9SQUdFX0ZBSUxFRCcpIHsKICAgIHN1cGVyKG1lc3NhZ2UpOwogICAgdGhpcy5jb2RlID0gY29kZTsKICB9Cn0KCmV4cG9ydCBjbGFzcyBNZW1vcnlEb2N1bWVudFN0b3JhZ2UgewogIGNvbnN0cnVjdG9yKCkgewogICAgdGhpcy5tb2RlID0gJ21lbW9yeSc7CiAgICB0aGlzLmRvY3VtZW50cyA9IG5ldyBNYXAoKTsKICB9CgogIGFzeW5jIHB1dCh7IGtleSwgY29udGVudCwgY29udGVudFNoYTI1NiB9ID0ge30pIHsKICAgIGNvbnN0IG5vcm1hbGl6ZWRLZXkgPSBTdHJpbmcoa2V5IHx8ICcnKS50cmltKCk7CiAgICBpZiAoIW5vcm1hbGl6ZWRLZXkpIHRocm93IG5ldyBEb2N1bWVudFN0b3JhZ2VFcnJvcign66y47IScIOyggOyepSDtgqTqsIAg7ZWE7JqU7ZWp64uI64ukLicsICdET0NVTUVOVF9LRVlfUkVRVUlSRUQnKTsKICAgIGNvbnN0IG5vcm1hbGl6ZWRDb250ZW50ID0gU3RyaW5nKGNvbnRlbnQgPz8gJycpOwogICAgaWYgKCFub3JtYWxpemVkQ29udGVudCkgdGhyb3cgbmV3IERvY3VtZW50U3RvcmFnZUVycm9yKCfrrLjshJwg7JuQ66y47J20IOu5hOyWtCDsnojslrQg7KCA7J6l7ZWgIOyImCDsl4bsirXri4jri6QuJywgJ0RPQ1VNRU5UX0NPTlRFTlRfUkVRVUlSRUQnKTsKICAgIGNvbnN0IGNhbGN1bGF0ZWRTaGEyNTYgPSBoYXNoRG9jdW1lbnQobm9ybWFsaXplZENvbnRlbnQpOwogICAgaWYgKGNvbnRlbnRTaGEyNTYgJiYgU3RyaW5nKGNvbnRlbnRTaGEyNTYpLnRvTG93ZXJDYXNlKCkgIT09IGNhbGN1bGF0ZWRTaGEyNTYpIHsKICAgICAgdGhyb3cgbmV3IERvY3VtZW50U3RvcmFnZUVycm9yKCfrrLjshJwg7JuQ66y46rO8IFNIQS0yNTYg7ZW07Iuc6rCAIOydvOy5mO2VmOyngCDslYrsirXri4jri6QuJywgJ0RPQ1VNRU5UX0hBU0hfTUlTTUFUQ0gnKTsKICAgIH0KICAgIHRoaXMuZG9jdW1lbnRzLnNldChub3JtYWxpemVkS2V5LCB7IGNvbnRlbnQ6IG5vcm1hbGl6ZWRDb250ZW50LCBjb250ZW50U2hhMjU2OiBjYWxjdWxhdGVkU2hhMjU2IH0pOwogICAgcmV0dXJuIHsgc3RvcmFnZVJlZjogYG1lbW9yeTovL2V2aWRlbmNlLyR7ZW5jb2RlVVJJQ29tcG9uZW50KG5vcm1hbGl6ZWRLZXkpfWAsIGNvbnRlbnRTaGEyNTY6IGNhbGN1bGF0ZWRTaGEyNTYgfTsKICB9CgogIGFzeW5jIGdldChrZXkpIHsKICAgIGNvbnN0IGRvY3VtZW50ID0gdGhpcy5kb2N1bWVudHMuZ2V0KFN0cmluZyhrZXkgfHwgJycpKTsKICAgIGlmICghZG9jdW1lbnQpIHRocm93IG5ldyBEb2N1bWVudFN0b3JhZ2VFcnJvcign66y47IScIOybkOusuOydhCDssL7snYQg7IiYIOyXhuyKteuLiOuLpC4nLCAnRE9DVU1FTlRfTk9UX0ZPVU5EJyk7CiAgICByZXR1cm4geyAuLi5kb2N1bWVudCB9OwogIH0KfQoKZXhwb3J0IGNsYXNzIEZpbGVEb2N1bWVudFN0b3JhZ2UgewogIGNvbnN0cnVjdG9yKHJvb3QpIHsKICAgIHRoaXMubW9kZSA9ICdmaWxlJzsKICAgIHRoaXMucm9vdCA9IHJlc29sdmUocm9vdCk7CiAgICB0aGlzLnJlYWR5ID0gbWtkaXIodGhpcy5yb290LCB7IHJlY3Vyc2l2ZTogdHJ1ZSB9KTsKICB9CgogIGZpbGVQYXRoKGtleSkgewogICAgY29uc3Qgbm9ybWFsaXplZEtleSA9IFN0cmluZyhrZXkgfHwgJycpLnRyaW0oKTsKICAgIGlmICghbm9ybWFsaXplZEtleSkgdGhyb3cgbmV3IERvY3VtZW50U3RvcmFnZUVycm9yKCfrrLjshJwg7KCA7J6lIO2CpOqwgCDtlYTsmpTtlanri4jri6QuJywgJ0RPQ1VNRU5UX0tFWV9SRVFVSVJFRCcpOwogICAgY29uc3QgZmlsZW5hbWUgPSBgJHtCdWZmZXIuZnJvbShub3JtYWxpemVkS2V5LCAndXRmOCcpLnRvU3RyaW5nKCdiYXNlNjR1cmwnKX0uanNvbmA7CiAgICByZXR1cm4gam9pbih0aGlzLnJvb3QsIGZpbGVuYW1lKTsKICB9CgogIGFzeW5jIHB1dCh7IGtleSwgY29udGVudCwgY29udGVudFNoYTI1NiB9ID0ge30pIHsKICAgIGNvbnN0IG5vcm1hbGl6ZWRDb250ZW50ID0gU3RyaW5nKGNvbnRlbnQgPz8gJycpOwogICAgaWYgKCFub3JtYWxpemVkQ29udGVudCkgdGhyb3cgbmV3IERvY3VtZW50U3RvcmFnZUVycm9yKCfrrLjshJwg7JuQ66y47J20IOu5hOyWtCDsnojslrQg7KCA7J6l7ZWgIOyImCDsl4bsirXri4jri6QuJywgJ0RPQ1VNRU5UX0NPTlRFTlRfUkVRVUlSRUQnKTsKICAgIGNvbnN0IGNhbGN1bGF0ZWRTaGEyNTYgPSBoYXNoRG9jdW1lbnQobm9ybWFsaXplZENvbnRlbnQpOwogICAgaWYgKGNvbnRlbnRTaGEyNTYgJiYgU3RyaW5nKGNvbnRlbnRTaGEyNTYpLnRvTG93ZXJDYXNlKCkgIT09IGNhbGN1bGF0ZWRTaGEyNTYpIHRocm93IG5ldyBEb2N1bWVudFN0b3JhZ2VFcnJvcign66y47IScIOybkOusuOqzvCBTSEEtMjU2IO2VtOyLnOqwgCDsnbzsuZjtlZjsp4Ag7JWK7Iq164uI64ukLicsICdET0NVTUVOVF9IQVNIX01JU01BVENIJyk7CiAgICBjb25zdCBwYXRoID0gdGhpcy5maWxlUGF0aChrZXkpOwogICAgYXdhaXQgdGhpcy5yZWFkeTsKICAgIGF3YWl0IHdyaXRlRmlsZShwYXRoLCBKU09OLnN0cmluZ2lmeSh7IGNvbnRlbnQ6IG5vcm1hbGl6ZWRDb250ZW50LCBjb250ZW50U2hhMjU2OiBjYWxjdWxhdGVkU2hhMjU2IH0pLCAndXRmOCcpOwogICAgcmV0dXJuIHsgc3RvcmFnZVJlZjogYGZpbGU6Ly8ke3BhdGh9YCwgY29udGVudFNoYTI1NjogY2FsY3VsYXRlZFNoYTI1NiB9OwogIH0KCiAgYXN5bmMgZ2V0KGtleSkgewogICAgdHJ5IHsKICAgICAgY29uc3QgZG9jdW1lbnQgPSBKU09OLnBhcnNlKGF3YWl0IHJlYWRGaWxlKHRoaXMuZmlsZVBhdGgoa2V5KSwgJ3V0ZjgnKSk7CiAgICAgIHJldHVybiBkb2N1bWVudDsKICAgIH0gY2F0Y2ggKGVycm9yKSB7CiAgICAgIGlmIChlcnJvci5jb2RlID09PSAnRU5PRU5UJykgdGhyb3cgbmV3IERvY3VtZW50U3RvcmFnZUVycm9yKCfrrLjshJwg7JuQ66y47J2EIOywvuydhCDsiJgg7JeG7Iq164uI64ukLicsICdET0NVTUVOVF9OT1RfRk9VTkQnKTsKICAgICAgdGhyb3cgZXJyb3I7CiAgICB9CiAgfQp9CgpleHBvcnQgY2xhc3MgUzNEb2N1bWVudFN0b3JhZ2UgewogIGNvbnN0cnVjdG9yKHsgZW5kcG9pbnQsIGJ1Y2tldCwgYWNjZXNzS2V5SWQsIHNlY3JldEFjY2Vzc0tleSwgcmVnaW9uID0gJ3VzLWVhc3QtMScsIHNlc3Npb25Ub2tlbiA9ICcnLCBmZXRjaEltcGwgPSBnbG9iYWxUaGlzLmZldGNoIH0gPSB7fSkgewogICAgaWYgKCFlbmRwb2ludCB8fCAhYnVja2V0IHx8ICFhY2Nlc3NLZXlJZCB8fCAhc2VjcmV0QWNjZXNzS2V5IHx8IHR5cGVvZiBmZXRjaEltcGwgIT09ICdmdW5jdGlvbicpIHRocm93IG5ldyBEb2N1bWVudFN0b3JhZ2VFcnJvcignUzMgT2JqZWN0IFN0b3JhZ2Ug7ISk7KCV7J20IOu2iOyZhOyghO2VqeuLiOuLpC4nLCAnT0JKRUNUX1NUT1JBR0VfQ09ORklHX0lOVkFMSUQnKTsKICAgIHRoaXMubW9kZSA9ICdzMyc7CiAgICB0aGlzLmVuZHBvaW50ID0gbmV3IFVSTChlbmRwb2ludCk7CiAgICB0aGlzLmJ1Y2tldCA9IFN0cmluZyhidWNrZXQpOwogICAgdGhpcy5hY2Nlc3NLZXlJZCA9IFN0cmluZyhhY2Nlc3NLZXlJZCk7CiAgICB0aGlzLnNlY3JldEFjY2Vzc0tleSA9IFN0cmluZyhzZWNyZXRBY2Nlc3NLZXkpOwogICAgdGhpcy5yZWdpb24gPSBTdHJpbmcocmVnaW9uKTsKICAgIHRoaXMuc2Vzc2lvblRva2VuID0gU3RyaW5nKHNlc3Npb25Ub2tlbiB8fCAnJyk7CiAgICB0aGlzLmZldGNoSW1wbCA9IGZldGNoSW1wbDsKICB9CgogIG9iamVjdFVybChrZXkpIHsKICAgIGNvbnN0IHBhdGhQcmVmaXggPSB0aGlzLmVuZHBvaW50LnBhdGhuYW1lLnJlcGxhY2UoL1wvJC8sICcnKTsKICAgIGNvbnN0IHBhdGggPSBgJHtwYXRoUHJlZml4fS8ke2VuY29kZVBhdGgodGhpcy5idWNrZXQpfS8ke2VuY29kZVBhdGgoa2V5KX1gOwogICAgY29uc3QgdXJsID0gbmV3IFVSTCh0aGlzLmVuZHBvaW50LnRvU3RyaW5nKCkpOwogICAgdXJsLnBhdGhuYW1lID0gcGF0aDsKICAgIHJldHVybiB1cmw7CiAgfQoKICBhc3luYyByZXF1ZXN0KG1ldGhvZCwga2V5LCBjb250ZW50ID0gJycpIHsKICAgIGNvbnN0IHVybCA9IHRoaXMub2JqZWN0VXJsKGtleSk7CiAgICBjb25zdCBib2R5ID0gbWV0aG9kID09PSAnUFVUJyA/IFN0cmluZyhjb250ZW50KSA6ICcnOwogICAgY29uc3QgcGF5bG9hZEhhc2ggPSBzaGEyNTYoYm9keSk7CiAgICBjb25zdCBhbXpEYXRlID0gbmV3IERhdGUoKS50b0lTT1N0cmluZygpLnJlcGxhY2UoL1stOl18XC5cZHszfS9nLCAnJyk7CiAgICBjb25zdCBzaG9ydERhdGUgPSBhbXpEYXRlLnNsaWNlKDAsIDgpOwogICAgY29uc3QgaGVhZGVycyA9IHsKICAgICAgaG9zdDogdXJsLmhvc3QsCiAgICAgICd4LWFtei1jb250ZW50LXNoYTI1Nic6IHBheWxvYWRIYXNoLAogICAgICAneC1hbXotZGF0ZSc6IGFtekRhdGUsCiAgICB9OwogICAgaWYgKG1ldGhvZCA9PT0gJ1BVVCcpIGhlYWRlcnNbJ3gtYW16LW1ldGEtY29udGVudC1zaGEyNTYnXSA9IHNoYTI1Nihib2R5KTsKICAgIGlmICh0aGlzLnNlc3Npb25Ub2tlbikgaGVhZGVyc1sneC1hbXotc2VjdXJpdHktdG9rZW4nXSA9IHRoaXMuc2Vzc2lvblRva2VuOwogICAgY29uc3Qgc2lnbmVkSGVhZGVycyA9IE9iamVjdC5rZXlzKGhlYWRlcnMpLnNvcnQoKS5qb2luKCc7Jyk7CiAgICBjb25zdCBjYW5vbmljYWxIZWFkZXJzID0gT2JqZWN0LmtleXMoaGVhZGVycykuc29ydCgpLm1hcCgobmFtZSkgPT4gYCR7bmFtZX06JHtTdHJpbmcoaGVhZGVyc1tuYW1lXSkudHJpbSgpfVxuYCkuam9pbignJyk7CiAgICBjb25zdCBjYW5vbmljYWxSZXF1ZXN0ID0gW21ldGhvZCwgdXJsLnBhdGhuYW1lIHx8ICcvJywgJycsIGNhbm9uaWNhbEhlYWRlcnMsIHNpZ25lZEhlYWRlcnMsIHBheWxvYWRIYXNoXS5qb2luKCdcbicpOwogICAgY29uc3Qgc2NvcGUgPSBgJHtzaG9ydERhdGV9LyR7dGhpcy5yZWdpb259L3MzL2F3czRfcmVxdWVzdGA7CiAgICBjb25zdCBzdHJpbmdUb1NpZ24gPSBgQVdTNC1ITUFDLVNIQTI1NlxuJHthbXpEYXRlfVxuJHtzY29wZX1cbiR7c2hhMjU2KGNhbm9uaWNhbFJlcXVlc3QpfWA7CiAgICBjb25zdCBkYXRlS2V5ID0gaG1hYyhgQVdTNCR7dGhpcy5zZWNyZXRBY2Nlc3NLZXl9YCwgc2hvcnREYXRlKTsKICAgIGNvbnN0IHJlZ2lvbktleSA9IGhtYWMoZGF0ZUtleSwgdGhpcy5yZWdpb24pOwogICAgY29uc3Qgc2VydmljZUtleSA9IGhtYWMocmVnaW9uS2V5LCAnczMnKTsKICAgIGNvbnN0IHNpZ25pbmdLZXkgPSBobWFjKHNlcnZpY2VLZXksICdhd3M0X3JlcXVlc3QnKTsKICAgIGNvbnN0IHNpZ25hdHVyZSA9IGNyZWF0ZUhtYWMoJ3NoYTI1NicsIHNpZ25pbmdLZXkpLnVwZGF0ZShzdHJpbmdUb1NpZ24pLmRpZ2VzdCgnaGV4Jyk7CiAgICBjb25zdCByZXF1ZXN0SGVhZGVycyA9IHsgLi4uaGVhZGVycywgYXV0aG9yaXphdGlvbjogYEFXUzQtSE1BQy1TSEEyNTYgQ3JlZGVudGlhbD0ke3RoaXMuYWNjZXNzS2V5SWR9LyR7c2NvcGV9LCBTaWduZWRIZWFkZXJzPSR7c2lnbmVkSGVhZGVyc30sIFNpZ25hdHVyZT0ke3NpZ25hdHVyZX1gIH07CiAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IHRoaXMuZmV0Y2hJbXBsKHVybCwgeyBtZXRob2QsIGhlYWRlcnM6IHJlcXVlc3RIZWFkZXJzLCBib2R5OiBtZXRob2QgPT09ICdQVVQnID8gYm9keSA6IHVuZGVmaW5lZCB9KTsKICAgIGlmICghcmVzcG9uc2Uub2spIHRocm93IG5ldyBEb2N1bWVudFN0b3JhZ2VFcnJvcihgT2JqZWN0IFN0b3JhZ2Ug7J2R64u1IOy9lOuTnCAke3Jlc3BvbnNlLnN0YXR1c31gLCAnT0JKRUNUX1NUT1JBR0VfUkVRVUVTVF9GQUlMRUQnKTsKICAgIHJldHVybiByZXNwb25zZTsKICB9CgogIGFzeW5jIHB1dCh7IGtleSwgY29udGVudCwgY29udGVudFNoYTI1NiB9ID0ge30pIHsKICAgIGNvbnN0IG5vcm1hbGl6ZWRDb250ZW50ID0gU3RyaW5nKGNvbnRlbnQgPz8gJycpOwogICAgaWYgKCFub3JtYWxpemVkQ29udGVudCkgdGhyb3cgbmV3IERvY3VtZW50U3RvcmFnZUVycm9yKCfrrLjshJwg7JuQ66y47J20IOu5hOyWtCDsnojslrQg7KCA7J6l7ZWgIOyImCDsl4bsirXri4jri6QuJywgJ0RPQ1VNRU5UX0NPTlRFTlRfUkVRVUlSRUQnKTsKICAgIGNvbnN0IGNhbGN1bGF0ZWRTaGEyNTYgPSBoYXNoRG9jdW1lbnQobm9ybWFsaXplZENvbnRlbnQpOwogICAgaWYgKGNvbnRlbnRTaGEyNTYgJiYgU3RyaW5nKGNvbnRlbnRTaGEyNTYpLnRvTG93ZXJDYXNlKCkgIT09IGNhbGN1bGF0ZWRTaGEyNTYpIHRocm93IG5ldyBEb2N1bWVudFN0b3JhZ2VFcnJvcign66y47IScIOybkOusuOqzvCBTSEEtMjU2IO2VtOyLnOqwgCDsnbzsuZjtlZjsp4Ag7JWK7Iq164uI64ukLicsICdET0NVTUVOVF9IQVNIX01JU01BVENIJyk7CiAgICBhd2FpdCB0aGlzLnJlcXVlc3QoJ1BVVCcsIGtleSwgbm9ybWFsaXplZENvbnRlbnQpOwogICAgcmV0dXJuIHsgc3RvcmFnZVJlZjogYHMzOi8vJHt0aGlzLmJ1Y2tldH0vJHtTdHJpbmcoa2V5KX1gLCBjb250ZW50U2hhMjU2OiBjYWxjdWxhdGVkU2hhMjU2IH07CiAgfQoKICBhc3luYyBnZXQoa2V5KSB7CiAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IHRoaXMucmVxdWVzdCgnR0VUJywga2V5KTsKICAgIGNvbnN0IGNvbnRlbnQgPSBhd2FpdCByZXNwb25zZS50ZXh0KCk7CiAgICBjb25zdCBleHBlY3RlZCA9IHJlc3BvbnNlLmhlYWRlcnMuZ2V0KCd4LWFtei1tZXRhLWNvbnRlbnQtc2hhMjU2Jyk7CiAgICBjb25zdCBhY3R1YWwgPSBoYXNoRG9jdW1lbnQoY29udGVudCk7CiAgICBpZiAoZXhwZWN0ZWQgJiYgZXhwZWN0ZWQgIT09IGFjdHVhbCkgdGhyb3cgbmV3IERvY3VtZW50U3RvcmFnZUVycm9yKCdPYmplY3QgU3RvcmFnZSDsm5DrrLgg7ZW07Iuc6rCAIOyGkOyDgeuQmOyXiOyKteuLiOuLpC4nLCAnRE9DVU1FTlRfSEFTSF9NSVNNQVRDSCcpOwogICAgcmV0dXJuIHsgY29udGVudCwgY29udGVudFNoYTI1NjogYWN0dWFsIH07CiAgfQp9CgpleHBvcnQgY29uc3QgY3JlYXRlRG9jdW1lbnRTdG9yYWdlID0gKHsgZW52aXJvbm1lbnQgPSBwcm9jZXNzLmVudi5BUFBfRU5WIHx8ICdzaW11bGF0aW9uJywgcGVyc2lzdGVuY2VNb2RlID0gcHJvY2Vzcy5lbnYuUEVSU0lTVEVOQ0VfTU9ERSB8fCAnbWVtb3J5Jywgcm9vdCA9IHByb2Nlc3MuZW52LkRPQ1VNRU5UX1NUT1JBR0VfUk9PVCB8fCByZXNvbHZlKGZpbGVVUkxUb1BhdGgobmV3IFVSTCgnLi4vZGF0YS9iZXRhLWV2aWRlbmNlJywgaW1wb3J0Lm1ldGEudXJsKSkpIH0gPSB7fSkgPT4gewogIGlmIChlbnZpcm9ubWVudCA9PT0gJ3Byb2R1Y3Rpb24nKSB7CiAgICBjb25zdCBjb25maWcgPSB7CiAgICAgIGVuZHBvaW50OiBwcm9jZXNzLmVudi5PQkpFQ1RfU1RPUkFHRV9FTkRQT0lOVCwKICAgICAgYnVja2V0OiBwcm9jZXNzLmVudi5PQkpFQ1RfU1RPUkFHRV9CVUNLRVQsCiAgICAgIGFjY2Vzc0tleUlkOiBwcm9jZXNzLmVudi5PQkpFQ1RfU1RPUkFHRV9BQ0NFU1NfS0VZLAogICAgICBzZWNyZXRBY2Nlc3NLZXk6IHByb2Nlc3MuZW52Lk9CSkVDVF9TVE9SQUdFX1NFQ1JFVF9LRVksCiAgICAgIHJlZ2lvbjogcHJvY2Vzcy5lbnYuT0JKRUNUX1NUT1JBR0VfUkVHSU9OIHx8ICd1cy1lYXN0LTEnLAogICAgICBzZXNzaW9uVG9rZW46IHByb2Nlc3MuZW52Lk9CSkVDVF9TVE9SQUdFX1NFU1NJT05fVE9LRU4gfHwgJycsCiAgICB9OwogICAgaWYgKE9iamVjdC52YWx1ZXMoY29uZmlnKS5zbGljZSgwLCA0KS5zb21lKCh2YWx1ZSkgPT4gIXZhbHVlKSkgdGhyb3cgbmV3IERvY3VtZW50U3RvcmFnZUVycm9yKCfsg4HsmqkgT2JqZWN0IFN0b3JhZ2Ug7Ja064yR7YSwIOyEpOygleydtCDsl4bslrQg7ISc67KE66W8IOyLnOyeke2VoCDsiJgg7JeG7Iq164uI64ukLicsICdPQkpFQ1RfU1RPUkFHRV9VTkFWQUlMQUJMRScpOwogICAgcmV0dXJuIG5ldyBTM0RvY3VtZW50U3RvcmFnZShjb25maWcpOwogIH0KICBpZiAocGVyc2lzdGVuY2VNb2RlID09PSAnc3FsaXRlJykgcmV0dXJuIG5ldyBGaWxlRG9jdW1lbnRTdG9yYWdlKHJvb3QpOwogIHJldHVybiBuZXcgTWVtb3J5RG9jdW1lbnRTdG9yYWdlKCk7Cn07Cg==
+import { createHash, createHmac } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { hashDocument } from './evidence-verifier.mjs';
+
+const sha256 = (value) => createHash('sha256').update(value).digest('hex');
+const hmac = (key, value) => createHmac('sha256', key).update(value).digest();
+const encodePath = (value) => String(value).split('/').map((segment) => encodeURIComponent(segment)).join('/');
+
+export class DocumentStorageError extends Error {
+  constructor(message, code = 'DOCUMENT_STORAGE_FAILED') {
+    super(message);
+    this.code = code;
+  }
+}
+
+export class MemoryDocumentStorage {
+  constructor() {
+    this.mode = 'memory';
+    this.documents = new Map();
+  }
+
+  async put({ key, content, contentSha256 } = {}) {
+    const normalizedKey = String(key || '').trim();
+    if (!normalizedKey) throw new DocumentStorageError('문서 저장 키가 필요합니다.', 'DOCUMENT_KEY_REQUIRED');
+    const normalizedContent = String(content ?? '');
+    if (!normalizedContent) throw new DocumentStorageError('문서 원문이 비어 있어 저장할 수 없습니다.', 'DOCUMENT_CONTENT_REQUIRED');
+    const calculatedSha256 = hashDocument(normalizedContent);
+    if (contentSha256 && String(contentSha256).toLowerCase() !== calculatedSha256) {
+      throw new DocumentStorageError('문서 원문과 SHA-256 해시가 일치하지 않습니다.', 'DOCUMENT_HASH_MISMATCH');
+    }
+    this.documents.set(normalizedKey, { content: normalizedContent, contentSha256: calculatedSha256 });
+    return { storageRef: `memory://evidence/${encodeURIComponent(normalizedKey)}`, contentSha256: calculatedSha256 };
+  }
+
+  async get(key) {
+    const document = this.documents.get(String(key || ''));
+    if (!document) throw new DocumentStorageError('문서 원문을 찾을 수 없습니다.', 'DOCUMENT_NOT_FOUND');
+    return { ...document };
+  }
+}
+
+export class FileDocumentStorage {
+  constructor(root) {
+    this.mode = 'file';
+    this.root = resolve(root);
+    this.ready = mkdir(this.root, { recursive: true });
+  }
+
+  filePath(key) {
+    const normalizedKey = String(key || '').trim();
+    if (!normalizedKey) throw new DocumentStorageError('문서 저장 키가 필요합니다.', 'DOCUMENT_KEY_REQUIRED');
+    const filename = `${Buffer.from(normalizedKey, 'utf8').toString('base64url')}.json`;
+    return join(this.root, filename);
+  }
+
+  async put({ key, content, contentSha256 } = {}) {
+    const normalizedContent = String(content ?? '');
+    if (!normalizedContent) throw new DocumentStorageError('문서 원문이 비어 있어 저장할 수 없습니다.', 'DOCUMENT_CONTENT_REQUIRED');
+    const calculatedSha256 = hashDocument(normalizedContent);
+    if (contentSha256 && String(contentSha256).toLowerCase() !== calculatedSha256) throw new DocumentStorageError('문서 원문과 SHA-256 해시가 일치하지 않습니다.', 'DOCUMENT_HASH_MISMATCH');
+    const path = this.filePath(key);
+    await this.ready;
+    await writeFile(path, JSON.stringify({ content: normalizedContent, contentSha256: calculatedSha256 }), 'utf8');
+    return { storageRef: `file://${path}`, contentSha256: calculatedSha256 };
+  }
+
+  async get(key) {
+    try {
+      const document = JSON.parse(await readFile(this.filePath(key), 'utf8'));
+      return document;
+    } catch (error) {
+      if (error.code === 'ENOENT') throw new DocumentStorageError('문서 원문을 찾을 수 없습니다.', 'DOCUMENT_NOT_FOUND');
+      throw error;
+    }
+  }
+}
+
+export class S3DocumentStorage {
+  constructor({ endpoint, bucket, accessKeyId, secretAccessKey, region = 'us-east-1', sessionToken = '', fetchImpl = globalThis.fetch } = {}) {
+    if (!endpoint || !bucket || !accessKeyId || !secretAccessKey || typeof fetchImpl !== 'function') throw new DocumentStorageError('S3 Object Storage 설정이 불완전합니다.', 'OBJECT_STORAGE_CONFIG_INVALID');
+    this.mode = 's3';
+    this.endpoint = new URL(endpoint);
+    this.bucket = String(bucket);
+    this.accessKeyId = String(accessKeyId);
+    this.secretAccessKey = String(secretAccessKey);
+    this.region = String(region);
+    this.sessionToken = String(sessionToken || '');
+    this.fetchImpl = fetchImpl;
+  }
+
+  objectUrl(key) {
+    const pathPrefix = this.endpoint.pathname.replace(/\/$/, '');
+    const path = `${pathPrefix}/${encodePath(this.bucket)}/${encodePath(key)}`;
+    const url = new URL(this.endpoint.toString());
+    url.pathname = path;
+    return url;
+  }
+
+  async request(method, key, content = '') {
+    const url = this.objectUrl(key);
+    const body = method === 'PUT' ? String(content) : '';
+    const payloadHash = sha256(body);
+    const amzDate = new Date().toISOString().replace(/[-:]|\.\d{3}/g, '');
+    const shortDate = amzDate.slice(0, 8);
+    const headers = {
+      host: url.host,
+      'x-amz-content-sha256': payloadHash,
+      'x-amz-date': amzDate,
+    };
+    if (method === 'PUT') headers['x-amz-meta-content-sha256'] = sha256(body);
+    if (this.sessionToken) headers['x-amz-security-token'] = this.sessionToken;
+    const signedHeaders = Object.keys(headers).sort().join(';');
+    const canonicalHeaders = Object.keys(headers).sort().map((name) => `${name}:${String(headers[name]).trim()}\n`).join('');
+    const canonicalRequest = [method, url.pathname || '/', '', canonicalHeaders, signedHeaders, payloadHash].join('\n');
+    const scope = `${shortDate}/${this.region}/s3/aws4_request`;
+    const stringToSign = `AWS4-HMAC-SHA256\n${amzDate}\n${scope}\n${sha256(canonicalRequest)}`;
+    const dateKey = hmac(`AWS4${this.secretAccessKey}`, shortDate);
+    const regionKey = hmac(dateKey, this.region);
+    const serviceKey = hmac(regionKey, 's3');
+    const signingKey = hmac(serviceKey, 'aws4_request');
+    const signature = createHmac('sha256', signingKey).update(stringToSign).digest('hex');
+    const requestHeaders = { ...headers, authorization: `AWS4-HMAC-SHA256 Credential=${this.accessKeyId}/${scope}, SignedHeaders=${signedHeaders}, Signature=${signature}` };
+    const response = await this.fetchImpl(url, { method, headers: requestHeaders, body: method === 'PUT' ? body : undefined });
+    if (!response.ok) throw new DocumentStorageError(`Object Storage 응답 코드 ${response.status}`, 'OBJECT_STORAGE_REQUEST_FAILED');
+    return response;
+  }
+
+  async put({ key, content, contentSha256 } = {}) {
+    const normalizedContent = String(content ?? '');
+    if (!normalizedContent) throw new DocumentStorageError('문서 원문이 비어 있어 저장할 수 없습니다.', 'DOCUMENT_CONTENT_REQUIRED');
+    const calculatedSha256 = hashDocument(normalizedContent);
+    if (contentSha256 && String(contentSha256).toLowerCase() !== calculatedSha256) throw new DocumentStorageError('문서 원문과 SHA-256 해시가 일치하지 않습니다.', 'DOCUMENT_HASH_MISMATCH');
+    await this.request('PUT', key, normalizedContent);
+    return { storageRef: `s3://${this.bucket}/${String(key)}`, contentSha256: calculatedSha256 };
+  }
+
+  async get(key) {
+    const response = await this.request('GET', key);
+    const content = await response.text();
+    const expected = response.headers.get('x-amz-meta-content-sha256');
+    const actual = hashDocument(content);
+    if (expected && expected !== actual) throw new DocumentStorageError('Object Storage 원문 해시가 손상되었습니다.', 'DOCUMENT_HASH_MISMATCH');
+    return { content, contentSha256: actual };
+  }
+}
+
+export const createDocumentStorage = ({ environment = process.env.APP_ENV || 'simulation', persistenceMode = process.env.PERSISTENCE_MODE || 'memory', root = process.env.DOCUMENT_STORAGE_ROOT || resolve(fileURLToPath(new URL('../data/beta-evidence', import.meta.url))) } = {}) => {
+  if (environment === 'production') {
+    const config = {
+      endpoint: process.env.OBJECT_STORAGE_ENDPOINT,
+      bucket: process.env.OBJECT_STORAGE_BUCKET,
+      accessKeyId: process.env.OBJECT_STORAGE_ACCESS_KEY,
+      secretAccessKey: process.env.OBJECT_STORAGE_SECRET_KEY,
+      region: process.env.OBJECT_STORAGE_REGION || 'us-east-1',
+      sessionToken: process.env.OBJECT_STORAGE_SESSION_TOKEN || '',
+    };
+    if (Object.values(config).slice(0, 4).some((value) => !value)) throw new DocumentStorageError('상용 Object Storage 어댑터 설정이 없어 서버를 시작할 수 없습니다.', 'OBJECT_STORAGE_UNAVAILABLE');
+    return new S3DocumentStorage(config);
+  }
+  if (persistenceMode === 'sqlite') return new FileDocumentStorage(root);
+  return new MemoryDocumentStorage();
+};

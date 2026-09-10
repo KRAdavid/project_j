@@ -1,1 +1,15 @@
-ewogICJzY2hlbWFWZXJzaW9uIjogIlBSSUNFLVBPTElDWS0wLjEiLAogICJwb2xpY3lJZCI6ICJHQUJBLVNQRUMtMDAxLTMwRCIsCiAgInN0YXR1cyI6ICJTSU1VTEFUSU9OX09OTFkiLAogICJsb29rYmFja0RheXMiOiAzMCwKICAibWluQ29tcGxldGVkVHJhZGVzIjogMywKICAibWluRGlzdGluY3RTdXBwbGllcnMiOiAyLAogICJjYW5vbmljYWxDdXJyZW5jeSI6ICJLUlciLAogICJjYW5vbmljYWxQcmljZVVuaXQiOiAiS1JXX1BFUl9LRyIsCiAgImNhbm9uaWNhbFF1YW50aXR5VW5pdCI6ICJLRyIsCiAgInJlcXVpcmVkVHJhZGVTdGF0dXMiOiAiRlVMRklMTEVEIiwKICAicmVxdWlyZWRFdmlkZW5jZVN0YXR1cyI6ICJWQUxJRCIsCiAgInJlcXVpcmVkRmllbGRzIjogWyJ0cmFkZUlkIiwgInNwZWNJZCIsICJzdXBwbGllcklkIiwgInByaWNlIiwgInF1YW50aXR5IiwgInF1YW50aXR5VW5pdCIsICJwcmljZVVuaXQiLCAiY3VycmVuY3kiLCAiZnVsZmlsbGVkQXQiLCAiZXZpZGVuY2VTdGF0dXMiXSwKICAiZGlzY2xvc3VyZVJ1bGUiOiAi7ZGc67O4IOuYkOuKlCDqs7XquInsnpAg64uk7JaR7ISxIOq4sOykgCDrr7jri6wg7IucIOqwgOqyqeqwkuydhCDsgrDstpztlZjsp4Ag7JWK64qU64ukLiIKfQo=
+{
+  "schemaVersion": "PRICE-POLICY-0.1",
+  "policyId": "GABA-SPEC-001-30D",
+  "status": "SIMULATION_ONLY",
+  "lookbackDays": 30,
+  "minCompletedTrades": 3,
+  "minDistinctSuppliers": 2,
+  "canonicalCurrency": "KRW",
+  "canonicalPriceUnit": "KRW_PER_KG",
+  "canonicalQuantityUnit": "KG",
+  "requiredTradeStatus": "FULFILLED",
+  "requiredEvidenceStatus": "VALID",
+  "requiredFields": ["tradeId", "specId", "supplierId", "price", "quantity", "quantityUnit", "priceUnit", "currency", "fulfilledAt", "evidenceStatus"],
+  "disclosureRule": "표본 또는 공급자 다양성 기준 미달 시 가격값을 산출하지 않는다."
+}

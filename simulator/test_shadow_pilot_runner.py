@@ -1,1 +1,43 @@
-aW1wb3J0IHVuaXR0ZXN0Cgpmcm9tIHNoYWRvd19waWxvdF9ydW5uZXIgaW1wb3J0IHJ1bl9zaGFkb3dfcGlsb3QsIHZhbGlkYXRlX3BpbG90X3BsYW4KCgpjbGFzcyBTaGFkb3dQaWxvdFJ1bm5lclRlc3RzKHVuaXR0ZXN0LlRlc3RDYXNlKToKICAgIGRlZiB0ZXN0X2FsbF9jbG9zZWRfcGlsb3Rfc2NlbmFyaW9zX3Bhc3NfdGhlaXJfZXhwZWN0ZWRfb3V0Y29tZShzZWxmKToKICAgICAgICByZXBvcnQgPSBydW5fc2hhZG93X3BpbG90KHNlZWQ9MjAyNjA5MDgpCiAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChyZXBvcnRbImRlY2lzaW9uIl0sICJQQVNTX1JFVklFV19SRVFVSVJFRCIpCiAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChyZXBvcnRbInNjZW5hcmlvX2NvdW50Il0sIDcpCiAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChyZXBvcnRbInBhc3NlZF9zY2VuYXJpb19jb3VudCJdLCA3KQogICAgICAgIHNlbGYuYXNzZXJ0RmFsc2UocmVwb3J0WyJyZWFsX3RyYW5zYWN0aW9uc19lbmFibGVkIl0pCiAgICAgICAgc2VsZi5hc3NlcnRGYWxzZShyZXBvcnRbInJlYWxfbW9uZXlfZW5hYmxlZCJdKQogICAgICAgIHNlbGYuYXNzZXJ0RmFsc2UocmVwb3J0WyJwYXJ0aWNpcGFudF9hY2Nlc3NfZW5hYmxlZCJdKQogICAgICAgIHNlbGYuYXNzZXJ0VHJ1ZShyZXBvcnRbInByZWZsaWdodCJdWyJwYXNzZWQiXSkKICAgICAgICBzZWxmLmFzc2VydFRydWUoYWxsKHJlcG9ydFsicHJlZmxpZ2h0Il1bImNoZWNrcyJdLnZhbHVlcygpKSkKICAgICAgICBzZWxmLmFzc2VydFRydWUoYWxsKGl0ZW1bImNoZWNrcyJdWyJwcmV0cmFkZV92ZXJpZmljYXRpb25fcmF0ZSJdIGZvciBpdGVtIGluIHJlcG9ydFsicmVzdWx0cyJdKSkKICAgICAgICBzZWxmLmFzc2VydFRydWUoYWxsKGl0ZW1bImNoZWNrcyJdWyJkdXBsaWNhdGVfdHJhZGVfY291bnQiXSBmb3IgaXRlbSBpbiByZXBvcnRbInJlc3VsdHMiXSkpCiAgICAgICAgYmxvY2tlZCA9IFtpdGVtIGZvciBpdGVtIGluIHJlcG9ydFsicmVzdWx0cyJdIGlmIGl0ZW1bImV4cGVjdGVkIl0gPT0gIkJMT0NLRURfQkVGT1JFX1RSQURFIl0KICAgICAgICBzZWxmLmFzc2VydFRydWUoYWxsKGl0ZW1bImNoZWNrcyJdWyJzY2VuYXJpb19ibG9ja2VkX2V2ZW50X2NvdW50Il0gZm9yIGl0ZW0gaW4gYmxvY2tlZCkpCiAgICAgICAgc2VsZi5hc3NlcnRUcnVlKGFsbChpdGVtWyJjaGVja3MiXVsiaW52YWxpZF9sb3RfdHJhZGVfY291bnQiXSBmb3IgaXRlbSBpbiBibG9ja2VkKSkKICAgICAgICBzZWxmLmFzc2VydFRydWUoYWxsKGl0ZW1bIm1ldHJpY3MiXVsic2NlbmFyaW9faW52YWxpZF9sb3RfdHJhZGVfY291bnQiXSA9PSAwIGZvciBpdGVtIGluIGJsb2NrZWQpKQoKICAgIGRlZiB0ZXN0X2ludmFsaWRfcGxhbl9mYWlsc19jbG9zZWRfYmVmb3JlX3NjZW5hcmlvc19ydW4oc2VsZik6CiAgICAgICAgcmVwb3J0ID0gdmFsaWRhdGVfcGlsb3RfcGxhbih7CiAgICAgICAgICAgICJtb2RlIjogIk9QRU5fU0lNVUxBVElPTiIsCiAgICAgICAgICAgICJyZWFsVHJhbnNhY3Rpb25zRW5hYmxlZCI6IFRydWUsCiAgICAgICAgICAgICJyZWFsTW9uZXlFbmFibGVkIjogVHJ1ZSwKICAgICAgICAgICAgImV4dGVybmFsTm90aWZpY2F0aW9uc0VuYWJsZWQiOiBUcnVlLAogICAgICAgICAgICAiaHVtYW5QcmluY2lwYWwiOiAiQUktMDEiLAogICAgICAgICAgICAicmVxdWlyZWRBcHByb3ZhbCI6ICJOT05FIiwKICAgICAgICAgICAgInBhcnRpY2lwYW50cyI6IFtdLAogICAgICAgICAgICAic2NlbmFyaW9zIjogW10sCiAgICAgICAgICAgICJzdG9wUnVsZXMiOiBbXSwKICAgICAgICAgICAgImV2aWRlbmNlVG9DYXB0dXJlIjogW10sCiAgICAgICAgfSkKICAgICAgICBzZWxmLmFzc2VydEZhbHNlKHJlcG9ydFsicGFzc2VkIl0pCiAgICAgICAgc2VsZi5hc3NlcnRGYWxzZShyZXBvcnRbInBhcnRpY2lwYW50X2FjY2Vzc19lbmFibGVkIl0pCiAgICAgICAgc2VsZi5hc3NlcnRHcmVhdGVyRXF1YWwobGVuKHJlcG9ydFsidmlvbGF0aW9ucyJdKSwgNSkKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgdW5pdHRlc3QubWFpbigpCg==
+import unittest
+
+from shadow_pilot_runner import run_shadow_pilot, validate_pilot_plan
+
+
+class ShadowPilotRunnerTests(unittest.TestCase):
+    def test_all_closed_pilot_scenarios_pass_their_expected_outcome(self):
+        report = run_shadow_pilot(seed=20260908)
+        self.assertEqual(report["decision"], "PASS_REVIEW_REQUIRED")
+        self.assertEqual(report["scenario_count"], 7)
+        self.assertEqual(report["passed_scenario_count"], 7)
+        self.assertFalse(report["real_transactions_enabled"])
+        self.assertFalse(report["real_money_enabled"])
+        self.assertFalse(report["participant_access_enabled"])
+        self.assertTrue(report["preflight"]["passed"])
+        self.assertTrue(all(report["preflight"]["checks"].values()))
+        self.assertTrue(all(item["checks"]["pretrade_verification_rate"] for item in report["results"]))
+        self.assertTrue(all(item["checks"]["duplicate_trade_count"] for item in report["results"]))
+        blocked = [item for item in report["results"] if item["expected"] == "BLOCKED_BEFORE_TRADE"]
+        self.assertTrue(all(item["checks"]["scenario_blocked_event_count"] for item in blocked))
+        self.assertTrue(all(item["checks"]["invalid_lot_trade_count"] for item in blocked))
+        self.assertTrue(all(item["metrics"]["scenario_invalid_lot_trade_count"] == 0 for item in blocked))
+
+    def test_invalid_plan_fails_closed_before_scenarios_run(self):
+        report = validate_pilot_plan({
+            "mode": "OPEN_SIMULATION",
+            "realTransactionsEnabled": True,
+            "realMoneyEnabled": True,
+            "externalNotificationsEnabled": True,
+            "humanPrincipal": "AI-01",
+            "requiredApproval": "NONE",
+            "participants": [],
+            "scenarios": [],
+            "stopRules": [],
+            "evidenceToCapture": [],
+        })
+        self.assertFalse(report["passed"])
+        self.assertFalse(report["participant_access_enabled"])
+        self.assertGreaterEqual(len(report["violations"]), 5)
+
+
+if __name__ == "__main__":
+    unittest.main()

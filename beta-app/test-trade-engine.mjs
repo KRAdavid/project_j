@@ -1,1 +1,173 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBHQUJBX1NQRUNfQVRUUklCVVRFUywgR0FCQV9TUEVDX0lELCBUcmFkZUVuZ2luZSwgVHJhZGVSdWxlRXJyb3IgfSBmcm9tICcuL3RyYWRlLWVuZ2luZS5tanMnOwoKY29uc3QgZXhwZWN0UnVsZUVycm9yID0gKG9wZXJhdGlvbiwgY29kZSkgPT4gewogIGFzc2VydC50aHJvd3Mob3BlcmF0aW9uLCAoZXJyb3IpID0+IHsKICAgIGFzc2VydC5vayhlcnJvciBpbnN0YW5jZW9mIFRyYWRlUnVsZUVycm9yKTsKICAgIGFzc2VydC5lcXVhbChlcnJvci5jb2RlLCBjb2RlKTsKICAgIHJldHVybiB0cnVlOwogIH0pOwp9OwoKY29uc3QgZW5naW5lID0gbmV3IFRyYWRlRW5naW5lKCk7Cgpjb25zdCBmaXJzdE9yZGVyID0gZW5naW5lLnN1Ym1pdE9yZGVyKHsKICBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwKICBzcGVjQXR0cmlidXRlczogR0FCQV9TUEVDX0FUVFJJQlVURVMsCiAgcHJpY2U6IDIxODAwLAogIHF1YW50aXR5OiAxMDAwLAogIGRlbGl2ZXJ5RGF5czogMTQsCiAgZGVsaXZlcnlEYXRlOiAnMjAyNi0wOS0yMicsCiAgaWRlbXBvdGVuY3lLZXk6ICd0ZXN0LW9yZGVyLTAwMScsCn0pOwoKYXNzZXJ0LmVxdWFsKGZpcnN0T3JkZXIub3JkZXIub3JkZXJJZCwgJ09SREVSLTAwMDAxJyk7CmFzc2VydC5lcXVhbChmaXJzdE9yZGVyLm9yZGVyLnN0YXR1cywgJ0JVWV9PUkRFUl9TVUJNSVRURUQnKTsKYXNzZXJ0LmVxdWFsKGZpcnN0T3JkZXIub3JkZXIucHJlVHJhZGVHYXRlLmV2aWRlbmNlVmFsaWQsIHRydWUpOwphc3NlcnQuZXF1YWwoZmlyc3RPcmRlci5vcmRlci5jdXJyZW5jeSwgJ0tSVycpOwphc3NlcnQuZXF1YWwoZmlyc3RPcmRlci5vcmRlci5wcmljZVVuaXQsICdLUldfUEVSX0tHJyk7CmFzc2VydC5lcXVhbChmaXJzdE9yZGVyLm9yZGVyLnF1YW50aXR5VW5pdCwgJ0tHJyk7CmFzc2VydC5lcXVhbChmaXJzdE9yZGVyLnNuYXBzaG90Lm9yZGVycy5sZW5ndGgsIDEpOwphc3NlcnQuZXF1YWwoZmlyc3RPcmRlci5vcmRlci5zcGVjQXR0cmlidXRlcy5pbnRlbmRlZFVzZSwgJ+q4sOuKpeyEsSDsi53tkogg7JuQ66OMIOqwnOuwnCcpOwoKZXhwZWN0UnVsZUVycm9yKCgpID0+IG5ldyBUcmFkZUVuZ2luZSgpLnN1Ym1pdE9yZGVyKHsKICBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwKICBzcGVjQXR0cmlidXRlczogeyAuLi5HQUJBX1NQRUNfQVRUUklCVVRFUywgcHVyaXR5OiAnOTglIOydtOyDgScgfSwKICBwcmljZTogMjE4MDAsCiAgcXVhbnRpdHk6IDIwLAp9KSwgJ1NQRUNfTk9UX01BVENIRUQnKTsKCmV4cGVjdFJ1bGVFcnJvcigoKSA9PiBuZXcgVHJhZGVFbmdpbmUoKS5zdWJtaXRPcmRlcih7CiAgc3BlY0lkOiBHQUJBX1NQRUNfSUQsCiAgcHJpY2U6IDIxODAwLAogIHF1YW50aXR5OiAyMCwKfSksICdTUEVDX0FUVFJJQlVURVNfUkVRVUlSRUQnKTsKCmNvbnN0IGR1cGxpY2F0ZU9yZGVyID0gZW5naW5lLnN1Ym1pdE9yZGVyKHsKICBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwKICBzcGVjQXR0cmlidXRlczogR0FCQV9TUEVDX0FUVFJJQlVURVMsCiAgcHJpY2U6IDIxODAwLAogIHF1YW50aXR5OiAxMDAwLAogIGRlbGl2ZXJ5RGF5czogMTQsCiAgaWRlbXBvdGVuY3lLZXk6ICd0ZXN0LW9yZGVyLTAwMScsCn0pOwoKYXNzZXJ0LmVxdWFsKGR1cGxpY2F0ZU9yZGVyLm9yZGVyLm9yZGVySWQsIGZpcnN0T3JkZXIub3JkZXIub3JkZXJJZCk7CmFzc2VydC5lcXVhbChkdXBsaWNhdGVPcmRlci5zbmFwc2hvdC5vcmRlcnMubGVuZ3RoLCAxLCAn66mx65OxIOyerOyalOyyreydgCDso7zrrLjsnYQg7KSR67O1IOyDneyEse2VmOyngCDslYrslYTslbwg7ZWp64uI64ukLicpOwoKY29uc3QgY29uZmlybWVkID0gZW5naW5lLmFjY2VwdE9yZGVyKGZpcnN0T3JkZXIub3JkZXIub3JkZXJJZCwgewogIGxvdElkOiAnR0JBLUtSLTI0MDcnLAogIGlkZW1wb3RlbmN5S2V5OiAndGVzdC1hY2NlcHQtMDAxJywKfSk7Cgphc3NlcnQuZXF1YWwoY29uZmlybWVkLnRyYWRlLnRyYWRlSWQsICdUUkFERS0wMDAwMScpOwphc3NlcnQuZXF1YWwoY29uZmlybWVkLnRyYWRlLmN1cnJlbmN5LCAnS1JXJyk7CmFzc2VydC5lcXVhbChjb25maXJtZWQudHJhZGUucHJpY2VVbml0LCAnS1JXX1BFUl9LRycpOwphc3NlcnQuZXF1YWwoY29uZmlybWVkLnRyYWRlLnF1YW50aXR5VW5pdCwgJ0tHJyk7CgpleHBlY3RSdWxlRXJyb3IoKCkgPT4gbmV3IFRyYWRlRW5naW5lKCkuc3VibWl0T3JkZXIoewogIHNwZWNJZDogR0FCQV9TUEVDX0lELAogIHNwZWNBdHRyaWJ1dGVzOiBHQUJBX1NQRUNfQVRUUklCVVRFUywKICBwcmljZTogMjE4MDAsCiAgcXVhbnRpdHk6IDIwLAogIHF1YW50aXR5VW5pdDogJ01UJywKfSksICdUUkFERV9URVJNU19NSVNNQVRDSCcpOwoKY29uc3QgbGVnYWN5U25hcHNob3QgPSBuZXcgVHJhZGVFbmdpbmUoKS5zbmFwc2hvdCgpOwpkZWxldGUgbGVnYWN5U25hcHNob3QubG90c1swXS5jdXJyZW5jeTsKZGVsZXRlIGxlZ2FjeVNuYXBzaG90LmxvdHNbMF0ucHJpY2VVbml0OwpkZWxldGUgbGVnYWN5U25hcHNob3QubG90c1swXS5xdWFudGl0eVVuaXQ7CmNvbnN0IHJlc3RvcmVkTGVnYWN5ID0gbmV3IFRyYWRlRW5naW5lKGxlZ2FjeVNuYXBzaG90KTsKY29uc3QgcmVzdG9yZWRPcmRlciA9IHJlc3RvcmVkTGVnYWN5LnN1Ym1pdE9yZGVyKHsgc3BlY0lkOiBHQUJBX1NQRUNfSUQsIHNwZWNBdHRyaWJ1dGVzOiBHQUJBX1NQRUNfQVRUUklCVVRFUywgcHJpY2U6IDIxODAwLCBxdWFudGl0eTogMjAsIGRlbGl2ZXJ5RGF5czogMTQgfSk7CmFzc2VydC5lcXVhbChyZXN0b3JlZE9yZGVyLm9yZGVyLnF1YW50aXR5VW5pdCwgJ0tHJyk7CmFzc2VydC5lcXVhbChjb25maXJtZWQub3JkZXIuc3RhdHVzLCAnVFJBREVfQ09ORklSTUVEJyk7CmFzc2VydC5lcXVhbChjb25maXJtZWQudHJhZGUuc3RhdHVzLCAnVFJBREVfQ09ORklSTUVEJyk7CmFzc2VydC5lcXVhbChjb25maXJtZWQudHJhZGUucHJlVHJhZGVDaGVja3Muc3BlY01hdGNoLCB0cnVlKTsKYXNzZXJ0LmVxdWFsKGNvbmZpcm1lZC50cmFkZS5wcmVUcmFkZUNoZWNrcy5ldmlkZW5jZVZhbGlkLCB0cnVlKTsKYXNzZXJ0LmVxdWFsKGNvbmZpcm1lZC50cmFkZS5zdXBwbGllck9yZ2FuaXphdGlvbklkLCAnU0lNLVNVUFBMSUVSLU9SRycpOwphc3NlcnQuZXF1YWwoY29uZmlybWVkLnRyYWRlLnRyYWRlU25hcHNob3RIYXNoLmxlbmd0aCwgNjQpOwphc3NlcnQuZXF1YWwoY29uZmlybWVkLnRyYWRlLnNwZWNTbmFwc2hvdC5kZWxpdmVyeUNvbmRpdGlvbiwgJ+yDgeyYqMK367CA67SJIOuwsOyGoScpOwpjb25zdCBvcmdHdWFyZEVuZ2luZSA9IG5ldyBUcmFkZUVuZ2luZSgpOwpjb25zdCBvcmdHdWFyZE9yZGVyID0gb3JnR3VhcmRFbmdpbmUuc3VibWl0T3JkZXIoeyBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwgc3BlY0F0dHJpYnV0ZXM6IEdBQkFfU1BFQ19BVFRSSUJVVEVTLCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMCwgZGVsaXZlcnlEYXlzOiAxNCB9KTsKYXNzZXJ0LnRocm93cygoKSA9PiBvcmdHdWFyZEVuZ2luZS5hY2NlcHRPcmRlcihvcmdHdWFyZE9yZGVyLm9yZGVyLm9yZGVySWQsIHsgbG90SWQ6ICdHQkEtS1ItMjQwNycsIHN1cHBsaWVySWQ6ICdTSU0tU1VQUExJRVItMDAxJywgc3VwcGxpZXJPcmdhbml6YXRpb25JZDogJ09USEVSLU9SRycgfSksIChlcnJvcikgPT4gZXJyb3IuY29kZSA9PT0gJ1NVUFBMSUVSX09SR0FOSVpBVElPTl9OT1RfQVVUSE9SSVpFRCcpOwpjb25zdCB0YW1wZXJFbmdpbmUgPSBuZXcgVHJhZGVFbmdpbmUoKTsKY29uc3QgdGFtcGVyT3JkZXIgPSB0YW1wZXJFbmdpbmUuc3VibWl0T3JkZXIoeyBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwgc3BlY0F0dHJpYnV0ZXM6IEdBQkFfU1BFQ19BVFRSSUJVVEVTLCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMCwgZGVsaXZlcnlEYXlzOiAxNCB9KTsKY29uc3QgdGFtcGVyVHJhZGUgPSB0YW1wZXJFbmdpbmUuYWNjZXB0T3JkZXIodGFtcGVyT3JkZXIub3JkZXIub3JkZXJJZCwgeyBsb3RJZDogJ0dCQS1LUi0yNDA3JyB9KS50cmFkZTsKdGFtcGVyRW5naW5lLnRyYWRlcy5nZXQodGFtcGVyVHJhZGUudHJhZGVJZCkucHJpY2UgPSA5OTk7CmFzc2VydC50aHJvd3MoKCkgPT4gdGFtcGVyRW5naW5lLm1hcmtEZWxpdmVyZWQodGFtcGVyVHJhZGUudHJhZGVJZCksIChlcnJvcikgPT4gZXJyb3IuY29kZSA9PT0gJ1RSQURFX1NOQVBTSE9UX1RBTVBFUkVEJyk7CmFzc2VydC5lcXVhbChjb25maXJtZWQuc25hcHNob3QubG90c1swXS5hdmFpbGFibGVRdHksIDIwMCk7CmFzc2VydC5lcXVhbChjb25maXJtZWQuc25hcHNob3QubG90c1swXS5yZXNlcnZlZFF0eSwgMTAwMCk7CmFzc2VydC5lcXVhbChjb25maXJtZWQuc25hcHNob3QuaW52ZW50b3J5LnJlc2VydmF0aW9ucy5sZW5ndGgsIDEpOwphc3NlcnQuZXF1YWwoY29uZmlybWVkLnNuYXBzaG90LmludmVudG9yeS5yZXNlcnZhdGlvbnNbMF0ucmVzZXJ2YXRpb25JZCwgZmlyc3RPcmRlci5vcmRlci5vcmRlcklkKTsKCmNvbnN0IGR1cGxpY2F0ZUFjY2VwdCA9IGVuZ2luZS5hY2NlcHRPcmRlcihmaXJzdE9yZGVyLm9yZGVyLm9yZGVySWQsIHsKICBsb3RJZDogJ0dCQS1LUi0yNDA3JywKICBpZGVtcG90ZW5jeUtleTogJ3Rlc3QtYWNjZXB0LTAwMScsCn0pOwoKYXNzZXJ0LmVxdWFsKGR1cGxpY2F0ZUFjY2VwdC50cmFkZS50cmFkZUlkLCBjb25maXJtZWQudHJhZGUudHJhZGVJZCk7CmFzc2VydC5lcXVhbChkdXBsaWNhdGVBY2NlcHQuc25hcHNob3QudHJhZGVzLmxlbmd0aCwgMSwgJ+upseuTsSDsnqzsmpTssq3snYAg7LK06rKw7J2EIOykkeuztSDsg53shLHtlZjsp4Ag7JWK7JWE7JW8IO2VqeuLiOuLpC4nKTsKCmNvbnN0IHBhcnRpYWxFbmdpbmUgPSBuZXcgVHJhZGVFbmdpbmUoKTsKY29uc3QgcGFydGlhbE9yZGVyID0gcGFydGlhbEVuZ2luZS5zdWJtaXRPcmRlcih7IHNwZWNJZDogR0FCQV9TUEVDX0lELCBzcGVjQXR0cmlidXRlczogR0FCQV9TUEVDX0FUVFJJQlVURVMsIHByaWNlOiAyMTgwMCwgcXVhbnRpdHk6IDEwMDAsIGRlbGl2ZXJ5RGF5czogMTQsIGlkZW1wb3RlbmN5S2V5OiAncGFydGlhbC1vcmRlci0wMDEnIH0pOwpjb25zdCBwYXJ0aWFsVHJhZGUgPSBwYXJ0aWFsRW5naW5lLmFjY2VwdE9yZGVyKHBhcnRpYWxPcmRlci5vcmRlci5vcmRlcklkLCB7IGxvdElkOiAnR0JBLUtSLTI0MDcnLCBhY2NlcHRlZFF1YW50aXR5OiA0MDAsIGlkZW1wb3RlbmN5S2V5OiAncGFydGlhbC1hY2NlcHQtMDAxJyB9KTsKYXNzZXJ0LmVxdWFsKHBhcnRpYWxUcmFkZS5vcmRlci5zdGF0dXMsICdQQVJUSUFMTFlfQUNDRVBURUQnKTsKYXNzZXJ0LmVxdWFsKHBhcnRpYWxUcmFkZS5vcmRlci5yZW1haW5pbmdRdWFudGl0eSwgNjAwKTsKYXNzZXJ0LmVxdWFsKHBhcnRpYWxUcmFkZS50cmFkZS5xdWFudGl0eSwgNDAwKTsKYXNzZXJ0LmVxdWFsKHBhcnRpYWxUcmFkZS5zbmFwc2hvdC5sb3RzWzBdLmF2YWlsYWJsZVF0eSwgODAwKTsKCmNvbnN0IGxpZmVjeWNsZUVuZ2luZSA9IG5ldyBUcmFkZUVuZ2luZSgpOwpjb25zdCBsaWZlY3ljbGVPcmRlciA9IGxpZmVjeWNsZUVuZ2luZS5zdWJtaXRPcmRlcih7IHNwZWNJZDogR0FCQV9TUEVDX0lELCBzcGVjQXR0cmlidXRlczogR0FCQV9TUEVDX0FUVFJJQlVURVMsIHByaWNlOiAyMTgwMCwgcXVhbnRpdHk6IDIwMCwgZGVsaXZlcnlEYXlzOiAxNCB9KTsKY29uc3QgbGlmZWN5Y2xlVHJhZGUgPSBsaWZlY3ljbGVFbmdpbmUuYWNjZXB0T3JkZXIobGlmZWN5Y2xlT3JkZXIub3JkZXIub3JkZXJJZCwgeyBsb3RJZDogJ0dCQS1LUi0yNDA3JyB9KTsKYXNzZXJ0LmVxdWFsKGxpZmVjeWNsZUVuZ2luZS5tYXJrRGVsaXZlcmVkKGxpZmVjeWNsZVRyYWRlLnRyYWRlLnRyYWRlSWQpLnRyYWRlLnN0YXR1cywgJ0RFTElWRVJFRCcpOwpjb25zdCBmdWxmaWxsZWQgPSBsaWZlY3ljbGVFbmdpbmUuaW5zcGVjdFRyYWRlKGxpZmVjeWNsZVRyYWRlLnRyYWRlLnRyYWRlSWQsIHsgc3BlY01hdGNoOiB0cnVlLCBxdWFsaXR5UGFzczogdHJ1ZSB9KTsKYXNzZXJ0LmVxdWFsKGZ1bGZpbGxlZC50cmFkZS5zdGF0dXMsICdGVUxGSUxMRUQnKTsKYXNzZXJ0LmVxdWFsKGZ1bGZpbGxlZC5zbmFwc2hvdC5pbnZlbnRvcnkuaW5zcGVjdGlvbnNbMF0uc3RhdHVzLCAnSU5TUEVDVEVEJyk7Cgpjb25zdCBkaXNwdXRlRW5naW5lID0gbmV3IFRyYWRlRW5naW5lKCk7CmNvbnN0IGRpc3B1dGVPcmRlciA9IGRpc3B1dGVFbmdpbmUuc3VibWl0T3JkZXIoeyBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwgc3BlY0F0dHJpYnV0ZXM6IEdBQkFfU1BFQ19BVFRSSUJVVEVTLCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMDAsIGRlbGl2ZXJ5RGF5czogMTQgfSk7CmNvbnN0IGRpc3B1dGVUcmFkZSA9IGRpc3B1dGVFbmdpbmUuYWNjZXB0T3JkZXIoZGlzcHV0ZU9yZGVyLm9yZGVyLm9yZGVySWQsIHsgbG90SWQ6ICdHQkEtS1ItMjQwNycgfSk7CmNvbnN0IGRpc3B1dGVkID0gZGlzcHV0ZUVuZ2luZS5pbnNwZWN0VHJhZGUoZGlzcHV0ZVRyYWRlLnRyYWRlLnRyYWRlSWQsIHsgc3BlY01hdGNoOiBmYWxzZSwgcXVhbGl0eVBhc3M6IHRydWUsIG5vdGU6ICfqsoDsiJgg67aI7J287LmYJyB9KTsKYXNzZXJ0LmVxdWFsKGRpc3B1dGVkLnRyYWRlLnN0YXR1cywgJ0RJU1BVVEVEJyk7CmFzc2VydC5lcXVhbChkaXNwdXRlZC5zbmFwc2hvdC5sb3RzWzBdLnN0YXR1cywgJ1FVQVJBTlRJTkVEJyk7Cgpjb25zdCBjb3VudGVyRW5naW5lID0gbmV3IFRyYWRlRW5naW5lKCk7CmNvbnN0IGNvdW50ZXJPcmRlciA9IGNvdW50ZXJFbmdpbmUuc3VibWl0T3JkZXIoeyBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwgc3BlY0F0dHJpYnV0ZXM6IEdBQkFfU1BFQ19BVFRSSUJVVEVTLCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMDAsIGRlbGl2ZXJ5RGF5czogMTQsIGlkZW1wb3RlbmN5S2V5OiAnY291bnRlci1vcmRlci0wMDEnIH0pOwpjb25zdCBjb3VudGVyID0gY291bnRlckVuZ2luZS5jb3VudGVyT3JkZXIoY291bnRlck9yZGVyLm9yZGVyLm9yZGVySWQsIHsgcHJpY2U6IDIxOTAwLCBxdWFudGl0eTogMjAwLCBkZWxpdmVyeURheXM6IDE0LCBpZGVtcG90ZW5jeUtleTogJ2NvdW50ZXItMDAxJyB9KTsKYXNzZXJ0LmVxdWFsKGNvdW50ZXIub3JkZXIuc3RhdHVzLCAnQ09VTlRFUkVEJyk7CmFzc2VydC5lcXVhbChjb3VudGVyLm9yZGVyLmNvdW50ZXJPZmZlci5wcmljZSwgMjE5MDApOwoKY29uc3QgcmVqZWN0ZWQgPSBjb3VudGVyRW5naW5lLnJlamVjdE9yZGVyKGNvdW50ZXJPcmRlci5vcmRlci5vcmRlcklkLCB7IHJlYXNvbjogJ+uCqeq4sCDsobDqsbQg67aI7J287LmYJywgaWRlbXBvdGVuY3lLZXk6ICdyZWplY3QtMDAxJyB9KTsKYXNzZXJ0LmVxdWFsKHJlamVjdGVkLm9yZGVyLnN0YXR1cywgJ1JFSkVDVEVEJyk7Cgpjb25zdCBleHBpcmVkRW5naW5lID0gbmV3IFRyYWRlRW5naW5lKCk7CmNvbnN0IGV4cGlyZWRPcmRlciA9IGV4cGlyZWRFbmdpbmUuc3VibWl0T3JkZXIoeyBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwgc3BlY0F0dHJpYnV0ZXM6IEdBQkFfU1BFQ19BVFRSSUJVVEVTLCBwcmljZTogMjE4MDAsIHF1YW50aXR5OiAyMCwgZGVsaXZlcnlEYXlzOiAxNCwgZXhwaXJlc0F0OiAnMjAyMC0wMS0wMScsIGlkZW1wb3RlbmN5S2V5OiAnZXhwaXJlZC1vcmRlci0wMDEnIH0pOwpjb25zdCBleHBpcmVkID0gZXhwaXJlZEVuZ2luZS5leHBpcmVPcmRlcihleHBpcmVkT3JkZXIub3JkZXIub3JkZXJJZCk7CmFzc2VydC5lcXVhbChleHBpcmVkLm9yZGVyLnN0YXR1cywgJ0VYUElSRUQnKTsKCmV4cGVjdFJ1bGVFcnJvcigoKSA9PiBlbmdpbmUuc3VibWl0T3JkZXIoewogIHNwZWNJZDogJ1VOQ09ORklSTUVELVNQRUMnLAogIHNwZWNBdHRyaWJ1dGVzOiBHQUJBX1NQRUNfQVRUUklCVVRFUywKICBwcmljZTogMjE4MDAsCiAgcXVhbnRpdHk6IDIwLAp9KSwgJ1NQRUNfTk9UX0NPTkZJUk1FRCcpOwoKZXhwZWN0UnVsZUVycm9yKCgpID0+IGVuZ2luZS5zdWJtaXRPcmRlcih7CiAgc3BlY0lkOiBHQUJBX1NQRUNfSUQsCiAgc3BlY0F0dHJpYnV0ZXM6IEdBQkFfU1BFQ19BVFRSSUJVVEVTLAogIHByaWNlOiAyMTgwMCwKICBxdWFudGl0eTogMTksCn0pLCAnSU5WRU5UT1JZX0xJTUlUJyk7CgpleHBlY3RSdWxlRXJyb3IoKCkgPT4gZW5naW5lLnN1Ym1pdE9yZGVyKHsKICBzcGVjSWQ6IEdBQkFfU1BFQ19JRCwKICBzcGVjQXR0cmlidXRlczogR0FCQV9TUEVDX0FUVFJJQlVURVMsCiAgcHJpY2U6IDIxODAwLAogIHF1YW50aXR5OiAzMDAsCn0pLCAnTk9fRUxJR0lCTEVfT0ZGRVInKTsKCmV4cGVjdFJ1bGVFcnJvcigoKSA9PiBlbmdpbmUuYWNjZXB0T3JkZXIoJ09SREVSLTk5OTk5JywgewogIGxvdElkOiAnR0JBLUtSLTI0MDcnLAp9KSwgJ09SREVSX05PVF9GT1VORCcpOwoKY29uc29sZS5sb2coJ3RyYWRlLWVuZ2luZSB0ZXN0czogUEFTUycpOwo=
+import assert from 'node:assert/strict';
+import { GABA_SPEC_ATTRIBUTES, GABA_SPEC_ID, TradeEngine, TradeRuleError } from './trade-engine.mjs';
+
+const expectRuleError = (operation, code) => {
+  assert.throws(operation, (error) => {
+    assert.ok(error instanceof TradeRuleError);
+    assert.equal(error.code, code);
+    return true;
+  });
+};
+
+const engine = new TradeEngine();
+
+const firstOrder = engine.submitOrder({
+  specId: GABA_SPEC_ID,
+  specAttributes: GABA_SPEC_ATTRIBUTES,
+  price: 21800,
+  quantity: 1000,
+  deliveryDays: 14,
+  deliveryDate: '2026-09-22',
+  idempotencyKey: 'test-order-001',
+});
+
+assert.equal(firstOrder.order.orderId, 'ORDER-00001');
+assert.equal(firstOrder.order.status, 'BUY_ORDER_SUBMITTED');
+assert.equal(firstOrder.order.preTradeGate.evidenceValid, true);
+assert.equal(firstOrder.order.currency, 'KRW');
+assert.equal(firstOrder.order.priceUnit, 'KRW_PER_KG');
+assert.equal(firstOrder.order.quantityUnit, 'KG');
+assert.equal(firstOrder.snapshot.orders.length, 1);
+assert.equal(firstOrder.order.specAttributes.intendedUse, '기능성 식품 원료 개발');
+
+expectRuleError(() => new TradeEngine().submitOrder({
+  specId: GABA_SPEC_ID,
+  specAttributes: { ...GABA_SPEC_ATTRIBUTES, purity: '98% 이상' },
+  price: 21800,
+  quantity: 20,
+}), 'SPEC_NOT_MATCHED');
+
+expectRuleError(() => new TradeEngine().submitOrder({
+  specId: GABA_SPEC_ID,
+  price: 21800,
+  quantity: 20,
+}), 'SPEC_ATTRIBUTES_REQUIRED');
+
+const duplicateOrder = engine.submitOrder({
+  specId: GABA_SPEC_ID,
+  specAttributes: GABA_SPEC_ATTRIBUTES,
+  price: 21800,
+  quantity: 1000,
+  deliveryDays: 14,
+  idempotencyKey: 'test-order-001',
+});
+
+assert.equal(duplicateOrder.order.orderId, firstOrder.order.orderId);
+assert.equal(duplicateOrder.snapshot.orders.length, 1, '멱등 재요청은 주문을 중복 생성하지 않아야 합니다.');
+
+const confirmed = engine.acceptOrder(firstOrder.order.orderId, {
+  lotId: 'GBA-KR-2407',
+  idempotencyKey: 'test-accept-001',
+});
+
+assert.equal(confirmed.trade.tradeId, 'TRADE-00001');
+assert.equal(confirmed.trade.currency, 'KRW');
+assert.equal(confirmed.trade.priceUnit, 'KRW_PER_KG');
+assert.equal(confirmed.trade.quantityUnit, 'KG');
+
+expectRuleError(() => new TradeEngine().submitOrder({
+  specId: GABA_SPEC_ID,
+  specAttributes: GABA_SPEC_ATTRIBUTES,
+  price: 21800,
+  quantity: 20,
+  quantityUnit: 'MT',
+}), 'TRADE_TERMS_MISMATCH');
+
+const legacySnapshot = new TradeEngine().snapshot();
+delete legacySnapshot.lots[0].currency;
+delete legacySnapshot.lots[0].priceUnit;
+delete legacySnapshot.lots[0].quantityUnit;
+const restoredLegacy = new TradeEngine(legacySnapshot);
+const restoredOrder = restoredLegacy.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 20, deliveryDays: 14 });
+assert.equal(restoredOrder.order.quantityUnit, 'KG');
+assert.equal(confirmed.order.status, 'TRADE_CONFIRMED');
+assert.equal(confirmed.trade.status, 'TRADE_CONFIRMED');
+assert.equal(confirmed.trade.preTradeChecks.specMatch, true);
+assert.equal(confirmed.trade.preTradeChecks.evidenceValid, true);
+assert.equal(confirmed.trade.supplierOrganizationId, 'SIM-SUPPLIER-ORG');
+assert.equal(confirmed.trade.tradeSnapshotHash.length, 64);
+assert.equal(confirmed.trade.specSnapshot.deliveryCondition, '상온·밀봉 배송');
+const orgGuardEngine = new TradeEngine();
+const orgGuardOrder = orgGuardEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 20, deliveryDays: 14 });
+assert.throws(() => orgGuardEngine.acceptOrder(orgGuardOrder.order.orderId, { lotId: 'GBA-KR-2407', supplierId: 'SIM-SUPPLIER-001', supplierOrganizationId: 'OTHER-ORG' }), (error) => error.code === 'SUPPLIER_ORGANIZATION_NOT_AUTHORIZED');
+const tamperEngine = new TradeEngine();
+const tamperOrder = tamperEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 20, deliveryDays: 14 });
+const tamperTrade = tamperEngine.acceptOrder(tamperOrder.order.orderId, { lotId: 'GBA-KR-2407' }).trade;
+tamperEngine.trades.get(tamperTrade.tradeId).price = 999;
+assert.throws(() => tamperEngine.markDelivered(tamperTrade.tradeId), (error) => error.code === 'TRADE_SNAPSHOT_TAMPERED');
+assert.equal(confirmed.snapshot.lots[0].availableQty, 200);
+assert.equal(confirmed.snapshot.lots[0].reservedQty, 1000);
+assert.equal(confirmed.snapshot.inventory.reservations.length, 1);
+assert.equal(confirmed.snapshot.inventory.reservations[0].reservationId, firstOrder.order.orderId);
+
+const duplicateAccept = engine.acceptOrder(firstOrder.order.orderId, {
+  lotId: 'GBA-KR-2407',
+  idempotencyKey: 'test-accept-001',
+});
+
+assert.equal(duplicateAccept.trade.tradeId, confirmed.trade.tradeId);
+assert.equal(duplicateAccept.snapshot.trades.length, 1, '멱등 재요청은 체결을 중복 생성하지 않아야 합니다.');
+
+const partialEngine = new TradeEngine();
+const partialOrder = partialEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 1000, deliveryDays: 14, idempotencyKey: 'partial-order-001' });
+const partialTrade = partialEngine.acceptOrder(partialOrder.order.orderId, { lotId: 'GBA-KR-2407', acceptedQuantity: 400, idempotencyKey: 'partial-accept-001' });
+assert.equal(partialTrade.order.status, 'PARTIALLY_ACCEPTED');
+assert.equal(partialTrade.order.remainingQuantity, 600);
+assert.equal(partialTrade.trade.quantity, 400);
+assert.equal(partialTrade.snapshot.lots[0].availableQty, 800);
+
+const lifecycleEngine = new TradeEngine();
+const lifecycleOrder = lifecycleEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 200, deliveryDays: 14 });
+const lifecycleTrade = lifecycleEngine.acceptOrder(lifecycleOrder.order.orderId, { lotId: 'GBA-KR-2407' });
+assert.equal(lifecycleEngine.markDelivered(lifecycleTrade.trade.tradeId).trade.status, 'DELIVERED');
+const fulfilled = lifecycleEngine.inspectTrade(lifecycleTrade.trade.tradeId, { specMatch: true, qualityPass: true });
+assert.equal(fulfilled.trade.status, 'FULFILLED');
+assert.equal(fulfilled.snapshot.inventory.inspections[0].status, 'INSPECTED');
+
+const disputeEngine = new TradeEngine();
+const disputeOrder = disputeEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 200, deliveryDays: 14 });
+const disputeTrade = disputeEngine.acceptOrder(disputeOrder.order.orderId, { lotId: 'GBA-KR-2407' });
+const disputed = disputeEngine.inspectTrade(disputeTrade.trade.tradeId, { specMatch: false, qualityPass: true, note: '검수 불일치' });
+assert.equal(disputed.trade.status, 'DISPUTED');
+assert.equal(disputed.snapshot.lots[0].status, 'QUARANTINED');
+
+const counterEngine = new TradeEngine();
+const counterOrder = counterEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 200, deliveryDays: 14, idempotencyKey: 'counter-order-001' });
+const counter = counterEngine.counterOrder(counterOrder.order.orderId, { price: 21900, quantity: 200, deliveryDays: 14, idempotencyKey: 'counter-001' });
+assert.equal(counter.order.status, 'COUNTERED');
+assert.equal(counter.order.counterOffer.price, 21900);
+
+const rejected = counterEngine.rejectOrder(counterOrder.order.orderId, { reason: '납기 조건 불일치', idempotencyKey: 'reject-001' });
+assert.equal(rejected.order.status, 'REJECTED');
+
+const expiredEngine = new TradeEngine();
+const expiredOrder = expiredEngine.submitOrder({ specId: GABA_SPEC_ID, specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 20, deliveryDays: 14, expiresAt: '2020-01-01', idempotencyKey: 'expired-order-001' });
+const expired = expiredEngine.expireOrder(expiredOrder.order.orderId);
+assert.equal(expired.order.status, 'EXPIRED');
+
+expectRuleError(() => engine.submitOrder({
+  specId: 'UNCONFIRMED-SPEC',
+  specAttributes: GABA_SPEC_ATTRIBUTES,
+  price: 21800,
+  quantity: 20,
+}), 'SPEC_NOT_CONFIRMED');
+
+expectRuleError(() => engine.submitOrder({
+  specId: GABA_SPEC_ID,
+  specAttributes: GABA_SPEC_ATTRIBUTES,
+  price: 21800,
+  quantity: 19,
+}), 'INVENTORY_LIMIT');
+
+expectRuleError(() => engine.submitOrder({
+  specId: GABA_SPEC_ID,
+  specAttributes: GABA_SPEC_ATTRIBUTES,
+  price: 21800,
+  quantity: 300,
+}), 'NO_ELIGIBLE_OFFER');
+
+expectRuleError(() => engine.acceptOrder('ORDER-99999', {
+  lotId: 'GBA-KR-2407',
+}), 'ORDER_NOT_FOUND');
+
+console.log('trade-engine tests: PASS');

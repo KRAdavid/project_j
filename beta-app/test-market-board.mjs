@@ -1,1 +1,39 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBidWlsZE1hcmtldEJvYXJkLCBpc1NlcnZlckVsaWdpYmxlT2ZmZXIgfSBmcm9tICcuL21hcmtldC1ib2FyZC5tanMnOwppbXBvcnQgeyBJTlZFTlRPUllfU1RBVEVTIH0gZnJvbSAnLi9pbnZlbnRvcnktbGVkZ2VyLm1qcyc7Cgpjb25zdCB2YWxpZCA9IHsKICBsb3RJZDogJ0xPVC1WQUxJRCcsIHN1cHBsaWVyOiAn6rKA7Kad6rO16riJ7J6QJywgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIGF2YWlsYWJsZVF0eTogMTIwLAogIGFza1ByaWNlOiAyMTgwMCwgY3VycmVuY3k6ICdLUlcnLCBwcmljZVVuaXQ6ICdLUldfUEVSX0tHJywgcXVhbnRpdHlVbml0OiAnS0cnLCBkZWxpdmVyeURheXM6IDEwLAogIHN0YXR1czogSU5WRU5UT1JZX1NUQVRFUy5WRVJJRklFRF9FTElHSUJMRSwKICBldmlkZW5jZTogeyBjb2E6ICdWQUxJRCcsIHNkczogJ1ZBTElEJywgdGRzOiAnVkFMSUQnLCBsb3RUcmFjZTogJ1ZBTElEJywgaW52ZW50b3J5UHJvb2Y6ICdWQUxJRCcsIGV4cGlyZXNBdDogJzIwMjctMDEtMDEnIH0sCn07Cgphc3NlcnQuZXF1YWwoaXNTZXJ2ZXJFbGlnaWJsZU9mZmVyKHZhbGlkLCB7IHNwZWNJZDogJ0dBQkEtU1BFQy0wMDEnLCBub3c6IG5ldyBEYXRlKCcyMDI2LTA5LTEwJykgfSksIHRydWUpOwpmb3IgKGNvbnN0IFtrZXksIHZhbHVlXSBvZiBPYmplY3QuZW50cmllcyh7CiAgc3RhdHVzOiBJTlZFTlRPUllfU1RBVEVTLlBFTkRJTkdfVkVSSUZJQ0FUSU9OLAogIGF2YWlsYWJsZVF0eTogMCwKICBwcmljZVVuaXQ6ICdVU0RfUEVSX0tHJywKICBldmlkZW5jZTogeyAuLi52YWxpZC5ldmlkZW5jZSwgY29hOiAnUEVORElORycgfSwKICBleHBpcmVkOiB0cnVlLAp9KSkgewogIGNvbnN0IGNhbmRpZGF0ZSA9IHsgLi4udmFsaWQsIC4uLihrZXkgPT09ICdleHBpcmVkJyA/IHt9IDogeyBba2V5XTogdmFsdWUgfSkgfTsKICBpZiAoa2V5ID09PSAnZXhwaXJlZCcpIGNhbmRpZGF0ZS5ldmlkZW5jZSA9IHsgLi4udmFsaWQuZXZpZGVuY2UsIGV4cGlyZXNBdDogJzIwMjYtMDEtMDEnIH07CiAgYXNzZXJ0LmVxdWFsKGlzU2VydmVyRWxpZ2libGVPZmZlcihjYW5kaWRhdGUsIHsgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIG5vdzogbmV3IERhdGUoJzIwMjYtMDktMTAnKSB9KSwgZmFsc2UsIGBtdXN0IHJlamVjdCAke2tleX1gKTsKfQoKY29uc3QgY29tcGxldGVkVHJhZGUgPSB7CiAgdHJhZGVJZDogJ1RSQURFLURPTkUnLCBzcGVjSWQ6ICdHQUJBLVNQRUMtMDAxJywgc3RhdHVzOiAnRlVMRklMTEVEJywgcHJpY2U6IDIxNzAwLCBxdWFudGl0eTogNDAsCiAgY3VycmVuY3k6ICdLUlcnLCBwcmljZVVuaXQ6ICdLUldfUEVSX0tHJywgcXVhbnRpdHlVbml0OiAnS0cnLCBmdWxmaWxsZWRBdDogJzIwMjYtMDktMDknLAogIGV2aWRlbmNlU25hcHNob3Q6IHsgY29hOiAnVkFMSUQnLCBzZHM6ICdWQUxJRCcsIHRkczogJ1ZBTElEJywgbG90VHJhY2U6ICdWQUxJRCcsIGludmVudG9yeVByb29mOiAnVkFMSUQnIH0sCn07CmNvbnN0IGJvYXJkID0gYnVpbGRNYXJrZXRCb2FyZCh7IGxvdHM6IFt2YWxpZCwgeyAuLi52YWxpZCwgbG90SWQ6ICdMT1QtQ0hFQVAnLCBhc2tQcmljZTogMjE1MDAgfSwgeyAuLi52YWxpZCwgbG90SWQ6ICdMT1QtT1RIRVInLCBzcGVjSWQ6ICdPVEhFUicgfV0sIHRyYWRlczogW2NvbXBsZXRlZFRyYWRlLCB7IC4uLmNvbXBsZXRlZFRyYWRlLCB0cmFkZUlkOiAnVFJBREUtRElTUFVURUQnLCBzdGF0dXM6ICdESVNQVVRFRCcgfV0gfSwgeyBzcGVjSWQ6ICdHQUJBLVNQRUMtMDAxJywgbm93OiBuZXcgRGF0ZSgnMjAyNi0wOS0xMCcpLCBnZW5lcmF0ZWRBdDogJzIwMjYtMDktMTBUMDA6MDA6MDAuMDAwWicgfSk7CmFzc2VydC5kZWVwRXF1YWwoYm9hcmQuYXNrcy5tYXAoKG9mZmVyKSA9PiBvZmZlci5sb3RJZCksIFsnTE9ULUNIRUFQJywgJ0xPVC1WQUxJRCddKTsKYXNzZXJ0LmVxdWFsKGJvYXJkLmJlc3RBc2ssIDIxNTAwKTsKYXNzZXJ0LmVxdWFsKGJvYXJkLnZlcmlmaWVkSW52ZW50b3J5UXR5LCAyNDApOwphc3NlcnQuZGVlcEVxdWFsKGJvYXJkLmJpZHMsIFtdKTsKYXNzZXJ0LmRlZXBFcXVhbChib2FyZC5yZWNlbnRUcmFkZXMubWFwKCh0cmFkZSkgPT4gdHJhZGUudHJhZGVJZCksIFsnVFJBREUtRE9ORSddKTsKYXNzZXJ0LmVxdWFsKGJvYXJkLmFjdGl2aXR5U3RhdHVzLCAnU0VSVkVSX1ZFUklGSUVEX0NPTVBMRVRFRF9UUkFERVMnKTsKYXNzZXJ0LmVxdWFsKGJvYXJkLmFza3NbMF0uZXZpZGVuY2VTdGF0dXMsICdQUkVUUkFERV9WRVJJRklFRCcpOwphc3NlcnQuZXF1YWwoJ3N1cHBsaWVyT3JnYW5pemF0aW9uSWQnIGluIGJvYXJkLmFza3NbMF0sIGZhbHNlKTsKY29uc29sZS5sb2coJ21hcmtldCBib2FyZCBjb250cmFjdCB0ZXN0czogUEFTUycpOwo=
+import assert from 'node:assert/strict';
+import { buildMarketBoard, isServerEligibleOffer } from './market-board.mjs';
+import { INVENTORY_STATES } from './inventory-ledger.mjs';
+
+const valid = {
+  lotId: 'LOT-VALID', supplier: '검증공급자', specId: 'GABA-SPEC-001', availableQty: 120,
+  askPrice: 21800, currency: 'KRW', priceUnit: 'KRW_PER_KG', quantityUnit: 'KG', deliveryDays: 10,
+  status: INVENTORY_STATES.VERIFIED_ELIGIBLE,
+  evidence: { coa: 'VALID', sds: 'VALID', tds: 'VALID', lotTrace: 'VALID', inventoryProof: 'VALID', expiresAt: '2027-01-01' },
+};
+
+assert.equal(isServerEligibleOffer(valid, { specId: 'GABA-SPEC-001', now: new Date('2026-09-10') }), true);
+for (const [key, value] of Object.entries({
+  status: INVENTORY_STATES.PENDING_VERIFICATION,
+  availableQty: 0,
+  priceUnit: 'USD_PER_KG',
+  evidence: { ...valid.evidence, coa: 'PENDING' },
+  expired: true,
+})) {
+  const candidate = { ...valid, ...(key === 'expired' ? {} : { [key]: value }) };
+  if (key === 'expired') candidate.evidence = { ...valid.evidence, expiresAt: '2026-01-01' };
+  assert.equal(isServerEligibleOffer(candidate, { specId: 'GABA-SPEC-001', now: new Date('2026-09-10') }), false, `must reject ${key}`);
+}
+
+const completedTrade = {
+  tradeId: 'TRADE-DONE', specId: 'GABA-SPEC-001', status: 'FULFILLED', price: 21700, quantity: 40,
+  currency: 'KRW', priceUnit: 'KRW_PER_KG', quantityUnit: 'KG', fulfilledAt: '2026-09-09',
+  evidenceSnapshot: { coa: 'VALID', sds: 'VALID', tds: 'VALID', lotTrace: 'VALID', inventoryProof: 'VALID' },
+};
+const board = buildMarketBoard({ lots: [valid, { ...valid, lotId: 'LOT-CHEAP', askPrice: 21500 }, { ...valid, lotId: 'LOT-OTHER', specId: 'OTHER' }], trades: [completedTrade, { ...completedTrade, tradeId: 'TRADE-DISPUTED', status: 'DISPUTED' }] }, { specId: 'GABA-SPEC-001', now: new Date('2026-09-10'), generatedAt: '2026-09-10T00:00:00.000Z' });
+assert.deepEqual(board.asks.map((offer) => offer.lotId), ['LOT-CHEAP', 'LOT-VALID']);
+assert.equal(board.bestAsk, 21500);
+assert.equal(board.verifiedInventoryQty, 240);
+assert.deepEqual(board.bids, []);
+assert.deepEqual(board.recentTrades.map((trade) => trade.tradeId), ['TRADE-DONE']);
+assert.equal(board.activityStatus, 'SERVER_VERIFIED_COMPLETED_TRADES');
+assert.equal(board.asks[0].evidenceStatus, 'PRETRADE_VERIFIED');
+assert.equal('supplierOrganizationId' in board.asks[0], false);
+console.log('market board contract tests: PASS');

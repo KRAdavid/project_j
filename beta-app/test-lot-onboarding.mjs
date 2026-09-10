@@ -1,1 +1,42 @@
-aW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydC9zdHJpY3QnOwppbXBvcnQgeyBzcGF3biB9IGZyb20gJ25vZGU6Y2hpbGRfcHJvY2Vzcyc7CmltcG9ydCB7IGZpbGVVUkxUb1BhdGggfSBmcm9tICdub2RlOnVybCc7Cgpjb25zdCBwb3J0ID0gNDE3ODsKY29uc3QgY3dkID0gZmlsZVVSTFRvUGF0aChuZXcgVVJMKCcuJywgaW1wb3J0Lm1ldGEudXJsKSk7CmNvbnN0IGJhc2UgPSBgaHR0cDovLzEyNy4wLjAuMToke3BvcnR9YDsKY29uc3QgY2hpbGQgPSBzcGF3bihwcm9jZXNzLmV4ZWNQYXRoLCBbJ3NlcnZlci5tanMnXSwgeyBjd2QsIGVudjogeyAuLi5wcm9jZXNzLmVudiwgUE9SVDogU3RyaW5nKHBvcnQpLCBBUFBfRU5WOiAnc2ltdWxhdGlvbicgfSwgc3RkaW86ICdpZ25vcmUnIH0pOwpjb25zdCBqc29uID0gKGJvZHksIGhlYWRlcnMgPSB7fSkgPT4gKHsgbWV0aG9kOiAnUE9TVCcsIGhlYWRlcnM6IHsgJ2NvbnRlbnQtdHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJywgLi4uaGVhZGVycyB9LCBib2R5OiBKU09OLnN0cmluZ2lmeShib2R5KSB9KTsKY29uc3QgcmVxdWVzdCA9IGFzeW5jIChwYXRoLCBvcHRpb25zKSA9PiB7CiAgZm9yIChsZXQgYXR0ZW1wdCA9IDA7IGF0dGVtcHQgPCA0MDsgYXR0ZW1wdCArPSAxKSB7CiAgICB0cnkgeyByZXR1cm4gYXdhaXQgZmV0Y2goYCR7YmFzZX0ke3BhdGh9YCwgb3B0aW9ucyk7IH0gY2F0Y2ggeyBhd2FpdCBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gc2V0VGltZW91dChyZXNvbHZlLCAxMDApKTsgfQogIH0KICB0aHJvdyBuZXcgRXJyb3IoJ2xvdCBvbmJvYXJkaW5nIHNlcnZlciB1bmF2YWlsYWJsZScpOwp9OwoKdHJ5IHsKICBjb25zdCBsb3RJZCA9IGBHQkEtT05CT0FSRC0ke0RhdGUubm93KCl9YDsKICBjb25zdCBzdXBwbGllckhlYWRlcnMgPSB7ICd4LWRlbW8tcm9sZSc6ICdTVVBQTElFUicgfTsKICBjb25zdCBvcGVyYXRvckhlYWRlcnMgPSB7ICd4LWRlbW8tcm9sZSc6ICdPUEVSQVRPUicgfTsKICBjb25zdCByZXF1aXJlZFR5cGVzID0gWydDT0EnLCAnU0RTJywgJ1REUycsICdMT1RfVFJBQ0UnLCAnSU5WRU5UT1JZX1BST09GJ107CiAgY29uc3QgYmxvY2tlZCA9IGF3YWl0IHJlcXVlc3QoJy9hcGkvbG90cycsIGpzb24oeyBsb3RJZCwgc3VwcGxpZXI6ICfqsoDspp3qs7XquInsnpAnLCBzcGVjSWQ6ICdHQUJBLVNQRUMtMDAxJywgYXNrUHJpY2U6IDIxNTAwLCBhdmFpbGFibGVRdHk6IDEwMCwgZGVsaXZlcnlEYXlzOiA3IH0sIHN1cHBsaWVySGVhZGVycykpOwogIGFzc2VydC5lcXVhbChibG9ja2VkLnN0YXR1cywgNDIyKTsKICBmb3IgKGNvbnN0IGV2aWRlbmNlVHlwZSBvZiByZXF1aXJlZFR5cGVzKSB7CiAgICBjb25zdCBzdWJtaXR0ZWQgPSBhd2FpdCByZXF1ZXN0KCcvYXBpL2V2aWRlbmNlJywganNvbih7IGxvdElkLCBldmlkZW5jZVR5cGUsIGRvY3VtZW50VmVyc2lvbjogJ3YxJywgY29udGVudDogYCR7bG90SWR9LSR7ZXZpZGVuY2VUeXBlfWAsIGV4cGlyZXNBdDogJzIwMjctMTItMzEnIH0sIHN1cHBsaWVySGVhZGVycykpOwogICAgYXNzZXJ0LmVxdWFsKHN1Ym1pdHRlZC5zdGF0dXMsIDIwMSk7CiAgICBjb25zdCByZWNvcmQgPSBhd2FpdCBzdWJtaXR0ZWQuanNvbigpOwogICAgY29uc3QgcmV2aWV3ZWQgPSBhd2FpdCByZXF1ZXN0KGAvYXBpL2V2aWRlbmNlLyR7cmVjb3JkLmV2aWRlbmNlSWR9L3Jldmlld2AsIGpzb24oeyBkZWNpc2lvbjogJ1ZBTElEJyB9LCBvcGVyYXRvckhlYWRlcnMpKTsKICAgIGFzc2VydC5lcXVhbChyZXZpZXdlZC5zdGF0dXMsIDIwMCk7CiAgfQogIGNvbnN0IGNyZWF0ZWQgPSBhd2FpdCByZXF1ZXN0KCcvYXBpL2xvdHMnLCBqc29uKHsgbG90SWQsIHN1cHBsaWVyOiAn6rKA7Kad6rO16riJ7J6QJywgc3BlY0lkOiAnR0FCQS1TUEVDLTAwMScsIGFza1ByaWNlOiAyMTUwMCwgYXZhaWxhYmxlUXR5OiAxMDAsIGRlbGl2ZXJ5RGF5czogNyB9LCBzdXBwbGllckhlYWRlcnMpKTsKICBhc3NlcnQuZXF1YWwoY3JlYXRlZC5zdGF0dXMsIDIwMSk7CiAgY29uc3QgcGF5bG9hZCA9IGF3YWl0IGNyZWF0ZWQuanNvbigpOwogIGFzc2VydC5lcXVhbChwYXlsb2FkLmxvdC5zdGF0dXMsICdWRVJJRklFRF9FTElHSUJMRScpOwphc3NlcnQuZXF1YWwocGF5bG9hZC5ldmlkZW5jZUNoZWNrLnByZVRyYWRlRWxpZ2libGUsIHRydWUpOwphc3NlcnQuZXF1YWwocGF5bG9hZC5sb3Quc3VwcGxpZXJPcmdhbml6YXRpb25JZCwgJ1NJTS1TVVBQTElFUi1PUkcnKTsKICBjb25zdCBzdGF0ZSA9IGF3YWl0IChhd2FpdCByZXF1ZXN0KCcvYXBpL3N0YXRlJykpLmpzb24oKTsKICBhc3NlcnQub2soc3RhdGUubG90cy5zb21lKChsb3QpID0+IGxvdC5sb3RJZCA9PT0gbG90SWQpKTsKICBjb25zb2xlLmxvZygnbG90IG9uYm9hcmRpbmcgdGVzdHM6IFBBU1MnKTsKfSBmaW5hbGx5IHsKICBjaGlsZC5raWxsKCk7Cn0K
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const port = 4178;
+const cwd = fileURLToPath(new URL('.', import.meta.url));
+const base = `http://127.0.0.1:${port}`;
+const child = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, PORT: String(port), APP_ENV: 'simulation' }, stdio: 'ignore' });
+const json = (body, headers = {}) => ({ method: 'POST', headers: { 'content-type': 'application/json', ...headers }, body: JSON.stringify(body) });
+const request = async (path, options) => {
+  for (let attempt = 0; attempt < 40; attempt += 1) {
+    try { return await fetch(`${base}${path}`, options); } catch { await new Promise((resolve) => setTimeout(resolve, 100)); }
+  }
+  throw new Error('lot onboarding server unavailable');
+};
+
+try {
+  const lotId = `GBA-ONBOARD-${Date.now()}`;
+  const supplierHeaders = { 'x-demo-role': 'SUPPLIER' };
+  const operatorHeaders = { 'x-demo-role': 'OPERATOR' };
+  const requiredTypes = ['COA', 'SDS', 'TDS', 'LOT_TRACE', 'INVENTORY_PROOF'];
+  const blocked = await request('/api/lots', json({ lotId, supplier: '검증공급자', specId: 'GABA-SPEC-001', askPrice: 21500, availableQty: 100, deliveryDays: 7 }, supplierHeaders));
+  assert.equal(blocked.status, 422);
+  for (const evidenceType of requiredTypes) {
+    const submitted = await request('/api/evidence', json({ lotId, evidenceType, documentVersion: 'v1', content: `${lotId}-${evidenceType}`, expiresAt: '2027-12-31' }, supplierHeaders));
+    assert.equal(submitted.status, 201);
+    const record = await submitted.json();
+    const reviewed = await request(`/api/evidence/${record.evidenceId}/review`, json({ decision: 'VALID' }, operatorHeaders));
+    assert.equal(reviewed.status, 200);
+  }
+  const created = await request('/api/lots', json({ lotId, supplier: '검증공급자', specId: 'GABA-SPEC-001', askPrice: 21500, availableQty: 100, deliveryDays: 7 }, supplierHeaders));
+  assert.equal(created.status, 201);
+  const payload = await created.json();
+  assert.equal(payload.lot.status, 'VERIFIED_ELIGIBLE');
+assert.equal(payload.evidenceCheck.preTradeEligible, true);
+assert.equal(payload.lot.supplierOrganizationId, 'SIM-SUPPLIER-ORG');
+  const state = await (await request('/api/state')).json();
+  assert.ok(state.lots.some((lot) => lot.lotId === lotId));
+  console.log('lot onboarding tests: PASS');
+} finally {
+  child.kill();
+}

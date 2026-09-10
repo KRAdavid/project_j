@@ -1,1 +1,25 @@
-aW1wb3J0IHsgcmVzb2x2ZU1hdGVyaWFsIH0gZnJvbSAnLi9tYXRlcmlhbC1tYXN0ZXIubWpzJzsKCmNvbnN0IEdBQkFfTUFTVEVSID0gcmVzb2x2ZU1hdGVyaWFsKCdHQUJBJyk7CgpleHBvcnQgY29uc3QgR0FCQV9UUkFERV9URVJNUyA9IE9iamVjdC5mcmVlemUoewogIGN1cnJlbmN5OiBHQUJBX01BU1RFUi50cmFkZVByb2ZpbGUuY3VycmVuY3ksCiAgcHJpY2VVbml0OiBHQUJBX01BU1RFUi50cmFkZVByb2ZpbGUucHJpY2VVbml0LAogIHF1YW50aXR5VW5pdDogR0FCQV9NQVNURVIudHJhZGVQcm9maWxlLm9yZGVyUXVhbnRpdHlVbml0LAp9KTsKCmV4cG9ydCBjbGFzcyBUcmFkZVRlcm1zRXJyb3IgZXh0ZW5kcyBFcnJvciB7CiAgY29uc3RydWN0b3IobWVzc2FnZSwgY29kZSA9ICdUUkFERV9URVJNU19JTlZBTElEJykgeyBzdXBlcihtZXNzYWdlKTsgdGhpcy5jb2RlID0gY29kZTsgfQp9CgpleHBvcnQgY29uc3QgcmVzb2x2ZVRyYWRlVGVybXMgPSAoaW5wdXQgPSB7fSwgZmFsbGJhY2sgPSBHQUJBX1RSQURFX1RFUk1TKSA9PiB7CiAgY29uc3QgdGVybXMgPSB7CiAgICBjdXJyZW5jeTogU3RyaW5nKGlucHV0LmN1cnJlbmN5IHx8IGZhbGxiYWNrLmN1cnJlbmN5KSwKICAgIHByaWNlVW5pdDogU3RyaW5nKGlucHV0LnByaWNlVW5pdCB8fCBmYWxsYmFjay5wcmljZVVuaXQpLAogICAgcXVhbnRpdHlVbml0OiBTdHJpbmcoaW5wdXQucXVhbnRpdHlVbml0IHx8IGZhbGxiYWNrLnF1YW50aXR5VW5pdCksCiAgfTsKICBjb25zdCBtaXNtYXRjaCA9IE9iamVjdC5rZXlzKGZhbGxiYWNrKS5maW5kKChrZXkpID0+IHRlcm1zW2tleV0gIT09IGZhbGxiYWNrW2tleV0pOwogIGlmIChtaXNtYXRjaCkgdGhyb3cgbmV3IFRyYWRlVGVybXNFcnJvcihg6rGw656YIOyhsOqxtOydmCAke21pc21hdGNofeqwgCBNYXRlcmlhbCBNYXN0ZXIg6riw7KSA6rO8IOydvOy5mO2VmOyngCDslYrsirXri4jri6QuYCwgJ1RSQURFX1RFUk1TX01JU01BVENIJyk7CiAgcmV0dXJuIHRlcm1zOwp9OwoK
+import { resolveMaterial } from './material-master.mjs';
+
+const GABA_MASTER = resolveMaterial('GABA');
+
+export const GABA_TRADE_TERMS = Object.freeze({
+  currency: GABA_MASTER.tradeProfile.currency,
+  priceUnit: GABA_MASTER.tradeProfile.priceUnit,
+  quantityUnit: GABA_MASTER.tradeProfile.orderQuantityUnit,
+});
+
+export class TradeTermsError extends Error {
+  constructor(message, code = 'TRADE_TERMS_INVALID') { super(message); this.code = code; }
+}
+
+export const resolveTradeTerms = (input = {}, fallback = GABA_TRADE_TERMS) => {
+  const terms = {
+    currency: String(input.currency || fallback.currency),
+    priceUnit: String(input.priceUnit || fallback.priceUnit),
+    quantityUnit: String(input.quantityUnit || fallback.quantityUnit),
+  };
+  const mismatch = Object.keys(fallback).find((key) => terms[key] !== fallback[key]);
+  if (mismatch) throw new TradeTermsError(`거래 조건의 ${mismatch}가 Material Master 기준과 일치하지 않습니다.`, 'TRADE_TERMS_MISMATCH');
+  return terms;
+};
+
