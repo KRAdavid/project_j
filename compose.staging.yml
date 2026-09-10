@@ -84,6 +84,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.staging
+    command: ["node", "ops/ops-daemon.mjs"]
     restart: unless-stopped
     environment:
       APP_ENV: staging
