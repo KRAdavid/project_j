@@ -162,7 +162,14 @@ export class EvidenceLockedInventory {
     };
     this.inspections.set(reservation.reservationId, inspection);
     const lot = this.lots.get(reservation.lotId);
-    if (lot) lot.status = passed ? INVENTORY_STATES.INSPECTED : INVENTORY_STATES.QUARANTINED;
+    if (lot) {
+      // A successful inspection certifies the delivered reservation, not the
+      // entire lot. Keep any unreserved remainder visible and eligible; only
+      // a failed inspection quarantines the whole lot.
+      lot.status = passed
+        ? (lot.availableQty > 0 ? INVENTORY_STATES.VERIFIED_ELIGIBLE : INVENTORY_STATES.INSPECTED)
+        : INVENTORY_STATES.QUARANTINED;
+    }
     return clone({ reservation, inspection, lot });
   }
 
