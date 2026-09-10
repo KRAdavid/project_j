@@ -41,6 +41,7 @@ assert.match(app, /summary\.taskTimelineAudit/, '운영자 화면은 업무 생�
 assert.match(server, /taskAuditRemediation/, '운영 API는 감사 정정 계획과 적용 상태를 투영해야 합니다.');
 assert.match(server, /supervisorStatus/, '운영 API는 운영 감독자 상태를 투영해야 합니다.');
 assert.match(app, /summary\.notificationOutbox/, '운영자 화면은 알림 대기함 상태를 표시해야 합니다.');
+assert.match(app, /approvalDecisionGuide/, '운영자 승인 목록은 H-01 결정 가이드를 표시해야 합니다.');
 assert.match(app, /notificationOutbox\.delivery/, '운영자 화면은 외부 알림 전달 상태를 표시해야 합니다.');
 assert.match(app, /summary\.taskSla/, '운영자 화면은 업무 SLA 상태를 표시해야 합니다.');
 assert.match(app, /data-notification-ack/, '운영자 화면은 운영 알림 확인 기록 동작을 제공해야 합니다.');
