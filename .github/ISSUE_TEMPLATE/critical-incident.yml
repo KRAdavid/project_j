@@ -1,0 +1,57 @@
+name: Critical incident
+description: 거래 전 검증, 원장, 재고, 증빙, 권한 또는 운영 자동화의 중대 이상을 보고합니다.
+title: "[INCIDENT] "
+labels:
+  - incident
+body:
+  - type: markdown
+    attributes:
+      value: |
+        실제 거래·계약·결제에 영향을 줄 수 있는 사고는 먼저 운영 제어탑에서 신규 체결을 중지하고 H-01에게 보고합니다.
+  - type: input
+    id: cycle-id
+    attributes:
+      label: 운영 사이클 ID
+      description: latest-ops-cycle.json의 cycleId를 입력합니다.
+      placeholder: OPS-CYCLE-...
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: 영향 도메인
+      options:
+        - Material Master·스펙
+        - 증빙·COA·로트
+        - 재고·예약·원장
+        - 체결·계약·납품
+        - 인증·권한·감사
+        - 운영 데몬·모니터링
+        - 백업·복구·재조정
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 재현 절차와 증거
+      description: 재현 명령, 오류, 로그 경로, 관련 테스트를 적습니다. 비밀값은 입력하지 않습니다.
+    validations:
+      required: true
+  - type: dropdown
+    id: containment
+    attributes:
+      label: 현재 격리 상태
+      options:
+        - 신규 체결 중지·읽기 전용
+        - 위험 로트/매물 격리
+        - 영향 없음·조사 중
+    validations:
+      required: true
+  - type: checkboxes
+    id: guardrail
+    attributes:
+      label: 안전 확인
+      options:
+        - label: AI 또는 자동화가 실제 거래·계약·결제·분쟁 종결을 승인하지 않았음을 확인했습니다.
+          required: true
+
