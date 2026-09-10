@@ -596,14 +596,18 @@ async function hydrateOpsSummary() {
     $('#ops-inbox-state').textContent = inboxState === 'PENDING' ? '결정 필요' : inboxState === 'CLEAR' ? '대기 없음' : '운영 확인 필요';
     $('#ops-inbox-state').classList.toggle('success', inboxState === 'CLEAR');
     const approvals = summary.approvalInbox?.items || [];
+    const approvalGuides = summary.approvalDecisionGuide || [];
     const decisionLabels = { APPROVED: '승인 완료', CHANGES_REQUESTED: '수정요청 완료', HELD: '보류 중', REJECTED: '거절 완료' };
     $('#ops-approval-list').innerHTML = approvals.length ? approvals.map((item) => {
       const pending = item.status === 'PENDING';
       const decision = decisionLabels[item.status] || '결정 기록';
+      const guide = approvalGuides.find((candidate) => candidate.approvalId === item.approvalId);
+      const guideLabel = guide?.recommendation === 'APPROVE_AI_REMEDIATION_ONLY' ? 'AI 정정만 승인' : '실거래 보류';
+      const guideMarkup = guide ? `<small class="approval-guidance">권고: ${escapeHtml(guideLabel)} · 외부 실행 없음</small>` : '';
       const actionMarkup = pending
         ? `<span class="approval-wait">H-01 결정 대기</span><div><button class="approval-button" data-approval-action="approve" data-approval-id="${escapeHtml(item.approvalId)}">승인</button><button class="approval-button" data-approval-action="request_changes" data-approval-id="${escapeHtml(item.approvalId)}">수정요청</button><button class="approval-button" data-approval-action="hold" data-approval-id="${escapeHtml(item.approvalId)}">보류</button><button class="approval-button danger" data-approval-action="reject" data-approval-id="${escapeHtml(item.approvalId)}">거절</button></div>`
         : `<span class="approval-decision">${escapeHtml(decision)}</span><small>${escapeHtml(item.decisionNote || '')}</small>`;
-      return `<div class="ops-approval-row"><div><strong>${escapeHtml(item.taskId)}</strong><span>${escapeHtml(item.objective)}</span></div><div><b>${escapeHtml(String(item.risk || '').toUpperCase())}</b><small>검토자 ${escapeHtml((item.reviewers || []).join(', '))}</small></div><div class="approval-actions">${actionMarkup}</div></div>`;
+      return `<div class="ops-approval-row"><div><strong>${escapeHtml(item.taskId)}</strong><span>${escapeHtml(item.objective)}</span>${guideMarkup}</div><div><b>${escapeHtml(String(item.risk || '').toUpperCase())}</b><small>검토자 ${escapeHtml((item.reviewers || []).join(', '))}</small></div><div class="approval-actions">${actionMarkup}</div></div>`;
     }).join('') : '<div class="ops-empty">현재 인간 승인 대기 업무가 없습니다.</div>';
     $$('.approval-button').forEach((button) => button.addEventListener('click', async () => {
       button.disabled = true;
