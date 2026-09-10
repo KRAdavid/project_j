@@ -21,6 +21,8 @@ const gitOrigin = () => {
 
 const check = (id, area, label, status, evidence, note = '') => ({ id, area, label, status, evidence, note });
 
+export const selectShadowPilotEvidence = ({ latest = null, baseline = {} } = {}) => latest?.decision && latest?.preflight ? latest : baseline;
+
 export const buildGoalAudit = ({ cycle = {}, readiness = {}, github = {}, githubPublication = {}, githubPublicationVerification = {}, supervisor = {}, runtime = {}, autopilot = {}, browserE2e = {}, patent = {}, shadowPilot = {} } = {}) => {
   const evidenceFailed = Number(autopilot.evidence?.filter?.((item) => !item.passed && !item.skipped).length || 0);
   const e2ePassed = browserE2e.result === 'PASS';
@@ -30,6 +32,8 @@ export const buildGoalAudit = ({ cycle = {}, readiness = {}, github = {}, github
   const shadowPilotRealTransactionsEnabled = shadowPilot.real_transactions_enabled ?? shadowPilot.realTransactionsEnabled;
   const shadowPilotRealMoneyEnabled = shadowPilot.real_money_enabled ?? shadowPilot.realMoneyEnabled;
   const shadowPilotParticipantAccessEnabled = shadowPilot.participant_access_enabled ?? shadowPilot.participantAccessEnabled;
+  const shadowPilotResults = shadowPilot.results || shadowPilot.scenarioSummary?.scenarios || [];
+  const shadowPilotInvalidLotTradeCount = Number(shadowPilot.scenarioSummary?.invalidLotTradeCount ?? shadowPilot.invalid_lot_trade_count ?? shadowPilotResults.reduce((total, item) => total + Number(item.scenario_invalid_lot_trade_count ?? item.invalidLotTradeCount ?? 0), 0));
   const shadowPilotVerified = shadowPilot.decision === 'PASS_REVIEW_REQUIRED'
     && shadowPilotScenarioCount === 7
     && shadowPilotPassedScenarioCount === 7
@@ -37,8 +41,9 @@ export const buildGoalAudit = ({ cycle = {}, readiness = {}, github = {}, github
     && shadowPilotRealMoneyEnabled === false
     && shadowPilotParticipantAccessEnabled === false
     && shadowPilot.preflight?.passed === true
-    && (shadowPilot.results || shadowPilot.scenarioSummary?.scenarios || []).every((item) => item.passed === true)
-    && Number(shadowPilot.scenarioSummary?.invalidLotTradeCount ?? 0) === 0;
+    && shadowPilotResults.length === 7
+    && shadowPilotResults.every((item) => item.passed === true)
+    && shadowPilotInvalidLotTradeCount === 0;
   const readinessMissing = Array.isArray(readiness.missing) ? readiness.missing : [];
   const supervisorRunning = ['STARTING', 'RUNNING', 'DEGRADED'].includes(supervisor.status);
   const publicationCommit = String(githubPublicationVerification.commitSha || '');
@@ -57,7 +62,7 @@ export const buildGoalAudit = ({ cycle = {}, readiness = {}, github = {}, github
     check('PRODUCT_REALTIME', 'product', 'SSE 실시간 거래 화면과 역할 분리', evidenceFailed === 0 ? 'VERIFIED' : 'NOT_VERIFIED', ['beta-app/test-sse-integration.mjs', 'beta-app/test-sse-heartbeat.mjs', 'ops/validate-ui-contract.mjs']),
     check('AUTOMATED_TF', 'operations', 'AI TF 업무 큐·SLA·승인 패킷 자동화', autopilot.runId ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/latest-autopilot-run.json', 'ops/work-packets.jsonl', 'data/team-roster.json']),
     check('SUPERVISED_RUNTIME', 'operations', '회사형 감독자·데몬 생존 감시', supervisorRunning ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/company-supervisor-status.json', 'ops/daemon-status.json'], supervisor.daemonReviewRequired ? '프로세스는 살아 있으나 마지막 사이클은 H-01 검토 대기' : ''),
-    check('SHADOW_PILOT_EXECUTION', 'operations', '폐쇄형 Shadow Pilot 시나리오 실행 증거', shadowPilotVerified ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/shadow-pilot-execution-baseline.json', 'ops/test-shadow-pilot-integration.mjs'], shadowPilotVerified ? '7개 시나리오 통과·무효 로트 체결 0·참가자 접근 차단' : '최신 폐쇄형 시뮬레이션 증거가 없거나 기준을 충족하지 않음'),
+    check('SHADOW_PILOT_EXECUTION', 'operations', '폐쇄형 Shadow Pilot 시나리오 실행 증거', shadowPilotVerified ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/latest-shadow-pilot.json', 'ops/shadow-pilot-execution-baseline.json', 'ops/test-shadow-pilot-integration.mjs'], shadowPilotVerified ? '7개 시나리오 통과·무효 로트 체결 0·참가자 접근 차단' : '최신 폐쇄형 시뮬레이션 증거가 없거나 기준을 충족하지 않음'),
     check('GITHUB_TARGET', 'delivery', 'GitHub 저장소·origin·기준 브랜치 일치', github.status === 'TARGET_MATCH' ? 'VERIFIED' : 'BLOCKED', ['ops/github-target-preflight.mjs', 'ops/configure-github-target.ps1'], github.missing?.join(', ') || ''),
     check('GITHUB_PUBLICATION', 'delivery', 'GitHub 공개 반영', publicationVerified || githubPublication.status === 'READY_FOR_EXPLICIT_PUSH' ? 'VERIFIED' : 'BLOCKED', publicationVerified ? ['ops/latest-github-publication-verification.json', 'GitHub main commit', 'GitHub Actions CI'] : ['ops/github-publication-preflight.mjs', 'ops/latest-github-publication-preflight.json'], publicationVerified ? `원격 ${githubPublicationVerification.baseBranch} 커밋·CI 확인` : githubPublication.blockers?.join(', ') || '명시적 푸시 승인 및 브랜치 전략 필요'),
     check('PRODUCTION_PERSISTENCE', 'infrastructure', 'PostgreSQL 영속 원장·원자 예약·재조정 증거', readinessMissing.includes('R-01') ? 'BLOCKED' : 'VERIFIED', ['data/postgres-schema.sql', 'ops/release-readiness.json'], readinessMissing.includes('R-01') ? '실 PostgreSQL 증거 미확보' : ''),
@@ -90,6 +95,10 @@ export const writeGoalAudit = async ({ jsonPath = resolve(opsRoot, 'latest-goal-
   const github = buildGitHubTargetPreflight({ repository: process.env.GITHUB_REPOSITORY || githubTarget.repository, remote: gitOrigin(), baseBranch: process.env.GITHUB_BASE_BRANCH || githubTarget.baseBranch });
   const githubPublication = await buildGitHubPublicationPreflight({ target: githubTarget });
   const githubPublicationVerification = await readJson(resolve(opsRoot, 'latest-github-publication-verification.json'), {});
+  const shadowPilot = selectShadowPilotEvidence({
+    latest: await readJson(resolve(opsRoot, 'latest-shadow-pilot.json'), null),
+    baseline: await readJson(resolve(opsRoot, 'shadow-pilot-execution-baseline.json'), {}),
+  });
   const audit = buildGoalAudit({
     cycle,
     readiness,
@@ -101,7 +110,7 @@ export const writeGoalAudit = async ({ jsonPath = resolve(opsRoot, 'latest-goal-
     autopilot: await readJson(resolve(opsRoot, 'latest-autopilot-run.json'), {}),
     browserE2e: await readJson(resolve(opsRoot, 'latest-browser-e2e.json'), {}),
     patent: await readJson(resolve(root, 'data', 'patent-claim-traceability.json'), {}),
-    shadowPilot: await readJson(resolve(root, 'ops', 'shadow-pilot-execution-baseline.json'), {}),
+    shadowPilot,
   });
   audit.generatedAt = generatedAt;
   await writeFile(jsonPath, `${JSON.stringify(audit, null, 2)}\n`, 'utf8');
