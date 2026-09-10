@@ -26,7 +26,7 @@ assert.deepEqual(await memory.loadPriceObservations(), [priceObservation]);
 await memory.close();
 
 await assert.rejects(
-  () => createPersistenceStore({ mode: 'postgresql' }),
+  () => createPersistenceStore({ mode: 'postgresql', databaseUrl: '' }),
   (error) => error instanceof PersistenceStoreError && error.code === 'POSTGRES_DATABASE_URL_REQUIRED',
 );
 
@@ -110,3 +110,4 @@ await secondStore.close();
 await rm(recoveryPath, { force: true });
 
 console.log('persistence store tests: PASS');
+
