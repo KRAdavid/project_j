@@ -28,7 +28,7 @@ const compactText = (value, limit = 180) => {
 };
 const safeTriggerContext = (value) => {
   const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
-  if (/(assertionerror|triggeruncaughtexception|node:internal|uncaughtexception)/i.test(normalized)) {
+  if (/(assertionerror|triggeruncaughtexception|node:internal|uncaughtexception|throw\s+new\s+error|file:\/\/\/.*(?:error|throw))/i.test(normalized)) {
     return '자동 검증 오류 증거가 기록되어 재검증과 H-01 검토가 필요합니다.';
   }
   return compactText(normalized || '자동 운영 신호가 기록되었습니다.');
