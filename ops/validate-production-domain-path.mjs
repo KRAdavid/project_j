@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
+const server = await readFile(resolve(root, 'beta-app/server.mjs'), 'utf8');
+const readiness = await readFile(resolve(root, 'beta-app/readiness.mjs'), 'utf8');
+const readinessDiagnostics = await readFile(resolve(root, 'beta-app/readiness-diagnostics.mjs'), 'utf8');
+assert.match(server, /domainAdapter\.state\(\)/, '상태 조회가 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.reconcileLatestBridge\(\)/, '운영 제어탑이 정규 원장 재조정을 확인해야 합니다.');
+assert.match(server, /persistenceStore\.mode === 'postgresql'\s*\? await domainAdapter\.state\(\)/, 'PostgreSQL SSE가 스냅샷 브리지가 아닌 정규 원장을 전송해야 합니다.');
+assert.match(server, /domainAdapter\.submitOrder\(/, '주문 제출이 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.acceptOrder\(/, '주문 수락이 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.counterOrder\(/, '역제안이 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.rejectOrder\(/, '거절이 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.expireOrder\(/, '만료가 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.markDelivered\(/, '납품 처리가 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.(inspectTrade|inspectTradeAndRecordPrice)\(/, '검수가 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.inspectTradeAndRecordPrice\(/, '검수 완료와 가격 관측치 기록이 원자 경로여야 합니다.');
+assert.match(server, /domainAdapter\.registerLotDraft\(/, '로트 등록이 증빙 검토 전 초안 상태로 정규 도메인 원장에 기록되어야 합니다.');
+assert.match(server, /domainAdapter\.submitEvidence\(/, '증빙 제출이 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /domainAdapter\.reviewEvidence\(/, '증빙 검토가 정규 도메인 원장을 사용해야 합니다.');
+assert.match(server, /POSTGRES_DOMAIN_API_PATH_REQUIRED/, 'PostgreSQL에서 스냅샷 변이 경로를 차단해야 합니다.');
+assert.match(server, /POSTGRES_DOMAIN_API_READY/, '상용 기동 시 정규 도메인 API 게이트를 확인해야 합니다.');
+assert.match(server, /IDEMPOTENCY_KEY_REQUIRED/, '상용 주문에 멱등 키를 요구해야 합니다.');
+assert.match(server, /domainResult\.idempotent \? 200 : 201/, '중복 주문 재시도는 200으로 반환해야 합니다.');
+const authorization = await readFile(resolve(root, 'beta-app/authorization.mjs'), 'utf8');
+assert.match(authorization, /AUTH_JWT_ISSUER/);
+assert.match(authorization, /AUTH_JWT_AUDIENCE/);
+assert.match(authorization, /AUTH_PROVIDER_NOT_CONFIGURED/);
+assert.match(readiness, /readiness-diagnostics\.mjs/, '릴리스 readiness가 중앙 환경 진단 모듈을 사용해야 합니다.');
+assert.match(readinessDiagnostics, /POSTGRES_DOMAIN_API_READY/, '환경 진단이 정규 도메인 API 게이트를 확인해야 합니다.');
+console.log('production domain path contract: PASS');
+

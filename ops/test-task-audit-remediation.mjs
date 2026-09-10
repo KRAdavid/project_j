@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import { mkdtemp, readFile, writeFile, rm } from 'node:fs/promises';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { applyApprovedTaskAuditRemediation, buildTaskAuditRemediationPlan } from './task-audit-remediation.mjs';
+import { parseOperationalTimestamp } from './operational-time.mjs';
+
+const root = await mkdtemp(join(tmpdir(), 'raw-material-audit-remediation-'));
+const queuePath = join(root, 'task-queue.json');
+const approvalInboxPath = join(root, 'approval-inbox.json');
+const remediationLogPath = join(root, 'task-audit-remediation.jsonl');
+const task = { id: 'AUTO-AUDIT-001', status: 'working', createdAt: '2026-09-09T00:00:00.000Z', claimedAt: '2026-09-09T01:00:00.000Z', updatedAt: '2026-09-09T00:30:00.000Z' };
+const audit = { activeViolations: [{ taskId: task.id, violations: [{ field: 'updatedAt', before: 'claimedAt' }] }] };
+const plan = buildTaskAuditRemediationPlan({ taskQueue: { tasks: [task] }, audit, generatedAt: '2026-09-10T00:00:00.000Z' });
+assert.equal(plan.status, 'READY_FOR_H01_APPROVAL');
+await writeFile(queuePath, JSON.stringify({ tasks: [task] }), 'utf8');
+await writeFile(approvalInboxPath, JSON.stringify({ items: [{ approvalId: plan.requiredApprovalId, status: 'PENDING', decidedBy: null }] }), 'utf8');
+const waiting = await applyApprovedTaskAuditRemediation({ plan, queuePath, approvalInboxPath, remediationLogPath });
+assert.equal(waiting.status, 'WAITING_FOR_H01_APPROVAL');
+assert.equal(JSON.parse(await readFile(queuePath, 'utf8')).tasks[0].updatedAt, task.updatedAt);
+await writeFile(approvalInboxPath, JSON.stringify({ items: [{ approvalId: plan.requiredApprovalId, status: 'APPROVED', decidedBy: 'H-01', decidedAt: '2026-09-10T00:01:00.000Z' }] }), 'utf8');
+const applied = await applyApprovedTaskAuditRemediation({ plan, queuePath, approvalInboxPath, remediationLogPath });
+assert.equal(applied.status, 'APPLIED');
+const corrected = JSON.parse(await readFile(queuePath, 'utf8')).tasks[0];
+assert.equal(corrected.auditRemediatedBy, 'H-01');
+assert.ok(parseOperationalTimestamp(corrected.updatedAt) >= parseOperationalTimestamp(corrected.claimedAt));
+assert.equal((await readFile(remediationLogPath, 'utf8')).trim().split(/\r?\n/).length, 1);
+const stale = await applyApprovedTaskAuditRemediation({ plan, queuePath, approvalInboxPath, remediationLogPath });
+assert.equal(stale.status, 'STALE_PLAN');
+const unsafe = buildTaskAuditRemediationPlan({ taskQueue: { tasks: [{ ...task, id: 'AUTO-AUDIT-UNSAFE', createdAt: '2026-09-09T02:00:00.000Z', claimedAt: '2026-09-09T01:00:00.000Z' }] }, audit: { activeViolations: [{ taskId: 'AUTO-AUDIT-UNSAFE', violations: [{ field: 'claimedAt', before: 'createdAt' }] }] } });
+assert.equal(unsafe.status, 'MANUAL_REVIEW_REQUIRED');
+await rm(root, { recursive: true, force: true });
+console.log('task audit remediation tests: PASS');
+

@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
+const schema = await readFile(resolve(root, 'data/postgres-schema.sql'), 'utf8');
+const integration = await readFile(resolve(root, 'beta-app/test-postgres-concurrent-reservation.mjs'), 'utf8');
+const orderIdempotency = await readFile(resolve(root, 'beta-app/test-postgres-order-idempotency.mjs'), 'utf8');
+const acceptIdempotency = await readFile(resolve(root, 'beta-app/test-postgres-accept-idempotency.mjs'), 'utf8');
+const functionStart = schema.indexOf('create or replace function reserve_lot');
+const functionEnd = schema.indexOf('\n$$;', functionStart);
+assert.ok(functionStart >= 0 && functionEnd > functionStart, 'reserve_lot 함수 본문이 필요합니다.');
+const reserveFunction = schema.slice(functionStart, functionEnd);
+const lockPosition = reserveFunction.indexOf("pg_advisory_xact_lock(hashtext('raw-material-os:lot:' || p_lot_id))");
+const idempotencyPosition = reserveFunction.indexOf('where idempotency_key = p_idempotency_key');
+assert.ok(lockPosition >= 0, '로트별 트랜잭션 advisory lock이 필요합니다.');
+assert.ok(idempotencyPosition > lockPosition, '멱등 키 조회가 로트 잠금 이후에 수행되어야 합니다.');
+assert.match(reserveFunction, /available_quantity\s*=\s*available_quantity\s*-\s*p_quantity/);
+assert.match(reserveFunction, /available_quantity\s*>=\s*p_quantity/);
+assert.match(schema, /idempotency_key\s+text\s+not null\s+unique/i);
+assert.match(schema, /one_active_reservation_per_order_lot/i);
+assert.match(integration, /Promise\.allSettled/);
+assert.match(integration, /fulfilled.*1|1.*fulfilled/s);
+assert.match(integration, /rejected.*1|1.*rejected/s);
+assert.match(schema, /purchase_orders_buyer_idempotency_idx/i);
+assert.match(orderIdempotency, /IDEMPOTENCY_KEY_REUSED/);
+assert.match(orderIdempotency, /insertCount, 1/);
+assert.match(acceptIdempotency, /ACCEPT_RETRY_MISMATCH/);
+assert.match(acceptIdempotency, /INSERT INTO trades/);
+console.log('postgres concurrency contract: PASS');
+

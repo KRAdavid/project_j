@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
+const contract = JSON.parse(await readFile(resolve(root, 'data/postgres-domain-adapter-contract.json'), 'utf8'));
+assert.equal(contract.scope, 'PHYSICAL_MATERIAL_ONLY');
+assert.equal(contract.status, 'DESIGN_ONLY');
+assert.equal(contract.currentImplementation.normalizedDomainWrites, false);
+assert.equal(contract.currentImplementation.normalizedDomainApiWiring, 'COMPLETE_DOMAIN_COMMAND_PATHS_AND_RECONCILIATION');
+assert.deepEqual(contract.currentImplementation.normalizedDomainApiRemaining, ['reconciliation_environment_evidence']);
+assert.equal(contract.currentImplementation.productionReady, false);
+assert.ok(contract.requiredTables.includes('organization_members'));
+assert.ok(contract.requiredTables.includes('supplier_verification_requests'));
+assert.ok(contract.requiredTables.includes('price_observations'));
+assert.deepEqual(contract.requiredAtomicOperations.map((item) => item.operation), ['request_supplier_verification', 'submit_order', 'reserve_inventory', 'confirm_trade', 'record_completed_trade_price', 'inspect_and_record_completed_price', 'register_lot_draft', 'review_evidence_and_publish_offer', 'counter_order', 'reject_or_expire_order']);
+assert.ok(contract.requiredEvidence.includes('concurrent_reservation_test'));
+assert.ok(contract.requiredEvidence.includes('order_idempotency_test'));
+assert.ok(contract.requiredAtomicOperations.find((item) => item.operation === 'submit_order').invariants.includes('idempotency_key_unique'));
+assert.match(contract.goRule, /H-01/);
+const adapterSource = await readFile(resolve(root, 'beta-app/postgres-domain-adapter.mjs'), 'utf8');
+assert.match(adapterSource, /async listOperationalApprovals\(\)/);
+assert.match(adapterSource, /async supplierEligibility\(/);
+assert.match(adapterSource, /async requestSupplierVerification\(/);
+assert.match(adapterSource, /async reviewSupplierVerification\(/);
+assert.match(adapterSource, /async listSupplierVerificationRequests\(/);
+assert.match(adapterSource, /supplier_verification_requests/);
+assert.match(adapterSource, /async decideOperationalApproval\(/);
+assert.match(adapterSource, /INSERT INTO approval_events/);
+assert.match(adapterSource, /async assertVerifiedSupplierOrganization\(/);
+assert.match(adapterSource, /SUPPLIER_ORGANIZATION_NOT_VERIFIED/);
+console.log('postgres domain adapter contract: PASS');
+
