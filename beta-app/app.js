@@ -1126,5 +1126,6 @@ hydrateSupplierEligibility();
 connectLedgerStream();
 window.setInterval(pushRealtimeTick, 3000);
 const initialRole = new URLSearchParams(window.location.search).get('role');
-setRole(['split', 'buyer', 'seller', 'operator'].includes(initialRole) ? initialRole : 'split');
+const roleAliases = { split: 'split', buyer: 'buyer', seller: 'seller', supplier: 'seller', operator: 'operator' };
+setRole(roleAliases[initialRole] || 'split');
 
