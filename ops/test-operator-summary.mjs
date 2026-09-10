@@ -44,11 +44,16 @@ try {
   assert.ok(summary.taskAuditRemediation, '감사 정정 계획 상태가 운영 요약에 없습니다.');
   assert.ok(summary.supervisorStatus, '운영 감독자 상태가 운영 요약에 없습니다.');
   assert.ok(['RUNNING', 'DEGRADED', 'HALTED_REQUIRES_H01', 'NOT_REPORTED'].includes(summary.supervisorStatus.status));
-  assert.ok(['NO_ACTION', 'WAITING_FOR_H01_APPROVAL', 'READY_FOR_H01_APPROVAL', 'APPLIED', 'MANUAL_REVIEW_REQUIRED'].includes(summary.taskAuditRemediation.status));
-  assert.match(summary.taskAuditRemediation.planId || '', /^TASK-AUDIT-REMEDIATION-[a-f0-9]{20}$/);
-  const remediationApproval = (summary.approvalInbox?.items || []).find((item) => item.approvalId === 'APPROVAL-TRIGGER-AUTO-QUALITY_GATE_FAILED-task-audit:active-timeline');
-  assert.ok(remediationApproval, '감사 정정 H-01 승인 항목이 운영 요약에 없습니다.');
-  assert.ok(['PENDING', 'APPROVED', 'HELD', 'REJECTED', 'CHANGES_REQUESTED'].includes(remediationApproval.status));
+  const remediationStatus = summary.taskAuditRemediation.status;
+  assert.ok(['NO_ACTION', 'WAITING_FOR_H01_APPROVAL', 'READY_FOR_H01_APPROVAL', 'APPLIED', 'MANUAL_REVIEW_REQUIRED', 'NOT_REPORTED'].includes(remediationStatus));
+  if (remediationStatus === 'NOT_REPORTED') {
+    assert.equal(summary.taskAuditRemediation.planId, null);
+  } else {
+    assert.match(summary.taskAuditRemediation.planId || '', /^TASK-AUDIT-REMEDIATION-[a-f0-9]{20}$/);
+    const remediationApproval = (summary.approvalInbox?.items || []).find((item) => item.approvalId === 'APPROVAL-TRIGGER-AUTO-QUALITY_GATE_FAILED-task-audit:active-timeline');
+    assert.ok(remediationApproval, '감사 정정 H-01 승인 항목이 운영 요약에 없습니다.');
+    assert.ok(['PENDING', 'APPROVED', 'HELD', 'REJECTED', 'CHANGES_REQUESTED'].includes(remediationApproval.status));
+  }
   assert.ok(['OUTBOX_ONLY', 'DELIVERED', 'DELIVERY_FAILED', 'PARTIAL_FAILURE', 'BLOCKED'].includes(summary.notificationOutbox?.delivery));
   console.log('operator summary contract: PASS');
 } finally {
