@@ -34,6 +34,12 @@ jobs:
     env:
       DATABASE_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/raw_material_os
       DATABASE_ADMIN_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/postgres
+      POSTGRES_USER: raw_material_os
+      POSTGRES_PASSWORD: raw_material_os
+      POSTGRES_DB: raw_material_os
+      STAGING_DATABASE_URL: postgresql://raw_material_os:raw_material_os@postgres:5432/raw_material_os
+      OBJECT_STORAGE_ACCESS_KEY: raw_material_os
+      OBJECT_STORAGE_SECRET_KEY: raw_material_os_secret
     steps:
       - name: Checkout
         uses: actions/checkout@v4
