@@ -11,6 +11,7 @@ ops/latest-ops-cycle.*
 ops/latest-executive-review.*
 ops/latest-cutover-input-manifest.*
 ops/latest-github-publication-preflight.*
+ops/latest-github-publication-verification.*
 ops/latest-github-staging-review.*
 ops/latest-shadow-pilot.json
 ops/latest-browser-e2e.json
@@ -30,3 +31,4 @@ ops/outcome-observations.jsonl
 .operations-cycle.lock
 .DS_Store
 Thumbs.db
+
