@@ -55,17 +55,46 @@ const log = (event, details = {}) => {
 
 const parseJson = (text) => JSON.parse(String(text).replace(/^\uFEFF/, ''));
 let atomicWriteSequence = 0;
+const atomicWriteQueues = new Map();
+const sleep = (milliseconds) => new Promise((resolveSleep) => setTimeout(resolveSleep, milliseconds));
+
+const renameWithRetry = async (temporaryPath, targetPath) => {
+  let lastError = null;
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    try {
+      await rename(temporaryPath, targetPath);
+      return;
+    } catch (error) {
+      lastError = error;
+      const retryable = process.platform === 'win32' && ['EPERM', 'EEXIST', 'EBUSY'].includes(error.code);
+      if (!retryable || attempt === 11) throw error;
+      await sleep(5 + attempt * 10);
+    }
+  }
+  throw lastError;
+};
 
 const atomicWrite = async (path, content) => {
   atomicWriteSequence += 1;
   const temporaryPath = `${path}.${process.pid}.${Date.now()}.${atomicWriteSequence}.tmp`;
   await writeFile(temporaryPath, content, 'utf8');
-  await rename(temporaryPath, path);
+  await renameWithRetry(temporaryPath, path);
+};
+
+const queueAtomicWrite = (path, content) => {
+  const previous = atomicWriteQueues.get(path) || Promise.resolve();
+  const current = previous.catch(() => {}).then(() => atomicWrite(path, content));
+  atomicWriteQueues.set(path, current);
+  void current.then(
+    () => { if (atomicWriteQueues.get(path) === current) atomicWriteQueues.delete(path); },
+    () => { if (atomicWriteQueues.get(path) === current) atomicWriteQueues.delete(path); },
+  );
+  return current;
 };
 
 const writeStatus = async (updates = {}) => {
   Object.assign(status, updates, { updatedAt: new Date().toISOString() });
-  await atomicWrite(statusPath, `${JSON.stringify(status, null, 2)}\n`);
+  await queueAtomicWrite(statusPath, `${JSON.stringify(status, null, 2)}\n`);
 };
 
 const writeRuntime = async (updates = {}) => {
@@ -95,7 +124,7 @@ const writeRuntime = async (updates = {}) => {
     stopRule: '헬스체크 실패·릴리스 NO_GO·운영 사고 시 거래·계약·결제·공개 재개를 자동 승인하지 않는다.',
     ...updates,
   };
-  await atomicWrite(runtimePath, `${JSON.stringify(runtime, null, 2)}\n`);
+  await queueAtomicWrite(runtimePath, `${JSON.stringify(runtime, null, 2)}\n`);
 };
 
 const terminate = (child) => {
