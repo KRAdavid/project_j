@@ -24,6 +24,14 @@ const missingAction = {
   'R-07': '폐쇄형 Shadow Pilot 범위·참가자·중단기준에 대한 H-01 승인 확보',
 };
 
+const approvalGuidance = (item = {}) => {
+  const triggerKey = String(item.triggerKey || '');
+  if (triggerKey === 'QUALITY_GATE_FAILED' || triggerKey === 'TASK_METADATA_GAP') {
+    return { recommendation: 'APPROVE_AI_REMEDIATION_ONLY', reason: 'AI가 원인·정정안을 조사할 수 있지만 거래·계약·결제·운영 재개는 허용하지 않음' };
+  }
+  return { recommendation: 'HOLD_REAL_OPERATIONS', reason: '외부 증거 또는 릴리스 조건이 충족되기 전까지 실거래·계약·결제를 보류' };
+};
+
 export const buildExecutiveReview = ({ cycle = {}, autopilot = {}, readiness = {}, approvalInbox = {}, taskQueue = {}, taskTimelineAudit = cycle.automation?.taskTimelineAudit || {}, taskAuditRemediation = cycle.automation?.taskAuditRemediation || {}, githubTargetPreflight = null, generatedAt = new Date().toISOString() } = {}) => {
   const evidence = Array.isArray(autopilot.evidence) ? autopilot.evidence : [];
   const staging = parseJsonOutput(evidence.find((item) => item.name === 'staging-preflight')?.output);
@@ -31,6 +39,19 @@ export const buildExecutiveReview = ({ cycle = {}, autopilot = {}, readiness = {
   const failed = evidence.filter((item) => !item.passed && !item.skipped).map((item) => ({ name: item.name, output: item.output || '' }));
   const skipped = evidence.filter((item) => item.skipped).map((item) => ({ name: item.name, output: item.output || '' }));
   const missing = Array.isArray(readiness.missing) ? readiness.missing : [];
+  const pendingApprovals = (Array.isArray(approvalInbox.items) ? approvalInbox.items : [])
+    .filter((item) => item.status === 'PENDING')
+    .map((item) => ({
+      approvalId: item.approvalId || null,
+      taskId: item.taskId || null,
+      triggerKey: item.triggerKey || null,
+      objective: item.objective || null,
+      risk: item.risk || null,
+      reviewers: item.reviewers || [],
+      humanPrincipal: item.requiredPrincipal || 'H-01',
+      ...approvalGuidance(item),
+      externalSideEffect: false,
+    }));
   return {
     schemaVersion: 'EXECUTIVE-REVIEW-0.1',
     generatedAt,
@@ -52,6 +73,7 @@ export const buildExecutiveReview = ({ cycle = {}, autopilot = {}, readiness = {
       pending: Array.isArray(approvalInbox.items) ? approvalInbox.items.filter((item) => item.status === 'PENDING').length : 0,
       humanPrincipal: 'H-01',
       sla: evaluateApprovalSla({ items: approvalInbox.items, now: generatedAt }),
+      decisionGuide: pendingApprovals,
     },
     tasks: {
       sla: evaluateTaskSla({ tasks: taskQueue.tasks, now: generatedAt }),
