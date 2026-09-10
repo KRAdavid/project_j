@@ -1,0 +1,106 @@
+services:
+  postgres:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?POSTGRES_USER is required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      POSTGRES_DB: ${POSTGRES_DB:-raw_material_os}
+    ports:
+      - "5432:5432"
+    volumes:
+      - raw-material-os-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U raw_material_os -d raw_material_os"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  object-storage:
+    image: minio/minio:RELEASE.2024-06-13T22-53-53Z
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${OBJECT_STORAGE_ACCESS_KEY:?OBJECT_STORAGE_ACCESS_KEY is required}
+      MINIO_ROOT_PASSWORD: ${OBJECT_STORAGE_SECRET_KEY:?OBJECT_STORAGE_SECRET_KEY is required}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - raw-material-os-objects:/data
+  object-storage-init:
+    image: minio/mc:RELEASE.2024-06-13T22-53-53Z
+    depends_on:
+      object-storage:
+        condition: service_started
+    entrypoint: ["/bin/sh", "-c"]
+    command: >-
+      "until mc alias set local http://object-storage:9000 ${OBJECT_STORAGE_ACCESS_KEY:?OBJECT_STORAGE_ACCESS_KEY is required} ${OBJECT_STORAGE_SECRET_KEY:?OBJECT_STORAGE_SECRET_KEY is required};
+      do sleep 2; done;
+      until mc mb --ignore-existing local/${OBJECT_STORAGE_BUCKET:-raw-material-evidence}; do sleep 2; done"
+
+  schema-migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile.staging
+    restart: "no"
+    environment:
+      DATABASE_URL: ${STAGING_DATABASE_URL:?STAGING_DATABASE_URL is required and must target the postgres service}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ["node", "ops/migrate-postgres.mjs"]
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.staging
+    restart: unless-stopped
+    environment:
+      APP_ENV: staging
+      PORT: 4173
+      PERSISTENCE_MODE: postgresql
+      DATABASE_URL: ${STAGING_DATABASE_URL:?STAGING_DATABASE_URL is required and must target the postgres service}
+      OBJECT_STORAGE_ENDPOINT: ${OBJECT_STORAGE_ENDPOINT:-http://object-storage:9000}
+      OBJECT_STORAGE_BUCKET: ${OBJECT_STORAGE_BUCKET:-raw-material-evidence}
+      OBJECT_STORAGE_ACCESS_KEY: ${OBJECT_STORAGE_ACCESS_KEY:?OBJECT_STORAGE_ACCESS_KEY is required}
+      OBJECT_STORAGE_SECRET_KEY: ${OBJECT_STORAGE_SECRET_KEY:?OBJECT_STORAGE_SECRET_KEY is required}
+      OBJECT_STORAGE_REGION: ${OBJECT_STORAGE_REGION:-us-east-1}
+    ports:
+      - "4173:4173"
+    volumes:
+      - ./ops:/workspace/ops
+    depends_on:
+      schema-migrate:
+        condition: service_completed_successfully
+      object-storage-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:4173/api/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  ops-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile.staging
+    restart: unless-stopped
+    environment:
+      APP_ENV: staging
+      MONITOR_BASE_URL: http://app:4173
+      OPS_DAEMON_INTERVAL_MS: 900000
+      OPS_DAEMON_CYCLE_TIMEOUT_MS: 600000
+      OPS_DAEMON_RUN_ON_START: "true"
+      MONITOR_REQUIRE_DAEMON: "true"
+      MONITOR_DAEMON_MAX_AGE_MS: 1200000
+    volumes:
+      - ./ops:/workspace/ops
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  raw-material-os-postgres:
+  raw-material-os-objects:
+
