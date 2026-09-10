@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-import { access, readFile, writeFile } from 'node:fs/promises';
+import { access, readFile, rename, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -10,6 +10,7 @@ const persistenceMode = process.env.PERSISTENCE_MODE || 'memory';
 const persistenceFile = process.env.PERSISTENCE_FILE || '';
 const intervalMs = Math.max(1000, Number(process.env.COMPANY_SUPERVISOR_INTERVAL_MS || 5000));
 const healthTimeoutMs = Math.max(500, Number(process.env.COMPANY_SUPERVISOR_HEALTH_TIMEOUT_MS || 3000));
+const startupGraceMs = Math.max(2000, Number(process.env.COMPANY_SUPERVISOR_STARTUP_GRACE_MS || Math.max(healthTimeoutMs * 3, 5000)));
 const maxRestarts = Math.max(0, Number(process.env.COMPANY_SUPERVISOR_MAX_RESTARTS || 3));
 const restartWindowMs = Math.max(1000, Number(process.env.COMPANY_SUPERVISOR_RESTART_WINDOW_MS || 10 * 60 * 1000));
 const daemonIntervalMs = Math.max(1000, Number(process.env.OPS_DAEMON_INTERVAL_MS || 15 * 60 * 1000));
@@ -25,6 +26,7 @@ let serverChild = null;
 let daemonChild = null;
 let serverStarted = false;
 let daemonStarted = false;
+let serverStartedAtMs = 0;
 let consecutiveHealthFailures = 0;
 const restartHistory = [];
 
@@ -52,10 +54,18 @@ const log = (event, details = {}) => {
 };
 
 const parseJson = (text) => JSON.parse(String(text).replace(/^\uFEFF/, ''));
+let atomicWriteSequence = 0;
+
+const atomicWrite = async (path, content) => {
+  atomicWriteSequence += 1;
+  const temporaryPath = `${path}.${process.pid}.${Date.now()}.${atomicWriteSequence}.tmp`;
+  await writeFile(temporaryPath, content, 'utf8');
+  await rename(temporaryPath, path);
+};
 
 const writeStatus = async (updates = {}) => {
   Object.assign(status, updates, { updatedAt: new Date().toISOString() });
-  await writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8');
+  await atomicWrite(statusPath, `${JSON.stringify(status, null, 2)}\n`);
 };
 
 const writeRuntime = async (updates = {}) => {
@@ -85,7 +95,7 @@ const writeRuntime = async (updates = {}) => {
     stopRule: '헬스체크 실패·릴리스 NO_GO·운영 사고 시 거래·계약·결제·공개 재개를 자동 승인하지 않는다.',
     ...updates,
   };
-  await writeFile(runtimePath, `${JSON.stringify(runtime, null, 2)}\n`, 'utf8');
+  await atomicWrite(runtimePath, `${JSON.stringify(runtime, null, 2)}\n`);
 };
 
 const terminate = (child) => {
@@ -151,7 +161,10 @@ const spawnServer = () => {
   const serverArgs = persistenceMode === 'sqlite' ? ['--experimental-sqlite', resolve(root, 'beta-app/server.mjs')] : [resolve(root, 'beta-app/server.mjs')];
   const child = spawn(process.execPath, serverArgs, { cwd: root, env, stdio: 'inherit' });
   child.once('exit', (code, signal) => {
-    if (serverChild === child) serverChild = null;
+    if (serverChild === child) {
+      serverChild = null;
+      serverStartedAtMs = 0;
+    }
     log('server_exit', { code, signal, stopping });
     if (!stopping) void writeStatus({ lastEvent: 'server_exit', lastError: `server exit code=${code ?? 'null'} signal=${signal || 'none'}` });
   });
@@ -202,6 +215,7 @@ const ensureServer = async () => {
   if (isRestart && !reserveRestart('server')) return haltForHuman('서버가 반복 중단되어 자동 재시작 한도를 초과했습니다.');
   serverStarted = true;
   serverChild = spawnServer();
+  serverStartedAtMs = Date.now();
   await writeStatus({ lastEvent: isRestart ? 'server_restarted' : 'server_started' });
   await writeRuntime();
   log('server_started', { pid: serverChild.pid, restartCount: status.serverRestarts });
@@ -250,6 +264,19 @@ const check = async () => {
     });
     await writeRuntime();
   } catch (error) {
+    const withinStartupGrace = childAlive(serverChild)
+      && serverStartedAtMs > 0
+      && Date.now() - serverStartedAtMs < startupGraceMs;
+    if (withinStartupGrace) {
+      await writeStatus({
+        status: 'STARTING',
+        consecutiveHealthFailures: 0,
+        lastError: `서버 초기화 중: ${error.message}`,
+        serverPid: serverChild?.pid || null,
+        daemonPid: daemonChild?.pid || null,
+      });
+      return;
+    }
     consecutiveHealthFailures += 1;
     await writeStatus({ status: 'DEGRADED', consecutiveHealthFailures, lastError: error.message, serverPid: serverChild?.pid || null, daemonPid: daemonChild?.pid || null });
     log('health_failed', { consecutiveHealthFailures, error: error.message });
@@ -295,4 +322,3 @@ while (!stopping) {
   await new Promise((resolveWait) => setTimeout(resolveWait, intervalMs));
   await check();
 }
-
