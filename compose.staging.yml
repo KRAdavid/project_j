@@ -57,6 +57,7 @@ services:
     restart: unless-stopped
     environment:
       APP_ENV: staging
+      HOST: 0.0.0.0
       PORT: 4173
       PERSISTENCE_MODE: postgresql
       DATABASE_URL: ${STAGING_DATABASE_URL:?STAGING_DATABASE_URL is required and must target the postgres service}
