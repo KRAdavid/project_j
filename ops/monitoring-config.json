@@ -1,0 +1,20 @@
+{
+  "configVersion": "MONITORING-0.1",
+  "checks": [
+    { "id": "M-01", "name": "health_endpoint", "timeoutMs": 3000, "severity": "critical" },
+    { "id": "M-02", "name": "sse_heartbeat", "timeoutMs": 20000, "severity": "high" },
+    { "id": "M-03", "name": "fail_closed", "severity": "critical" },
+    { "id": "M-04", "name": "ops_daemon_liveness", "freshnessMs": 1200000, "severity": "critical", "requiredIn": ["staging", "production"] },
+    { "id": "M-05", "name": "company_supervisor_liveness", "freshnessMs": 120000, "severity": "critical", "requiredIn": ["staging", "production"] }
+  ],
+  "incidentRule": "하나라도 실패하면 INCIDENT를 기록하고 거래 API 재개를 자동 승인하지 않는다.",
+  "humanEscalation": "H-01",
+  "incidentLedger": {
+    "pathEnv": "MONITOR_INCIDENT_LEDGER_PATH",
+    "format": "append-only-jsonl",
+    "deduplicateBy": "endpoint-check-error-fingerprint",
+    "recoveryEvent": "INCIDENT_RECOVERED",
+    "externalAlertRequiredForRelease": true
+  }
+}
+

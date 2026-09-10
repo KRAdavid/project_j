@@ -1,0 +1,88 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
+const html = await readFile(resolve(root, 'beta-app/index.html'), 'utf8');
+const app = await readFile(resolve(root, 'beta-app/app.js'), 'utf8');
+const styles = await readFile(resolve(root, 'beta-app/styles.css'), 'utf8');
+const server = await readFile(resolve(root, 'beta-app/server.mjs'), 'utf8');
+
+for (const id of ['spec-progress', 'spec-wizard', 'buyer-workspace', 'seller-view', 'operator-view', 'realtime-toggle', 'submit-order', 'ask-book', 'bid-book', 'supply-list', 'supply-count', 'live-average-price', 'live-average-sample', 'reference-chart-line', 'reference-chart-area', 'reference-chart-dot', 'reference-chart-empty', 'split-verified-stock', 'split-verified-stock-status']) {
+  assert.match(html, new RegExp(`id=["']${id}["']`), `핵심 UI 요소 누락: ${id}`);
+}
+for (const id of ['supplier-eligibility', 'refresh-supplier-eligibility', 'supplier-verification-form', 'request-supplier-verification', 'seller-inventory-list', 'seller-verified-count', 'seller-order-material', 'seller-order-price', 'seller-order-deadline', 'seller-order-quantity']) {
+  assert.match(html, new RegExp(`id=["']${id}["']`), `공급자 자격 UI 누락: ${id}`);
+}
+assert.match(html, /id=["']ops-supplier-review-list["']/i, '운영자 공급자 검토 큐가 필요합니다.');
+assert.match(html, /id=["']ops-team-list["']/i, '운영자 참여 팀 명부가 필요합니다.');
+assert.match(html, /id=["']ops-team-ownership-state["']/i, '운영자 업무 소유권 상태가 필요합니다.');
+assert.match(html, /id=["']ops-run-packet["']/i, '운영자 작업 패킷 상태가 필요합니다.');
+assert.match(html, /id=["']ops-run-patent["']/i, '운영자 BM특허 패킷 상태가 필요합니다.');
+assert.match(html, /id=["']ops-daemon-status["']/i, '운영자 자동운영 데몬 상태가 필요합니다.');
+assert.match(html, /id=["']ops-supervisor-status["']/i, '운영자 운영 감독자 상태가 필요합니다.');
+assert.match(html, /id=["']ops-task-audit-status["']/i, '운영자 업무 감사 상태가 필요합니다.');
+assert.match(html, /id=["']ops-notification-count["']/i, '운영자 알림 대기 상태가 필요합니다.');
+assert.match(html, /id=["']ops-notification-list["']/i, '운영자 운영 알림 대기함이 필요합니다.');
+assert.match(html, /id=["']ops-task-sla-status["']/i, '운영자 업무 SLA 상태가 필요합니다.');
+assert.match(html, /id=["']search-suggestion-list["']/i, 'Material Master 다중 후보 선택 UI가 필요합니다.');
+assert.match(app, /supplierVerification/, '운영자 화면은 공급자 검증 흐름을 표시해야 합니다.');
+assert.match(app, /summary\.teamRoster/, '운영자 화면은 기계 판독 가능한 참여 팀 명부를 표시해야 합니다.');
+assert.match(app, /summary\.taskOwnership/, '운영자 화면은 업무 담당·검토자 연결 상태를 표시해야 합니다.');
+assert.match(app, /readiness\.missing/, '운영자 화면은 상용 전환 보류 게이트를 표시해야 합니다.');
+assert.match(app, /latest\.workPacketId/, '운영자 화면은 자동 작업 패킷 상태를 표시해야 합니다.');
+assert.match(app, /latest\.patentPacketId/, '운영자 화면은 BM특허 설명 패킷 상태를 표시해야 합니다.');
+assert.match(app, /summary\.daemonStatus/, '운영자 화면은 자동운영 데몬 상태를 표시해야 합니다.');
+assert.match(app, /summary\.supervisorStatus/, '운영자 화면은 운영 감독자 상태를 표시해야 합니다.');
+assert.match(app, /summary\.taskTimelineAudit/, '운영자 화면은 업무 생명주기 감사 상태를 표시해야 합니다.');
+assert.match(server, /taskAuditRemediation/, '운영 API는 감사 정정 계획과 적용 상태를 투영해야 합니다.');
+assert.match(server, /supervisorStatus/, '운영 API는 운영 감독자 상태를 투영해야 합니다.');
+assert.match(app, /summary\.notificationOutbox/, '운영자 화면은 알림 대기함 상태를 표시해야 합니다.');
+assert.match(app, /notificationOutbox\.delivery/, '운영자 화면은 외부 알림 전달 상태를 표시해야 합니다.');
+assert.match(app, /summary\.taskSla/, '운영자 화면은 업무 SLA 상태를 표시해야 합니다.');
+assert.match(app, /data-notification-ack/, '운영자 화면은 운영 알림 확인 기록 동작을 제공해야 합니다.');
+assert.match(app, /\/api\/ops\/notifications\//, '운영자 알림 확인은 원장 API와 연결되어야 합니다.');
+assert.match(server, /notificationOutbox/, '운영 API는 알림 대기함 상태를 투영해야 합니다.');
+assert.match(server, /notificationDispatch/, '운영 API는 외부 알림 디스패치 상태를 투영해야 합니다.');
+assert.match(server, /taskSla/, '운영 API는 업무 SLA 상태를 투영해야 합니다.');
+assert.match(server, /taskTimelineAudit/, '운영 API는 업무 생명주기 감사 상태를 투영해야 합니다.');
+assert.match(server, /acknowledge_operational_alert/, '운영 API는 알림 확인 권한을 검증해야 합니다.');
+assert.match(app, /Object\.keys\(state\.verifiedSpec\)\.filter/, '스펙 진행률은 승인된 필드 집합만 계산해야 합니다.');
+assert.match(app, /function getSpecAttributes\(\)/, '주문에는 정규화된 스펙 속성 투영 함수가 필요합니다.');
+assert.match(app, /state\.specs\[question\.field\] = wizardState\.selected;\s*updateSpecState\(\);\s*renderSpecQuestions\(state\.materialRecord\);/, '문답 확정값은 원래 스펙 선택 필드에도 즉시 반영되어야 합니다.');
+assert.match(app, /item\.status === 'PENDING'/, '결정이 끝난 승인 항목에는 다시 결정 버튼을 노출하면 안 됩니다.');
+assert.match(app, /compactText\(task\.whyNow/, '과거 트리거의 원문 스택트레이스를 운영 화면에 그대로 노출하면 안 됩니다.');
+assert.match(app, /async function hydrateSupplierEligibility\(\)/, '공급자 화면은 거래 자격을 자동 확인해야 합니다.');
+assert.match(app, /async function requestSupplierVerification\(event\)/, '공급자 검증 요청 UI는 원장 API와 연결되어야 합니다.');
+assert.match(app, /async function resolveMaterialSearch\(query\)/, '원료 검색은 정규식 하드코딩이 아니라 Material Master API를 사용해야 합니다.');
+assert.match(app, /\/api\/materials\/search/, '원료 검색 입력은 후보 검색 API를 사용해야 합니다.');
+assert.match(app, /data-material-id/, '복수 원료 후보는 사용자가 직접 선택해야 합니다.');
+assert.match(server, /\/api\/supplier\/eligibility/, '공급자 거래 자격 API가 필요합니다.');
+assert.match(server, /\/api\/supplier\/verification-request/, '공급자 검증 요청 API가 필요합니다.');
+assert.match(server, /\/api\/market-board/, '시세창은 서버 검증 매물 API와 연결되어야 합니다.');
+assert.match(server, /\/api\/materials\/search/, 'Material Master 검색 후보 API가 필요합니다.');
+assert.match(app, /async function hydrateMarketBoard\(\)/, '시세창은 서버 검증 매물을 조회해야 합니다.');
+assert.match(app, /SERVER-STATE-PROJECTION-MARKET-BOARD-0\.1/, '구버전 서버에서도 서버 상태 투영 기반의 안전한 매물 대체 경로가 필요합니다.');
+assert.match(html, /SERVER-VERIFIED MARKET BOARD/, '시세창은 서버 검증 데이터임을 표시해야 합니다.');
+assert.match(app, /function renderVerifiedSupply\(\)/, '공급 매물 목록은 서버 응답으로 렌더링되어야 합니다.');
+assert.match(app, /function renderSellerInventory\(\)/, '공급자 재고 목록은 서버 검증 원장으로 렌더링되어야 합니다.');
+assert.match(app, /function renderSellerIncomingOrder\(order\)/, '공급자 수신 주문은 실제 주문 상태가 있을 때만 표시되어야 합니다.');
+assert.match(app, /function getVerifiedOffer\(\)/, '주문 게이트는 검증된 서버 매물을 기준으로 해야 합니다.');
+assert.match(app, /const serverReady = \['READY', 'STATE_FALLBACK'\]/, '서버 매물 확인 전 주문 버튼은 차단되어야 합니다.');
+assert.match(app, /split-verified-stock-status/, '공급자 분할 화면 재고 상태는 서버 시장판과 연결되어야 합니다.');
+assert.match(server, /supplierVerificationReviewMatch/, '공급자 최종 검토 API가 필요합니다.');
+assert.match(server, /terminalTaskStatuses.*resolved/, '운영자 중대 미해결 지표는 종료된 자동 업무를 제외해야 합니다.');
+assert.doesNotMatch(app, /specAttributes:\s*state\.specs\b/, '주문 API에 UI 상태 전체를 전송하면 부가 필드가 섞일 수 있습니다.');
+assert.doesNotMatch(app, /liveMarket\.trades\s*=\s*\[/, '최근 체결 목록은 클라이언트 임의 배열로 초기화하면 안 됩니다.');
+assert.match(app, /recentTrades/, '최근 체결은 서버 완료 실물 거래 필드에서만 투영되어야 합니다.');
+assert.match(app, /function renderReferencePriceChart\(series = \[\]\)/, '평균가격 추세 차트는 서버 가격 시계열로 렌더링되어야 합니다.');
+assert.match(app, /priceSeries/, '가격 추세 시계열은 서버 가격지표 응답과 연결되어야 합니다.');
+assert.match(styles, /@media/, '구매자·공급자 화면은 반응형 레이아웃을 가져야 합니다.');
+assert.doesNotMatch(html, /GBA-CN-2411|GBA-KR-2319/, '공급자 화면에 원장과 무관한 정적 재고 예시가 남아 있습니다.');
+assert.doesNotMatch(html, /GABA 99% · 한국산 · 1,000 kg/, '공급자 화면에 원장과 무관한 정적 주문 예시가 남아 있습니다.');
+assert.doesNotMatch(html, /₩21,800|₩21,450|2,400 kg|3,840 kg|24건/, '시장판에 서버 원장과 무관한 정적 가격·재고·체결 통계가 남아 있습니다.');
+assert.doesNotMatch(html, /1,200 kg/, '공급자 분할 화면에 서버 원장과 무관한 정적 재고가 남아 있습니다.');
+assert.doesNotMatch(html, /C35 116|S185 83|S585 34/, '가격지표 차트에 서버 시계열과 무관한 정적 곡선이 남아 있습니다.');
+console.log('ui contract tests: PASS');
+
