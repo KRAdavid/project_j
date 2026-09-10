@@ -85,7 +85,7 @@ export const buildGoalAudit = ({ cycle = {}, readiness = {}, github = {}, github
     objective: 'GitHub 연계·BM특허 고려·회사형 자동운영을 갖춘 실물 원료 구매 거래 플랫폼',
     decision: blocked.length ? 'NO_GO' : 'REVIEW_REQUIRED',
     summary: { total: checks.length, verified: checks.filter((item) => item.status === 'VERIFIED').length, prepared: checks.filter((item) => item.status === 'PREPARED').length, blocked: blocked.length, notVerified: checks.filter((item) => item.status === 'NOT_VERIFIED').length },
-    runtime: { cycleId: cycle.cycleId || null, cycleDecision: cycle.decision || null, supervisorStatus: supervisor.status || null, persistenceMode: runtime.persistenceMode || null, realTradingEnabled: runtime.realTradingEnabled === true, githubStatus: github.status || 'UNKNOWN', githubPublicationStatus: githubPublication.status || 'UNKNOWN' },
+    runtime: { cycleId: cycle.cycleId || null, cycleDecision: cycle.decision || null, supervisorStatus: supervisor.status || null, persistenceMode: runtime.persistenceMode || null, realTradingEnabled: runtime.realTradingEnabled === true, githubStatus: github.status || 'UNKNOWN', githubPublicationStatus: publicationVerified ? 'PUBLISHED' : githubPublication.status || 'UNKNOWN' },
     checks,
     nextActions: blocked.map((item) => ({ id: item.id, action: item.note || `${item.label} 증거를 확보한다.`, evidence: item.evidence })),
     guardrail: '이 감사는 상태·증거를 집계할 뿐이며 AI가 거래·계약·결제·특허출원·GitHub 외부 쓰기를 승인하지 않는다.',
