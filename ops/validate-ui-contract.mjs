@@ -54,7 +54,8 @@ assert.match(app, /state\.specs\[question\.field\] = wizardState\.selected;\s*up
 assert.match(app, /item\.status === 'PENDING'/, '결정이 끝난 승인 항목에는 다시 결정 버튼을 노출하면 안 됩니다.');
 assert.match(app, /compactText\(task\.whyNow/, '과거 트리거의 원문 스택트레이스를 운영 화면에 그대로 노출하면 안 됩니다.');
 assert.match(app, /async function hydrateSupplierEligibility\(\)/, '공급자 화면은 거래 자격을 자동 확인해야 합니다.');
-assert.match(app, /async function requestSupplierVerification\(event\)/, '공급자 검증 요청 UI는 원장 API와 연결되어야 합니다.');\nassert.match(app, /roleAliases\s*=\s*\{[^}]*supplier:\s*'seller'/, '공급자 역할의 직관적 URL 별칭이 유지되어야 합니다.');
+assert.match(app, /async function requestSupplierVerification\(event\)/, '공급자 검증 요청 UI는 원장 API와 연결되어야 합니다.');
+assert.match(app, /roleAliases\s*=\s*\{[^}]*supplier:\s*'seller'/, '공급자 역할의 직관적 URL 별칭이 유지되어야 합니다.');
 assert.match(app, /async function resolveMaterialSearch\(query\)/, '원료 검색은 정규식 하드코딩이 아니라 Material Master API를 사용해야 합니다.');
 assert.match(app, /\/api\/materials\/search/, '원료 검색 입력은 후보 검색 API를 사용해야 합니다.');
 assert.match(app, /data-material-id/, '복수 원료 후보는 사용자가 직접 선택해야 합니다.');
