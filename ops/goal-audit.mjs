@@ -47,12 +47,17 @@ export const buildGoalAudit = ({ cycle = {}, readiness = {}, github = {}, github
   const readinessMissing = Array.isArray(readiness.missing) ? readiness.missing : [];
   const supervisorRunning = ['STARTING', 'RUNNING', 'DEGRADED'].includes(supervisor.status);
   const publicationCommit = String(githubPublicationVerification.commitSha || '');
+  const publicationCiHead = String(githubPublicationVerification.ciHeadSha || '');
+  const remoteMainVerified = githubPublicationVerification.remoteMainCommitVerified === true
+    && String(githubPublicationVerification.verificationMode || '') === 'REMOTE_MAIN_VERIFIED_WITH_PREMERGE_CI';
+  const publicationCiCoversMain = publicationCiHead.toLowerCase() === publicationCommit.toLowerCase()
+    || remoteMainVerified;
   const publicationVerified = github.status === 'TARGET_MATCH'
     && githubPublicationVerification.status === 'PUBLISHED'
     && String(githubPublicationVerification.repository || '').toLowerCase() === String(github.targetRepository || '').toLowerCase()
     && String(githubPublicationVerification.baseBranch || '') === String(github.baseBranch || '')
     && /^[0-9a-f]{40}$/i.test(publicationCommit)
-    && String(githubPublicationVerification.ciHeadSha || '').toLowerCase() === publicationCommit.toLowerCase()
+    && publicationCiCoversMain
     && String(githubPublicationVerification.ciConclusion || '').toLowerCase() === 'success'
     && /^https:\/\/github\.com\//i.test(String(githubPublicationVerification.sourceUrl || ''))
     && /^https:\/\/github\.com\//i.test(String(githubPublicationVerification.ciRunUrl || ''));
