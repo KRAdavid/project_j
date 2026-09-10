@@ -93,5 +93,25 @@ const published = buildGoalAudit({
   },
 });
 assert.equal(published.checks.find((item) => item.id === 'GITHUB_PUBLICATION').status, 'VERIFIED');
+
+const publishedWithPremergeCi = buildGoalAudit({
+  ...base,
+  readiness: { missing: ['R-01'] },
+  github: { status: 'TARGET_MATCH', targetRepository: 'KRAdavid/project_j', baseBranch: 'main' },
+  githubPublication: { status: 'BLOCKED', blockers: ['LOCAL_BRANCH_DIFFERS_FROM_TARGET_BASE'] },
+  githubPublicationVerification: {
+    status: 'PUBLISHED',
+    repository: 'KRAdavid/project_j',
+    baseBranch: 'main',
+    commitSha: 'fedcba9876543210fedcba9876543210fedcba98',
+    ciHeadSha: '0123456789abcdef0123456789abcdef01234567',
+    ciConclusion: 'success',
+    verificationMode: 'REMOTE_MAIN_VERIFIED_WITH_PREMERGE_CI',
+    remoteMainCommitVerified: true,
+    sourceUrl: 'https://github.com/KRAdavid/project_j/commit/fedcba9876543210fedcba9876543210fedcba98',
+    ciRunUrl: 'https://github.com/KRAdavid/project_j/actions/runs/2',
+  },
+});
+assert.equal(publishedWithPremergeCi.checks.find((item) => item.id === 'GITHUB_PUBLICATION').status, 'VERIFIED');
 console.log('goal audit contract: PASS');
 
