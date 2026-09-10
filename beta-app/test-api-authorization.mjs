@@ -1,18 +1,28 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { mkdtemp, writeFile } from 'node:fs/promises';
+import net from 'node:net';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { GABA_SPEC_ATTRIBUTES } from './trade-engine.mjs';
 
-// Autopilot and CI may run this integration test at the same time. Derive a
-// per-process default port so one test worker cannot make another worker
-// appear to hang on the shared fixed port.
-const port = Number(process.env.API_AUTH_TEST_PORT || (4177 + (process.pid % 1000)));
+// Autopilot and CI may run this integration test at the same time. Ask the OS
+// for an available loopback port instead of deriving one from the process ID,
+// which can collide with a still-shutting-down test worker.
+const getAvailablePort = () => new Promise((resolvePort, reject) => {
+  const probe = net.createServer();
+  probe.once('error', reject);
+  probe.listen(0, '127.0.0.1', () => {
+    const address = probe.address();
+    const selectedPort = typeof address === 'object' && address ? address.port : null;
+    probe.close((error) => error ? reject(error) : resolvePort(selectedPort));
+  });
+});
+const port = Number(process.env.API_AUTH_TEST_PORT || await getAvailablePort());
 const productionStartupTimeoutMs = Number(process.env.API_AUTH_PRODUCTION_STARTUP_TIMEOUT_MS || 10000);
 const cwd = fileURLToPath(new URL('.', import.meta.url));
-const child = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, PORT: String(port), APP_ENV: 'production', PERSISTENCE_MODE: 'memory' }, stdio: 'ignore' });
+const child = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, HOST: '127.0.0.1', PORT: String(port), APP_ENV: 'production', PERSISTENCE_MODE: 'memory' }, stdio: 'ignore' });
 const base = `http://127.0.0.1:${port}`;
 const waitForExit = new Promise((resolve) => child.once('exit', resolve));
 const opsRoot = await mkdtemp(join(tmpdir(), 'raw-material-api-ops-'));
@@ -23,7 +33,7 @@ try {
   assert.notEqual(exitCode, 'timeout', 'production server must fail closed before listening');
   assert.notEqual(exitCode, 0);
 
-  const simulationChild = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, PORT: String(port), APP_ENV: 'simulation', OPS_ROOT: opsRoot }, stdio: 'ignore' });
+  const simulationChild = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, HOST: '127.0.0.1', PORT: String(port), APP_ENV: 'simulation', OPS_ROOT: opsRoot }, stdio: 'ignore' });
   try {
     let response;
     for (let attempt = 0; attempt < 30; attempt += 1) {
@@ -111,3 +121,4 @@ try {
 } finally {
   if (child.exitCode === null) child.kill();
 }
+
