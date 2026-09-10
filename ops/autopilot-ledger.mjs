@@ -26,8 +26,14 @@ export const appendAutopilotRun = async (historyPath, run) => {
 
 export const buildApprovalInbox = (run) => {
   const items = [];
+  const taskIds = new Set();
+  const addItem = (item) => {
+    if (!item?.taskId || taskIds.has(item.taskId)) return;
+    taskIds.add(item.taskId);
+    items.push(item);
+  };
   if (run.selectedTask && run.decision === 'HUMAN_REVIEW_REQUIRED') {
-    items.push({
+    addItem({
       approvalId: `APPROVAL-${run.runId}`,
       status: 'PENDING',
       requiredPrincipal: 'H-01',
@@ -41,7 +47,7 @@ export const buildApprovalInbox = (run) => {
     });
   }
   for (const task of run.automation?.triggerTasks || []) {
-    items.push({
+    addItem({
       approvalId: `APPROVAL-TRIGGER-${task.id}`,
       status: 'PENDING',
       requiredPrincipal: 'H-01',

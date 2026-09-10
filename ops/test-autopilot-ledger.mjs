@@ -30,6 +30,13 @@ try {
 
   const inbox = buildApprovalInbox(run);
   if (inbox.status !== 'PENDING' || inbox.items.length !== 2 || inbox.items[0].requiredPrincipal !== 'H-01' || inbox.unresolvedEvidence.length !== 1) throw new Error('승인 대기열 생성 검증 실패');
+  const duplicateRun = {
+    ...run,
+    selectedTask: { id: 'TASK-DUPLICATE', objective: '선택 업무', risk: 'critical', reviewers: ['AI-11 실드'] },
+    automation: { triggerTasks: [{ id: 'TASK-DUPLICATE', triggerKey: 'QUALITY_GATE_FAILED', objective: '동일 업무 트리거', risk: 'critical', reviewers: ['AI-12 리콘'] }, { id: 'TASK-UNIQUE', triggerKey: 'READINESS_NO_GO', objective: '별도 업무', risk: 'critical', reviewers: ['AI-10 아틀라스'] }] },
+  };
+  const deduplicated = buildApprovalInbox(duplicateRun);
+  if (deduplicated.items.length !== 2 || deduplicated.items.filter((item) => item.taskId === 'TASK-DUPLICATE').length !== 1 || deduplicated.items[0].approvalId !== 'APPROVAL-AUTOPILOT-TEST-001') throw new Error('동일 taskId 승인 항목 중복 제거 검증 실패');
   await writeApprovalInbox(inboxPath, run);
   const savedInbox = JSON.parse(await readFile(inboxPath, 'utf8'));
   if (savedInbox.items[0].approvalId !== 'APPROVAL-AUTOPILOT-TEST-001') throw new Error('승인 대기열 저장 검증 실패');
