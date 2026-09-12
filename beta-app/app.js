@@ -651,7 +651,6 @@ async function hydrateOpsSummary() {
      $('#ops-team-activity-summary').textContent = `자동 준비 ${autoExecuting}명 · 승인 대기 ${waitingForH01}명 · 증거 확인 필요 ${unverifiedActive}명 · H-01 결정 대기 ${executionSummary.pendingApprovalCount || 0}건${executionSummary.independentPreparationContinuesWhileApprovalPending ? ' · 승인 대기 중에도 독립 준비 계속' : ''}`;
      const activityMembers = teamActivity.members || [];
      $('#ops-team-activity-list').innerHTML = activityMembers.length ? activityMembers.map((member) => `<div class="ops-team-activity-row"><div><strong>${escapeHtml(member.memberId || '')}</strong><small>${escapeHtml(member.name || '')}</small></div><b class="activity-status ${member.status === 'UNVERIFIED_ACTIVE' ? 'warning' : member.status === 'WAITING_FOR_H01' ? 'waiting' : ''}">${escapeHtml(activityStatusLabels[member.status] || member.status || '상태 확인')}</b><span>${escapeHtml(member.reason || '')}</span></div>`).join('') : '<div class="ops-empty">현재 팀 활동 상태가 없습니다.</div>';
-     const latest = summary.latestRun;
     const latest = summary.latestRun;
     $('#ops-run-decision').textContent = latest?.decision || '실행 기록 없음';
     $('#ops-run-decision').classList.toggle('success', latest?.decision === 'GO');
