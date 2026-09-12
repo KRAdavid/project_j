@@ -317,6 +317,7 @@ const handleApi = async (request, response, url) => {
         supervisorStatus,
         taskTimelineAudit,
         taskAuditRemediation,
+        teamActivity,
         queue: {
           total: tasks.length,
           queued: tasks.filter((task) => task.status === 'queued').length,
