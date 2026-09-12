@@ -2,6 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 
 const ACTIVE_STATUSES = new Set(['queued', 'working', 'review']);
+const EXECUTION_EVIDENCE_FIELDS = ['claimedAt', 'startedAt', 'reviewedAt', 'lastRecheckedAt'];
 const H01_ID = 'H-01';
 
 const isMemberReference = (reference, member) => {
@@ -13,6 +14,8 @@ const taskTouchesMember = (task, member) => (
   isMemberReference(task?.ownerAi, member)
   || (Array.isArray(task?.reviewers) && task.reviewers.some((reviewer) => isMemberReference(reviewer, member)))
 );
+
+const hasExecutionEvidence = (task) => EXECUTION_EVIDENCE_FIELDS.some((field) => Boolean(task?.[field]));
 
 const summarizeCounts = (members) => members.reduce((counts, member) => {
   counts[member.status] = (counts[member.status] || 0) + 1;
@@ -43,6 +46,8 @@ export const buildTeamActivityReport = ({
     const memberTasks = (Array.isArray(tasks) ? tasks : []).filter((task) => taskTouchesMember(task, member));
     const activeTasks = memberTasks.filter((task) => ACTIVE_STATUSES.has(task?.status));
     const waitingTasks = activeTasks.filter((task) => pendingIds.has(task.id));
+    const unverifiedTasks = activeTasks.filter((task) => ['working', 'review'].includes(task?.status) && !hasExecutionEvidence(task));
+    const queuedTasks = activeTasks.filter((task) => task?.status === 'queued');
     const selected = selectedTask && isMemberReference(selectedTask.ownerAi, member) ? selectedTask : null;
 
     let status;
@@ -55,12 +60,18 @@ export const buildTeamActivityReport = ({
     } else if (waitingTasks.length) {
       status = 'WAITING_FOR_H01';
       reason = `담당·검토 업무 ${waitingTasks.length}건이 H-01 승인 대기입니다.`;
-    } else if (selected) {
+    } else if (selected && hasExecutionEvidence(selected)) {
       status = 'AUTO_EXECUTING';
       reason = '현재 운영 사이클이 안전한 분석·검증·준비 작업을 실행 중입니다.';
+    } else if (unverifiedTasks.length) {
+      status = 'UNVERIFIED_ACTIVE';
+      reason = `활성 상태지만 인수·착수·재검토 시각이 없는 업무 ${unverifiedTasks.length}건은 실행 중으로 인정하지 않습니다.`;
+    } else if (queuedTasks.length) {
+      status = 'AUTO_QUEUE_ACTIVE';
+      reason = `검증 가능한 대기 업무 ${queuedTasks.length}건이 다음 자동 실행을 기다립니다.`;
     } else if (activeTasks.length) {
       status = 'AUTO_QUEUE_ACTIVE';
-      reason = `활성 업무 ${activeTasks.length}건이 큐에서 다음 자동 실행을 기다립니다.`;
+      reason = `실행 시각이 기록된 활성 업무 ${activeTasks.length}건이 다음 자동 실행을 기다립니다.`;
     } else {
       status = 'IDLE';
       reason = '현재 배정된 활성 업무가 없습니다.';
@@ -76,6 +87,8 @@ export const buildTeamActivityReport = ({
       reason,
       selectedTaskId: selected?.id || null,
       activeTaskIds: activeTasks.map((task) => task.id),
+      executionEvidenceTaskIds: activeTasks.filter(hasExecutionEvidence).map((task) => task.id),
+      unverifiedActiveTaskIds: unverifiedTasks.map((task) => task.id),
       waitingApprovalTaskIds: waitingTasks.map((task) => task.id),
       allowedActions: member.id === H01_ID
         ? ['FINAL_DECISION', 'APPROVE_OR_HOLD', 'TRADE_STOP']
@@ -111,5 +124,3 @@ export const writeTeamActivityReport = async (reportPath, report) => {
   await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
   return report;
 };
-
-
