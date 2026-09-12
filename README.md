@@ -217,3 +217,27 @@ node ops/run-shadow-pilot.mjs
 
 특허성은 선행기술 조사와 변리사 검토 후 판단합니다. 상세 후보는 도메인 문서를 기준으로 관리합니다.
 
+
+## Windows 재부팅 후 자동 재개
+
+회사형 Supervisor를 현재 세션에서 실행하는 것과 Windows 로그인 후 자동 재개하는 것은 별도 조건이다.
+
+```powershell
+cd "C:\\Users\\fksak\\Documents\\ChatGPT\\원료구매사이트"
+pnpm run ops:start:supervised
+```
+
+재부팅·로그인 후에도 자동 재개하려면 관리자 권한 PowerShell에서 1회 예약작업을 등록한다.
+
+```powershell
+cd "C:\\Users\\fksak\\Documents\\ChatGPT\\원료구매사이트"
+pnpm run ops:register
+```
+
+등록 여부는 다음 명령으로 확인한다.
+
+```powershell
+Get-ScheduledTask -TaskName "RawMaterialOS-CompanyMode"
+```
+
+등록되지 않은 경우 Supervisor는 현재 프로세스가 살아 있는 동안에만 자동 운영한다. 예약작업 등록 실패 시 관리자 권한을 우회하거나 임의의 시작프로그램을 추가하지 않고, `NO_GO`·실거래 차단·H-01 승인 게이트를 그대로 유지한다. 예약작업이 등록되어도 자동 재개는 Supervisor·health·데몬·readiness 검사를 통과할 때만 허용된다.
