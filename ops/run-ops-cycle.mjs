@@ -64,7 +64,12 @@ const monitor = parseLastJson(monitorExecution.output) || {
   error: '모니터링 결과를 JSON으로 해석하지 못했습니다.',
 };
 
-const autopilotExecution = runScript('run-autopilot.mjs', { OPS_CYCLE_LOCK_HELD: 'true' }, Number(process.env.OPS_CYCLE_AUTOPILOT_TIMEOUT_MS || 240000), ['--claim']);
+// The autopilot runs the evidence suite sequentially. Its deadline must be
+// long enough for a real local cycle, while remaining below the supervised
+// daemon's 600-second cycle budget so the outer worker can still finalize the
+// queue, approvals, notifications, and activity report.
+const autopilotTimeoutMs = Math.max(30000, Number(process.env.OPS_CYCLE_AUTOPILOT_TIMEOUT_MS || 480000));
+const autopilotExecution = runScript('run-autopilot.mjs', { OPS_CYCLE_LOCK_HELD: 'true' }, autopilotTimeoutMs, ['--claim']);
 let latestRun = null;
 try {
   latestRun = JSON.parse(await readFile(resolve(opsRoot, 'latest-autopilot-run.json'), 'utf8'));
