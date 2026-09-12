@@ -23,4 +23,18 @@ assert.deepEqual(searchMaterials('미등록 원료'), []);
 assert.equal(searchMaterials('가바')[0].requiredSpecFields.length, 6, '검색 결과도 확정 전 스펙 기준을 참조해야 합니다.');
 assert.deepEqual(materialMasterSnapshot().records[0].provenance.sourceDocuments, []);
 
+const extensibilityFixture = materialMasterSnapshot();
+const secondMaterial = JSON.parse(JSON.stringify(extensibilityFixture.records[0]));
+secondMaterial.materialId = 'BETA-TEST';
+secondMaterial.canonicalName = 'Beta Test Material';
+secondMaterial.aliases = ['BETA-TEST', '베타 테스트'];
+secondMaterial.identifiers.catalogIdentity = 'BETA-TEST';
+secondMaterial.simulationSpec.specId = 'BETA-TEST-SPEC-001';
+extensibilityFixture.records = [secondMaterial, extensibilityFixture.records[0]];
+assert.equal(validateMaterialMaster(extensibilityFixture), true, 'Material Master는 동일 계약을 만족하는 신규 원료를 수용해야 합니다.');
+assert.equal(resolveMaterial('베타테스트', extensibilityFixture).materialId, 'BETA-TEST');
+assert.equal(searchMaterials('베타 테스트', { source: extensibilityFixture })[0].materialId, 'BETA-TEST');
+assert.deepEqual(searchMaterials('베타 테스트')[0], undefined, 'fixture 원료는 운영 카탈로그에 자동 등록되면 안 됩니다.');
+
 console.log('material-master tests: PASS');
+
