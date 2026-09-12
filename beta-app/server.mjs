@@ -275,6 +275,15 @@ const handleApi = async (request, response, url) => {
       const currentNotificationRecords = latestOperationalNotifications(notificationOutbox.records);
       const latestRun = await readOptionalJson(join(opsRoot, 'latest-autopilot-run.json'), null);
       const latestCycle = await readOptionalJson(join(opsRoot, 'latest-ops-cycle.json'), null);
+      const teamActivity = await readOptionalJson(join(opsRoot, 'latest-team-activity.json'), {
+        schemaVersion: 'TEAM-ACTIVITY-0.1',
+        generatedAt: null,
+        cycleId: null,
+        truthModel: 'NOT_REPORTED',
+        executionSummary: { automaticPreparation: false, pendingApprovalCount: 0 },
+        counts: {},
+        members: [],
+      });
       const notificationDispatch = latestCycle?.automation?.notificationOutbox?.dispatch || {
         status: 'OUTBOX_ONLY', attemptedCount: 0, sentCount: 0, failedCount: 0, externalNotificationSent: false,
       };
