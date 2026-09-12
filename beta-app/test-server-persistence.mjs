@@ -8,13 +8,14 @@ import { setTimeout as wait } from 'node:timers/promises';
 import { GABA_SPEC_ATTRIBUTES } from './trade-engine.mjs';
 
 const port = 4176;
+const startupTimeoutMs = Math.max(1000, Number(process.env.SERVER_PERSISTENCE_STARTUP_TIMEOUT_MS || 15000));
 const filePath = join(tmpdir(), `raw-material-server-${Date.now()}.sqlite`);
 const documentRoot = join(tmpdir(), `raw-material-server-docs-${Date.now()}`);
 const appRoot = fileURLToPath(new URL('.', import.meta.url));
 const children = new Set();
 
 const waitForHealth = async (child) => {
-  const deadline = Date.now() + 8000;
+  const deadline = Date.now() + startupTimeoutMs;
   while (Date.now() < deadline) {
     try {
       const response = await fetch(`http://127.0.0.1:${port}/api/health`);
@@ -22,9 +23,10 @@ const waitForHealth = async (child) => {
     } catch {}
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
+  const stderr = child.__startupStderr || '';
   child.kill();
   children.delete(child);
-  throw new Error('서버가 제한시간 내에 시작되지 않았습니다.');
+  throw new Error(`서버가 ${startupTimeoutMs}ms 제한시간 내에 시작되지 않았습니다.${stderr ? ` stderr=${stderr.toString().trim()}` : ''}`);
 };
 
 const startServer = async () => {
@@ -35,6 +37,8 @@ const startServer = async () => {
   });
   children.add(child);
   child.on('error', (error) => { throw error; });
+  child.__startupStderr = '';
+  child.stderr.on('data', (chunk) => { child.__startupStderr += chunk.toString(); });
   child.stdout.resume();
   child.stderr.resume();
   await waitForHealth(child);
@@ -90,3 +94,4 @@ try {
   await rm(filePath, { force: true, maxRetries: 50, retryDelay: 200 });
   await rm(documentRoot, { recursive: true, force: true, maxRetries: 50, retryDelay: 200 });
 }
+
