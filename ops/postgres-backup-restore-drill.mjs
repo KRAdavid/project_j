@@ -1,11 +1,20 @@
 import { spawnSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
-import { mkdir, rm } from 'node:fs/promises';
+import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
 
 const sourceUrl = process.env.DATABASE_URL;
+const evidencePath = process.env.BACKUP_DRILL_EVIDENCE_PATH ? resolve(process.env.BACKUP_DRILL_EVIDENCE_PATH) : null;
+
+const writeEvidence = async (evidence) => {
+  if (!evidencePath) return;
+  await mkdir(dirname(evidencePath), { recursive: true });
+  await writeFile(evidencePath, `${JSON.stringify({ schemaVersion: 'BACKUP-RESTORE-EVIDENCE-0.1', ...evidence }, null, 2)}\n`, 'utf8');
+};
+
 if (!sourceUrl) {
+  await writeEvidence({ status: 'SKIP', reason: 'DATABASE_URL not provided', checkedAt: new Date().toISOString() });
   console.log('postgres backup-restore drill: SKIP (DATABASE_URL not provided)');
   process.exit(0);
 }
@@ -59,7 +68,9 @@ try {
       throw new Error('복원된 핵심 원장·승인·예약 함수가 확인되지 않았습니다.');
     }
     if (checks[3].rows[0].count < 1) throw new Error('복원된 원장 데이터가 비어 있습니다.');
-    console.log(JSON.stringify({ status: 'PASS', restoreDb, restoredLedgerRows: checks[3].rows[0].count, checkedAt: new Date().toISOString() }));
+    const evidence = { status: 'PASS', restoreDb, restoredLedgerRows: checks[3].rows[0].count, checkedAt: new Date().toISOString() };
+    await writeEvidence(evidence);
+    console.log(JSON.stringify(evidence));
   } finally {
     await restoredPool.end();
   }
