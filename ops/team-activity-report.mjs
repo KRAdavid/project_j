@@ -4,6 +4,9 @@ import { dirname } from 'node:path';
 const ACTIVE_STATUSES = new Set(['queued', 'working', 'review']);
 const EXECUTION_EVIDENCE_FIELDS = ['claimedAt', 'startedAt', 'reviewedAt', 'lastRecheckedAt'];
 const H01_ID = 'H-01';
+const DEFAULT_AI_ALLOWED_ACTIONS = ['ANALYZE', 'RUN_TESTS', 'WRITE_REVIEW_PACKET', 'RAISE_RISK_SIGNAL'];
+const DEFAULT_AI_FORBIDDEN_ACTIONS = ['TRADE_FINALIZATION', 'CONTRACT_FINALIZATION', 'PAYMENT_RELEASE', 'DISPUTE_CLOSURE', 'PRODUCTION_CUTOVER'];
+const DEFAULT_H01_ALLOWED_ACTIONS = ['FINAL_DECISION', 'APPROVE_OR_HOLD', 'TRADE_STOP'];
 
 const isMemberReference = (reference, member) => {
   const value = String(reference || '');
@@ -15,8 +18,8 @@ const taskTouchesMember = (task, member) => (
   || (Array.isArray(task?.reviewers) && task.reviewers.some((reviewer) => isMemberReference(reviewer, member)))
 );
 
-const hasExecutionEvidence = (task, { selectedTask = null, workPacket = null } = {}) => (
-  EXECUTION_EVIDENCE_FIELDS.some((field) => Boolean(task?.[field]))
+const hasExecutionEvidence = (task, { selectedTask = null, workPacket = null, evidenceFields = EXECUTION_EVIDENCE_FIELDS } = {}) => (
+  evidenceFields.some((field) => Boolean(task?.[field]))
   || (selectedTask?.id === task?.id && workPacket?.taskId === task?.id && Boolean(workPacket?.generatedAt || workPacket?.packetId))
 );
 
@@ -40,7 +43,20 @@ export const buildTeamActivityReport = ({
   generatedAt = new Date().toISOString(),
   automation = {},
   workPacket = null,
+  policy = {},
 } = {}) => {
+  const evidenceFields = Array.isArray(policy.executionEvidenceFields) && policy.executionEvidenceFields.length
+    ? policy.executionEvidenceFields
+    : EXECUTION_EVIDENCE_FIELDS;
+  const aiAllowedActions = Array.isArray(policy.automaticPreparationActions) && policy.automaticPreparationActions.length
+    ? policy.automaticPreparationActions
+    : DEFAULT_AI_ALLOWED_ACTIONS;
+  const aiForbiddenActions = Array.isArray(policy.humanApprovalRequiredActions) && policy.humanApprovalRequiredActions.length
+    ? policy.humanApprovalRequiredActions
+    : DEFAULT_AI_FORBIDDEN_ACTIONS;
+  const h01AllowedActions = Array.isArray(policy.humanAllowedActions) && policy.humanAllowedActions.length
+    ? policy.humanAllowedActions
+    : DEFAULT_H01_ALLOWED_ACTIONS;
   const pendingIds = pendingApprovalTaskIds instanceof Set
     ? pendingApprovalTaskIds
     : new Set(Array.isArray(pendingApprovalTaskIds) ? pendingApprovalTaskIds : []);
@@ -49,7 +65,7 @@ export const buildTeamActivityReport = ({
     const memberTasks = (Array.isArray(tasks) ? tasks : []).filter((task) => taskTouchesMember(task, member));
     const activeTasks = memberTasks.filter((task) => ACTIVE_STATUSES.has(task?.status));
     const waitingTasks = activeTasks.filter((task) => pendingIds.has(task.id));
-    const taskHasEvidence = (task) => hasExecutionEvidence(task, { selectedTask, workPacket });
+    const taskHasEvidence = (task) => hasExecutionEvidence(task, { selectedTask, workPacket, evidenceFields });
     const unverifiedTasks = activeTasks.filter((task) => ['working', 'review'].includes(task?.status) && !taskHasEvidence(task));
     const queuedTasks = activeTasks.filter((task) => task?.status === 'queued');
     const selected = selectedTask && isMemberReference(selectedTask.ownerAi, member) ? selectedTask : null;
@@ -94,12 +110,8 @@ export const buildTeamActivityReport = ({
       executionEvidenceTaskIds: activeTasks.filter(taskHasEvidence).map((task) => task.id),
       unverifiedActiveTaskIds: unverifiedTasks.map((task) => task.id),
       waitingApprovalTaskIds: waitingTasks.map((task) => task.id),
-      allowedActions: member.id === H01_ID
-        ? ['FINAL_DECISION', 'APPROVE_OR_HOLD', 'TRADE_STOP']
-        : ['ANALYZE', 'RUN_TESTS', 'WRITE_REVIEW_PACKET', 'RAISE_RISK_SIGNAL'],
-      forbiddenActions: member.id === H01_ID
-        ? []
-        : ['TRADE_FINALIZATION', 'CONTRACT_FINALIZATION', 'PAYMENT_RELEASE', 'DISPUTE_CLOSURE', 'PRODUCTION_CUTOVER'],
+      allowedActions: member.id === H01_ID ? h01AllowedActions : aiAllowedActions,
+      forbiddenActions: member.id === H01_ID ? [] : aiForbiddenActions,
     };
   });
 
@@ -107,7 +119,8 @@ export const buildTeamActivityReport = ({
     schemaVersion: 'TEAM-ACTIVITY-0.1',
     generatedAt,
     cycleId,
-    truthModel: 'RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT',
+    truthModel: policy.truthModel || 'RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT',
+    policyVersion: policy.schemaVersion || null,
     executionSummary: {
       automaticPreparation: true,
       independentPreparationContinuesWhileApprovalPending: true,
@@ -117,10 +130,15 @@ export const buildTeamActivityReport = ({
       triggerTasksPending: Number(automation.triggerInboxPending || 0),
       readinessDecision: readiness.decision || 'UNKNOWN',
       readinessMissing: Array.isArray(readiness.missing) ? readiness.missing : [],
+      automaticPreparationActions: aiAllowedActions,
+      humanApprovalRequiredActions: Array.isArray(policy.humanApprovalRequiredActions)
+        ? policy.humanApprovalRequiredActions
+        : DEFAULT_AI_FORBIDDEN_ACTIONS,
+      executionEvidenceFields: evidenceFields,
     },
     counts: summarizeCounts(members),
     members,
-    guardrail: 'AI는 분석·검증·준비만 자동 수행하며 실제 거래·계약·결제·운영 재개는 H-01 승인 없이는 수행하지 않는다.',
+    guardrail: policy.guardrail || 'AI는 분석·검증·준비만 자동 수행하며 실제 거래·계약·결제·운영 재개는 H-01 승인 없이는 수행하지 않는다.',
   };
 };
 

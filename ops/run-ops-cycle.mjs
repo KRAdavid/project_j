@@ -18,6 +18,7 @@ import { buildTeamActivityReport, writeTeamActivityReport } from './team-activit
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const opsRoot = resolve(root, 'ops');
+const teamAutonomyPolicy = JSON.parse(await readFile(resolve(root, 'data', 'team-autonomy-policy.json'), 'utf8'));
 const monitorBaseUrl = (process.env.MONITOR_BASE_URL || 'http://127.0.0.1:4173').replace(/\/$/, '');
 const cycleId = `OPS-CYCLE-${new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 14)}`;
 const generatedAt = new Date().toISOString();
@@ -260,6 +261,7 @@ await writeTeamActivityReport(resolve(opsRoot, 'latest-team-activity.json'), bui
   generatedAt: new Date().toISOString(),
   automation: cycle.automation,
   workPacket: latestRun.workPacket || null,
+  policy: teamAutonomyPolicy,
 }));
 console.log(JSON.stringify({ cycleId, decision: cycle.decision, monitor: monitor.status, autopilot: cycle.autopilot?.decision, triggerTasks: triggerResult.inbox.pending }));
 
