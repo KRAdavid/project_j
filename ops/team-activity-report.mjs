@@ -44,7 +44,7 @@ export const buildTeamActivityReport = ({
   automation = {},
   workPacket = null,
   policy = {},
-} = {}) {
+} = {}) => {
   const evidenceFields = Array.isArray(policy.executionEvidenceFields) && policy.executionEvidenceFields.length
     ? policy.executionEvidenceFields
     : EXECUTION_EVIDENCE_FIELDS;
