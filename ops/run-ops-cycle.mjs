@@ -14,6 +14,7 @@ import { dispatchPendingNotifications, requiresNotificationIncident } from './no
 import { auditTaskTimeline } from './task-audit-integrity.mjs';
 import { applyApprovedTaskAuditRemediation, buildTaskAuditRemediationPlan, writeTaskAuditRemediationPlan } from './task-audit-remediation.mjs';
 import { writeGoalAudit } from './goal-audit.mjs';
+import { buildTeamActivityReport, writeTeamActivityReport } from './team-activity-report.mjs';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const opsRoot = resolve(root, 'ops');
@@ -242,6 +243,19 @@ await writeFile(resolve(opsRoot, 'latest-ops-cycle.json'), `${JSON.stringify(cyc
 // surface reflects the final delivery state for H-01.
 await writeExecutiveReview({ generatedAt });
 await writeGoalAudit({ generatedAt: new Date().toISOString() });
+const finalQueue = JSON.parse(await readFile(taskQueuePath, 'utf8'));
+const finalApprovalInbox = JSON.parse(await readFile(resolve(opsRoot, 'approval-inbox.json'), 'utf8'));
+await writeTeamActivityReport(resolve(opsRoot, 'latest-team-activity.json'), buildTeamActivityReport({
+  roster: JSON.parse(await readFile(resolve(root, 'data', 'team-roster.json'), 'utf8')).members,
+  tasks: finalQueue.tasks,
+  selectedTask: latestRun.selectedTask || null,
+  pendingApprovalTaskIds: new Set((finalApprovalInbox.items || []).filter((item) => item.status === 'PENDING').map((item) => item.taskId)),
+  readiness,
+  cycleId,
+  generatedAt: new Date().toISOString(),
+  automation: cycle.automation,
+  workPacket: latestRun.workPacket || null,
+}));
 console.log(JSON.stringify({ cycleId, decision: cycle.decision, monitor: monitor.status, autopilot: cycle.autopilot?.decision, triggerTasks: triggerResult.inbox.pending }));
 
 if (cycle.decision === 'INCIDENT_HUMAN_REVIEW_REQUIRED') process.exitCode = 1;
