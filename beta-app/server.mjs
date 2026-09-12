@@ -21,6 +21,7 @@ import { mapOrder, mapTrade, PostgresDomainAdapterError } from './postgres-domai
 import { buildMarketBoard } from './market-board.mjs';
 import { evaluateTaskSla } from '../ops/task-sla.mjs';
 import { compileGoal } from '../ops/goal-compiler.mjs';
+import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const opsRoot = resolve(process.env.OPS_ROOT || resolve(root, '..', 'ops'));
@@ -322,6 +323,7 @@ const handleApi = async (request, response, url) => {
            staleTasks: taskSla.items.filter((item) => item.stale),
          },
         approvalInbox: { status: pendingApprovals.length ? 'PENDING' : 'CLEAR', pending: pendingApprovals.length, unresolvedEvidence: Array.isArray(approvalInbox.unresolvedEvidence) ? approvalInbox.unresolvedEvidence.length : 0, items: approvalItems },
+        approvalDecisionGuide: buildApprovalDecisionGuide(approvalItems),
         supplierVerification: { pendingRequests: supplierVerificationRequests.filter((item) => item.status === 'REQUESTED').length, awaitingFinalReview: supplierVerificationRequests.filter((item) => item.status === 'UNDER_REVIEW').length, items: supplierVerificationRequests },
         triggerInbox: { status: triggerInbox.status, pending: Number(triggerInbox.pending || 0), tasks: Array.isArray(triggerInbox.tasks) ? triggerInbox.tasks : [] },
         notificationOutbox: {

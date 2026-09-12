@@ -32,6 +32,20 @@ const approvalGuidance = (item = {}) => {
   return { recommendation: 'HOLD_REAL_OPERATIONS', reason: '외부 증거 또는 릴리스 조건이 충족되기 전까지 실거래·계약·결제를 보류' };
 };
 
+export const buildApprovalDecisionGuide = (items = []) => (Array.isArray(items) ? items : [])
+  .filter((item) => item.status === 'PENDING')
+  .map((item) => ({
+    approvalId: item.approvalId || null,
+    taskId: item.taskId || null,
+    triggerKey: item.triggerKey || null,
+    objective: item.objective || null,
+    risk: item.risk || null,
+    reviewers: item.reviewers || [],
+    humanPrincipal: item.requiredPrincipal || 'H-01',
+    ...approvalGuidance(item),
+    externalSideEffect: false,
+  }));
+
 export const buildExecutiveReview = ({ cycle = {}, autopilot = {}, readiness = {}, approvalInbox = {}, taskQueue = {}, taskTimelineAudit = cycle.automation?.taskTimelineAudit || {}, taskAuditRemediation = cycle.automation?.taskAuditRemediation || {}, githubTargetPreflight = null, generatedAt = new Date().toISOString() } = {}) => {
   const evidence = Array.isArray(autopilot.evidence) ? autopilot.evidence : [];
   const staging = parseJsonOutput(evidence.find((item) => item.name === 'staging-preflight')?.output);
@@ -39,19 +53,7 @@ export const buildExecutiveReview = ({ cycle = {}, autopilot = {}, readiness = {
   const failed = evidence.filter((item) => !item.passed && !item.skipped).map((item) => ({ name: item.name, output: item.output || '' }));
   const skipped = evidence.filter((item) => item.skipped).map((item) => ({ name: item.name, output: item.output || '' }));
   const missing = Array.isArray(readiness.missing) ? readiness.missing : [];
-  const pendingApprovals = (Array.isArray(approvalInbox.items) ? approvalInbox.items : [])
-    .filter((item) => item.status === 'PENDING')
-    .map((item) => ({
-      approvalId: item.approvalId || null,
-      taskId: item.taskId || null,
-      triggerKey: item.triggerKey || null,
-      objective: item.objective || null,
-      risk: item.risk || null,
-      reviewers: item.reviewers || [],
-      humanPrincipal: item.requiredPrincipal || 'H-01',
-      ...approvalGuidance(item),
-      externalSideEffect: false,
-    }));
+  const pendingApprovals = buildApprovalDecisionGuide(approvalInbox.items);
   return {
     schemaVersion: 'EXECUTIVE-REVIEW-0.1',
     generatedAt,
