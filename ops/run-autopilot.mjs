@@ -7,6 +7,7 @@ import { evaluateReleaseReadiness } from '../beta-app/readiness.mjs';
 import { buildTriggerTasks, deriveOperationalSignals, deriveTaskMetadataSignals, deriveTaskSlaSignals, enqueueTriggerTasks, reconcileTriggerQueue, selectActiveTriggerTasks, upsertTriggerInbox } from './trigger-engine.mjs';
 import { acquireOperationLock } from './operation-lock.mjs';
 import { claimQueuedTask } from './autopilot-claim.mjs';
+import { recordAutopilotExecution } from './autopilot-execution-evidence.mjs';
 import { appendWorkPacket, buildWorkPacket } from './work-packet.mjs';
 import { appendPatentDisclosurePacket, buildPatentDisclosurePacket } from './patent-disclosure-packet.mjs';
 import { evidenceFingerprint, selectNextTask } from './autopilot-selection.mjs';
@@ -334,10 +335,22 @@ run.automation = {
   enqueuedTriggerTaskIds: queueResult.additions.map((task) => task.id),
 };
 
+let claimResult = { claimed: false };
 if (args.has('--claim')) {
-  const claim = claimQueuedTask(selectedTask, selectionType, { claimedAt: run.generatedAt });
-  if (claim.claimed) await writeFile(queuePath, `${JSON.stringify(queue, null, 2)}\n`, 'utf8');
+  claimResult = claimQueuedTask(selectedTask, selectionType, { claimedAt: run.generatedAt });
+  if (claimResult.claimed) await writeFile(queuePath, `${JSON.stringify(queue, null, 2)}\n`, 'utf8');
 }
+
+const executionEvidence = await recordAutopilotExecution({
+  queuePath,
+  auditPath: resolve(root, 'ops', 'autopilot-execution-evidence.jsonl'),
+  selectedTaskId: selectedTask?.id || null,
+  runId: run.runId,
+  generatedAt: run.generatedAt,
+  decision: run.decision,
+  allowQueued: claimResult.claimed,
+});
+run.executionEvidence = executionEvidence;
 
 // First rebuild the current-run approval packet, then merge every still-active
 // trigger task so no unresolved automated task is invisible to H-01.
