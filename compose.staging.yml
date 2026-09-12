@@ -15,7 +15,7 @@ services:
       retries: 12
 
   object-storage:
-    image: minio/minio:RELEASE.2024-06-13T22-53-53Z
+    image: quay.io/minio/minio:RELEASE.2024-06-13T22-53-53Z
     restart: unless-stopped
     command: server /data --console-address ":9001"
     environment:
@@ -27,7 +27,7 @@ services:
     volumes:
       - raw-material-os-objects:/data
   object-storage-init:
-    image: minio/mc:RELEASE.2025-08-13T08-35-41Z
+    image: quay.io/minio/mc:RELEASE.2025-08-13T08-35-41Z
     depends_on:
       object-storage:
         condition: service_started
@@ -104,4 +104,3 @@ services:
 volumes:
   raw-material-os-postgres:
   raw-material-os-objects:
-
