@@ -1,6 +1,11 @@
 {
   "schemaVersion": "TEAM-AUTONOMY-POLICY-0.1",
   "humanApprovalPrincipal": "H-01",
+  "humanAllowedActions": [
+    "FINAL_DECISION",
+    "APPROVE_OR_HOLD",
+    "TRADE_STOP"
+  ],
   "truthModel": "RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT",
   "automaticPreparationActions": [
     "ANALYZE",
