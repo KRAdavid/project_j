@@ -11,6 +11,7 @@ const gatedActions = new Set(policy.humanApprovalRequiredActions);
 
 assert.equal(policy.schemaVersion, 'TEAM-AUTONOMY-POLICY-0.1');
 assert.equal(policy.humanApprovalPrincipal, 'H-01');
+assert.deepEqual(policy.humanAllowedActions, ['FINAL_DECISION', 'APPROVE_OR_HOLD', 'TRADE_STOP']);
 assert.equal(policy.truthModel, 'RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT');
 assert.ok(aiActions.size >= 4);
 assert.ok(gatedActions.size >= 7);
