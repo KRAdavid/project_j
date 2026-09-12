@@ -18,6 +18,9 @@ for (const id of ['supplier-eligibility', 'refresh-supplier-eligibility', 'suppl
 assert.match(html, /id=["']ops-supplier-review-list["']/i, '운영자 공급자 검토 큐가 필요합니다.');
 assert.match(html, /id=["']ops-team-list["']/i, '운영자 참여 팀 명부가 필요합니다.');
 assert.match(html, /id=["']ops-team-ownership-state["']/i, '운영자 업무 소유권 상태가 필요합니다.');
+assert.match(html, /id=["']ops-team-activity-state["']/i, '운영자 팀 자동 활동 요약이 필요합니다.');
+assert.match(html, /id=["']ops-team-activity-summary["']/i, '운영자 팀 승인·증거 요약이 필요합니다.');
+assert.match(html, /id=["']ops-team-activity-list["']/i, '운영자 팀별 자동 활동 목록이 필요합니다.');
 assert.match(html, /id=["']ops-run-packet["']/i, '운영자 작업 패킷 상태가 필요합니다.');
 assert.match(html, /id=["']ops-run-patent["']/i, '운영자 BM특허 패킷 상태가 필요합니다.');
 assert.match(html, /id=["']ops-daemon-status["']/i, '운영자 자동운영 데몬 상태가 필요합니다.');
@@ -30,6 +33,9 @@ assert.match(html, /id=["']ops-task-sla-status["']/i, '운영자 업무 SLA 상�
 assert.match(html, /id=["']search-suggestion-list["']/i, 'Material Master 다중 후보 선택 UI가 필요합니다.');
 assert.match(app, /supplierVerification/, '운영자 화면은 공급자 검증 흐름을 표시해야 합니다.');
 assert.match(app, /summary\.teamRoster/, '운영자 화면은 기계 판독 가능한 참여 팀 명부를 표시해야 합니다.');
+assert.match(app, /summary\.teamActivity/, '운영자 화면은 팀 자동 활동 원장을 표시해야 합니다.');
+assert.match(app, /independentPreparationContinuesWhileApprovalPending/, '승인 대기 중 독립 준비 지속 여부를 표시해야 합니다.');
+assert.match(app, /UNVERIFIED_ACTIVE/, '실행 증거가 부족한 활성 업무를 별도 상태로 표시해야 합니다.');
 assert.match(app, /summary\.taskOwnership/, '운영자 화면은 업무 담당·검토자 연결 상태를 표시해야 합니다.');
 assert.match(app, /readiness\.missing/, '운영자 화면은 상용 전환 보류 게이트를 표시해야 합니다.');
 assert.match(app, /readiness\.diagnostics/, '운영자 화면은 상용 전환 보류 게이트의 결손 항목을 표시해야 합니다.');
