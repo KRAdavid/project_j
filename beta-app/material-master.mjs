@@ -38,9 +38,10 @@ export const validateMaterialMaster = (input = catalog) => {
 
 if (!validateMaterialMaster()) throw new Error('Material Master Schema 검증에 실패했습니다.');
 
-export const resolveMaterial = (query) => {
+export const resolveMaterial = (query, source = catalog) => {
   const normalizedQuery = normalize(query);
-  const record = catalog.records.find((candidate) => (
+  const records = Array.isArray(source?.records) ? source.records : [];
+  const record = records.find((candidate) => (
     normalize(candidate.materialId) === normalizedQuery
     || normalize(candidate.canonicalName) === normalizedQuery
     || candidate.aliases.some((alias) => normalize(alias) === normalizedQuery)
@@ -86,11 +87,12 @@ const publicMaterial = (record, query, matchType) => ({
 });
 
 /** Return ranked candidates without selecting or confirming a trade spec. */
-export const searchMaterials = (query, { limit = 10 } = {}) => {
+export const searchMaterials = (query, { limit = 10, source = catalog } = {}) => {
   const normalizedQuery = normalize(query);
   if (!normalizedQuery) return [];
   const safeLimit = Math.max(1, Math.min(20, Number(limit) || 10));
-  return catalog.records
+  const records = Array.isArray(source?.records) ? source.records : [];
+  return records
     .map((record) => {
       const values = [record.materialId, record.canonicalName, ...(record.aliases || [])].map(normalize);
       const exact = values.some((value) => value === normalizedQuery);
@@ -106,3 +108,4 @@ export const searchMaterials = (query, { limit = 10 } = {}) => {
 };
 
 export const materialMasterSnapshot = () => JSON.parse(JSON.stringify(catalog));
+
