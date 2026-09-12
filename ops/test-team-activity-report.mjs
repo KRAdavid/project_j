@@ -26,6 +26,8 @@ const report = buildTeamActivityReport({
 
 assert.equal(report.truthModel, 'RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT');
 assert.equal(report.executionSummary.selectedTaskId, 'TASK-1');
+assert.equal(report.executionSummary.independentPreparationContinuesWhileApprovalPending, true);
+assert.equal(report.executionSummary.pendingApprovalCount, 1);
 assert.equal(report.executionSummary.triggerTasksPending, 2);
 assert.equal(report.members.find((member) => member.id === 'AI-01').status, 'AUTO_EXECUTING');
 assert.equal(report.members.find((member) => member.id === 'AI-10').status, 'WAITING_FOR_H01');
@@ -34,3 +36,4 @@ assert.deepEqual(report.members.find((member) => member.id === 'AI-05').executio
 assert.equal(report.members.find((member) => member.id === 'H-01').status, 'WAITING_FOR_H01');
 assert.ok(report.members.find((member) => member.id === 'AI-10').forbiddenActions.includes('TRADE_FINALIZATION'));
 console.log('team activity report: PASS');
+

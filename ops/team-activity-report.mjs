@@ -106,6 +106,8 @@ export const buildTeamActivityReport = ({
     truthModel: 'RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT',
     executionSummary: {
       automaticPreparation: true,
+      independentPreparationContinuesWhileApprovalPending: true,
+      pendingApprovalCount: pendingIds.size,
       selectedTaskId: selectedTask?.id || null,
       workPacketId: workPacket?.packetId || null,
       triggerTasksPending: Number(automation.triggerInboxPending || 0),
@@ -124,3 +126,4 @@ export const writeTeamActivityReport = async (reportPath, report) => {
   await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
   return report;
 };
+
