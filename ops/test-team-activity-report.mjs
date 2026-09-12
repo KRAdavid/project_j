@@ -20,7 +20,7 @@ const report = buildTeamActivityReport({
   pendingApprovalTaskIds: new Set(['TASK-2']),
   readiness: { decision: 'NO_GO', missing: ['R-01'] },
   automation: { triggerInboxPending: 2 },
-  workPacket: { packetId: 'PACKET-1' },
+  workPacket: { packetId: 'PACKET-1', taskId: 'TASK-1', generatedAt: '2026-01-01T00:00:00.000Z' },
   cycleId: 'CYCLE-1',
 });
 

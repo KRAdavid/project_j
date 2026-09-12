@@ -15,7 +15,10 @@ const taskTouchesMember = (task, member) => (
   || (Array.isArray(task?.reviewers) && task.reviewers.some((reviewer) => isMemberReference(reviewer, member)))
 );
 
-const hasExecutionEvidence = (task) => EXECUTION_EVIDENCE_FIELDS.some((field) => Boolean(task?.[field]));
+const hasExecutionEvidence = (task, { selectedTask = null, workPacket = null } = {}) => (
+  EXECUTION_EVIDENCE_FIELDS.some((field) => Boolean(task?.[field]))
+  || (selectedTask?.id === task?.id && workPacket?.taskId === task?.id && Boolean(workPacket?.generatedAt || workPacket?.packetId))
+);
 
 const summarizeCounts = (members) => members.reduce((counts, member) => {
   counts[member.status] = (counts[member.status] || 0) + 1;
@@ -46,7 +49,8 @@ export const buildTeamActivityReport = ({
     const memberTasks = (Array.isArray(tasks) ? tasks : []).filter((task) => taskTouchesMember(task, member));
     const activeTasks = memberTasks.filter((task) => ACTIVE_STATUSES.has(task?.status));
     const waitingTasks = activeTasks.filter((task) => pendingIds.has(task.id));
-    const unverifiedTasks = activeTasks.filter((task) => ['working', 'review'].includes(task?.status) && !hasExecutionEvidence(task));
+    const taskHasEvidence = (task) => hasExecutionEvidence(task, { selectedTask, workPacket });
+    const unverifiedTasks = activeTasks.filter((task) => ['working', 'review'].includes(task?.status) && !taskHasEvidence(task));
     const queuedTasks = activeTasks.filter((task) => task?.status === 'queued');
     const selected = selectedTask && isMemberReference(selectedTask.ownerAi, member) ? selectedTask : null;
 
@@ -60,7 +64,7 @@ export const buildTeamActivityReport = ({
     } else if (waitingTasks.length) {
       status = 'WAITING_FOR_H01';
       reason = `담당·검토 업무 ${waitingTasks.length}건이 H-01 승인 대기입니다.`;
-    } else if (selected && hasExecutionEvidence(selected)) {
+    } else if (selected && taskHasEvidence(selected)) {
       status = 'AUTO_EXECUTING';
       reason = '현재 운영 사이클이 안전한 분석·검증·준비 작업을 실행 중입니다.';
     } else if (unverifiedTasks.length) {
@@ -87,7 +91,7 @@ export const buildTeamActivityReport = ({
       reason,
       selectedTaskId: selected?.id || null,
       activeTaskIds: activeTasks.map((task) => task.id),
-      executionEvidenceTaskIds: activeTasks.filter(hasExecutionEvidence).map((task) => task.id),
+      executionEvidenceTaskIds: activeTasks.filter(taskHasEvidence).map((task) => task.id),
       unverifiedActiveTaskIds: unverifiedTasks.map((task) => task.id),
       waitingApprovalTaskIds: waitingTasks.map((task) => task.id),
       allowedActions: member.id === H01_ID
