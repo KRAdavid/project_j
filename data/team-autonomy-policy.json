@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "TEAM-AUTONOMY-POLICY-0.1",
+  "humanApprovalPrincipal": "H-01",
+  "truthModel": "RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT",
+  "automaticPreparationActions": [
+    "ANALYZE",
+    "RUN_TESTS",
+    "WRITE_REVIEW_PACKET",
+    "RAISE_RISK_SIGNAL"
+  ],
+  "humanApprovalRequiredActions": [
+    "TRADE_FINALIZATION",
+    "CONTRACT_FINALIZATION",
+    "PAYMENT_RELEASE",
+    "REFUND",
+    "DISPUTE_CLOSURE",
+    "RELEASE_QUARANTINE",
+    "PRODUCTION_CUTOVER"
+  ],
+  "executionEvidenceFields": [
+    "claimedAt",
+    "startedAt",
+    "reviewedAt",
+    "lastRecheckedAt"
+  ],
+  "statusSemantics": {
+    "AUTO_EXECUTING": "현재 사이클이 증거를 남기는 안전한 준비 업무를 실행 중이다.",
+    "AUTO_QUEUE_ACTIVE": "검증 가능한 업무가 다음 자동 사이클을 기다린다.",
+    "WAITING_FOR_H01": "H-01의 승인 또는 운영 결정을 기다린다.",
+    "UNVERIFIED_ACTIVE": "활성 표시가 있으나 착수·재검토 증거가 없어 실행 중으로 인정하지 않는다.",
+    "READY_FOR_DECISION": "H-01이 결정할 승인 대기 항목이 없다.",
+    "IDLE": "현재 배정된 활성 업무가 없다."
+  },
+  "guardrail": "AI는 분석·검증·준비만 자동 수행하며 실제 거래·계약·결제·운영 재개는 H-01 승인 없이는 수행하지 않는다."
+}
