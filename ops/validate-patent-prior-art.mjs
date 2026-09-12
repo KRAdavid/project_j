@@ -24,7 +24,7 @@ if (source.supplementalSearches !== undefined) {
   if (!Array.isArray(source.supplementalSearches)) throw new Error('보충 선행기술 검색 결과 형식이 잘못되었습니다.');
   for (const search of source.supplementalSearches) {
     if (!/^PA-S-\\d{3}$/.test(search.id) || !/^[A-Z]{2,3}\\d+[A-Z]\\d?$/.test(search.publicationNumber)) throw new Error('보충 선행기술 식별자가 불완전합니다.');
-    if (!/^https:\\/\\/patents\\.googleapis\\.com\\/patent\\//.test(search.url)) throw new Error('보충 선행기술 URL이 공개 특허 페이지 형식이 아닙니다.');
+    if (!/^https:\\/\\/patents\\.google\\.com\\/patent\\//.test(search.url)) throw new Error('보충 선행기술 URL이 공개 특허 페이지 형식이 아닙니다.');
     if (search.verificationStatus !== 'PENDING_OFFICIAL_CLAIM_REVIEW' || search.searchScope !== 'SUPPLEMENTAL_PUBLIC_PAGE_REVIEW' || !search.legalReviewRequired) throw new Error('보충 선행기술의 법률 검토 경계가 부정확합니다.');
     if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(search.sourceCheckDate) || !/^.+_CLAIMS_PENDING$/.test(search.sourceCheckStatus || '') || !search.sourceCheckNote) throw new Error('보충 선행기술의 확인 수준이 기록되지 않았습니다.');
     if (!Array.isArray(search.overlapAxes) || !search.overlapAxes.length || !Array.isArray(search.differentiationQuestions) || !search.differentiationQuestions.length) throw new Error('보충 선행기술의 겹침·차이점 조사축이 없습니다.');
