@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
 import { resolve } from 'node:path';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, rename, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
@@ -25,6 +25,33 @@ let stopping = false;
 let cycleCount = 0;
 let timer = null;
 let activeChild = null;
+let statusWriteSequence = 0;
+let queuedStatusWrite = Promise.resolve();
+
+const sleep = (milliseconds) => new Promise((resolveSleep) => setTimeout(resolveSleep, milliseconds));
+
+const renameWithRetry = async (temporaryPath, targetPath) => {
+  let lastError = null;
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    try {
+      await rename(temporaryPath, targetPath);
+      return;
+    } catch (error) {
+      lastError = error;
+      const retryable = process.platform === 'win32' && ['EPERM', 'EEXIST', 'EBUSY'].includes(error.code);
+      if (!retryable || attempt === 11) throw error;
+      await sleep(5 + attempt * 10);
+    }
+  }
+  throw lastError;
+};
+
+const atomicWrite = async (path, content) => {
+  statusWriteSequence += 1;
+  const temporaryPath = `${path}.${process.pid}.${Date.now()}.${statusWriteSequence}.tmp`;
+  await writeFile(temporaryPath, content, 'utf8');
+  await renameWithRetry(temporaryPath, path);
+};
 
 const terminateChildTree = (child, { force = false } = {}) => {
   if (!child?.pid) return;
@@ -51,8 +78,10 @@ const log = (event, details = {}) => {
 
 const writeStatus = async (updates = {}) => {
   Object.assign(daemonStatus, updates, { updatedAt: new Date().toISOString() });
+  const content = `${JSON.stringify(daemonStatus, null, 2)}\n`;
+  queuedStatusWrite = queuedStatusWrite.catch(() => {}).then(() => atomicWrite(statusPath, content));
   try {
-    await writeFile(statusPath, `${JSON.stringify(daemonStatus, null, 2)}\n`, 'utf8');
+    await queuedStatusWrite;
   } catch (error) {
     log('status_write_failed', { statusPath, error: error.message });
   }
@@ -163,4 +192,3 @@ const loop = async () => {
 log('started', { intervalMs, cycleTimeoutMs, maxCycles, runOnStart, runOnce, cycleScript });
 await writeStatus({ status: 'RUNNING' });
 await loop();
-
