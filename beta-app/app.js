@@ -639,6 +639,18 @@ async function hydrateOpsSummary() {
     $('#ops-team-ownership-state').classList.toggle('success', taskOwnershipValid);
     const autonomyLabels = { FINAL_DECISION: '최종 결정권', ANALYZE_PREPARE: '분석·준비 자동' };
     $('#ops-team-list').innerHTML = teamMembers.length ? teamMembers.map((member) => `<div class="ops-team-row"><span class="team-kind ${member.kind === 'HUMAN' ? 'human' : 'ai'}">${escapeHtml(member.id)}</span><div><strong>${escapeHtml(member.name || '')}</strong><small>${escapeHtml(member.role || '')}</small></div><b>${escapeHtml(autonomyLabels[member.autonomy] || '권한 확인')}</b></div>`).join('') : '<div class="ops-empty">참여 팀 명부를 확인할 수 없습니다.</div>';
+
+     const teamActivity = summary.teamActivity || {};
+     const activityCounts = teamActivity.counts || {};
+     const executionSummary = teamActivity.executionSummary || {};
+     const activityStatusLabels = { AUTO_EXECUTING: '자동 준비 실행', AUTO_QUEUE_ACTIVE: '자동 큐 대기', WAITING_FOR_H01: 'H-01 승인 대기', UNVERIFIED_ACTIVE: '실행 증거 확인 필요', READY_FOR_DECISION: '대표 결정 가능', IDLE: '대기' };
+     const autoExecuting = Number(activityCounts.AUTO_EXECUTING || 0);
+     const waitingForH01 = Number(activityCounts.WAITING_FOR_H01 || 0);
+     const unverifiedActive = Number(activityCounts.UNVERIFIED_ACTIVE || 0);
+     $('#ops-team-activity-state').textContent = autoExecuting ? `${autoExecuting}명 준비 실행` : waitingForH01 ? '승인 대기 중' : '자동 큐 확인';
+     $('#ops-team-activity-summary').textContent = `자동 준비 ${autoExecuting}명 · 승인 대기 ${waitingForH01}명 · 증거 확인 필요 ${unverifiedActive}명 · H-01 결정 대기 ${executionSummary.pendingApprovalCount || 0}건${executionSummary.independentPreparationContinuesWhileApprovalPending ? ' · 승인 대기 중에도 독립 준비 계속' : ''}`;
+     const activityMembers = teamActivity.members || [];
+     $('#ops-team-activity-list').innerHTML = activityMembers.length ? activityMembers.map((member) => `<div class="ops-team-activity-row"><div><strong>${escapeHtml(member.memberId || '')}</strong><small>${escapeHtml(member.name || '')}</small></div><b class="activity-status ${member.status === 'UNVERIFIED_ACTIVE' ? 'warning' : member.status === 'WAITING_FOR_H01' ? 'waiting' : ''}">${escapeHtml(activityStatusLabels[member.status] || member.status || '상태 확인')}</b><span>${escapeHtml(member.reason || '')}</span></div>`).join('') : '<div class="ops-empty">현재 팀 활동 상태가 없습니다.</div>';
     const latest = summary.latestRun;
     $('#ops-run-decision').textContent = latest?.decision || '실행 기록 없음';
     $('#ops-run-decision').classList.toggle('success', latest?.decision === 'GO');
