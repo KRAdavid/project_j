@@ -125,10 +125,17 @@
       "url": "https://patents.google.com/patent/US20250322412A1/en",
       "verificationStatus": "PENDING_OFFICIAL_CLAIM_REVIEW",
       "sourceCheckDate": "2026-09-12",
-      "sourceCheckStatus": "ABSTRACT_AND_DESCRIPTION_REVIEWED_CLAIMS_PENDING",
-      "sourceCheckNote": "공개 페이지에서 공급자·원료 로트·COA·시험결과를 불변 데이터베이스에 결속하고, 추가 시험 결과로 로트 검증 정도를 산정하는 설명을 확인했다. 전체 청구항·패밀리·법적 상태는 변리사 재검토 대상으로 남긴다.",
+      "sourceCheckStatus": "ABSTRACT_DESCRIPTION_AND_INDEPENDENT_CLAIMS_REVIEWED_DEPENDENT_CLAIMS_PENDING",
+      "sourceCheckNote": "공개 페이지의 청구항 1·2를 직접 대조했다. 청구항 1은 처리시스템과 비일시적 저장매체가 공급자·배치, 최초 시험결과, 공급자와 독립된 후속 시험결과를 수신하고, 블록체인 스마트계약에 저장해 확인점수·검증 정도를 산정하는 구성을 포함한다. 청구항 2는 검증된 블록을 공급자와 수령자에게 공개하는 구성이다. 전체 패밀리·법적 상태·침해 및 국내 적용성은 변리사 재검토 대상으로 남긴다.",
       "overlapAxes": ["raw-material lot and COA verification", "immutable supplier and test-result history"],
       "differentiationQuestions": ["Material Master 기반 스펙 확정 대화", "증빙 생명주기와 거래 전 매물 노출 게이트", "체결 순간 멱등 원자 예약과 불변 거래 스냅샷"],
+      "claimReview": {
+        "reviewedClaims": ["1", "2"],
+        "claim1CoreElements": ["supplier identity and batch description", "initial and independent subsequent material test results", "blockchain smart-contract storage", "confirmation scores and degree-of-validation block routine"],
+        "claim2CoreElements": ["verified block accessible to supplier and intended recipients"],
+        "overlapAssessment": "불변 공급자·로트·시험결과 검증 및 검증점수 산정은 중첩 검토 대상이다.",
+        "candidateDifferentiatorsToValidate": ["Material Master 질문 흐름에서 거래용 Spec ID를 확정하는 단계", "거래 전에 증빙·로트·재고 자격을 동시에 만족해야 매물을 공개하는 게이트", "체결 시점 멱등 키와 원자적 로트 예약", "납품·검수 이후에만 가격관측치를 확정하는 불변 거래 스냅샷"]
+      },
       "legalReviewRequired": true,
       "searchScope": "SUPPLEMENTAL_PUBLIC_PAGE_REVIEW"
     }
@@ -139,3 +146,4 @@
     "공개 베타 전 출원·영업비밀 보존 범위 확정"
   ]
 }
+
