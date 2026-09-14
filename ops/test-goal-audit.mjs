@@ -3,7 +3,7 @@ import { buildGoalAudit, selectShadowPilotEvidence } from './goal-audit.mjs';
 
 const base = {
   cycle: { cycleId: 'C-001', decision: 'HUMAN_REVIEW_REQUIRED' },
-  supervisor: { status: 'RUNNING', daemonReviewRequired: true },
+  supervisor: { status: 'RUNNING', daemonReviewRequired: true, liveness: { ready: true, reason: null } },
   runtime: { persistenceMode: 'memory', realTradingEnabled: false },
   autopilot: { runId: 'A-001', evidence: [{ passed: true, skipped: false }] },
   browserE2e: { result: 'PASS' },
@@ -116,3 +116,4 @@ const publishedWithPremergeCi = buildGoalAudit({
 assert.equal(publishedWithPremergeCi.checks.find((item) => item.id === 'GITHUB_PUBLICATION').status, 'VERIFIED');
 assert.equal(publishedWithPremergeCi.runtime.githubPublicationStatus, 'PUBLISHED');
 console.log('goal audit contract: PASS');
+
