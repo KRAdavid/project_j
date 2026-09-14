@@ -23,7 +23,7 @@ import { buildMarketBoard } from './market-board.mjs';
 import { evaluateTaskSla } from '../ops/task-sla.mjs';
 import { compileGoal } from '../ops/goal-compiler.mjs';
 import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
-import { createSimulationSupplierRegistration, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
+import { createSimulationSupplierRegistration, evaluateSupplierAiPrecheck, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const opsRoot = resolve(process.env.OPS_ROOT || resolve(root, '..', 'ops'));
@@ -64,6 +64,7 @@ const simulationSupplierVerificationRequests = new Map();
 const simulationSupplierRegistrations = new Map();
 const simulationSupplierRegistrationOwners = new Map();
 const simulationBusinessAccounts = new Map();
+const simulationSupplierPrechecks = new Map();
 const eventBroker = new SseEventBroker({ heartbeatPayload: { dataStatus: runtimeDataStatus } });
 const evidenceRegistry = new EvidenceRegistry({ snapshot: await persistenceStore.loadEvidence() });
 const documentStorage = createDocumentStorage({ environment, persistenceMode: persistenceStore.mode });
@@ -523,6 +524,19 @@ const handleApi = async (request, response, url) => {
         dataStatus: runtimeDataStatus,
         guardrail: '공급자 계정만 자동 등록되었습니다. COA·SDS·TDS·로트추적·재고 증빙 검증 전에는 매물·체결 권한을 열지 않습니다.',
       });
+    }
+    if (request.method === 'POST' && url.pathname === '/api/supplier/precheck') {
+      const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
+      authorize(principal, 'upload_evidence', authorizationPolicy);
+      const input = await readJson(request);
+      const review = evaluateSupplierAiPrecheck(input);
+      const idempotencyKey = String(input.idempotencyKey || `${input.coaFileName || 'coa'}-${input.coaFileSize || 0}-${input.inventoryQuantity || 0}-${input.unit || ''}`).slice(0, 160);
+      const key = `${principal.organizationId}:${idempotencyKey}`;
+      const existing = simulationSupplierPrechecks.get(key);
+      if (existing) return sendJson(response, 200, { precheck: existing, review: existing.review, status: 'PRECHECK_REVIEWED', idempotent: true, dataStatus: runtimeDataStatus });
+      const precheck = { precheckId: `SIM-SUPPLIER-PRECHECK-${Date.now()}`, organizationId: principal.organizationId, reviewedBy: 'AI-SUPPLIER-PRECHECK', material: String(input.material || '').trim(), coaDocumentNumber: String(input.coaDocumentNumber || '').trim(), coaFileName: String(input.coaFileName || '').trim(), coaFileSize: Number(input.coaFileSize || 0), inventoryQuantity: Number(input.inventoryQuantity || 0), unit: String(input.unit || '').trim().toUpperCase(), expiry: String(input.expiry || '').trim(), review };
+      simulationSupplierPrechecks.set(key, precheck);
+      return sendJson(response, 201, { precheck, review, status: 'PRECHECK_REVIEWED', idempotent: false, dataStatus: runtimeDataStatus });
     }
     if (request.method === 'POST' && url.pathname === '/api/supplier/verification-request') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });

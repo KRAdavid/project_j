@@ -1,4 +1,6 @@
 const BUSINESS_NUMBER_WEIGHTS = [1, 3, 7, 1, 3, 7, 1, 3, 5];
+const SUPPORTED_COA_EXTENSIONS = /\.(pdf|png|jpe?g)$/i;
+const MAX_COA_METADATA_SIZE = 10 * 1024 * 1024;
 
 export const normalizeBusinessRegistrationNumber = (value) => String(value ?? '').replace(/\D/g, '');
 
@@ -39,5 +41,46 @@ export const createSimulationSupplierRegistration = ({ organizationId, userId, b
     status: 'REGISTERED',
     registrationMode: 'SIMULATION_CHECKSUM_ONLY',
     registeredAt: now,
+  };
+};
+
+export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = '', coaFileName = '', coaFileSize = 0, inventoryQuantity = 0, unit = '', expiry = '', priceTiers = [], now = new Date().toISOString() } = {}) => {
+  const normalizedFileName = String(coaFileName || '').trim();
+  const normalizedSize = Number(coaFileSize || 0);
+  const normalizedInventory = Number(inventoryQuantity || 0);
+  const normalizedUnit = String(unit || '').trim().toUpperCase();
+  const expiryDate = String(expiry || '').trim();
+  const supportedFile = SUPPORTED_COA_EXTENSIONS.test(normalizedFileName) && normalizedSize > 0 && normalizedSize <= MAX_COA_METADATA_SIZE;
+  const validExpiry = /^\d{4}-\d{2}-\d{2}$/.test(expiryDate) && expiryDate >= String(now).slice(0, 10);
+  const validUnit = ['KG', 'L', 'EA'].includes(normalizedUnit);
+  const validPriceTiers = Array.isArray(priceTiers) && priceTiers.some((tier) => Number(tier?.quantity || 0) > 0 && Number(tier?.price || 0) > 0);
+  const checks = {
+    materialPresent: Boolean(String(material || '').trim()),
+    coaReferencePresent: Boolean(String(coaDocumentNumber || '').trim()),
+    coaFilePresent: Boolean(normalizedFileName),
+    supportedFile,
+    inventoryQuantityPositive: normalizedInventory > 0,
+    validUnit,
+    expiryNotPast: validExpiry,
+    priceTierPresent: validPriceTiers,
+  };
+  const reasons = Object.entries(checks).filter(([, passed]) => !passed).map(([check]) => ({
+    materialPresent: '공급 원료명이 필요합니다.',
+    coaReferencePresent: 'COA 문서번호가 필요합니다.',
+    coaFilePresent: 'COA 파일이 필요합니다.',
+    supportedFile: 'COA는 10MB 이하의 PDF·JPG·PNG 파일이어야 합니다.',
+    inventoryQuantityPositive: '검증 재고수량은 0보다 커야 합니다.',
+    validUnit: '거래 단위가 올바르지 않습니다.',
+    expiryNotPast: '소비기한은 오늘 이후 날짜여야 합니다.',
+    priceTierPresent: '수량별 공급 단가가 최소 한 구간 필요합니다.',
+  }[check]));
+  return {
+    status: reasons.length === 0 ? 'REVIEWED' : 'NEEDS_REVIEW',
+    mode: 'SIMULATION_AI_PRECHECK',
+    ready: reasons.length === 0,
+    checks,
+    reasons,
+    reviewedAt: now,
+    guardrail: 'AI는 입력값을 사전검토할 뿐 공급자 승인·매물 공개·거래 체결을 수행하지 않습니다.',
   };
 };

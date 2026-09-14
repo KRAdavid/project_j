@@ -31,6 +31,17 @@ try {
   assert.equal(accountPayload.status, 'ACCOUNT_REGISTERED');
   assert.equal(accountPayload.account.maskedBusinessRegistrationNumber, '220-81-****7');
 
+  const precheckInput = { material: 'GABA', coaDocumentNumber: 'COA-GABA-2026-07', coaFileName: 'coa-gaba-2026-07.pdf', coaFileSize: 2048, inventoryQuantity: 100, unit: 'KG', expiry: '2099-12-31', priceTiers: [{ quantity: 20, price: 21800 }], idempotencyKey: 'supplier-precheck-test-001' };
+  const precheck = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify(precheckInput) });
+  assert.equal(precheck.status, 201);
+  const precheckPayload = await precheck.json();
+  assert.equal(precheckPayload.status, 'PRECHECK_REVIEWED');
+  assert.equal(precheckPayload.review.ready, true);
+  assert.equal(precheckPayload.review.mode, 'SIMULATION_AI_PRECHECK');
+  const precheckRepeat = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify(precheckInput) });
+  assert.equal(precheckRepeat.status, 200);
+  assert.equal((await precheckRepeat.json()).idempotent, true);
+
   const registration = await request('/api/supplier/registration', { method: 'POST', body: JSON.stringify({ businessRegistrationNumber: '220-81-62517', email: 'supplier@example.com', legalName: 'GABA 공급기업' }) });
   assert.equal(registration.status, 201);
   const registrationPayload = await registration.json();

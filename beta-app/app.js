@@ -105,17 +105,34 @@ async function runSupplierAiReview({ force = false } = {}) {
   $('#supplier-ai-review-title').textContent = 'AI가 COA와 재고 입력값을 분석 중입니다.';
   $('#supplier-ai-review-detail').textContent = `${file.name} · ${(file.size / 1024).toFixed(1)} KB · ${inventoryQuantity.toLocaleString('ko-KR')} ${$('#supplier-unit').value}`;
   $('#supplier-ai-review-status').textContent = '검토 중';
-  await new Promise((resolve) => window.setTimeout(resolve, 420));
+  const reviewKey = `supplier-precheck-${file.name}-${file.size}-${inventoryQuantity}-${$('#supplier-unit').value}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 120);
+  let result;
+  try {
+    result = await apiRequest('/api/supplier/precheck', {
+      method: 'POST',
+      headers: { 'X-Raw-Role': 'SUPPLIER' },
+      body: JSON.stringify({
+        material: $('#supplier-material').value.trim(),
+        coaDocumentNumber: $('#supplier-coa').value.trim(),
+        coaFileName: file.name,
+        coaFileSize: file.size,
+        inventoryQuantity,
+        unit: $('#supplier-unit').value,
+        expiry: $('#supplier-expiry').value,
+        idempotencyKey: reviewKey,
+      }),
+    });
+  } catch (error) {
+    if (sequence === supplierAiReviewSequence) {
+      $('#supplier-ai-review-title').textContent = 'AI 사전검토를 완료하지 못했습니다.';
+      $('#supplier-ai-review-detail').textContent = error.message;
+      $('#supplier-ai-review-status').textContent = '재시도 필요';
+    }
+    if (force) throw error;
+    return null;
+  }
   if (sequence !== supplierAiReviewSequence) return null;
-  const supportedFile = /\.(pdf|png|jpe?g)$/i.test(file.name) && file.size > 0;
-  const ready = supportedFile && inventoryQuantity > 0;
-  const review = {
-    status: ready ? 'REVIEWED' : 'NEEDS_REVIEW',
-    mode: 'SIMULATION_AI_PRECHECK',
-    ready,
-    checks: { coaFilePresent: true, supportedFile, inventoryQuantityPositive: inventoryQuantity > 0 },
-    reviewedAt: new Date().toISOString(),
-  };
+  const review = result.review;
   $('#supplier-ai-review-title').textContent = ready ? 'AI 사전검토 완료 · 운영 검증 필요' : 'AI 사전검토 보완 필요';
   $('#supplier-ai-review-detail').textContent = ready
     ? 'COA 파일 형식과 재고수량을 확인했습니다. AI는 승인하지 않으며, 원문·로트·재고 검증이 이어집니다.'
