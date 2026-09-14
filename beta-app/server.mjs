@@ -24,7 +24,7 @@ import { evaluateTaskSla } from '../ops/task-sla.mjs';
 import { compileGoal } from '../ops/goal-compiler.mjs';
 import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
 import { projectRuntimeLiveness } from '../ops/runtime-liveness.mjs';
-import { syncTaskApproval } from '../ops/task-approval-sync.mjs';
+import { TaskApprovalSyncError, syncTaskApproval } from '../ops/task-approval-sync.mjs';
 import { createSimulationSupplierRegistration, evaluateSupplierAiPrecheck, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
@@ -479,18 +479,24 @@ const handleApi = async (request, response, url) => {
         return sendJson(response, 200, { approval: domainResult.item, idempotent: domainResult.idempotent, guardrail: '승인은 운영 업무의 다음 단계 결정이며 실제 거래·계약·결제의 자동 실행을 의미하지 않습니다.' });
       }
       const result = await decideApproval(join(opsRoot, 'approval-inbox.json'), approvalLogPath, decodeURIComponent(approvalMatch[1]), { ...input, decidedBy: principal.userId });
-      const taskSync = result.item?.taskId
-        ? await syncTaskApproval({
-          queuePath: join(opsRoot, 'task-queue.json'),
-          auditPath: join(opsRoot, 'task-approval-sync.jsonl'),
-          approvalId,
-          taskId: result.item.taskId,
-          decision: result.item.decision,
-          decidedBy: result.item.decidedBy,
-          decidedAt: result.item.decidedAt,
-          note: result.item.decisionNote,
-        })
-        : { status: 'NOT_APPLICABLE', taskId: null, idempotent: true };
+      let taskSync = { status: 'NOT_APPLICABLE', taskId: result.item?.taskId || null, idempotent: true };
+      if (result.item?.taskId) {
+        try {
+          taskSync = await syncTaskApproval({
+            queuePath: join(opsRoot, 'task-queue.json'),
+            auditPath: join(opsRoot, 'task-approval-sync.jsonl'),
+            approvalId,
+            taskId: result.item.taskId,
+            decision: result.item.decision,
+            decidedBy: result.item.decidedBy,
+            decidedAt: result.item.decidedAt,
+            note: result.item.decisionNote,
+          });
+        } catch (error) {
+          if (!(error instanceof TaskApprovalSyncError) || !['TASK_QUEUE_NOT_FOUND', 'TASK_QUEUE_INVALID'].includes(error.code)) throw error;
+          taskSync = { status: 'NOT_APPLICABLE', taskId: result.item.taskId, idempotent: true, reason: error.code, guardrail: '승인은 기록되었지만 작업 큐가 연결되지 않은 격리 환경이므로 큐 동기화는 적용하지 않았습니다.' };
+        }
+      }
       return sendJson(response, 200, { approval: result.item, taskSync, idempotent: result.idempotent, guardrail: '승인은 운영 업무의 다음 단계 결정이며 실제 거래·계약·결제의 자동 실행을 의미하지 않습니다.' });
     }
     if (request.method === 'GET' && url.pathname === '/api/readiness') {
