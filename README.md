@@ -127,8 +127,10 @@
 - `beta-app/test-market-board-lifecycle.mjs`는 체결 전 호가·체결 후 비완료 상태·납품·검수 완료 후 실물 체결가 공개·가격지표 표본 편입의 전체 수명주기를 임시 서버에서 검증하며, 단일 거래로 평균가격을 공개하지 않음
 - `/api/supplier/verification-request`가 신규 공급자의 사업자·공급자 증빙 참조를 PostgreSQL에 접수하고 `REQUESTED` 상태로 보관하며, H-01 또는 지정 운영자 승인 전에는 자격을 열지 않음
 - `/api/supplier/verification-requests/{requestId}/review`는 H-01의 검토 진행 승인 이후 권한 있는 인간이 최종 증빙을 확인할 때만 조직 `verified_at`을 기록하며, 메모리 베타에서는 의도적으로 차단됨
+- 공급자 `OPEN ORDERS` 화면에서도 COA 문서번호·원문 파일·소비기한·단위·검증 재고를 입력하면 자동 사전검토를 실행하고, 주문 수량보다 적은 재고나 미완료 검토 상태에서는 체결 버튼을 잠금
 - `data/postgres-domain-adapter-contract.json`: 스냅샷 브리지에서 정규 PostgreSQL 도메인 원장으로 전환하기 위한 상용 게이트와 원자 쓰기 계약
 - `ops/approval-store.mjs`: H-01의 승인·수정요청·보류·거절을 단일 결정과 감사 로그로 기록
+- `ops/task-approval-sync.mjs`: 시뮬레이션 승인 결정을 업무 큐에 멱등 반영하고 종료 업무 변경을 차단하며, 동기화는 거래·계약·결제·배포를 실행하지 않음
 - `ops/autopilot-ledger.mjs`: 기존 미해결 자동 트리거도 승인함으로 누락 없이 동기화하며, 이미 결정된 항목을 자동 재결정하지 않음
 - `simulator/shadow_pilot_runner.py`와 `ops/run-shadow-pilot.mjs`: 7개 폐쇄형 Shadow Pilot 시나리오를 자동 실행하고 성공 기준을 판정
 - Shadow Pilot은 실행 전에 폐쇄모드·실거래/금전/외부알림 차단·H-01 승인·참가자 역할·중단 기준·증거 계약을 fail-closed로 점검하며, 설정 오류 시 시나리오와 참가자 접근을 모두 중단
@@ -224,3 +226,4 @@ node ops/run-shadow-pilot.mjs
 ```
 
 특허성은 선행기술 조사와 변리사 검토 후 판단합니다. 상세 후보는 도메인 문서를 기준으로 관리합니다.
+
