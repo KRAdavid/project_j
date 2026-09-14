@@ -220,6 +220,17 @@
                 <label>공급자 신원 증빙 참조<input id="supplier-identity-ref" required value="vault://supplier-identity/your-org" /></label>
                 <button class="primary-button compact full" id="request-supplier-verification" type="submit">검증 요청 접수 <span>→</span></button>
               </form>
+              <section class="supplier-order-precheck" id="seller-order-precheck" aria-label="주문 응답 전 AI 사전검토">
+                <div class="precheck-heading"><div><span class="overline">ORDER RESPONSE PRECHECK</span><strong>체결 전에 COA와 재고를 확인하세요.</strong><small>파일 업로드와 재고수량 입력이 끝나면 AI 사전검토가 자동으로 시작됩니다.</small></div><span class="precheck-lock">체결 전 필수</span></div>
+                <div class="precheck-grid">
+                  <label>COA 문서번호<input id="seller-order-coa-ref" placeholder="예: COA-GABA-2026-07" autocomplete="off" /></label>
+                  <label>COA 파일 업로드<input id="seller-order-coa-file" type="file" accept=".pdf,.png,.jpg,.jpeg" /><small>PDF·JPG·PNG · 10MB 이하</small></label>
+                  <label>검증 재고수량<input id="seller-order-inventory" type="number" min="0.01" step="0.01" placeholder="예: 1000" /><small>주문 수량 이상이어야 합니다.</small></label>
+                  <label>소비기한<input id="seller-order-expiry" type="date" /></label>
+                  <label>거래 단위<select id="seller-order-unit"><option value="KG">kg</option><option value="L">L</option><option value="EA">개</option></select></label>
+                </div>
+                <div class="supplier-ai-review inline-precheck hidden" id="seller-order-ai-review" role="status" aria-live="polite"><div><span class="overline">AI PRECHECK</span><strong id="seller-order-ai-review-title">COA와 재고를 기다리는 중</strong><small id="seller-order-ai-review-detail">COA 파일과 검증 재고수량을 입력하면 자동 검토를 시작합니다.</small></div><span class="draft-status" id="seller-order-ai-review-status">대기</span></div>
+              </section>
               <p>현재 GABA 99% 구매자가 제시한 주문입니다. 납품 책임을 질 수 있는 경우에만 체결하세요.</p>
               <div class="seller-order-summary"><span id="seller-order-material">현재 수신된 구매 주문 없음</span><strong id="seller-order-price">가격 대기</strong><small id="seller-order-deadline">주문이 제출되면 희망 납기가 표시됩니다.</small><small id="seller-order-quantity">주문이 제출되면 수량이 표시됩니다.</small></div>
               <button class="primary-button full" id="seller-accept" disabled>구매자 주문 체결하기 <span>→</span></button>
@@ -307,3 +318,4 @@
     <script src="./app.js"></script>
   </body>
 </html>
+
