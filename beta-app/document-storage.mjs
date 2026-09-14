@@ -1,6 +1,6 @@
 import { createHash, createHmac } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { hashDocument } from './evidence-verifier.mjs';
 
@@ -22,6 +22,19 @@ const normalizeBinaryDocument = ({ contentBase64, contentSha256 } = {}) => {
   const calculatedSha256 = sha256(bytes);
   if (contentSha256 && String(contentSha256).toLowerCase() !== calculatedSha256) throw new DocumentStorageError('문서 원문과 SHA-256 해시가 일치하지 않습니다.', 'DOCUMENT_HASH_MISMATCH');
   return { bytes, contentBase64: bytes.toString('base64'), contentSha256: calculatedSha256 };
+};
+export const assertDocumentSignature = ({ fileName, contentBase64 } = {}) => {
+  const extension = extname(String(fileName || '').trim()).toLowerCase();
+  const bytes = decodeBase64Document(contentBase64);
+  const signatures = {
+    '.pdf': bytes.subarray(0, 5).toString('ascii') === '%PDF-',
+    '.png': bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])),
+    '.jpg': bytes.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff])),
+    '.jpeg': bytes.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff])),
+  };
+  if (!(extension in signatures)) throw new DocumentStorageError('COA는 PDF·JPG·PNG 파일만 업로드할 수 있습니다.', 'DOCUMENT_FORMAT_UNSUPPORTED');
+  if (!signatures[extension]) throw new DocumentStorageError('COA 파일 확장자와 실제 바이너리 형식이 일치하지 않습니다.', 'DOCUMENT_SIGNATURE_MISMATCH');
+  return { extension, size: bytes.length };
 };
 const hmac = (key, value) => createHmac('sha256', key).update(value).digest();
 const encodePath = (value) => String(value).split('/').map((segment) => encodeURIComponent(segment)).join('/');

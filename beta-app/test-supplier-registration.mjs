@@ -32,7 +32,12 @@ try {
   assert.equal(accountPayload.status, 'ACCOUNT_REGISTERED');
   assert.equal(accountPayload.account.maskedBusinessRegistrationNumber, '220-81-****7');
 
-  const coaBytes = Buffer.from('GABA COA fixture');
+  const invalidCoaBytes = Buffer.from('not-a-pdf');
+  const invalidCoaSha256 = createHash('sha256').update(invalidCoaBytes).digest('hex');
+  const invalidUpload = await request('/api/supplier/precheck-document', { method: 'POST', body: JSON.stringify({ fileName: 'spoofed-coa.pdf', contentType: 'application/pdf', contentBase64: invalidCoaBytes.toString('base64'), contentSha256: invalidCoaSha256, idempotencyKey: `supplier-document-${invalidCoaSha256}` }) });
+  assert.equal(invalidUpload.status, 422);
+  assert.equal((await invalidUpload.json()).code, 'DOCUMENT_SIGNATURE_MISMATCH');
+  const coaBytes = Buffer.from('%PDF-1.7\nGABA COA fixture');
   const coaSha256 = createHash('sha256').update(coaBytes).digest('hex');
   const documentUpload = await request('/api/supplier/precheck-document', { method: 'POST', body: JSON.stringify({ fileName: 'coa-gaba-2026-07.pdf', contentType: 'application/pdf', contentBase64: coaBytes.toString('base64'), contentSha256: coaSha256, idempotencyKey: `supplier-document-${coaSha256}` }) });
   assert.equal(documentUpload.status, 201);

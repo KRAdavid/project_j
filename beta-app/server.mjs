@@ -12,7 +12,7 @@ import { persistenceStatus, assertProductionCutover } from './persistence-mode.m
 import { createPersistenceStore } from './persistence-store.mjs';
 import { authorize, AuthorizationError, loadAuthorizationPolicy, projectEvidence, projectSnapshot, resolvePrincipal } from './authorization.mjs';
 import { PriceFeed } from './price-feed.mjs';
-import { createDocumentStorage } from './document-storage.mjs';
+import { assertDocumentSignature, createDocumentStorage } from './document-storage.mjs';
 import { evaluateReleaseReadiness } from './readiness.mjs';
 import { compileSpecDraft, SpecCompilerError } from './spec-compiler.mjs';
 import { ApprovalStoreError, decideApproval } from '../ops/approval-store.mjs';
@@ -225,6 +225,7 @@ const assertStoredSupplierPrecheckDocument = async (principal, input) => {
   if (storageRef !== expectedRef) throw new TradeRuleError('COA 저장 참조가 공급자 조직·파일 지문과 일치하지 않습니다.', 'COA_STORAGE_REFERENCE_MISMATCH');
   let stored;
   try { stored = await documentStorage.getBinary(storageKey); } catch (error) { throw new TradeRuleError('COA 원문을 보관소에서 다시 확인할 수 없습니다.', error.code || 'COA_STORAGE_READ_FAILED'); }
+  try { assertDocumentSignature({ fileName, contentBase64: stored.contentBase64 }); } catch (error) { throw new TradeRuleError(error.message, error.code || 'COA_STORAGE_SIGNATURE_INVALID'); }
   if (stored.contentSha256 !== contentSha256 || Number(stored.size) !== Number(input.coaFileSize)) throw new TradeRuleError('COA 원문 해시 또는 파일 크기가 사전검토 입력과 일치하지 않습니다.', 'COA_STORAGE_CONTENT_MISMATCH');
   return stored;
 };
@@ -573,7 +574,7 @@ const handleApi = async (request, response, url) => {
       authorize(principal, 'upload_evidence', authorizationPolicy);
       const input = await readJson(request);
       await assertStoredSupplierPrecheckDocument(principal, input);
-      const review = evaluateSupplierAiPrecheck(input);
+      const review = evaluateSupplierAiPrecheck({ ...input, coaFileSignatureVerified: true });
       const idempotencyKey = String(input.idempotencyKey || `${input.coaFileName || 'coa'}-${input.coaFileSize || 0}-${input.inventoryQuantity || 0}-${input.unit || ''}`).slice(0, 160);
       const key = `${principal.organizationId}:${idempotencyKey}`;
       const inputFingerprint = supplierPrecheckFingerprint(input);
@@ -611,6 +612,7 @@ const handleApi = async (request, response, url) => {
       const contentBase64 = String(input.contentBase64 || '').trim();
       const contentSha256 = String(input.contentSha256 || '').trim().toLowerCase();
       if (!fileName || !contentBase64 || !/^[a-f0-9]{64}$/.test(contentSha256)) throw new TradeRuleError('COA 파일명·원문·SHA-256 지문이 필요합니다.', 'COA_UPLOAD_INPUT_REQUIRED');
+      try { assertDocumentSignature({ fileName, contentBase64 }); } catch (error) { throw new TradeRuleError(error.message, error.code || 'COA_FILE_SIGNATURE_INVALID'); }
       const storageKey = supplierPrecheckStorageKey({ organizationId: principal.organizationId, fileName, contentSha256 });
       if (typeof documentStorage.putBinary !== 'function') throw new TradeRuleError('바이너리 Object Storage 어댑터가 연결되지 않았습니다.', 'DOCUMENT_BINARY_STORAGE_REQUIRED');
       const stored = await documentStorage.putBinary({ key: storageKey, contentBase64, contentSha256, contentType: String(input.contentType || 'application/octet-stream') });
