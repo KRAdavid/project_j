@@ -26,11 +26,17 @@ try {
   assert.equal(invalid.status, 422);
   assert.equal((await invalid.json()).code, 'BUSINESS_REGISTRATION_INVALID');
 
+  const noAccountRegistration = await request('/api/supplier/registration', { method: 'POST', body: JSON.stringify({ businessRegistrationNumber: '220-81-62517', email: 'supplier@example.com', legalName: '세션 없는 공급기업' }) });
+  assert.equal(noAccountRegistration.status, 422);
+  assert.equal((await noAccountRegistration.json()).code, 'ACCOUNT_SESSION_REQUIRED');
+
   const account = await request('/api/account/session', { method: 'POST', body: JSON.stringify({ businessRegistrationNumber: '220-81-62517', email: 'supplier@example.com' }) });
   assert.equal(account.status, 201);
   const accountPayload = await account.json();
   assert.equal(accountPayload.status, 'ACCOUNT_REGISTERED');
   assert.equal(accountPayload.account.maskedBusinessRegistrationNumber, '220-81-****7');
+  headers['X-Raw-User-Id'] = accountPayload.account.userId;
+  headers['X-Raw-Organization-Id'] = accountPayload.account.organizationId;
 
   const invalidRegistrationEmail = await request('/api/supplier/registration', { method: 'POST', body: JSON.stringify({ businessRegistrationNumber: '220-81-62517', email: 'not-an-email', legalName: '잘못된 공급기업' }) });
   assert.equal(invalidRegistrationEmail.status, 422);

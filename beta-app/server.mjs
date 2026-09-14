@@ -160,6 +160,12 @@ const createSimulationAccountSession = ({ businessRegistrationNumber, email, now
   return { account, idempotent: false };
 };
 
+const assertSimulationAccountSession = (principal) => {
+  const account = [...simulationBusinessAccounts.values()].find((candidate) => candidate.userId === principal.userId && candidate.organizationId === principal.organizationId);
+  if (!account) throw new TradeRuleError('공급자 작업을 시작하려면 사업자등록번호와 이메일로 먼저 계정을 등록해야 합니다.', 'ACCOUNT_SESSION_REQUIRED');
+  return account;
+};
+
 const assertSimulationVerifiedSupplier = (principal) => {
   if (persistenceStore.mode === 'postgresql') return;
   if (!simulationSupplierEligibility(principal).eligibleToSubmitLot) throw new TradeRuleError('사업자·거래 자격이 확인된 공급자만 매물 등록과 주문 체결을 진행할 수 있습니다.', 'SUPPLIER_ORGANIZATION_NOT_VERIFIED');
@@ -537,10 +543,12 @@ const handleApi = async (request, response, url) => {
       if (persistenceStore.mode === 'postgresql' || environment !== 'simulation') {
         throw new TradeRuleError('상용 공급자 등록은 국세청 등 공식 사업자 확인 서비스 연동 후에만 사용할 수 있습니다.', 'BUSINESS_REGISTRATION_PROVIDER_REQUIRED');
       }
+      const account = assertSimulationAccountSession(principal);
       const validation = validateKoreanBusinessRegistrationNumber(input.businessRegistrationNumber || input.businessNumber);
       if (!validation.valid) throw new TradeRuleError(validation.reason, 'BUSINESS_REGISTRATION_INVALID');
       const registrationEmail = String(input.email || '').trim().toLowerCase();
       if (!/^\S+@\S+\.\S+$/.test(registrationEmail)) throw new TradeRuleError('공급자 등록에는 유효한 업무용 이메일이 필요합니다.', 'BUSINESS_EMAIL_INVALID');
+      if (account.businessRegistrationNumber !== validation.normalized || account.email !== registrationEmail) throw new TradeRuleError('공급자 등록 정보는 로그인한 사업자 계정과 일치해야 합니다.', 'ACCOUNT_SESSION_MISMATCH');
       const existing = simulationSupplierRegistrations.get(principal.organizationId) || null;
       if (existing) {
         if (existing.businessRegistrationNumber !== validation.normalized) throw new TradeRuleError('이 공급자 조직에는 이미 다른 사업자등록번호가 등록되어 있습니다.', 'BUSINESS_REGISTRATION_ALREADY_REGISTERED');
@@ -574,6 +582,7 @@ const handleApi = async (request, response, url) => {
     if (request.method === 'POST' && url.pathname === '/api/supplier/precheck') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
       authorize(principal, 'upload_evidence', authorizationPolicy);
+      if (environment === 'simulation' && persistenceStore.mode !== 'postgresql') assertSimulationAccountSession(principal);
       const input = await readJson(request);
       await assertStoredSupplierPrecheckDocument(principal, input);
       const review = evaluateSupplierAiPrecheck({ ...input, coaFileSignatureVerified: true });
@@ -609,6 +618,7 @@ const handleApi = async (request, response, url) => {
     if (request.method === 'POST' && url.pathname === '/api/supplier/precheck-document') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
       authorize(principal, 'upload_evidence', authorizationPolicy);
+      if (environment === 'simulation' && persistenceStore.mode !== 'postgresql') assertSimulationAccountSession(principal);
       const input = await readJson(request, { maxBytes: 15 * 1024 * 1024 });
       const fileName = String(input.fileName || '').trim();
       const contentBase64 = String(input.contentBase64 || '').trim();
