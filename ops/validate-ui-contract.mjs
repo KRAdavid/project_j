@@ -72,6 +72,7 @@ assert.match(app, /async function runSupplierAiReview\(\{ force = false \} = \{\
 assert.match(app, /const ready = review\?\.ready === true;/, 'AI 사전검토 결과는 서버 review.ready를 기준으로 화면 상태를 결정해야 합니다.');
 assert.match(app, /\/api\/supplier\/precheck/, 'AI 사전검토는 서버 API와 연결되어야 합니다.');
 assert.match(app, /sha256File/, 'COA 원문 파일 지문은 브라우저에서 계산되어야 합니다.');
+assert.match(app, /sha256Text/, '공급 조건 멱등키는 전체 입력 지문을 해시해야 합니다.');
 assert.match(app, /coaFileSha256/, 'COA 파일 SHA-256 지문이 사전검토 요청에 포함되어야 합니다.');
 assert.match(app, /precheck-document/, 'COA 원문은 사전검토 전에 저장 참조를 받아야 합니다.');
 assert.match(app, /fileToBase64/, 'COA 바이너리 원문은 보관소 업로드용으로 인코딩되어야 합니다.');

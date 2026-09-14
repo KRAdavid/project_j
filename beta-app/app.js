@@ -140,6 +140,12 @@ async function sha256File(file) {
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
 }
 
+async function sha256Text(value) {
+  if (!globalThis.crypto?.subtle) throw new Error('브라우저가 AI 사전검토 조건 지문 계산을 지원하지 않습니다.');
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(String(value)));
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
 async function runSupplierAiReview({ force = false } = {}) {
   const sequence = ++supplierAiReviewSequence;
   const file = $('#supplier-coa-file')?.files?.[0];
@@ -182,7 +188,7 @@ async function runSupplierAiReview({ force = false } = {}) {
     }
     if (sequence !== supplierAiReviewSequence) return null;
     const coaStorageRef = uploadedDocument.storageRef;
-    const reviewKey = `supplier-precheck-${reviewFingerprint}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 160);
+    const reviewKey = `supplier-precheck-${await sha256Text(reviewFingerprint)}`;
     result = await apiRequest('/api/supplier/precheck', {
       method: 'POST',
       headers: { 'X-Raw-Role': 'SUPPLIER' },
