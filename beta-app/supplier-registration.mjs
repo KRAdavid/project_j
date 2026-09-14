@@ -44,9 +44,10 @@ export const createSimulationSupplierRegistration = ({ organizationId, userId, b
   };
 };
 
-export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = '', coaFileName = '', coaFileSize = 0, inventoryQuantity = 0, unit = '', expiry = '', priceTiers = [], now = new Date().toISOString() } = {}) => {
+export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = '', coaFileName = '', coaFileSize = 0, coaFileSha256 = '', inventoryQuantity = 0, unit = '', expiry = '', priceTiers = [], now = new Date().toISOString() } = {}) => {
   const normalizedFileName = String(coaFileName || '').trim();
   const normalizedSize = Number(coaFileSize || 0);
+  const normalizedFileSha256 = String(coaFileSha256 || '').trim().toLowerCase();
   const normalizedInventory = Number(inventoryQuantity || 0);
   const normalizedUnit = String(unit || '').trim().toUpperCase();
   const expiryDate = String(expiry || '').trim();
@@ -59,6 +60,7 @@ export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = 
     coaReferencePresent: Boolean(String(coaDocumentNumber || '').trim()),
     coaFilePresent: Boolean(normalizedFileName),
     supportedFile,
+    coaFileFingerprintPresent: /^[a-f0-9]{64}$/.test(normalizedFileSha256),
     inventoryQuantityPositive: normalizedInventory > 0,
     validUnit,
     expiryNotPast: validExpiry,
@@ -69,6 +71,7 @@ export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = 
     coaReferencePresent: 'COA 문서번호가 필요합니다.',
     coaFilePresent: 'COA 파일이 필요합니다.',
     supportedFile: 'COA는 10MB 이하의 PDF·JPG·PNG 파일이어야 합니다.',
+    coaFileFingerprintPresent: 'COA 파일 SHA-256 지문을 계산할 수 있어야 합니다.',
     inventoryQuantityPositive: '검증 재고수량은 0보다 커야 합니다.',
     validUnit: '거래 단위가 올바르지 않습니다.',
     expiryNotPast: '소비기한은 오늘 이후 날짜여야 합니다.',
@@ -81,6 +84,6 @@ export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = 
     checks,
     reasons,
     reviewedAt: now,
-    guardrail: 'AI는 입력값을 사전검토할 뿐 공급자 승인·매물 공개·거래 체결을 수행하지 않습니다.',
+    guardrail: 'AI는 파일 지문과 입력값을 사전검토할 뿐 공급자 승인·매물 공개·거래 체결을 수행하지 않습니다.',
   };
 };

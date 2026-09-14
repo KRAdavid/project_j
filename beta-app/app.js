@@ -91,6 +91,12 @@ function renderSupplierDraft(draft) {
 
 let supplierAiReviewSequence = 0;
 
+async function sha256File(file) {
+  if (!globalThis.crypto?.subtle) throw new Error('브라우저가 COA SHA-256 지문 계산을 지원하지 않습니다.');
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
 async function runSupplierAiReview({ force = false } = {}) {
   const file = $('#supplier-coa-file')?.files?.[0];
   const inventoryQuantity = Number($('#supplier-inventory-qty')?.value || 0);
@@ -109,9 +115,11 @@ async function runSupplierAiReview({ force = false } = {}) {
     quantity: Number($(`#supplier-tier-${index}-qty`).value || 0),
     price: Number($(`#supplier-tier-${index}-price`).value || 0),
   })).filter((tier) => tier.quantity > 0 && tier.price > 0).sort((a, b) => a.quantity - b.quantity);
-  const reviewKey = `supplier-precheck-${JSON.stringify({ material: $('#supplier-material').value.trim(), coa: $('#supplier-coa').value.trim(), file: file.name, size: file.size, inventory: inventoryQuantity, unit: $('#supplier-unit').value, expiry: $('#supplier-expiry').value, priceTiers })}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 160);
   let result;
   try {
+    $('#supplier-ai-review-detail').textContent = 'COA 파일 내용 지문을 계산 중입니다...';
+    const coaFileSha256 = await sha256File(file);
+    const reviewKey = `supplier-precheck-${JSON.stringify({ material: $('#supplier-material').value.trim(), coa: $('#supplier-coa').value.trim(), file: file.name, size: file.size, sha256: coaFileSha256, inventory: inventoryQuantity, unit: $('#supplier-unit').value, expiry: $('#supplier-expiry').value, priceTiers })}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 160);
     result = await apiRequest('/api/supplier/precheck', {
       method: 'POST',
       headers: { 'X-Raw-Role': 'SUPPLIER' },
@@ -120,6 +128,7 @@ async function runSupplierAiReview({ force = false } = {}) {
         coaDocumentNumber: $('#supplier-coa').value.trim(),
         coaFileName: file.name,
         coaFileSize: file.size,
+        coaFileSha256,
         inventoryQuantity,
         unit: $('#supplier-unit').value,
         expiry: $('#supplier-expiry').value,

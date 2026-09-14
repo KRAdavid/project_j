@@ -70,6 +70,7 @@ const normalizeSupplierPrecheckInput = (input = {}) => ({
   coaDocumentNumber: String(input.coaDocumentNumber || '').trim(),
   coaFileName: String(input.coaFileName || '').trim(),
   coaFileSize: Number(input.coaFileSize || 0),
+  coaFileSha256: String(input.coaFileSha256 || '').trim().toLowerCase(),
   inventoryQuantity: Number(input.inventoryQuantity || 0),
   unit: String(input.unit || '').trim().toUpperCase(),
   expiry: String(input.expiry || '').trim(),

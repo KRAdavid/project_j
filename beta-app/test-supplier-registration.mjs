@@ -31,7 +31,7 @@ try {
   assert.equal(accountPayload.status, 'ACCOUNT_REGISTERED');
   assert.equal(accountPayload.account.maskedBusinessRegistrationNumber, '220-81-****7');
 
-  const precheckInput = { material: 'GABA', coaDocumentNumber: 'COA-GABA-2026-07', coaFileName: 'coa-gaba-2026-07.pdf', coaFileSize: 2048, inventoryQuantity: 100, unit: 'KG', expiry: '2099-12-31', priceTiers: [{ quantity: 20, price: 21800 }], idempotencyKey: 'supplier-precheck-test-001' };
+  const precheckInput = { material: 'GABA', coaDocumentNumber: 'COA-GABA-2026-07', coaFileName: 'coa-gaba-2026-07.pdf', coaFileSize: 2048, coaFileSha256: 'a'.repeat(64), inventoryQuantity: 100, unit: 'KG', expiry: '2099-12-31', priceTiers: [{ quantity: 20, price: 21800 }], idempotencyKey: 'supplier-precheck-test-001' };
   const precheck = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify(precheckInput) });
   assert.equal(precheck.status, 201);
   const precheckPayload = await precheck.json();

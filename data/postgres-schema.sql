@@ -60,6 +60,7 @@ create table if not exists supplier_prechecks (
   coa_document_number text not null,
   coa_file_name text not null,
   coa_file_size bigint not null check (coa_file_size > 0 and coa_file_size <= 10485760),
+  coa_file_sha256 char(64) not null check (coa_file_sha256 ~ '^[0-9a-f]{64}$'),
   inventory_quantity numeric(18, 3) not null check (inventory_quantity > 0),
   unit text not null check (unit in ('KG', 'L', 'EA')),
   expiry_date date not null,
