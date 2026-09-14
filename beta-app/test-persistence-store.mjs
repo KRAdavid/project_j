@@ -45,7 +45,7 @@ const fakePool = {
   async end() {},
 };
 const atomicStore = new PostgresSnapshotStore(fakePool);
-const schemaTables = ['organizations', 'organization_members', 'materials', 'material_aliases', 'specifications', 'lots', 'evidences', 'offers', 'purchase_orders', 'reservations', 'trades', 'trade_inspections', 'trade_events', 'operational_approvals', 'approval_events', 'ledger_snapshots', 'evidence_snapshots', 'price_observations'];
+const schemaTables = ['organizations', 'supplier_prechecks', 'organization_members', 'materials', 'material_aliases', 'specifications', 'lots', 'evidences', 'offers', 'purchase_orders', 'reservations', 'trades', 'trade_inspections', 'trade_events', 'operational_approvals', 'approval_events', 'ledger_snapshots', 'evidence_snapshots', 'price_observations'];
 const schemaPool = {
   async query(sql) {
     if (sql.includes('information_schema.tables')) return { rows: schemaTables.map((table_name) => ({ table_name })) };
