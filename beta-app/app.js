@@ -119,6 +119,7 @@ function getSupplierReviewInput() {
 
 function getSupplierReviewFingerprint({ file, sha256, input }) {
   return JSON.stringify({
+    reviewScope: input.reviewScope || 'SUPPLY_OFFER',
     material: input.material,
     coa: input.coaDocumentNumber,
     file: file.name,
@@ -238,7 +239,9 @@ async function runSupplierAiReview({ force = false } = {}) {
 function getSellerOrderReviewInput() {
   const orderPrice = Number(state.orderPrice || $('#bid-price')?.value || 0);
   const orderQuantity = Number(state.orderQuantity || $('#bid-quantity')?.value || 0);
+  const hasOrder = Boolean(state.submitted && state.orderId);
   return {
+    reviewScope: hasOrder ? 'ORDER_RESPONSE' : 'EVIDENCE_ONLY',
     material: 'GABA',
     coaDocumentNumber: $('#seller-order-coa-ref')?.value.trim() || '',
     inventoryQuantity: Number($('#seller-order-inventory')?.value || 0),
@@ -247,6 +250,7 @@ function getSellerOrderReviewInput() {
     priceTiers: orderPrice > 0 && orderQuantity > 0 ? [{ quantity: orderQuantity, price: orderPrice }] : [],
     orderPrice,
     orderQuantity,
+    orderUnit: 'KG',
   };
 }
 
@@ -269,18 +273,8 @@ async function runSellerOrderAiReview({ force = false } = {}) {
     if (force) throw new Error('COA 문서번호·파일과 검증 재고수량을 입력해 주세요.');
     return null;
   }
-  if (!state.submitted || !state.orderId) {
-    if (acceptButton && !state.accepted) acceptButton.disabled = true;
-    if (panel) {
-      panel.classList.remove('hidden');
-      $('#seller-order-ai-review-title').textContent = '구매자 주문을 기다리는 중';
-      $('#seller-order-ai-review-detail').textContent = '주문이 도착하면 주문 수량·매수가와 함께 AI 사전검토를 자동 실행합니다.';
-      $('#seller-order-ai-review-status').textContent = '주문 대기';
-    }
-    if (force) throw new Error('구매자 주문이 도착한 뒤 공급 조건을 검토할 수 있습니다.');
-    return null;
-  }
-  if (input.orderPrice < 1 || input.orderQuantity < 1) {
+  const hasOrder = Boolean(state.submitted && state.orderId);
+  if (hasOrder && (input.orderPrice < 1 || input.orderQuantity < 1)) {
     if (acceptButton && !state.accepted) acceptButton.disabled = true;
     if (force) throw new Error('주문 매수가와 수량을 확인해 주세요.');
     return null;
@@ -328,22 +322,29 @@ async function runSellerOrderAiReview({ force = false } = {}) {
         unit: input.unit,
         expiry: input.expiry,
         priceTiers: input.priceTiers,
+        reviewScope: input.reviewScope,
         idempotencyKey: `seller-order-precheck-${await sha256Text(reviewFingerprint)}`,
       }),
     });
     if (sequence !== sellerOrderAiReviewSequence) return null;
     const review = result.review;
-    const enoughInventory = input.inventoryQuantity >= input.orderQuantity;
+    const enoughInventory = !hasOrder || input.inventoryQuantity >= input.orderQuantity;
+    const unitMatchesOrder = !hasOrder || input.unit === input.orderUnit;
     sellerOrderAiReviewFingerprint = getSupplierReviewFingerprint({ file, sha256: result.precheck?.coaFileSha256 || coaFileSha256, input });
-    sellerOrderAiReviewReady = review?.ready === true && enoughInventory;
+    sellerOrderAiReviewReady = review?.ready === true && hasOrder && enoughInventory && unitMatchesOrder;
     if (acceptButton) acceptButton.disabled = Boolean(state.accepted) || !sellerOrderAiReviewReady;
     if (panel) {
       panel.removeAttribute('aria-busy');
-      $('#seller-order-ai-review-title').textContent = sellerOrderAiReviewReady ? 'AI 사전검토 완료 · 체결 자격 재확인 대기' : 'AI 사전검토 보완 필요';
+      $('#seller-order-ai-review-title').textContent = !hasOrder && review?.ready === true
+        ? 'AI 증빙 사전검토 완료 · 주문 대기'
+        : sellerOrderAiReviewReady ? 'AI 사전검토 완료 · 체결 자격 재확인 대기' : 'AI 사전검토 보완 필요';
       $('#seller-order-ai-review-detail').textContent = sellerOrderAiReviewReady
         ? `COA 원문 보관·지문 확인 완료 · 검증 재고 ${input.inventoryQuantity.toLocaleString('ko-KR')} ${input.unit} · 주문 수량 충족`
-        : !enoughInventory ? `검증 재고가 주문 수량(${input.orderQuantity.toLocaleString('ko-KR')} ${input.unit})보다 적습니다.` : (review?.reasons || []).join(' ') || 'COA와 공급 조건을 다시 확인해 주세요.';
-      $('#seller-order-ai-review-status').textContent = sellerOrderAiReviewReady ? '검토 완료' : '보완 필요';
+        : !hasOrder && review?.ready === true ? `COA 원문 보관·지문 확인 완료 · 검증 재고 ${input.inventoryQuantity.toLocaleString('ko-KR')} ${input.unit} · 구매자 주문 도착 후 매수가·수량을 결속해 재검토합니다.`
+        : !enoughInventory ? `검증 재고가 주문 수량(${input.orderQuantity.toLocaleString('ko-KR')} ${input.unit})보다 적습니다.`
+        : !unitMatchesOrder ? `주문 단위(${input.orderUnit})와 공급 단위(${input.unit})가 일치하지 않습니다.`
+        : (review?.reasons || []).join(' ') || 'COA와 공급 조건을 다시 확인해 주세요.';
+      $('#seller-order-ai-review-status').textContent = !hasOrder && review?.ready === true ? '증빙 검토 완료' : sellerOrderAiReviewReady ? '검토 완료' : '보완 필요';
     }
     return review;
   } catch (error) {
@@ -1242,6 +1243,7 @@ function pushRealtimeTick() {
 
 function setRole(role) {
   state.role = role;
+  if (['buyer', 'seller', 'operator'].includes(role)) onboardingState.activeRole = role;
   $$('.role-button').forEach((button) => button.classList.toggle('active', button.dataset.role === role));
   $('#split-simulator').classList.toggle('hidden', role !== 'split');
   $('#seller-view').classList.toggle('hidden', role !== 'seller');
