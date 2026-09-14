@@ -54,6 +54,11 @@ try {
   const documentPayload = await documentUpload.json();
   assert.equal(documentPayload.status, 'DOCUMENT_STORED');
   assert.equal(documentPayload.document.contentSha256, coaSha256);
+  const evidenceOnlyPrecheck = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify({ material: 'GABA', coaDocumentNumber: 'COA-GABA-2026-07', coaFileName: 'coa-gaba-2026-07.pdf', coaFileSize: coaBytes.length, coaFileSha256: coaSha256, coaStorageRef: documentPayload.document.storageRef, inventoryQuantity: 100, unit: 'KG', expiry: '2099-12-31', priceTiers: [], reviewScope: 'EVIDENCE_ONLY', idempotencyKey: 'supplier-evidence-only-001' }) });
+  assert.equal(evidenceOnlyPrecheck.status, 201);
+  const evidenceOnlyPayload = await evidenceOnlyPrecheck.json();
+  assert.equal(evidenceOnlyPayload.review.reviewScope, 'EVIDENCE_ONLY');
+  assert.equal(evidenceOnlyPayload.review.ready, true, 'COA·재고 증빙 입력만으로도 자동 사전검토가 완료되어야 합니다.');
   const precheckInput = { material: 'GABA', coaDocumentNumber: 'COA-GABA-2026-07', coaFileName: 'coa-gaba-2026-07.pdf', coaFileSize: coaBytes.length, coaFileSha256: coaSha256, coaStorageRef: documentPayload.document.storageRef, inventoryQuantity: 100, unit: 'KG', expiry: '2099-12-31', priceTiers: [{ quantity: 20, price: 21800 }], idempotencyKey: 'supplier-precheck-test-001' };
   const precheck = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify(precheckInput) });
   assert.equal(precheck.status, 201);
@@ -93,3 +98,4 @@ try {
 } finally {
   child.kill();
 }
+
