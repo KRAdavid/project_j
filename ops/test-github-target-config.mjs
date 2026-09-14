@@ -22,4 +22,3 @@ if (failures.length) {
 } else {
   console.log(`GitHub target config contract: PASS (${assertions.length})`);
 }
-

@@ -32,4 +32,3 @@ assert.match(authorization, /AUTH_PROVIDER_NOT_CONFIGURED/);
 assert.match(readiness, /readiness-diagnostics\.mjs/, '릴리스 readiness가 중앙 환경 진단 모듈을 사용해야 합니다.');
 assert.match(readinessDiagnostics, /POSTGRES_DOMAIN_API_READY/, '환경 진단이 정규 도메인 API 게이트를 확인해야 합니다.');
 console.log('production domain path contract: PASS');
-

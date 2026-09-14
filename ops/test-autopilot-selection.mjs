@@ -61,4 +61,3 @@ selected = selectNextTask({
 assert.equal(selected.task, null);
 assert.equal(selected.selectionType, 'none');
 console.log('autopilot selection tests: PASS');
-

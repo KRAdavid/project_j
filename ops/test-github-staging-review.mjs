@@ -13,4 +13,3 @@ assert.equal(review.unstagedFiles, 1);
 assert.equal(review.untrackedFiles, 1);
 assert.ok(review.groups.some((group) => group.category === 'github-governance'));
 console.log('GitHub staging review tests: PASS');
-

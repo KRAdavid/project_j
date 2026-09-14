@@ -99,4 +99,3 @@ if (process.argv[1] && basename(process.argv[1]) === 'cutover-input-manifest.mjs
   });
   console.log(JSON.stringify({ decision: result.decision, items: result.items.length, missing: result.items.filter((item) => !item.current).map((item) => item.id) }));
 }
-

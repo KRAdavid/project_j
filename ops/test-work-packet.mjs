@@ -27,4 +27,3 @@ try {
   await rm(tempRoot, { recursive: true, force: true });
 }
 console.log('work packet tests: PASS');
-

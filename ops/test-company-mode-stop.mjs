@@ -23,4 +23,3 @@ for (const required of [
 }
 assert.doesNotMatch(script, /Remove-Item\s+.*company-mode-runtime|taskkill\.exe/i, 'stop must preserve the runtime manifest and avoid broad process termination');
 console.log('company mode stop contract: PASS');
-

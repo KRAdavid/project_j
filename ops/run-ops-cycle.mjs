@@ -266,4 +266,3 @@ await writeTeamActivityReport(resolve(opsRoot, 'latest-team-activity.json'), bui
 console.log(JSON.stringify({ cycleId, decision: cycle.decision, monitor: monitor.status, autopilot: cycle.autopilot?.decision, triggerTasks: triggerResult.inbox.pending }));
 
 if (cycle.decision === 'INCIDENT_HUMAN_REVIEW_REQUIRED') process.exitCode = 1;
-

@@ -21,4 +21,3 @@ const missingEvidenceManifest = buildCutoverInputManifest({ readiness: { decisio
 assert.equal(missingEvidenceManifest.infrastructure.stagingPreflightStatus, 'NOT_AVAILABLE');
 assert.equal(missingEvidenceManifest.infrastructure.githubTargetStatus, 'NOT_AVAILABLE');
 console.log('cutover input manifest tests: PASS');
-

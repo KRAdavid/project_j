@@ -54,4 +54,3 @@ if (failures.length) {
 } else {
   console.log(`staging contract tests: PASS (${assertions.length})`);
 }
-

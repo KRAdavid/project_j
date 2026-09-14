@@ -61,4 +61,3 @@ if (failures.length) {
 } else {
   console.log(`contract validation: PASS (${contracts.length})`);
 }
-

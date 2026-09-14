@@ -44,4 +44,3 @@ assert.doesNotMatch(supervisedLauncher, /git\s+(push|commit)/i, 'supervised laun
 assert.equal(packageJson.scripts['ops:start'], 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/start-company-supervised.ps1');
 assert.equal(packageJson.scripts['ops:start:basic'], 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/start-company-mode.ps1');
 console.log('company mode launcher contract: PASS');
-

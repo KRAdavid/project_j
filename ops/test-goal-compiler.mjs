@@ -7,4 +7,3 @@ assert.equal(result.contract.domainPackVersions.RAW_MATERIAL_OS_GABA_BETA, '0.1.
 assert.equal(result.executionGuard.externalWriteAllowed, false);
 assert.equal(result.firstValidActions[0].mode, 'READ_ONLY');
 console.log('goal compiler tests: PASS');
-

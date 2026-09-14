@@ -14,4 +14,3 @@ for (const token of ['idempotency_key', 'counter_offer', 'spec_attributes', 'spe
 }
 assert.doesNotMatch(sql, /create table\s+(derivatives|securities|margin)/i, '실물 원료 범위를 벗어난 테이블이 들어가면 안 됩니다.');
 console.log('persistence schema tests: PASS');
-

@@ -51,4 +51,3 @@ if (request.headers.authorization !== 'Bearer token' || request.headers['x-idemp
 
 await rm(root, { recursive: true, force: true });
 console.log('notification dispatcher tests: PASS');
-

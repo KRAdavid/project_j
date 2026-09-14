@@ -67,4 +67,3 @@ export const acquireOperationLock = async (lockPath, { staleAfterMs = 15 * 60 * 
   }
   throw new OperationLockError('운영 잠금을 확보하지 못했습니다.');
 };
-

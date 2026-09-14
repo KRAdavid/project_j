@@ -141,4 +141,3 @@ if (process.argv[1] && basename(process.argv[1]) === 'goal-audit.mjs') {
   const audit = await writeGoalAudit();
   console.log(JSON.stringify({ decision: audit.decision, summary: audit.summary, github: audit.runtime.githubStatus }));
 }
-

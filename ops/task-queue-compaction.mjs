@@ -39,4 +39,3 @@ export const compactTaskQueue = async (queuePath, archivePath, { generatedAt = n
 };
 
 export { TERMINAL_STATUSES };
-

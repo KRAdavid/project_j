@@ -11,4 +11,3 @@ assert.equal(contract.authorityProfile.humanApprovalPrincipal, 'H-01');
 assert.equal(validateGoalContract(contract).length, 0);
 assert.throws(() => normalizeGoalContract({ intent: 'x', definitionOfDone: [] }), /GOAL_CONTRACT_INVALID/);
 console.log('goal contract tests: PASS');
-

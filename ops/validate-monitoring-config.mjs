@@ -18,4 +18,3 @@ if (!monitorSource.includes('process.kill(status.pid, 0)') || !monitorSource.inc
 if (!monitorSource.includes('MONITOR_REQUIRE_SUPERVISOR') || !monitorSource.includes('readSupervisorLiveness') || !monitorSource.includes('supervisorMaxAgeMs')) throw new Error('모니터가 회사 운영 감독자 생존을 확인하지 않습니다.');
 if (config.incidentLedger?.format !== 'append-only-jsonl' || config.incidentLedger?.deduplicateBy !== 'endpoint-check-error-fingerprint' || config.incidentLedger?.externalAlertRequiredForRelease !== true) throw new Error('사고 원장·중복 경보·외부 알림 게이트가 불완전합니다.');
 console.log('monitoring config tests: PASS');
-

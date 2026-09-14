@@ -52,4 +52,3 @@ export const evaluateDaemonLiveness = (status, { now = Date.now(), maxAgeMs = 20
 };
 
 export { LIVE_STATUSES };
-

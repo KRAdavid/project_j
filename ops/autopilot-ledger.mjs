@@ -148,4 +148,3 @@ export const readAutopilotHistory = async (historyPath) => {
     throw error;
   }
 };
-

@@ -412,4 +412,3 @@ if (run.decision === 'BLOCKED') {
 console.log(JSON.stringify({ runId: run.runId, decision: run.decision, taskId: selectedTask?.id || null }));
 
 if (run.decision === 'BLOCKED') process.exitCode = 1;
-

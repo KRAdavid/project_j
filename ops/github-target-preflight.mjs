@@ -55,4 +55,3 @@ if (process.argv[1] && basename(process.argv[1]) === 'github-target-preflight.mj
   console.log(JSON.stringify({ ...result, checkedAt: new Date().toISOString() }));
   if (process.argv.includes('--strict') && result.status !== 'TARGET_MATCH') process.exitCode = 2;
 }
-

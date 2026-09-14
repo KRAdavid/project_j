@@ -76,4 +76,3 @@ try {
     await store.close();
   }
 }
-

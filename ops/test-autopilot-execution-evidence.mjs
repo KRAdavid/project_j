@@ -45,4 +45,3 @@ assert.equal(queueAfterNoClaim.tasks.find((task) => task.id === 'TASK-QUEUED').l
 
 console.log(JSON.stringify({ status: 'PASS', recorded: recorded.status, queuedGuard: notClaimed.status }));
 
-

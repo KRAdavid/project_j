@@ -164,4 +164,3 @@ if (process.argv[1] && basename(process.argv[1]) === 'executive-review.mjs') {
   const review = await writeExecutiveReview();
   console.log(JSON.stringify({ decision: review.decision, recommendation: review.recommendation, missing: review.readiness.missing, pendingApprovals: review.approvals.pending }));
 }
-

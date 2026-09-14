@@ -29,4 +29,3 @@ assert.match(orderIdempotency, /insertCount, 1/);
 assert.match(acceptIdempotency, /ACCEPT_RETRY_MISMATCH/);
 assert.match(acceptIdempotency, /INSERT INTO trades/);
 console.log('postgres concurrency contract: PASS');
-

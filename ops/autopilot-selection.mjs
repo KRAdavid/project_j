@@ -65,4 +65,3 @@ export const selectNextTask = ({
     selectionType: task ? (task.status === 'queued' ? 'queued' : task.status === 'working' ? 'working-follow-up' : 'human-review') : 'none',
   };
 };
-

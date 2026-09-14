@@ -23,4 +23,3 @@ const mismatch = buildGitHubTargetPreflight({
 assert.equal(mismatch.status, 'BLOCKED');
 assert.ok(mismatch.missing.includes('TARGET_REMOTE_MATCH'));
 console.log('github target preflight tests: PASS');
-

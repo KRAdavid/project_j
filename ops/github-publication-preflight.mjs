@@ -85,4 +85,3 @@ if (process.argv[1] && basename(process.argv[1]) === 'github-publication-preflig
   try { target = JSON.parse(await readFile(resolve(root, 'ops', 'github-target.json'), 'utf8')); } catch {}
   console.log(JSON.stringify({ ...(await buildGitHubPublicationPreflight({ target })), checkedAt: new Date().toISOString() }));
 }
-

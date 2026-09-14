@@ -81,4 +81,3 @@ try {
     await rm(workDir, { recursive: true, force: true });
   }
 }
-

@@ -61,4 +61,3 @@ export const appendWorkPacket = async (packetsPath, packet) => {
 };
 
 export { forbiddenActions };
-

@@ -19,4 +19,3 @@ try {
 } finally {
   await rm(root, { recursive: true, force: true });
 }
-

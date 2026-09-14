@@ -31,4 +31,3 @@ export const evaluateApprovalSla = ({ items = [], now = new Date(), slaHours = D
     items: evaluated,
   };
 };
-

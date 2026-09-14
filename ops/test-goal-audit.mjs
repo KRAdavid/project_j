@@ -116,4 +116,3 @@ const publishedWithPremergeCi = buildGoalAudit({
 assert.equal(publishedWithPremergeCi.checks.find((item) => item.id === 'GITHUB_PUBLICATION').status, 'VERIFIED');
 assert.equal(publishedWithPremergeCi.runtime.githubPublicationStatus, 'PUBLISHED');
 console.log('goal audit contract: PASS');
-

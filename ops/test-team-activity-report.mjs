@@ -36,4 +36,3 @@ assert.deepEqual(report.members.find((member) => member.id === 'AI-05').executio
 assert.equal(report.members.find((member) => member.id === 'H-01').status, 'WAITING_FOR_H01');
 assert.ok(report.members.find((member) => member.id === 'AI-10').forbiddenActions.includes('TRADE_FINALIZATION'));
 console.log('team activity report: PASS');
-

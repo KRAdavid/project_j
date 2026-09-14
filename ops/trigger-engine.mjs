@@ -294,4 +294,3 @@ export const reconcileTriggerQueue = async (queuePath, currentFingerprints = new
 };
 
 export { TRIGGER_DEFINITIONS };
-

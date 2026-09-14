@@ -27,4 +27,3 @@ assert.ok(validateTaskQueue({
   queue: { tasks: [{ ...validTask, reviewers: ['H-01 사업총괄'] }] },
 }).some((error) => error.includes('reviewer must be an analysis/prepare AI')));
 console.log('task ownership tests: PASS');
-

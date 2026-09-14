@@ -53,4 +53,3 @@ if (failures.length) {
 } else {
   console.log(`github governance contract tests: PASS (${assertions.length})`);
 }
-

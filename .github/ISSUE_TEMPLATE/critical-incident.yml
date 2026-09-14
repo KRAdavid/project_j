@@ -54,4 +54,3 @@ body:
       options:
         - label: AI 또는 자동화가 실제 거래·계약·결제·분쟁 종결을 승인하지 않았음을 확인했습니다.
           required: true
-

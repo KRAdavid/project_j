@@ -56,4 +56,3 @@ export const appendPatentDisclosurePacket = async (packetsPath, packet) => {
 };
 
 export { prohibitedActions };
-

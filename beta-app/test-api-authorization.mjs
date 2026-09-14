@@ -121,4 +121,3 @@ try {
 } finally {
   if (child.exitCode === null) child.kill();
 }
-

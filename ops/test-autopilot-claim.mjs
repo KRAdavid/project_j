@@ -23,4 +23,3 @@ for (const [task, selectionType] of [
 assert.throws(() => claimQueuedTask({ status: 'queued' }, 'queued'), /인수 시각/);
 assert.throws(() => claimQueuedTask({ status: 'queued' }, 'queued', { claimedAt: 'not-a-time' }), /인수 시각 형식/);
 console.log('autopilot claim tests: PASS');
-

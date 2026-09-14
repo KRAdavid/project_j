@@ -37,4 +37,3 @@ assert.equal(ready.status, 'READY');
 assert.deepEqual(ready.missing, []);
 assert.equal(JSON.stringify(ready).includes('password'), false);
 console.log('staging preflight tests: PASS');
-

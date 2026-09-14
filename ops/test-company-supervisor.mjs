@@ -31,4 +31,3 @@ assert.match(source, /'--experimental-sqlite'/, 'missing SQLite runtime flag');
 assert.equal(packageJson.scripts['ops:supervise'], 'node ops/company-supervisor.mjs');
 assert.doesNotMatch(source, /git\\s+(push|commit)/i);
 console.log('company supervisor contract: PASS');
-

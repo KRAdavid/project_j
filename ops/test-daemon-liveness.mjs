@@ -13,4 +13,3 @@ assert.equal(evaluateDaemonLiveness({ status: 'WAITING', pid: 123, updatedAt: '2
 assert.equal(evaluateDaemonLiveness({ status: 'WAITING', updatedAt: '2026-09-09T13:29:00.000Z', lastCycle: 1, lastCycleExitCode: 0 }, { now }).reason, 'DAEMON_PROCESS_NOT_ALIVE');
 assert.equal(evaluateDaemonLiveness({}, { now }).reason, 'DAEMON_NOT_LIVE');
 console.log('daemon liveness tests: PASS');
-

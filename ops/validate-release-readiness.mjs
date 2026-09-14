@@ -12,4 +12,3 @@ assert.equal(required.some((check) => check.current === false), true, '현재 �
 assert.match(readiness.stopRule, /허용하지 않는다/);
 assert.equal(readiness.humanApprover, 'H-01');
 console.log('release readiness tests: PASS');
-

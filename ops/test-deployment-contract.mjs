@@ -28,4 +28,3 @@ assert.match(guide, /프로덕션 자동 배포는 의도적으로 제공하지 
 assert.equal(packageJson.packageManager, 'pnpm@11.19.0');
 
 console.log('deployment contract: PASS');
-

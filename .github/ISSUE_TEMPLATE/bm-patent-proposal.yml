@@ -49,4 +49,3 @@ body:
       options:
         - label: 특허성·신규성·진보성 판단은 변리사 검토가 필요함을 확인했습니다.
           required: true
-

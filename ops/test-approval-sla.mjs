@@ -16,4 +16,3 @@ assert.equal(result.items[0].action, 'ESCALATE_H01_REVIEW');
 assert.equal(result.items[1].action, 'WAIT_WITHIN_SLA');
 assert.equal(result.externalNotificationSent, false);
 console.log('approval SLA tests: PASS');
-

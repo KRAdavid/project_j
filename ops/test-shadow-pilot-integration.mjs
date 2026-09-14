@@ -27,4 +27,3 @@ try {
 } finally {
   await rm(tempRoot, { recursive: true, force: true });
 }
-

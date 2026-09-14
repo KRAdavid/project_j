@@ -30,4 +30,3 @@ assert.match(signals[0].context, /T-CRITICAL/);
 const clear = deriveTaskSlaSignals({ now, taskQueue: { tasks: [{ id: 'T-OK', status: 'queued', risk: 'high', createdAt: '2026-09-10T00:00:00.000Z' }] } });
 assert.equal(clear.length, 0);
 console.log('task SLA tests: PASS');
-

@@ -25,4 +25,3 @@ try {
 } finally {
   await rm(temp, { recursive: true, force: true });
 }
-

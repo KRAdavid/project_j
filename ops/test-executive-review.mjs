@@ -43,4 +43,3 @@ const currentTargetReview = buildExecutiveReview({
 });
 assert.equal(currentTargetReview.githubTargetPreflight.status, 'TARGET_MATCH');
 console.log('executive review tests: PASS');
-

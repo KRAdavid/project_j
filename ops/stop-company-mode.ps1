@@ -106,4 +106,3 @@ $runtime.stoppedAt = (Get-Date).ToUniversalTime().ToString('o')
 $runtime.stoppedProcesses = $stopped
 $runtime | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $RuntimeFile -Encoding UTF8
 Write-Host "COMPANY_MODE_STOPPED: $($stopped -join ', ')"
-

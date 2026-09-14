@@ -1054,4 +1054,3 @@ export class PostgresDomainAdapter {
 }
 
 export { mapEvidence, mapLot, mapOrder, mapTrade };
-

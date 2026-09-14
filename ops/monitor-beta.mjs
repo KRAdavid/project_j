@@ -101,4 +101,3 @@ try {
   console.error(JSON.stringify({ status: 'INCIDENT', baseUrl, error: error.message, checkedAt, incidentLedger }));
   process.exitCode = 1;
 }
-

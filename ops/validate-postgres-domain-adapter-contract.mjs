@@ -31,4 +31,3 @@ assert.match(adapterSource, /INSERT INTO approval_events/);
 assert.match(adapterSource, /async assertVerifiedSupplierOrganization\(/);
 assert.match(adapterSource, /SUPPLIER_ORGANIZATION_NOT_VERIFIED/);
 console.log('postgres domain adapter contract: PASS');
-

@@ -37,4 +37,3 @@ assert.equal(searchMaterials('베타 테스트', { source: extensibilityFixture 
 assert.deepEqual(searchMaterials('베타 테스트')[0], undefined, 'fixture 원료는 운영 카탈로그에 자동 등록되면 안 됩니다.');
 
 console.log('material-master tests: PASS');
-

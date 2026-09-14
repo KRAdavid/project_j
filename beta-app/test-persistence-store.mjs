@@ -110,4 +110,3 @@ await secondStore.close();
 await rm(recoveryPath, { force: true });
 
 console.log('persistence store tests: PASS');
-

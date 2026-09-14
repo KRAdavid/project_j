@@ -33,4 +33,3 @@ if (failures.length) {
 } else {
   console.log(`ops-daemon contract tests: PASS (${assertions.length})`);
 }
-

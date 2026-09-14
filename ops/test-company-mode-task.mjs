@@ -27,4 +27,3 @@ assert.match(script, /Register-ScheduledTask[\s\S]*-ErrorAction Stop/, 'registra
 assert.match(script, /Get-ScheduledTask -TaskName \$TaskName -ErrorAction Stop/, 'registration must be verified after creation');
 assert.doesNotMatch(script, /git\s+(push|commit)/i);
 console.log('company mode scheduled-task contract: PASS');
-

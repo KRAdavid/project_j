@@ -50,4 +50,3 @@ const result = buildStagingPreflight({
 
 console.log(JSON.stringify({ ...result, checkedAt: new Date().toISOString() }));
 if (process.argv.includes('--strict') && result.status !== 'READY') process.exitCode = 2;
-
