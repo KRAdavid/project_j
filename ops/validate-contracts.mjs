@@ -15,6 +15,7 @@ const contracts = [
   'ops/validate-ui-contract.mjs',
   'ops/test-approval-store.mjs',
   'ops/test-approval-sync.mjs',
+  'ops/test-task-approval-sync.mjs',
   'ops/test-autopilot-claim.mjs',
   'ops/test-autopilot-ledger.mjs',
   'ops/test-autopilot-selection.mjs',
