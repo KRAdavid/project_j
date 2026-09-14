@@ -27,6 +27,7 @@ const base = `http://127.0.0.1:${port}`;
 const waitForExit = new Promise((resolve) => child.once('exit', resolve));
 const opsRoot = await mkdtemp(join(tmpdir(), 'raw-material-api-ops-'));
 await writeFile(join(opsRoot, 'approval-inbox.json'), `${JSON.stringify({ schemaVersion: 'APPROVAL-INBOX-0.1', status: 'PENDING', items: [{ approvalId: 'APPROVAL-API-001', status: 'PENDING', taskId: 'TASK-API-001', sourceRunId: 'RUN-API-001' }] })}\n`);
+await writeFile(join(opsRoot, 'task-queue.json'), `${JSON.stringify({ schemaVersion: 'TASK-QUEUE-0.1', tasks: [{ id: 'TASK-API-001', status: 'review', nextAction: '검토' }] })}\n`);
 await writeFile(join(opsRoot, 'notification-outbox.jsonl'), `${JSON.stringify({ schemaVersion: 'OPS-NOTIFICATION-0.1', notificationId: 'NOTIFY-API-001', notificationType: 'RELEASE_NO_GO', fingerprint: 'readiness:api-test', severity: 'CRITICAL', title: 'API 테스트 운영 알림', message: '테스트용 확인 대상', requiredPrincipal: 'H-01', action: 'HOLD_REAL_OPERATIONS', state: 'PENDING', delivery: 'OUTBOX_ONLY' })}\n`);
 try {
   const exitCode = await Promise.race([waitForExit, new Promise((resolve) => setTimeout(() => resolve('timeout'), productionStartupTimeoutMs))]);
@@ -110,7 +111,10 @@ try {
     assert.equal(aiApproval.status, 403);
     const ownerApproval = await fetch(`${base}/api/ops/approvals/APPROVAL-API-001`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-demo-role': 'OWNER', 'x-raw-user-id': 'H-01' }, body: JSON.stringify({ decision: 'hold', note: '추가 검토' }) });
     assert.equal(ownerApproval.status, 200);
-    assert.equal((await ownerApproval.json()).approval.status, 'HELD');
+    const ownerApprovalBody = await ownerApproval.json();
+    assert.equal(ownerApprovalBody.approval.status, 'HELD');
+    assert.equal(ownerApprovalBody.taskSync.currentStatus, 'review');
+    assert.equal(ownerApprovalBody.taskSync.idempotent, false);
     const approvalSummary = await fetch(`${base}/api/ops/summary`, { headers: { 'x-demo-role': 'OPERATOR' } });
     assert.equal(approvalSummary.status, 200);
     const approvalSummaryBody = await approvalSummary.json();
@@ -118,7 +122,9 @@ try {
     assert.equal(approvalSummaryBody.approvalInbox.items.find((item) => item.approvalId === 'APPROVAL-API-001').status, 'HELD');
     const repeatedOwnerApproval = await fetch(`${base}/api/ops/approvals/APPROVAL-API-001`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-demo-role': 'OWNER', 'x-raw-user-id': 'H-01' }, body: JSON.stringify({ decision: 'hold' }) });
     assert.equal(repeatedOwnerApproval.status, 200);
-    assert.equal((await repeatedOwnerApproval.json()).idempotent, true);
+    const repeatedOwnerApprovalBody = await repeatedOwnerApproval.json();
+    assert.equal(repeatedOwnerApprovalBody.idempotent, true);
+    assert.equal(repeatedOwnerApprovalBody.taskSync.idempotent, true);
     const denied = await fetch(`${base}/api/orders/${order.order.orderId}/accept`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-demo-role': 'BUYER' }, body: JSON.stringify({ lotId: 'GBA-KR-2407' }) });
     assert.equal(denied.status, 403);
     const evidenceResponse = await fetch(`${base}/api/evidence`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-demo-role': 'SUPPLIER' }, body: JSON.stringify({ lotId: 'GBA-KR-AUTH', evidenceType: 'COA', documentVersion: 'v1', content: 'demo coa', expiresAt: '2027-01-01' }) });
@@ -135,3 +141,4 @@ try {
 } finally {
   if (child.exitCode === null) child.kill();
 }
+
