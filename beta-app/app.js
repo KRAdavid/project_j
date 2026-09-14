@@ -91,6 +91,29 @@ function renderSupplierDraft(draft) {
 
 let supplierAiReviewSequence = 0;
 let supplierUploadedDocument = null;
+let supplierAiReviewFingerprint = null;
+let supplierAiReviewTimer = null;
+
+function getSupplierPriceTiers() {
+  return [1, 2, 3].map((index) => ({
+    quantity: Number($(`#supplier-tier-${index}-qty`).value || 0),
+    price: Number($(`#supplier-tier-${index}-price`).value || 0),
+  })).filter((tier) => tier.quantity > 0 && tier.price > 0).sort((a, b) => a.quantity - b.quantity);
+}
+
+function getSupplierReviewFingerprint({ file, sha256, priceTiers }) {
+  return JSON.stringify({
+    material: $('#supplier-material').value.trim(),
+    coa: $('#supplier-coa').value.trim(),
+    file: file.name,
+    size: file.size,
+    sha256,
+    inventory: Number($('#supplier-inventory-qty').value || 0),
+    unit: $('#supplier-unit').value,
+    expiry: $('#supplier-expiry').value,
+    priceTiers,
+  });
+}
 
 async function fileToBase64(file) {
   const bytes = new Uint8Array(await file.arrayBuffer());
@@ -107,27 +130,27 @@ async function sha256File(file) {
 }
 
 async function runSupplierAiReview({ force = false } = {}) {
+  const sequence = ++supplierAiReviewSequence;
   const file = $('#supplier-coa-file')?.files?.[0];
   const inventoryQuantity = Number($('#supplier-inventory-qty')?.value || 0);
   const panel = $('#supplier-ai-review');
   if (!file || inventoryQuantity <= 0) {
+    supplierAiReviewFingerprint = null;
     if (force) throw new Error('COA 파일과 검증 재고수량을 입력해 주세요.');
     panel?.classList.add('hidden');
     return null;
   }
-  const sequence = ++supplierAiReviewSequence;
   panel?.classList.remove('hidden');
+  panel?.setAttribute('aria-busy', 'true');
   $('#supplier-ai-review-title').textContent = 'AI가 COA와 재고 입력값을 분석 중입니다.';
   $('#supplier-ai-review-detail').textContent = `${file.name} · ${(file.size / 1024).toFixed(1)} KB · ${inventoryQuantity.toLocaleString('ko-KR')} ${$('#supplier-unit').value}`;
   $('#supplier-ai-review-status').textContent = '검토 중';
-  const priceTiers = [1, 2, 3].map((index) => ({
-    quantity: Number($(`#supplier-tier-${index}-qty`).value || 0),
-    price: Number($(`#supplier-tier-${index}-price`).value || 0),
-  })).filter((tier) => tier.quantity > 0 && tier.price > 0).sort((a, b) => a.quantity - b.quantity);
+  const priceTiers = getSupplierPriceTiers();
   let result;
   try {
     $('#supplier-ai-review-detail').textContent = 'COA 파일 내용 지문을 계산 중입니다...';
     const coaFileSha256 = await sha256File(file);
+    const reviewFingerprint = getSupplierReviewFingerprint({ file, sha256: coaFileSha256, priceTiers });
     if (!supplierUploadedDocument || supplierUploadedDocument.contentSha256 !== coaFileSha256 || supplierUploadedDocument.size !== file.size) {
       $('#supplier-ai-review-detail').textContent = 'COA 원문을 보관소에 업로드 중입니다...';
       const upload = await apiRequest('/api/supplier/precheck-document', {
@@ -144,7 +167,7 @@ async function runSupplierAiReview({ force = false } = {}) {
       supplierUploadedDocument = { ...upload.document, size: file.size };
     }
     const coaStorageRef = supplierUploadedDocument.storageRef;
-    const reviewKey = `supplier-precheck-${JSON.stringify({ material: $('#supplier-material').value.trim(), coa: $('#supplier-coa').value.trim(), file: file.name, size: file.size, sha256: coaFileSha256, inventory: inventoryQuantity, unit: $('#supplier-unit').value, expiry: $('#supplier-expiry').value, priceTiers })}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 160);
+    const reviewKey = `supplier-precheck-${reviewFingerprint}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 160);
     result = await apiRequest('/api/supplier/precheck', {
       method: 'POST',
       headers: { 'X-Raw-Role': 'SUPPLIER' },
@@ -164,6 +187,8 @@ async function runSupplierAiReview({ force = false } = {}) {
     });
   } catch (error) {
     if (sequence === supplierAiReviewSequence) {
+      supplierAiReviewFingerprint = null;
+      panel?.removeAttribute('aria-busy');
       $('#supplier-ai-review-title').textContent = 'AI 사전검토를 완료하지 못했습니다.';
       $('#supplier-ai-review-detail').textContent = error.message;
       $('#supplier-ai-review-status').textContent = '재시도 필요';
@@ -174,6 +199,8 @@ async function runSupplierAiReview({ force = false } = {}) {
   if (sequence !== supplierAiReviewSequence) return null;
   const review = result.review;
   const ready = review?.ready === true;
+  supplierAiReviewFingerprint = getSupplierReviewFingerprint({ file, sha256: supplierUploadedDocument.contentSha256, priceTiers });
+  panel?.removeAttribute('aria-busy');
   $('#supplier-ai-review-title').textContent = ready ? 'AI 사전검토 완료 · 운영 검증 필요' : 'AI 사전검토 보완 필요';
   $('#supplier-ai-review-detail').textContent = ready
     ? 'COA 파일 형식과 재고수량을 확인했습니다. AI는 승인하지 않으며, 원문·로트·재고 검증이 이어집니다.'
@@ -1283,6 +1310,7 @@ $('#supplier-entry-form').addEventListener('submit', async (event) => {
   try {
     if (!onboardingState.account) throw new Error('먼저 사업자등록번호와 이메일로 계정을 등록해 주세요.');
     const aiReview = await runSupplierAiReview({ force: true });
+    if (!supplierAiReviewFingerprint) throw new Error('최신 공급 조건의 AI 사전검토 지문이 없습니다. 입력값을 다시 확인해 주세요.');
     if (!aiReview?.ready) throw new Error('AI 사전검토를 완료할 수 없습니다. COA 파일과 재고수량을 다시 확인해 주세요.');
     const coaFile = $('#supplier-coa-file').files[0];
     const draft = {
@@ -1315,8 +1343,23 @@ $('#supplier-entry-form').addEventListener('submit', async (event) => {
   }
 });
 
-$('#supplier-coa-file')?.addEventListener('change', () => { supplierUploadedDocument = null; runSupplierAiReview(); });
-$('#supplier-inventory-qty')?.addEventListener('input', () => runSupplierAiReview());
+$('#supplier-coa-file')?.addEventListener('change', () => { supplierUploadedDocument = null; supplierAiReviewFingerprint = null; runSupplierAiReview(); });
+['supplier-material', 'supplier-coa', 'supplier-inventory-qty', 'supplier-expiry', 'supplier-unit', 'supplier-tier-1-qty', 'supplier-tier-1-price', 'supplier-tier-2-qty', 'supplier-tier-2-price', 'supplier-tier-3-qty', 'supplier-tier-3-price'].forEach((id) => {
+  const field = $(`#${id}`);
+  if (!field) return;
+  const schedule = () => {
+    supplierAiReviewFingerprint = null;
+    const panel = $('#supplier-ai-review');
+    panel?.classList.remove('hidden');
+    $('#supplier-ai-review-title').textContent = '공급 조건 변경 · AI 재검토 대기';
+    $('#supplier-ai-review-detail').textContent = '입력 변경을 반영해 최신 COA·재고·가격 조건을 자동 재검토합니다.';
+    $('#supplier-ai-review-status').textContent = '재검토 대기';
+    window.clearTimeout(supplierAiReviewTimer);
+    supplierAiReviewTimer = window.setTimeout(() => runSupplierAiReview(), 450);
+  };
+  field.addEventListener('input', schedule);
+  field.addEventListener('change', schedule);
+});
 
 $('#sourcing-chat-form').addEventListener('submit', async (event) => {
   event.preventDefault();

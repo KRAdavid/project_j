@@ -106,9 +106,17 @@ const readOptionalJsonl = async (path) => {
   }
 };
 
+const securityHeaders = Object.freeze({
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Referrer-Policy': 'no-referrer',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+  'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
+});
+
 const sendJson = (response, status, payload) => {
   const body = JSON.stringify(payload);
-  response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+  response.writeHead(status, { ...securityHeaders, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
   response.end(body);
 };
 
@@ -821,13 +829,13 @@ const httpServer = createServer(async (request, response) => {
   if (url.pathname.startsWith('/api/')) return handleApi(request, response, url);
   const requestPath = decodeURIComponent(url.pathname);
   const candidate = normalize(join(root, requestPath === '/' ? 'index.html' : requestPath.slice(1)));
-  if (!candidate.startsWith(root)) return response.writeHead(403).end('Forbidden');
+  if (!candidate.startsWith(root)) return response.writeHead(403, securityHeaders).end('Forbidden');
   try {
     const body = await readFile(candidate);
-    response.writeHead(200, { 'Content-Type': types[extname(candidate)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
+    response.writeHead(200, { ...securityHeaders, 'Content-Type': types[extname(candidate)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
     response.end(body);
   } catch {
-    response.writeHead(404).end('Not Found');
+    response.writeHead(404, securityHeaders).end('Not Found');
   }
 });
 

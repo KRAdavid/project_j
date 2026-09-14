@@ -40,6 +40,12 @@ try {
       try { response = await fetch(`${base}/api/orders`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ specId: 'GABA-SPEC-001', specAttributes: GABA_SPEC_ATTRIBUTES, price: 21800, quantity: 20, deliveryDays: 14 }) }); break; } catch { await new Promise((resolve) => setTimeout(resolve, 100)); }
     }
     assert.equal(response?.status, 201);
+    const home = await fetch(`${base}/`);
+    assert.equal(home.status, 200);
+    assert.equal(home.headers.get('x-content-type-options'), 'nosniff');
+    assert.equal(home.headers.get('x-frame-options'), 'DENY');
+    assert.equal(home.headers.get('referrer-policy'), 'no-referrer');
+    assert.match(home.headers.get('content-security-policy') || '', /default-src 'self'/);
     const order = await response.json();
     const specDraft = await fetch(`${base}/api/spec-compile`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ query: '가바', answers: {} }) });
     assert.equal(specDraft.status, 200);
