@@ -41,6 +41,9 @@ try {
   const precheckRepeat = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify(precheckInput) });
   assert.equal(precheckRepeat.status, 200);
   assert.equal((await precheckRepeat.json()).idempotent, true);
+  const mismatchedPrecheck = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify({ ...precheckInput, priceTiers: [{ quantity: 20, price: 21900 }] }) });
+  assert.equal(mismatchedPrecheck.status, 422);
+  assert.equal((await mismatchedPrecheck.json()).code, 'IDEMPOTENCY_KEY_REUSE_MISMATCH');
 
   const registration = await request('/api/supplier/registration', { method: 'POST', body: JSON.stringify({ businessRegistrationNumber: '220-81-62517', email: 'supplier@example.com', legalName: 'GABA 공급기업' }) });
   assert.equal(registration.status, 201);

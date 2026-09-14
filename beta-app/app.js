@@ -105,11 +105,11 @@ async function runSupplierAiReview({ force = false } = {}) {
   $('#supplier-ai-review-title').textContent = 'AI가 COA와 재고 입력값을 분석 중입니다.';
   $('#supplier-ai-review-detail').textContent = `${file.name} · ${(file.size / 1024).toFixed(1)} KB · ${inventoryQuantity.toLocaleString('ko-KR')} ${$('#supplier-unit').value}`;
   $('#supplier-ai-review-status').textContent = '검토 중';
-  const reviewKey = `supplier-precheck-${file.name}-${file.size}-${inventoryQuantity}-${$('#supplier-unit').value}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 120);
   const priceTiers = [1, 2, 3].map((index) => ({
     quantity: Number($(`#supplier-tier-${index}-qty`).value || 0),
     price: Number($(`#supplier-tier-${index}-price`).value || 0),
   })).filter((tier) => tier.quantity > 0 && tier.price > 0).sort((a, b) => a.quantity - b.quantity);
+  const reviewKey = `supplier-precheck-${JSON.stringify({ material: $('#supplier-material').value.trim(), coa: $('#supplier-coa').value.trim(), file: file.name, size: file.size, inventory: inventoryQuantity, unit: $('#supplier-unit').value, expiry: $('#supplier-expiry').value, priceTiers })}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 160);
   let result;
   try {
     result = await apiRequest('/api/supplier/precheck', {

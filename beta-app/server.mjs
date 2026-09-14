@@ -65,6 +65,19 @@ const simulationSupplierRegistrations = new Map();
 const simulationSupplierRegistrationOwners = new Map();
 const simulationBusinessAccounts = new Map();
 const simulationSupplierPrechecks = new Map();
+const normalizeSupplierPrecheckInput = (input = {}) => ({
+  material: String(input.material || '').trim(),
+  coaDocumentNumber: String(input.coaDocumentNumber || '').trim(),
+  coaFileName: String(input.coaFileName || '').trim(),
+  coaFileSize: Number(input.coaFileSize || 0),
+  inventoryQuantity: Number(input.inventoryQuantity || 0),
+  unit: String(input.unit || '').trim().toUpperCase(),
+  expiry: String(input.expiry || '').trim(),
+  priceTiers: (Array.isArray(input.priceTiers) ? input.priceTiers : [])
+    .map((tier) => ({ quantity: Number(tier?.quantity || 0), price: Number(tier?.price || 0) }))
+    .sort((a, b) => a.quantity - b.quantity || a.price - b.price),
+});
+const supplierPrecheckFingerprint = (input = {}) => createHash('sha256').update(JSON.stringify(normalizeSupplierPrecheckInput(input))).digest('hex');
 const eventBroker = new SseEventBroker({ heartbeatPayload: { dataStatus: runtimeDataStatus } });
 const evidenceRegistry = new EvidenceRegistry({ snapshot: await persistenceStore.loadEvidence() });
 const documentStorage = createDocumentStorage({ environment, persistenceMode: persistenceStore.mode });
@@ -544,9 +557,15 @@ const handleApi = async (request, response, url) => {
       const review = evaluateSupplierAiPrecheck(input);
       const idempotencyKey = String(input.idempotencyKey || `${input.coaFileName || 'coa'}-${input.coaFileSize || 0}-${input.inventoryQuantity || 0}-${input.unit || ''}`).slice(0, 160);
       const key = `${principal.organizationId}:${idempotencyKey}`;
+      const inputFingerprint = supplierPrecheckFingerprint(input);
       const existing = simulationSupplierPrechecks.get(key);
-      if (existing) return sendJson(response, 200, { precheck: existing, review: existing.review, status: 'PRECHECK_REVIEWED', idempotent: true, dataStatus: runtimeDataStatus });
-      const precheck = { precheckId: `SIM-SUPPLIER-PRECHECK-${Date.now()}`, organizationId: principal.organizationId, reviewedBy: 'AI-SUPPLIER-PRECHECK', material: String(input.material || '').trim(), coaDocumentNumber: String(input.coaDocumentNumber || '').trim(), coaFileName: String(input.coaFileName || '').trim(), coaFileSize: Number(input.coaFileSize || 0), inventoryQuantity: Number(input.inventoryQuantity || 0), unit: String(input.unit || '').trim().toUpperCase(), expiry: String(input.expiry || '').trim(), review };
+      if (existing) {
+        const existingFingerprint = existing.inputFingerprint || supplierPrecheckFingerprint(existing);
+        if (existingFingerprint !== inputFingerprint) throw new TradeRuleError('같은 멱등키로 다른 공급 조건을 재사용할 수 없습니다.', 'IDEMPOTENCY_KEY_REUSE_MISMATCH');
+        return sendJson(response, 200, { precheck: existing, review: existing.review, status: 'PRECHECK_REVIEWED', idempotent: true, dataStatus: runtimeDataStatus });
+      }
+      const normalizedInput = normalizeSupplierPrecheckInput(input);
+      const precheck = { precheckId: `SIM-SUPPLIER-PRECHECK-${Date.now()}`, organizationId: principal.organizationId, reviewedBy: 'AI-SUPPLIER-PRECHECK', ...normalizedInput, inputFingerprint, review };
       simulationSupplierPrechecks.set(key, precheck);
       return sendJson(response, 201, { precheck, review, status: 'PRECHECK_REVIEWED', idempotent: false, dataStatus: runtimeDataStatus });
     }
