@@ -101,17 +101,28 @@ function getSupplierPriceTiers() {
   })).filter((tier) => tier.quantity > 0 && tier.price > 0).sort((a, b) => a.quantity - b.quantity);
 }
 
-function getSupplierReviewFingerprint({ file, sha256, priceTiers }) {
-  return JSON.stringify({
+function getSupplierReviewInput() {
+  return {
     material: $('#supplier-material').value.trim(),
-    coa: $('#supplier-coa').value.trim(),
+    coaDocumentNumber: $('#supplier-coa').value.trim(),
+    inventoryQuantity: Number($('#supplier-inventory-qty').value || 0),
+    unit: $('#supplier-unit').value,
+    expiry: $('#supplier-expiry').value,
+    priceTiers: getSupplierPriceTiers(),
+  };
+}
+
+function getSupplierReviewFingerprint({ file, sha256, input }) {
+  return JSON.stringify({
+    material: input.material,
+    coa: input.coaDocumentNumber,
     file: file.name,
     size: file.size,
     sha256,
-    inventory: Number($('#supplier-inventory-qty').value || 0),
-    unit: $('#supplier-unit').value,
-    expiry: $('#supplier-expiry').value,
-    priceTiers,
+    inventory: input.inventoryQuantity,
+    unit: input.unit,
+    expiry: input.expiry,
+    priceTiers: input.priceTiers,
   });
 }
 
@@ -132,7 +143,8 @@ async function sha256File(file) {
 async function runSupplierAiReview({ force = false } = {}) {
   const sequence = ++supplierAiReviewSequence;
   const file = $('#supplier-coa-file')?.files?.[0];
-  const inventoryQuantity = Number($('#supplier-inventory-qty')?.value || 0);
+  const input = getSupplierReviewInput();
+  const inventoryQuantity = input.inventoryQuantity;
   const panel = $('#supplier-ai-review');
   if (!file || inventoryQuantity <= 0) {
     supplierAiReviewFingerprint = null;
@@ -145,13 +157,13 @@ async function runSupplierAiReview({ force = false } = {}) {
   $('#supplier-ai-review-title').textContent = 'AI가 COA와 재고 입력값을 분석 중입니다.';
   $('#supplier-ai-review-detail').textContent = `${file.name} · ${(file.size / 1024).toFixed(1)} KB · ${inventoryQuantity.toLocaleString('ko-KR')} ${$('#supplier-unit').value}`;
   $('#supplier-ai-review-status').textContent = '검토 중';
-  const priceTiers = getSupplierPriceTiers();
   let result;
   try {
     $('#supplier-ai-review-detail').textContent = 'COA 파일 내용 지문을 계산 중입니다...';
     const coaFileSha256 = await sha256File(file);
-    const reviewFingerprint = getSupplierReviewFingerprint({ file, sha256: coaFileSha256, priceTiers });
-    if (!supplierUploadedDocument || supplierUploadedDocument.contentSha256 !== coaFileSha256 || supplierUploadedDocument.size !== file.size) {
+    const reviewFingerprint = getSupplierReviewFingerprint({ file, sha256: coaFileSha256, input });
+    let uploadedDocument = supplierUploadedDocument;
+    if (!uploadedDocument || uploadedDocument.contentSha256 !== coaFileSha256 || uploadedDocument.size !== file.size) {
       $('#supplier-ai-review-detail').textContent = 'COA 원문을 보관소에 업로드 중입니다...';
       const upload = await apiRequest('/api/supplier/precheck-document', {
         method: 'POST',
@@ -164,24 +176,27 @@ async function runSupplierAiReview({ force = false } = {}) {
           idempotencyKey: `supplier-document-${coaFileSha256}`,
         }),
       });
-      supplierUploadedDocument = { ...upload.document, size: file.size };
+      uploadedDocument = { ...upload.document, size: file.size };
+      if (sequence !== supplierAiReviewSequence) return null;
+      supplierUploadedDocument = uploadedDocument;
     }
-    const coaStorageRef = supplierUploadedDocument.storageRef;
+    if (sequence !== supplierAiReviewSequence) return null;
+    const coaStorageRef = uploadedDocument.storageRef;
     const reviewKey = `supplier-precheck-${reviewFingerprint}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 160);
     result = await apiRequest('/api/supplier/precheck', {
       method: 'POST',
       headers: { 'X-Raw-Role': 'SUPPLIER' },
       body: JSON.stringify({
-        material: $('#supplier-material').value.trim(),
-        coaDocumentNumber: $('#supplier-coa').value.trim(),
+        material: input.material,
+        coaDocumentNumber: input.coaDocumentNumber,
         coaFileName: file.name,
         coaFileSize: file.size,
         coaFileSha256,
         coaStorageRef,
-        inventoryQuantity,
-        unit: $('#supplier-unit').value,
-        expiry: $('#supplier-expiry').value,
-        priceTiers,
+        inventoryQuantity: input.inventoryQuantity,
+        unit: input.unit,
+        expiry: input.expiry,
+        priceTiers: input.priceTiers,
         idempotencyKey: reviewKey,
       }),
     });
@@ -199,7 +214,7 @@ async function runSupplierAiReview({ force = false } = {}) {
   if (sequence !== supplierAiReviewSequence) return null;
   const review = result.review;
   const ready = review?.ready === true;
-  supplierAiReviewFingerprint = getSupplierReviewFingerprint({ file, sha256: supplierUploadedDocument.contentSha256, priceTiers });
+  supplierAiReviewFingerprint = getSupplierReviewFingerprint({ file, sha256: result.precheck?.coaFileSha256 || supplierUploadedDocument.contentSha256, input });
   panel?.removeAttribute('aria-busy');
   $('#supplier-ai-review-title').textContent = ready ? 'AI 사전검토 완료 · 운영 검증 필요' : 'AI 사전검토 보완 필요';
   $('#supplier-ai-review-detail').textContent = ready
@@ -1343,11 +1358,12 @@ $('#supplier-entry-form').addEventListener('submit', async (event) => {
   }
 });
 
-$('#supplier-coa-file')?.addEventListener('change', () => { supplierUploadedDocument = null; supplierAiReviewFingerprint = null; runSupplierAiReview(); });
+$('#supplier-coa-file')?.addEventListener('change', () => { supplierAiReviewSequence += 1; supplierUploadedDocument = null; supplierAiReviewFingerprint = null; runSupplierAiReview(); });
 ['supplier-material', 'supplier-coa', 'supplier-inventory-qty', 'supplier-expiry', 'supplier-unit', 'supplier-tier-1-qty', 'supplier-tier-1-price', 'supplier-tier-2-qty', 'supplier-tier-2-price', 'supplier-tier-3-qty', 'supplier-tier-3-price'].forEach((id) => {
   const field = $(`#${id}`);
   if (!field) return;
   const schedule = () => {
+    supplierAiReviewSequence += 1;
     supplierAiReviewFingerprint = null;
     const panel = $('#supplier-ai-review');
     panel?.classList.remove('hidden');
