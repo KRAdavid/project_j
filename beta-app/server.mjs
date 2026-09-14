@@ -24,6 +24,7 @@ import { evaluateTaskSla } from '../ops/task-sla.mjs';
 import { compileGoal } from '../ops/goal-compiler.mjs';
 import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
 import { projectRuntimeLiveness } from '../ops/runtime-liveness.mjs';
+import { syncTaskApproval } from '../ops/task-approval-sync.mjs';
 import { createSimulationSupplierRegistration, evaluateSupplierAiPrecheck, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
@@ -478,7 +479,19 @@ const handleApi = async (request, response, url) => {
         return sendJson(response, 200, { approval: domainResult.item, idempotent: domainResult.idempotent, guardrail: '승인은 운영 업무의 다음 단계 결정이며 실제 거래·계약·결제의 자동 실행을 의미하지 않습니다.' });
       }
       const result = await decideApproval(join(opsRoot, 'approval-inbox.json'), approvalLogPath, decodeURIComponent(approvalMatch[1]), { ...input, decidedBy: principal.userId });
-      return sendJson(response, 200, { approval: result.item, idempotent: result.idempotent, guardrail: '승인은 운영 업무의 다음 단계 결정이며 실제 거래·계약·결제의 자동 실행을 의미하지 않습니다.' });
+      const taskSync = result.item?.taskId
+        ? await syncTaskApproval({
+          queuePath: join(opsRoot, 'task-queue.json'),
+          auditPath: join(opsRoot, 'task-approval-sync.jsonl'),
+          approvalId,
+          taskId: result.item.taskId,
+          decision: result.item.decision,
+          decidedBy: result.item.decidedBy,
+          decidedAt: result.item.decidedAt,
+          note: result.item.decisionNote,
+        })
+        : { status: 'NOT_APPLICABLE', taskId: null, idempotent: true };
+      return sendJson(response, 200, { approval: result.item, taskSync, idempotent: result.idempotent, guardrail: '승인은 운영 업무의 다음 단계 결정이며 실제 거래·계약·결제의 자동 실행을 의미하지 않습니다.' });
     }
     if (request.method === 'GET' && url.pathname === '/api/readiness') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'OPERATOR' });
