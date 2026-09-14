@@ -106,6 +106,10 @@ async function runSupplierAiReview({ force = false } = {}) {
   $('#supplier-ai-review-detail').textContent = `${file.name} · ${(file.size / 1024).toFixed(1)} KB · ${inventoryQuantity.toLocaleString('ko-KR')} ${$('#supplier-unit').value}`;
   $('#supplier-ai-review-status').textContent = '검토 중';
   const reviewKey = `supplier-precheck-${file.name}-${file.size}-${inventoryQuantity}-${$('#supplier-unit').value}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 120);
+  const priceTiers = [1, 2, 3].map((index) => ({
+    quantity: Number($(`#supplier-tier-${index}-qty`).value || 0),
+    price: Number($(`#supplier-tier-${index}-price`).value || 0),
+  })).filter((tier) => tier.quantity > 0 && tier.price > 0).sort((a, b) => a.quantity - b.quantity);
   let result;
   try {
     result = await apiRequest('/api/supplier/precheck', {
@@ -119,6 +123,7 @@ async function runSupplierAiReview({ force = false } = {}) {
         inventoryQuantity,
         unit: $('#supplier-unit').value,
         expiry: $('#supplier-expiry').value,
+        priceTiers,
         idempotencyKey: reviewKey,
       }),
     });
