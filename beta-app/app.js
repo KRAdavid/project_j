@@ -86,7 +86,7 @@ function renderSupplierDraft(draft) {
   const tierText = draft.priceTiers.map((tier) => `${tier.quantity.toLocaleString('ko-KR')} ${draft.unit} · ₩${tier.price.toLocaleString('ko-KR')}`).join(' / ');
   $('#supplier-draft-detail').textContent = `${draft.registration?.maskedBusinessRegistrationNumber || '사업자번호 확인 완료'} · COA ${draft.coa} · 재고 ${Number(draft.inventoryQuantity || 0).toLocaleString('ko-KR')} ${draft.unit} · 소비기한 ${draft.expiry} · ${tierText}`;
   const status = summary.querySelector('.draft-status');
-  if (status) status.textContent = draft.registrationStatus === 'AUTO_REGISTERED' ? '자동 등록 완료 · 매물 검증 대기' : '검증 대기';
+  if (status) status.textContent = draft.aiReview?.ready ? 'AI 사전검토 완료 · 매물 검증 대기' : draft.registrationStatus === 'AUTO_REGISTERED' ? '자동 등록 완료 · 매물 검증 대기' : '검증 대기';
 }
 
 let supplierAiReviewSequence = 0;
