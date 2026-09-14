@@ -50,7 +50,10 @@ export const createSimulationSupplierRegistration = ({ organizationId, userId, b
   };
 };
 
-export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = '', coaFileName = '', coaFileSize = 0, coaFileSha256 = '', coaStorageRef = '', coaFileSignatureVerified = false, inventoryQuantity = 0, unit = '', expiry = '', priceTiers = [], now = new Date().toISOString() } = {}) => {
+export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = '', coaFileName = '', coaFileSize = 0, coaFileSha256 = '', coaStorageRef = '', coaFileSignatureVerified = false, inventoryQuantity = 0, unit = '', expiry = '', priceTiers = [], reviewScope = 'SUPPLY_OFFER', now = new Date().toISOString() } = {}) => {
+  const normalizedReviewScope = String(reviewScope || 'SUPPLY_OFFER').trim().toUpperCase();
+  const supportedReviewScope = ['EVIDENCE_ONLY', 'SUPPLY_OFFER', 'ORDER_RESPONSE'].includes(normalizedReviewScope);
+  const pricingRequired = normalizedReviewScope !== 'EVIDENCE_ONLY';
   const normalizedFileName = String(coaFileName || '').trim();
   const normalizedSize = Number(coaFileSize || 0);
   const normalizedFileSha256 = String(coaFileSha256 || '').trim().toLowerCase();
@@ -60,8 +63,9 @@ export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = 
   const supportedFile = SUPPORTED_COA_EXTENSIONS.test(normalizedFileName) && normalizedSize > 0 && normalizedSize <= MAX_COA_METADATA_SIZE;
   const validExpiry = /^\d{4}-\d{2}-\d{2}$/.test(expiryDate) && expiryDate >= String(now).slice(0, 10);
   const validUnit = ['KG', 'L', 'EA'].includes(normalizedUnit);
-  const validPriceTiers = Array.isArray(priceTiers) && priceTiers.some((tier) => Number(tier?.quantity || 0) > 0 && Number(tier?.price || 0) > 0);
+  const validPriceTiers = !pricingRequired || (Array.isArray(priceTiers) && priceTiers.some((tier) => Number(tier?.quantity || 0) > 0 && Number(tier?.price || 0) > 0));
   const checks = {
+    reviewScopeValid: supportedReviewScope,
     materialPresent: Boolean(String(material || '').trim()),
     coaReferencePresent: Boolean(String(coaDocumentNumber || '').trim()),
     coaFilePresent: Boolean(normalizedFileName),
@@ -75,6 +79,7 @@ export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = 
     priceTierPresent: validPriceTiers,
   };
   const reasons = Object.entries(checks).filter(([, passed]) => !passed).map(([check]) => ({
+    reviewScopeValid: '사전검토 범위가 올바르지 않습니다.',
     materialPresent: '공급 원료명이 필요합니다.',
     coaReferencePresent: 'COA 문서번호가 필요합니다.',
     coaFilePresent: 'COA 파일이 필요합니다.',
@@ -88,6 +93,7 @@ export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = 
     priceTierPresent: '수량별 공급 단가가 최소 한 구간 필요합니다.',
   }[check]));
   return {
+    reviewScope: normalizedReviewScope,
     status: reasons.length === 0 ? 'REVIEWED' : 'NEEDS_REVIEW',
     mode: 'SIMULATION_AI_PRECHECK',
     ready: reasons.length === 0,
@@ -97,3 +103,4 @@ export const evaluateSupplierAiPrecheck = ({ material = '', coaDocumentNumber = 
     guardrail: 'AI는 파일 지문과 입력값을 사전검토할 뿐 공급자 승인·매물 공개·거래 체결을 수행하지 않습니다.',
   };
 };
+
