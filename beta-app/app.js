@@ -90,6 +90,15 @@ function renderSupplierDraft(draft) {
 }
 
 let supplierAiReviewSequence = 0;
+let supplierUploadedDocument = null;
+
+async function fileToBase64(file) {
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  let binary = '';
+  const chunkSize = 0x8000;
+  for (let offset = 0; offset < bytes.length; offset += chunkSize) binary += String.fromCharCode(...bytes.subarray(offset, offset + chunkSize));
+  return btoa(binary);
+}
 
 async function sha256File(file) {
   if (!globalThis.crypto?.subtle) throw new Error('브라우저가 COA SHA-256 지문 계산을 지원하지 않습니다.');
@@ -119,6 +128,22 @@ async function runSupplierAiReview({ force = false } = {}) {
   try {
     $('#supplier-ai-review-detail').textContent = 'COA 파일 내용 지문을 계산 중입니다...';
     const coaFileSha256 = await sha256File(file);
+    if (!supplierUploadedDocument || supplierUploadedDocument.contentSha256 !== coaFileSha256 || supplierUploadedDocument.size !== file.size) {
+      $('#supplier-ai-review-detail').textContent = 'COA 원문을 보관소에 업로드 중입니다...';
+      const upload = await apiRequest('/api/supplier/precheck-document', {
+        method: 'POST',
+        headers: { 'X-Raw-Role': 'SUPPLIER' },
+        body: JSON.stringify({
+          fileName: file.name,
+          contentType: file.type || 'application/octet-stream',
+          contentBase64: await fileToBase64(file),
+          contentSha256: coaFileSha256,
+          idempotencyKey: `supplier-document-${coaFileSha256}`,
+        }),
+      });
+      supplierUploadedDocument = { ...upload.document, size: file.size };
+    }
+    const coaStorageRef = supplierUploadedDocument.storageRef;
     const reviewKey = `supplier-precheck-${JSON.stringify({ material: $('#supplier-material').value.trim(), coa: $('#supplier-coa').value.trim(), file: file.name, size: file.size, sha256: coaFileSha256, inventory: inventoryQuantity, unit: $('#supplier-unit').value, expiry: $('#supplier-expiry').value, priceTiers })}`.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 160);
     result = await apiRequest('/api/supplier/precheck', {
       method: 'POST',
@@ -129,6 +154,7 @@ async function runSupplierAiReview({ force = false } = {}) {
         coaFileName: file.name,
         coaFileSize: file.size,
         coaFileSha256,
+        coaStorageRef,
         inventoryQuantity,
         unit: $('#supplier-unit').value,
         expiry: $('#supplier-expiry').value,
@@ -1289,7 +1315,7 @@ $('#supplier-entry-form').addEventListener('submit', async (event) => {
   }
 });
 
-$('#supplier-coa-file')?.addEventListener('change', () => runSupplierAiReview());
+$('#supplier-coa-file')?.addEventListener('change', () => { supplierUploadedDocument = null; runSupplierAiReview(); });
 $('#supplier-inventory-qty')?.addEventListener('input', () => runSupplierAiReview());
 
 $('#sourcing-chat-form').addEventListener('submit', async (event) => {

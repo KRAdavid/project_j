@@ -93,10 +93,10 @@ python -m http.server 4173
 - 현재 데이터는 모두 시뮬레이션 데이터입니다.
 - `server.mjs`는 `/api/state`, `/api/market-board?specId=GABA-SPEC-001`, `/api/orders`, `/api/orders/:orderId/accept` 최소 거래 원장을 제공합니다.
 - `/api/market-board`는 서버 원장의 `VERIFIED_ELIGIBLE` 로트 중 유효 증빙·가용 재고·표준 거래단위를 모두 통과한 매물만 반환합니다. 공개 매수 호가는 별도 공개정책 승인 전까지 빈 배열입니다.
-- `/api/supplier/precheck`는 시뮬레이션에서 메모리로, PostgreSQL 상용 모드에서는 `supplier_prechecks` 원장으로 멱등 저장하며, AI 사전검토는 공급자 승인이나 매물 공개를 수행하지 않습니다.
+- `/api/supplier/precheck-document`가 COA 원문을 메모리·SQLite 파일·상용 S3 호환 Object Storage 어댑터에 먼저 보관하고, `/api/supplier/precheck`는 저장 참조·SHA-256·거래조건을 시뮬레이션 메모리 또는 PostgreSQL `supplier_prechecks` 원장에 멱등 저장합니다. AI 사전검토는 공급자 승인이나 매물 공개를 수행하지 않습니다.
 - `server.mjs`는 `/api/materials`, `/api/materials/resolve?q=GABA`로 표준 원료·동의어 매칭 결과를 제공합니다.
 - `POST /api/evidence`와 운영자 검토 후 `POST /api/lots`로 거래 전 증빙이 완비된 로트만 매물 등록을 허용합니다.
 - 기본 원장은 안전한 시뮬레이션 메모리 모드입니다. `PERSISTENCE_MODE=sqlite`를 명시하면 베타 복구 리허설용 스냅샷 원장을 사용할 수 있습니다. `PERSISTENCE_MODE=postgresql`은 `pg` 드라이버와 `DATABASE_URL`이 실제로 연결될 때만 기동하며, 연결 실패 시 메모리 모드로 폴백하지 않습니다. 상용 전환 전에는 Object Storage·감사 이벤트 저장소도 별도 연결해야 합니다.
-- 실제 회원가입·로그인·문서 업로드·결제·전자계약·알림·백엔드는 연결되어 있지 않습니다.
+- 실제 회원가입·로그인·결제·전자계약·알림·운영 인증은 연결되어 있지 않으며, COA 원문 업로드는 베타 보관 어댑터와 상용 S3 호환 어댑터 경계만 구현되어 있습니다.
 - 브라우저를 새로고침해도 서버 원장의 주문·체결 상태를 다시 불러옵니다. 메모리 모드의 서버 재시작 시 원장은 초기화되며, SQLite 모드는 마지막 저장 스냅샷에서 복구됩니다.
 - 실제 공개 베타 전에는 공급자 인증, 재고 증빙, COA·규격서 유효성, 로트 잠금, 계약·배송·검수·정산 연계를 반드시 붙여야 합니다.

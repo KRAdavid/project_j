@@ -73,6 +73,8 @@ assert.match(app, /const ready = review\?\.ready === true;/, 'AI 사전검토 �
 assert.match(app, /\/api\/supplier\/precheck/, 'AI 사전검토는 서버 API와 연결되어야 합니다.');
 assert.match(app, /sha256File/, 'COA 원문 파일 지문은 브라우저에서 계산되어야 합니다.');
 assert.match(app, /coaFileSha256/, 'COA 파일 SHA-256 지문이 사전검토 요청에 포함되어야 합니다.');
+assert.match(app, /precheck-document/, 'COA 원문은 사전검토 전에 저장 참조를 받아야 합니다.');
+assert.match(app, /fileToBase64/, 'COA 바이너리 원문은 보관소 업로드용으로 인코딩되어야 합니다.');
 assert.match(app, /roleAliases\s*=\s*\{[^}]*supplier:\s*'seller'/, '공급자 역할의 직관적 URL 별칭이 유지되어야 합니다.');
 assert.match(app, /async function resolveMaterialSearch\(query\)/, '원료 검색은 정규식 하드코딩이 아니라 Material Master API를 사용해야 합니다.');
 assert.match(app, /\/api\/materials\/search/, '원료 검색 입력은 후보 검색 API를 사용해야 합니다.');
@@ -80,6 +82,8 @@ assert.match(app, /data-material-id/, '복수 원료 후보는 사용자가 직�
 assert.match(server, /\/api\/supplier\/eligibility/, '공급자 거래 자격 API가 필요합니다.');
 assert.match(server, /\/api\/supplier\/verification-request/, '공급자 검증 요청 API가 필요합니다.');
 assert.match(server, /\/api\/supplier\/precheck/, '공급자 AI 사전검토 API가 필요합니다.');
+assert.match(server, /\/api\/supplier\/precheck-document/, '공급자 COA 원문 보관 API가 필요합니다.');
+assert.match(server, /putBinary/, '공급자 COA 원문은 바이너리 보관 어댑터를 사용해야 합니다.');
 assert.match(server, /evaluateSupplierAiPrecheck/, '서버는 공급자 AI 사전검토 규칙을 중앙에서 판정해야 합니다.');
 assert.match(server, /\/api\/market-board/, '시세창은 서버 검증 매물 API와 연결되어야 합니다.');
 assert.match(server, /\/api\/materials\/search/, 'Material Master 검색 후보 API가 필요합니다.');

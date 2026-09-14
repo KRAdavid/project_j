@@ -19,6 +19,7 @@ assert.deepEqual(contract.requiredAtomicOperations.map((item) => item.operation)
 assert.ok(contract.requiredEvidence.includes('concurrent_reservation_test'));
 assert.ok(contract.requiredEvidence.includes('order_idempotency_test'));
 assert.ok(contract.requiredAtomicOperations.find((item) => item.operation === 'submit_order').invariants.includes('idempotency_key_unique'));
+assert.ok(contract.requiredAtomicOperations.find((item) => item.operation === 'supplier_precheck').invariants.includes('coa_storage_ref_required'));
 assert.match(contract.goRule, /H-01/);
 const adapterSource = await readFile(resolve(root, 'beta-app/postgres-domain-adapter.mjs'), 'utf8');
 assert.match(adapterSource, /async listOperationalApprovals\(\)/);

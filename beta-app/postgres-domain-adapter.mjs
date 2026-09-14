@@ -266,6 +266,7 @@ const mapSupplierPrecheck = (row) => ({
   coaFileName: row.coa_file_name,
   coaFileSize: Number(row.coa_file_size),
   coaFileSha256: row.coa_file_sha256,
+  coaStorageRef: row.coa_storage_ref,
   inventoryQuantity: Number(row.inventory_quantity),
   unit: row.unit,
   expiry: row.expiry_date,
@@ -372,7 +373,7 @@ export class PostgresDomainAdapter {
     };
   }
 
-  async supplierPrecheck({ supplierOrganizationId, supplierUserId, idempotencyKey, inputFingerprint, material, coaDocumentNumber, coaFileName, coaFileSize, coaFileSha256, inventoryQuantity, unit, expiry, priceTiers = [], review, actorKind = 'SYSTEM', actorRef = 'AI-SUPPLIER-PRECHECK', correlationId } = {}) {
+  async supplierPrecheck({ supplierOrganizationId, supplierUserId, idempotencyKey, inputFingerprint, material, coaDocumentNumber, coaFileName, coaFileSize, coaFileSha256, coaStorageRef, inventoryQuantity, unit, expiry, priceTiers = [], review, actorKind = 'SYSTEM', actorRef = 'AI-SUPPLIER-PRECHECK', correlationId } = {}) {
     const normalizedOrganizationId = requireText(supplierOrganizationId, 'supplierOrganizationId');
     const normalizedUserId = requireText(supplierUserId, 'supplierUserId');
     const normalizedIdempotencyKey = requireText(idempotencyKey, 'idempotencyKey');
@@ -385,6 +386,7 @@ export class PostgresDomainAdapter {
     if (normalizedCoaFileSize > 10 * 1024 * 1024) throw new PostgresDomainAdapterError('COA 파일은 10MB 이하여야 합니다.', 'COA_FILE_SIZE_INVALID');
     const normalizedCoaFileSha256 = requireText(coaFileSha256, 'coaFileSha256').toLowerCase();
     if (!/^[a-f0-9]{64}$/.test(normalizedCoaFileSha256)) throw new PostgresDomainAdapterError('COA 파일 SHA-256 지문이 올바르지 않습니다.', 'COA_FILE_FINGERPRINT_INVALID');
+    const normalizedCoaStorageRef = requireText(coaStorageRef, 'coaStorageRef');
     const normalizedInventoryQuantity = requirePositiveNumber(inventoryQuantity, 'inventoryQuantity');
     const normalizedUnit = String(unit || '').trim().toUpperCase();
     if (!['KG', 'L', 'EA'].includes(normalizedUnit)) throw new PostgresDomainAdapterError('공급자 사전검토 거래 단위가 올바르지 않습니다.', 'UNIT_INVALID');
@@ -396,11 +398,11 @@ export class PostgresDomainAdapter {
     return this.withTransaction(async (client) => {
       await this.assertMembership(client, { organizationId: normalizedOrganizationId, userId: normalizedUserId, role: 'SUPPLIER' });
       const inserted = await client.query(
-        `INSERT INTO supplier_prechecks(organization_id, submitted_by, idempotency_key, input_fingerprint, material, coa_document_number, coa_file_name, coa_file_size, coa_file_sha256, inventory_quantity, unit, expiry_date, price_tiers, review)
-         VALUES ($1::uuid, $2::uuid, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12::date, $13::jsonb, $14::jsonb)
+        `INSERT INTO supplier_prechecks(organization_id, submitted_by, idempotency_key, input_fingerprint, material, coa_document_number, coa_file_name, coa_file_size, coa_file_sha256, coa_storage_ref, inventory_quantity, unit, expiry_date, price_tiers, review)
+         VALUES ($1::uuid, $2::uuid, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13::date, $14::jsonb, $15::jsonb)
          ON CONFLICT (organization_id, idempotency_key) DO NOTHING
          RETURNING *`,
-        [normalizedOrganizationId, normalizedUserId, normalizedIdempotencyKey, normalizedFingerprint.toLowerCase(), normalizedMaterial, normalizedCoaDocumentNumber, normalizedCoaFileName, normalizedCoaFileSize, normalizedCoaFileSha256, normalizedInventoryQuantity, normalizedUnit, normalizedExpiry, JSON.stringify(priceTiers), JSON.stringify(review)],
+        [normalizedOrganizationId, normalizedUserId, normalizedIdempotencyKey, normalizedFingerprint.toLowerCase(), normalizedMaterial, normalizedCoaDocumentNumber, normalizedCoaFileName, normalizedCoaFileSize, normalizedCoaFileSha256, normalizedCoaStorageRef, normalizedInventoryQuantity, normalizedUnit, normalizedExpiry, JSON.stringify(priceTiers), JSON.stringify(review)],
       );
       let row = inserted.rows[0];
       let idempotent = false;

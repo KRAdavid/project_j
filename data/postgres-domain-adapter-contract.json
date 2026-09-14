@@ -26,7 +26,7 @@
     {
       "operation": "supplier_precheck",
       "writes": ["supplier_prechecks", "trade_events"],
-      "invariants": ["supplier_membership", "input_fingerprint_unique", "idempotent_retry", "ai_not_approval"]
+      "invariants": ["supplier_membership", "input_fingerprint_unique", "idempotent_retry", "coa_storage_ref_required", "ai_not_approval"]
     },
     {
       "operation": "request_supplier_verification",

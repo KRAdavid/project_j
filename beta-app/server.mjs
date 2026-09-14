@@ -71,6 +71,7 @@ const normalizeSupplierPrecheckInput = (input = {}) => ({
   coaFileName: String(input.coaFileName || '').trim(),
   coaFileSize: Number(input.coaFileSize || 0),
   coaFileSha256: String(input.coaFileSha256 || '').trim().toLowerCase(),
+  coaStorageRef: String(input.coaStorageRef || '').trim(),
   inventoryQuantity: Number(input.inventoryQuantity || 0),
   unit: String(input.unit || '').trim().toUpperCase(),
   expiry: String(input.expiry || '').trim(),
@@ -202,11 +203,11 @@ const refreshEngineFromPersistence = async () => {
   if (latest) engine.restore(latest);
 };
 
-const readJson = async (request) => {
+const readJson = async (request, { maxBytes = 64 * 1024 } = {}) => {
   let body = '';
   for await (const chunk of request) {
     body += chunk;
-    if (body.length > 64 * 1024) throw new TradeRuleError('요청 본문이 너무 큽니다.', 'PAYLOAD_TOO_LARGE');
+    if (body.length > maxBytes) throw new TradeRuleError('요청 본문이 너무 큽니다.', 'PAYLOAD_TOO_LARGE');
   }
   if (!body) return {};
   try { return JSON.parse(body); } catch { throw new TradeRuleError('JSON 요청 형식이 올바르지 않습니다.', 'INVALID_JSON'); }
@@ -584,6 +585,20 @@ const handleApi = async (request, response, url) => {
       const precheck = { precheckId: `SIM-SUPPLIER-PRECHECK-${Date.now()}`, organizationId: principal.organizationId, reviewedBy: 'AI-SUPPLIER-PRECHECK', ...normalizedInput, inputFingerprint, review };
       simulationSupplierPrechecks.set(key, precheck);
       return sendJson(response, 201, { precheck, review, status: 'PRECHECK_REVIEWED', idempotent: false, dataStatus: runtimeDataStatus });
+    }
+    if (request.method === 'POST' && url.pathname === '/api/supplier/precheck-document') {
+      const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
+      authorize(principal, 'upload_evidence', authorizationPolicy);
+      const input = await readJson(request, { maxBytes: 15 * 1024 * 1024 });
+      const fileName = String(input.fileName || '').trim();
+      const contentBase64 = String(input.contentBase64 || '').trim();
+      const contentSha256 = String(input.contentSha256 || '').trim().toLowerCase();
+      if (!fileName || !contentBase64 || !/^[a-f0-9]{64}$/.test(contentSha256)) throw new TradeRuleError('COA 파일명·원문·SHA-256 지문이 필요합니다.', 'COA_UPLOAD_INPUT_REQUIRED');
+      const safeName = fileName.replace(/[^a-zA-Z0-9._-]/g, '_').slice(0, 120) || 'coa-document';
+      const storageKey = `supplier-prechecks/${principal.organizationId}/${contentSha256}/${safeName}`;
+      if (typeof documentStorage.putBinary !== 'function') throw new TradeRuleError('바이너리 Object Storage 어댑터가 연결되지 않았습니다.', 'DOCUMENT_BINARY_STORAGE_REQUIRED');
+      const stored = await documentStorage.putBinary({ key: storageKey, contentBase64, contentSha256, contentType: String(input.contentType || 'application/octet-stream') });
+      return sendJson(response, 201, { document: { ...stored, fileName, contentSha256 }, status: 'DOCUMENT_STORED', dataStatus: runtimeDataStatus, guardrail: '원문은 저장 어댑터에 보관하고, 이후 사전검토·증빙 원장에는 저장 참조와 해시만 결속합니다.' });
     }
     if (request.method === 'POST' && url.pathname === '/api/supplier/verification-request') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });

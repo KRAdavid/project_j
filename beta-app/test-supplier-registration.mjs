@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const port = 4179;
@@ -31,7 +32,14 @@ try {
   assert.equal(accountPayload.status, 'ACCOUNT_REGISTERED');
   assert.equal(accountPayload.account.maskedBusinessRegistrationNumber, '220-81-****7');
 
-  const precheckInput = { material: 'GABA', coaDocumentNumber: 'COA-GABA-2026-07', coaFileName: 'coa-gaba-2026-07.pdf', coaFileSize: 2048, coaFileSha256: 'a'.repeat(64), inventoryQuantity: 100, unit: 'KG', expiry: '2099-12-31', priceTiers: [{ quantity: 20, price: 21800 }], idempotencyKey: 'supplier-precheck-test-001' };
+  const coaBytes = Buffer.from('GABA COA fixture');
+  const coaSha256 = createHash('sha256').update(coaBytes).digest('hex');
+  const documentUpload = await request('/api/supplier/precheck-document', { method: 'POST', body: JSON.stringify({ fileName: 'coa-gaba-2026-07.pdf', contentType: 'application/pdf', contentBase64: coaBytes.toString('base64'), contentSha256: coaSha256, idempotencyKey: `supplier-document-${coaSha256}` }) });
+  assert.equal(documentUpload.status, 201);
+  const documentPayload = await documentUpload.json();
+  assert.equal(documentPayload.status, 'DOCUMENT_STORED');
+  assert.equal(documentPayload.document.contentSha256, coaSha256);
+  const precheckInput = { material: 'GABA', coaDocumentNumber: 'COA-GABA-2026-07', coaFileName: 'coa-gaba-2026-07.pdf', coaFileSize: coaBytes.length, coaFileSha256: coaSha256, coaStorageRef: documentPayload.document.storageRef, inventoryQuantity: 100, unit: 'KG', expiry: '2099-12-31', priceTiers: [{ quantity: 20, price: 21800 }], idempotencyKey: 'supplier-precheck-test-001' };
   const precheck = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify(precheckInput) });
   assert.equal(precheck.status, 201);
   const precheckPayload = await precheck.json();
