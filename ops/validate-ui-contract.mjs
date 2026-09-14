@@ -69,6 +69,7 @@ assert.match(app, /compactText\(task\.whyNow/, '과거 트리거의 원문 스�
 assert.match(app, /async function hydrateSupplierEligibility\(\)/, '공급자 화면은 거래 자격을 자동 확인해야 합니다.');
 assert.match(app, /async function requestSupplierVerification\(event\)/, '공급자 검증 요청 UI는 원장 API와 연결되어야 합니다.');
 assert.match(app, /async function runSupplierAiReview\(\{ force = false \} = \{\}\)/, 'COA·재고 입력은 자동 AI 사전검토 함수와 연결되어야 합니다.');
+assert.match(app, /const ready = review\?\.ready === true;/, 'AI 사전검토 결과는 서버 review.ready를 기준으로 화면 상태를 결정해야 합니다.');
 assert.match(app, /\/api\/supplier\/precheck/, 'AI 사전검토는 서버 API와 연결되어야 합니다.');
 assert.match(app, /roleAliases\s*=\s*\{[^}]*supplier:\s*'seller'/, '공급자 역할의 직관적 URL 별칭이 유지되어야 합니다.');
 assert.match(app, /async function resolveMaterialSearch\(query\)/, '원료 검색은 정규식 하드코딩이 아니라 Material Master API를 사용해야 합니다.');

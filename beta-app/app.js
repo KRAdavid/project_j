@@ -133,6 +133,7 @@ async function runSupplierAiReview({ force = false } = {}) {
   }
   if (sequence !== supplierAiReviewSequence) return null;
   const review = result.review;
+  const ready = review?.ready === true;
   $('#supplier-ai-review-title').textContent = ready ? 'AI 사전검토 완료 · 운영 검증 필요' : 'AI 사전검토 보완 필요';
   $('#supplier-ai-review-detail').textContent = ready
     ? 'COA 파일 형식과 재고수량을 확인했습니다. AI는 승인하지 않으며, 원문·로트·재고 검증이 이어집니다.'
