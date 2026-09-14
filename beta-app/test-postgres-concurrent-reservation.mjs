@@ -3,6 +3,9 @@ import { randomUUID } from 'node:crypto';
 import { createPersistenceStore } from './persistence-store.mjs';
 
 if (!process.env.DATABASE_URL) {
+  if (process.env.CI === 'true') {
+    throw new Error('postgres concurrent reservation tests: DATABASE_URL is required in CI');
+  }
   console.log('postgres concurrent reservation tests: SKIP (DATABASE_URL not provided)');
   process.exit(0);
 }
