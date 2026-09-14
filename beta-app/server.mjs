@@ -633,6 +633,7 @@ const handleApi = async (request, response, url) => {
     if (request.method === 'POST' && url.pathname === '/api/supplier/verification-request') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
       authorize(principal, 'request_supplier_verification', authorizationPolicy);
+      if (environment === 'simulation' && persistenceStore.mode !== 'postgresql') assertSimulationAccountSession(principal);
       const input = await readJson(request);
       if (persistenceStore.mode === 'postgresql') {
         if (!domainAdapter) throw new PostgresDomainAdapterError('정규 PostgreSQL 도메인 어댑터가 연결되지 않았습니다.', 'POSTGRES_DOMAIN_ADAPTER_REQUIRED');
