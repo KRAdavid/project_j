@@ -192,6 +192,7 @@ const daemonLivenessEvidence = runNodeTest('daemon-liveness', 'ops/test-daemon-l
 const cutoverInputManifestEvidence = runNodeTest('cutover-input-manifest', 'ops/test-cutover-input-manifest.mjs');
 const shadowPilotRunEvidence = runNodeTest('shadow-pilot-current-run', 'ops/run-shadow-pilot.mjs');
 const shadowPilotReviewContractEvidence = runNodeTest('shadow-pilot-review', 'ops/test-shadow-pilot-review.mjs');
+const runtimeLivenessEvidence = runNodeTest('runtime-liveness', 'ops/test-runtime-liveness.mjs');
 const evidence = [
   { name: 'task-queue-json', passed: Array.isArray(queue.tasks) && queue.tasks.length > 0, command: 'JSON parse' },
   inventoryEvidence,
@@ -266,6 +267,7 @@ const evidence = [
   cutoverInputManifestEvidence,
   shadowPilotRunEvidence,
   shadowPilotReviewContractEvidence,
+  runtimeLivenessEvidence,
   runNodeTest('persistence-schema', 'ops/validate-persistence-schema.mjs'),
   runNodeTest('price-source-contract', 'ops/validate-price-source-contract.mjs'),
   runNodeTest('authorization-policy', 'ops/validate-authorization-policy.mjs'),

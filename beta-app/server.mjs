@@ -23,6 +23,7 @@ import { buildMarketBoard } from './market-board.mjs';
 import { evaluateTaskSla } from '../ops/task-sla.mjs';
 import { compileGoal } from '../ops/goal-compiler.mjs';
 import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
+import { projectRuntimeLiveness } from '../ops/runtime-liveness.mjs';
 import { createSimulationSupplierRegistration, evaluateSupplierAiPrecheck, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
@@ -353,6 +354,8 @@ const handleApi = async (request, response, url) => {
       const triggerInbox = await readOptionalJson(join(opsRoot, 'trigger-inbox.json'), { status: 'UNKNOWN', tasks: [], pending: 0 });
       const daemonStatus = await readOptionalJson(join(opsRoot, 'daemon-status.json'), { status: 'NOT_REPORTED', schemaVersion: 'OPS-DAEMON-STATUS-0.1' });
       const supervisorStatus = await readOptionalJson(join(opsRoot, 'company-supervisor-status.json'), { status: 'NOT_REPORTED', schemaVersion: 'COMPANY-SUPERVISOR-STATUS-0.1', pid: null, serverPid: null, daemonPid: null, serverRestarts: 0, daemonRestarts: 0, lastError: null });
+      const projectedDaemonStatus = projectRuntimeLiveness(daemonStatus, { maxAgeMs: 20 * 60 * 1000 });
+      const projectedSupervisorStatus = projectRuntimeLiveness(supervisorStatus, { maxAgeMs: 2 * 60 * 1000 });
       const notificationOutbox = await readOptionalJsonl(notificationOutboxPath);
       const currentNotificationRecords = latestOperationalNotifications(notificationOutbox.records);
       const latestRun = await readOptionalJson(join(opsRoot, 'latest-autopilot-run.json'), null);
@@ -406,9 +409,9 @@ const handleApi = async (request, response, url) => {
         dataStatus: runtimeDataStatus,
         teamRoster,
         taskOwnership: { status: taskOwnershipErrors.length ? 'INVALID' : 'VALID', total: tasks.length, valid: tasks.length - taskOwnershipErrors.length, errors: taskOwnershipErrors.slice(0, 10) },
-        controlPlane: { queue: Array.isArray(queue.tasks) ? 'AVAILABLE' : 'INVALID', approvalInbox: approvalInbox.status || 'UNKNOWN', triggerInbox: triggerInbox.status || 'UNKNOWN', latestRun: latestRun ? 'AVAILABLE' : 'MISSING', daemon: daemonStatus.status || 'NOT_REPORTED', supervisor: supervisorStatus.status || 'NOT_REPORTED' },
-        daemonStatus,
-        supervisorStatus,
+        controlPlane: { queue: Array.isArray(queue.tasks) ? 'AVAILABLE' : 'INVALID', approvalInbox: approvalInbox.status || 'UNKNOWN', triggerInbox: triggerInbox.status || 'UNKNOWN', latestRun: latestRun ? 'AVAILABLE' : 'MISSING', daemon: projectedDaemonStatus.status || 'NOT_REPORTED', supervisor: projectedSupervisorStatus.status || 'NOT_REPORTED' },
+        daemonStatus: projectedDaemonStatus,
+        supervisorStatus: projectedSupervisorStatus,
         taskTimelineAudit,
         taskAuditRemediation,
         queue: {
@@ -853,3 +856,4 @@ process.once('SIGTERM', () => { shutdown().finally(() => process.exit(0)); });
 process.once('SIGINT', () => { shutdown().finally(() => process.exit(0)); });
 
 httpServer.listen(port, host, () => console.log(`Beta server listening on http://${host}:${port}/`));
+

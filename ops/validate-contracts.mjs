@@ -25,6 +25,8 @@ const contracts = [
   'ops/test-patent-disclosure-packet.mjs',
   'ops/test-patent-claim-outline.mjs',
   'ops/test-shadow-pilot-plan.mjs',
+  'ops/test-shadow-pilot-review.mjs',
+  'ops/test-runtime-liveness.mjs',
   'ops/test-staging-contract.mjs',
   'ops/test-staging-preflight.mjs',
   'ops/test-trigger-engine.mjs',
@@ -62,3 +64,4 @@ if (failures.length) {
 } else {
   console.log(`contract validation: PASS (${contracts.length})`);
 }
+

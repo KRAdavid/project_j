@@ -228,6 +228,7 @@ jobs:
           node test-lot-onboarding.mjs
           node ../ops/test-shadow-pilot-plan.mjs
           node ../ops/test-shadow-pilot-review.mjs
+          node ../ops/test-runtime-liveness.mjs
           node test-trade-engine.mjs
           node test-snapshot-integrity.mjs
           node test-trade-lifecycle.mjs
