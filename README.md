@@ -156,7 +156,7 @@ node server.mjs
 
 브라우저에서 `http://127.0.0.1:4173/`을 엽니다. PowerShell에서는 `beta-app/server.ps1`도 사용할 수 있으며, 이 런처는 정식 `server.mjs`만 실행합니다. 별도 정적 서버를 사용하면 API·SSE·원장 검증이 빠지므로 운영 경로로 사용하지 않습니다.
 
-현재 베타의 가격·재고·체결 이벤트는 시뮬레이션이며, 로컬 Node 백엔드와 연결되어 거래 수명주기·증빙 게이트·SSE를 검증합니다. 실제 주문·결제·문서 업로드·회원 인증은 상용 외부 시스템과 연결하지 않았습니다.
+현재 베타의 가격·재고·체결 이벤트는 시뮬레이션이며, 로컬 Node 백엔드와 연결되어 거래 수명주기·증빙 게이트·SSE를 검증합니다. COA 원문은 `POST /api/supplier/precheck-document`를 통해 베타 보관 어댑터에 저장하고 사전검토 원장에는 참조·해시만 기록합니다. 실제 주문·결제·회원 인증과 생산 Object Storage 연결은 별도 상용 게이트입니다.
 
 PostgreSQL 원장과 S3 호환 증빙 저장소를 재현하는 스테이징 기반은 `compose.staging.yml`에 정의되어 있습니다. `schema-migrate → app healthcheck → ops-daemon` 순서를 Compose dependency 조건으로 고정하여 서버와 회사형 운영 사이클까지 재현합니다. Object Storage bucket 초기화는 서버 준비를 재시도한 뒤 완료되며, GitHub Actions는 Compose 전체 기동·`/api/health` smoke test·정리를 자동 실행합니다. Docker Compose가 설치된 환경에서 `docker compose -f compose.staging.yml up -d`로 시작하고, `.env.staging.example`을 시크릿 관리 환경에 맞게 주입한 뒤 백업·동시성 리허설을 수행합니다. 예제 파일의 상용 전환 플래그는 모두 `false`이며, 증거 없이 값을 바꾸면 안 됩니다.
 
