@@ -21,6 +21,8 @@ assert.equal(binarySaved.contentSha256, binarySha256);
 assert.equal(binarySaved.size, binary.length);
 assert.equal((await storage.get('LOT-001/COA/binary')).contentBase64, binary.toString('base64'));
 assert.equal((await storage.get('LOT-001/COA/binary')).size, binary.length);
+storage.documents.get('LOT-001/COA/binary').contentBase64 = Buffer.from([9, 8, 7]).toString('base64');
+await assert.rejects(() => storage.getBinary('LOT-001/COA/binary'), (error) => error instanceof DocumentStorageError && error.code === 'DOCUMENT_HASH_MISMATCH');
 await assert.rejects(() => storage.putBinary({ key: 'LOT-001/COA/bad', contentBase64: binary.toString('base64'), contentSha256: '0'.repeat(64) }), (error) => error instanceof DocumentStorageError && error.code === 'DOCUMENT_HASH_MISMATCH');
 assert.throws(() => createDocumentStorage({ environment: 'production' }), (error) => error instanceof DocumentStorageError && error.code === 'OBJECT_STORAGE_UNAVAILABLE');
 

@@ -23,6 +23,11 @@ const normalizeBinaryDocument = ({ contentBase64, contentSha256 } = {}) => {
   if (contentSha256 && String(contentSha256).toLowerCase() !== calculatedSha256) throw new DocumentStorageError('문서 원문과 SHA-256 해시가 일치하지 않습니다.', 'DOCUMENT_HASH_MISMATCH');
   return { bytes, contentBase64: bytes.toString('base64'), contentSha256: calculatedSha256 };
 };
+const verifyStoredBinaryDocument = (document) => {
+  const normalized = normalizeBinaryDocument({ contentBase64: document?.contentBase64, contentSha256: document?.contentSha256 });
+  if (document?.size != null && Number(document.size) !== normalized.bytes.length) throw new DocumentStorageError('저장된 문서 크기가 원문과 일치하지 않습니다.', 'DOCUMENT_HASH_MISMATCH');
+  return { ...document, contentBase64: normalized.contentBase64, contentSha256: normalized.contentSha256, size: normalized.bytes.length };
+};
 export const assertDocumentSignature = ({ fileName, contentBase64 } = {}) => {
   const extension = extname(String(fileName || '').trim()).toLowerCase();
   const bytes = decodeBase64Document(contentBase64);
@@ -85,7 +90,7 @@ export class MemoryDocumentStorage {
     return { ...document };
   }
 
-  async getBinary(key) { return this.get(key); }
+  async getBinary(key) { return verifyStoredBinaryDocument(await this.get(key)); }
 }
 
 export class FileDocumentStorage {
@@ -133,7 +138,7 @@ export class FileDocumentStorage {
     }
   }
 
-  async getBinary(key) { return this.get(key); }
+  async getBinary(key) { return verifyStoredBinaryDocument(await this.get(key)); }
 }
 
 export class S3DocumentStorage {
