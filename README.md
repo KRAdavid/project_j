@@ -128,6 +128,7 @@
 - `/api/supplier/verification-request`가 신규 공급자의 사업자·공급자 증빙 참조를 PostgreSQL에 접수하고 `REQUESTED` 상태로 보관하며, H-01 또는 지정 운영자 승인 전에는 자격을 열지 않음
 - `/api/supplier/verification-requests/{requestId}/review`는 H-01의 검토 진행 승인 이후 권한 있는 인간이 최종 증빙을 확인할 때만 조직 `verified_at`을 기록하며, 메모리 베타에서는 의도적으로 차단됨
 - 공급자 `OPEN ORDERS` 화면에서도 COA 문서번호·원문 파일·소비기한·단위·검증 재고를 입력하면 자동 사전검토를 실행하고, 주문 수량보다 적은 재고나 미완료 검토 상태에서는 체결 버튼을 잠금
+- 공급자 주문 전에는 `EVIDENCE_ONLY` 범위로 COA 원문·해시·재고·소비기한·단위를 먼저 자동 검토하고, 구매 주문 도착 후 `ORDER_RESPONSE` 범위로 매수가·수량·단위를 결속해 다시 검토
 - `data/postgres-domain-adapter-contract.json`: 스냅샷 브리지에서 정규 PostgreSQL 도메인 원장으로 전환하기 위한 상용 게이트와 원자 쓰기 계약
 - `ops/approval-store.mjs`: H-01의 승인·수정요청·보류·거절을 단일 결정과 감사 로그로 기록
 - `ops/task-approval-sync.mjs`: 시뮬레이션 승인 결정을 업무 큐에 멱등 반영하고 종료 업무 변경을 차단하며, 동기화는 거래·계약·결제·배포를 실행하지 않음
