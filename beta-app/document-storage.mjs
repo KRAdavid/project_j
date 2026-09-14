@@ -39,6 +39,12 @@ export class MemoryDocumentStorage {
     this.documents = new Map();
   }
 
+  referenceForKey(key) {
+    const normalizedKey = String(key || '').trim();
+    if (!normalizedKey) throw new DocumentStorageError('문서 저장 키가 필요합니다.', 'DOCUMENT_KEY_REQUIRED');
+    return `memory://evidence/${encodeURIComponent(normalizedKey)}`;
+  }
+
   async put({ key, content, contentSha256 } = {}) {
     const normalizedKey = String(key || '').trim();
     if (!normalizedKey) throw new DocumentStorageError('문서 저장 키가 필요합니다.', 'DOCUMENT_KEY_REQUIRED');
@@ -49,15 +55,15 @@ export class MemoryDocumentStorage {
       throw new DocumentStorageError('문서 원문과 SHA-256 해시가 일치하지 않습니다.', 'DOCUMENT_HASH_MISMATCH');
     }
     this.documents.set(normalizedKey, { content: normalizedContent, contentSha256: calculatedSha256 });
-    return { storageRef: `memory://evidence/${encodeURIComponent(normalizedKey)}`, contentSha256: calculatedSha256 };
+    return { storageRef: this.referenceForKey(normalizedKey), contentSha256: calculatedSha256 };
   }
 
   async putBinary({ key, contentBase64, contentSha256, contentType = 'application/octet-stream' } = {}) {
     const normalizedKey = String(key || '').trim();
     if (!normalizedKey) throw new DocumentStorageError('문서 저장 키가 필요합니다.', 'DOCUMENT_KEY_REQUIRED');
     const normalized = normalizeBinaryDocument({ contentBase64, contentSha256 });
-    this.documents.set(normalizedKey, { contentBase64: normalized.contentBase64, contentSha256: normalized.contentSha256, contentType: String(contentType || 'application/octet-stream') });
-    return { storageRef: `memory://evidence/${encodeURIComponent(normalizedKey)}`, contentSha256: normalized.contentSha256, size: normalized.bytes.length, contentType: String(contentType || 'application/octet-stream') };
+    this.documents.set(normalizedKey, { contentBase64: normalized.contentBase64, contentSha256: normalized.contentSha256, size: normalized.bytes.length, contentType: String(contentType || 'application/octet-stream') });
+    return { storageRef: this.referenceForKey(normalizedKey), contentSha256: normalized.contentSha256, size: normalized.bytes.length, contentType: String(contentType || 'application/octet-stream') };
   }
 
   async get(key) {
@@ -83,6 +89,8 @@ export class FileDocumentStorage {
     return join(this.root, filename);
   }
 
+  referenceForKey(key) { return `file://${this.filePath(key)}`; }
+
   async put({ key, content, contentSha256 } = {}) {
     const normalizedContent = String(content ?? '');
     if (!normalizedContent) throw new DocumentStorageError('문서 원문이 비어 있어 저장할 수 없습니다.', 'DOCUMENT_CONTENT_REQUIRED');
@@ -91,15 +99,15 @@ export class FileDocumentStorage {
     const path = this.filePath(key);
     await this.ready;
     await writeFile(path, JSON.stringify({ content: normalizedContent, contentSha256: calculatedSha256 }), 'utf8');
-    return { storageRef: `file://${path}`, contentSha256: calculatedSha256 };
+    return { storageRef: this.referenceForKey(key), contentSha256: calculatedSha256 };
   }
 
   async putBinary({ key, contentBase64, contentSha256, contentType = 'application/octet-stream' } = {}) {
     const normalized = normalizeBinaryDocument({ contentBase64, contentSha256 });
     const path = this.filePath(key);
     await this.ready;
-    await writeFile(path, JSON.stringify({ contentBase64: normalized.contentBase64, contentSha256: normalized.contentSha256, contentType: String(contentType || 'application/octet-stream') }), 'utf8');
-    return { storageRef: `file://${path}`, contentSha256: normalized.contentSha256, size: normalized.bytes.length, contentType: String(contentType || 'application/octet-stream') };
+    await writeFile(path, JSON.stringify({ contentBase64: normalized.contentBase64, contentSha256: normalized.contentSha256, size: normalized.bytes.length, contentType: String(contentType || 'application/octet-stream') }), 'utf8');
+    return { storageRef: this.referenceForKey(key), contentSha256: normalized.contentSha256, size: normalized.bytes.length, contentType: String(contentType || 'application/octet-stream') };
   }
 
   async get(key) {
@@ -135,6 +143,8 @@ export class S3DocumentStorage {
     url.pathname = path;
     return url;
   }
+
+  referenceForKey(key) { return `s3://${this.bucket}/${String(key || '').trim()}`; }
 
   async request(method, key, content = '') {
     const url = this.objectUrl(key);
@@ -199,13 +209,13 @@ export class S3DocumentStorage {
     const calculatedSha256 = hashDocument(normalizedContent);
     if (contentSha256 && String(contentSha256).toLowerCase() !== calculatedSha256) throw new DocumentStorageError('문서 원문과 SHA-256 해시가 일치하지 않습니다.', 'DOCUMENT_HASH_MISMATCH');
     await this.request('PUT', key, normalizedContent);
-    return { storageRef: `s3://${this.bucket}/${String(key)}`, contentSha256: calculatedSha256 };
+    return { storageRef: this.referenceForKey(key), contentSha256: calculatedSha256 };
   }
 
   async putBinary({ key, contentBase64, contentSha256, contentType = 'application/octet-stream' } = {}) {
     const normalized = normalizeBinaryDocument({ contentBase64, contentSha256 });
     await this.requestBinary('PUT', key, normalized.bytes, contentType);
-    return { storageRef: `s3://${this.bucket}/${String(key)}`, contentSha256: normalized.contentSha256, size: normalized.bytes.length, contentType: String(contentType || 'application/octet-stream') };
+    return { storageRef: this.referenceForKey(key), contentSha256: normalized.contentSha256, size: normalized.bytes.length, contentType: String(contentType || 'application/octet-stream') };
   }
 
   async get(key) {

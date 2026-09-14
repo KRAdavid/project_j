@@ -46,6 +46,9 @@ try {
   assert.equal(precheckPayload.status, 'PRECHECK_REVIEWED');
   assert.equal(precheckPayload.review.ready, true);
   assert.equal(precheckPayload.review.mode, 'SIMULATION_AI_PRECHECK');
+  const missingStorage = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify({ ...precheckInput, idempotencyKey: 'supplier-precheck-missing-storage', coaStorageRef: 'memory://evidence/not-the-uploaded-document' }) });
+  assert.equal(missingStorage.status, 422);
+  assert.equal((await missingStorage.json()).code, 'COA_STORAGE_REFERENCE_MISMATCH');
   const precheckRepeat = await request('/api/supplier/precheck', { method: 'POST', body: JSON.stringify(precheckInput) });
   assert.equal(precheckRepeat.status, 200);
   assert.equal((await precheckRepeat.json()).idempotent, true);

@@ -84,6 +84,7 @@ assert.match(server, /\/api\/supplier\/verification-request/, '공급자 검증 
 assert.match(server, /\/api\/supplier\/precheck/, '공급자 AI 사전검토 API가 필요합니다.');
 assert.match(server, /\/api\/supplier\/precheck-document/, '공급자 COA 원문 보관 API가 필요합니다.');
 assert.match(server, /putBinary/, '공급자 COA 원문은 바이너리 보관 어댑터를 사용해야 합니다.');
+assert.match(server, /assertStoredSupplierPrecheckDocument/, '사전검토 직전에 보관된 COA 원문을 재조회해야 합니다.');
 assert.match(server, /evaluateSupplierAiPrecheck/, '서버는 공급자 AI 사전검토 규칙을 중앙에서 판정해야 합니다.');
 assert.match(server, /\/api\/market-board/, '시세창은 서버 검증 매물 API와 연결되어야 합니다.');
 assert.match(server, /\/api\/materials\/search/, 'Material Master 검색 후보 API가 필요합니다.');

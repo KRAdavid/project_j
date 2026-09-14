@@ -18,7 +18,9 @@ const binary = Buffer.from([0, 1, 2, 250, 255]);
 const binarySha256 = createHash('sha256').update(binary).digest('hex');
 const binarySaved = await storage.putBinary({ key: 'LOT-001/COA/binary', contentBase64: binary.toString('base64'), contentSha256: binarySha256, contentType: 'application/pdf' });
 assert.equal(binarySaved.contentSha256, binarySha256);
+assert.equal(binarySaved.size, binary.length);
 assert.equal((await storage.get('LOT-001/COA/binary')).contentBase64, binary.toString('base64'));
+assert.equal((await storage.get('LOT-001/COA/binary')).size, binary.length);
 await assert.rejects(() => storage.putBinary({ key: 'LOT-001/COA/bad', contentBase64: binary.toString('base64'), contentSha256: '0'.repeat(64) }), (error) => error instanceof DocumentStorageError && error.code === 'DOCUMENT_HASH_MISMATCH');
 assert.throws(() => createDocumentStorage({ environment: 'production' }), (error) => error instanceof DocumentStorageError && error.code === 'OBJECT_STORAGE_UNAVAILABLE');
 
@@ -30,6 +32,7 @@ await fileStorage.putBinary({ key: 'LOT-002/COA/binary', contentBase64: binary.t
 const restartedFileStorage = createDocumentStorage({ environment: 'simulation', persistenceMode: 'sqlite', root });
 assert.equal((await restartedFileStorage.get('LOT-002/COA/v1')).content, 'durable coa');
 assert.equal((await restartedFileStorage.get('LOT-002/COA/binary')).contentBase64, binary.toString('base64'));
+assert.equal((await restartedFileStorage.get('LOT-002/COA/binary')).size, binary.length);
 await rm(root, { recursive: true, force: true });
 
 const s3Content = 's3 durable coa';
