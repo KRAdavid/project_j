@@ -11,6 +11,7 @@ import { recordAutopilotExecution } from './autopilot-execution-evidence.mjs';
 import { appendWorkPacket, buildWorkPacket } from './work-packet.mjs';
 import { appendPatentDisclosurePacket, buildPatentDisclosurePacket } from './patent-disclosure-packet.mjs';
 import { evidenceFingerprint, selectNextTask } from './autopilot-selection.mjs';
+import { readShadowPilotReview } from './shadow-pilot-review.mjs';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const queuePath = resolve(root, 'ops', 'task-queue.json');
@@ -189,6 +190,8 @@ const serverLauncherEvidence = runNodeTest('server-launcher', 'ops/test-server-l
 const taskQueueCompactionEvidence = runNodeTest('task-queue-compaction', 'ops/test-task-queue-compaction.mjs');
 const daemonLivenessEvidence = runNodeTest('daemon-liveness', 'ops/test-daemon-liveness.mjs');
 const cutoverInputManifestEvidence = runNodeTest('cutover-input-manifest', 'ops/test-cutover-input-manifest.mjs');
+const shadowPilotRunEvidence = runNodeTest('shadow-pilot-current-run', 'ops/run-shadow-pilot.mjs');
+const shadowPilotReviewContractEvidence = runNodeTest('shadow-pilot-review', 'ops/test-shadow-pilot-review.mjs');
 const evidence = [
   { name: 'task-queue-json', passed: Array.isArray(queue.tasks) && queue.tasks.length > 0, command: 'JSON parse' },
   inventoryEvidence,
@@ -261,6 +264,8 @@ const evidence = [
   taskQueueCompactionEvidence,
   daemonLivenessEvidence,
   cutoverInputManifestEvidence,
+  shadowPilotRunEvidence,
+  shadowPilotReviewContractEvidence,
   runNodeTest('persistence-schema', 'ops/validate-persistence-schema.mjs'),
   runNodeTest('price-source-contract', 'ops/validate-price-source-contract.mjs'),
   runNodeTest('authorization-policy', 'ops/validate-authorization-policy.mjs'),
@@ -295,6 +300,7 @@ const selected = selectNextTask({
 });
 const selectedTask = selected.task;
 const selectionType = selected.selectionType;
+const shadowPilotReview = await readShadowPilotReview(resolve(root, 'ops', 'latest-shadow-pilot.json'));
 
 const run = {
   runId: `AUTOPILOT-${new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 14)}`,
@@ -309,6 +315,13 @@ const run = {
   },
   selectionType,
   evidence,
+  shadowPilotReview: {
+    ready: shadowPilotReview.ready,
+    checks: shadowPilotReview.checks,
+    invalidLotTradeCount: shadowPilotReview.invalidLotTradeCount,
+    evidenceRefs: shadowPilotReview.evidenceRefs,
+    reason: shadowPilotReview.reason,
+  },
   decision: selectedTask && evidence.every((item) => item.passed) ? 'HUMAN_REVIEW_REQUIRED' : 'BLOCKED',
   authority: {
     canPrepare: true,
@@ -351,8 +364,34 @@ const executionEvidence = await recordAutopilotExecution({
   generatedAt: run.generatedAt,
   decision: run.decision,
   allowQueued: claimResult.claimed,
+  reviewReady: selectedTask?.id === 'TASK-2026-004' && run.decision === 'HUMAN_REVIEW_REQUIRED' && shadowPilotRunEvidence.passed && shadowPilotReview.ready,
+  reviewEvidenceRefs: shadowPilotReview.evidenceRefs,
+  reviewReadyReason: shadowPilotReview.reason,
 });
 run.executionEvidence = executionEvidence;
+const shadowPilotTaskId = 'TASK-2026-004';
+const shadowPilotTask = queue.tasks.find((task) => task?.id === shadowPilotTaskId);
+let shadowPilotTaskExecutionEvidence = null;
+if (
+  selectedTask?.id !== shadowPilotTaskId
+  && shadowPilotTask?.status === 'working'
+  && run.decision === 'HUMAN_REVIEW_REQUIRED'
+  && shadowPilotRunEvidence.passed
+  && shadowPilotReview.ready
+) {
+  shadowPilotTaskExecutionEvidence = await recordAutopilotExecution({
+    queuePath,
+    auditPath: resolve(root, 'ops', 'autopilot-execution-evidence.jsonl'),
+    selectedTaskId: shadowPilotTaskId,
+    runId: `${run.runId}-SHADOW-PILOT`,
+    generatedAt: run.generatedAt,
+    decision: run.decision,
+    reviewReady: true,
+    reviewEvidenceRefs: shadowPilotReview.evidenceRefs,
+    reviewReadyReason: shadowPilotReview.reason,
+  });
+}
+run.shadowPilotTaskExecutionEvidence = shadowPilotTaskExecutionEvidence;
 
 // First rebuild the current-run approval packet, then merge every still-active
 // trigger task so no unresolved automated task is invisible to H-01.
@@ -414,3 +453,4 @@ if (run.decision === 'BLOCKED') {
 console.log(JSON.stringify({ runId: run.runId, decision: run.decision, taskId: selectedTask?.id || null }));
 
 if (run.decision === 'BLOCKED') process.exitCode = 1;
+

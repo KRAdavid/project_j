@@ -30,6 +30,9 @@ export const recordAutopilotExecution = async ({
   generatedAt = new Date().toISOString(),
   decision = 'UNKNOWN',
   allowQueued = false,
+  reviewReady = false,
+  reviewEvidenceRefs = [],
+  reviewReadyReason = null,
 } = {}) => {
   if (!queuePath || !auditPath) throw new Error('자동 실행 증거의 큐·감사 로그 경로가 필요합니다.');
   if (!selectedTaskId) return { status: 'NO_TASK', taskId: null };
@@ -50,6 +53,12 @@ export const recordAutopilotExecution = async ({
     lastRecheckResult: `AUTOPILOT_${decision}`,
     updatedAt,
   };
+  if (reviewReady === true && prior.status === 'working' && Array.isArray(reviewEvidenceRefs) && reviewEvidenceRefs.length > 0) {
+    current.status = 'review';
+    current.lastRecheckResult = 'AUTOPILOT_REVIEW_READY';
+    current.evidence = [...new Set([...(Array.isArray(prior.evidence) ? prior.evidence : []), ...reviewEvidenceRefs])];
+    current.nextAction = 'H-01이 검토 패킷과 Shadow Pilot 증적을 확인하여 승인·수정·보류를 결정한다.';
+  }
   queue.tasks[index] = current;
   await mkdir(dirname(queuePath), { recursive: true });
   await writeFile(queuePath, `${JSON.stringify(queue, null, 2)}\n`, 'utf8');
@@ -75,6 +84,12 @@ export const recordAutopilotExecution = async ({
       lastRecheckResult: current.lastRecheckResult,
       updatedAt: current.updatedAt,
     },
+    transition: current.status !== prior.status ? {
+      from: prior.status,
+      to: current.status,
+      reason: reviewReadyReason || '검토 가능 증적이 자동 연결됨',
+      evidenceRefs: reviewEvidenceRefs,
+    } : null,
     guardrail: '자동 실행은 분석·검증·검토 패킷 증거만 기록하며 거래·계약·결제·운영 재개를 승인하지 않는다.',
   };
   await mkdir(dirname(auditPath), { recursive: true });
