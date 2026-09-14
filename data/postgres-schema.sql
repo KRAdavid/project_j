@@ -47,6 +47,29 @@ create unique index if not exists supplier_verification_requests_open_idx
   on supplier_verification_requests(organization_id)
   where state in ('REQUESTED'::supplier_verification_state, 'UNDER_REVIEW'::supplier_verification_state);
 
+-- AI supplier prechecks are durable input assessments, not supplier approvals.
+-- The payload fingerprint makes retries safe without allowing a different
+-- commercial condition to reuse an existing idempotency key.
+create table if not exists supplier_prechecks (
+  precheck_id uuid primary key default gen_random_uuid(),
+  organization_id uuid not null references organizations(organization_id),
+  submitted_by uuid not null,
+  idempotency_key text not null check (char_length(idempotency_key) between 1 and 160),
+  input_fingerprint char(64) not null check (input_fingerprint ~ '^[0-9a-f]{64}$'),
+  material text not null,
+  coa_document_number text not null,
+  coa_file_name text not null,
+  coa_file_size bigint not null check (coa_file_size > 0 and coa_file_size <= 10485760),
+  inventory_quantity numeric(18, 3) not null check (inventory_quantity > 0),
+  unit text not null check (unit in ('KG', 'L', 'EA')),
+  expiry_date date not null,
+  price_tiers jsonb not null default '[]'::jsonb check (jsonb_typeof(price_tiers) = 'array'),
+  review jsonb not null check (jsonb_typeof(review) = 'object'),
+  created_at timestamptz not null default now(),
+  unique (organization_id, idempotency_key)
+);
+create index if not exists supplier_prechecks_org_created_idx on supplier_prechecks(organization_id, created_at desc);
+
 create table if not exists organization_members (
   organization_id uuid not null references organizations(organization_id),
   user_id uuid not null,

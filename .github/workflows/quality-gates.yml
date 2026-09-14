@@ -212,6 +212,7 @@ jobs:
           node test-postgres-domain-adapter.mjs
           node test-postgres-domain-adapter-accept.mjs
           node test-postgres-domain-adapter-spec-lock.mjs
+          node test-postgres-supplier-precheck.mjs
           node test-postgres-approval-adapter.mjs
           node test-supplier-verification-gate.mjs
           node test-supplier-eligibility.mjs

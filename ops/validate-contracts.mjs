@@ -38,6 +38,7 @@ const contracts = [
   'ops/test-company-supervisor-integration.mjs',
   'ops/test-company-mode-task.mjs',
   'beta-app/test-readiness-diagnostics.mjs',
+  'beta-app/test-postgres-supplier-precheck.mjs',
 ];
 
 const failures = [];

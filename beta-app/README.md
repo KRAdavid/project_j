@@ -93,6 +93,7 @@ python -m http.server 4173
 - 현재 데이터는 모두 시뮬레이션 데이터입니다.
 - `server.mjs`는 `/api/state`, `/api/market-board?specId=GABA-SPEC-001`, `/api/orders`, `/api/orders/:orderId/accept` 최소 거래 원장을 제공합니다.
 - `/api/market-board`는 서버 원장의 `VERIFIED_ELIGIBLE` 로트 중 유효 증빙·가용 재고·표준 거래단위를 모두 통과한 매물만 반환합니다. 공개 매수 호가는 별도 공개정책 승인 전까지 빈 배열입니다.
+- `/api/supplier/precheck`는 시뮬레이션에서 메모리로, PostgreSQL 상용 모드에서는 `supplier_prechecks` 원장으로 멱등 저장하며, AI 사전검토는 공급자 승인이나 매물 공개를 수행하지 않습니다.
 - `server.mjs`는 `/api/materials`, `/api/materials/resolve?q=GABA`로 표준 원료·동의어 매칭 결과를 제공합니다.
 - `POST /api/evidence`와 운영자 검토 후 `POST /api/lots`로 거래 전 증빙이 완비된 로트만 매물 등록을 허용합니다.
 - 기본 원장은 안전한 시뮬레이션 메모리 모드입니다. `PERSISTENCE_MODE=sqlite`를 명시하면 베타 복구 리허설용 스냅샷 원장을 사용할 수 있습니다. `PERSISTENCE_MODE=postgresql`은 `pg` 드라이버와 `DATABASE_URL`이 실제로 연결될 때만 기동하며, 연결 실패 시 메모리 모드로 폴백하지 않습니다. 상용 전환 전에는 Object Storage·감사 이벤트 저장소도 별도 연결해야 합니다.

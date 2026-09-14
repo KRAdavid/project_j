@@ -142,6 +142,7 @@ const postgresIntegrationEvidence = runNodeTest('postgres-integration', 'beta-ap
 const postgresDomainAdapterEvidence = runNodeTest('postgres-domain-adapter', 'beta-app/test-postgres-domain-adapter.mjs');
 const postgresDomainAdapterAcceptEvidence = runNodeTest('postgres-domain-adapter-accept', 'beta-app/test-postgres-domain-adapter-accept.mjs');
 const postgresDomainAdapterSpecLockEvidence = runNodeTest('postgres-domain-adapter-spec-lock', 'beta-app/test-postgres-domain-adapter-spec-lock.mjs');
+const postgresSupplierPrecheckEvidence = runNodeTest('postgres-supplier-precheck', 'beta-app/test-postgres-supplier-precheck.mjs');
 const postgresDomainAdapterLotEvidence = runNodeTest('postgres-domain-adapter-lot', 'beta-app/test-postgres-domain-adapter-lot.mjs');
 const postgresDomainAdapterEvidenceWorkflow = runNodeTest('postgres-domain-adapter-evidence', 'beta-app/test-postgres-domain-adapter-evidence.mjs');
 const atomicInspectionPriceEvidence = runNodeTest('atomic-inspection-price', 'beta-app/test-postgres-domain-adapter-atomic-inspect.mjs');
@@ -213,6 +214,7 @@ const evidence = [
   postgresDomainAdapterEvidence,
   postgresDomainAdapterAcceptEvidence,
   postgresDomainAdapterSpecLockEvidence,
+  postgresSupplierPrecheckEvidence,
   postgresDomainAdapterLotEvidence,
   postgresDomainAdapterEvidenceWorkflow,
   atomicInspectionPriceEvidence,

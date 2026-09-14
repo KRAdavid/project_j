@@ -13,8 +13,9 @@ assert.deepEqual(contract.currentImplementation.normalizedDomainApiRemaining, ['
 assert.equal(contract.currentImplementation.productionReady, false);
 assert.ok(contract.requiredTables.includes('organization_members'));
 assert.ok(contract.requiredTables.includes('supplier_verification_requests'));
+assert.ok(contract.requiredTables.includes('supplier_prechecks'));
 assert.ok(contract.requiredTables.includes('price_observations'));
-assert.deepEqual(contract.requiredAtomicOperations.map((item) => item.operation), ['request_supplier_verification', 'submit_order', 'reserve_inventory', 'confirm_trade', 'record_completed_trade_price', 'inspect_and_record_completed_price', 'register_lot_draft', 'review_evidence_and_publish_offer', 'counter_order', 'reject_or_expire_order']);
+assert.deepEqual(contract.requiredAtomicOperations.map((item) => item.operation), ['supplier_precheck', 'request_supplier_verification', 'submit_order', 'reserve_inventory', 'confirm_trade', 'record_completed_trade_price', 'inspect_and_record_completed_price', 'register_lot_draft', 'review_evidence_and_publish_offer', 'counter_order', 'reject_or_expire_order']);
 assert.ok(contract.requiredEvidence.includes('concurrent_reservation_test'));
 assert.ok(contract.requiredEvidence.includes('order_idempotency_test'));
 assert.ok(contract.requiredAtomicOperations.find((item) => item.operation === 'submit_order').invariants.includes('idempotency_key_unique'));
@@ -23,6 +24,7 @@ const adapterSource = await readFile(resolve(root, 'beta-app/postgres-domain-ada
 assert.match(adapterSource, /async listOperationalApprovals\(\)/);
 assert.match(adapterSource, /async supplierEligibility\(/);
 assert.match(adapterSource, /async requestSupplierVerification\(/);
+assert.match(adapterSource, /async supplierPrecheck\(/);
 assert.match(adapterSource, /async reviewSupplierVerification\(/);
 assert.match(adapterSource, /async listSupplierVerificationRequests\(/);
 assert.match(adapterSource, /supplier_verification_requests/);

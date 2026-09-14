@@ -50,6 +50,7 @@
 - 공개 스냅샷 투영 단계에서도 만료 증빙·비활성·재고 0 로트를 숨겨, 구매자 화면에 오래된 검증 매물이 남지 않도록 함
 - `beta-app/evidence-registry.mjs`로 증빙 제출·인간 검토·거래 전 적격성 상태 관리
 - `beta-app/document-storage.mjs`로 증빙 원문·SHA-256 일치 여부와 S3 호환 Object Storage 상용 어댑터 경계를 관리하며, 원문 저장 실패 시 증빙을 만들지 않음
+- 공급자 AI 사전검토도 상용 PostgreSQL의 `supplier_prechecks` 원장에 입력 지문·멱등키·검토 결과를 함께 저장하며, 같은 키의 다른 조건 재사용을 차단함
 - 완료된 실물 거래의 가격 관측치를 `price_observations` 원장에 저장·복구하여 서버 재시작 후에도 가격지표 근거를 보존
 - `ops/release-readiness.json`으로 필수 상용화 조건 미충족 시 자동 NO-GO
 - `/api/health`와 `data/persistence-config.json`으로 메모리 베타와 PostgreSQL 상용 전환 상태를 명시

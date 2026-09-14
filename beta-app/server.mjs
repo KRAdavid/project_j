@@ -559,6 +559,21 @@ const handleApi = async (request, response, url) => {
       const key = `${principal.organizationId}:${idempotencyKey}`;
       const inputFingerprint = supplierPrecheckFingerprint(input);
       const existing = simulationSupplierPrechecks.get(key);
+      if (persistenceStore.mode === 'postgresql') {
+        if (!domainAdapter || typeof domainAdapter.supplierPrecheck !== 'function') throw new PostgresDomainAdapterError('정규 PostgreSQL 공급자 사전검토 어댑터가 연결되지 않았습니다.', 'POSTGRES_SUPPLIER_PRECHECK_ADAPTER_REQUIRED');
+        const result = await domainAdapter.supplierPrecheck({
+          ...normalizeSupplierPrecheckInput(input),
+          supplierOrganizationId: principal.organizationId,
+          supplierUserId: principal.userId,
+          idempotencyKey,
+          inputFingerprint,
+          review,
+          actorKind: 'SYSTEM',
+          actorRef: 'AI-SUPPLIER-PRECHECK',
+          correlationId: `SUPPLIER-PRECHECK-${idempotencyKey}`,
+        });
+        return sendJson(response, result.idempotent ? 200 : 201, { ...result, dataStatus: runtimeDataStatus, guardrail: '상용 AI 사전검토는 PostgreSQL 원장에 멱등 저장되며, 공급자 승인·매물 공개·거래 체결을 수행하지 않습니다.' });
+      }
       if (existing) {
         const existingFingerprint = existing.inputFingerprint || supplierPrecheckFingerprint(existing);
         if (existingFingerprint !== inputFingerprint) throw new TradeRuleError('같은 멱등키로 다른 공급 조건을 재사용할 수 없습니다.', 'IDEMPOTENCY_KEY_REUSE_MISMATCH');
