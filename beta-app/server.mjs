@@ -68,6 +68,7 @@ const simulationSupplierRegistrationOwners = new Map();
 const simulationBusinessAccounts = new Map();
 const simulationSupplierPrechecks = new Map();
 const normalizeSupplierPrecheckInput = (input = {}) => ({
+  reviewScope: String(input.reviewScope || 'SUPPLY_OFFER').trim().toUpperCase(),
   material: String(input.material || '').trim(),
   coaDocumentNumber: String(input.coaDocumentNumber || '').trim(),
   coaFileName: String(input.coaFileName || '').trim(),
