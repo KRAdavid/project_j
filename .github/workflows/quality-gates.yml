@@ -22,7 +22,7 @@ jobs:
         image: postgres:15
         env:
           POSTGRES_USER: raw_material_os
-          POSTGRES_PASSWORD: raw_material_os
+          POSTGRES_PASSWORD: ci-${{ github.run_id }}
           POSTGRES_DB: raw_material_os
         ports:
           - 5432:5432
@@ -32,14 +32,14 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     env:
-      DATABASE_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/raw_material_os
-      DATABASE_ADMIN_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/postgres
+      DATABASE_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@127.0.0.1:5432/raw_material_os
+      DATABASE_ADMIN_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@127.0.0.1:5432/postgres
       POSTGRES_USER: raw_material_os
-      POSTGRES_PASSWORD: raw_material_os
+      POSTGRES_PASSWORD: ci-${{ github.run_id }}
       POSTGRES_DB: raw_material_os
-      STAGING_DATABASE_URL: postgresql://raw_material_os:raw_material_os@postgres:5432/raw_material_os
-      OBJECT_STORAGE_ACCESS_KEY: raw_material_os
-      OBJECT_STORAGE_SECRET_KEY: raw_material_os_secret
+      STAGING_DATABASE_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@postgres:5432/raw_material_os
+      OBJECT_STORAGE_ACCESS_KEY: ci-access-${{ github.run_id }}
+      OBJECT_STORAGE_SECRET_KEY: ci-object-${{ github.run_id }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -159,7 +159,7 @@ jobs:
 
       - name: Run PostgreSQL backup and restore drill
         env:
-          DATABASE_ADMIN_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/postgres
+          DATABASE_ADMIN_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@127.0.0.1:5432/postgres
         run: node ops/postgres-backup-restore-drill.mjs
 
       - name: Validate monitoring configuration
@@ -215,6 +215,7 @@ jobs:
           node test-postgres-approval-adapter.mjs
           node test-supplier-verification-gate.mjs
           node test-supplier-eligibility.mjs
+          node test-supplier-registration.mjs
           node test-postgres-domain-adapter-lot.mjs
           node test-postgres-domain-adapter-evidence.mjs
           node test-postgres-domain-adapter-atomic-inspect.mjs
@@ -327,4 +328,3 @@ jobs:
 
       - name: Run full automatic operations cycle
         run: node ops/run-ops-cycle.mjs
-

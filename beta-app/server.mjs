@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
@@ -22,6 +23,7 @@ import { buildMarketBoard } from './market-board.mjs';
 import { evaluateTaskSla } from '../ops/task-sla.mjs';
 import { compileGoal } from '../ops/goal-compiler.mjs';
 import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
+import { createSimulationSupplierRegistration, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const opsRoot = resolve(process.env.OPS_ROOT || resolve(root, '..', 'ops'));
@@ -59,6 +61,9 @@ const engine = new TradeEngine(await persistenceStore.load());
 const domainAdapter = persistenceStore.domainAdapter || null;
 const SIMULATION_VERIFIED_SUPPLIER_ORG = 'SIM-SUPPLIER-ORG';
 const simulationSupplierVerificationRequests = new Map();
+const simulationSupplierRegistrations = new Map();
+const simulationSupplierRegistrationOwners = new Map();
+const simulationBusinessAccounts = new Map();
 const eventBroker = new SseEventBroker({ heartbeatPayload: { dataStatus: runtimeDataStatus } });
 const evidenceRegistry = new EvidenceRegistry({ snapshot: await persistenceStore.loadEvidence() });
 const documentStorage = createDocumentStorage({ environment, persistenceMode: persistenceStore.mode });
@@ -91,20 +96,50 @@ const sendJson = (response, status, payload) => {
 
 const simulationSupplierEligibility = (principal) => {
   const verified = principal.organizationId === SIMULATION_VERIFIED_SUPPLIER_ORG;
+  const registration = simulationSupplierRegistrations.get(principal.organizationId) || null;
   const request = simulationSupplierVerificationRequests.get(principal.organizationId) || null;
   return {
     organizationId: principal.organizationId,
-    organizationName: verified ? '시뮬레이션 공급기업 A' : null,
-    organizationExists: verified || Boolean(request),
+    organizationName: verified ? '시뮬레이션 공급기업 A' : registration?.legalName || null,
+    organizationExists: verified || Boolean(registration) || Boolean(request),
+    organizationRegistered: verified || Boolean(registration),
     organizationVerified: verified,
-    activeSupplierMembership: verified,
+    activeSupplierMembership: verified || Boolean(registration),
     eligibleToSubmitLot: verified,
-    reasons: verified ? [] : ['시뮬레이션 조직은 사전 검증된 공급기업이 아닙니다.', ...(request ? ['검증 요청이 H-01 검토를 기다리고 있습니다.'] : [])],
+    reasons: verified ? [] : registration
+      ? ['사업자번호 확인으로 공급자 계정이 자동 등록되었습니다.', 'COA·SDS·TDS·로트추적·재고 증빙 검증 전에는 매물 등록이 차단됩니다.']
+      : ['시뮬레이션 조직은 사전 검증된 공급기업이 아닙니다.', ...(request ? ['검증 요청이 H-01 검토를 기다리고 있습니다.'] : [])],
+    latestRegistration: registration,
     latestVerificationRequest: request,
     policy: { listingRequiresLotEvidence: true, requiredLotEvidence: ['COA', 'SDS', 'TDS', 'LOT_TRACE', 'INVENTORY_PROOF'], aiMayAssessButNotApprove: true },
     checkedAt: new Date().toISOString(),
     dataStatus: runtimeDataStatus,
   };
+};
+
+const createSimulationAccountSession = ({ businessRegistrationNumber, email, now = new Date().toISOString() }) => {
+  const validation = validateKoreanBusinessRegistrationNumber(businessRegistrationNumber);
+  if (!validation.valid) throw new TradeRuleError(validation.reason, 'BUSINESS_REGISTRATION_INVALID');
+  const normalizedEmail = String(email || '').trim().toLowerCase();
+  if (!/^\S+@\S+\.\S+$/.test(normalizedEmail)) throw new TradeRuleError('업무용 이메일 형식이 올바르지 않습니다.', 'BUSINESS_EMAIL_INVALID');
+  const organizationId = `SIM-ORG-${createHash('sha256').update(validation.normalized).digest('hex').slice(0, 16)}`;
+  const userId = `SIM-USER-${createHash('sha256').update(`${validation.normalized}:${normalizedEmail}`).digest('hex').slice(0, 16)}`;
+  const key = `${validation.normalized}:${normalizedEmail}`;
+  const existing = simulationBusinessAccounts.get(key);
+  if (existing) return { account: existing, idempotent: true };
+  const account = {
+    userId,
+    organizationId,
+    businessRegistrationNumber: validation.normalized,
+    formattedBusinessRegistrationNumber: validation.formatted,
+    maskedBusinessRegistrationNumber: `${validation.normalized.slice(0, 3)}-${validation.normalized.slice(3, 5)}-****${validation.normalized.slice(-1)}`,
+    email: normalizedEmail,
+    status: 'REGISTERED',
+    registrationMode: 'SIMULATION_CHECKSUM_ONLY',
+    registeredAt: now,
+  };
+  simulationBusinessAccounts.set(key, account);
+  return { account, idempotent: false };
 };
 
 const assertSimulationVerifiedSupplier = (principal) => {
@@ -317,7 +352,6 @@ const handleApi = async (request, response, url) => {
         supervisorStatus,
         taskTimelineAudit,
         taskAuditRemediation,
-        teamActivity,
         queue: {
           total: tasks.length,
           queued: tasks.filter((task) => task.status === 'queued').length,
@@ -348,8 +382,9 @@ const handleApi = async (request, response, url) => {
         },
         readiness: await evaluateReleaseReadiness({ environment }),
         reconciliation: persistenceStore.mode === 'postgresql' && domainAdapter ? await domainAdapter.reconcileLatestBridge() : { status: 'SIMULATION_NOT_APPLICABLE', safe: true },
-        latestRun: latestRun ? { runId: latestRun.runId, generatedAt: latestRun.generatedAt, decision: latestRun.decision, selectedTask: latestRun.selectedTask?.id || null, selectedOwner: latestRun.workPacket?.ownerAi || latestRun.selectedTask?.ownerAi || null, workPacketId: latestRun.workPacket?.packetId || null, workPacketStatus: latestRun.workPacket?.status || null, patentPacketId: latestRun.patentPacket?.packetId || null, patentPacketStatus: latestRun.patentPacket?.legalStatus || null, failedEvidence: (latestRun.evidence || []).filter((item) => !item.passed).map((item) => item.name), skippedEvidence: (latestRun.evidence || []).filter((item) => item.skipped).map((item) => item.name) } : null,
-        guardrails: { tradeApprovalByAi: false, paymentReleaseByAi: false, disputeClosureByAi: false, productionRelease: 'READINESS_GO_REQUIRED' },
+         latestRun: latestRun ? { runId: latestRun.runId, generatedAt: latestRun.generatedAt, decision: latestRun.decision, selectedTask: latestRun.selectedTask?.id || null, selectedOwner: latestRun.workPacket?.ownerAi || latestRun.selectedTask?.ownerAi || null, workPacketId: latestRun.workPacket?.packetId || null, workPacketStatus: latestRun.workPacket?.status || null, patentPacketId: latestRun.patentPacket?.packetId || null, patentPacketStatus: latestRun.patentPacket?.legalStatus || null, failedEvidence: (latestRun.evidence || []).filter((item) => !item.passed).map((item) => item.name), skippedEvidence: (latestRun.evidence || []).filter((item) => item.skipped).map((item) => item.name) } : null,
+         teamActivity,
+         guardrails: { tradeApprovalByAi: false, paymentReleaseByAi: false, disputeClosureByAi: false, productionRelease: 'READINESS_GO_REQUIRED' },
       });
     }
     const notificationAckMatch = url.pathname.match(/^\/api\/ops\/notifications\/([^/]+)\/ack$/);
@@ -435,6 +470,59 @@ const handleApi = async (request, response, url) => {
         return sendJson(response, 200, { ...await domainAdapter.supplierEligibility(principal.organizationId), dataStatus: runtimeDataStatus });
       }
       return sendJson(response, 200, simulationSupplierEligibility(principal));
+    }
+    if (request.method === 'POST' && url.pathname === '/api/account/session') {
+      const input = await readJson(request);
+      if (persistenceStore.mode === 'postgresql' || environment !== 'simulation') {
+        throw new TradeRuleError('상용 로그인·사업자 확인은 공식 인증 서비스와 영속 계정 원장 연동 후에만 사용할 수 있습니다.', 'ACCOUNT_PROVIDER_REQUIRED');
+      }
+      const result = createSimulationAccountSession({ businessRegistrationNumber: input.businessRegistrationNumber || input.businessNumber, email: input.email });
+      return sendJson(response, result.idempotent ? 200 : 201, {
+        account: result.account,
+        status: 'ACCOUNT_REGISTERED',
+        idempotent: result.idempotent,
+        dataStatus: runtimeDataStatus,
+        guardrail: '베타 시뮬레이션 계정입니다. 사업자번호 형식·체크섬 확인은 공식 기관 조회를 대체하지 않으며, 실거래·결제는 비활성화되어 있습니다.',
+      });
+    }
+    if (request.method === 'POST' && url.pathname === '/api/supplier/registration') {
+      const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
+      authorize(principal, 'request_supplier_verification', authorizationPolicy);
+      const input = await readJson(request);
+      if (persistenceStore.mode === 'postgresql' || environment !== 'simulation') {
+        throw new TradeRuleError('상용 공급자 등록은 국세청 등 공식 사업자 확인 서비스 연동 후에만 사용할 수 있습니다.', 'BUSINESS_REGISTRATION_PROVIDER_REQUIRED');
+      }
+      const validation = validateKoreanBusinessRegistrationNumber(input.businessRegistrationNumber || input.businessNumber);
+      if (!validation.valid) throw new TradeRuleError(validation.reason, 'BUSINESS_REGISTRATION_INVALID');
+      const existing = simulationSupplierRegistrations.get(principal.organizationId) || null;
+      if (existing) {
+        if (existing.businessRegistrationNumber !== validation.normalized) throw new TradeRuleError('이 공급자 조직에는 이미 다른 사업자등록번호가 등록되어 있습니다.', 'BUSINESS_REGISTRATION_ALREADY_REGISTERED');
+        return sendJson(response, 200, {
+          registration: existing,
+          status: 'AUTO_REGISTERED',
+          idempotent: true,
+          dataStatus: runtimeDataStatus,
+          guardrail: '공급자 계정만 자동 등록되었습니다. COA·SDS·TDS·로트추적·재고 증빙 검증 전에는 매물·체결 권한을 열지 않습니다.',
+        });
+      }
+      const owner = simulationSupplierRegistrationOwners.get(validation.normalized);
+      if (owner && owner !== principal.organizationId) throw new TradeRuleError('이미 다른 공급자 조직에 등록된 사업자등록번호입니다.', 'BUSINESS_REGISTRATION_ALREADY_USED');
+      const registration = createSimulationSupplierRegistration({
+        organizationId: principal.organizationId,
+        userId: principal.userId,
+        businessRegistrationNumber: validation.normalized,
+        email: input.email,
+        legalName: input.legalName,
+      });
+      simulationSupplierRegistrations.set(principal.organizationId, registration);
+      simulationSupplierRegistrationOwners.set(validation.normalized, principal.organizationId);
+      return sendJson(response, 201, {
+        registration,
+        status: 'AUTO_REGISTERED',
+        idempotent: false,
+        dataStatus: runtimeDataStatus,
+        guardrail: '공급자 계정만 자동 등록되었습니다. COA·SDS·TDS·로트추적·재고 증빙 검증 전에는 매물·체결 권한을 열지 않습니다.',
+      });
     }
     if (request.method === 'POST' && url.pathname === '/api/supplier/verification-request') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
@@ -650,4 +738,3 @@ process.once('SIGTERM', () => { shutdown().finally(() => process.exit(0)); });
 process.once('SIGINT', () => { shutdown().finally(() => process.exit(0)); });
 
 httpServer.listen(port, host, () => console.log(`Beta server listening on http://${host}:${port}/`));
-
