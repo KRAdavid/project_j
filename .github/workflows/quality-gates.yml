@@ -303,6 +303,8 @@ jobs:
 
       - name: Validate approval inbox synchronization
         run: node ops/test-approval-sync.mjs
+      - name: task approval sync
+        run: node ops/test-task-approval-sync.mjs
 
       - name: Validate operations notification outbox
         run: node ops/test-notification-outbox.mjs
