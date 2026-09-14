@@ -70,7 +70,9 @@ assert.match(app, /async function hydrateSupplierEligibility\(\)/, '공급자 �
 assert.match(app, /async function requestSupplierVerification\(event\)/, '공급자 검증 요청 UI는 원장 API와 연결되어야 합니다.');
 assert.match(app, /async function runSupplierAiReview\(\{ force = false \} = \{\}\)/, 'COA·재고 입력은 자동 AI 사전검토 함수와 연결되어야 합니다.');
 assert.match(app, /async function runSellerOrderAiReview\(\{ force = false \} = \{\}\)/, 'OPEN ORDERS의 COA·재고 입력은 주문 응답 전 AI 사전검토 함수와 연결되어야 합니다.');
-assert.match(app, /sellerOrderAiReviewReady = review\?\.ready === true && enoughInventory/, '공급자 체결 버튼은 AI 판정과 주문 수량 대비 재고를 함께 통과해야 합니다.');
+assert.match(app, /sellerOrderAiReviewReady = review\?\.ready === true && hasOrder && enoughInventory && unitMatchesOrder/, '공급자 체결 버튼은 AI 판정·주문 존재·재고·거래 단위 일치를 함께 통과해야 합니다.');
+assert.match(app, /reviewScope: hasOrder \? 'ORDER_RESPONSE' : 'EVIDENCE_ONLY'/, '공급자 화면은 주문 전 증빙 검토와 주문 응답 검토를 구분해야 합니다.');
+assert.match(app, /if \(\['buyer', 'seller', 'operator'\]\.includes\(role\)\) onboardingState\.activeRole = role;/, '공유 계정 역할 전환은 API 세션 역할에도 반영되어야 합니다.');
 assert.match(app, /const ready = review\?\.ready === true;/, 'AI 사전검토 결과는 서버 review.ready를 기준으로 화면 상태를 결정해야 합니다.');
 assert.match(app, /\/api\/supplier\/precheck/, 'AI 사전검토는 서버 API와 연결되어야 합니다.');
 assert.match(app, /sha256File/, 'COA 원문 파일 지문은 브라우저에서 계산되어야 합니다.');
