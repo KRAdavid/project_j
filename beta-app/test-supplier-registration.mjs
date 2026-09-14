@@ -32,6 +32,10 @@ try {
   assert.equal(accountPayload.status, 'ACCOUNT_REGISTERED');
   assert.equal(accountPayload.account.maskedBusinessRegistrationNumber, '220-81-****7');
 
+  const invalidRegistrationEmail = await request('/api/supplier/registration', { method: 'POST', body: JSON.stringify({ businessRegistrationNumber: '220-81-62517', email: 'not-an-email', legalName: '잘못된 공급기업' }) });
+  assert.equal(invalidRegistrationEmail.status, 422);
+  assert.equal((await invalidRegistrationEmail.json()).code, 'BUSINESS_EMAIL_INVALID');
+
   const invalidCoaBytes = Buffer.from('not-a-pdf');
   const invalidCoaSha256 = createHash('sha256').update(invalidCoaBytes).digest('hex');
   const invalidUpload = await request('/api/supplier/precheck-document', { method: 'POST', body: JSON.stringify({ fileName: 'spoofed-coa.pdf', contentType: 'application/pdf', contentBase64: invalidCoaBytes.toString('base64'), contentSha256: invalidCoaSha256, idempotencyKey: `supplier-document-${invalidCoaSha256}` }) });

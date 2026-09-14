@@ -539,6 +539,8 @@ const handleApi = async (request, response, url) => {
       }
       const validation = validateKoreanBusinessRegistrationNumber(input.businessRegistrationNumber || input.businessNumber);
       if (!validation.valid) throw new TradeRuleError(validation.reason, 'BUSINESS_REGISTRATION_INVALID');
+      const registrationEmail = String(input.email || '').trim().toLowerCase();
+      if (!/^\S+@\S+\.\S+$/.test(registrationEmail)) throw new TradeRuleError('공급자 등록에는 유효한 업무용 이메일이 필요합니다.', 'BUSINESS_EMAIL_INVALID');
       const existing = simulationSupplierRegistrations.get(principal.organizationId) || null;
       if (existing) {
         if (existing.businessRegistrationNumber !== validation.normalized) throw new TradeRuleError('이 공급자 조직에는 이미 다른 사업자등록번호가 등록되어 있습니다.', 'BUSINESS_REGISTRATION_ALREADY_REGISTERED');
@@ -556,7 +558,7 @@ const handleApi = async (request, response, url) => {
         organizationId: principal.organizationId,
         userId: principal.userId,
         businessRegistrationNumber: validation.normalized,
-        email: input.email,
+        email: registrationEmail,
         legalName: input.legalName,
       });
       simulationSupplierRegistrations.set(principal.organizationId, registration);

@@ -29,6 +29,12 @@ export const createSimulationSupplierRegistration = ({ organizationId, userId, b
     error.code = 'BUSINESS_REGISTRATION_INVALID';
     throw error;
   }
+  const normalizedEmail = String(email || '').trim().toLowerCase();
+  if (!/^\S+@\S+\.\S+$/.test(normalizedEmail)) {
+    const error = new Error('공급자 등록에는 유효한 업무용 이메일이 필요합니다.');
+    error.code = 'BUSINESS_EMAIL_INVALID';
+    throw error;
+  }
   return {
     registrationId: registrationId || `SIM-SUPPLIER-REG-${validation.normalized}`,
     organizationId: String(organizationId),
@@ -36,7 +42,7 @@ export const createSimulationSupplierRegistration = ({ organizationId, userId, b
     businessRegistrationNumber: validation.normalized,
     formattedBusinessRegistrationNumber: validation.formatted,
     maskedBusinessRegistrationNumber: `${validation.normalized.slice(0, 3)}-${validation.normalized.slice(3, 5)}-****${validation.normalized.slice(-1)}`,
-    email: String(email || '').trim(),
+    email: normalizedEmail,
     legalName: String(legalName || '').trim().slice(0, 120),
     status: 'REGISTERED',
     registrationMode: 'SIMULATION_CHECKSUM_ONLY',
