@@ -315,7 +315,7 @@ const handleApi = async (request, response, url) => {
         schemaVersion: 'TEAM-ACTIVITY-0.1',
         generatedAt: null,
         cycleId: null,
-        truthModel: 'NOT_REPORTED',
+        truthModel: 'RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT',
         executionSummary: { automaticPreparation: false, pendingApprovalCount: 0 },
         counts: {},
         members: [],
@@ -337,9 +337,21 @@ const handleApi = async (request, response, url) => {
       const supplierVerificationRequests = persistenceStore.mode === 'postgresql' && domainAdapter
         ? await domainAdapter.listSupplierVerificationRequests()
         : simulationSupplierReviewItems();
-      const approvalItems = persistenceStore.mode === 'postgresql' && domainAdapter
+      const baseApprovalItems = persistenceStore.mode === 'postgresql' && domainAdapter
         ? await domainAdapter.listOperationalApprovals()
         : [...(Array.isArray(approvalInbox.items) ? approvalInbox.items : []), ...simulationSupplierApprovalItems()];
+      const approvalItems = taskAuditRemediation.requiredApprovalId && !baseApprovalItems.some((item) => item.approvalId === taskAuditRemediation.requiredApprovalId)
+        ? [...baseApprovalItems, {
+          approvalId: taskAuditRemediation.requiredApprovalId,
+          status: 'PENDING',
+          requiredPrincipal: 'H-01',
+          taskId: taskAuditRemediation.planId || 'TASK-AUDIT-REMEDIATION',
+          objective: '업무 생명주기 감사 정정 계획의 적용 여부를 H-01이 결정한다.',
+          risk: 'high',
+          reviewers: ['AI-11 실드', 'AI-13 케어'],
+          source: 'LATEST_OPS_CYCLE_REMEDIATION',
+        }]
+        : baseApprovalItems;
       const pendingApprovals = approvalItems.filter((item) => item.status === 'PENDING');
       const pendingNotifications = currentNotificationRecords.filter((item) => item.state === 'PENDING');
       return sendJson(response, 200, {
