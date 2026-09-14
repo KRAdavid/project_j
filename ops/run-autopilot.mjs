@@ -392,6 +392,13 @@ if (
   });
 }
 run.shadowPilotTaskExecutionEvidence = shadowPilotTaskExecutionEvidence;
+const shadowPilotReviewNeedsApproval = shadowPilotTask?.status === 'review' && !pendingApprovalTaskIds.has(shadowPilotTaskId);
+run.additionalApprovalTasks = (shadowPilotTaskExecutionEvidence?.status === 'RECORDED' || shadowPilotReviewNeedsApproval)
+  ? [{
+    ...shadowPilotTask,
+    evidenceRefs: shadowPilotReview.evidenceRefs,
+  }]
+  : [];
 
 // First rebuild the current-run approval packet, then merge every still-active
 // trigger task so no unresolved automated task is invisible to H-01.
