@@ -13,7 +13,7 @@ const server = await readFile(resolve(root, 'beta-app/server.mjs'), 'utf8');
 for (const id of ['spec-progress', 'spec-wizard', 'buyer-workspace', 'seller-view', 'operator-view', 'realtime-toggle', 'submit-order', 'ask-book', 'bid-book', 'supply-list', 'supply-count', 'live-average-price', 'live-average-sample', 'reference-chart-line', 'reference-chart-area', 'reference-chart-dot', 'reference-chart-empty', 'split-verified-stock', 'split-verified-stock-status']) {
   assert.match(html, new RegExp(`id=["']${id}["']`), `핵심 UI 요소 누락: ${id}`);
 }
-for (const id of ['supplier-eligibility', 'refresh-supplier-eligibility', 'supplier-verification-form', 'request-supplier-verification', 'seller-inventory-list', 'seller-verified-count', 'seller-order-material', 'seller-order-price', 'seller-order-deadline', 'seller-order-quantity']) {
+for (const id of ['supplier-eligibility', 'refresh-supplier-eligibility', 'supplier-verification-form', 'request-supplier-verification', 'seller-inventory-list', 'seller-verified-count', 'seller-order-material', 'seller-order-price', 'seller-order-deadline', 'seller-order-quantity', 'seller-order-precheck', 'seller-order-coa-ref', 'seller-order-coa-file', 'seller-order-inventory', 'seller-order-expiry', 'seller-order-unit', 'seller-order-ai-review', 'seller-order-ai-review-status']) {
   assert.match(html, new RegExp(`id=["']${id}["']`), `공급자 자격 UI 누락: ${id}`);
 }
 for (const id of ['account-entry-form', 'account-business-number', 'account-email', 'role-choice-grid', 'entry-buyer-choice', 'entry-supplier-choice', 'supplier-coa-file', 'supplier-inventory-qty', 'supplier-ai-review']) {
@@ -69,6 +69,8 @@ assert.match(app, /compactText\(task\.whyNow/, '과거 트리거의 원문 스�
 assert.match(app, /async function hydrateSupplierEligibility\(\)/, '공급자 화면은 거래 자격을 자동 확인해야 합니다.');
 assert.match(app, /async function requestSupplierVerification\(event\)/, '공급자 검증 요청 UI는 원장 API와 연결되어야 합니다.');
 assert.match(app, /async function runSupplierAiReview\(\{ force = false \} = \{\}\)/, 'COA·재고 입력은 자동 AI 사전검토 함수와 연결되어야 합니다.');
+assert.match(app, /async function runSellerOrderAiReview\(\{ force = false \} = \{\}\)/, 'OPEN ORDERS의 COA·재고 입력은 주문 응답 전 AI 사전검토 함수와 연결되어야 합니다.');
+assert.match(app, /sellerOrderAiReviewReady = review\?\.ready === true && enoughInventory/, '공급자 체결 버튼은 AI 판정과 주문 수량 대비 재고를 함께 통과해야 합니다.');
 assert.match(app, /const ready = review\?\.ready === true;/, 'AI 사전검토 결과는 서버 review.ready를 기준으로 화면 상태를 결정해야 합니다.');
 assert.match(app, /\/api\/supplier\/precheck/, 'AI 사전검토는 서버 API와 연결되어야 합니다.');
 assert.match(app, /sha256File/, 'COA 원문 파일 지문은 브라우저에서 계산되어야 합니다.');
@@ -114,3 +116,4 @@ assert.doesNotMatch(html, /₩21,800|₩21,450|2,400 kg|3,840 kg|24건/, '시장
 assert.doesNotMatch(html, /1,200 kg/, '공급자 분할 화면에 서버 원장과 무관한 정적 재고가 남아 있습니다.');
 assert.doesNotMatch(html, /C35 116|S185 83|S585 34/, '가격지표 차트에 서버 시계열과 무관한 정적 곡선이 남아 있습니다.');
 console.log('ui contract tests: PASS');
+
