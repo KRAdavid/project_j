@@ -31,6 +31,7 @@ assert.equal(review.approvals.decisionGuide[0].humanPrincipal, 'H-01');
 assert.equal(review.approvals.decisionGuide[0].externalSideEffect, false);
 assert.equal(review.approvals.decisionGuide[0].recommendation, 'HOLD_REAL_OPERATIONS');
 assert.equal(review.tasks.sla.staleCount, 1);
+assert.equal(review.tasks.sla.pausedCount, 0);
 assert.equal(review.notifications.delivery, 'OUTBOX_ONLY');
 assert.equal(review.notifications.externalNotificationSent, false);
 assert.equal(review.taskAudit.status, 'ACTIVE_TIMELINE_INVALID');
@@ -43,3 +44,4 @@ const currentTargetReview = buildExecutiveReview({
 });
 assert.equal(currentTargetReview.githubTargetPreflight.status, 'TARGET_MATCH');
 console.log('executive review tests: PASS');
+
