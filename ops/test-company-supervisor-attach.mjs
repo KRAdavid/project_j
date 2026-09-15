@@ -37,11 +37,31 @@ await writeFile(daemonStatusPath, `${JSON.stringify({
   updatedAt: new Date().toISOString(),
 }, null, 2)}\n`, 'utf8');
 
+const sleep = (ms) => new Promise((resolveSleep) => setTimeout(resolveSleep, ms));
+const fetchHealth = async () => {
+  try {
+    const response = await fetch(`http://127.0.0.1:${port}/api/health`);
+    return response.ok ? response.json() : null;
+  } catch { return null; }
+};
+const waitForServerHealthy = async () => {
+  const deadline = Date.now() + 15000;
+  while (Date.now() < deadline) {
+    if ((await fetchHealth())?.service === 'raw-material-beta') return true;
+    await sleep(100);
+  }
+  return false;
+};
 const server = spawn(process.execPath, ['--experimental-sqlite', 'beta-app/server.mjs'], {
   cwd: root,
   env: { ...process.env, PORT: String(port), APP_ENV: 'simulation', PERSISTENCE_MODE: 'sqlite', PERSISTENCE_FILE: ledgerPath },
   stdio: 'ignore',
 });
+if (!(await waitForServerHealthy())) {
+  try { server.kill('SIGTERM'); } catch {}
+  await rm(tempRoot, { recursive: true, force: true });
+  throw new Error('existing server must become healthy before attach');
+}
 const supervisor = spawn(process.execPath, ['ops/company-supervisor.mjs'], {
   cwd: root,
   env: {
@@ -64,18 +84,15 @@ const supervisor = spawn(process.execPath, ['ops/company-supervisor.mjs'], {
 const logs = [];
 supervisor.stdout.on('data', (chunk) => logs.push(String(chunk)));
 supervisor.stderr.on('data', (chunk) => logs.push(String(chunk)));
-const sleep = (ms) => new Promise((resolveSleep) => setTimeout(resolveSleep, ms));
 const readJson = async (path) => JSON.parse(await readFile(path, 'utf8'));
-const fetchHealth = async () => {
-  try {
-    const response = await fetch(`http://127.0.0.1:${port}/api/health`);
-    return response.ok ? response.json() : null;
-  } catch { return null; }
-};
 const waitUntil = async (predicate, timeoutMs = 15000) => {
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
-    if (await predicate()) return true;
+    try {
+      if (await predicate()) return true;
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
     await sleep(100);
   }
   return false;
