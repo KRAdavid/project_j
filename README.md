@@ -14,6 +14,13 @@
 
 사용자 화면은 단순하게 유지하고, 내부에서는 스펙·증빙·로트·재고 상태를 엄격히 검증합니다.
 
+## 계정과 역할
+
+- 첫 화면에서는 사업자등록번호와 업무용 이메일만으로 공통 사업자 계정을 등록합니다. 비밀번호나 역할별 별도 계정을 요구하지 않습니다.
+- 하나의 계정이 구매자와 공급자 역할을 모두 가질 수 있으며, 로그인 후 화면 상단 역할 전환으로 양쪽 작업공간을 오갈 수 있습니다.
+- 공급자 사업자번호가 시뮬레이션 검증을 통과하면 공급자 계정은 자동 등록되지만, COA·SDS·TDS·로트추적·재고 증빙과 운영 검토 전에는 매물 등록·거래 권한을 열지 않습니다.
+- 베타의 사업자번호 확인은 체크섬 기반 시뮬레이션입니다. 실제 공개 서비스에서는 국세청 등 공식 사업자 확인 연동과 이메일 소유권 확인을 연결해야 합니다.
+
 ## 현재 구현
 
 - `beta-app/`: GABA 구매자·공급자 분할 시뮬레이션 UI
@@ -43,6 +50,7 @@
 - 공개 스냅샷 투영 단계에서도 만료 증빙·비활성·재고 0 로트를 숨겨, 구매자 화면에 오래된 검증 매물이 남지 않도록 함
 - `beta-app/evidence-registry.mjs`로 증빙 제출·인간 검토·거래 전 적격성 상태 관리
 - `beta-app/document-storage.mjs`로 증빙 원문·SHA-256 일치 여부와 S3 호환 Object Storage 상용 어댑터 경계를 관리하며, 원문 저장 실패 시 증빙을 만들지 않음
+- 공급자 AI 사전검토도 상용 PostgreSQL의 `supplier_prechecks` 원장에 입력 지문·멱등키·검토 결과를 함께 저장하며, 같은 키의 다른 조건 재사용을 차단함
 - 완료된 실물 거래의 가격 관측치를 `price_observations` 원장에 저장·복구하여 서버 재시작 후에도 가격지표 근거를 보존
 - `ops/release-readiness.json`으로 필수 상용화 조건 미충족 시 자동 NO-GO
 - `/api/health`와 `data/persistence-config.json`으로 메모리 베타와 PostgreSQL 상용 전환 상태를 명시
@@ -58,7 +66,7 @@
 - 감독형 런처에 `-PersistenceMode sqlite -PersistenceFile <경로>`를 지정하면 SQLite 실험 런타임 플래그까지 서버 자식 프로세스에 전달해 베타 재시작 복구를 검증할 수 있습니다. SQLite는 상용 PostgreSQL 원장을 대체하지 않습니다.
 - 감독자 상태는 `/api/ops/summary`와 운영 제어탑에 투영되며, `pnpm run ops:stop`은 감독자·데몬·서버를 모두 기록된 PID 기준으로 종료합니다. 두 런처 모두 배포·GitHub 쓰기·실거래 권한을 수행하지 않습니다.
 - `pnpm run ops:register`는 사용자 로그온 시 감독형 회사 모드를 시작하고 최대 3회 재시작하는 Windows 작업 스케줄러 등록 패킷입니다. 기존 작업은 기본적으로 덮어쓰지 않으며, 현재 사용자 권한으로 등록할 수 없으면 실패를 명확히 보고하므로 관리자 PowerShell에서 재실행해야 합니다.
-- `pnpm run ops:supervise`는 회사형 런타임의 감독 프로세스입니다. canonical 서버와 운영 데몬을 기동한 뒤 health·SSE 정체성·데몬 상태를 주기 확인하고, 제한된 횟수만 자동 재시작합니다. 반복 장애·기존 canonical 서버 감지·재시작 한도 초과 시 `HALTED_REQUIRES_H01`로 안전 정지하며, 실제 거래·계약·결제 권한은 절대 열지 않습니다. 재시작 정책과 상태는 `ops/company-supervisor-status.json`에 기록합니다.
+- `pnpm run ops:supervise`는 회사형 런타임의 감독 프로세스입니다. canonical 서버와 운영 데몬을 기동한 뒤 health·SSE 정체성·데몬 상태를 주기 확인하고, 제한된 횟수만 자동 재시작합니다. 반복 장애·기존 canonical 서버 감지·재시작 한도 초과 시 `HALTED_REQUIRES_H01`로 안전 정지하며, 실제 거래·계약·결제 권한은 절대 열지 않습니다. 재시작 정책과 상태는 `ops/company-supervisor-status.json`에 기록합니다. 기존에 안전하게 기동된 서버·데몬을 중단하지 않고 붙이려면 `ops/start-company-supervised.ps1 -AttachExisting`를 사용하며, 신선한 데몬 상태와 생존 PID가 모두 확인되지 않으면 attach를 거부합니다.
 - 회사형 런처는 자동 품질 사이클이 완료되기 전에 데몬이 끊기지 않도록 `CycleTimeoutMs`를 최소 300초로 강제합니다. 단회 타임아웃 회귀 테스트는 별도 격리된 데몬 프로세스로만 실행됩니다.
 - 회사형 런처는 최근 heartbeat가 유효한 기존 운영 데몬을 singleton으로 판정해 `DAEMON_ALREADY_RUNNING`으로 중복 기동을 차단합니다. 운영 Lock은 이 가드의 보조선으로 유지됩니다.
 - `pnpm run ops:stop` 또는 `ops/stop-company-mode.ps1`는 런타임 manifest에 기록된 운영 데몬·서버 런처만 정지하고 manifest를 `STOPPED`로 보존합니다. 기록되지 않은 프로세스나 기존 포트를 임의로 종료하지 않습니다.
@@ -108,7 +116,7 @@
 - `ops/executive-review.mjs`: 최신 사이클·릴리스 차단조건·승인 대기·스테이징/GitHub 사전점검을 한 장의 H-01 경영진 검토 패킷으로 자동 집계하며, 권고는 실거래 보류이고 승인 자체는 실행하지 않음
 - 경영진 검토 패킷은 업무 생명주기 감사 상태·활성 위반 수·정정 계획 ID·H-01 승인 대상을 함께 표시해, 승인 전 변경 금지와 승인 후 자동 재감사를 한 화면에서 판단할 수 있게 함
 - `ops/approval-sla.mjs`: 위험도별 승인 SLA 초과 건을 자동 표시해 H-01 검토를 재촉구하며, 외부 알림 연동 전에는 메시지를 발송하거나 승인 상태를 변경하지 않음
-- `ops/task-sla.mjs`: queued·working·review 업무의 위험도별 SLA를 자동 평가하고, 기한 초과 업무를 AI-01·H-01 상향보고 트리거로 변환합니다. 생성·인수 시각이 없는 업무는 시간을 추정하지 않고 `TASK_METADATA_GAP`으로 먼저 보류합니다.
+- `ops/task-sla.mjs`: queued·working·review 업무의 위험도별 SLA를 자동 평가하고, 기한 초과 업무를 AI-01·H-01 상향보고 트리거로 변환합니다. 생성·인수 시각이 없는 업무는 시간을 추정하지 않고 `TASK_METADATA_GAP`으로 먼저 보류하며, 외부 증거 대기(`EVIDENCE_GAP`·`AUTOPILOT_BLOCKED`) 업무는 SLA를 일시정지하고 `WAIT_FOR_DEPENDENCY`로 별도 추적합니다.
 - `beta-app/domain-reconciliation.mjs`: 정규 PostgreSQL 원장과 기존 스냅샷 투영의 핵심 상태를 비교하고 불일치 시 안전하지 않은 상태로 판정
 - PostgreSQL 환경의 SSE 초기 스냅샷·변경 이벤트는 정규 도메인 원장에서 투영되며, 시뮬레이션 스냅샷과 혼용하지 않음
 - `beta-app/authorization.mjs`: 구매자·공급자 투영에서 상대 조직 식별자와 증빙 원문 해시·저장참조를 역할별로 차단
@@ -119,8 +127,11 @@
 - `beta-app/test-market-board-lifecycle.mjs`는 체결 전 호가·체결 후 비완료 상태·납품·검수 완료 후 실물 체결가 공개·가격지표 표본 편입의 전체 수명주기를 임시 서버에서 검증하며, 단일 거래로 평균가격을 공개하지 않음
 - `/api/supplier/verification-request`가 신규 공급자의 사업자·공급자 증빙 참조를 PostgreSQL에 접수하고 `REQUESTED` 상태로 보관하며, H-01 또는 지정 운영자 승인 전에는 자격을 열지 않음
 - `/api/supplier/verification-requests/{requestId}/review`는 H-01의 검토 진행 승인 이후 권한 있는 인간이 최종 증빙을 확인할 때만 조직 `verified_at`을 기록하며, 메모리 베타에서는 의도적으로 차단됨
+- 공급자 `OPEN ORDERS` 화면에서도 COA 문서번호·원문 파일·소비기한·단위·검증 재고를 입력하면 자동 사전검토를 실행하고, 주문 수량보다 적은 재고나 미완료 검토 상태에서는 체결 버튼을 잠금
+- 공급자 주문 전에는 `EVIDENCE_ONLY` 범위로 COA 원문·해시·재고·소비기한·단위를 먼저 자동 검토하고, 구매 주문 도착 후 `ORDER_RESPONSE` 범위로 매수가·수량·단위를 결속해 다시 검토
 - `data/postgres-domain-adapter-contract.json`: 스냅샷 브리지에서 정규 PostgreSQL 도메인 원장으로 전환하기 위한 상용 게이트와 원자 쓰기 계약
 - `ops/approval-store.mjs`: H-01의 승인·수정요청·보류·거절을 단일 결정과 감사 로그로 기록
+- `ops/task-approval-sync.mjs`: 시뮬레이션 승인 결정을 업무 큐에 멱등 반영하고 종료 업무 변경을 차단하며, 동기화는 거래·계약·결제·배포를 실행하지 않음
 - `ops/autopilot-ledger.mjs`: 기존 미해결 자동 트리거도 승인함으로 누락 없이 동기화하며, 이미 결정된 항목을 자동 재결정하지 않음
 - `simulator/shadow_pilot_runner.py`와 `ops/run-shadow-pilot.mjs`: 7개 폐쇄형 Shadow Pilot 시나리오를 자동 실행하고 성공 기준을 판정
 - Shadow Pilot은 실행 전에 폐쇄모드·실거래/금전/외부알림 차단·H-01 승인·참가자 역할·중단 기준·증거 계약을 fail-closed로 점검하며, 설정 오류 시 시나리오와 참가자 접근을 모두 중단
@@ -148,9 +159,9 @@ node server.mjs
 
 브라우저에서 `http://127.0.0.1:4173/`을 엽니다. PowerShell에서는 `beta-app/server.ps1`도 사용할 수 있으며, 이 런처는 정식 `server.mjs`만 실행합니다. 별도 정적 서버를 사용하면 API·SSE·원장 검증이 빠지므로 운영 경로로 사용하지 않습니다.
 
-현재 베타의 가격·재고·체결 이벤트는 시뮬레이션이며, 로컬 Node 백엔드와 연결되어 거래 수명주기·증빙 게이트·SSE를 검증합니다. 실제 주문·결제·문서 업로드·회원 인증은 상용 외부 시스템과 연결하지 않았습니다.
+현재 베타의 가격·재고·체결 이벤트는 시뮬레이션이며, 로컬 Node 백엔드와 연결되어 거래 수명주기·증빙 게이트·SSE를 검증합니다. COA 원문은 `POST /api/supplier/precheck-document`를 통해 베타 보관 어댑터에 저장하고 사전검토 원장에는 참조·해시만 기록합니다. 실제 주문·결제·회원 인증과 생산 Object Storage 연결은 별도 상용 게이트입니다.
 
-PostgreSQL 원장과 S3 호환 증빙 저장소를 재현하는 스테이징 기반은 `compose.staging.yml`에 정의되어 있습니다. `schema-migrate → app healthcheck → ops-daemon` 순서를 Compose dependency 조건으로 고정하여 서버와 회사형 운영 사이클까지 재현합니다. Object Storage bucket 초기화는 서버 준비를 재시도한 뒤 완료되며, GitHub Actions는 Compose 전체 기동·`/api/health` smoke test·정리를 자동 실행합니다. Docker Compose가 설치된 환경에서 `docker compose -f compose.staging.yml up -d`로 시작하고, `.env.staging.example`을 시크릿 관리 환경에 맞게 주입한 뒤 백업·동시성 리허설을 수행합니다. 예제 파일의 상용 전환 플래그는 모두 `false`이며, 증거 없이 값을 바꾸면 안 됩니다.
+PostgreSQL 원장과 S3 호환 증빙 저장소를 재현하는 스테이징 기반은 `compose.staging.yml`에 정의되어 있습니다. `schema-migrate → app healthcheck → ops-daemon` 순서를 Compose dependency 조건으로 고정하여 서버와 회사형 운영 사이클까지 재현합니다. Object Storage bucket 초기화는 서버 준비를 재시도한 뒤 완료되며, GitHub Actions는 Compose 전체 기동·`/api/health` smoke test·정리를 자동 실행합니다. 또한 CI의 임시 PostgreSQL 15 서비스에서 스키마 마이그레이션·도메인 통합거래·동시 예약·`pg_dump/pg_restore` 리허설을 실제 DB 연결로 실행합니다. 이 결과는 코드 경로와 원자성 검증 증거이지, 운영용 영속 PostgreSQL·복구 증거를 대체하지 않으므로 R-01/R-06은 별도 스테이징 증거가 제출될 때까지 `NO_GO`로 유지합니다. Docker Compose가 설치된 환경에서 `docker compose -f compose.staging.yml up -d`로 시작하고, `.env.staging.example`을 시크릿 관리 환경에 맞게 주입한 뒤 백업·동시성 리허설을 수행합니다. 예제 파일의 상용 전환 플래그는 모두 `false`이며, 증거 없이 값을 바꾸면 안 됩니다.
 
 기본 서버는 메모리 모드로 안전하게 시작합니다. 재시작 복구를 시험할 때만 `PERSISTENCE_MODE=sqlite`와 `node --experimental-sqlite server.mjs`를 사용합니다. SQLite는 베타 검증용이며 상용 원장은 PostgreSQL·백업·복구 리허설·감사권한·정규 도메인 API 연결을 통과하기 전까지 공개하지 않습니다. 상용 PostgreSQL 모드는 `pg` 드라이버와 `DATABASE_URL`로 연결되고, 연결 시 핵심 테이블·`reserve_lot` 원자 예약 함수까지 직접 확인하며, 접속·저장·스키마 검증에 실패하면 메모리 모드로 폴백하지 않습니다. `POSTGRES_DOMAIN_ADAPTER_READY`와 `POSTGRES_DOMAIN_API_READY`는 각각 정규 원장과 전체 API 연결 증거가 H-01에게 승인된 뒤에만 설정합니다.
 
@@ -217,27 +228,3 @@ node ops/run-shadow-pilot.mjs
 
 특허성은 선행기술 조사와 변리사 검토 후 판단합니다. 상세 후보는 도메인 문서를 기준으로 관리합니다.
 
-
-## Windows 재부팅 후 자동 재개
-
-회사형 Supervisor를 현재 세션에서 실행하는 것과 Windows 로그인 후 자동 재개하는 것은 별도 조건이다.
-
-```powershell
-cd "C:\\Users\\fksak\\Documents\\ChatGPT\\원료구매사이트"
-pnpm run ops:start:supervised
-```
-
-재부팅·로그인 후에도 자동 재개하려면 관리자 권한 PowerShell에서 1회 예약작업을 등록한다.
-
-```powershell
-cd "C:\\Users\\fksak\\Documents\\ChatGPT\\원료구매사이트"
-pnpm run ops:register
-```
-
-등록 여부는 다음 명령으로 확인한다.
-
-```powershell
-Get-ScheduledTask -TaskName "RawMaterialOS-CompanyMode"
-```
-
-등록되지 않은 경우 Supervisor는 현재 프로세스가 살아 있는 동안에만 자동 운영한다. 예약작업 등록 실패 시 관리자 권한을 우회하거나 임의의 시작프로그램을 추가하지 않고, `NO_GO`·실거래 차단·H-01 승인 게이트를 그대로 유지한다. 예약작업이 등록되어도 자동 재개는 Supervisor·health·데몬·readiness 검사를 통과할 때만 허용된다.

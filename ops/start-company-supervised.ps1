@@ -7,12 +7,23 @@ param(
   [string]$PersistenceFile = '',
   [int]$SupervisorIntervalMs = 5000,
   [int]$DaemonIntervalMs = 900000,
-  [int]$CycleTimeoutMs = 600000
+  [int]$CycleTimeoutMs = 1800000,
+  [switch]$AttachExisting
 )
 
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $nodeCommand = Get-Command node -ErrorAction Stop
+# Some managed Windows shells expose both `Path` and `PATH` in the inherited
+# environment. PowerShell's Start-Process copies that block into a
+# case-sensitive map and can fail before the supervisor starts. Collapse the
+# aliases to one canonical entry while preserving the resolved Node path.
+$pathValue = [System.Environment]::GetEnvironmentVariable('Path', 'Process')
+if (-not [string]::IsNullOrWhiteSpace($pathValue)) {
+  Remove-Item Env:Path -ErrorAction SilentlyContinue
+  Remove-Item Env:PATH -ErrorAction SilentlyContinue
+  $env:Path = $pathValue
+}
 $healthUrl = "http://127.0.0.1:$Port/api/health"
 $runtimeFile = Join-Path $root 'ops/company-mode-runtime.json'
 $statusFile = Join-Path $root 'ops/company-supervisor-status.json'
@@ -25,13 +36,15 @@ if ($SupervisorIntervalMs -lt 1000 -or $DaemonIntervalMs -lt 1000 -or $CycleTime
   throw '감독자·데몬·사이클 주기는 1000ms 이상이어야 합니다.'
 }
 
-try {
-  $existingHealth = Invoke-RestMethod -Uri $healthUrl -Method Get -TimeoutSec 2
-  if ($existingHealth.service -eq 'raw-material-beta') {
-    throw "COMPANY_MODE_ALREADY_RUNNING: $healthUrl"
+if (-not $AttachExisting) {
+  try {
+    $existingHealth = Invoke-RestMethod -Uri $healthUrl -Method Get -TimeoutSec 2
+    if ($existingHealth.service -eq 'raw-material-beta') {
+      throw "COMPANY_MODE_ALREADY_RUNNING: $healthUrl"
+    }
+  } catch {
+    if ($_.Exception.Message -like 'COMPANY_MODE_ALREADY_RUNNING:*') { throw }
   }
-} catch {
-  if ($_.Exception.Message -like 'COMPANY_MODE_ALREADY_RUNNING:*') { throw }
 }
 
 if (Test-Path -LiteralPath $statusFile) {
@@ -57,6 +70,11 @@ $env:OPS_DAEMON_STATUS_PATH = $daemonStatusFile
 $env:OPS_DAEMON_RUN_ON_START = 'true'
 $env:MONITOR_REQUIRE_SUPERVISOR = 'true'
 $env:MONITOR_SUPERVISOR_STATUS_PATH = $statusFile
+if ($AttachExisting) {
+  $env:COMPANY_ATTACH_EXISTING = 'true'
+} else {
+  Remove-Item Env:COMPANY_ATTACH_EXISTING -ErrorAction SilentlyContinue
+}
 if ([string]::IsNullOrWhiteSpace($PersistenceFile)) {
   Remove-Item Env:PERSISTENCE_FILE -ErrorAction SilentlyContinue
 } else {

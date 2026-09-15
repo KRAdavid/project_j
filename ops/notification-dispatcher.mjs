@@ -119,4 +119,3 @@ export const dispatchPendingNotifications = async ({
     guardrail: '외부 전송은 명시적으로 활성화된 승인 채널에 한정하며, 알림 확인·거래 승인·분쟁 종결을 자동 처리하지 않습니다.',
   };
 };
-

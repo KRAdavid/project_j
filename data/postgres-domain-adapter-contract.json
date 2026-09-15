@@ -6,6 +6,7 @@
   "requiredTables": [
     "organizations",
     "supplier_verification_requests",
+    "supplier_prechecks",
     "organization_members",
     "materials",
     "specifications",
@@ -22,6 +23,11 @@
     "approval_events"
   ],
   "requiredAtomicOperations": [
+    {
+      "operation": "supplier_precheck",
+      "writes": ["supplier_prechecks", "trade_events"],
+      "invariants": ["supplier_membership", "input_fingerprint_unique", "idempotent_retry", "coa_storage_ref_required", "ai_not_approval"]
+    },
     {
       "operation": "request_supplier_verification",
       "writes": ["supplier_verification_requests", "trade_events"],

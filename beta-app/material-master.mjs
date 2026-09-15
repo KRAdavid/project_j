@@ -108,4 +108,3 @@ export const searchMaterials = (query, { limit = 10, source = catalog } = {}) =>
 };
 
 export const materialMasterSnapshot = () => JSON.parse(JSON.stringify(catalog));
-

@@ -23,4 +23,3 @@ assert.ok(policy.roles.SUPPLIER.includes('request_supplier_verification'));
 assert.ok(policy.auditRequiredActions.includes('request_supplier_verification'));
 assert.ok(policy.roles.OPERATOR.includes('expire_order'));
 console.log('authorization policy tests: PASS');
-

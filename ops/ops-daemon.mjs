@@ -6,7 +6,11 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const cycleScript = resolve(root, process.env.OPS_DAEMON_CYCLE_SCRIPT || 'ops/run-ops-cycle.mjs');
 const intervalMs = Math.max(1000, Number(process.env.OPS_DAEMON_INTERVAL_MS || 15 * 60 * 1000));
-const cycleTimeoutMs = Math.max(1000, Number(process.env.OPS_DAEMON_CYCLE_TIMEOUT_MS || 10 * 60 * 1000));
+// A full cycle includes the sequential evidence suite plus queue, approval,
+// notification, audit, and report finalization. Keep the default above the
+// inner test budget so Windows process teardown cannot turn a valid review
+// packet into a false daemon timeout. Explicit test/operator values still win.
+const cycleTimeoutMs = Math.max(1000, Number(process.env.OPS_DAEMON_CYCLE_TIMEOUT_MS || 30 * 60 * 1000));
 const maxCycles = Math.max(0, Number(process.env.OPS_DAEMON_MAX_CYCLES || 0));
 const runOnStart = process.env.OPS_DAEMON_RUN_ON_START !== 'false';
 const runOnce = process.argv.includes('--once');

@@ -40,4 +40,3 @@ async function expectFailure(action, code) {
     if (error.code !== code) throw error;
   }
 }
-

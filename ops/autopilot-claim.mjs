@@ -12,4 +12,3 @@ export const claimQueuedTask = (task, selectionType, { claimedAt, claimedBy = 'A
   task.updatedAt = new Date(Math.max(claimedMs, Number.isFinite(priorUpdatedMs) ? priorUpdatedMs : 0)).toISOString();
   return { claimed: true, task };
 };
-

@@ -3,9 +3,9 @@ FROM node:22-bookworm-slim
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV APP_ENV=simulation
+ENV APP_ENV=production
 ENV PORT=4173
-ENV PERSISTENCE_MODE=memory
+ENV PERSISTENCE_MODE=postgresql
 
 COPY package.json pnpm-lock.yaml ./
 RUN corepack enable \

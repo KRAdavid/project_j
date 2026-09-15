@@ -25,4 +25,3 @@ for (const protectedPattern of ['.env', 'ops/latest-', 'ops/incident-ledger.json
 
 for (const required of ['ops/company-supervisor.mjs', 'ops/ops-daemon.mjs', 'ops/run-ops-cycle.mjs', 'ops/validate-contracts.mjs']) await access(resolve(root, required));
 console.log(JSON.stringify({ status: 'PASS', referencedFiles: uniqueReferences.length, guardrail: 'public source bundle is reproducible and private runtime state remains excluded' }));
-

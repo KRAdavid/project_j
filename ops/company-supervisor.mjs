@@ -13,8 +13,12 @@ const healthTimeoutMs = Math.max(500, Number(process.env.COMPANY_SUPERVISOR_HEAL
 const startupGraceMs = Math.max(2000, Number(process.env.COMPANY_SUPERVISOR_STARTUP_GRACE_MS || Math.max(healthTimeoutMs * 3, 5000)));
 const maxRestarts = Math.max(0, Number(process.env.COMPANY_SUPERVISOR_MAX_RESTARTS || 3));
 const restartWindowMs = Math.max(1000, Number(process.env.COMPANY_SUPERVISOR_RESTART_WINDOW_MS || 10 * 60 * 1000));
+const attachExisting = process.env.COMPANY_ATTACH_EXISTING === 'true';
 const daemonIntervalMs = Math.max(1000, Number(process.env.OPS_DAEMON_INTERVAL_MS || 15 * 60 * 1000));
-const daemonCycleTimeoutMs = Math.max(1000, Number(process.env.OPS_DAEMON_CYCLE_TIMEOUT_MS || 10 * 60 * 1000));
+// The daemon's full cycle includes evidence execution and post-processing;
+// keep the default aligned with ops-daemon so normal Windows teardown latency
+// cannot be misclassified as a supervisor incident.
+const daemonCycleTimeoutMs = Math.max(1000, Number(process.env.OPS_DAEMON_CYCLE_TIMEOUT_MS || 30 * 60 * 1000));
 const daemonStatusPath = resolve(root, process.env.OPS_DAEMON_STATUS_PATH || 'ops/daemon-status.json');
 const runtimePath = resolve(root, process.env.COMPANY_RUNTIME_PATH || 'ops/company-mode-runtime.json');
 const statusPath = resolve(root, process.env.COMPANY_SUPERVISOR_STATUS_PATH || 'ops/company-supervisor-status.json');
@@ -24,6 +28,8 @@ const supervisorStartedAt = new Date().toISOString();
 let stopping = false;
 let serverChild = null;
 let daemonChild = null;
+let attachedServerPid = null;
+let attachedDaemonPid = null;
 let serverStarted = false;
 let daemonStarted = false;
 let serverStartedAtMs = 0;
@@ -45,6 +51,7 @@ const status = {
   consecutiveHealthFailures: 0,
   daemonStatus: null,
   daemonReviewRequired: false,
+  attachedExisting: attachExisting,
   lastEvent: null,
   lastError: null,
 };
@@ -103,14 +110,14 @@ const writeRuntime = async (updates = {}) => {
   const runtime = {
     ...current,
     schemaVersion: 'COMPANY-MODE-RUNTIME-0.1',
-    startedAt: current.status === 'RUNNING' && current.supervised ? current.startedAt : supervisorStartedAt,
+    startedAt: attachExisting ? supervisorStartedAt : (current.status === 'RUNNING' && current.supervised ? current.startedAt : supervisorStartedAt),
     status: 'RUNNING',
     appEnv,
     persistenceMode,
     port,
     healthUrl,
     serverPid: serverChild?.pid || null,
-    opsDaemonPid: daemonChild?.pid || null,
+    opsDaemonPid: daemonChild?.pid || attachedDaemonPid || null,
     supervisorPid: process.pid,
     intervalMs: daemonIntervalMs,
     cycleTimeoutMs: daemonCycleTimeoutMs,
@@ -121,6 +128,8 @@ const writeRuntime = async (updates = {}) => {
     stoppedAt: null,
     stoppedProcesses: [],
     supervised: true,
+    attachedExisting: attachExisting,
+    managedProcesses: !attachExisting,
     stopRule: '헬스체크 실패·릴리스 NO_GO·운영 사고 시 거래·계약·결제·공개 재개를 자동 승인하지 않는다.',
     ...updates,
   };
@@ -137,6 +146,17 @@ const terminate = (child) => {
 };
 
 const childAlive = (child) => Boolean(child && child.exitCode === null && !child.killed);
+
+const processAlive = (pid) => {
+  const normalizedPid = Number(pid);
+  if (!Number.isInteger(normalizedPid) || normalizedPid <= 0) return false;
+  try {
+    process.kill(normalizedPid, 0);
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 const fetchHealth = async () => {
   const controller = new AbortController();
@@ -239,6 +259,7 @@ const haltForHuman = async (reason) => {
 };
 
 const ensureServer = async () => {
+  if (attachExisting) return;
   if (childAlive(serverChild)) return;
   const isRestart = serverStarted;
   if (isRestart && !reserveRestart('server')) return haltForHuman('서버가 반복 중단되어 자동 재시작 한도를 초과했습니다.');
@@ -251,6 +272,7 @@ const ensureServer = async () => {
 };
 
 const ensureDaemon = async () => {
+  if (attachExisting) return;
   if (childAlive(daemonChild)) return;
   const isRestart = daemonStarted;
   if (isRestart && !reserveRestart('daemon')) return haltForHuman('운영 데몬이 반복 중단되어 자동 재시작 한도를 초과했습니다.');
@@ -271,17 +293,22 @@ const check = async () => {
     await fetchHealth();
     consecutiveHealthFailures = 0;
     const daemonStatus = await readDaemonStatus();
-    if (!daemonStatusFresh(daemonStatus) && childAlive(daemonChild)) {
+    const attachedDaemonReady = !attachExisting || (daemonStatusFresh(daemonStatus) && processAlive(daemonStatus?.pid));
+    if (!daemonStatusFresh(daemonStatus) && !attachExisting && childAlive(daemonChild)) {
       log('daemon_status_stale', { daemonStatusPath });
       terminate(daemonChild);
     }
+    const daemonStatusError = attachExisting && !attachedDaemonReady
+      ? '연결된 외부 운영 데몬의 상태가 오래되었거나 프로세스가 없습니다.'
+      : null;
     const daemonReviewRequired = Number(daemonStatus?.lastCycleExitCode || 0) !== 0;
     await writeStatus({
-      status: 'RUNNING',
+      status: daemonStatusError ? 'DEGRADED' : 'RUNNING',
       consecutiveHealthFailures: 0,
-      lastError: null,
-      serverPid: serverChild?.pid || null,
-      daemonPid: daemonChild?.pid || null,
+      lastError: daemonStatusError,
+      serverPid: serverChild?.pid || attachedServerPid || null,
+      daemonPid: daemonChild?.pid || attachedDaemonPid || Number(daemonStatus?.pid) || null,
+      attachedExisting: attachExisting,
       daemonStatus: daemonStatus ? {
         status: daemonStatus.status || 'NOT_REPORTED',
         lastCycle: daemonStatus.lastCycle || null,
@@ -319,9 +346,24 @@ const check = async () => {
 const ensureNoExistingCanonicalServer = async () => {
   try {
     const existing = await fetchHealth();
+    if (attachExisting) {
+      const daemonStatus = await readDaemonStatus();
+      if (!daemonStatusFresh(daemonStatus)) {
+        throw new Error('COMPANY_ATTACH_EXISTING_REQUIRES_FRESH_DAEMON_STATUS');
+      }
+      if (!processAlive(daemonStatus.pid)) {
+        throw new Error('COMPANY_ATTACH_EXISTING_REQUIRES_LIVE_DAEMON');
+      }
+      attachedDaemonPid = Number(daemonStatus.pid);
+      status.lastEvent = 'attached_existing_runtime';
+      log('attached_existing_runtime', { service: existing.service, daemonPid: attachedDaemonPid });
+      return;
+    }
     throw new Error(`COMPANY_MODE_ALREADY_RUNNING: canonical server가 이미 응답합니다 (${existing.service}).`);
   } catch (error) {
-    if (String(error.message).startsWith('COMPANY_MODE_ALREADY_RUNNING:')) throw error;
+    const message = String(error.message);
+    if (message.startsWith('COMPANY_MODE_ALREADY_RUNNING:') || (attachExisting && message.startsWith('COMPANY_ATTACH_EXISTING_'))) throw error;
+    if (attachExisting) throw new Error(`COMPANY_ATTACH_EXISTING_REQUIRES_HEALTHY_CANONICAL: ${message}`);
   }
 };
 
@@ -337,10 +379,10 @@ const stop = async (signal = 'operator') => {
 await access(resolve(root, 'beta-app/server.mjs'));
 await access(resolve(root, 'ops/ops-daemon.mjs'));
 await ensureNoExistingCanonicalServer();
-await writeStatus({ status: 'STARTING', lastEvent: 'starting' });
+await writeStatus({ status: 'STARTING', lastEvent: attachExisting ? 'attached_existing_runtime' : 'starting' });
 await ensureServer();
 await ensureDaemon();
-await writeStatus({ status: 'RUNNING', serverPid: serverChild?.pid || null, daemonPid: daemonChild?.pid || null });
+await writeStatus({ status: 'RUNNING', serverPid: serverChild?.pid || attachedServerPid || null, daemonPid: daemonChild?.pid || attachedDaemonPid || null, attachedExisting: attachExisting });
 await writeRuntime();
 log('started', { port, appEnv, persistenceMode, intervalMs, maxRestarts });
 
@@ -351,3 +393,4 @@ while (!stopping) {
   await new Promise((resolveWait) => setTimeout(resolveWait, intervalMs));
   await check();
 }
+

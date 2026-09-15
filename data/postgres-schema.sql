@@ -47,14 +47,67 @@ create unique index if not exists supplier_verification_requests_open_idx
   on supplier_verification_requests(organization_id)
   where state in ('REQUESTED'::supplier_verification_state, 'UNDER_REVIEW'::supplier_verification_state);
 
+-- AI supplier prechecks are durable input assessments, not supplier approvals.
+-- The payload fingerprint makes retries safe without allowing a different
+-- commercial condition to reuse an existing idempotency key.
+create table if not exists supplier_prechecks (
+  precheck_id uuid primary key default gen_random_uuid(),
+  organization_id uuid not null references organizations(organization_id),
+  submitted_by uuid not null,
+  idempotency_key text not null check (char_length(idempotency_key) between 1 and 160),
+  input_fingerprint char(64) not null check (input_fingerprint ~ '^[0-9a-f]{64}$'),
+  material text not null,
+  coa_document_number text not null,
+  coa_file_name text not null,
+  coa_file_size bigint not null check (coa_file_size > 0 and coa_file_size <= 10485760),
+  coa_file_sha256 char(64) not null check (coa_file_sha256 ~ '^[0-9a-f]{64}$'),
+  coa_storage_ref text not null,
+  inventory_quantity numeric(18, 3) not null check (inventory_quantity > 0),
+  unit text not null check (unit in ('KG', 'L', 'EA')),
+  expiry_date date not null,
+  price_tiers jsonb not null default '[]'::jsonb check (jsonb_typeof(price_tiers) = 'array'),
+  review jsonb not null check (jsonb_typeof(review) = 'object'),
+  created_at timestamptz not null default now(),
+  unique (organization_id, idempotency_key)
+);
+create index if not exists supplier_prechecks_org_created_idx on supplier_prechecks(organization_id, created_at desc);
+
 create table if not exists organization_members (
   organization_id uuid not null references organizations(organization_id),
   user_id uuid not null,
   role organization_member_role not null,
   active boolean not null default true,
   created_at timestamptz not null default now(),
-  primary key (organization_id, user_id)
+  -- One verified account may operate as both buyer and supplier in the
+  -- same organization. Role is therefore part of membership identity.
+  primary key (organization_id, user_id, role)
 );
+
+-- Upgrade installations created before multi-role membership was introduced.
+-- The old primary key (organization_id, user_id) prevented a second role from
+-- being recorded. This migration is idempotent and preserves all membership
+-- rows while replacing only that key with the role-aware key.
+do $$
+declare
+  primary_key_name text;
+begin
+  select tc.constraint_name
+    into primary_key_name
+    from information_schema.table_constraints tc
+   where tc.table_schema = 'public'
+     and tc.table_name = 'organization_members'
+     and tc.constraint_type = 'PRIMARY KEY'
+   limit 1;
+
+  if primary_key_name is not null then
+    execute format('alter table organization_members drop constraint %I', primary_key_name);
+  end if;
+
+  alter table organization_members
+    add constraint organization_members_pkey primary key (organization_id, user_id, role);
+exception
+  when duplicate_object then null;
+end $$;
 
 create table if not exists materials (
   material_id text primary key,

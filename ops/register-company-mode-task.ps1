@@ -36,4 +36,3 @@ $registered = Get-ScheduledTask -TaskName $TaskName -ErrorAction Stop
 if (-not $registered) { throw "SCHEDULED_TASK_REGISTRATION_UNVERIFIED: $TaskName" }
 Write-Host "COMPANY_MODE_TASK_REGISTERED: $TaskName"
 Write-Host "trigger=AtLogOn launcher=$launcher"
-

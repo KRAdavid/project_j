@@ -12,9 +12,13 @@ const requirementDefinitions = {
   ],
   'R-02': [
     ['AUTH_PROVIDER_READY', (env) => env.AUTH_PROVIDER_READY === 'true'],
+    ['AUTH_EMAIL_VERIFICATION_READY', (env) => env.AUTH_EMAIL_VERIFICATION_READY === 'true'],
     ['AUTH_JWT_SECRET', (env) => hasSecret(env, 'AUTH_JWT_SECRET')],
     ['AUTH_JWT_ISSUER', (env) => hasValue(env, 'AUTH_JWT_ISSUER')],
     ['AUTH_JWT_AUDIENCE', (env) => hasValue(env, 'AUTH_JWT_AUDIENCE')],
+    ['BUSINESS_REGISTRATION_PROVIDER_READY', (env) => env.BUSINESS_REGISTRATION_PROVIDER_READY === 'true'],
+    ['BUSINESS_REGISTRATION_PROVIDER_URL', (env) => /^https:\/\//i.test(String(env.BUSINESS_REGISTRATION_PROVIDER_URL || '').trim())],
+    ['BUSINESS_REGISTRATION_PROVIDER_API_KEY', (env) => hasSecret(env, 'BUSINESS_REGISTRATION_PROVIDER_API_KEY', 16)],
   ],
   'R-04': [
     ['PRICE_SOURCE_APPROVED', (env) => env.PRICE_SOURCE_APPROVED === 'true'],

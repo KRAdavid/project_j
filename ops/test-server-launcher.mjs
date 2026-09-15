@@ -11,4 +11,3 @@ assert.match(launcher, /APP_ENV/, '런처는 실행 환경을 명시적으로 �
 assert.doesNotMatch(launcher, /TcpListener/, 'API·SSE가 없는 별도 정적 서버를 유지하면 안 됩니다.');
 console.log('server launcher contract: PASS');
 
-

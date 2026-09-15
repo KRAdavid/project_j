@@ -22,4 +22,3 @@ const ready = await buildGitHubPublicationPreflight({ target: { repository: 'KRA
 assert.ok(!ready.blockers.includes('LOCAL_BRANCH_DIFFERS_FROM_TARGET_BASE'));
 assert.equal(ready.externalWritesPerformed, false);
 console.log('GitHub publication preflight tests: PASS');
-

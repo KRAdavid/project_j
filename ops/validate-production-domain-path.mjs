@@ -29,7 +29,8 @@ const authorization = await readFile(resolve(root, 'beta-app/authorization.mjs')
 assert.match(authorization, /AUTH_JWT_ISSUER/);
 assert.match(authorization, /AUTH_JWT_AUDIENCE/);
 assert.match(authorization, /AUTH_PROVIDER_NOT_CONFIGURED/);
+assert.match(authorization, /EMAIL_OWNERSHIP_REQUIRED/);
 assert.match(readiness, /readiness-diagnostics\.mjs/, '릴리스 readiness가 중앙 환경 진단 모듈을 사용해야 합니다.');
 assert.match(readinessDiagnostics, /POSTGRES_DOMAIN_API_READY/, '환경 진단이 정규 도메인 API 게이트를 확인해야 합니다.');
+assert.match(readinessDiagnostics, /AUTH_EMAIL_VERIFICATION_READY/, '환경 진단이 이메일 소유권 검증 제공자 게이트를 확인해야 합니다.');
 console.log('production domain path contract: PASS');
-

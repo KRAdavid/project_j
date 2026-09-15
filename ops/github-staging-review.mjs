@@ -72,4 +72,3 @@ export const writeStagingReview = async ({ jsonPath = resolve(root, 'ops', 'late
 if (process.argv[1] && basename(process.argv[1]) === 'github-staging-review.mjs') {
   console.log(JSON.stringify(await writeStagingReview()));
 }
-

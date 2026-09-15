@@ -20,6 +20,8 @@ const decodeBase64UrlJson = (value) => {
   try { return JSON.parse(Buffer.from(String(value), 'base64url').toString('utf8')); } catch { return null; }
 };
 
+const SUPPORTED_PRODUCTION_ROLES = ['OWNER', 'ADMIN', 'BUYER', 'SUPPLIER', 'OPERATOR', 'AUDITOR'];
+
 const verifyProductionBearer = (request) => {
   const secret = String(process.env.AUTH_JWT_SECRET || '');
   const issuer = String(process.env.AUTH_JWT_ISSUER || '').trim();
@@ -38,12 +40,17 @@ const verifyProductionBearer = (request) => {
   const actualSignature = Buffer.from(parts[2], 'base64url');
   const expectedSignature = createHmac('sha256', secret).update(`${parts[0]}.${parts[1]}`).digest();
   if (actualSignature.length !== expectedSignature.length || !timingSafeEqual(actualSignature, expectedSignature)) throw new AuthorizationError('인증 토큰 서명이 유효하지 않습니다.', 'AUTHENTICATION_INVALID');
-  if (!payload.sub || !payload.org || !payload.role || !Number.isFinite(Number(payload.exp)) || Number(payload.exp) <= Math.floor(Date.now() / 1000)) throw new AuthorizationError('인증 토큰이 만료되었거나 필수 클레임이 없습니다.', 'AUTHENTICATION_INVALID');
+  if (!payload.sub || !payload.org || !Number.isFinite(Number(payload.exp)) || Number(payload.exp) <= Math.floor(Date.now() / 1000)) throw new AuthorizationError('인증 토큰이 만료되었거나 필수 클레임이 없습니다.', 'AUTHENTICATION_INVALID');
   if (payload.iss !== issuer) throw new AuthorizationError('인증 토큰 발급자가 일치하지 않습니다.', 'AUTHENTICATION_INVALID');
   if (payload.aud !== audience) throw new AuthorizationError('인증 토큰 대상이 일치하지 않습니다.', 'AUTHENTICATION_INVALID');
-  const role = normalizeRole(payload.role);
-  if (!role || role === 'AI' || !['OWNER', 'ADMIN', 'BUYER', 'SUPPLIER', 'OPERATOR', 'AUDITOR'].includes(role)) throw new AuthorizationError('인증 토큰 역할이 허용되지 않습니다.', 'AUTHENTICATION_INVALID');
-  return { role, userId: String(payload.sub), organizationId: String(payload.org), environment: 'production' };
+  if (payload.email_verified !== true) throw new AuthorizationError('상용 모드에서는 이메일 소유권 확인이 완료된 계정만 사용할 수 있습니다.', 'EMAIL_OWNERSHIP_REQUIRED');
+  const claimRoles = Array.isArray(payload.roles) ? payload.roles : [payload.role];
+  const roles = [...new Set(claimRoles.map(normalizeRole).filter(Boolean))];
+  if (!roles.length || roles.some((role) => !SUPPORTED_PRODUCTION_ROLES.includes(role))) throw new AuthorizationError('인증 토큰 역할이 허용되지 않습니다.', 'AUTHENTICATION_INVALID');
+  const requestedRole = normalizeRole(request.headers['x-active-role']);
+  const role = requestedRole || normalizeRole(payload.role) || roles[0];
+  if (!roles.includes(role)) throw new AuthorizationError('요청한 활성 역할이 인증 토큰의 조직 역할 목록에 없습니다.', 'ACTIVE_ROLE_NOT_ALLOWED');
+  return { role, roles, userId: String(payload.sub), organizationId: String(payload.org), environment: 'production' };
 };
 
 export const resolvePrincipal = (request, { environment = process.env.APP_ENV || 'simulation', fallbackRole = 'BUYER' } = {}) => {

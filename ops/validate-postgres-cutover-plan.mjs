@@ -20,4 +20,3 @@ for (const section of requiredSections) {
   if (!plan.includes(section)) throw new Error(`PostgreSQL 전환계획 필수 항목이 없습니다: ${section}`);
 }
 console.log('postgres cutover plan tests: PASS');
-

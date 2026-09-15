@@ -8,14 +8,16 @@ import { GABA_SPEC_ATTRIBUTES, GABA_SPEC_ID, TradeEngine } from './trade-engine.
 
 const snapshot = { dataStatus: 'SIMULATED_BACKEND', orders: [{ orderId: 'ORDER-001' }], trades: [] };
 const priceObservation = { tradeId: 'T-PRICE-001', sourceType: 'COMPLETED_PHYSICAL_TRADE', specId: GABA_SPEC_ID, supplierId: 'S-PRICE-001', price: 21800, quantity: 200, fulfilledAt: '2026-09-08', status: 'FULFILLED', evidenceStatus: 'VALID' };
-const productionConfig = { databaseUrl: 'postgres://redacted', schemaApplied: true, backupDrillPassed: true, isolationVerified: true, auditPolicyApplied: true, objectStorageReady: true, evidenceStoreReady: true, authProviderReady: true, authJwtSecret: 'test-secret-that-is-at-least-32-bytes-long', authJwtIssuer: 'raw-material-os-test', authJwtAudience: 'raw-material-os-api', postgresDomainAdapterReady: true, postgresDomainApiReady: true, postgresDomainReconciliationVerified: true };
+const productionConfig = { databaseUrl: 'postgres://redacted', schemaApplied: true, backupDrillPassed: true, isolationVerified: true, auditPolicyApplied: true, objectStorageReady: true, evidenceStoreReady: true, authProviderReady: true, authEmailVerificationReady: true, authJwtSecret: 'test-secret-that-is-at-least-32-bytes-long', authJwtIssuer: 'raw-material-os-test', authJwtAudience: 'raw-material-os-api', businessRegistrationProviderReady: true, businessRegistrationProviderUrl: 'https://provider.example/verify', businessRegistrationProviderApiKey: 'provider-test-key-1234', postgresDomainAdapterReady: true, postgresDomainApiReady: true, postgresDomainReconciliationVerified: true };
 assert.equal(assertProductionCutover(productionConfig).ready, true);
 assert.equal(assertProductionCutover({ ...productionConfig, authJwtSecret: 'too-short' }).ready, false);
 assert.equal(assertProductionCutover({ ...productionConfig, authJwtSecret: undefined }).ready, false);
 assert.equal(assertProductionCutover({ ...productionConfig, authJwtIssuer: undefined }).ready, false);
+assert.equal(assertProductionCutover({ ...productionConfig, authEmailVerificationReady: false }).ready, false);
 assert.equal(assertProductionCutover({ ...productionConfig, postgresDomainAdapterReady: false }).ready, false);
 assert.equal(assertProductionCutover({ ...productionConfig, postgresDomainApiReady: false }).ready, false);
 assert.equal(assertProductionCutover({ ...productionConfig, postgresDomainReconciliationVerified: false }).ready, false);
+assert.equal(assertProductionCutover({ ...productionConfig, businessRegistrationProviderReady: false }).ready, false);
 const memory = await createPersistenceStore({ mode: 'memory' });
 await memory.save(snapshot);
 assert.deepEqual(await memory.load(), snapshot);
@@ -45,7 +47,7 @@ const fakePool = {
   async end() {},
 };
 const atomicStore = new PostgresSnapshotStore(fakePool);
-const schemaTables = ['organizations', 'organization_members', 'materials', 'material_aliases', 'specifications', 'lots', 'evidences', 'offers', 'purchase_orders', 'reservations', 'trades', 'trade_inspections', 'trade_events', 'operational_approvals', 'approval_events', 'ledger_snapshots', 'evidence_snapshots', 'price_observations'];
+const schemaTables = ['organizations', 'supplier_prechecks', 'organization_members', 'materials', 'material_aliases', 'specifications', 'lots', 'evidences', 'offers', 'purchase_orders', 'reservations', 'trades', 'trade_inspections', 'trade_events', 'operational_approvals', 'approval_events', 'ledger_snapshots', 'evidence_snapshots', 'price_observations'];
 const schemaPool = {
   async query(sql) {
     if (sql.includes('information_schema.tables')) return { rows: schemaTables.map((table_name) => ({ table_name })) };
@@ -110,4 +112,3 @@ await secondStore.close();
 await rm(recoveryPath, { force: true });
 
 console.log('persistence store tests: PASS');
-

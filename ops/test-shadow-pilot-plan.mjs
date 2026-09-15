@@ -23,4 +23,3 @@ for (const field of ['spec_id', 'lot_id', 'order_id', 'trade_id', 'pretrade_chec
 }
 
 console.log('shadow-pilot plan tests: PASS');
-

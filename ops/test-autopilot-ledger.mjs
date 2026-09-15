@@ -21,6 +21,7 @@ try {
     automation: {
       triggerTasks: [{ id: 'AUTO-TEST-001', triggerKey: 'READINESS_NO_GO', objective: '릴리스 조건 검토', risk: 'critical', reviewers: ['AI-10 아틀라스'] }],
     },
+    additionalApprovalTasks: [{ id: 'TASK-SHADOW-READY', objective: 'Shadow Pilot 검토', risk: 'high', reviewers: ['AI-13 케어'], evidenceRefs: ['ops/latest-shadow-pilot.json'] }],
   };
 
   await appendAutopilotRun(historyPath, run);
@@ -29,11 +30,14 @@ try {
   if (history.length !== 2 || history[0].selectedTaskId !== 'TASK-TEST-001' || !history[0].evidence[1].skipped) throw new Error('자동운영 이력 누적 검증 실패');
 
   const inbox = buildApprovalInbox(run);
-  if (inbox.status !== 'PENDING' || inbox.items.length !== 2 || inbox.items[0].requiredPrincipal !== 'H-01' || inbox.unresolvedEvidence.length !== 1) throw new Error('승인 대기열 생성 검증 실패');
+  if (inbox.status !== 'PENDING' || inbox.items.length !== 3 || inbox.items[0].requiredPrincipal !== 'H-01' || inbox.unresolvedEvidence.length !== 1) throw new Error('승인 대기열 생성 검증 실패');
+  const shadowApproval = inbox.items.find((item) => item.taskId === 'TASK-SHADOW-READY');
+  if (!shadowApproval || shadowApproval.status !== 'PENDING' || shadowApproval.evidenceRefs[0] !== 'ops/latest-shadow-pilot.json') throw new Error('Shadow Pilot 승인 항목 연결 검증 실패');
   const duplicateRun = {
     ...run,
     selectedTask: { id: 'TASK-DUPLICATE', objective: '선택 업무', risk: 'critical', reviewers: ['AI-11 실드'] },
     automation: { triggerTasks: [{ id: 'TASK-DUPLICATE', triggerKey: 'QUALITY_GATE_FAILED', objective: '동일 업무 트리거', risk: 'critical', reviewers: ['AI-12 리콘'] }, { id: 'TASK-UNIQUE', triggerKey: 'READINESS_NO_GO', objective: '별도 업무', risk: 'critical', reviewers: ['AI-10 아틀라스'] }] },
+    additionalApprovalTasks: [],
   };
   const deduplicated = buildApprovalInbox(duplicateRun);
   if (deduplicated.items.length !== 2 || deduplicated.items.filter((item) => item.taskId === 'TASK-DUPLICATE').length !== 1 || deduplicated.items[0].approvalId !== 'APPROVAL-AUTOPILOT-TEST-001') throw new Error('동일 taskId 승인 항목 중복 제거 검증 실패');
@@ -47,6 +51,17 @@ try {
   const preserved = JSON.parse(await readFile(inboxPath, 'utf8'));
   const refreshed = preserved.items.find((item) => item.taskId === 'TASK-TEST-001');
   if (refreshed.status !== 'PENDING' || refreshed.supersedesApprovalId !== 'APPROVAL-AUTOPILOT-TEST-001' || refreshed.supersededStatus !== 'HELD') throw new Error('새 검토 패킷이 기존 인간 승인 상태를 잘못 승계함');
+
+  const carryoverRun = {
+    ...decidedRun,
+    runId: 'AUTOPILOT-TEST-003',
+    selectedTask: { id: 'TASK-OTHER', objective: '다른 업무', risk: 'high', reviewers: ['AI-10 아틀라스'] },
+    automation: { triggerTasks: [] },
+    additionalApprovalTasks: [],
+  };
+  await writeApprovalInbox(inboxPath, carryoverRun);
+  const carried = JSON.parse(await readFile(inboxPath, 'utf8')).items.find((item) => item.taskId === 'TASK-TEST-001');
+  if (!carried || carried.status !== 'PENDING' || carried.preservedFromRunId !== 'AUTOPILOT-TEST-002') throw new Error('선택되지 않은 인간 승인 대기 항목 보존 검증 실패');
   console.log('autopilot ledger tests: PASS');
 } finally {
   await rm(tempRoot, { recursive: true, force: true });

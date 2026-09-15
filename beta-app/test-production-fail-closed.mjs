@@ -21,6 +21,9 @@ const child = spawn(process.execPath, ['server.mjs'], {
     AUTH_JWT_SECRET: 'test-secret-that-is-at-least-32-bytes-long',
     AUTH_JWT_ISSUER: 'raw-material-os-test',
     AUTH_JWT_AUDIENCE: 'raw-material-os-api',
+    BUSINESS_REGISTRATION_PROVIDER_READY: 'true',
+    BUSINESS_REGISTRATION_PROVIDER_URL: 'https://provider.example/verify',
+    BUSINESS_REGISTRATION_PROVIDER_API_KEY: 'provider-test-key-1234',
     POSTGRES_DOMAIN_ADAPTER_READY: 'true',
     POSTGRES_DOMAIN_API_READY: 'true',
     PORT: String(port),
@@ -43,4 +46,14 @@ const exitCode = await new Promise((resolve, reject) => {
 
 assert.notEqual(exitCode, 0);
 assert.match(output, /PostgreSQL|pg|원장|connection/i);
-console.log('production fail-closed tests: PASS');
+const controller = new AbortController();
+const probeTimer = setTimeout(() => controller.abort(), 500);
+const tradeApiReachable = await fetch(`http://127.0.0.1:${port}/api/orders`, {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({}),
+  signal: controller.signal,
+}).then(() => true).catch(() => false);
+clearTimeout(probeTimer);
+assert.equal(tradeApiReachable, false, '원장 장애 후 거래 API가 노출되면 안 됩니다.');
+console.log('production fail-closed tests: PASS (startup and trade API unavailable)');

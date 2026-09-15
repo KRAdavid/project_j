@@ -23,10 +23,10 @@ assert.match(schema, /one_active_reservation_per_order_lot/i);
 assert.match(integration, /Promise\.allSettled/);
 assert.match(integration, /fulfilled.*1|1.*fulfilled/s);
 assert.match(integration, /rejected.*1|1.*rejected/s);
+assert.match(integration, /DATABASE_URL is required in CI/);
 assert.match(schema, /purchase_orders_buyer_idempotency_idx/i);
 assert.match(orderIdempotency, /IDEMPOTENCY_KEY_REUSED/);
 assert.match(orderIdempotency, /insertCount, 1/);
 assert.match(acceptIdempotency, /ACCEPT_RETRY_MISMATCH/);
 assert.match(acceptIdempotency, /INSERT INTO trades/);
 console.log('postgres concurrency contract: PASS');
-

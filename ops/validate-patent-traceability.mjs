@@ -17,4 +17,3 @@ for (const element of trace.elements) {
 assert.ok(trace.externalReviewRequired.includes('official prior-art search'));
 assert.ok(trace.prohibitedExternalClaims.includes('특허 등록 보장'));
 console.log(`patent traceability contract tests: PASS (${trace.elements.length} elements)`);
-

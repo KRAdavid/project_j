@@ -18,4 +18,3 @@ assert.ok(aiMembers.every((member) => member.autonomy === 'ANALYZE_PREPARE'));
 assert.ok(roster.prohibitedAiDecisions.includes('TRADE_FINALIZATION'));
 assert.ok(roster.prohibitedAiDecisions.includes('PRODUCTION_CUTOVER'));
 console.log(`team roster contract tests: PASS (${roster.members.length} members)`);
-

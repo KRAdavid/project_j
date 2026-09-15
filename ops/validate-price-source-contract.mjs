@@ -24,4 +24,3 @@ assert.equal(contract.publication.rawSupplierIdentityPublic, false);
 assert.equal(contract.publication.sourceDisclosureRequired, true);
 assert.equal(contract.publication.humanApprovalRequired, true);
 console.log('price-source contract tests: PASS');
-

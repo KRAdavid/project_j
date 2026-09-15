@@ -23,6 +23,8 @@ for (const required of [
   'MONITOR_SUPERVISOR_STATUS_PATH',
   'daemonReviewRequired',
   'lastCycleDecision',
+  'COMPANY_ATTACH_EXISTING_REQUIRES_FRESH_DAEMON_STATUS',
+  'COMPANY_ATTACH_EXISTING_REQUIRES_LIVE_DAEMON',
 ]) {
   assert.match(source, new RegExp(required.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')), `missing supervisor guard: ${required}`);
 }

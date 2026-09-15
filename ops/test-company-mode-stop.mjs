@@ -18,6 +18,9 @@ for (const required of [
   'Clear-StaleOperationLock',
   '.operations-cycle.lock',
   'Get-Process -Id $lockPid',
+  'attachedExisting',
+  'managedProcesses',
+  '-not $attachedExisting',
 ]) {
   assert.match(script, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing stop guard: ${required}`);
 }

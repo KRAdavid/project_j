@@ -255,6 +255,26 @@ const mapSupplierVerificationRequest = (row) => ({
   decidedAt: row.decided_at,
 });
 
+const mapSupplierPrecheck = (row) => ({
+  precheckId: row.precheck_id,
+  organizationId: row.organization_id,
+  submittedBy: row.submitted_by,
+  idempotencyKey: row.idempotency_key,
+  inputFingerprint: row.input_fingerprint,
+  material: row.material,
+  coaDocumentNumber: row.coa_document_number,
+  coaFileName: row.coa_file_name,
+  coaFileSize: Number(row.coa_file_size),
+  coaFileSha256: row.coa_file_sha256,
+  coaStorageRef: row.coa_storage_ref,
+  inventoryQuantity: Number(row.inventory_quantity),
+  unit: row.unit,
+  expiry: row.expiry_date,
+  priceTiers: row.price_tiers || [],
+  review: row.review || {},
+  createdAt: row.created_at,
+});
+
 export class PostgresDomainAdapter {
   constructor(pool) {
     if (!pool || typeof pool.connect !== 'function') throw new PostgresDomainAdapterError('PostgreSQL pool이 필요합니다.', 'POSTGRES_POOL_REQUIRED');
@@ -351,6 +371,55 @@ export class PostgresDomainAdapter {
       },
       checkedAt: new Date().toISOString(),
     };
+  }
+
+  async supplierPrecheck({ supplierOrganizationId, supplierUserId, idempotencyKey, inputFingerprint, material, coaDocumentNumber, coaFileName, coaFileSize, coaFileSha256, coaStorageRef, inventoryQuantity, unit, expiry, priceTiers = [], review, actorKind = 'SYSTEM', actorRef = 'AI-SUPPLIER-PRECHECK', correlationId } = {}) {
+    const normalizedOrganizationId = requireText(supplierOrganizationId, 'supplierOrganizationId');
+    const normalizedUserId = requireText(supplierUserId, 'supplierUserId');
+    const normalizedIdempotencyKey = requireText(idempotencyKey, 'idempotencyKey');
+    const normalizedFingerprint = requireText(inputFingerprint, 'inputFingerprint');
+    if (!/^[a-f0-9]{64}$/i.test(normalizedFingerprint)) throw new PostgresDomainAdapterError('공급자 사전검토 입력 지문이 올바르지 않습니다.', 'INPUT_FINGERPRINT_INVALID');
+    const normalizedMaterial = requireText(material, 'material');
+    const normalizedCoaDocumentNumber = requireText(coaDocumentNumber, 'coaDocumentNumber');
+    const normalizedCoaFileName = requireText(coaFileName, 'coaFileName');
+    const normalizedCoaFileSize = requirePositiveNumber(coaFileSize, 'coaFileSize');
+    if (normalizedCoaFileSize > 10 * 1024 * 1024) throw new PostgresDomainAdapterError('COA 파일은 10MB 이하여야 합니다.', 'COA_FILE_SIZE_INVALID');
+    const normalizedCoaFileSha256 = requireText(coaFileSha256, 'coaFileSha256').toLowerCase();
+    if (!/^[a-f0-9]{64}$/.test(normalizedCoaFileSha256)) throw new PostgresDomainAdapterError('COA 파일 SHA-256 지문이 올바르지 않습니다.', 'COA_FILE_FINGERPRINT_INVALID');
+    const normalizedCoaStorageRef = requireText(coaStorageRef, 'coaStorageRef');
+    const normalizedInventoryQuantity = requirePositiveNumber(inventoryQuantity, 'inventoryQuantity');
+    const normalizedUnit = String(unit || '').trim().toUpperCase();
+    if (!['KG', 'L', 'EA'].includes(normalizedUnit)) throw new PostgresDomainAdapterError('공급자 사전검토 거래 단위가 올바르지 않습니다.', 'UNIT_INVALID');
+    const normalizedExpiry = requireText(expiry, 'expiry');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(normalizedExpiry)) throw new PostgresDomainAdapterError('공급자 사전검토 소비기한이 올바르지 않습니다.', 'EXPIRY_INVALID');
+    if (!Array.isArray(priceTiers)) throw new PostgresDomainAdapterError('수량별 공급 가격 구간이 배열이어야 합니다.', 'PRICE_TIERS_INVALID');
+    assertSnapshot(review, 'review');
+    const audit = actor({ actorKind, actorRef, correlationId });
+    return this.withTransaction(async (client) => {
+      await this.assertMembership(client, { organizationId: normalizedOrganizationId, userId: normalizedUserId, role: 'SUPPLIER' });
+      const inserted = await client.query(
+        `INSERT INTO supplier_prechecks(organization_id, submitted_by, idempotency_key, input_fingerprint, material, coa_document_number, coa_file_name, coa_file_size, coa_file_sha256, coa_storage_ref, inventory_quantity, unit, expiry_date, price_tiers, review)
+         VALUES ($1::uuid, $2::uuid, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13::date, $14::jsonb, $15::jsonb)
+         ON CONFLICT (organization_id, idempotency_key) DO NOTHING
+         RETURNING *`,
+        [normalizedOrganizationId, normalizedUserId, normalizedIdempotencyKey, normalizedFingerprint.toLowerCase(), normalizedMaterial, normalizedCoaDocumentNumber, normalizedCoaFileName, normalizedCoaFileSize, normalizedCoaFileSha256, normalizedCoaStorageRef, normalizedInventoryQuantity, normalizedUnit, normalizedExpiry, JSON.stringify(priceTiers), JSON.stringify(review)],
+      );
+      let row = inserted.rows[0];
+      let idempotent = false;
+      if (!row) {
+        const existing = await client.query('SELECT * FROM supplier_prechecks WHERE organization_id = $1::uuid AND idempotency_key = $2 FOR UPDATE', [normalizedOrganizationId, normalizedIdempotencyKey]);
+        if (!existing.rows.length) throw new PostgresDomainAdapterError('공급자 사전검토 멱등 원장을 확인할 수 없습니다.', 'SUPPLIER_PRECHECK_LEDGER_INCONSISTENT');
+        row = existing.rows[0];
+        if (String(row.input_fingerprint).toLowerCase() !== normalizedFingerprint.toLowerCase()) throw new PostgresDomainAdapterError('같은 멱등키로 다른 공급 조건을 재사용할 수 없습니다.', 'IDEMPOTENCY_KEY_REUSE_MISMATCH');
+        idempotent = true;
+      } else {
+        await client.query(
+          'INSERT INTO trade_events(actor_kind, actor_ref, event_type, after_state, correlation_id) VALUES ($1::actor_kind, $2, $3, $4::jsonb, $5)',
+          [audit.actorKind, audit.actorRef, 'SUPPLIER_PRECHECK_REVIEWED', JSON.stringify({ precheckId: row.precheck_id, organizationId: normalizedOrganizationId, status: review.status, ready: review.ready === true, aiApproval: false }), audit.correlationId],
+        );
+      }
+      return { precheck: mapSupplierPrecheck(row), review: row.review || review, status: 'PRECHECK_REVIEWED', idempotent, correlationId: audit.correlationId };
+    });
   }
 
   async listSupplierVerificationRequests() {
@@ -1054,4 +1123,3 @@ export class PostgresDomainAdapter {
 }
 
 export { mapEvidence, mapLot, mapOrder, mapTrade };
-

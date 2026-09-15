@@ -20,4 +20,3 @@ assert.match(schema, /create table if not exists operational_approvals/i);
 assert.match(schema, /create table if not exists trade_inspections/i);
 assert.match(schema, /create or replace function reserve_lot/i);
 console.log('postgres migration contract: PASS');
-

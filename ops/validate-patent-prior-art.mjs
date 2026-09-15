@@ -32,4 +32,3 @@ if (source.supplementalSearches !== undefined) {
 }
 if (!Array.isArray(source.requiredNextReview) || source.requiredNextReview.length < 3) throw new Error('추가 전문 검토 항목이 부족합니다.');
 console.log(`patent prior-art contract: PASS (${source.documents.length} documents)`);
-

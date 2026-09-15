@@ -90,4 +90,3 @@ Write-Host 'GITHUB_TARGET_CONFIGURED: origin·저장소·기준 브랜치가 일
 Write-Host "repository=$targetRepository baseBranch=$($BaseBranch.Trim())"
 Write-Host 'guardrail=commit·push·PR·배포는 자동 실행하지 않았습니다.'
 Write-Host $preflight
-

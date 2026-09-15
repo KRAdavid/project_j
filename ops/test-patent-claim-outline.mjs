@@ -20,4 +20,3 @@ assert.ok(outline.priorArtReviewWarnings.length >= 3);
 assert.ok(outline.evidenceBoundary.requiredBeforeExternalFiling.includes('변리사 청구항 작성'));
 console.log('patent claim outline tests: PASS');
 
-

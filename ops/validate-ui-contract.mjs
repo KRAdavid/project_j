@@ -7,13 +7,17 @@ const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const html = await readFile(resolve(root, 'beta-app/index.html'), 'utf8');
 const app = await readFile(resolve(root, 'beta-app/app.js'), 'utf8');
 const styles = await readFile(resolve(root, 'beta-app/styles.css'), 'utf8');
+const accountStyles = await readFile(resolve(root, 'beta-app/account-context.css'), 'utf8');
 const server = await readFile(resolve(root, 'beta-app/server.mjs'), 'utf8');
 
 for (const id of ['spec-progress', 'spec-wizard', 'buyer-workspace', 'seller-view', 'operator-view', 'realtime-toggle', 'submit-order', 'ask-book', 'bid-book', 'supply-list', 'supply-count', 'live-average-price', 'live-average-sample', 'reference-chart-line', 'reference-chart-area', 'reference-chart-dot', 'reference-chart-empty', 'split-verified-stock', 'split-verified-stock-status']) {
   assert.match(html, new RegExp(`id=["']${id}["']`), `핵심 UI 요소 누락: ${id}`);
 }
-for (const id of ['supplier-eligibility', 'refresh-supplier-eligibility', 'supplier-verification-form', 'request-supplier-verification', 'seller-inventory-list', 'seller-verified-count', 'seller-order-material', 'seller-order-price', 'seller-order-deadline', 'seller-order-quantity']) {
+for (const id of ['supplier-eligibility', 'refresh-supplier-eligibility', 'supplier-verification-form', 'request-supplier-verification', 'seller-inventory-list', 'seller-verified-count', 'seller-order-material', 'seller-order-price', 'seller-order-deadline', 'seller-order-quantity', 'seller-order-precheck', 'seller-order-coa-ref', 'seller-order-coa-file', 'seller-order-inventory', 'seller-order-expiry', 'seller-order-unit', 'seller-order-ai-review', 'seller-order-ai-review-status']) {
   assert.match(html, new RegExp(`id=["']${id}["']`), `공급자 자격 UI 누락: ${id}`);
+}
+for (const id of ['account-entry-form', 'account-business-number', 'account-email', 'role-choice-grid', 'entry-buyer-choice', 'entry-supplier-choice', 'supplier-coa-file', 'supplier-inventory-qty', 'supplier-ai-review']) {
+  assert.match(html, new RegExp(`id=["']${id}["']`), `계정·공급자 사전검토 UI 누락: ${id}`);
 }
 assert.match(html, /id=["']ops-supplier-review-list["']/i, '운영자 공급자 검토 큐가 필요합니다.');
 assert.match(html, /id=["']ops-team-list["']/i, '운영자 참여 팀 명부가 필요합니다.');
@@ -64,12 +68,30 @@ assert.match(app, /item\.status === 'PENDING'/, '결정이 끝난 승인 항목�
 assert.match(app, /compactText\(task\.whyNow/, '과거 트리거의 원문 스택트레이스를 운영 화면에 그대로 노출하면 안 됩니다.');
 assert.match(app, /async function hydrateSupplierEligibility\(\)/, '공급자 화면은 거래 자격을 자동 확인해야 합니다.');
 assert.match(app, /async function requestSupplierVerification\(event\)/, '공급자 검증 요청 UI는 원장 API와 연결되어야 합니다.');
+assert.match(app, /async function runSupplierAiReview\(\{ force = false \} = \{\}\)/, 'COA·재고 입력은 자동 AI 사전검토 함수와 연결되어야 합니다.');
+assert.match(app, /async function runSellerOrderAiReview\(\{ force = false \} = \{\}\)/, 'OPEN ORDERS의 COA·재고 입력은 주문 응답 전 AI 사전검토 함수와 연결되어야 합니다.');
+assert.match(app, /sellerOrderAiReviewReady = review\?\.ready === true && hasOrder && enoughInventory && unitMatchesOrder/, '공급자 체결 버튼은 AI 판정·주문 존재·재고·거래 단위 일치를 함께 통과해야 합니다.');
+assert.match(app, /reviewScope: hasOrder \? 'ORDER_RESPONSE' : 'EVIDENCE_ONLY'/, '공급자 화면은 주문 전 증빙 검토와 주문 응답 검토를 구분해야 합니다.');
+assert.match(app, /if \(\['buyer', 'seller', 'operator'\]\.includes\(role\)\) onboardingState\.activeRole = role;/, '공유 계정 역할 전환은 API 세션 역할에도 반영되어야 합니다.');
+assert.match(app, /const ready = review\?\.ready === true;/, 'AI 사전검토 결과는 서버 review.ready를 기준으로 화면 상태를 결정해야 합니다.');
+assert.match(app, /\/api\/supplier\/precheck/, 'AI 사전검토는 서버 API와 연결되어야 합니다.');
+assert.match(app, /sha256File/, 'COA 원문 파일 지문은 브라우저에서 계산되어야 합니다.');
+assert.match(app, /sha256Text/, '공급 조건 멱등키는 전체 입력 지문을 해시해야 합니다.');
+assert.match(app, /coaFileSha256/, 'COA 파일 SHA-256 지문이 사전검토 요청에 포함되어야 합니다.');
+assert.match(app, /precheck-document/, 'COA 원문은 사전검토 전에 저장 참조를 받아야 합니다.');
+assert.match(app, /fileToBase64/, 'COA 바이너리 원문은 보관소 업로드용으로 인코딩되어야 합니다.');
 assert.match(app, /roleAliases\s*=\s*\{[^}]*supplier:\s*'seller'/, '공급자 역할의 직관적 URL 별칭이 유지되어야 합니다.');
 assert.match(app, /async function resolveMaterialSearch\(query\)/, '원료 검색은 정규식 하드코딩이 아니라 Material Master API를 사용해야 합니다.');
 assert.match(app, /\/api\/materials\/search/, '원료 검색 입력은 후보 검색 API를 사용해야 합니다.');
 assert.match(app, /data-material-id/, '복수 원료 후보는 사용자가 직접 선택해야 합니다.');
 assert.match(server, /\/api\/supplier\/eligibility/, '공급자 거래 자격 API가 필요합니다.');
 assert.match(server, /\/api\/supplier\/verification-request/, '공급자 검증 요청 API가 필요합니다.');
+assert.match(server, /\/api\/supplier\/precheck/, '공급자 AI 사전검토 API가 필요합니다.');
+assert.match(server, /\/api\/supplier\/precheck-document/, '공급자 COA 원문 보관 API가 필요합니다.');
+assert.match(server, /putBinary/, '공급자 COA 원문은 바이너리 보관 어댑터를 사용해야 합니다.');
+assert.match(server, /assertStoredSupplierPrecheckDocument/, '사전검토 직전에 보관된 COA 원문을 재조회해야 합니다.');
+assert.match(server, /assertDocumentSignature/, 'COA 확장자와 실제 바이너리 시그니처를 대조해야 합니다.');
+assert.match(server, /evaluateSupplierAiPrecheck/, '서버는 공급자 AI 사전검토 규칙을 중앙에서 판정해야 합니다.');
 assert.match(server, /\/api\/market-board/, '시세창은 서버 검증 매물 API와 연결되어야 합니다.');
 assert.match(server, /\/api\/materials\/search/, 'Material Master 검색 후보 API가 필요합니다.');
 assert.match(app, /async function hydrateMarketBoard\(\)/, '시세창은 서버 검증 매물을 조회해야 합니다.');
@@ -89,6 +111,7 @@ assert.match(app, /recentTrades/, '최근 체결은 서버 완료 실물 거래 
 assert.match(app, /function renderReferencePriceChart\(series = \[\]\)/, '평균가격 추세 차트는 서버 가격 시계열로 렌더링되어야 합니다.');
 assert.match(app, /priceSeries/, '가격 추세 시계열은 서버 가격지표 응답과 연결되어야 합니다.');
 assert.match(styles, /@media/, '구매자·공급자 화면은 반응형 레이아웃을 가져야 합니다.');
+assert.match(accountStyles, /supplier-ai-review/, '공급자 AI 사전검토 상태는 별도 시각 상태를 가져야 합니다.');
 assert.doesNotMatch(html, /GBA-CN-2411|GBA-KR-2319/, '공급자 화면에 원장과 무관한 정적 재고 예시가 남아 있습니다.');
 assert.doesNotMatch(html, /GABA 99% · 한국산 · 1,000 kg/, '공급자 화면에 원장과 무관한 정적 주문 예시가 남아 있습니다.');
 assert.doesNotMatch(html, /₩21,800|₩21,450|2,400 kg|3,840 kg|24건/, '시장판에 서버 원장과 무관한 정적 가격·재고·체결 통계가 남아 있습니다.');

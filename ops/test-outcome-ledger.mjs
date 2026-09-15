@@ -19,4 +19,3 @@ assert.equal(progress.score, 0.5);
 assert.equal(progress.satisfiedCount, 1);
 await rm(dir, { recursive: true, force: true });
 console.log('outcome ledger tests: PASS');
-

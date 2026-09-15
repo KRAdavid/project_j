@@ -10,6 +10,8 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const tempRoot = await mkdtemp(join(tmpdir(), 'raw-material-incident-rehearsal-'));
 const ledgerPath = join(tempRoot, 'incident-ledger.jsonl');
 const unreachableBase = 'http://127.0.0.1:45991';
+const monitorProcessTimeoutMs = Number(process.env.INCIDENT_REHEARSAL_MONITOR_TIMEOUT_MS || 15000);
+const serverStartupTimeoutMs = Number(process.env.INCIDENT_REHEARSAL_SERVER_STARTUP_TIMEOUT_MS || 20000);
 
 const runMonitor = (baseUrl, heartbeatTimeoutMs = 300) => new Promise((resolve, reject) => {
   const child = spawn(process.execPath, ['ops/monitor-beta.mjs'], {
@@ -29,20 +31,24 @@ const runMonitor = (baseUrl, heartbeatTimeoutMs = 300) => new Promise((resolve, 
   const timer = setTimeout(() => {
     child.kill();
     reject(new Error(`incident rehearsal monitor timeout: ${baseUrl}`));
-  }, 8000);
+  }, monitorProcessTimeoutMs);
   child.once('error', (error) => { clearTimeout(timer); reject(error); });
   child.once('exit', (code) => { clearTimeout(timer); resolve({ code, output }); });
 });
 
-const waitForHealth = async (baseUrl) => {
-  for (let attempt = 0; attempt < 40; attempt += 1) {
+const waitForHealth = async (baseUrl, child = null) => {
+  const deadline = Date.now() + serverStartupTimeoutMs;
+  while (Date.now() < deadline) {
+    if (child && child.exitCode !== null) {
+      throw new Error(`rehearsal server exited before becoming healthy: ${baseUrl} (code ${child.exitCode})`);
+    }
     try {
       const response = await fetch(`${baseUrl}/api/health`);
       if (response.ok) return;
     } catch {}
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
-  throw new Error(`rehearsal server did not become healthy: ${baseUrl}`);
+  throw new Error(`rehearsal server did not become healthy within ${serverStartupTimeoutMs}ms: ${baseUrl}`);
 };
 
 const parseLastJson = (output) => {
@@ -63,7 +69,7 @@ try {
   });
   try {
     const baseUrl = `http://127.0.0.1:${port}`;
-    await waitForHealth(baseUrl);
+    await waitForHealth(baseUrl, slowServer);
     const sseFailure = await runMonitor(baseUrl, 150);
     assert.equal(sseFailure.code, 1);
     const incident = parseLastJson(sseFailure.output);
@@ -86,4 +92,3 @@ try {
 } finally {
   await rm(tempRoot, { recursive: true, force: true });
 }
-

@@ -28,4 +28,3 @@ for (const record of catalog.records) {
   for (const gate of contract.riskContract.requiredPreTradeGates) assert.ok(record.riskProfile.preTradeGates.includes(gate), `거래 전 게이트 누락: ${record.materialId}.${gate}`);
 }
 console.log('material master contract: PASS');
-

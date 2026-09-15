@@ -1,5 +1,14 @@
 const state = { role: 'split', material: 'GABA', materialRecord: null, verifiedSpec: { intendedUse: '기능성 식품 원료 개발', purity: '99% 이상', form: '분말', origin: '한국산', pack: '20 kg', deliveryCondition: '상온·밀봉 배송' }, specs: {}, submitted: false, accepted: false, orderId: null, orderPrice: null, tradeId: null, lifecycleStatus: null, orderQuantity: null, backendLot: null, backendLots: [], marketBoard: null, marketBoardStatus: 'LOADING' };
 const wizardState = { questions: [], index: 0, selected: '' };
+const onboardingState = { activeRole: null, account: null, buyer: null, supplier: null };
+const FALLBACK_GABA_SPEC_QUESTIONS = [
+  { field: 'intendedUse', label: '사용 목적', options: ['기능성 식품 원료 개발', '일반 식품 원료 개발', '사료·공업용 원료'] },
+  { field: 'purity', label: '순도', options: ['99% 이상', '98% 이상'] },
+  { field: 'form', label: '제형', options: ['분말', '과립'] },
+  { field: 'origin', label: '원산지', options: ['한국산', '중국산', '원산지 무관'] },
+  { field: 'pack', label: '포장 단위', options: ['20 kg', '25 kg', '500 kg'] },
+  { field: 'deliveryCondition', label: '납품 조건', options: ['상온·밀봉 배송', '냉장 조건 확인', '공급자 제안 필요'] },
+];
 let materialSearchMatch = null;
 let materialSearchMatches = [];
 let materialSearchSequence = 0;
@@ -19,6 +28,350 @@ function showToast(message) {
   showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 2800);
 }
 
+function selectEntryRole(role) {
+  const buyerPanel = $('#buyer-entry-panel');
+  const supplierPanel = $('#supplier-entry-panel');
+  buyerPanel?.classList.toggle('hidden', role !== 'buyer');
+  supplierPanel?.classList.toggle('hidden', role !== 'supplier');
+  $('#entry-buyer-choice')?.classList.toggle('selected', role === 'buyer');
+  $('#entry-supplier-choice')?.classList.toggle('selected', role === 'supplier');
+  const panel = role === 'buyer' ? buyerPanel : supplierPanel;
+  panel?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  panel?.querySelector('input')?.focus();
+}
+
+function activateWorkspace(role) {
+  onboardingState.activeRole = role;
+  $('#role-entry')?.classList.add('hidden');
+  $('#app-shell')?.classList.remove('hidden');
+  setRole(role);
+  const target = role === 'buyer' ? $('#buyer-sourcing-guide') : $('#seller-view');
+  target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function appendSourcingMessage(kind, title, message) {
+  const container = $('#sourcing-chat-messages');
+  if (!container) return;
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${kind}`;
+  const strong = document.createElement('strong');
+  strong.textContent = title;
+  const span = document.createElement('span');
+  span.textContent = message;
+  bubble.append(strong, span);
+  container.appendChild(bubble);
+  container.scrollTop = container.scrollHeight;
+}
+
+async function handleSourcingQuery(query) {
+  const normalized = String(query || '').trim();
+  if (!normalized) return showToast('찾는 원료명을 입력해 주세요.');
+  appendSourcingMessage('user', '구매사', normalized);
+  const materialQuery = /gaba|가바/i.test(normalized) ? 'GABA' : normalized;
+  if (materialQuery !== 'GABA') {
+    appendSourcingMessage('assistant', '소싱 가이드', '현재 베타는 GABA 원료부터 지원합니다. “GABA” 또는 “가바”로 다시 입력해 주세요.');
+    return;
+  }
+  await resolveMaterialSearch('GABA');
+  state.material = 'GABA';
+  appendSourcingMessage('assistant', '소싱 가이드', 'GABA 기준을 찾았습니다. 이제 사용 목적, 순도, 제형, 원산지, 포장, 납품 조건을 한 가지씩 확인하겠습니다.');
+  openSpecWizard();
+}
+
+function renderSupplierDraft(draft) {
+  const summary = $('#supplier-draft-summary');
+  if (!summary || !draft) return;
+  summary.classList.remove('hidden');
+  $('#supplier-draft-title').textContent = `${draft.material} 공급 조건 입력 완료`;
+  const tierText = draft.priceTiers.map((tier) => `${tier.quantity.toLocaleString('ko-KR')} ${draft.unit} · ₩${tier.price.toLocaleString('ko-KR')}`).join(' / ');
+  const businessVerificationLabel = draft.registration?.businessVerification?.verified === true ? '공식 사업자 확인' : '사업자번호 형식 확인 · 공식 조회 대기';
+  $('#supplier-draft-detail').textContent = `${draft.registration?.maskedBusinessRegistrationNumber || businessVerificationLabel} · ${businessVerificationLabel} · COA ${draft.coa} · 재고 ${Number(draft.inventoryQuantity || 0).toLocaleString('ko-KR')} ${draft.unit} · 소비기한 ${draft.expiry} · ${tierText}`;
+  const status = summary.querySelector('.draft-status');
+  if (status) status.textContent = draft.aiReview?.ready ? `${businessVerificationLabel} · AI 사전검토 완료 · 매물 검증 대기` : draft.registrationStatus === 'AUTO_REGISTERED' ? `${businessVerificationLabel} · 자동 등록 완료 · 매물 검증 대기` : '검증 대기';
+}
+
+let supplierAiReviewSequence = 0;
+let supplierUploadedDocument = null;
+let supplierAiReviewFingerprint = null;
+let supplierAiReviewTimer = null;
+let sellerOrderAiReviewSequence = 0;
+let sellerOrderUploadedDocument = null;
+let sellerOrderAiReviewFingerprint = null;
+let sellerOrderAiReviewTimer = null;
+let sellerOrderAiReviewReady = false;
+
+function getSupplierPriceTiers() {
+  return [1, 2, 3].map((index) => ({
+    quantity: Number($(`#supplier-tier-${index}-qty`).value || 0),
+    price: Number($(`#supplier-tier-${index}-price`).value || 0),
+  })).filter((tier) => tier.quantity > 0 && tier.price > 0).sort((a, b) => a.quantity - b.quantity);
+}
+
+function getSupplierReviewInput() {
+  return {
+    material: $('#supplier-material').value.trim(),
+    coaDocumentNumber: $('#supplier-coa').value.trim(),
+    inventoryQuantity: Number($('#supplier-inventory-qty').value || 0),
+    unit: $('#supplier-unit').value,
+    expiry: $('#supplier-expiry').value,
+    priceTiers: getSupplierPriceTiers(),
+  };
+}
+
+function getSupplierReviewFingerprint({ file, sha256, input }) {
+  return JSON.stringify({
+    reviewScope: input.reviewScope || 'SUPPLY_OFFER',
+    material: input.material,
+    coa: input.coaDocumentNumber,
+    file: file.name,
+    size: file.size,
+    sha256,
+    inventory: input.inventoryQuantity,
+    unit: input.unit,
+    expiry: input.expiry,
+    priceTiers: input.priceTiers,
+  });
+}
+
+async function fileToBase64(file) {
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  let binary = '';
+  const chunkSize = 0x8000;
+  for (let offset = 0; offset < bytes.length; offset += chunkSize) binary += String.fromCharCode(...bytes.subarray(offset, offset + chunkSize));
+  return btoa(binary);
+}
+
+async function sha256File(file) {
+  if (!globalThis.crypto?.subtle) throw new Error('브라우저가 COA SHA-256 지문 계산을 지원하지 않습니다.');
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+async function sha256Text(value) {
+  if (!globalThis.crypto?.subtle) throw new Error('브라우저가 AI 사전검토 조건 지문 계산을 지원하지 않습니다.');
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(String(value)));
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+async function runSupplierAiReview({ force = false } = {}) {
+  const sequence = ++supplierAiReviewSequence;
+  const file = $('#supplier-coa-file')?.files?.[0];
+  const input = getSupplierReviewInput();
+  const inventoryQuantity = input.inventoryQuantity;
+  const panel = $('#supplier-ai-review');
+  if (!file || inventoryQuantity <= 0) {
+    supplierAiReviewFingerprint = null;
+    if (force) throw new Error('COA 파일과 검증 재고수량을 입력해 주세요.');
+    panel?.classList.add('hidden');
+    return null;
+  }
+  panel?.classList.remove('hidden');
+  panel?.setAttribute('aria-busy', 'true');
+  $('#supplier-ai-review-title').textContent = 'AI가 COA와 재고 입력값을 분석 중입니다.';
+  $('#supplier-ai-review-detail').textContent = `${file.name} · ${(file.size / 1024).toFixed(1)} KB · ${inventoryQuantity.toLocaleString('ko-KR')} ${$('#supplier-unit').value}`;
+  $('#supplier-ai-review-status').textContent = '검토 중';
+  let result;
+  try {
+    $('#supplier-ai-review-detail').textContent = 'COA 파일 내용 지문을 계산 중입니다...';
+    const coaFileSha256 = await sha256File(file);
+    const reviewFingerprint = getSupplierReviewFingerprint({ file, sha256: coaFileSha256, input });
+    let uploadedDocument = supplierUploadedDocument;
+    if (!uploadedDocument || uploadedDocument.contentSha256 !== coaFileSha256 || uploadedDocument.size !== file.size) {
+      $('#supplier-ai-review-detail').textContent = 'COA 원문을 보관소에 업로드 중입니다...';
+      const upload = await apiRequest('/api/supplier/precheck-document', {
+        method: 'POST',
+        headers: { 'X-Raw-Role': 'SUPPLIER' },
+        body: JSON.stringify({
+          fileName: file.name,
+          contentType: file.type || 'application/octet-stream',
+          contentBase64: await fileToBase64(file),
+          contentSha256: coaFileSha256,
+          idempotencyKey: `supplier-document-${coaFileSha256}`,
+        }),
+      });
+      uploadedDocument = { ...upload.document, size: file.size };
+      if (sequence !== supplierAiReviewSequence) return null;
+      supplierUploadedDocument = uploadedDocument;
+    }
+    if (sequence !== supplierAiReviewSequence) return null;
+    const coaStorageRef = uploadedDocument.storageRef;
+    const reviewKey = `supplier-precheck-${await sha256Text(reviewFingerprint)}`;
+    result = await apiRequest('/api/supplier/precheck', {
+      method: 'POST',
+      headers: { 'X-Raw-Role': 'SUPPLIER' },
+      body: JSON.stringify({
+        material: input.material,
+        coaDocumentNumber: input.coaDocumentNumber,
+        coaFileName: file.name,
+        coaFileSize: file.size,
+        coaFileSha256,
+        coaStorageRef,
+        inventoryQuantity: input.inventoryQuantity,
+        unit: input.unit,
+        expiry: input.expiry,
+        priceTiers: input.priceTiers,
+        idempotencyKey: reviewKey,
+      }),
+    });
+  } catch (error) {
+    if (sequence === supplierAiReviewSequence) {
+      supplierAiReviewFingerprint = null;
+      panel?.removeAttribute('aria-busy');
+      $('#supplier-ai-review-title').textContent = 'AI 사전검토를 완료하지 못했습니다.';
+      $('#supplier-ai-review-detail').textContent = error.message;
+      $('#supplier-ai-review-status').textContent = '재시도 필요';
+    }
+    if (force) throw error;
+    return null;
+  }
+  if (sequence !== supplierAiReviewSequence) return null;
+  const review = result.review;
+  const ready = review?.ready === true;
+  supplierAiReviewFingerprint = getSupplierReviewFingerprint({ file, sha256: result.precheck?.coaFileSha256 || supplierUploadedDocument.contentSha256, input });
+  panel?.removeAttribute('aria-busy');
+  $('#supplier-ai-review-title').textContent = ready ? 'AI 사전검토 완료 · 운영 검증 필요' : 'AI 사전검토 보완 필요';
+  $('#supplier-ai-review-detail').textContent = ready
+    ? 'COA 파일 형식과 재고수량을 확인했습니다. AI는 승인하지 않으며, 원문·로트·재고 검증이 이어집니다.'
+    : '지원 형식 PDF/JPG/PNG의 COA 파일과 0보다 큰 재고수량이 필요합니다.';
+  $('#supplier-ai-review-status').textContent = ready ? '검토 완료' : '보완 필요';
+  return review;
+}
+
+function getSellerOrderReviewInput() {
+  const orderPrice = Number(state.orderPrice || $('#bid-price')?.value || 0);
+  const orderQuantity = Number(state.orderQuantity || $('#bid-quantity')?.value || 0);
+  const hasOrder = Boolean(state.submitted && state.orderId);
+  return {
+    reviewScope: hasOrder ? 'ORDER_RESPONSE' : 'EVIDENCE_ONLY',
+    material: 'GABA',
+    coaDocumentNumber: $('#seller-order-coa-ref')?.value.trim() || '',
+    inventoryQuantity: Number($('#seller-order-inventory')?.value || 0),
+    unit: $('#seller-order-unit')?.value || 'KG',
+    expiry: $('#seller-order-expiry')?.value || '',
+    priceTiers: orderPrice > 0 && orderQuantity > 0 ? [{ quantity: orderQuantity, price: orderPrice }] : [],
+    orderPrice,
+    orderQuantity,
+    orderUnit: 'KG',
+  };
+}
+
+async function runSellerOrderAiReview({ force = false } = {}) {
+  const sequence = ++sellerOrderAiReviewSequence;
+  const panel = $('#seller-order-ai-review');
+  const acceptButton = $('#seller-accept');
+  const file = $('#seller-order-coa-file')?.files?.[0];
+  const input = getSellerOrderReviewInput();
+  sellerOrderAiReviewReady = false;
+  if (!file || input.inventoryQuantity <= 0 || !input.coaDocumentNumber) {
+    sellerOrderAiReviewFingerprint = null;
+    if (acceptButton && !state.accepted) acceptButton.disabled = true;
+    if (panel) {
+      panel.classList.toggle('hidden', !file && input.inventoryQuantity <= 0 && !input.coaDocumentNumber);
+      $('#seller-order-ai-review-title').textContent = 'COA·문서번호·재고를 기다리는 중';
+      $('#seller-order-ai-review-detail').textContent = 'COA 파일, COA 문서번호, 검증 재고수량을 입력하면 자동 검토를 시작합니다.';
+      $('#seller-order-ai-review-status').textContent = '입력 필요';
+    }
+    if (force) throw new Error('COA 문서번호·파일과 검증 재고수량을 입력해 주세요.');
+    return null;
+  }
+  const hasOrder = Boolean(state.submitted && state.orderId);
+  if (hasOrder && (input.orderPrice < 1 || input.orderQuantity < 1)) {
+    if (acceptButton && !state.accepted) acceptButton.disabled = true;
+    if (force) throw new Error('주문 매수가와 수량을 확인해 주세요.');
+    return null;
+  }
+  if (panel) {
+    panel.classList.remove('hidden');
+    panel.setAttribute('aria-busy', 'true');
+    $('#seller-order-ai-review-title').textContent = 'AI가 주문 응답 조건을 분석 중입니다.';
+    $('#seller-order-ai-review-detail').textContent = `${file.name} · 재고 ${input.inventoryQuantity.toLocaleString('ko-KR')} ${input.unit} · 주문 ${input.orderQuantity.toLocaleString('ko-KR')} ${input.unit}`;
+    $('#seller-order-ai-review-status').textContent = '검토 중';
+  }
+  try {
+    const coaFileSha256 = await sha256File(file);
+    const reviewFingerprint = getSupplierReviewFingerprint({ file, sha256: coaFileSha256, input });
+    let uploadedDocument = sellerOrderUploadedDocument;
+    if (!uploadedDocument || uploadedDocument.contentSha256 !== coaFileSha256 || Number(uploadedDocument.size) !== Number(file.size)) {
+      $('#seller-order-ai-review-detail').textContent = 'COA 원문을 보관소에 업로드 중입니다...';
+      const upload = await apiRequest('/api/supplier/precheck-document', {
+        method: 'POST',
+        headers: { 'X-Raw-Role': 'SUPPLIER' },
+        body: JSON.stringify({
+          fileName: file.name,
+          contentType: file.type || 'application/octet-stream',
+          contentBase64: await fileToBase64(file),
+          contentSha256: coaFileSha256,
+          idempotencyKey: `seller-order-document-${coaFileSha256}`,
+        }),
+      });
+      uploadedDocument = { ...upload.document, size: file.size };
+      if (sequence !== sellerOrderAiReviewSequence) return null;
+      sellerOrderUploadedDocument = uploadedDocument;
+    }
+    if (sequence !== sellerOrderAiReviewSequence) return null;
+    const result = await apiRequest('/api/supplier/precheck', {
+      method: 'POST',
+      headers: { 'X-Raw-Role': 'SUPPLIER' },
+      body: JSON.stringify({
+        material: input.material,
+        coaDocumentNumber: input.coaDocumentNumber,
+        coaFileName: file.name,
+        coaFileSize: file.size,
+        coaFileSha256,
+        coaStorageRef: uploadedDocument.storageRef,
+        inventoryQuantity: input.inventoryQuantity,
+        unit: input.unit,
+        expiry: input.expiry,
+        priceTiers: input.priceTiers,
+        reviewScope: input.reviewScope,
+        idempotencyKey: `seller-order-precheck-${await sha256Text(reviewFingerprint)}`,
+      }),
+    });
+    if (sequence !== sellerOrderAiReviewSequence) return null;
+    const review = result.review;
+    const enoughInventory = !hasOrder || input.inventoryQuantity >= input.orderQuantity;
+    const unitMatchesOrder = !hasOrder || input.unit === input.orderUnit;
+    sellerOrderAiReviewFingerprint = getSupplierReviewFingerprint({ file, sha256: result.precheck?.coaFileSha256 || coaFileSha256, input });
+    sellerOrderAiReviewReady = review?.ready === true && hasOrder && enoughInventory && unitMatchesOrder;
+    if (acceptButton) acceptButton.disabled = Boolean(state.accepted) || !sellerOrderAiReviewReady;
+    if (panel) {
+      panel.removeAttribute('aria-busy');
+      $('#seller-order-ai-review-title').textContent = !hasOrder && review?.ready === true
+        ? 'AI 증빙 사전검토 완료 · 주문 대기'
+        : sellerOrderAiReviewReady ? 'AI 사전검토 완료 · 체결 자격 재확인 대기' : 'AI 사전검토 보완 필요';
+      $('#seller-order-ai-review-detail').textContent = sellerOrderAiReviewReady
+        ? `COA 원문 보관·지문 확인 완료 · 검증 재고 ${input.inventoryQuantity.toLocaleString('ko-KR')} ${input.unit} · 주문 수량 충족`
+        : !hasOrder && review?.ready === true ? `COA 원문 보관·지문 확인 완료 · 검증 재고 ${input.inventoryQuantity.toLocaleString('ko-KR')} ${input.unit} · 구매자 주문 도착 후 매수가·수량을 결속해 재검토합니다.`
+        : !enoughInventory ? `검증 재고가 주문 수량(${input.orderQuantity.toLocaleString('ko-KR')} ${input.unit})보다 적습니다.`
+        : !unitMatchesOrder ? `주문 단위(${input.orderUnit})와 공급 단위(${input.unit})가 일치하지 않습니다.`
+        : (review?.reasons || []).join(' ') || 'COA와 공급 조건을 다시 확인해 주세요.';
+      $('#seller-order-ai-review-status').textContent = !hasOrder && review?.ready === true ? '증빙 검토 완료' : sellerOrderAiReviewReady ? '검토 완료' : '보완 필요';
+    }
+    return review;
+  } catch (error) {
+    if (sequence === sellerOrderAiReviewSequence) {
+      sellerOrderAiReviewFingerprint = null;
+      if (acceptButton && !state.accepted) acceptButton.disabled = true;
+      if (panel) {
+        panel.removeAttribute('aria-busy');
+        $('#seller-order-ai-review-title').textContent = 'AI 사전검토를 완료하지 못했습니다.';
+        $('#seller-order-ai-review-detail').textContent = error.message;
+        $('#seller-order-ai-review-status').textContent = '재시도 필요';
+      }
+    }
+    if (force) throw error;
+    return null;
+  }
+}
+
+function scheduleSellerOrderAiReview() {
+  sellerOrderAiReviewSequence += 1;
+  sellerOrderAiReviewFingerprint = null;
+  sellerOrderAiReviewReady = false;
+  window.clearTimeout(sellerOrderAiReviewTimer);
+  sellerOrderAiReviewTimer = window.setTimeout(() => runSellerOrderAiReview(), 450);
+}
+
 const makeIdempotencyKey = (prefix) => `${prefix}-${globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`}`;
 
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
@@ -34,8 +387,18 @@ const safeTriggerContext = (value) => {
   return compactText(normalized || '자동 운영 신호가 기록되었습니다.');
 };
 
+function sessionHeaders() {
+  const account = onboardingState.account;
+  if (!account) return {};
+  return {
+    'X-Raw-User-Id': account.userId,
+    'X-Raw-Organization-Id': account.organizationId,
+    'X-Raw-Role': onboardingState.activeRole === 'seller' ? 'SUPPLIER' : onboardingState.activeRole === 'operator' ? 'OPERATOR' : 'BUYER',
+  };
+}
+
 async function apiRequest(path, options = {}) {
-  const response = await fetch(path, { headers: { 'Content-Type': 'application/json' }, ...options });
+  const response = await fetch(path, { ...options, headers: { 'Content-Type': 'application/json', ...sessionHeaders(), ...(options.headers || {}) } });
   const payload = await response.json();
   if (!response.ok) throw new Error(payload.error || '거래 원장 처리에 실패했습니다.');
   return payload;
@@ -271,6 +634,9 @@ async function hydrateMarketBoard() {
   renderLiveBook();
   renderVerifiedSupply();
   renderSellerInventory();
+  // 비동기 시장 보드가 도착한 뒤 분할 화면의 주문 게이트도 같은 상태로 갱신합니다.
+  updateTradeGate();
+  syncSplitState();
 }
 
 async function hydratePriceIndex() {
@@ -471,8 +837,10 @@ function closeSpecWizard() {
 }
 
 function openSpecWizard() {
-  if (!state.materialRecord?.specQuestionFlow?.length) return showToast('원료 기준을 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
-  wizardState.questions = state.materialRecord.specQuestionFlow.filter((question) => question.required !== false);
+  const serverQuestions = state.materialRecord?.specQuestionFlow?.filter((question) => question.required !== false) || [];
+  const fallbackQuestions = state.material === 'GABA' ? FALLBACK_GABA_SPEC_QUESTIONS : [];
+  wizardState.questions = serverQuestions.length ? serverQuestions : fallbackQuestions;
+  if (!wizardState.questions.length) return showToast('원료 기준을 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
   const firstMissing = wizardState.questions.findIndex((question) => !state.specs[question.field]);
   wizardState.index = firstMissing >= 0 ? firstMissing : 0;
   wizardState.selected = state.specs[wizardState.questions[wizardState.index].field] || '';
@@ -486,6 +854,7 @@ function advanceSpecWizard() {
   state.specs[question.field] = wizardState.selected;
   updateSpecState();
   renderSpecQuestions(state.materialRecord);
+  if (!state.materialRecord) renderSpecQuestions({ specQuestionFlow: wizardState.questions });
   if (wizardState.index === wizardState.questions.length - 1) {
     closeSpecWizard();
     showToast(getSpecReadiness().ready ? '6개 스펙이 확정되었습니다. 검증 매물과 가격을 확인해 주세요.' : '스펙은 확정되었지만 현재 검증된 공급 로트와 일치하지 않습니다.');
@@ -637,9 +1006,8 @@ async function hydrateOpsSummary() {
       ? `업무 소유권 정상 · ${taskOwnership.valid || 0}/${taskOwnership.total || 0}건 · H-01 승인 게이트 적용`
       : `업무 소유권 확인 필요 · ${taskOwnership.errors?.[0] || '담당·검토자 연결 오류'}`;
     $('#ops-team-ownership-state').classList.toggle('success', taskOwnershipValid);
-    const autonomyLabels = { FINAL_DECISION: '최종 결정권', ANALYZE_PREPARE: '분석·준비 자동' };
-    $('#ops-team-list').innerHTML = teamMembers.length ? teamMembers.map((member) => `<div class="ops-team-row"><span class="team-kind ${member.kind === 'HUMAN' ? 'human' : 'ai'}">${escapeHtml(member.id)}</span><div><strong>${escapeHtml(member.name || '')}</strong><small>${escapeHtml(member.role || '')}</small></div><b>${escapeHtml(autonomyLabels[member.autonomy] || '권한 확인')}</b></div>`).join('') : '<div class="ops-empty">참여 팀 명부를 확인할 수 없습니다.</div>';
-
+     const autonomyLabels = { FINAL_DECISION: '최종 결정권', ANALYZE_PREPARE: '분석·준비 자동' };
+     $('#ops-team-list').innerHTML = teamMembers.length ? teamMembers.map((member) => `<div class="ops-team-row"><span class="team-kind ${member.kind === 'HUMAN' ? 'human' : 'ai'}">${escapeHtml(member.id)}</span><div><strong>${escapeHtml(member.name || '')}</strong><small>${escapeHtml(member.role || '')}</small></div><b>${escapeHtml(autonomyLabels[member.autonomy] || '권한 확인')}</b></div>`).join('') : '<div class="ops-empty">참여 팀 명부를 확인할 수 없습니다.</div>';
      const teamActivity = summary.teamActivity || {};
      const activityCounts = teamActivity.counts || {};
      const executionSummary = teamActivity.executionSummary || {};
@@ -651,7 +1019,7 @@ async function hydrateOpsSummary() {
      $('#ops-team-activity-summary').textContent = `자동 준비 ${autoExecuting}명 · 승인 대기 ${waitingForH01}명 · 증거 확인 필요 ${unverifiedActive}명 · H-01 결정 대기 ${executionSummary.pendingApprovalCount || 0}건${executionSummary.independentPreparationContinuesWhileApprovalPending ? ' · 승인 대기 중에도 독립 준비 계속' : ''}`;
      const activityMembers = teamActivity.members || [];
      $('#ops-team-activity-list').innerHTML = activityMembers.length ? activityMembers.map((member) => `<div class="ops-team-activity-row"><div><strong>${escapeHtml(member.memberId || '')}</strong><small>${escapeHtml(member.name || '')}</small></div><b class="activity-status ${member.status === 'UNVERIFIED_ACTIVE' ? 'warning' : member.status === 'WAITING_FOR_H01' ? 'waiting' : ''}">${escapeHtml(activityStatusLabels[member.status] || member.status || '상태 확인')}</b><span>${escapeHtml(member.reason || '')}</span></div>`).join('') : '<div class="ops-empty">현재 팀 활동 상태가 없습니다.</div>';
-    const latest = summary.latestRun;
+     const latest = summary.latestRun;
     $('#ops-run-decision').textContent = latest?.decision || '실행 기록 없음';
     $('#ops-run-decision').classList.toggle('success', latest?.decision === 'GO');
     $('#ops-run-id').textContent = latest?.runId || '—';
@@ -813,7 +1181,8 @@ function renderSellerIncomingOrder(order) {
   if (quantityNode) quantityNode.textContent = `${Number(order.quantity || 0).toLocaleString('ko-KR')} kg 주문`;
   if (priceNode) priceNode.textContent = `₩${Number(order.price || 0).toLocaleString('ko-KR')}/kg`;
   if (deadlineNode) deadlineNode.textContent = `희망 납기 ${escapeHtml(order.deliveryDate || '확인 필요')}`;
-  button.disabled = Boolean(state.accepted);
+  button.disabled = Boolean(state.accepted) || !sellerOrderAiReviewReady;
+  if (!state.accepted) scheduleSellerOrderAiReview();
 }
 
 function renderLiveTape() {
@@ -875,6 +1244,7 @@ function pushRealtimeTick() {
 
 function setRole(role) {
   state.role = role;
+  if (['buyer', 'seller', 'operator'].includes(role)) onboardingState.activeRole = role;
   $$('.role-button').forEach((button) => button.classList.toggle('active', button.dataset.role === role));
   $('#split-simulator').classList.toggle('hidden', role !== 'split');
   $('#seller-view').classList.toggle('hidden', role !== 'seller');
@@ -898,11 +1268,18 @@ function syncSplitState() {
   const splitButton = $('#split-seller-accept');
   const splitSubmitButton = $('#split-submit-order');
   if (!splitButton) return;
+  const splitSpecStart = $('#split-guided-spec-start');
+  const splitSpecStatus = $('#split-spec-status');
+  const specReadiness = getSpecReadiness();
+  if (splitSpecStart) splitSpecStart.textContent = specReadiness.ready ? '스펙 다시 확인' : '쉬운 문답으로 확정';
+  if (splitSpecStatus) {
+    splitSpecStatus.textContent = specReadiness.ready ? '6개 조건 확정 · 매물과 일치' : '주문 전 6개 조건 확인 필요';
+    splitSpecStatus.classList.toggle('success', specReadiness.ready);
+  }
   const price = Number(state.orderPrice || $('#split-bid-price').value || 0);
   const quantity = Number(state.orderQuantity || $('#split-bid-quantity').value || 0);
   const serverReady = ['READY', 'STATE_FALLBACK'].includes(state.marketBoardStatus) && Boolean(getVerifiedOffer());
   if (splitSubmitButton) {
-    const specReadiness = getSpecReadiness();
     splitSubmitButton.disabled = state.submitted || !serverReady || !specReadiness.ready;
     splitSubmitButton.innerHTML = state.submitted ? '주문 제출 완료 ✓' : !serverReady ? '검증 매물 확인 중' : specReadiness.ready ? '구매 주문 제출 <span>→</span>' : '스펙 확정 후 주문 가능';
   }
@@ -1043,6 +1420,130 @@ $('#search-suggestion-list').addEventListener('click', (event) => {
   showToast(`${match.materialId} 기준 스펙을 불러왔습니다.`);
 });
 
+$('#entry-buyer-choice').addEventListener('click', () => selectEntryRole('buyer'));
+$('#entry-supplier-choice').addEventListener('click', () => selectEntryRole('supplier'));
+$$('[data-entry-back]').forEach((button) => button.addEventListener('click', () => selectEntryRole(null)));
+
+$('#account-entry-form')?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  button.disabled = true;
+  try {
+    const result = await apiRequest('/api/account/session', {
+      method: 'POST',
+      body: JSON.stringify({ businessRegistrationNumber: $('#account-business-number').value.trim(), email: $('#account-email').value.trim() }),
+    });
+    onboardingState.account = result.account;
+    $('#account-entry-form').classList.add('hidden');
+    $('#account-entry-status')?.classList.remove('hidden');
+    $('#buyer-account-summary').textContent = `${result.account.maskedBusinessRegistrationNumber} · ${result.account.email}`;
+    $('#supplier-account-summary').textContent = `${result.account.maskedBusinessRegistrationNumber} · ${result.account.email}`;
+    $('#account-entry-status strong').textContent = `${result.account.maskedBusinessRegistrationNumber} · 계정 등록 완료`;
+    $('#account-entry-status small').textContent = '이제 같은 계정으로 구매자와 공급자 역할을 모두 선택할 수 있습니다.';
+    $('#role-choice-grid')?.classList.remove('hidden');
+    showToast('사업자번호 형식 확인 완료 · 계정이 등록되었습니다. 공식 사업자 조회는 상용 인증 연결 후 진행됩니다. 구매자 또는 공급자를 선택해 주세요.');
+  } catch (error) {
+    showToast(`계정 등록 불가: ${error.message}`);
+  } finally {
+    button.disabled = false;
+  }
+});
+
+$('#buyer-entry-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!onboardingState.account) return showToast('먼저 사업자등록번호와 이메일로 계정을 등록해 주세요.');
+  onboardingState.buyer = {
+    businessNumber: onboardingState.account.businessRegistrationNumber,
+    email: onboardingState.account.email,
+  };
+  activateWorkspace('buyer');
+  showToast('구매사 확인 정보를 저장했습니다. 소싱 가이드를 시작합니다.');
+});
+
+$('#supplier-entry-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  button.disabled = true;
+  const priceTiers = [1, 2, 3].map((index) => ({
+    quantity: Number($(`#supplier-tier-${index}-qty`).value || 0),
+    price: Number($(`#supplier-tier-${index}-price`).value || 0),
+  })).filter((tier) => tier.quantity > 0 && tier.price > 0).sort((a, b) => a.quantity - b.quantity);
+  if (!priceTiers.length) {
+    button.disabled = false;
+    return showToast('최소 한 개의 수량별 단가를 입력해 주세요.');
+  }
+  try {
+    if (!onboardingState.account) throw new Error('먼저 사업자등록번호와 이메일로 계정을 등록해 주세요.');
+    const aiReview = await runSupplierAiReview({ force: true });
+    if (!supplierAiReviewFingerprint) throw new Error('최신 공급 조건의 AI 사전검토 지문이 없습니다. 입력값을 다시 확인해 주세요.');
+    if (!aiReview?.ready) throw new Error('AI 사전검토를 완료할 수 없습니다. COA 파일과 재고수량을 다시 확인해 주세요.');
+    const coaFile = $('#supplier-coa-file').files[0];
+    const draft = {
+      businessNumber: onboardingState.account.businessRegistrationNumber,
+      email: onboardingState.account.email,
+      material: $('#supplier-material').value.trim(),
+      coa: $('#supplier-coa').value.trim() || coaFile.name,
+      coaFileName: coaFile.name,
+      coaFileSize: coaFile.size,
+      inventoryQuantity: Number($('#supplier-inventory-qty').value),
+      expiry: $('#supplier-expiry').value,
+      unit: $('#supplier-unit').value,
+      priceTiers,
+      aiReview,
+    };
+    const result = await apiRequest('/api/supplier/registration', {
+      method: 'POST',
+      headers: { 'X-Raw-Role': 'SUPPLIER' },
+      body: JSON.stringify({ businessRegistrationNumber: draft.businessNumber, email: draft.email, legalName: draft.material, idempotencyKey: makeIdempotencyKey('supplier-registration') }),
+    });
+    onboardingState.supplier = { ...draft, registration: result.registration, registrationStatus: result.status };
+    activateWorkspace('seller');
+    renderSupplierDraft(onboardingState.supplier);
+    await hydrateSupplierEligibility();
+    showToast('AI 사전검토 완료 · 공급자 계정이 자동 등록되었습니다. 매물은 증빙 검증 후 공개됩니다.');
+  } catch (error) {
+    showToast(`공급자 자동 등록 불가: ${error.message}`);
+  } finally {
+    button.disabled = false;
+  }
+});
+
+$('#supplier-coa-file')?.addEventListener('change', () => { supplierAiReviewSequence += 1; supplierUploadedDocument = null; supplierAiReviewFingerprint = null; runSupplierAiReview(); });
+['supplier-material', 'supplier-coa', 'supplier-inventory-qty', 'supplier-expiry', 'supplier-unit', 'supplier-tier-1-qty', 'supplier-tier-1-price', 'supplier-tier-2-qty', 'supplier-tier-2-price', 'supplier-tier-3-qty', 'supplier-tier-3-price'].forEach((id) => {
+  const field = $(`#${id}`);
+  if (!field) return;
+  const schedule = () => {
+    supplierAiReviewSequence += 1;
+    supplierAiReviewFingerprint = null;
+    const panel = $('#supplier-ai-review');
+    panel?.classList.remove('hidden');
+    $('#supplier-ai-review-title').textContent = '공급 조건 변경 · AI 재검토 대기';
+    $('#supplier-ai-review-detail').textContent = '입력 변경을 반영해 최신 COA·재고·가격 조건을 자동 재검토합니다.';
+    $('#supplier-ai-review-status').textContent = '재검토 대기';
+    window.clearTimeout(supplierAiReviewTimer);
+    supplierAiReviewTimer = window.setTimeout(() => runSupplierAiReview(), 450);
+  };
+  field.addEventListener('input', schedule);
+  field.addEventListener('change', schedule);
+});
+
+$('#sourcing-chat-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const input = $('#sourcing-chat-input');
+  const button = event.submitter;
+  const query = input.value;
+  input.value = '';
+  if (button) button.disabled = true;
+  try { await handleSourcingQuery(query); } finally { if (button) button.disabled = false; input.focus(); }
+});
+$$('[data-sourcing-query]').forEach((button) => button.addEventListener('click', async () => {
+  const input = $('#sourcing-chat-input');
+  input.value = button.dataset.sourcingQuery;
+  await handleSourcingQuery(input.value);
+  input.value = '';
+  input.focus();
+}));
+
 bindSpecControls();
 
 $('#bid-price').addEventListener('input', updateTotal);
@@ -1080,6 +1581,7 @@ $('#edit-spec').addEventListener('click', () => {
 });
 
 $('#guided-spec-start').addEventListener('click', openSpecWizard);
+$('#split-guided-spec-start').addEventListener('click', openSpecWizard);
 $('#wizard-next').addEventListener('click', advanceSpecWizard);
 $('#wizard-back').addEventListener('click', rewindSpecWizard);
 $('#wizard-close').addEventListener('click', closeSpecWizard);
@@ -1092,6 +1594,10 @@ $('#seller-accept').addEventListener('click', async () => {
   }
   if (!state.orderId) return showToast('거래 원장 주문번호가 없습니다.');
   try {
+    if (!sellerOrderAiReviewReady) {
+      await runSellerOrderAiReview({ force: true });
+      if (!sellerOrderAiReviewReady) throw new Error('COA·재고 AI 사전검토가 완료되어야 주문을 체결할 수 있습니다.');
+    }
     const result = await apiRequest(`/api/orders/${state.orderId}/accept`, {
       method: 'POST',
       body: JSON.stringify({ lotId: 'GBA-KR-2407', idempotencyKey: makeIdempotencyKey('supplier-accept') }),
@@ -1144,6 +1650,13 @@ $('#add-inventory').addEventListener('click', async () => {
 });
 $('#refresh-supplier-eligibility').addEventListener('click', hydrateSupplierEligibility);
 $('#supplier-verification-form').addEventListener('submit', requestSupplierVerification);
+$('#seller-order-coa-file')?.addEventListener('change', () => { sellerOrderAiReviewSequence += 1; sellerOrderUploadedDocument = null; sellerOrderAiReviewFingerprint = null; sellerOrderAiReviewReady = false; runSellerOrderAiReview(); });
+['seller-order-coa-ref', 'seller-order-inventory', 'seller-order-expiry', 'seller-order-unit'].forEach((id) => {
+  const field = $(`#${id}`);
+  if (!field) return;
+  field.addEventListener('input', scheduleSellerOrderAiReview);
+  field.addEventListener('change', scheduleSellerOrderAiReview);
+});
 updateTotal();
 updateSpecState();
 renderLiveMarket();
@@ -1156,5 +1669,12 @@ connectLedgerStream();
 window.setInterval(pushRealtimeTick, 3000);
 const initialRole = new URLSearchParams(window.location.search).get('role');
 const roleAliases = { split: 'split', buyer: 'buyer', seller: 'seller', supplier: 'seller', operator: 'operator' };
-setRole(roleAliases[initialRole] || 'split');
+const directRole = roleAliases[initialRole];
+if (directRole) {
+  $('#role-entry')?.classList.add('hidden');
+  $('#app-shell')?.classList.remove('hidden');
+  setRole(directRole);
+} else {
+  setRole('split');
+}
 

@@ -22,7 +22,7 @@ jobs:
         image: postgres:15
         env:
           POSTGRES_USER: raw_material_os
-          POSTGRES_PASSWORD: raw_material_os
+          POSTGRES_PASSWORD: ci-${{ github.run_id }}
           POSTGRES_DB: raw_material_os
         ports:
           - 5432:5432
@@ -32,14 +32,17 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     env:
-      DATABASE_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/raw_material_os
-      DATABASE_ADMIN_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/postgres
+      DATABASE_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@127.0.0.1:5432/raw_material_os
+      DATABASE_ADMIN_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@127.0.0.1:5432/postgres
       POSTGRES_USER: raw_material_os
-      POSTGRES_PASSWORD: raw_material_os
+      POSTGRES_PASSWORD: ci-${{ github.run_id }}
       POSTGRES_DB: raw_material_os
-      STAGING_DATABASE_URL: postgresql://raw_material_os:raw_material_os@postgres:5432/raw_material_os
-      OBJECT_STORAGE_ACCESS_KEY: raw_material_os
-      OBJECT_STORAGE_SECRET_KEY: raw_material_os_secret
+      STAGING_DATABASE_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@postgres:5432/raw_material_os
+      OBJECT_STORAGE_ACCESS_KEY: ci-access-${{ github.run_id }}
+      OBJECT_STORAGE_SECRET_KEY: ci-object-${{ github.run_id }}
+      BUSINESS_REGISTRATION_PROVIDER_READY: "false"
+      BUSINESS_REGISTRATION_PROVIDER_URL: https://ci.invalid/business-registration
+      BUSINESS_REGISTRATION_PROVIDER_API_KEY: ci-placeholder-provider-key
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -65,7 +68,12 @@ jobs:
 
       - name: Run staging container smoke test
         run: |
-          docker compose -f compose.staging.yml up -d
+          if ! docker compose -f compose.staging.yml up -d; then
+            echo "staging compose startup failed; collecting diagnostics"
+            docker compose -f compose.staging.yml ps || true
+            docker compose -f compose.staging.yml logs --no-color app schema-migrate object-storage-init || true
+            exit 1
+          fi
           for attempt in {1..60}; do
             if curl --fail --silent http://127.0.0.1:4173/api/health > /dev/null; then
               break
@@ -159,7 +167,7 @@ jobs:
 
       - name: Run PostgreSQL backup and restore drill
         env:
-          DATABASE_ADMIN_URL: postgresql://raw_material_os:raw_material_os@127.0.0.1:5432/postgres
+          DATABASE_ADMIN_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@127.0.0.1:5432/postgres
         run: node ops/postgres-backup-restore-drill.mjs
 
       - name: Validate monitoring configuration
@@ -212,9 +220,11 @@ jobs:
           node test-postgres-domain-adapter.mjs
           node test-postgres-domain-adapter-accept.mjs
           node test-postgres-domain-adapter-spec-lock.mjs
+          node test-postgres-supplier-precheck.mjs
           node test-postgres-approval-adapter.mjs
           node test-supplier-verification-gate.mjs
           node test-supplier-eligibility.mjs
+          node test-supplier-registration.mjs
           node test-postgres-domain-adapter-lot.mjs
           node test-postgres-domain-adapter-evidence.mjs
           node test-postgres-domain-adapter-atomic-inspect.mjs
@@ -225,6 +235,8 @@ jobs:
           node test-snapshot-projection.mjs
           node test-lot-onboarding.mjs
           node ../ops/test-shadow-pilot-plan.mjs
+          node ../ops/test-shadow-pilot-review.mjs
+          node ../ops/test-runtime-liveness.mjs
           node test-trade-engine.mjs
           node test-snapshot-integrity.mjs
           node test-trade-lifecycle.mjs
@@ -267,6 +279,8 @@ jobs:
         run: |
           node ops/test-company-supervisor.mjs
           node ops/test-company-supervisor-integration.mjs
+          node ops/test-company-supervisor-attach.mjs
+          node ops/test-company-supervisor-attach-fail-closed.mjs
           node ops/test-company-mode-task.mjs
 
       - name: Run complete local contract suite
@@ -299,6 +313,8 @@ jobs:
 
       - name: Validate approval inbox synchronization
         run: node ops/test-approval-sync.mjs
+      - name: task approval sync
+        run: node ops/test-task-approval-sync.mjs
 
       - name: Validate operations notification outbox
         run: node ops/test-notification-outbox.mjs

@@ -3,7 +3,7 @@ import { buildGoalAudit, selectShadowPilotEvidence } from './goal-audit.mjs';
 
 const base = {
   cycle: { cycleId: 'C-001', decision: 'HUMAN_REVIEW_REQUIRED' },
-  supervisor: { status: 'RUNNING', daemonReviewRequired: true },
+  supervisor: { status: 'RUNNING', daemonReviewRequired: true, liveness: { ready: true, reason: null } },
   runtime: { persistenceMode: 'memory', realTradingEnabled: false },
   autopilot: { runId: 'A-001', evidence: [{ passed: true, skipped: false }] },
   browserE2e: { result: 'PASS' },
@@ -21,6 +21,7 @@ assert.equal(blocked.summary.total, 15);
 assert.ok(blocked.summary.blocked >= 3);
 assert.equal(blocked.runtime.realTradingEnabled, false);
 assert.ok(blocked.checks.some((item) => item.id === 'BM_PATENT_PREPARATION' && item.status === 'PREPARED'));
+assert.match(blocked.checks.find((item) => item.id === 'SUPERVISED_RUNTIME').note, /PID·heartbeat 생존 확인/);
 
 const review = buildGoalAudit({
   ...base,

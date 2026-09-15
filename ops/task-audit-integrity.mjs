@@ -124,4 +124,3 @@ export const auditTaskTimeline = async ({ queuePath, archivePath, generatedAt = 
     guardrail: '자동업무 감사 원본은 삭제·덮어쓰지 않고 정정 이벤트만 append-only로 추가합니다. 활성 업무 시간 오류는 자동 수정하지 않고 H-01 검토로 승격합니다.',
   };
 };
-

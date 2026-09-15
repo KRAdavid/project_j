@@ -49,4 +49,3 @@ export const readOutcomeObservations = async (path) => {
     throw error;
   }
 };
-

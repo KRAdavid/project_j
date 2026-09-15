@@ -148,4 +148,3 @@ export const writeTeamActivityReport = async (reportPath, report) => {
   await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
   return report;
 };
-

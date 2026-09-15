@@ -1,0 +1,112 @@
+name: Raw Material OS Production Cutover Gate
+
+on:
+  workflow_dispatch:
+    inputs:
+      change_ticket:
+        description: 승인된 변경 티켓 또는 H-01 결정 참조
+        required: true
+        type: string
+      confirmation:
+        description: 자동 배포가 아닌 수동 검토 게이트임을 확인
+        required: true
+        type: choice
+        options:
+          - I_UNDERSTAND_NO_AUTOMATIC_DEPLOY
+
+permissions:
+  contents: read
+
+jobs:
+  cutover-gate:
+    name: Validate production cutover evidence
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    env:
+      APP_ENV: production
+      PERSISTENCE_MODE: postgresql
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_ADMIN_URL: ${{ secrets.DATABASE_ADMIN_URL }}
+      AUTH_PROVIDER_READY: ${{ secrets.AUTH_PROVIDER_READY }}
+      AUTH_EMAIL_VERIFICATION_READY: ${{ secrets.AUTH_EMAIL_VERIFICATION_READY }}
+      AUTH_JWT_SECRET: ${{ secrets.AUTH_JWT_SECRET }}
+      AUTH_JWT_ISSUER: ${{ secrets.AUTH_JWT_ISSUER }}
+      AUTH_JWT_AUDIENCE: ${{ secrets.AUTH_JWT_AUDIENCE }}
+      TRANSACTION_ISOLATION_VERIFIED: ${{ secrets.TRANSACTION_ISOLATION_VERIFIED }}
+      AUDIT_POLICY_APPLIED: ${{ secrets.AUDIT_POLICY_APPLIED }}
+      OBJECT_STORAGE_READY: ${{ secrets.OBJECT_STORAGE_READY }}
+      EVIDENCE_STORE_READY: ${{ secrets.EVIDENCE_STORE_READY }}
+      OBJECT_STORAGE_ENDPOINT: ${{ secrets.OBJECT_STORAGE_ENDPOINT }}
+      OBJECT_STORAGE_BUCKET: ${{ secrets.OBJECT_STORAGE_BUCKET }}
+      OBJECT_STORAGE_ACCESS_KEY: ${{ secrets.OBJECT_STORAGE_ACCESS_KEY }}
+      OBJECT_STORAGE_SECRET_KEY: ${{ secrets.OBJECT_STORAGE_SECRET_KEY }}
+      OBJECT_STORAGE_REGION: ${{ secrets.OBJECT_STORAGE_REGION }}
+      POSTGRES_DOMAIN_ADAPTER_READY: ${{ secrets.POSTGRES_DOMAIN_ADAPTER_READY }}
+      POSTGRES_DOMAIN_API_READY: ${{ secrets.POSTGRES_DOMAIN_API_READY }}
+      POSTGRES_DOMAIN_RECONCILIATION_VERIFIED: ${{ secrets.POSTGRES_DOMAIN_RECONCILIATION_VERIFIED }}
+      BUSINESS_REGISTRATION_PROVIDER_READY: ${{ secrets.BUSINESS_REGISTRATION_PROVIDER_READY }}
+      BUSINESS_REGISTRATION_PROVIDER_URL: ${{ secrets.BUSINESS_REGISTRATION_PROVIDER_URL }}
+      BUSINESS_REGISTRATION_PROVIDER_API_KEY: ${{ secrets.BUSINESS_REGISTRATION_PROVIDER_API_KEY }}
+      PRICE_SOURCE_APPROVED: ${{ secrets.PRICE_SOURCE_APPROVED }}
+      PRICE_SOURCE_APPROVAL_REF: ${{ secrets.PRICE_SOURCE_APPROVAL_REF }}
+      MONITORING_CONNECTED: ${{ secrets.MONITORING_CONNECTED }}
+      MONITORING_HEARTBEAT_VERIFIED: ${{ secrets.MONITORING_HEARTBEAT_VERIFIED }}
+      SUPERVISOR_CONNECTED: ${{ secrets.SUPERVISOR_CONNECTED }}
+      SUPERVISOR_HEARTBEAT_VERIFIED: ${{ secrets.SUPERVISOR_HEARTBEAT_VERIFIED }}
+      SHADOW_PILOT_APPROVED: ${{ secrets.SHADOW_PILOT_APPROVED }}
+      SHADOW_PILOT_APPROVAL_REF: ${{ secrets.SHADOW_PILOT_APPROVAL_REF }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install runtime dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Validate change reference
+        env:
+          CHANGE_TICKET: ${{ inputs.change_ticket }}
+        run: test -n "$CHANGE_TICKET"
+
+      - name: Run static and domain contracts
+        run: |
+          node ops/validate-contracts.mjs
+          node ops/validate-material-master-contract.mjs
+          node ops/validate-authorization-policy.mjs
+          node ops/validate-postgres-domain-adapter-contract.mjs
+          node ops/test-github-governance.mjs
+          node ops/test-daemon-liveness.mjs
+          node ops/test-task-queue-compaction.mjs
+
+      - name: Apply PostgreSQL migration
+        run: node ops/migrate-postgres.mjs
+
+      - name: Run backup and restore drill
+        run: node ops/postgres-backup-restore-drill.mjs
+
+      - name: Mark evidence produced by this run
+        run: |
+          echo "PERSISTENCE_SCHEMA_APPLIED=true" >> "$GITHUB_ENV"
+          echo "BACKUP_DRILL_PASSED=true" >> "$GITHUB_ENV"
+          echo "BACKUP_DRILL_EVIDENCE_REF=github://${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> "$GITHUB_ENV"
+
+      - name: Evaluate release readiness
+        env:
+          CHANGE_TICKET: ${{ inputs.change_ticket }}
+        run: |
+          node --input-type=module -e "import { evaluateReleaseReadiness } from './beta-app/readiness.mjs'; const result = await evaluateReleaseReadiness({ environment: 'production' }); console.log(JSON.stringify({ changeTicket: process.env.CHANGE_TICKET, decision: result.decision, missing: result.missing })); if (result.decision !== 'GO') process.exit(1);"
+
+      - name: Explicitly stop before deployment
+        run: |
+          echo "Production cutover evidence is GO, but this repository performs no automatic deployment. H-01 and the designated release owner must execute the separately approved release action."

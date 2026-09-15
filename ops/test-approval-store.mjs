@@ -17,4 +17,3 @@ const idempotent = await decideApproval(inboxPath, logPath, 'APPROVAL-001', { de
 assert.equal(idempotent.idempotent, true);
 await assert.rejects(() => decideApproval(inboxPath, logPath, 'APPROVAL-001', { decision: 'approve', decidedBy: 'H-01' }), (error) => error.code === 'APPROVAL_ALREADY_DECIDED');
 console.log('approval store tests: PASS');
-

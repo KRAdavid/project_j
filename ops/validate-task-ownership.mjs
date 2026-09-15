@@ -14,4 +14,3 @@ if (errors.length) {
 } else {
   console.log(`task ownership contract tests: PASS (${queue.tasks.length} tasks, ${roster.members.length} members)`);
 }
-

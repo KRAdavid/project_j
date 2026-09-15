@@ -26,4 +26,3 @@ if (!python) {
   if (text) console.log(text);
   if (result.status !== 0) process.exitCode = result.status ?? 1;
 }
-

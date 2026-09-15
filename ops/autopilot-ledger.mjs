@@ -61,6 +61,21 @@ export const buildApprovalInbox = (run) => {
       createdAt: run.generatedAt,
     });
   }
+  for (const task of run.additionalApprovalTasks || []) {
+    addItem({
+      approvalId: `APPROVAL-${run.runId}-${task.id}`,
+      status: 'PENDING',
+      requiredPrincipal: 'H-01',
+      taskId: task.id,
+      objective: task.objective,
+      risk: task.risk,
+      reviewers: task.reviewers,
+      options: ['approve', 'request_changes', 'hold', 'reject'],
+      sourceRunId: run.runId,
+      evidenceRefs: Array.isArray(task.evidenceRefs) ? task.evidenceRefs : [],
+      createdAt: run.generatedAt,
+    });
+  }
   const skipped = run.evidence.filter((item) => item.skipped).map((item) => ({ name: item.name, output: item.output || '' }));
   return {
     schemaVersion: 'APPROVAL-INBOX-0.1',
@@ -95,6 +110,11 @@ export const writeApprovalInbox = async (inboxPath, run) => {
         supersededAt: previous.decidedAt || null,
       };
     });
+    const currentTaskIds = new Set(inbox.items.map((item) => item.taskId));
+    const pendingCarryovers = (prior.items || [])
+      .filter((item) => item.status === 'PENDING' && item.taskId && !currentTaskIds.has(item.taskId))
+      .map((item) => ({ ...item, preservedFromRunId: item.sourceRunId || null }));
+    inbox.items.push(...pendingCarryovers);
     inbox.status = inbox.items.some((item) => item.status === 'PENDING') ? 'PENDING' : 'CLEAR';
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;

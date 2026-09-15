@@ -20,6 +20,10 @@ export const buildStagingPreflight = ({ env = process.env, commandAvailability =
     { id: 'OBJECT_STORAGE_ACCESS_KEY', ready: hasValue(env, 'OBJECT_STORAGE_ACCESS_KEY'), evidence: 'OBJECT_STORAGE_ACCESS_KEY is configured' },
     { id: 'OBJECT_STORAGE_SECRET_KEY', ready: hasValue(env, 'OBJECT_STORAGE_SECRET_KEY'), evidence: 'OBJECT_STORAGE_SECRET_KEY is configured' },
     { id: 'OBJECT_STORAGE_REGION', ready: hasValue(env, 'OBJECT_STORAGE_REGION'), evidence: 'OBJECT_STORAGE_REGION is configured' },
+    { id: 'BUSINESS_REGISTRATION_PROVIDER_READY', ready: env.BUSINESS_REGISTRATION_PROVIDER_READY === 'true', evidence: 'BUSINESS_REGISTRATION_PROVIDER_READY=true' },
+    { id: 'BUSINESS_REGISTRATION_PROVIDER_URL', ready: /^https:\/\//i.test(String(env.BUSINESS_REGISTRATION_PROVIDER_URL || '').trim()), evidence: 'BUSINESS_REGISTRATION_PROVIDER_URL is configured' },
+    { id: 'BUSINESS_REGISTRATION_PROVIDER_API_KEY', ready: hasValue(env, 'BUSINESS_REGISTRATION_PROVIDER_API_KEY') && String(env.BUSINESS_REGISTRATION_PROVIDER_API_KEY).trim().length >= 16, evidence: 'BUSINESS_REGISTRATION_PROVIDER_API_KEY is configured' },
+    { id: 'AUTH_EMAIL_VERIFICATION_READY', ready: env.AUTH_EMAIL_VERIFICATION_READY === 'true', evidence: 'AUTH_EMAIL_VERIFICATION_READY=true' },
   ];
   const missing = checks.filter((check) => !check.ready).map((check) => check.id);
   return {
@@ -50,4 +54,3 @@ const result = buildStagingPreflight({
 
 console.log(JSON.stringify({ ...result, checkedAt: new Date().toISOString() }));
 if (process.argv.includes('--strict') && result.status !== 'READY') process.exitCode = 2;
-

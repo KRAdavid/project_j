@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
@@ -11,7 +12,7 @@ import { persistenceStatus, assertProductionCutover } from './persistence-mode.m
 import { createPersistenceStore } from './persistence-store.mjs';
 import { authorize, AuthorizationError, loadAuthorizationPolicy, projectEvidence, projectSnapshot, resolvePrincipal } from './authorization.mjs';
 import { PriceFeed } from './price-feed.mjs';
-import { createDocumentStorage } from './document-storage.mjs';
+import { assertDocumentSignature, createDocumentStorage } from './document-storage.mjs';
 import { evaluateReleaseReadiness } from './readiness.mjs';
 import { compileSpecDraft, SpecCompilerError } from './spec-compiler.mjs';
 import { ApprovalStoreError, decideApproval } from '../ops/approval-store.mjs';
@@ -22,6 +23,10 @@ import { buildMarketBoard } from './market-board.mjs';
 import { evaluateTaskSla } from '../ops/task-sla.mjs';
 import { compileGoal } from '../ops/goal-compiler.mjs';
 import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
+import { projectRuntimeLiveness } from '../ops/runtime-liveness.mjs';
+import { TaskApprovalSyncError, syncTaskApproval } from '../ops/task-approval-sync.mjs';
+import { createSimulationSupplierRegistration, evaluateSupplierAiPrecheck, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
+import { createSimulationBusinessVerification } from './business-verification.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const opsRoot = resolve(process.env.OPS_ROOT || resolve(root, '..', 'ops'));
@@ -41,9 +46,13 @@ if (environment === 'production') {
     objectStorageReady: process.env.OBJECT_STORAGE_READY === 'true',
     evidenceStoreReady: process.env.EVIDENCE_STORE_READY === 'true',
     authProviderReady: process.env.AUTH_PROVIDER_READY === 'true',
+    authEmailVerificationReady: process.env.AUTH_EMAIL_VERIFICATION_READY === 'true',
     authJwtSecret: process.env.AUTH_JWT_SECRET,
     authJwtIssuer: process.env.AUTH_JWT_ISSUER,
     authJwtAudience: process.env.AUTH_JWT_AUDIENCE,
+    businessRegistrationProviderReady: process.env.BUSINESS_REGISTRATION_PROVIDER_READY === 'true',
+    businessRegistrationProviderUrl: process.env.BUSINESS_REGISTRATION_PROVIDER_URL,
+    businessRegistrationProviderApiKey: process.env.BUSINESS_REGISTRATION_PROVIDER_API_KEY,
     postgresDomainAdapterReady: process.env.POSTGRES_DOMAIN_ADAPTER_READY === 'true',
     postgresDomainApiReady: process.env.POSTGRES_DOMAIN_API_READY === 'true',
     postgresDomainReconciliationVerified: process.env.POSTGRES_DOMAIN_RECONCILIATION_VERIFIED === 'true',
@@ -59,6 +68,28 @@ const engine = new TradeEngine(await persistenceStore.load());
 const domainAdapter = persistenceStore.domainAdapter || null;
 const SIMULATION_VERIFIED_SUPPLIER_ORG = 'SIM-SUPPLIER-ORG';
 const simulationSupplierVerificationRequests = new Map();
+const simulationSupplierRegistrations = new Map();
+const simulationSupplierRegistrationOwners = new Map();
+const simulationBusinessAccounts = new Map();
+const simulationSupplierPrechecks = new Map();
+const normalizeSupplierPrecheckInput = (input = {}) => ({
+  reviewScope: String(input.reviewScope || 'SUPPLY_OFFER').trim().toUpperCase(),
+  material: String(input.material || '').trim(),
+  coaDocumentNumber: String(input.coaDocumentNumber || '').trim(),
+  coaFileName: String(input.coaFileName || '').trim(),
+  coaFileSize: Number(input.coaFileSize || 0),
+  coaFileSha256: String(input.coaFileSha256 || '').trim().toLowerCase(),
+  coaStorageRef: String(input.coaStorageRef || '').trim(),
+  inventoryQuantity: Number(input.inventoryQuantity || 0),
+  unit: String(input.unit || '').trim().toUpperCase(),
+  expiry: String(input.expiry || '').trim(),
+  priceTiers: (Array.isArray(input.priceTiers) ? input.priceTiers : [])
+    .map((tier) => ({ quantity: Number(tier?.quantity || 0), price: Number(tier?.price || 0) }))
+    .sort((a, b) => a.quantity - b.quantity || a.price - b.price),
+});
+const safeSupplierDocumentFileName = (fileName) => String(fileName || '').trim().replace(/[^a-zA-Z0-9._-]/g, '_').slice(0, 120) || 'coa-document';
+const supplierPrecheckStorageKey = ({ organizationId, fileName, contentSha256 }) => `supplier-prechecks/${organizationId}/${contentSha256}/${safeSupplierDocumentFileName(fileName)}`;
+const supplierPrecheckFingerprint = (input = {}) => createHash('sha256').update(JSON.stringify(normalizeSupplierPrecheckInput(input))).digest('hex');
 const eventBroker = new SseEventBroker({ heartbeatPayload: { dataStatus: runtimeDataStatus } });
 const evidenceRegistry = new EvidenceRegistry({ snapshot: await persistenceStore.loadEvidence() });
 const documentStorage = createDocumentStorage({ environment, persistenceMode: persistenceStore.mode });
@@ -83,28 +114,73 @@ const readOptionalJsonl = async (path) => {
   }
 };
 
+const securityHeaders = Object.freeze({
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Referrer-Policy': 'no-referrer',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+  'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
+});
+
 const sendJson = (response, status, payload) => {
   const body = JSON.stringify(payload);
-  response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+  response.writeHead(status, { ...securityHeaders, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
   response.end(body);
 };
 
 const simulationSupplierEligibility = (principal) => {
   const verified = principal.organizationId === SIMULATION_VERIFIED_SUPPLIER_ORG;
+  const registration = simulationSupplierRegistrations.get(principal.organizationId) || null;
   const request = simulationSupplierVerificationRequests.get(principal.organizationId) || null;
   return {
     organizationId: principal.organizationId,
-    organizationName: verified ? '시뮬레이션 공급기업 A' : null,
-    organizationExists: verified || Boolean(request),
+    organizationName: verified ? '시뮬레이션 공급기업 A' : registration?.legalName || null,
+    organizationExists: verified || Boolean(registration) || Boolean(request),
+    organizationRegistered: verified || Boolean(registration),
     organizationVerified: verified,
-    activeSupplierMembership: verified,
+    activeSupplierMembership: verified || Boolean(registration),
     eligibleToSubmitLot: verified,
-    reasons: verified ? [] : ['시뮬레이션 조직은 사전 검증된 공급기업이 아닙니다.', ...(request ? ['검증 요청이 H-01 검토를 기다리고 있습니다.'] : [])],
+    reasons: verified ? [] : registration
+      ? ['사업자번호 확인으로 공급자 계정이 자동 등록되었습니다.', 'COA·SDS·TDS·로트추적·재고 증빙 검증 전에는 매물 등록이 차단됩니다.']
+      : ['시뮬레이션 조직은 사전 검증된 공급기업이 아닙니다.', ...(request ? ['검증 요청이 H-01 검토를 기다리고 있습니다.'] : [])],
+    latestRegistration: registration,
     latestVerificationRequest: request,
     policy: { listingRequiresLotEvidence: true, requiredLotEvidence: ['COA', 'SDS', 'TDS', 'LOT_TRACE', 'INVENTORY_PROOF'], aiMayAssessButNotApprove: true },
     checkedAt: new Date().toISOString(),
     dataStatus: runtimeDataStatus,
   };
+};
+
+const createSimulationAccountSession = ({ businessRegistrationNumber, email, now = new Date().toISOString() }) => {
+  const validation = validateKoreanBusinessRegistrationNumber(businessRegistrationNumber);
+  if (!validation.valid) throw new TradeRuleError(validation.reason, 'BUSINESS_REGISTRATION_INVALID');
+  const normalizedEmail = String(email || '').trim().toLowerCase();
+  if (!/^\S+@\S+\.\S+$/.test(normalizedEmail)) throw new TradeRuleError('업무용 이메일 형식이 올바르지 않습니다.', 'BUSINESS_EMAIL_INVALID');
+  const organizationId = `SIM-ORG-${createHash('sha256').update(validation.normalized).digest('hex').slice(0, 16)}`;
+  const userId = `SIM-USER-${createHash('sha256').update(`${validation.normalized}:${normalizedEmail}`).digest('hex').slice(0, 16)}`;
+  const key = `${validation.normalized}:${normalizedEmail}`;
+  const existing = simulationBusinessAccounts.get(key);
+  if (existing) return { account: existing, idempotent: true };
+  const account = {
+    userId,
+    organizationId,
+    businessRegistrationNumber: validation.normalized,
+    formattedBusinessRegistrationNumber: validation.formatted,
+    maskedBusinessRegistrationNumber: `${validation.normalized.slice(0, 3)}-${validation.normalized.slice(3, 5)}-****${validation.normalized.slice(-1)}`,
+    email: normalizedEmail,
+    status: 'REGISTERED',
+    registrationMode: 'SIMULATION_CHECKSUM_ONLY',
+    businessVerification: createSimulationBusinessVerification({ businessRegistrationNumber: validation.normalized, now }),
+    registeredAt: now,
+  };
+  simulationBusinessAccounts.set(key, account);
+  return { account, idempotent: false };
+};
+
+const assertSimulationAccountSession = (principal) => {
+  const account = [...simulationBusinessAccounts.values()].find((candidate) => candidate.userId === principal.userId && candidate.organizationId === principal.organizationId);
+  if (!account) throw new TradeRuleError('공급자 작업을 시작하려면 사업자등록번호와 이메일로 먼저 계정을 등록해야 합니다.', 'ACCOUNT_SESSION_REQUIRED');
+  return account;
 };
 
 const assertSimulationVerifiedSupplier = (principal) => {
@@ -152,14 +228,29 @@ const refreshEngineFromPersistence = async () => {
   if (latest) engine.restore(latest);
 };
 
-const readJson = async (request) => {
+const readJson = async (request, { maxBytes = 64 * 1024 } = {}) => {
   let body = '';
   for await (const chunk of request) {
     body += chunk;
-    if (body.length > 64 * 1024) throw new TradeRuleError('요청 본문이 너무 큽니다.', 'PAYLOAD_TOO_LARGE');
+    if (body.length > maxBytes) throw new TradeRuleError('요청 본문이 너무 큽니다.', 'PAYLOAD_TOO_LARGE');
   }
   if (!body) return {};
   try { return JSON.parse(body); } catch { throw new TradeRuleError('JSON 요청 형식이 올바르지 않습니다.', 'INVALID_JSON'); }
+};
+
+const assertStoredSupplierPrecheckDocument = async (principal, input) => {
+  const fileName = String(input.coaFileName || '').trim();
+  const contentSha256 = String(input.coaFileSha256 || '').trim().toLowerCase();
+  const storageRef = String(input.coaStorageRef || '').trim();
+  if (!fileName || !/^[a-f0-9]{64}$/.test(contentSha256) || !storageRef) throw new TradeRuleError('COA 원문 저장 참조와 SHA-256 지문이 필요합니다.', 'COA_STORAGE_REFERENCE_REQUIRED');
+  const storageKey = supplierPrecheckStorageKey({ organizationId: principal.organizationId, fileName, contentSha256 });
+  const expectedRef = documentStorage.referenceForKey(storageKey);
+  if (storageRef !== expectedRef) throw new TradeRuleError('COA 저장 참조가 공급자 조직·파일 지문과 일치하지 않습니다.', 'COA_STORAGE_REFERENCE_MISMATCH');
+  let stored;
+  try { stored = await documentStorage.getBinary(storageKey); } catch (error) { throw new TradeRuleError('COA 원문을 보관소에서 다시 확인할 수 없습니다.', error.code || 'COA_STORAGE_READ_FAILED'); }
+  try { assertDocumentSignature({ fileName, contentBase64: stored.contentBase64 }); } catch (error) { throw new TradeRuleError(error.message, error.code || 'COA_STORAGE_SIGNATURE_INVALID'); }
+  if (stored.contentSha256 !== contentSha256 || Number(stored.size) !== Number(input.coaFileSize)) throw new TradeRuleError('COA 원문 해시 또는 파일 크기가 사전검토 입력과 일치하지 않습니다.', 'COA_STORAGE_CONTENT_MISMATCH');
+  return stored;
 };
 
 const persistAndPublishLedgerEvent = async () => {
@@ -271,6 +362,8 @@ const handleApi = async (request, response, url) => {
       const triggerInbox = await readOptionalJson(join(opsRoot, 'trigger-inbox.json'), { status: 'UNKNOWN', tasks: [], pending: 0 });
       const daemonStatus = await readOptionalJson(join(opsRoot, 'daemon-status.json'), { status: 'NOT_REPORTED', schemaVersion: 'OPS-DAEMON-STATUS-0.1' });
       const supervisorStatus = await readOptionalJson(join(opsRoot, 'company-supervisor-status.json'), { status: 'NOT_REPORTED', schemaVersion: 'COMPANY-SUPERVISOR-STATUS-0.1', pid: null, serverPid: null, daemonPid: null, serverRestarts: 0, daemonRestarts: 0, lastError: null });
+      const projectedDaemonStatus = projectRuntimeLiveness(daemonStatus, { maxAgeMs: 20 * 60 * 1000 });
+      const projectedSupervisorStatus = projectRuntimeLiveness(supervisorStatus, { maxAgeMs: 2 * 60 * 1000 });
       const notificationOutbox = await readOptionalJsonl(notificationOutboxPath);
       const currentNotificationRecords = latestOperationalNotifications(notificationOutbox.records);
       const latestRun = await readOptionalJson(join(opsRoot, 'latest-autopilot-run.json'), null);
@@ -279,7 +372,7 @@ const handleApi = async (request, response, url) => {
         schemaVersion: 'TEAM-ACTIVITY-0.1',
         generatedAt: null,
         cycleId: null,
-        truthModel: 'NOT_REPORTED',
+        truthModel: 'RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT',
         executionSummary: { automaticPreparation: false, pendingApprovalCount: 0 },
         counts: {},
         members: [],
@@ -301,9 +394,21 @@ const handleApi = async (request, response, url) => {
       const supplierVerificationRequests = persistenceStore.mode === 'postgresql' && domainAdapter
         ? await domainAdapter.listSupplierVerificationRequests()
         : simulationSupplierReviewItems();
-      const approvalItems = persistenceStore.mode === 'postgresql' && domainAdapter
+      const baseApprovalItems = persistenceStore.mode === 'postgresql' && domainAdapter
         ? await domainAdapter.listOperationalApprovals()
         : [...(Array.isArray(approvalInbox.items) ? approvalInbox.items : []), ...simulationSupplierApprovalItems()];
+      const approvalItems = taskAuditRemediation.requiredApprovalId && !baseApprovalItems.some((item) => item.approvalId === taskAuditRemediation.requiredApprovalId)
+        ? [...baseApprovalItems, {
+          approvalId: taskAuditRemediation.requiredApprovalId,
+          status: 'PENDING',
+          requiredPrincipal: 'H-01',
+          taskId: taskAuditRemediation.planId || 'TASK-AUDIT-REMEDIATION',
+          objective: '업무 생명주기 감사 정정 계획의 적용 여부를 H-01이 결정한다.',
+          risk: 'high',
+          reviewers: ['AI-11 실드', 'AI-13 케어'],
+          source: 'LATEST_OPS_CYCLE_REMEDIATION',
+        }]
+        : baseApprovalItems;
       const pendingApprovals = approvalItems.filter((item) => item.status === 'PENDING');
       const pendingNotifications = currentNotificationRecords.filter((item) => item.state === 'PENDING');
       return sendJson(response, 200, {
@@ -312,12 +417,11 @@ const handleApi = async (request, response, url) => {
         dataStatus: runtimeDataStatus,
         teamRoster,
         taskOwnership: { status: taskOwnershipErrors.length ? 'INVALID' : 'VALID', total: tasks.length, valid: tasks.length - taskOwnershipErrors.length, errors: taskOwnershipErrors.slice(0, 10) },
-        controlPlane: { queue: Array.isArray(queue.tasks) ? 'AVAILABLE' : 'INVALID', approvalInbox: approvalInbox.status || 'UNKNOWN', triggerInbox: triggerInbox.status || 'UNKNOWN', latestRun: latestRun ? 'AVAILABLE' : 'MISSING', daemon: daemonStatus.status || 'NOT_REPORTED', supervisor: supervisorStatus.status || 'NOT_REPORTED' },
-        daemonStatus,
-        supervisorStatus,
+        controlPlane: { queue: Array.isArray(queue.tasks) ? 'AVAILABLE' : 'INVALID', approvalInbox: approvalInbox.status || 'UNKNOWN', triggerInbox: triggerInbox.status || 'UNKNOWN', latestRun: latestRun ? 'AVAILABLE' : 'MISSING', daemon: projectedDaemonStatus.status || 'NOT_REPORTED', supervisor: projectedSupervisorStatus.status || 'NOT_REPORTED' },
+        daemonStatus: projectedDaemonStatus,
+        supervisorStatus: projectedSupervisorStatus,
         taskTimelineAudit,
         taskAuditRemediation,
-        teamActivity,
         queue: {
           total: tasks.length,
           queued: tasks.filter((task) => task.status === 'queued').length,
@@ -348,8 +452,9 @@ const handleApi = async (request, response, url) => {
         },
         readiness: await evaluateReleaseReadiness({ environment }),
         reconciliation: persistenceStore.mode === 'postgresql' && domainAdapter ? await domainAdapter.reconcileLatestBridge() : { status: 'SIMULATION_NOT_APPLICABLE', safe: true },
-        latestRun: latestRun ? { runId: latestRun.runId, generatedAt: latestRun.generatedAt, decision: latestRun.decision, selectedTask: latestRun.selectedTask?.id || null, selectedOwner: latestRun.workPacket?.ownerAi || latestRun.selectedTask?.ownerAi || null, workPacketId: latestRun.workPacket?.packetId || null, workPacketStatus: latestRun.workPacket?.status || null, patentPacketId: latestRun.patentPacket?.packetId || null, patentPacketStatus: latestRun.patentPacket?.legalStatus || null, failedEvidence: (latestRun.evidence || []).filter((item) => !item.passed).map((item) => item.name), skippedEvidence: (latestRun.evidence || []).filter((item) => item.skipped).map((item) => item.name) } : null,
-        guardrails: { tradeApprovalByAi: false, paymentReleaseByAi: false, disputeClosureByAi: false, productionRelease: 'READINESS_GO_REQUIRED' },
+         latestRun: latestRun ? { runId: latestRun.runId, generatedAt: latestRun.generatedAt, decision: latestRun.decision, selectedTask: latestRun.selectedTask?.id || null, selectedOwner: latestRun.workPacket?.ownerAi || latestRun.selectedTask?.ownerAi || null, workPacketId: latestRun.workPacket?.packetId || null, workPacketStatus: latestRun.workPacket?.status || null, patentPacketId: latestRun.patentPacket?.packetId || null, patentPacketStatus: latestRun.patentPacket?.legalStatus || null, failedEvidence: (latestRun.evidence || []).filter((item) => !item.passed).map((item) => item.name), skippedEvidence: (latestRun.evidence || []).filter((item) => item.skipped).map((item) => item.name) } : null,
+         teamActivity,
+         guardrails: { tradeApprovalByAi: false, paymentReleaseByAi: false, disputeClosureByAi: false, productionRelease: 'READINESS_GO_REQUIRED' },
       });
     }
     const notificationAckMatch = url.pathname.match(/^\/api\/ops\/notifications\/([^/]+)\/ack$/);
@@ -381,7 +486,25 @@ const handleApi = async (request, response, url) => {
         return sendJson(response, 200, { approval: domainResult.item, idempotent: domainResult.idempotent, guardrail: '승인은 운영 업무의 다음 단계 결정이며 실제 거래·계약·결제의 자동 실행을 의미하지 않습니다.' });
       }
       const result = await decideApproval(join(opsRoot, 'approval-inbox.json'), approvalLogPath, decodeURIComponent(approvalMatch[1]), { ...input, decidedBy: principal.userId });
-      return sendJson(response, 200, { approval: result.item, idempotent: result.idempotent, guardrail: '승인은 운영 업무의 다음 단계 결정이며 실제 거래·계약·결제의 자동 실행을 의미하지 않습니다.' });
+      let taskSync = { status: 'NOT_APPLICABLE', taskId: result.item?.taskId || null, idempotent: true };
+      if (result.item?.taskId) {
+        try {
+          taskSync = await syncTaskApproval({
+            queuePath: join(opsRoot, 'task-queue.json'),
+            auditPath: join(opsRoot, 'task-approval-sync.jsonl'),
+            approvalId,
+            taskId: result.item.taskId,
+            decision: result.item.decision,
+            decidedBy: result.item.decidedBy,
+            decidedAt: result.item.decidedAt,
+            note: result.item.decisionNote,
+          });
+        } catch (error) {
+          if (!(error instanceof TaskApprovalSyncError) || !['TASK_QUEUE_NOT_FOUND', 'TASK_QUEUE_INVALID'].includes(error.code)) throw error;
+          taskSync = { status: 'NOT_APPLICABLE', taskId: result.item.taskId, idempotent: true, reason: error.code, guardrail: '승인은 기록되었지만 작업 큐가 연결되지 않은 격리 환경이므로 큐 동기화는 적용하지 않았습니다.' };
+        }
+      }
+      return sendJson(response, 200, { approval: result.item, taskSync, idempotent: result.idempotent, guardrail: '승인은 운영 업무의 다음 단계 결정이며 실제 거래·계약·결제의 자동 실행을 의미하지 않습니다.' });
     }
     if (request.method === 'GET' && url.pathname === '/api/readiness') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'OPERATOR' });
@@ -436,9 +559,118 @@ const handleApi = async (request, response, url) => {
       }
       return sendJson(response, 200, simulationSupplierEligibility(principal));
     }
+    if (request.method === 'POST' && url.pathname === '/api/account/session') {
+      const input = await readJson(request);
+      if (persistenceStore.mode === 'postgresql' || environment !== 'simulation') {
+        throw new TradeRuleError('상용 로그인·사업자 확인은 공식 인증 서비스와 영속 계정 원장 연동 후에만 사용할 수 있습니다.', 'ACCOUNT_PROVIDER_REQUIRED');
+      }
+      const result = createSimulationAccountSession({ businessRegistrationNumber: input.businessRegistrationNumber || input.businessNumber, email: input.email });
+      return sendJson(response, result.idempotent ? 200 : 201, {
+        account: result.account,
+        status: 'ACCOUNT_REGISTERED',
+        idempotent: result.idempotent,
+        dataStatus: runtimeDataStatus,
+        guardrail: '베타 시뮬레이션 계정입니다. 사업자번호 형식·체크섬 확인은 공식 기관 조회를 대체하지 않으며, 실거래·결제는 비활성화되어 있습니다.',
+      });
+    }
+    if (request.method === 'POST' && url.pathname === '/api/supplier/registration') {
+      const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
+      authorize(principal, 'request_supplier_verification', authorizationPolicy);
+      const input = await readJson(request);
+      if (persistenceStore.mode === 'postgresql' || environment !== 'simulation') {
+        throw new TradeRuleError('상용 공급자 등록은 국세청 등 공식 사업자 확인 서비스 연동 후에만 사용할 수 있습니다.', 'BUSINESS_REGISTRATION_PROVIDER_REQUIRED');
+      }
+      const account = assertSimulationAccountSession(principal);
+      const validation = validateKoreanBusinessRegistrationNumber(input.businessRegistrationNumber || input.businessNumber);
+      if (!validation.valid) throw new TradeRuleError(validation.reason, 'BUSINESS_REGISTRATION_INVALID');
+      const registrationEmail = String(input.email || '').trim().toLowerCase();
+      if (!/^\S+@\S+\.\S+$/.test(registrationEmail)) throw new TradeRuleError('공급자 등록에는 유효한 업무용 이메일이 필요합니다.', 'BUSINESS_EMAIL_INVALID');
+      if (account.businessRegistrationNumber !== validation.normalized || account.email !== registrationEmail) throw new TradeRuleError('공급자 등록 정보는 로그인한 사업자 계정과 일치해야 합니다.', 'ACCOUNT_SESSION_MISMATCH');
+      const existing = simulationSupplierRegistrations.get(principal.organizationId) || null;
+      if (existing) {
+        if (existing.businessRegistrationNumber !== validation.normalized) throw new TradeRuleError('이 공급자 조직에는 이미 다른 사업자등록번호가 등록되어 있습니다.', 'BUSINESS_REGISTRATION_ALREADY_REGISTERED');
+        return sendJson(response, 200, {
+          registration: existing,
+          status: 'AUTO_REGISTERED',
+          idempotent: true,
+          dataStatus: runtimeDataStatus,
+          guardrail: '공급자 계정만 자동 등록되었습니다. COA·SDS·TDS·로트추적·재고 증빙 검증 전에는 매물·체결 권한을 열지 않습니다.',
+        });
+      }
+      const owner = simulationSupplierRegistrationOwners.get(validation.normalized);
+      if (owner && owner !== principal.organizationId) throw new TradeRuleError('이미 다른 공급자 조직에 등록된 사업자등록번호입니다.', 'BUSINESS_REGISTRATION_ALREADY_USED');
+      const registration = createSimulationSupplierRegistration({
+        organizationId: principal.organizationId,
+        userId: principal.userId,
+        businessRegistrationNumber: validation.normalized,
+        email: registrationEmail,
+        legalName: input.legalName,
+      });
+      simulationSupplierRegistrations.set(principal.organizationId, registration);
+      simulationSupplierRegistrationOwners.set(validation.normalized, principal.organizationId);
+      return sendJson(response, 201, {
+        registration,
+        status: 'AUTO_REGISTERED',
+        idempotent: false,
+        dataStatus: runtimeDataStatus,
+        guardrail: '공급자 계정만 자동 등록되었습니다. COA·SDS·TDS·로트추적·재고 증빙 검증 전에는 매물·체결 권한을 열지 않습니다.',
+      });
+    }
+    if (request.method === 'POST' && url.pathname === '/api/supplier/precheck') {
+      const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
+      authorize(principal, 'upload_evidence', authorizationPolicy);
+      if (environment === 'simulation' && persistenceStore.mode !== 'postgresql') assertSimulationAccountSession(principal);
+      const input = await readJson(request);
+      await assertStoredSupplierPrecheckDocument(principal, input);
+      const review = evaluateSupplierAiPrecheck({ ...input, coaFileSignatureVerified: true });
+      const idempotencyKey = String(input.idempotencyKey || `${input.coaFileName || 'coa'}-${input.coaFileSize || 0}-${input.inventoryQuantity || 0}-${input.unit || ''}`).slice(0, 160);
+      const key = `${principal.organizationId}:${idempotencyKey}`;
+      const inputFingerprint = supplierPrecheckFingerprint(input);
+      const existing = simulationSupplierPrechecks.get(key);
+      if (persistenceStore.mode === 'postgresql') {
+        if (!domainAdapter || typeof domainAdapter.supplierPrecheck !== 'function') throw new PostgresDomainAdapterError('정규 PostgreSQL 공급자 사전검토 어댑터가 연결되지 않았습니다.', 'POSTGRES_SUPPLIER_PRECHECK_ADAPTER_REQUIRED');
+        const result = await domainAdapter.supplierPrecheck({
+          ...normalizeSupplierPrecheckInput(input),
+          supplierOrganizationId: principal.organizationId,
+          supplierUserId: principal.userId,
+          idempotencyKey,
+          inputFingerprint,
+          review,
+          actorKind: 'SYSTEM',
+          actorRef: 'AI-SUPPLIER-PRECHECK',
+          correlationId: `SUPPLIER-PRECHECK-${idempotencyKey}`,
+        });
+        return sendJson(response, result.idempotent ? 200 : 201, { ...result, dataStatus: runtimeDataStatus, guardrail: '상용 AI 사전검토는 PostgreSQL 원장에 멱등 저장되며, 공급자 승인·매물 공개·거래 체결을 수행하지 않습니다.' });
+      }
+      if (existing) {
+        const existingFingerprint = existing.inputFingerprint || supplierPrecheckFingerprint(existing);
+        if (existingFingerprint !== inputFingerprint) throw new TradeRuleError('같은 멱등키로 다른 공급 조건을 재사용할 수 없습니다.', 'IDEMPOTENCY_KEY_REUSE_MISMATCH');
+        return sendJson(response, 200, { precheck: existing, review: existing.review, status: 'PRECHECK_REVIEWED', idempotent: true, dataStatus: runtimeDataStatus });
+      }
+      const normalizedInput = normalizeSupplierPrecheckInput(input);
+      const precheck = { precheckId: `SIM-SUPPLIER-PRECHECK-${Date.now()}`, organizationId: principal.organizationId, reviewedBy: 'AI-SUPPLIER-PRECHECK', ...normalizedInput, inputFingerprint, review };
+      simulationSupplierPrechecks.set(key, precheck);
+      return sendJson(response, 201, { precheck, review, status: 'PRECHECK_REVIEWED', idempotent: false, dataStatus: runtimeDataStatus });
+    }
+    if (request.method === 'POST' && url.pathname === '/api/supplier/precheck-document') {
+      const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
+      authorize(principal, 'upload_evidence', authorizationPolicy);
+      if (environment === 'simulation' && persistenceStore.mode !== 'postgresql') assertSimulationAccountSession(principal);
+      const input = await readJson(request, { maxBytes: 15 * 1024 * 1024 });
+      const fileName = String(input.fileName || '').trim();
+      const contentBase64 = String(input.contentBase64 || '').trim();
+      const contentSha256 = String(input.contentSha256 || '').trim().toLowerCase();
+      if (!fileName || !contentBase64 || !/^[a-f0-9]{64}$/.test(contentSha256)) throw new TradeRuleError('COA 파일명·원문·SHA-256 지문이 필요합니다.', 'COA_UPLOAD_INPUT_REQUIRED');
+      try { assertDocumentSignature({ fileName, contentBase64 }); } catch (error) { throw new TradeRuleError(error.message, error.code || 'COA_FILE_SIGNATURE_INVALID'); }
+      const storageKey = supplierPrecheckStorageKey({ organizationId: principal.organizationId, fileName, contentSha256 });
+      if (typeof documentStorage.putBinary !== 'function') throw new TradeRuleError('바이너리 Object Storage 어댑터가 연결되지 않았습니다.', 'DOCUMENT_BINARY_STORAGE_REQUIRED');
+      const stored = await documentStorage.putBinary({ key: storageKey, contentBase64, contentSha256, contentType: String(input.contentType || 'application/octet-stream') });
+      return sendJson(response, 201, { document: { ...stored, storageKey, fileName, contentSha256 }, status: 'DOCUMENT_STORED', dataStatus: runtimeDataStatus, guardrail: '원문은 저장 어댑터에 보관하고, 이후 사전검토·증빙 원장에는 저장 참조와 해시만 결속합니다.' });
+    }
     if (request.method === 'POST' && url.pathname === '/api/supplier/verification-request') {
       const principal = resolvePrincipal(request, { environment, fallbackRole: 'SUPPLIER' });
       authorize(principal, 'request_supplier_verification', authorizationPolicy);
+      if (environment === 'simulation' && persistenceStore.mode !== 'postgresql') assertSimulationAccountSession(principal);
       const input = await readJson(request);
       if (persistenceStore.mode === 'postgresql') {
         if (!domainAdapter) throw new PostgresDomainAdapterError('정규 PostgreSQL 도메인 어댑터가 연결되지 않았습니다.', 'POSTGRES_DOMAIN_ADAPTER_REQUIRED');
@@ -626,13 +858,13 @@ const httpServer = createServer(async (request, response) => {
   if (url.pathname.startsWith('/api/')) return handleApi(request, response, url);
   const requestPath = decodeURIComponent(url.pathname);
   const candidate = normalize(join(root, requestPath === '/' ? 'index.html' : requestPath.slice(1)));
-  if (!candidate.startsWith(root)) return response.writeHead(403).end('Forbidden');
+  if (!candidate.startsWith(root)) return response.writeHead(403, securityHeaders).end('Forbidden');
   try {
     const body = await readFile(candidate);
-    response.writeHead(200, { 'Content-Type': types[extname(candidate)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
+    response.writeHead(200, { ...securityHeaders, 'Content-Type': types[extname(candidate)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
     response.end(body);
   } catch {
-    response.writeHead(404).end('Not Found');
+    response.writeHead(404, securityHeaders).end('Not Found');
   }
 });
 
@@ -650,4 +882,3 @@ process.once('SIGTERM', () => { shutdown().finally(() => process.exit(0)); });
 process.once('SIGINT', () => { shutdown().finally(() => process.exit(0)); });
 
 httpServer.listen(port, host, () => console.log(`Beta server listening on http://${host}:${port}/`));
-

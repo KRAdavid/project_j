@@ -18,4 +18,3 @@ const second = await mergeTriggerApprovalItems(inboxPath, triggerTasks, { source
 assert.equal(second.additions.length, 0);
 assert.equal(JSON.parse(await readFile(inboxPath, 'utf8')).items.length, 2);
 console.log('approval sync tests: PASS');
-

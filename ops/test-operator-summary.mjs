@@ -44,9 +44,10 @@ try {
   assert.ok(summary.taskAuditRemediation, '감사 정정 계획 상태가 운영 요약에 없습니다.');
   assert.ok(summary.supervisorStatus, '운영 감독자 상태가 운영 요약에 없습니다.');
   assert.ok(summary.teamActivity, 'AI 팀 활동 원장이 운영 요약에 없습니다.');
+  assert.equal(summary.teamActivity.truthModel, 'RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT');
   assert.ok(summary.teamActivity.executionSummary, 'AI 팀 실행 요약이 운영 요약에 없습니다.');
-  assert.ok(['RULE_DRIVEN_AUTOMATION_NOT_CONTINUOUS_LLM_BACKGROUND_THOUGHT', 'NOT_REPORTED'].includes(summary.teamActivity.truthModel));
-  assert.ok(['RUNNING', 'DEGRADED', 'HALTED_REQUIRES_H01', 'NOT_REPORTED'].includes(summary.supervisorStatus.status));
+  assert.ok(['RUNNING', 'DEGRADED', 'HALTED_REQUIRES_H01', 'REVIEW_REQUIRED', 'STALE', 'NOT_REPORTED'].includes(summary.supervisorStatus.status));
+  assert.ok(summary.supervisorStatus.liveness, '운영 감독자 생존 검증 결과가 운영 요약에 없습니다.');
   const remediationStatus = summary.taskAuditRemediation.status;
   assert.ok(Array.isArray(summary.approvalDecisionGuide), '운영자 승인 결정 가이드가 요약에 없습니다.');
   assert.ok(['NO_ACTION', 'WAITING_FOR_H01_APPROVAL', 'READY_FOR_H01_APPROVAL', 'APPLIED', 'MANUAL_REVIEW_REQUIRED', 'NOT_REPORTED'].includes(remediationStatus));

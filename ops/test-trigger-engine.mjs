@@ -76,4 +76,3 @@ assert.equal(allCleared.inbox.pending, 0);
 assert.equal(allCleared.inbox.auditOnlyPending, 3);
 assert.equal(allCleared.inbox.status, 'AUDIT_ONLY');
 console.log('trigger engine tests: PASS');
-

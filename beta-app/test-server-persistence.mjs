@@ -94,4 +94,3 @@ try {
   await rm(filePath, { force: true, maxRetries: 50, retryDelay: 200 });
   await rm(documentRoot, { recursive: true, force: true, maxRetries: 50, retryDelay: 200 });
 }
-

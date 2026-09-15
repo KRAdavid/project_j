@@ -15,6 +15,7 @@ const contracts = [
   'ops/validate-ui-contract.mjs',
   'ops/test-approval-store.mjs',
   'ops/test-approval-sync.mjs',
+  'ops/test-task-approval-sync.mjs',
   'ops/test-autopilot-claim.mjs',
   'ops/test-autopilot-ledger.mjs',
   'ops/test-autopilot-selection.mjs',
@@ -25,8 +26,11 @@ const contracts = [
   'ops/test-patent-disclosure-packet.mjs',
   'ops/test-patent-claim-outline.mjs',
   'ops/test-shadow-pilot-plan.mjs',
+  'ops/test-shadow-pilot-review.mjs',
+  'ops/test-runtime-liveness.mjs',
   'ops/test-staging-contract.mjs',
   'ops/test-staging-preflight.mjs',
+  'ops/test-production-cutover-contract.mjs',
   'ops/test-trigger-engine.mjs',
   'ops/test-task-sla.mjs',
   'ops/test-task-audit-integrity.mjs',
@@ -38,6 +42,7 @@ const contracts = [
   'ops/test-company-supervisor-integration.mjs',
   'ops/test-company-mode-task.mjs',
   'beta-app/test-readiness-diagnostics.mjs',
+  'beta-app/test-postgres-supplier-precheck.mjs',
 ];
 
 const failures = [];
@@ -61,4 +66,3 @@ if (failures.length) {
 } else {
   console.log(`contract validation: PASS (${contracts.length})`);
 }
-

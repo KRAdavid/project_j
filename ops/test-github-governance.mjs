@@ -28,7 +28,7 @@ const assertions = [
   ['workflow validates the GitHub target and origin boundary', workflow.includes('node ops/github-target-preflight.mjs --strict') && workflow.includes('GITHUB_BASE_BRANCH: ${{ github.event.repository.default_branch }}')],
   ['workflow validates company mode start and stop contracts', workflow.includes('node ops/test-company-mode-launcher.mjs') && workflow.includes('node ops/test-company-mode-stop.mjs')],
   ['workflow runs the operations daemon contract test', workflow.includes('node ops/test-ops-daemon.mjs')],
-  ['workflow validates company supervisor recovery', workflow.includes('node ops/test-company-supervisor.mjs') && workflow.includes('node ops/test-company-supervisor-integration.mjs')],
+  ['workflow validates company supervisor recovery, attach mode, and fail-closed attach', workflow.includes('node ops/test-company-supervisor.mjs') && workflow.includes('node ops/test-company-supervisor-integration.mjs') && workflow.includes('node ops/test-company-supervisor-attach.mjs') && workflow.includes('node ops/test-company-supervisor-attach-fail-closed.mjs')],
   ['workflow validates automatic company mode registration contract', workflow.includes('node ops/test-company-mode-task.mjs')],
   ['workflow verifies daemon timeout recovery and complete local contracts', workflow.includes('node ops/test-daemon-timeout.mjs') && workflow.includes('node ops/validate-contracts.mjs')],
   ['workflow validates daemon liveness and queue compaction', workflow.includes('node ops/test-daemon-liveness.mjs') && workflow.includes('node ops/test-task-queue-compaction.mjs') && (!cutoverWorkflow || cutoverWorkflow.includes('node ops/test-daemon-liveness.mjs'))],

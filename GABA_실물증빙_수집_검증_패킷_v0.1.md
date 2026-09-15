@@ -94,4 +94,3 @@ originalFileName:
 - 운영 검토자가 공개 범위와 거래 전 노출 여부를 별도 결정함
 
 현재 상태: `REQUEST_PACKET_READY` · 실제 증빙 수집 전 · 상용 거래 불가
-

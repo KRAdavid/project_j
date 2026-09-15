@@ -5,6 +5,11 @@ node_modules/
 coverage/
 *.log
 *.sqlite
+*.tmp
+tmp-docx-review/
+ops/autopilot-execution-evidence.jsonl
+ops/latest-team-activity.json
+\{console.error(e)
 __pycache__/
 ops/latest-autopilot-run.*
 ops/latest-ops-cycle.*
@@ -31,4 +36,3 @@ ops/outcome-observations.jsonl
 .operations-cycle.lock
 .DS_Store
 Thumbs.db
-

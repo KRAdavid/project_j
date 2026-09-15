@@ -67,7 +67,7 @@ const monitor = parseLastJson(monitorExecution.output) || {
 
 // The autopilot runs the evidence suite sequentially. Its deadline must be
 // long enough for a real local cycle, while remaining below the supervised
-// daemon's 600-second cycle budget so the outer worker can still finalize the
+// daemon's 30-minute cycle budget so the outer worker can still finalize the
 // queue, approvals, notifications, and activity report.
 const autopilotTimeoutMs = Math.max(30000, Number(process.env.OPS_CYCLE_AUTOPILOT_TIMEOUT_MS || 480000));
 const autopilotExecution = runScript('run-autopilot.mjs', { OPS_CYCLE_LOCK_HELD: 'true' }, autopilotTimeoutMs, ['--claim']);
@@ -266,4 +266,3 @@ await writeTeamActivityReport(resolve(opsRoot, 'latest-team-activity.json'), bui
 console.log(JSON.stringify({ cycleId, decision: cycle.decision, monitor: monitor.status, autopilot: cycle.autopilot?.decision, triggerTasks: triggerResult.inbox.pending }));
 
 if (cycle.decision === 'INCIDENT_HUMAN_REVIEW_REQUIRED') process.exitCode = 1;
-

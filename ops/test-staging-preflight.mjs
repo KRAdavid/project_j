@@ -17,6 +17,10 @@ assert.deepEqual(blocked.missing, [
   'OBJECT_STORAGE_ACCESS_KEY',
   'OBJECT_STORAGE_SECRET_KEY',
   'OBJECT_STORAGE_REGION',
+  'BUSINESS_REGISTRATION_PROVIDER_READY',
+  'BUSINESS_REGISTRATION_PROVIDER_URL',
+  'BUSINESS_REGISTRATION_PROVIDER_API_KEY',
+  'AUTH_EMAIL_VERIFICATION_READY',
 ]);
 assert.equal(blocked.secretValuesRedacted, true);
 
@@ -30,6 +34,10 @@ const ready = buildStagingPreflight({
     OBJECT_STORAGE_ACCESS_KEY: 'access-key',
     OBJECT_STORAGE_SECRET_KEY: 'secret-key',
     OBJECT_STORAGE_REGION: 'us-east-1',
+    BUSINESS_REGISTRATION_PROVIDER_READY: 'true',
+    BUSINESS_REGISTRATION_PROVIDER_URL: 'https://provider.example/verify',
+    BUSINESS_REGISTRATION_PROVIDER_API_KEY: 'provider-test-key-1234',
+    AUTH_EMAIL_VERIFICATION_READY: 'true',
   },
   commandAvailability: { docker: true, pgDriver: true },
 });
@@ -37,4 +45,3 @@ assert.equal(ready.status, 'READY');
 assert.deepEqual(ready.missing, []);
 assert.equal(JSON.stringify(ready).includes('password'), false);
 console.log('staging preflight tests: PASS');
-

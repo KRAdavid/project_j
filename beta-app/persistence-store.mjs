@@ -71,7 +71,7 @@ export class PostgresSnapshotStore {
   }
 
   async verifySchema() {
-    const requiredTables = ['organizations', 'organization_members', 'materials', 'material_aliases', 'specifications', 'lots', 'evidences', 'offers', 'purchase_orders', 'reservations', 'trades', 'trade_inspections', 'trade_events', 'operational_approvals', 'approval_events', 'ledger_snapshots', 'evidence_snapshots', 'price_observations'];
+    const requiredTables = ['organizations', 'supplier_prechecks', 'organization_members', 'materials', 'material_aliases', 'specifications', 'lots', 'evidences', 'offers', 'purchase_orders', 'reservations', 'trades', 'trade_inspections', 'trade_events', 'operational_approvals', 'approval_events', 'ledger_snapshots', 'evidence_snapshots', 'price_observations'];
     const tables = await this.pool.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name = ANY($1::text[])", [requiredTables]);
     const present = new Set(tables.rows.map((row) => row.table_name));
     const missing = requiredTables.filter((table) => !present.has(table));

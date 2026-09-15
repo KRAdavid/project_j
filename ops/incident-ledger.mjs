@@ -93,4 +93,3 @@ export const recordMonitorObservation = async ({
 };
 
 export { stableFingerprint };
-

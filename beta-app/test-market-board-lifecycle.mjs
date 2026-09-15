@@ -103,4 +103,3 @@ try {
   child.kill();
   await rm(opsRoot, { recursive: true, force: true });
 }
-
