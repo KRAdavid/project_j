@@ -12,6 +12,7 @@ const requirementDefinitions = {
   ],
   'R-02': [
     ['AUTH_PROVIDER_READY', (env) => env.AUTH_PROVIDER_READY === 'true'],
+    ['AUTH_EMAIL_VERIFICATION_READY', (env) => env.AUTH_EMAIL_VERIFICATION_READY === 'true'],
     ['AUTH_JWT_SECRET', (env) => hasSecret(env, 'AUTH_JWT_SECRET')],
     ['AUTH_JWT_ISSUER', (env) => hasValue(env, 'AUTH_JWT_ISSUER')],
     ['AUTH_JWT_AUDIENCE', (env) => hasValue(env, 'AUTH_JWT_AUDIENCE')],
