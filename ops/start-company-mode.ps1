@@ -6,7 +6,7 @@ param(
   [string]$PersistenceMode = 'memory',
   [string]$PersistenceFile = '',
   [int]$IntervalMs = 900000,
-  [int]$CycleTimeoutMs = 600000,
+  [int]$CycleTimeoutMs = 1800000,
   [string]$RuntimeFile = '',
   [string]$DaemonStatusFile = ''
 )
