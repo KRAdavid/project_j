@@ -1,40 +1,4 @@
-import { createHash } from 'node:crypto';
-import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
-import { extname, join, normalize, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { TradeEngine, TradeRuleError } from './trade-engine.mjs';
-import { materialMasterSnapshot, resolveMaterial, searchMaterials } from './material-master.mjs';
-import { loadEvidencePolicy } from './evidence-verifier.mjs';
-import { SseEventBroker } from './event-broker.mjs';
-import { EvidenceRegistry, EvidenceRegistryError } from './evidence-registry.mjs';
-import { persistenceStatus, assertProductionCutover } from './persistence-mode.mjs';
-import { createPersistenceStore } from './persistence-store.mjs';
-import { authorize, AuthorizationError, loadAuthorizationPolicy, projectEvidence, projectSnapshot, resolvePrincipal } from './authorization.mjs';
-import { PriceFeed } from './price-feed.mjs';
-import { assertDocumentSignature, createDocumentStorage } from './document-storage.mjs';
-import { evaluateReleaseReadiness } from './readiness.mjs';
-import { compileSpecDraft, SpecCompilerError } from './spec-compiler.mjs';
-import { ApprovalStoreError, decideApproval } from '../ops/approval-store.mjs';
-import { acknowledgeOperationalNotification, latestOperationalNotifications, NotificationOutboxError } from '../ops/notification-outbox.mjs';
-import { validateTaskQueue } from '../ops/task-ownership.mjs';
-import { mapOrder, mapTrade, PostgresDomainAdapterError } from './postgres-domain-adapter.mjs';
-import { buildMarketBoard } from './market-board.mjs';
-import { evaluateTaskSla } from '../ops/task-sla.mjs';
-import { compileGoal } from '../ops/goal-compiler.mjs';
-import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
-import { projectRuntimeLiveness } from '../ops/runtime-liveness.mjs';
-import { TaskApprovalSyncError, syncTaskApproval } from '../ops/task-approval-sync.mjs';
-import { createSimulationSupplierRegistration, evaluateSupplierAiPrecheck, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
-import { createSimulationBusinessVerification } from './business-verification.mjs';
-
-const root = fileURLToPath(new URL('.', import.meta.url));
-const opsRoot = resolve(process.env.OPS_ROOT || resolve(root, '..', 'ops'));
-const approvalLogPath = resolve(opsRoot, 'approval-decisions.jsonl');
-const notificationOutboxPath = resolve(opsRoot, 'notification-outbox.jsonl');
-const port = Number(process.env.PORT || 4173);
-const host = process.env.HOST || '127.0.0.1';
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8' };
+tf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8' };
 const environment = process.env.APP_ENV || 'simulation';
 if (environment === 'production') {
   const cutover = assertProductionCutover({
@@ -46,6 +10,7 @@ if (environment === 'production') {
     objectStorageReady: process.env.OBJECT_STORAGE_READY === 'true',
     evidenceStoreReady: process.env.EVIDENCE_STORE_READY === 'true',
     authProviderReady: process.env.AUTH_PROVIDER_READY === 'true',
+    authEmailVerificationReady: process.env.AUTH_EMAIL_VERIFICATION_READY === 'true',
     authJwtSecret: process.env.AUTH_JWT_SECRET,
     authJwtIssuer: process.env.AUTH_JWT_ISSUER,
     authJwtAudience: process.env.AUTH_JWT_AUDIENCE,
@@ -881,4 +846,3 @@ process.once('SIGTERM', () => { shutdown().finally(() => process.exit(0)); });
 process.once('SIGINT', () => { shutdown().finally(() => process.exit(0)); });
 
 httpServer.listen(port, host, () => console.log(`Beta server listening on http://${host}:${port}/`));
-
