@@ -21,6 +21,7 @@ assert.equal(blocked.summary.total, 15);
 assert.ok(blocked.summary.blocked >= 3);
 assert.equal(blocked.runtime.realTradingEnabled, false);
 assert.ok(blocked.checks.some((item) => item.id === 'BM_PATENT_PREPARATION' && item.status === 'PREPARED'));
+assert.match(blocked.checks.find((item) => item.id === 'SUPERVISED_RUNTIME').note, /PID·heartbeat 생존 확인/);
 
 const review = buildGoalAudit({
   ...base,
