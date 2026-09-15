@@ -26,6 +26,7 @@ import { buildApprovalDecisionGuide } from '../ops/executive-review.mjs';
 import { projectRuntimeLiveness } from '../ops/runtime-liveness.mjs';
 import { TaskApprovalSyncError, syncTaskApproval } from '../ops/task-approval-sync.mjs';
 import { createSimulationSupplierRegistration, evaluateSupplierAiPrecheck, validateKoreanBusinessRegistrationNumber } from './supplier-registration.mjs';
+import { createSimulationBusinessVerification } from './business-verification.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const opsRoot = resolve(process.env.OPS_ROOT || resolve(root, '..', 'ops'));
@@ -165,6 +166,7 @@ const createSimulationAccountSession = ({ businessRegistrationNumber, email, now
     email: normalizedEmail,
     status: 'REGISTERED',
     registrationMode: 'SIMULATION_CHECKSUM_ONLY',
+    businessVerification: createSimulationBusinessVerification({ businessRegistrationNumber: validation.normalized, now }),
     registeredAt: now,
   };
   simulationBusinessAccounts.set(key, account);
