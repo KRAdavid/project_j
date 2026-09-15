@@ -46,4 +46,14 @@ const exitCode = await new Promise((resolve, reject) => {
 
 assert.notEqual(exitCode, 0);
 assert.match(output, /PostgreSQL|pg|원장|connection/i);
-console.log('production fail-closed tests: PASS');
+const controller = new AbortController();
+const probeTimer = setTimeout(() => controller.abort(), 500);
+const tradeApiReachable = await fetch(`http://127.0.0.1:${port}/api/orders`, {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({}),
+  signal: controller.signal,
+}).then(() => true).catch(() => false);
+clearTimeout(probeTimer);
+assert.equal(tradeApiReachable, false, '원장 장애 후 거래 API가 노출되면 안 됩니다.');
+console.log('production fail-closed tests: PASS (startup and trade API unavailable)');
