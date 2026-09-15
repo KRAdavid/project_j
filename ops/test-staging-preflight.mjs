@@ -20,6 +20,7 @@ assert.deepEqual(blocked.missing, [
   'BUSINESS_REGISTRATION_PROVIDER_READY',
   'BUSINESS_REGISTRATION_PROVIDER_URL',
   'BUSINESS_REGISTRATION_PROVIDER_API_KEY',
+  'AUTH_EMAIL_VERIFICATION_READY',
 ]);
 assert.equal(blocked.secretValuesRedacted, true);
 
@@ -36,6 +37,7 @@ const ready = buildStagingPreflight({
     BUSINESS_REGISTRATION_PROVIDER_READY: 'true',
     BUSINESS_REGISTRATION_PROVIDER_URL: 'https://provider.example/verify',
     BUSINESS_REGISTRATION_PROVIDER_API_KEY: 'provider-test-key-1234',
+    AUTH_EMAIL_VERIFICATION_READY: 'true',
   },
   commandAvailability: { docker: true, pgDriver: true },
 });
