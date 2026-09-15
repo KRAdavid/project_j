@@ -37,10 +37,11 @@ for (const required of [
 }
 
 assert.doesNotMatch(launcher, /git\s+(push|commit)|Invoke-WebRequest.*POST|taskkill\.exe/i, 'launcher must not write to GitHub or use broad process termination');
-for (const required of ['company-supervisor.mjs', 'COMPANY_MODE_ALREADY_RUNNING', 'SUPERVISED_SERVER_HEALTH_TIMEOUT', 'COMPANY_MODE_SUPERVISED_STARTED', 'realTradingEnabled']) {
+for (const required of ['company-supervisor.mjs', 'COMPANY_MODE_ALREADY_RUNNING', 'SUPERVISED_SERVER_HEALTH_TIMEOUT', 'COMPANY_MODE_SUPERVISED_STARTED', 'AttachExisting', 'COMPANY_ATTACH_EXISTING', 'realTradingEnabled']) {
   assert.match(supervisedLauncher, new RegExp(required.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')), `missing supervised launcher guard: ${required}`);
 }
 assert.doesNotMatch(supervisedLauncher, /git\s+(push|commit)/i, 'supervised launcher must not write to GitHub');
 assert.equal(packageJson.scripts['ops:start'], 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/start-company-supervised.ps1');
 assert.equal(packageJson.scripts['ops:start:basic'], 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File ops/start-company-mode.ps1');
 console.log('company mode launcher contract: PASS');
+
