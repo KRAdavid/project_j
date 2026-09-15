@@ -62,12 +62,17 @@ export const buildGoalAudit = ({ cycle = {}, readiness = {}, github = {}, github
     && String(githubPublicationVerification.ciConclusion || '').toLowerCase() === 'success'
     && /^https:\/\/github\.com\//i.test(String(githubPublicationVerification.sourceUrl || ''))
     && /^https:\/\/github\.com\//i.test(String(githubPublicationVerification.ciRunUrl || ''));
+  const supervisorEvidenceNote = supervisorRunning
+    ? supervisor.daemonReviewRequired
+      ? '감독자 PID·heartbeat 생존 확인·마지막 사이클은 H-01 검토 대기'
+      : `감독자 PID·heartbeat 생존 확인${supervisor.attachedExisting ? '·기존 런타임 attach 감시 중' : ''}`
+    : supervisor.liveness?.reason || '감독자 PID·heartbeat 생존 증거가 없음';
   const checks = [
     check('PRODUCT_PHYSICAL_TRADE', 'product', 'GABA 실물 원료 거래 생명주기', e2ePassed ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/latest-browser-e2e.json', 'beta-app/test-market-board-lifecycle.mjs'], e2ePassed ? '스펙 확정·주문·체결·납품·검수 완료 확인' : '브라우저 E2E 증거가 없음'),
     check('PRODUCT_PRETRADE_GATE', 'product', '거래 전 스펙·증빙·로트·재고 게이트', evidenceFailed === 0 ? 'VERIFIED' : 'NOT_VERIFIED', ['beta-app/test-evidence-verifier.mjs', 'beta-app/test-supplier-verification-gate.mjs', 'beta-app/test-lot-onboarding.mjs']),
     check('PRODUCT_REALTIME', 'product', 'SSE 실시간 거래 화면과 역할 분리', evidenceFailed === 0 ? 'VERIFIED' : 'NOT_VERIFIED', ['beta-app/test-sse-integration.mjs', 'beta-app/test-sse-heartbeat.mjs', 'ops/validate-ui-contract.mjs']),
     check('AUTOMATED_TF', 'operations', 'AI TF 업무 큐·SLA·승인 패킷 자동화', autopilot.runId ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/latest-autopilot-run.json', 'ops/work-packets.jsonl', 'data/team-roster.json']),
-    check('SUPERVISED_RUNTIME', 'operations', '회사형 감독자·데몬 생존 감시', supervisorRunning ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/company-supervisor-status.json', 'ops/daemon-status.json', 'ops/runtime-liveness.mjs'], supervisorRunning && supervisor.daemonReviewRequired ? '프로세스는 살아 있으나 마지막 사이클은 H-01 검토 대기' : supervisor.liveness?.reason || '감독자 PID·heartbeat 생존 증거가 없음'),
+    check('SUPERVISED_RUNTIME', 'operations', '회사형 감독자·데몬 생존 감시', supervisorRunning ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/company-supervisor-status.json', 'ops/daemon-status.json', 'ops/runtime-liveness.mjs'], supervisorEvidenceNote),
     check('SHADOW_PILOT_EXECUTION', 'operations', '폐쇄형 Shadow Pilot 시나리오 실행 증거', shadowPilotVerified ? 'VERIFIED' : 'NOT_VERIFIED', ['ops/latest-shadow-pilot.json', 'ops/shadow-pilot-execution-baseline.json', 'ops/test-shadow-pilot-integration.mjs'], shadowPilotVerified ? '7개 시나리오 통과·무효 로트 체결 0·참가자 접근 차단' : '최신 폐쇄형 시뮬레이션 증거가 없거나 기준을 충족하지 않음'),
     check('GITHUB_TARGET', 'delivery', 'GitHub 저장소·origin·기준 브랜치 일치', github.status === 'TARGET_MATCH' ? 'VERIFIED' : 'BLOCKED', ['ops/github-target-preflight.mjs', 'ops/configure-github-target.ps1'], github.missing?.join(', ') || ''),
     check('GITHUB_PUBLICATION', 'delivery', 'GitHub 공개 반영', publicationVerified || githubPublication.status === 'READY_FOR_EXPLICIT_PUSH' ? 'VERIFIED' : 'BLOCKED', publicationVerified ? ['ops/latest-github-publication-verification.json', 'GitHub main commit', 'GitHub Actions CI'] : ['ops/github-publication-preflight.mjs', 'ops/latest-github-publication-preflight.json'], publicationVerified ? `원격 ${githubPublicationVerification.baseBranch} 커밋·CI 확인` : githubPublication.blockers?.join(', ') || '명시적 푸시 승인 및 브랜치 전략 필요'),
