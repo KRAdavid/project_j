@@ -10,6 +10,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const tempRoot = await mkdtemp(join(tmpdir(), 'raw-material-incident-rehearsal-'));
 const ledgerPath = join(tempRoot, 'incident-ledger.jsonl');
 const unreachableBase = 'http://127.0.0.1:45991';
+const monitorProcessTimeoutMs = Number(process.env.INCIDENT_REHEARSAL_MONITOR_TIMEOUT_MS || 15000);
 
 const runMonitor = (baseUrl, heartbeatTimeoutMs = 300) => new Promise((resolve, reject) => {
   const child = spawn(process.execPath, ['ops/monitor-beta.mjs'], {
@@ -29,7 +30,7 @@ const runMonitor = (baseUrl, heartbeatTimeoutMs = 300) => new Promise((resolve, 
   const timer = setTimeout(() => {
     child.kill();
     reject(new Error(`incident rehearsal monitor timeout: ${baseUrl}`));
-  }, 8000);
+  }, monitorProcessTimeoutMs);
   child.once('error', (error) => { clearTimeout(timer); reject(error); });
   child.once('exit', (code) => { clearTimeout(timer); resolve({ code, output }); });
 });
