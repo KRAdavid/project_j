@@ -46,6 +46,13 @@ export const createSimulationSupplierRegistration = ({ organizationId, userId, b
     legalName: String(legalName || '').trim().slice(0, 120),
     status: 'REGISTERED',
     registrationMode: 'SIMULATION_CHECKSUM_ONLY',
+    businessVerification: {
+      status: 'FORMAT_VALID',
+      verified: false,
+      mode: 'SIMULATION_CHECKSUM_ONLY',
+      checkedAt: now,
+      guardrail: '체크섬 검사는 공식 기관의 사업자 상태 확인을 대체하지 않습니다.',
+    },
     registeredAt: now,
   };
 };
