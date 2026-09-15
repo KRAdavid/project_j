@@ -116,7 +116,7 @@
 - `ops/executive-review.mjs`: 최신 사이클·릴리스 차단조건·승인 대기·스테이징/GitHub 사전점검을 한 장의 H-01 경영진 검토 패킷으로 자동 집계하며, 권고는 실거래 보류이고 승인 자체는 실행하지 않음
 - 경영진 검토 패킷은 업무 생명주기 감사 상태·활성 위반 수·정정 계획 ID·H-01 승인 대상을 함께 표시해, 승인 전 변경 금지와 승인 후 자동 재감사를 한 화면에서 판단할 수 있게 함
 - `ops/approval-sla.mjs`: 위험도별 승인 SLA 초과 건을 자동 표시해 H-01 검토를 재촉구하며, 외부 알림 연동 전에는 메시지를 발송하거나 승인 상태를 변경하지 않음
-- `ops/task-sla.mjs`: queued·working·review 업무의 위험도별 SLA를 자동 평가하고, 기한 초과 업무를 AI-01·H-01 상향보고 트리거로 변환합니다. 생성·인수 시각이 없는 업무는 시간을 추정하지 않고 `TASK_METADATA_GAP`으로 먼저 보류합니다.
+- `ops/task-sla.mjs`: queued·working·review 업무의 위험도별 SLA를 자동 평가하고, 기한 초과 업무를 AI-01·H-01 상향보고 트리거로 변환합니다. 생성·인수 시각이 없는 업무는 시간을 추정하지 않고 `TASK_METADATA_GAP`으로 먼저 보류하며, 외부 증거 대기(`EVIDENCE_GAP`·`AUTOPILOT_BLOCKED`) 업무는 SLA를 일시정지하고 `WAIT_FOR_DEPENDENCY`로 별도 추적합니다.
 - `beta-app/domain-reconciliation.mjs`: 정규 PostgreSQL 원장과 기존 스냅샷 투영의 핵심 상태를 비교하고 불일치 시 안전하지 않은 상태로 판정
 - PostgreSQL 환경의 SSE 초기 스냅샷·변경 이벤트는 정규 도메인 원장에서 투영되며, 시뮬레이션 스냅샷과 혼용하지 않음
 - `beta-app/authorization.mjs`: 구매자·공급자 투영에서 상대 조직 식별자와 증빙 원문 해시·저장참조를 역할별로 차단
