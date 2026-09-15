@@ -17,6 +17,9 @@ assert.deepEqual(blocked.missing, [
   'OBJECT_STORAGE_ACCESS_KEY',
   'OBJECT_STORAGE_SECRET_KEY',
   'OBJECT_STORAGE_REGION',
+  'BUSINESS_REGISTRATION_PROVIDER_READY',
+  'BUSINESS_REGISTRATION_PROVIDER_URL',
+  'BUSINESS_REGISTRATION_PROVIDER_API_KEY',
 ]);
 assert.equal(blocked.secretValuesRedacted, true);
 
@@ -30,6 +33,9 @@ const ready = buildStagingPreflight({
     OBJECT_STORAGE_ACCESS_KEY: 'access-key',
     OBJECT_STORAGE_SECRET_KEY: 'secret-key',
     OBJECT_STORAGE_REGION: 'us-east-1',
+    BUSINESS_REGISTRATION_PROVIDER_READY: 'true',
+    BUSINESS_REGISTRATION_PROVIDER_URL: 'https://provider.example/verify',
+    BUSINESS_REGISTRATION_PROVIDER_API_KEY: 'provider-test-key-1234',
   },
   commandAvailability: { docker: true, pgDriver: true },
 });
