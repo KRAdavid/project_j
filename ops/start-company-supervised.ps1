@@ -7,7 +7,7 @@ param(
   [string]$PersistenceFile = '',
   [int]$SupervisorIntervalMs = 5000,
   [int]$DaemonIntervalMs = 900000,
-  [int]$CycleTimeoutMs = 600000,
+  [int]$CycleTimeoutMs = 1800000,
   [switch]$AttachExisting
 )
 
