@@ -6,7 +6,8 @@ export const DEFAULT_TASK_SLA_HOURS = {
   review: { critical: 24, high: 48, medium: 72, low: 120 },
 };
 
-const ACTIVE_STATUSES = new Set(['queued', 'working', 'review']);
+const ACTIVE_STATUSES = new Set(['queued', 'working', 'review', 'blocked']);
+const DEPENDENCY_PAUSED_RESULTS = new Set(['AUTOPILOT_BLOCKED']);
 
 const parseTime = (value) => {
   const parsed = parseOperationalTimestamp(value);
@@ -18,6 +19,13 @@ const thresholdFor = (status, risk, slaHours) => {
   const value = Number(statusPolicy[risk] ?? statusPolicy.high);
   return Number.isFinite(value) && value > 0 ? value : null;
 };
+
+const isDependencyPaused = (task) => (
+  task?.status === 'blocked'
+  || task?.dependencyState === 'BLOCKED_EXTERNAL_INPUT'
+  || task?.triggerKey === 'EVIDENCE_GAP'
+  || DEPENDENCY_PAUSED_RESULTS.has(task?.lastRecheckResult)
+);
 
 /** Evaluate task age without inventing missing lifecycle history. */
 export const evaluateTaskSla = ({ tasks = [], now = new Date(), slaHours = DEFAULT_TASK_SLA_HOURS } = {}) => {
@@ -33,7 +41,8 @@ export const evaluateTaskSla = ({ tasks = [], now = new Date(), slaHours = DEFAU
       const thresholdHours = thresholdFor(task.status, task.risk || 'high', slaHours);
       const metadataComplete = baselineMs !== null && thresholdHours !== null;
       const ageHours = metadataComplete ? Math.max(0, (nowMs - baselineMs) / 3600000) : null;
-      const stale = metadataComplete && ageHours >= thresholdHours;
+      const pausedForDependency = isDependencyPaused(task);
+      const stale = !pausedForDependency && metadataComplete && ageHours >= thresholdHours;
       return {
         taskId: task.id || null,
         status: task.status,
@@ -44,8 +53,9 @@ export const evaluateTaskSla = ({ tasks = [], now = new Date(), slaHours = DEFAU
         ageHours: ageHours === null ? null : Number(ageHours.toFixed(2)),
         thresholdHours,
         metadataComplete,
+        pausedForDependency,
         stale,
-        action: stale ? 'ESCALATE_AI01_AND_H01' : 'CONTINUE_WITHIN_SLA',
+        action: pausedForDependency ? 'WAIT_FOR_DEPENDENCY' : stale ? 'ESCALATE_AI01_AND_H01' : 'CONTINUE_WITHIN_SLA',
       };
     });
 
@@ -53,9 +63,11 @@ export const evaluateTaskSla = ({ tasks = [], now = new Date(), slaHours = DEFAU
     evaluatedAt: new Date(nowMs).toISOString(),
     activeCount: evaluated.length,
     metadataCompleteCount: evaluated.filter((item) => item.metadataComplete).length,
+    pausedCount: evaluated.filter((item) => item.pausedForDependency).length,
     staleCount: evaluated.filter((item) => item.stale).length,
     status: evaluated.some((item) => item.stale) ? 'STALE_TASKS' : 'WITHIN_SLA',
     humanPrincipal: 'H-01',
     items: evaluated,
   };
 };
+
