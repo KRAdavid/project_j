@@ -16,6 +16,7 @@ assert.match(dockerfile, /FROM node:22-bookworm-slim/);
 assert.match(dockerfile, /pnpm install --frozen-lockfile --prod/);
 assert.match(dockerfile, /USER node/);
 assert.match(dockerfile, /api\/health/);
+assert.match(dockerfile, /APP_ENV=production/);
 assert.match(dockerfile, /PERSISTENCE_MODE=postgresql/);
 assert.match(dockerignore, /\.env\.\*/);
 assert.match(dockerignore, /node_modules/);
