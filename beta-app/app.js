@@ -84,9 +84,10 @@ function renderSupplierDraft(draft) {
   summary.classList.remove('hidden');
   $('#supplier-draft-title').textContent = `${draft.material} 공급 조건 입력 완료`;
   const tierText = draft.priceTiers.map((tier) => `${tier.quantity.toLocaleString('ko-KR')} ${draft.unit} · ₩${tier.price.toLocaleString('ko-KR')}`).join(' / ');
-  $('#supplier-draft-detail').textContent = `${draft.registration?.maskedBusinessRegistrationNumber || '사업자번호 확인 완료'} · COA ${draft.coa} · 재고 ${Number(draft.inventoryQuantity || 0).toLocaleString('ko-KR')} ${draft.unit} · 소비기한 ${draft.expiry} · ${tierText}`;
+  const businessVerificationLabel = draft.registration?.businessVerification?.verified === true ? '공식 사업자 확인' : '사업자번호 형식 확인 · 공식 조회 대기';
+  $('#supplier-draft-detail').textContent = `${draft.registration?.maskedBusinessRegistrationNumber || businessVerificationLabel} · ${businessVerificationLabel} · COA ${draft.coa} · 재고 ${Number(draft.inventoryQuantity || 0).toLocaleString('ko-KR')} ${draft.unit} · 소비기한 ${draft.expiry} · ${tierText}`;
   const status = summary.querySelector('.draft-status');
-  if (status) status.textContent = draft.aiReview?.ready ? 'AI 사전검토 완료 · 매물 검증 대기' : draft.registrationStatus === 'AUTO_REGISTERED' ? '자동 등록 완료 · 매물 검증 대기' : '검증 대기';
+  if (status) status.textContent = draft.aiReview?.ready ? `${businessVerificationLabel} · AI 사전검토 완료 · 매물 검증 대기` : draft.registrationStatus === 'AUTO_REGISTERED' ? `${businessVerificationLabel} · 자동 등록 완료 · 매물 검증 대기` : '검증 대기';
 }
 
 let supplierAiReviewSequence = 0;
@@ -1440,7 +1441,7 @@ $('#account-entry-form')?.addEventListener('submit', async (event) => {
     $('#account-entry-status strong').textContent = `${result.account.maskedBusinessRegistrationNumber} · 계정 등록 완료`;
     $('#account-entry-status small').textContent = '이제 같은 계정으로 구매자와 공급자 역할을 모두 선택할 수 있습니다.';
     $('#role-choice-grid')?.classList.remove('hidden');
-    showToast('사업자번호 확인 완료 · 계정이 등록되었습니다. 구매자 또는 공급자를 선택해 주세요.');
+    showToast('사업자번호 형식 확인 완료 · 계정이 등록되었습니다. 공식 사업자 조회는 상용 인증 연결 후 진행됩니다. 구매자 또는 공급자를 선택해 주세요.');
   } catch (error) {
     showToast(`계정 등록 불가: ${error.message}`);
   } finally {
