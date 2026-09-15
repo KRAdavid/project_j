@@ -66,7 +66,7 @@
 - 감독형 런처에 `-PersistenceMode sqlite -PersistenceFile <경로>`를 지정하면 SQLite 실험 런타임 플래그까지 서버 자식 프로세스에 전달해 베타 재시작 복구를 검증할 수 있습니다. SQLite는 상용 PostgreSQL 원장을 대체하지 않습니다.
 - 감독자 상태는 `/api/ops/summary`와 운영 제어탑에 투영되며, `pnpm run ops:stop`은 감독자·데몬·서버를 모두 기록된 PID 기준으로 종료합니다. 두 런처 모두 배포·GitHub 쓰기·실거래 권한을 수행하지 않습니다.
 - `pnpm run ops:register`는 사용자 로그온 시 감독형 회사 모드를 시작하고 최대 3회 재시작하는 Windows 작업 스케줄러 등록 패킷입니다. 기존 작업은 기본적으로 덮어쓰지 않으며, 현재 사용자 권한으로 등록할 수 없으면 실패를 명확히 보고하므로 관리자 PowerShell에서 재실행해야 합니다.
-- `pnpm run ops:supervise`는 회사형 런타임의 감독 프로세스입니다. canonical 서버와 운영 데몬을 기동한 뒤 health·SSE 정체성·데몬 상태를 주기 확인하고, 제한된 횟수만 자동 재시작합니다. 반복 장애·기존 canonical 서버 감지·재시작 한도 초과 시 `HALTED_REQUIRES_H01`로 안전 정지하며, 실제 거래·계약·결제 권한은 절대 열지 않습니다. 재시작 정책과 상태는 `ops/company-supervisor-status.json`에 기록합니다.
+- `pnpm run ops:supervise`는 회사형 런타임의 감독 프로세스입니다. canonical 서버와 운영 데몬을 기동한 뒤 health·SSE 정체성·데몬 상태를 주기 확인하고, 제한된 횟수만 자동 재시작합니다. 반복 장애·기존 canonical 서버 감지·재시작 한도 초과 시 `HALTED_REQUIRES_H01`로 안전 정지하며, 실제 거래·계약·결제 권한은 절대 열지 않습니다. 재시작 정책과 상태는 `ops/company-supervisor-status.json`에 기록합니다. 기존에 안전하게 기동된 서버·데몬을 중단하지 않고 붙이려면 `ops/start-company-supervised.ps1 -AttachExisting`를 사용하며, 신선한 데몬 상태와 생존 PID가 모두 확인되지 않으면 attach를 거부합니다.
 - 회사형 런처는 자동 품질 사이클이 완료되기 전에 데몬이 끊기지 않도록 `CycleTimeoutMs`를 최소 300초로 강제합니다. 단회 타임아웃 회귀 테스트는 별도 격리된 데몬 프로세스로만 실행됩니다.
 - 회사형 런처는 최근 heartbeat가 유효한 기존 운영 데몬을 singleton으로 판정해 `DAEMON_ALREADY_RUNNING`으로 중복 기동을 차단합니다. 운영 Lock은 이 가드의 보조선으로 유지됩니다.
 - `pnpm run ops:stop` 또는 `ops/stop-company-mode.ps1`는 런타임 manifest에 기록된 운영 데몬·서버 런처만 정지하고 manifest를 `STOPPED`로 보존합니다. 기록되지 않은 프로세스나 기존 포트를 임의로 종료하지 않습니다.
