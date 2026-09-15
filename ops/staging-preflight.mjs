@@ -23,6 +23,7 @@ export const buildStagingPreflight = ({ env = process.env, commandAvailability =
     { id: 'BUSINESS_REGISTRATION_PROVIDER_READY', ready: env.BUSINESS_REGISTRATION_PROVIDER_READY === 'true', evidence: 'BUSINESS_REGISTRATION_PROVIDER_READY=true' },
     { id: 'BUSINESS_REGISTRATION_PROVIDER_URL', ready: /^https:\/\//i.test(String(env.BUSINESS_REGISTRATION_PROVIDER_URL || '').trim()), evidence: 'BUSINESS_REGISTRATION_PROVIDER_URL is configured' },
     { id: 'BUSINESS_REGISTRATION_PROVIDER_API_KEY', ready: hasValue(env, 'BUSINESS_REGISTRATION_PROVIDER_API_KEY') && String(env.BUSINESS_REGISTRATION_PROVIDER_API_KEY).trim().length >= 16, evidence: 'BUSINESS_REGISTRATION_PROVIDER_API_KEY is configured' },
+    { id: 'AUTH_EMAIL_VERIFICATION_READY', ready: env.AUTH_EMAIL_VERIFICATION_READY === 'true', evidence: 'AUTH_EMAIL_VERIFICATION_READY=true' },
   ];
   const missing = checks.filter((check) => !check.ready).map((check) => check.id);
   return {
