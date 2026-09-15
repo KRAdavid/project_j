@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { createSimulationBusinessVerification, verifyOfficialBusinessRegistration } from './business-verification.mjs';
 
 const port = 4179;
 const cwd = fileURLToPath(new URL('.', import.meta.url));
@@ -37,6 +38,16 @@ try {
   assert.equal(accountPayload.account.maskedBusinessRegistrationNumber, '220-81-****7');
   headers['X-Raw-User-Id'] = accountPayload.account.userId;
   headers['X-Raw-Organization-Id'] = accountPayload.account.organizationId;
+
+  const formatCheck = createSimulationBusinessVerification({ businessRegistrationNumber: '220-81-62517' });
+  assert.equal(formatCheck.status, 'FORMAT_VALID');
+  assert.equal(formatCheck.verified, false);
+  await assert.rejects(() => verifyOfficialBusinessRegistration({ businessRegistrationNumber: '220-81-62517' }), { code: 'BUSINESS_REGISTRATION_PROVIDER_REQUIRED' });
+  const official = await verifyOfficialBusinessRegistration({ businessRegistrationNumber: '220-81-62517', provider: { verify: async ({ businessRegistrationNumber }) => ({ verified: true, providerStatus: 'ACTIVE', providerReference: `REF-${businessRegistrationNumber}` }) } });
+  assert.equal(official.status, 'OFFICIALLY_VERIFIED');
+  assert.equal(official.verified, true);
+  assert.equal(official.mode, 'OFFICIAL_PROVIDER');
+  await assert.rejects(() => verifyOfficialBusinessRegistration({ businessRegistrationNumber: '220-81-62517', provider: { verify: async () => ({ verified: false, providerStatus: 'CLOSED' }) } }), { code: 'BUSINESS_REGISTRATION_NOT_VERIFIED' });
 
   const invalidRegistrationEmail = await request('/api/supplier/registration', { method: 'POST', body: JSON.stringify({ businessRegistrationNumber: '220-81-62517', email: 'not-an-email', legalName: '잘못된 공급기업' }) });
   assert.equal(invalidRegistrationEmail.status, 422);
@@ -81,6 +92,8 @@ try {
   const registrationPayload = await registration.json();
   assert.equal(registrationPayload.status, 'AUTO_REGISTERED');
   assert.equal(registrationPayload.idempotent, false);
+  assert.equal(registrationPayload.registration.businessVerification.status, 'FORMAT_VALID');
+  assert.equal(registrationPayload.registration.businessVerification.verified, false);
 
   const repeat = await request('/api/supplier/registration', { method: 'POST', body: JSON.stringify({ businessRegistrationNumber: '2208162517', email: 'supplier@example.com' }) });
   assert.equal(repeat.status, 200);
