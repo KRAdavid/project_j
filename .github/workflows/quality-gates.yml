@@ -68,7 +68,12 @@ jobs:
 
       - name: Run staging container smoke test
         run: |
-          docker compose -f compose.staging.yml up -d
+          if ! docker compose -f compose.staging.yml up -d; then
+            echo "staging compose startup failed; collecting diagnostics"
+            docker compose -f compose.staging.yml ps || true
+            docker compose -f compose.staging.yml logs --no-color app schema-migrate object-storage-init || true
+            exit 1
+          fi
           for attempt in {1..60}; do
             if curl --fail --silent http://127.0.0.1:4173/api/health > /dev/null; then
               break
