@@ -15,7 +15,10 @@ const maxRestarts = Math.max(0, Number(process.env.COMPANY_SUPERVISOR_MAX_RESTAR
 const restartWindowMs = Math.max(1000, Number(process.env.COMPANY_SUPERVISOR_RESTART_WINDOW_MS || 10 * 60 * 1000));
 const attachExisting = process.env.COMPANY_ATTACH_EXISTING === 'true';
 const daemonIntervalMs = Math.max(1000, Number(process.env.OPS_DAEMON_INTERVAL_MS || 15 * 60 * 1000));
-const daemonCycleTimeoutMs = Math.max(1000, Number(process.env.OPS_DAEMON_CYCLE_TIMEOUT_MS || 10 * 60 * 1000));
+// The daemon's full cycle includes evidence execution and post-processing;
+// keep the default aligned with ops-daemon so normal Windows teardown latency
+// cannot be misclassified as a supervisor incident.
+const daemonCycleTimeoutMs = Math.max(1000, Number(process.env.OPS_DAEMON_CYCLE_TIMEOUT_MS || 30 * 60 * 1000));
 const daemonStatusPath = resolve(root, process.env.OPS_DAEMON_STATUS_PATH || 'ops/daemon-status.json');
 const runtimePath = resolve(root, process.env.COMPANY_RUNTIME_PATH || 'ops/company-mode-runtime.json');
 const statusPath = resolve(root, process.env.COMPANY_SUPERVISOR_STATUS_PATH || 'ops/company-supervisor-status.json');
