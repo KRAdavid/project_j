@@ -7,7 +7,8 @@ param(
   [string]$PersistenceFile = '',
   [int]$SupervisorIntervalMs = 5000,
   [int]$DaemonIntervalMs = 900000,
-  [int]$CycleTimeoutMs = 600000
+  [int]$CycleTimeoutMs = 600000,
+  [switch]$AttachExisting
 )
 
 $ErrorActionPreference = 'Stop'
@@ -57,6 +58,11 @@ $env:OPS_DAEMON_STATUS_PATH = $daemonStatusFile
 $env:OPS_DAEMON_RUN_ON_START = 'true'
 $env:MONITOR_REQUIRE_SUPERVISOR = 'true'
 $env:MONITOR_SUPERVISOR_STATUS_PATH = $statusFile
+if ($AttachExisting) {
+  $env:COMPANY_ATTACH_EXISTING = 'true'
+} else {
+  Remove-Item Env:COMPANY_ATTACH_EXISTING -ErrorAction SilentlyContinue
+}
 if ([string]::IsNullOrWhiteSpace($PersistenceFile)) {
   Remove-Item Env:PERSISTENCE_FILE -ErrorAction SilentlyContinue
 } else {
@@ -85,3 +91,4 @@ try {
   }
   throw
 }
+
