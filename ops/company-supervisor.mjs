@@ -107,7 +107,7 @@ const writeRuntime = async (updates = {}) => {
   const runtime = {
     ...current,
     schemaVersion: 'COMPANY-MODE-RUNTIME-0.1',
-    startedAt: current.status === 'RUNNING' && current.supervised ? current.startedAt : supervisorStartedAt,
+    startedAt: attachExisting ? supervisorStartedAt : (current.status === 'RUNNING' && current.supervised ? current.startedAt : supervisorStartedAt),
     status: 'RUNNING',
     appEnv,
     persistenceMode,
@@ -374,7 +374,7 @@ const stop = async (signal = 'operator') => {
 await access(resolve(root, 'beta-app/server.mjs'));
 await access(resolve(root, 'ops/ops-daemon.mjs'));
 await ensureNoExistingCanonicalServer();
-await writeStatus({ status: 'STARTING', lastEvent: 'starting' });
+await writeStatus({ status: 'STARTING', lastEvent: attachExisting ? 'attached_existing_runtime' : 'starting' });
 await ensureServer();
 await ensureDaemon();
 await writeStatus({ status: 'RUNNING', serverPid: serverChild?.pid || attachedServerPid || null, daemonPid: daemonChild?.pid || attachedDaemonPid || null, attachedExisting: attachExisting });
