@@ -3,7 +3,7 @@ FROM node:22-bookworm-slim
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV APP_ENV=staging
+ENV APP_ENV=production
 ENV PORT=4173
 ENV PERSISTENCE_MODE=postgresql
 
