@@ -358,7 +358,9 @@ const ensureNoExistingCanonicalServer = async () => {
     }
     throw new Error(`COMPANY_MODE_ALREADY_RUNNING: canonical server가 이미 응답합니다 (${existing.service}).`);
   } catch (error) {
-    if (String(error.message).startsWith('COMPANY_MODE_ALREADY_RUNNING:')) throw error;
+    const message = String(error.message);
+    if (message.startsWith('COMPANY_MODE_ALREADY_RUNNING:') || (attachExisting && message.startsWith('COMPANY_ATTACH_EXISTING_'))) throw error;
+    if (attachExisting) throw new Error(`COMPANY_ATTACH_EXISTING_REQUIRES_HEALTHY_CANONICAL: ${message}`);
   }
 };
 
