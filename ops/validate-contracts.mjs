@@ -30,6 +30,7 @@ const contracts = [
   'ops/test-runtime-liveness.mjs',
   'ops/test-staging-contract.mjs',
   'ops/test-staging-preflight.mjs',
+  'ops/test-production-cutover-contract.mjs',
   'ops/test-trigger-engine.mjs',
   'ops/test-task-sla.mjs',
   'ops/test-task-audit-integrity.mjs',
@@ -65,4 +66,3 @@ if (failures.length) {
 } else {
   console.log(`contract validation: PASS (${contracts.length})`);
 }
-
