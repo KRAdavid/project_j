@@ -43,6 +43,7 @@ const verifyProductionBearer = (request) => {
   if (!payload.sub || !payload.org || !Number.isFinite(Number(payload.exp)) || Number(payload.exp) <= Math.floor(Date.now() / 1000)) throw new AuthorizationError('인증 토큰이 만료되었거나 필수 클레임이 없습니다.', 'AUTHENTICATION_INVALID');
   if (payload.iss !== issuer) throw new AuthorizationError('인증 토큰 발급자가 일치하지 않습니다.', 'AUTHENTICATION_INVALID');
   if (payload.aud !== audience) throw new AuthorizationError('인증 토큰 대상이 일치하지 않습니다.', 'AUTHENTICATION_INVALID');
+  if (payload.email_verified !== true) throw new AuthorizationError('상용 모드에서는 이메일 소유권 확인이 완료된 계정만 사용할 수 있습니다.', 'EMAIL_OWNERSHIP_REQUIRED');
   const claimRoles = Array.isArray(payload.roles) ? payload.roles : [payload.role];
   const roles = [...new Set(claimRoles.map(normalizeRole).filter(Boolean))];
   if (!roles.length || roles.some((role) => !SUPPORTED_PRODUCTION_ROLES.includes(role))) throw new AuthorizationError('인증 토큰 역할이 허용되지 않습니다.', 'AUTHENTICATION_INVALID');
