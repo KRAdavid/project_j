@@ -30,6 +30,7 @@ foreach ($property in @(
 }
 
 $stopped = @()
+$attachedExisting = ($runtime.PSObject.Properties.Name -contains 'attachedExisting' -and [bool]$runtime.attachedExisting) -or ($runtime.PSObject.Properties.Name -contains 'managedProcesses' -and $runtime.managedProcesses -eq $false)
 function Stop-StartedProcess([int]$ProcessId) {
   if ($ProcessId -le 0) { return $false }
   $process = Get-Process -Id $ProcessId -ErrorAction SilentlyContinue
@@ -53,11 +54,12 @@ function Clear-StaleOperationLock {
     # Malformed or inaccessible locks remain for human review.
   }
 }
-foreach ($entry in @(
-  @{ name = 'supervisorPid'; label = 'company-supervisor' },
-  @{ name = 'opsDaemonPid'; label = 'ops-daemon' },
-  @{ name = 'serverPid'; label = 'server' }
-)) {
+$stopEntries = @(@{ name = 'supervisorPid'; label = 'company-supervisor' })
+if (-not $attachedExisting) {
+  $stopEntries += @{ name = 'opsDaemonPid'; label = 'ops-daemon' }
+  $stopEntries += @{ name = 'serverPid'; label = 'server' }
+}
+foreach ($entry in $stopEntries) {
   $pidValue = 0
   if ($null -ne $runtime.($entry.name)) {
     $pidValue = [int]$runtime.($entry.name)
@@ -79,7 +81,7 @@ if ($runtime.PSObject.Properties.Name -notcontains 'serverPid' -and $runtime.PSO
 # server.ps1 is a wrapper. If its child Node process remains, terminate it only
 # when the recorded port answers as this application's canonical health service.
 $port = [int]$runtime.port
-if ($port -gt 0) {
+if ($port -gt 0 -and -not $attachedExisting) {
   for ($attempt = 0; $attempt -lt 20; $attempt += 1) {
     $listeners = @(Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue)
     foreach ($listener in $listeners) {
@@ -106,3 +108,4 @@ $runtime.stoppedAt = (Get-Date).ToUniversalTime().ToString('o')
 $runtime.stoppedProcesses = $stopped
 $runtime | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $RuntimeFile -Encoding UTF8
 Write-Host "COMPANY_MODE_STOPPED: $($stopped -join ', ')"
+
