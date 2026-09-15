@@ -136,6 +136,7 @@ export const writeExecutiveReview = async ({ cyclePath = resolve(root, 'ops', 'l
     `- H-01 승인 대기: **${review.approvals.pending}건**`,
     `- 승인 SLA 초과: **${review.approvals.sla.staleCount}건** (외부 알림 미발송)`,
     `- 업무 SLA 초과: **${review.tasks.sla.staleCount}건** (담당 변경·실행 재개 자동 처리 없음)`,
+    `- 외부 의존성 대기: **${review.tasks.sla.pausedCount}건** (SLA 일시정지 · WAIT_FOR_DEPENDENCY)`,
     `- 외부 알림 전달: **${review.notifications.delivery}**${review.notifications.incidentEscalation ? ' · 운영 사고 승격' : ''}`,
     `- 업무 감사: **${review.taskAudit.status}** · 활성 위반 ${review.taskAudit.activeViolationCount}건 · 아카이브 잔여 위반 ${review.taskAudit.remainingArchiveViolationCount}건`,
     `- 감사 정정: **${review.taskAudit.remediationStatus}** · 적용 가능 ${review.taskAudit.eligibleActionCount}건 · 계획 ${review.taskAudit.remediationPlanId || '없음'}`,
@@ -164,3 +165,4 @@ if (process.argv[1] && basename(process.argv[1]) === 'executive-review.mjs') {
   const review = await writeExecutiveReview();
   console.log(JSON.stringify({ decision: review.decision, recommendation: review.recommendation, missing: review.readiness.missing, pendingApprovals: review.approvals.pending }));
 }
+
