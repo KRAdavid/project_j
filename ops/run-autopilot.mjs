@@ -26,8 +26,10 @@ const patentTraceability = JSON.parse(await readFile(resolve(root, 'data', 'pate
 const args = new Set(process.argv.slice(2));
 // Windows CI and local desktop runs can briefly contend with the beta server
 // and other Node workers. Keep timeout failures real, but allow a bounded
-// 30-second per-test window so a slow PASS is not misclassified as a hang.
+// per-test window and one retry for transient process contention. A repeated
+// timeout still blocks the run and remains visible in the evidence packet.
 const testTimeoutMs = Number(process.env.AUTOPILOT_TEST_TIMEOUT_MS || 30000);
+const timeoutRetryLimit = Math.max(0, Number(process.env.AUTOPILOT_TIMEOUT_RETRIES ?? 1));
 let operationLock = null;
 try {
   operationLock = process.env.OPS_CYCLE_LOCK_HELD === 'true'
@@ -79,10 +81,13 @@ const runNodeTest = (name, script) => {
   let result = execute();
   let timedOut = result.error?.code === 'ETIMEDOUT';
   let output = `${result.stdout || ''}${result.stderr || ''}${timedOut ? `\nTIMEOUT after ${testTimeoutMs}ms` : ''}`.trim();
-  const transientServerStartupFailure = !timedOut && result.status !== 0 && /server unavailable/i.test(output);
   let retryCount = 0;
-  if (transientServerStartupFailure) {
-    retryCount = 1;
+  const shouldRetry = () => (
+    (timedOut && retryCount < timeoutRetryLimit)
+    || (!timedOut && result.status !== 0 && /server unavailable/i.test(output) && retryCount === 0)
+  );
+  while (shouldRetry()) {
+    retryCount += 1;
     result = execute();
     timedOut = result.error?.code === 'ETIMEDOUT';
     output = `${result.stdout || ''}${result.stderr || ''}${timedOut ? `\nTIMEOUT after ${testTimeoutMs}ms` : ''}`.trim();
@@ -462,4 +467,3 @@ if (run.decision === 'BLOCKED') {
 console.log(JSON.stringify({ runId: run.runId, decision: run.decision, taskId: selectedTask?.id || null }));
 
 if (run.decision === 'BLOCKED') process.exitCode = 1;
-
