@@ -272,6 +272,7 @@ jobs:
           node ops/test-company-supervisor.mjs
           node ops/test-company-supervisor-integration.mjs
           node ops/test-company-supervisor-attach.mjs
+          node ops/test-company-supervisor-attach-fail-closed.mjs
           node ops/test-company-mode-task.mjs
 
       - name: Run complete local contract suite
