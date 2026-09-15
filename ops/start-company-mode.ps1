@@ -17,6 +17,16 @@ param(
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $nodeCommand = Get-Command node -ErrorAction Stop
+# Some managed Windows shells expose both `Path` and `PATH` in the inherited
+# environment. PowerShell's Start-Process copies that block into a
+# case-sensitive map and can fail before the server starts. Collapse the
+# aliases to one canonical entry while preserving the resolved Node path.
+$pathValue = [System.Environment]::GetEnvironmentVariable('Path', 'Process')
+if (-not [string]::IsNullOrWhiteSpace($pathValue)) {
+  Remove-Item Env:Path -ErrorAction SilentlyContinue
+  Remove-Item Env:PATH -ErrorAction SilentlyContinue
+  $env:Path = $pathValue
+}
 $healthUrl = "http://127.0.0.1:$Port/api/health"
 if ([string]::IsNullOrWhiteSpace($RuntimeFile)) {
   $RuntimeFile = Join-Path $root 'ops/company-mode-runtime.json'
