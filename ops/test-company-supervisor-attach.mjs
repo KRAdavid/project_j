@@ -114,10 +114,12 @@ try {
   const status = await readJson(supervisorStatusPath);
   const runtime = await readJson(runtimePath);
   assert.equal(status.attachedExisting, true);
+  assert.equal(status.lastEvent, 'attached_existing_runtime');
   assert.equal(status.serverPid, null);
   assert.equal(status.daemonPid, process.pid);
   assert.equal(runtime.attachedExisting, true);
   assert.equal(runtime.managedProcesses, false);
+  assert.notEqual(runtime.startedAt, '2026-09-12T01:25:03.392Z');
   assert.equal(runtime.realTradingEnabled, false);
   assert.equal(server.exitCode, null, 'attach supervisor must not take ownership of the existing server');
   console.log('company supervisor attach integration: PASS');
