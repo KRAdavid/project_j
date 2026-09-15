@@ -12,5 +12,7 @@ for (const token of ['idempotency_key', 'counter_offer', 'spec_attributes', 'spe
   const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   assert.match(sql, new RegExp(escaped, 'i'), `필수 구성 누락: ${token}`);
 }
+assert.match(sql, /primary key \(organization_id, user_id, role\)/i, '조직 멤버십은 동일 계정의 구매자·공급자 복수 역할을 지원해야 합니다.');
+assert.match(sql, /old primary key.*organization_id, user_id/i, '기존 단일 역할 멤버십에서의 안전한 업그레이드 경계가 필요합니다.');
 assert.doesNotMatch(sql, /create table\s+(derivatives|securities|margin)/i, '실물 원료 범위를 벗어난 테이블이 들어가면 안 됩니다.');
 console.log('persistence schema tests: PASS');
