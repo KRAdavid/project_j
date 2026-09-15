@@ -11,7 +11,8 @@
     "normalized domain state reconciliation evidence",
     "Object Storage document adapter",
     "durable evidence registry",
-    "signed production authentication provider"
+    "signed production authentication provider",
+    "verified email ownership capability in the authentication provider"
   ],
   "failClosedRule": "상용 모드 필수조건이 하나라도 없으면 거래 API를 공개하지 않는다."
 }
