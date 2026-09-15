@@ -36,6 +36,8 @@ try {
   const accountPayload = await account.json();
   assert.equal(accountPayload.status, 'ACCOUNT_REGISTERED');
   assert.equal(accountPayload.account.maskedBusinessRegistrationNumber, '220-81-****7');
+  assert.equal(accountPayload.account.businessVerification.status, 'FORMAT_VALID');
+  assert.equal(accountPayload.account.businessVerification.verified, false);
   headers['X-Raw-User-Id'] = accountPayload.account.userId;
   headers['X-Raw-Organization-Id'] = accountPayload.account.organizationId;
 
