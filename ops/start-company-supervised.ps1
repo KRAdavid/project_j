@@ -26,13 +26,15 @@ if ($SupervisorIntervalMs -lt 1000 -or $DaemonIntervalMs -lt 1000 -or $CycleTime
   throw '감독자·데몬·사이클 주기는 1000ms 이상이어야 합니다.'
 }
 
-try {
-  $existingHealth = Invoke-RestMethod -Uri $healthUrl -Method Get -TimeoutSec 2
-  if ($existingHealth.service -eq 'raw-material-beta') {
-    throw "COMPANY_MODE_ALREADY_RUNNING: $healthUrl"
+if (-not $AttachExisting) {
+  try {
+    $existingHealth = Invoke-RestMethod -Uri $healthUrl -Method Get -TimeoutSec 2
+    if ($existingHealth.service -eq 'raw-material-beta') {
+      throw "COMPANY_MODE_ALREADY_RUNNING: $healthUrl"
+    }
+  } catch {
+    if ($_.Exception.Message -like 'COMPANY_MODE_ALREADY_RUNNING:*') { throw }
   }
-} catch {
-  if ($_.Exception.Message -like 'COMPANY_MODE_ALREADY_RUNNING:*') { throw }
 }
 
 if (Test-Path -LiteralPath $statusFile) {
