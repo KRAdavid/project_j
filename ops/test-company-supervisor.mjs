@@ -23,6 +23,8 @@ for (const required of [
   'MONITOR_SUPERVISOR_STATUS_PATH',
   'daemonReviewRequired',
   'lastCycleDecision',
+  'COMPANY_ATTACH_EXISTING_REQUIRES_FRESH_DAEMON_STATUS',
+  'COMPANY_ATTACH_EXISTING_REQUIRES_LIVE_DAEMON',
 ]) {
   assert.match(source, new RegExp(required.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')), `missing supervisor guard: ${required}`);
 }
@@ -31,3 +33,4 @@ assert.match(source, /'--experimental-sqlite'/, 'missing SQLite runtime flag');
 assert.equal(packageJson.scripts['ops:supervise'], 'node ops/company-supervisor.mjs');
 assert.doesNotMatch(source, /git\\s+(push|commit)/i);
 console.log('company supervisor contract: PASS');
+
