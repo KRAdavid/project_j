@@ -40,6 +40,9 @@ jobs:
       STAGING_DATABASE_URL: postgresql://raw_material_os:ci-${{ github.run_id }}@postgres:5432/raw_material_os
       OBJECT_STORAGE_ACCESS_KEY: ci-access-${{ github.run_id }}
       OBJECT_STORAGE_SECRET_KEY: ci-object-${{ github.run_id }}
+      BUSINESS_REGISTRATION_PROVIDER_READY: "false"
+      BUSINESS_REGISTRATION_PROVIDER_URL: https://ci.invalid/business-registration
+      BUSINESS_REGISTRATION_PROVIDER_API_KEY: ci-placeholder-provider-key
     steps:
       - name: Checkout
         uses: actions/checkout@v4
