@@ -80,6 +80,20 @@ const waitUntil = async (predicate, timeoutMs = 15000) => {
   }
   return false;
 };
+const removeTempRoot = async () => {
+  let lastError = null;
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    try {
+      await rm(tempRoot, { recursive: true, force: true });
+      return;
+    } catch (error) {
+      lastError = error;
+      if (error.code !== 'ENOTEMPTY') throw error;
+      await sleep(100);
+    }
+  }
+  throw lastError;
+};
 const killTree = (processId) => {
   if (!processId || processId <= 0) return;
   if (process.platform === 'win32') {
@@ -113,6 +127,8 @@ try {
 } finally {
   killTree(supervisor.pid);
   killTree(server.pid);
-  await rm(tempRoot, { recursive: true, force: true });
+  await waitUntil(() => supervisor.exitCode !== null, 5000);
+  await waitUntil(() => server.exitCode !== null, 5000);
+  await removeTempRoot();
 }
 
