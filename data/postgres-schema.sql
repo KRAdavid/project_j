@@ -78,8 +78,36 @@ create table if not exists organization_members (
   role organization_member_role not null,
   active boolean not null default true,
   created_at timestamptz not null default now(),
-  primary key (organization_id, user_id)
+  -- One verified account may operate as both buyer and supplier in the
+  -- same organization. Role is therefore part of membership identity.
+  primary key (organization_id, user_id, role)
 );
+
+-- Upgrade installations created before multi-role membership was introduced.
+-- The old primary key (organization_id, user_id) prevented a second role from
+-- being recorded. This migration is idempotent and preserves all membership
+-- rows while replacing only that key with the role-aware key.
+do $$
+declare
+  primary_key_name text;
+begin
+  select tc.constraint_name
+    into primary_key_name
+    from information_schema.table_constraints tc
+   where tc.table_schema = 'public'
+     and tc.table_name = 'organization_members'
+     and tc.constraint_type = 'PRIMARY KEY'
+   limit 1;
+
+  if primary_key_name is not null then
+    execute format('alter table organization_members drop constraint %I', primary_key_name);
+  end if;
+
+  alter table organization_members
+    add constraint organization_members_pkey primary key (organization_id, user_id, role);
+exception
+  when duplicate_object then null;
+end $$;
 
 create table if not exists materials (
   material_id text primary key,
